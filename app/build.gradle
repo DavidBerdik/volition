@@ -16,9 +16,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        disable 'AllowBackup'
+        disable 'RtlHardcoded'
+
+
+    }
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
