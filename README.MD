@@ -1,4 +1,5 @@
-Hi, I am your readme. It is best to update me with directions on how to setup, configure, and run your project.
+Hi, I am your readme. It is best to update me with directions on how to setup, configure,
+and run your project.
 
 Prerequisites:
 ==============
@@ -25,7 +26,7 @@ Formatting Code Automatically:
 Setup Project
 =============
 
-1. Clone this repository onto your machine by copying the repository URL from the "clone" button
-on BitBucket.
+1. Clone this repository onto your machine by copying the repository URL from the "clone"
+button on BitBucket.
 2. Inside Android Studio, import the cloned project.
 
