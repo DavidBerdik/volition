@@ -39,13 +39,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    def lifecycle_version = "2.0.0"
-    def room_version = "2.1.0-alpha04"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // Latest versions:
+    // See https://developer.android.com/jetpack/androidx/releases/lifecycle
+    // and https://developer.android.com/jetpack/androidx/releases/room
+    def lifecycle_version = "1.1.1"
+    def room_version = "1.1.1"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
     // Test helpers: Only needed for automated testing
-    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
-    testImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "android.arch.core:core-testing:$lifecycle_version"
+    testImplementation "android.arch.persistence.room:testing:$room_version"
 }
