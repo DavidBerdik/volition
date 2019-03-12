@@ -24,6 +24,7 @@ package com.recoveryenhancementsolutions.volition.db;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -43,6 +44,8 @@ import android.support.annotation.NonNull;
     },
     version = 1)
     */
+    @TypeConverters(DateConverter.class)
+
 public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
