@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition;
+package com.recoveryenhancementsolutions.volition.db;
 /*
  * Copyright (C) 2017 Google Inc.
  *
@@ -22,7 +22,6 @@ package com.recoveryenhancementsolutions.volition;
  */
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
