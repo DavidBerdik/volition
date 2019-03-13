@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition.db;
+package com.recoveryenhancementsolutions.volition;
 /*
  * Copyright (C) 2017 Google Inc.
  *
@@ -22,6 +22,7 @@ package com.recoveryenhancementsolutions.volition.db;
  */
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
+import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
@@ -37,19 +38,19 @@ import android.support.annotation.NonNull;
  */
 
 // TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
-  /*
+
 @Database(
     entities = {
-
+        UserActivitiesTemp.class
     },
     version = 1)
-    */
     @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
+  public abstract UserActivitiesDao userActivitiesDao();
 
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
