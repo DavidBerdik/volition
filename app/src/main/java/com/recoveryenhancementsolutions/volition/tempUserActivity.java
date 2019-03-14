@@ -1,18 +1,24 @@
 package com.recoveryenhancementsolutions.volition;
 
+import java.util.Date;
+
 public class tempUserActivity {
 
 
 
-  /*this is a temporary class creating user activites objects to populate the UI with,
+  /*this is a temporary class creating user activities objects to populate the UI with,
   we don't know what exactly the data will look like but this is a baseline just to test */
 
   private String activityName;
-  private int activityNumber;
+  private int activityId;
+  private Date activityDate;
 
-  public tempUserActivity(String activityName, int activityNumber) {
+
+
+  public tempUserActivity(String activityName, int activityNumber, Date activityDate) {
     this.activityName = activityName;
-    this.activityNumber = activityNumber;
+    this.activityId = activityNumber;
+    this.activityDate = activityDate;
   }
 
   public String getActivityName() {
@@ -23,11 +29,19 @@ public class tempUserActivity {
     this.activityName = activityName;
   }
 
-  public int getActivityNumber() {
-    return activityNumber;
+  public int getActivityId() {
+    return activityId;
   }
 
-  public void setActivityNumber(int activityNumber) {
-    this.activityNumber = activityNumber;
+  public void setActivityId(int activityId) {
+    this.activityId = activityId;
+  }
+
+  public Date getActivityDate() {
+    return activityDate;
+  }
+
+  public void setActivityDate(Date activityDate) {
+    this.activityDate = activityDate;
   }
 }
