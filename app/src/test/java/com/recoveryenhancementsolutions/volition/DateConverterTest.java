@@ -24,7 +24,7 @@ public class DateConverterTest {
   }
 
   @Test
-  public void daysBetween_isCorrect() {
+  public void daysBetween_DateObject() {
     Date janFirst2019, janTenth2019, decThirtyFirst2019, janFirst2020, decThirtyFirst2020;
 
     try {
@@ -40,6 +40,34 @@ public class DateConverterTest {
       assertEquals(365, DateConverter.daysBetween(janFirst2020, decThirtyFirst2020));
       assertEquals(356, DateConverter.daysBetween(janTenth2019, janFirst2020));
       assertEquals(0, DateConverter.daysBetween(janTenth2019, janFirst2019));
+    } catch (ParseException e) {
+      fail("Improper formatting used on DateConverterTest.parseDateFromString method.");
+    }
+  }
+
+  @Test
+  public void daysBetween_LongTimestamp() {
+    Date janFirst2019, janTenth2019, decThirtyFirst2019, janFirst2020, decThirtyFirst2020;
+
+    try {
+      janFirst2019 = DateConverterTest.parseDateFromString("2019-01-01");
+      janTenth2019 = DateConverterTest.parseDateFromString("2019-01-10");
+      decThirtyFirst2019 = DateConverterTest.parseDateFromString("2019-12-31");
+      janFirst2020 = DateConverterTest.parseDateFromString("2020-01-01");
+      decThirtyFirst2020 = DateConverterTest.parseDateFromString("2020-12-31");
+
+      assertEquals(9,
+          DateConverter.daysBetween(janFirst2019.getTime(), janTenth2019.getTime()));
+      assertEquals(0,
+          DateConverter.daysBetween(janFirst2019.getTime(), janFirst2019.getTime()));
+      assertEquals(364,
+          DateConverter.daysBetween(janFirst2019.getTime(), decThirtyFirst2019.getTime()));
+      assertEquals(365,
+          DateConverter.daysBetween(janFirst2020.getTime(), decThirtyFirst2020.getTime()));
+      assertEquals(356,
+          DateConverter.daysBetween(janTenth2019.getTime(), janFirst2020.getTime()));
+      assertEquals(0,
+          DateConverter.daysBetween(janTenth2019.getTime(), janFirst2019.getTime()));
     } catch (ParseException e) {
       fail("Improper formatting used on DateConverterTest.parseDateFromString method.");
     }
