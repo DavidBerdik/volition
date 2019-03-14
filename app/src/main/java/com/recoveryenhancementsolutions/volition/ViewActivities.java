@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class PlanActivity extends AppCompatActivity {
+public class ViewActivities extends AppCompatActivity {
     //Series of TextViews (assumably 7; one for each day
 
     private TextView mTextMessage;
