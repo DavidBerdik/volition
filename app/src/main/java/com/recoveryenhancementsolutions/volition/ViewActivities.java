@@ -8,8 +8,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class ViewActivities extends AppCompatActivity {
-    //Series of TextViews (assumably 7; one for each day
 
+    private TextView detailToday, detail1Ago, detail2Ago, detail3Ago, detail4Ago, detail5Ago,
+                     detail6Ago, labelToday, label1Ago, label2Ago, label3Ago, label4Ago, label5Ago,
+                     label6Ago; //Might be reduced in the future
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -38,6 +40,22 @@ public class ViewActivities extends AppCompatActivity {
         //setContentView(R.layout.activity_main); Will be replaced with the name of the XML file
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        labelToday = (TextView) findViewById(R.id.labelToday);
+        label1Ago = (TextView) findViewById(R.id.labelYesterday);
+        label2Ago = (TextView) findViewById(R.id.label2DaysAgo);
+        label3Ago = (TextView) findViewById(R.id.label3DaysAgo);
+        label4Ago = (TextView) findViewById(R.id.label4DaysAgo);
+        label5Ago = (TextView) findViewById(R.id.label5DaysAgo);
+        label6Ago = (TextView) findViewById(R.id.label6DaysAgo);
+
+        detailToday = (TextView) findViewById(R.id.detailsToday);
+        detail1Ago = (TextView) findViewById(R.id.detailsYesterday);
+        detail2Ago = (TextView) findViewById(R.id.details2DaysAgo);
+        detail3Ago = (TextView) findViewById(R.id.details3DaysAgo);
+        detail4Ago = (TextView) findViewById(R.id.details4DaysAgo);
+        detail5Ago = (TextView) findViewById(R.id.details5DaysAgo);
+        detail6Ago = (TextView) findViewById(R.id.details6DaysAgo);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
