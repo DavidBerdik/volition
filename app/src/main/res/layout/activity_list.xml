@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/labelToday"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="60dp"
+        android:text="Today"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/labelYesterday"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="yesterday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelToday" />
+
+    <TextView
+        android:id="@+id/label2DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="2 days ago"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelYesterday" />
+
+    <TextView
+        android:id="@+id/label3DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="3 days ago"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label2DaysAgo" />
+
+    <TextView
+        android:id="@+id/label4DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="4 days ago"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label3DaysAgo" />
+
+    <TextView
+        android:id="@+id/label5DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="5 days ago"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label4DaysAgo" />
+
+    <TextView
+        android:id="@+id/label6DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="6 days ago"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label5DaysAgo" />
+
+    <TextView
+        android:id="@+id/todayDetails"
+        android:layout_width="48dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="50dp"
+        android:text="A"
+        app:layout_constraintBaseline_toBaselineOf="@+id/labelToday"
+        app:layout_constraintStart_toEndOf="@+id/labelToday" />
+
+    <TextView
+        android:id="@+id/DetailsYesterday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B"
+        app:layout_constraintBottom_toBottomOf="@+id/labelYesterday"
+        app:layout_constraintStart_toStartOf="@+id/todayDetails" />
+
+    <TextView
+        android:id="@+id/details2DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C"
+        app:layout_constraintBottom_toBottomOf="@+id/label2DaysAgo"
+        app:layout_constraintStart_toStartOf="@+id/DetailsYesterday" />
+
+    <TextView
+        android:id="@+id/details3DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D"
+        app:layout_constraintBottom_toBottomOf="@+id/label3DaysAgo"
+        app:layout_constraintStart_toStartOf="@+id/details2DaysAgo" />
+
+    <TextView
+        android:id="@+id/details4DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E"
+        app:layout_constraintBottom_toBottomOf="@+id/label4DaysAgo"
+        app:layout_constraintStart_toStartOf="@+id/details3DaysAgo" />
+
+    <TextView
+        android:id="@+id/details5DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F"
+        app:layout_constraintBottom_toBottomOf="@+id/label5DaysAgo"
+        app:layout_constraintStart_toStartOf="@+id/details4DaysAgo" />
+
+    <TextView
+        android:id="@+id/details6DaysAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="G"
+        app:layout_constraintBottom_toBottomOf="@+id/label6DaysAgo"
+        app:layout_constraintStart_toStartOf="@+id/details5DaysAgo" />
 </android.support.constraint.ConstraintLayout>
