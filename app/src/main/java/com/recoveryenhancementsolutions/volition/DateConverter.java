@@ -4,7 +4,7 @@ import android.arch.persistence.room.TypeConverter;
 import java.util.Date;
 
 /**
- * Converts dates
+ * Performs specific operations on dates using both the Date object and timestamp (Long) formats.
  */
 public class DateConverter {
 
@@ -26,5 +26,15 @@ public class DateConverter {
   @TypeConverter
   public static Long toLong(Date value) {
     return value.getTime();
+  }
+
+  /**
+   * Takes two Date objects and calculates the number of days between them.
+   * @param start Date object representing the starting date.
+   * @param end Date object representing the ending date.
+   * @return Integer representing the number of days between start and end.
+   */
+  public static int daysBetween(Date start, Date end) {
+    return (int)((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
   }
 }
