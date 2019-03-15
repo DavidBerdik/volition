@@ -1,12 +1,18 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,17 +39,13 @@ public class UserActivitiesDaoTest {
 
   @Test
   public void testUserActivitiesDao() throws Exception {
-    // TODO: Uncomment this unit test. It is temporarily commented out to stop it from failing and causing the app to not run.
     // Create 5 User Activity Entities
-    /*UserActivityEntity[] userActivityEntity = new UserActivityEntity[5];
+    UserActivityEntity[] userActivityEntity = new UserActivityEntity[5];
 
     // Create 5 User Activity Dates
-    Date[] userActivityDate = new Date[5];
-    userActivityDate[0] = new Date(1552609710); // 1552609710 = Friday, March 15, 2019 12:28:30 AM GMT
-    userActivityDate[1] = new Date(1502609710); // 1502609710 = Sunday, August 13, 2017 7:35:10 AM GMT
-    userActivityDate[2] = new Date(1002609710); // 1002609710 = Tuesday, October 9, 2001 6:41:50 AM GMT
-    userActivityDate[3] = new Date(0);          // 0          = Thursday, January 1, 1970 12:00:00 AM GMT
-    userActivityDate[4] = new Date(2147483647); // 2147483647 = Tuesday, January 19, 2038 3:14:07 AM GMT
+    int[] userActivityYear = {2019, 2017, 2001, 1970, 2038};
+    int[] userActivityMonth = {3, 8, 10, 1, 1};
+    int[] userActivityDay = {15, 13, 9, 1, 19};
 
     // Create 5 User Activity Descriptions
     String[] userActivityDesc = {"This is a", "test of the", "emergency", "broadcast", "system."};
@@ -51,7 +53,7 @@ public class UserActivitiesDaoTest {
     // Set times and descriptions for each of the 5 entities.
     for(int x = 0; x < 5; x++) {
       userActivityEntity[x] = new UserActivityEntity();
-      userActivityEntity[x].setDate(userActivityDate[x]);
+      userActivityEntity[x].setDate(userActivityYear[x], userActivityMonth[x], userActivityDay[x]);
       userActivityEntity[x].setDesc(userActivityDesc[x]);
     }
 
@@ -64,18 +66,39 @@ public class UserActivitiesDaoTest {
     assertNotNull(db);
 
     // Query the database for all entries and check that the returned list contains 5 entries.
-    assertEquals(5, userActivitiesDao.getAllActivities().getValue().size());
+    assertEquals(5, getNestedLiveDataObj(userActivitiesDao.getAllActivities()).size());
 
     // Query the database for the activity with ID 3 and check that it matches the original.
-    assertEquals(userActivityEntity[2], userActivitiesDao.getActivitiesByID(2).getValue());
+    assertEquals(3, getNestedLiveDataObj(userActivitiesDao.getActivitiesByID(3)).getId());
 
     // Query the database for the activity with date August 13, 2017 and check that it matches the
     // original.
-    Date aug13 = new Date();
-    Calendar aug13Cal = Calendar.getInstance();
-    aug13Cal.set(2017, 7, 13);
-    aug13 = aug13Cal.getTime();
-    assertEquals(userActivityEntity[1], userActivitiesDao.getActivitiesByDate(aug13)
-        .getValue().get(0));*/
+    Date aug13 = new SimpleDateFormat("yyyy-MM-dd").parse("2017-8-13");
+    assertEquals(userActivityEntity[1].getDate(), getNestedLiveDataObj(
+        userActivitiesDao.getActivitiesByDate(aug13)).get(0).getDate());
+  }
+
+  /**
+   * Extracts the object contained within a LiveData object. Acquired from:
+   * https://stackoverflow.com/a/49693724/2941352
+   * @param liveData The LiveData object to extract from.
+   * @return The object contained within liveData.
+   * @throws InterruptedException
+   */
+  public static <T> T getNestedLiveDataObj(final LiveData<T> liveData) throws InterruptedException {
+    final Object[] objects = new Object[1];
+    final CountDownLatch latch = new CountDownLatch(1);
+
+      Observer observer = new Observer() {
+      @Override
+      public void onChanged(@Nullable Object o) {
+        objects[0] = o;
+        latch.countDown();
+        liveData.removeObserver(this);
+      }
+    };
+    liveData.observeForever(observer);
+    latch.await(2, TimeUnit.SECONDS);
+    return (T) objects[0];
   }
 }

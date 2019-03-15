@@ -3,6 +3,8 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,25 +17,46 @@ public class UserActivityEntity {
    */
   @PrimaryKey(autoGenerate = true)
   @NonNull
-  protected int id;
+  private int id;
 
   /**
    * Stores the date when the activity took place in the form of a timestamp.
    */
   @NonNull
-  protected Date date;
+  private Date date;
 
   /**
    * Stores the activity description.
    */
   @NonNull
-  protected String desc;
+  private String desc;
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public void setDate(Date date) {
     this.date = date;
   }
 
+  public void setDate(int year, int month, int day) throws ParseException {
+    this.date = new SimpleDateFormat("yyyy-MM-dd").parse(year + "-" + month + "-"
+        + day);
+  }
+
   public void setDesc(String desc) {
     this.desc = desc;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public String getDesc() {
+    return desc;
   }
 }
