@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class ViewActivities extends AppCompatActivity {
+public class ViewActivitiesActivity extends AppCompatActivity {
 
     private TextView detailToday, detail1Ago, detail2Ago, detail3Ago, detail4Ago, detail5Ago,
                      detail6Ago, labelToday, label1Ago, label2Ago, label3Ago, label4Ago, label5Ago,
@@ -37,7 +37,7 @@ public class ViewActivities extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main); Will be replaced with the name of the XML file
+        setContentView(R.layout.activity_view_activities);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         labelToday = (TextView) findViewById(R.id.labelToday);
