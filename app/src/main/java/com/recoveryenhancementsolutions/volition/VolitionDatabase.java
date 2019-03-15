@@ -41,7 +41,7 @@ import android.support.annotation.NonNull;
 
 @Database(
     entities = {
-        UserActivitiesTemp.class
+        UserActivityEntity.class
     },
     version = 1)
     @TypeConverters(DateConverter.class)
@@ -117,10 +117,12 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
     // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
     // private final WordDao mDao;
+    private final UserActivitiesDao userActivitiesDao;
 
     PopulateDbAsync(VolitionDatabase db) {
       // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
       // mDao = db.wordDao();
+      userActivitiesDao = db.userActivitiesDao();
     }
 
     @Override
