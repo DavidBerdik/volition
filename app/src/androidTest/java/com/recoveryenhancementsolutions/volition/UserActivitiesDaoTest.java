@@ -20,11 +20,18 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+/**
+ * Unit test for the User Activities DAO
+ */
 @RunWith(AndroidJUnit4.class)
 public class UserActivitiesDaoTest {
+
   private UserActivitiesDao userActivitiesDao;
   private VolitionDatabase db;
 
+  /**
+   * Creates the temporary test database.
+   */
   @Before
   public void createDb() {
     Context context = InstrumentationRegistry.getTargetContext();
@@ -32,11 +39,17 @@ public class UserActivitiesDaoTest {
     userActivitiesDao = db.userActivitiesDao();
   }
 
+  /**
+   * Closes the temporary test database.
+   */
   @After
   public void closeDb() throws IOException {
     db.close();
   }
 
+  /**
+   * Performs several tests involving the User Activities DAO
+   */
   @Test
   public void testUserActivitiesDao() throws Exception {
     // Create 5 User Activity Entities
@@ -51,7 +64,7 @@ public class UserActivitiesDaoTest {
     String[] userActivityDesc = {"This is a", "test of the", "emergency", "broadcast", "system."};
 
     // Set times and descriptions for each of the 5 entities.
-    for(int x = 0; x < 5; x++) {
+    for (int x = 0; x < 5; x++) {
       userActivityEntity[x] = new UserActivityEntity();
       userActivityEntity[x].setDate(userActivityYear[x], userActivityMonth[x], userActivityDay[x]);
       userActivityEntity[x].setDesc(userActivityDesc[x]);
@@ -79,17 +92,17 @@ public class UserActivitiesDaoTest {
   }
 
   /**
-   * Extracts the object contained within a LiveData object. Acquired from:
-   * https://stackoverflow.com/a/49693724/2941352
+   * Extracts the object contained within a LiveData object.
+   *
    * @param liveData The LiveData object to extract from.
    * @return The object contained within liveData.
-   * @throws InterruptedException
    */
   public static <T> T getNestedLiveDataObj(final LiveData<T> liveData) throws InterruptedException {
+    // Acquired from https://stackoverflow.com/a/49693724/2941352
     final Object[] objects = new Object[1];
     final CountDownLatch latch = new CountDownLatch(1);
 
-      Observer observer = new Observer() {
+    Observer observer = new Observer() {
       @Override
       public void onChanged(@Nullable Object o) {
         objects[0] = o;
