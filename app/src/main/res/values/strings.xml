@@ -3,4 +3,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="volition">Volition</string>
+    <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
+    <string name="counseling">Counseling</string>
+    <string name="medManagement">Med Management</string>
+    <string name="supportMeeting">Support Group Meeting</string>
+    <string name="outcomeMeasure">Outcome Measure</string>
+    <string name="lessonPlanner">Lesson Planner</string>
+    <string name="treatmentEffectivnessAssessment">Treatment Effectiveness Assessment</string>
+    <string name="cleanTimeTracking">Clean Time Tracking</string>
+    <string name="readJournalResponce">Reading Responce / Journal</string>
 </resources>
