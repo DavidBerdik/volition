@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,6 +22,9 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class UserActivitiesDaoTest {
+
+  @Rule
+  public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
   private LiveDataTestUtility liveDataTest;
   private UserActivitiesDao userActivitiesDao;
@@ -32,7 +37,8 @@ public class UserActivitiesDaoTest {
   public void createDb() {
     liveDataTest = new LiveDataTestUtility();
     final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).build();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
+        .build();
     userActivitiesDao = db.userActivitiesDao();
   }
 
