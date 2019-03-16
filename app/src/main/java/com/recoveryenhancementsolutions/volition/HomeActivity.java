@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     setContentView(R.layout.activity_home);
 
     mTextMessage = (TextView) findViewById(R.id.message);
-    BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+    BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.menubar);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
   }
 
