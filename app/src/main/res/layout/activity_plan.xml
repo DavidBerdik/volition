@@ -164,7 +164,7 @@
         app:menu="@menu/navigation" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -181,7 +181,7 @@
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/updateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
