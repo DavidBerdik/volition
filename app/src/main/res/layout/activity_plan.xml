@@ -8,63 +8,62 @@
     tools:context=".MainActivity">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton16"
+        android:id="@+id/subCounselButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton8"
+        app:layout_constraintEnd_toStartOf="@+id/addCounselButton"
         app:srcCompat="@android:drawable/ic_delete"
         tools:layout_editor_absoluteY="107dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton15"
+        android:id="@+id/subMedMangaementButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton14"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton7"
+        app:layout_constraintBottom_toTopOf="@+id/subSupportGroupButton"
+        app:layout_constraintEnd_toStartOf="@+id/addMedManagementButton"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton14"
+        android:id="@+id/subSupportGroupButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton5"
+        app:layout_constraintEnd_toStartOf="@+id/addSupportGroupMeetingButton"
         app:srcCompat="@android:drawable/ic_delete"
         tools:layout_editor_absoluteY="235dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton13"
+        android:id="@+id/subOutcomeMeasureButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton6"
         app:srcCompat="@android:drawable/ic_delete"
+        tools:layout_editor_absoluteX="267dp"
         tools:layout_editor_absoluteY="299dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton12"
+        android:id="@+id/subLessonPlannerButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
+        app:layout_constraintEnd_toStartOf="@+id/addLessonPlannerButton"
         app:srcCompat="@android:drawable/ic_delete"
         tools:layout_editor_absoluteY="363dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton11"
+        android:id="@+id/subTreatmentEffectivenessAssessmentButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
+        app:layout_constraintEnd_toStartOf="@+id/addTreatmentEffectivnessAssessmentButton"
         app:srcCompat="@android:drawable/ic_delete"
         tools:layout_editor_absoluteY="427dp" />
 
@@ -74,80 +73,78 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton2"
+        app:layout_constraintEnd_toStartOf="@+id/addCleanTimeTrackingButton"
         app:srcCompat="@android:drawable/ic_delete"
         tools:layout_editor_absoluteY="491dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton7"
+        android:id="@+id/addMedManagementButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton5"
+        app:layout_constraintBottom_toTopOf="@+id/addSupportGroupMeetingButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
+        android:id="@+id/addLessonPlannerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton3"
+        app:layout_constraintBottom_toTopOf="@+id/addTreatmentEffectivnessAssessmentButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
+        android:id="@+id/addSupportGroupMeetingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="339dp"
+        tools:layout_editor_absoluteY="235dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton8"
+        android:id="@+id/addCounselButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton7"
+        app:layout_constraintBottom_toTopOf="@+id/addMedManagementButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@color/browser_actions_bg_grey"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton6"
+        android:id="@+id/subOutcomeMeasureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton4"
+        app:layout_constraintBottom_toTopOf="@+id/addLessonPlannerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/addTreatmentEffectivnessAssessmentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2"
+        app:layout_constraintBottom_toTopOf="@+id/addCleanTimeTrackingButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -164,41 +161,41 @@
         app:menu="@menu/navigation" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:text="@string/update"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/addReadResponceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/updateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/addCleanTimeTrackingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintBottom_toTopOf="@+id/addReadResponceButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton9"
+        android:id="@+id/subReadResponceJournalButton"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -239,7 +236,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton16"
+        app:layout_constraintEnd_toStartOf="@+id/subCounselButton"
+        app:layout_constraintHorizontal_bias="0.354"
         app:layout_constraintStart_toEndOf="@+id/counselingView"
         tools:layout_editor_absoluteY="127dp"
         tools:text="@string/counseling" />
@@ -251,8 +249,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton15"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintEnd_toStartOf="@+id/subMedMangaementButton"
+        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintStart_toEndOf="@+id/medManagementView"
         tools:layout_editor_absoluteY="189dp"
         tools:text="@string/medManagement" />
 
@@ -263,8 +262,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton14"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintEnd_toStartOf="@+id/subSupportGroupButton"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toEndOf="@+id/supportMeetingView"
         tools:layout_editor_absoluteY="255dp"
         tools:text="@string/supportMeeting" />
 
@@ -275,8 +275,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton13"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintEnd_toStartOf="@+id/subOutcomeMeasureButton"
+        app:layout_constraintHorizontal_bias="0.203"
+        app:layout_constraintStart_toEndOf="@+id/outcomeMeasureView"
         tools:layout_editor_absoluteY="317dp"
         tools:text="@string/outcomeMeasure" />
 
@@ -287,8 +288,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton11"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/subTreatmentEffectivenessAssessmentButton"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toEndOf="@+id/treatmentEffectiveView"
         tools:layout_editor_absoluteY="427dp"
         tools:text="@string/treatmentEffectivnessAssessment" />
 
@@ -299,8 +301,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton12"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintEnd_toStartOf="@+id/subLessonPlannerButton"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintStart_toEndOf="@+id/lessonView"
         tools:layout_editor_absoluteY="381dp"
         tools:text="@string/lessonPlanner" />
 
@@ -312,7 +315,7 @@
         android:layout_marginEnd="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton10"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toEndOf="@+id/timeTrackingView"
         tools:layout_editor_absoluteY="510dp"
         tools:text="@string/cleanTimeTracking" />
 
@@ -323,21 +326,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton9"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintEnd_toStartOf="@+id/subReadResponceJournalButton"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toEndOf="@+id/readingResponseView"
         tools:layout_editor_absoluteY="558dp"
         tools:text="@string/readJournalResponce" />
 
     <TextView
-      android:id="@+id/counselingView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
-      app:layout_constraintStart_toStartOf="parent"
-      tools:layout_editor_absoluteY="127dp"/>
+        android:id="@+id/counselingView"
+        android:layout_width="37dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="127dp" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/medManagementView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -346,7 +350,7 @@
         tools:layout_editor_absoluteY="189dp" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/supportMeetingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -355,7 +359,7 @@
         tools:layout_editor_absoluteY="255dp" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/outcomeMeasureView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -364,16 +368,15 @@
         tools:layout_editor_absoluteY="317dp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/lessonView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="381dp" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/treatmentEffectiveView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -382,7 +385,7 @@
         tools:layout_editor_absoluteY="441dp" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/timeTrackingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -391,7 +394,7 @@
         tools:layout_editor_absoluteY="510dp" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/readingResponseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
