@@ -33,90 +33,19 @@ public class HomeActivityTest {
       HomeActivity.class);
 
   @Test
-  public void homeActivityTest2() {
-    ViewInteraction bottomNavigationItemView = onView(
-        allOf(withId(R.id.menubar_activity), withContentDescription("Activity"),
-            childAtPosition(
-                childAtPosition(
-                    withId(R.id.menubar),
-                    0),
-                1),
-            isDisplayed()));
-    bottomNavigationItemView.perform(click());
-
-    ViewInteraction textView = onView(
-        allOf(withId(R.id.buttonTestItem), withText("Activity"),
-            childAtPosition(
-                allOf(withId(R.id.container),
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0)),
-                2),
-            isDisplayed()));
-    textView.check(matches(withText("Activity")));
-
-    ViewInteraction bottomNavigationItemView2 = onView(
-        allOf(withId(R.id.menubar_plan), withContentDescription("Plan"),
-            childAtPosition(
-                childAtPosition(
-                    withId(R.id.menubar),
-                    0),
-                2),
-            isDisplayed()));
-    bottomNavigationItemView2.perform(click());
-
-    ViewInteraction textView2 = onView(
-        allOf(withId(R.id.buttonTestItem), withText("Plan"),
-            childAtPosition(
-                allOf(withId(R.id.container),
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0)),
-                2),
-            isDisplayed()));
-    textView2.check(matches(withText("Plan")));
-
-    ViewInteraction bottomNavigationItemView3 = onView(
-        allOf(withId(R.id.menubar_home), withContentDescription("Home"),
-            childAtPosition(
-                childAtPosition(
-                    withId(R.id.menubar),
-                    0),
-                0),
-            isDisplayed()));
-    bottomNavigationItemView3.perform(click());
-
-    ViewInteraction textView3 = onView(
-        allOf(withId(R.id.buttonTestItem), withText("Home"),
-            childAtPosition(
-                allOf(withId(R.id.container),
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0)),
-                2),
-            isDisplayed()));
-    textView3.check(matches(withText("Home")));
-
-    ViewInteraction bottomNavigationItemView4 = onView(
-        allOf(withId(R.id.menubar_activity), withContentDescription("Activity"),
-            childAtPosition(
-                childAtPosition(
-                    withId(R.id.menubar),
-                    0),
-                1),
-            isDisplayed()));
-    bottomNavigationItemView4.perform(click());
-
-    ViewInteraction textView4 = onView(
-        allOf(withId(R.id.buttonTestItem), withText("Activity"),
-            childAtPosition(
-                allOf(withId(R.id.container),
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0)),
-                2),
-            isDisplayed()));
-    textView4.check(matches(withText("Activity")));
+  public void homeActivityTest_Buttons() {
+    onView(withId(R.id.menubar_activity)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
+    onView(withId(R.id.menubar_home)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
+    onView(withId(R.id.menubar_activity)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
+    onView(withId(R.id.menubar_plan)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
+    onView(withId(R.id.menubar_activity)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
+    onView(withId(R.id.menubar_home)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
   }
 
   private static Matcher<View> childAtPosition(
