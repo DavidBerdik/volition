@@ -3,6 +3,8 @@
     <string name="menubar_home">Home</string>
     <string name="menubar_activity">Activity</string>
     <string name="menubar_plan">Plan</string>
+    <string name="home_welcome">Welcome Back</string>
+    <string name="home_clean">Days Clean:</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
