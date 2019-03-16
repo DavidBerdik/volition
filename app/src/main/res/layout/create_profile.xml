@@ -23,7 +23,6 @@
       android:id="@+id/RelativeLayout01"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
-      android:backgroundTint="@color/res_light_green"
       >
 
       <EditText
