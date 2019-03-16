@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.LiveData;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -17,15 +18,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private TextView mOutcomeMeasureView;
   private TextView mTimeTrackingView;
   private TextView mReadingResponseView;
-
-  private int numCounseling;
-  private int numMedManagement;
-  private int numSupportMeeting;
-  private int numLesson;
-  private int numTreatmentEffective;
-  private int numOutcomeMeasure;
-  private int numTimeTrackingView;
-  private int numReadingResponse;
+  private VolitionDatabase mDb;
+  private LiveData<TreatmentPlan> treatmentPlan;
 
   @Override
   protected void onCreate(Bundle savedInstanceState){
@@ -39,6 +33,24 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     mOutcomeMeasureView = findViewById(R.id.outcomeMeasureView);
     mTimeTrackingView = findViewById(R.id.timeTrackingView);
     mReadingResponseView = findViewById(R.id.readingResponseView);
+
+    mDb = VolitionDatabase.getDatabase(this.getApplication());
+    treatmentPlan = mDb.treatmentPlanDao().loadTreatmentPlan();
+
+    mCounselingView.setText(treatmentPlan.getValue().numCounseling);
+    mMedManagementView.setText(treatmentPlan.getValue().numMedManagement);
+    mSupportMeetingView.setText(treatmentPlan.getValue().numSupportMeeting);
+    mLessonView.setText(treatmentPlan.getValue().numLessons);
+    mTreatmentEffectiveView.setText(treatmentPlan.getValue().numTreatmentEffectivenessAssessment);
+    mOutcomeMeasureView.setText(treatmentPlan.getValue().numOutcomeMeasures);
+    mTimeTrackingView.setText(treatmentPlan.getValue().numTimeTracking);
+    mReadingResponseView.setText(treatmentPlan.getValue().numReadingResponse);
   }
+
+  private void onUpdateButtonClicked(){
+    mDb.treatmentPlanDao().insertTreatmentPlan(treatmentPlan.getValue());
+  }
+
+
 
 }
