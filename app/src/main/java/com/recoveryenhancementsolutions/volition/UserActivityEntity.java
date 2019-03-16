@@ -50,7 +50,7 @@ public class UserActivityEntity {
    * @param date Date object containing the activity's date.
    */
   public void setDate(Date date) {
-    Calendar cal = Calendar.getInstance();
+    final Calendar cal = Calendar.getInstance();
     cal.setTime(date);
     setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
   }
