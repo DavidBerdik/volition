@@ -27,4 +27,12 @@
   <string name="inhalants">Inhalants</string>
   <string name="other">Other</string>
   <string name="if_other">Please enter name of other drug here.</string>
+  <string name="substance_use">Substance Use Disorder:</string>
+  <string-array name="use_type_array">
+    <item>Select Type</item>
+    <item>Opioid Use Disorder</item>
+    <item>Alcohol Use Disorder</item>
+  </string-array>
+  <string name="clean_date">Enter Date of Last Use/Clean Date</string>
+  <string name="record_answers">Record Answers</string>
 </resources>
