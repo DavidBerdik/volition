@@ -37,7 +37,7 @@
   <TextView
     android:id="@+id/clean"
     android:textStyle="bold"
-    android:layout_width="412dp"
+    android:layout_width="354dp"
     android:layout_height="51dp"
     android:layout_marginTop="340dp"
     android:text="@string/home_clean"
@@ -45,8 +45,18 @@
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="@android:color/black"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintHorizontal_bias="0.491"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/welcome"/>
+  <TextView
+    android:id="@+id/buttonTestItem"
+    android:layout_width="369dp"
+    android:layout_height="31dp"
+    android:layout_marginTop="45dp"
+    android:text="@string/app_name"
+    android:textAlignment="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/clean"/>
 
 </android.support.constraint.ConstraintLayout>
