@@ -39,7 +39,7 @@ import android.support.annotation.NonNull;
 // TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
 
 @Database(
-    entities = {MedicationChoice.class
+    entities = {MedicationChoiceEntity.class
     },
     version = 1)
 
