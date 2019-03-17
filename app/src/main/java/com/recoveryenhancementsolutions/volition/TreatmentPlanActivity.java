@@ -25,6 +25,10 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState){
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_plan);
+
+    mDb = VolitionDatabase.getDatabase(this.getApplication());
+    treatmentPlan = mDb.treatmentPlanDao().loadTreatmentPlan();
+
     mCounselingView = findViewById(R.id.counselingView);
     mMedManagementView = findViewById(R.id.medManagementView);
     mSupportMeetingView = findViewById(R.id.supportMeetingView);
@@ -33,9 +37,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     mOutcomeMeasureView = findViewById(R.id.outcomeMeasureView);
     mTimeTrackingView = findViewById(R.id.timeTrackingView);
     mReadingResponseView = findViewById(R.id.readingResponseView);
-
-    mDb = VolitionDatabase.getDatabase(this.getApplication());
-    treatmentPlan = mDb.treatmentPlanDao().loadTreatmentPlan();
 
     mCounselingView.setText(treatmentPlan.getValue().numCounseling);
     mMedManagementView.setText(treatmentPlan.getValue().numMedManagement);
