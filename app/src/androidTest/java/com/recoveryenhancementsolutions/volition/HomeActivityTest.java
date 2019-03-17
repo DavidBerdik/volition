@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
 public class HomeActivityTest {
 
   @Rule
-  public ActivityTestRule<HomeActivity> mActivityTestRule = new ActivityTestRule<>(
+  public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
 
   @Test

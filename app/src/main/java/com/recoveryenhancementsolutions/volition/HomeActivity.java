@@ -20,31 +20,31 @@ public class HomeActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
 
-    mButtonTestItem = findViewById(R.id.buttonTestItem);
-    mDaysCleanMessage = findViewById(R.id.clean);
+    buttonTestItem = findViewById(R.id.buttonTestItem);
+    daysCleanMessage = findViewById(R.id.clean);
 
-    BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setOnNavigationItemSelectedListener(mNavigationListener);
+    final BottomNavigationView navigation = findViewById(R.id.menubar);
+    navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
-  private OnNavigationItemSelectedListener mNavigationListener = new OnNavigationItemSelectedListener() {
+  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
         case R.id.menubar_home:
-          mButtonTestItem.setText(R.string.menubar_home);
+          buttonTestItem.setText(R.string.menubar_home);
           return true;
         case R.id.menubar_activity:
-          mButtonTestItem.setText(R.string.menubar_activity);
+          buttonTestItem.setText(R.string.menubar_activity);
           return true;
         case R.id.menubar_plan:
-          mButtonTestItem.setText(R.string.menubar_plan);
+          buttonTestItem.setText(R.string.menubar_plan);
           return true;
       }
       return false;
     }
   };
 
-  private TextView mButtonTestItem;
-  private TextView mDaysCleanMessage;
+  private TextView buttonTestItem;
+  private TextView daysCleanMessage;
 }
