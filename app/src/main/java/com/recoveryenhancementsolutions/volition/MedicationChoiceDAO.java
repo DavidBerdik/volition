@@ -12,7 +12,7 @@ import java.util.List;
 public interface MedicationChoiceDAO {
 
   @Query("SELECT * FROM MedicationChoiceEntity")
-  LiveData<String> getMedication(String medication);
+  LiveData<String> getMedication();
 
   @Insert(onConflict = IGNORE)
   void insertMedication(MedicationChoiceEntity medication);
