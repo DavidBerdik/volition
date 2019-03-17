@@ -8,6 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * The HomeActivity that contains functionality and interactions relevant to the activity_home
+ * document. Displays a generic welcoming message to the client as well as the number of days
+ * that they have been clean. Includes a navigation menu at the bottom.
+ */
 public class HomeActivity extends AppCompatActivity {
 
   private TextView mButtonTestItem;

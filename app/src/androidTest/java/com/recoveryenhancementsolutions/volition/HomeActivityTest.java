@@ -13,6 +13,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Unit test for the HomeActivity class. Interacts with several buttons and confirms their output.
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class HomeActivityTest {
