@@ -24,8 +24,26 @@ public class HomeActivityTest {
   public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
 
+  /**
+   * Tests that each button is capable of responding to a single click on the home screen.
+   */
   @Test
-  public void homeActivityTest_Buttons() {
+  public void homeActivityTest_Single() {
+    onView(withId(R.id.menubar_home)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
+    onView(withId(R.id.menubar_activity)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
+    onView(withId(R.id.menubar_plan)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
+  }
+
+  /**
+   * Tests that each button can accept multiple inputs in a somewhat random order, multiple times.
+   */
+  @Test
+  public void homeActivityTest_Multiple() {
+    onView(withId(R.id.menubar_plan)).perform(click());
+    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
     onView(withId(R.id.menubar_activity)).perform(click());
     onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
     onView(withId(R.id.menubar_home)).perform(click());
