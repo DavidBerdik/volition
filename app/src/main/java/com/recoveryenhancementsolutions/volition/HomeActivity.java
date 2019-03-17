@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     daysCleanMessage = findViewById(R.id.clean);
 
     final BottomNavigationView navigation = findViewById(R.id.menubar);
+    navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
