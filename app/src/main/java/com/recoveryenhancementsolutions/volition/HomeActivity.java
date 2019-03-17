@@ -27,11 +27,8 @@ public class HomeActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(mNavigationListener);
   }
 
-  private TextView mButtonTestItem;
-  private TextView mDaysCleanMessage;
-
-  private OnNavigationItemSelectedListener mNavigationListener = new OnNavigationItemSelectedListener() {
-
+  private OnNavigationItemSelectedListener mNavigationListener = new OnNavigationItemSelectedListener()
+  {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
@@ -49,4 +46,6 @@ public class HomeActivity extends AppCompatActivity {
     }
   };
 
+  private TextView mButtonTestItem;
+  private TextView mDaysCleanMessage;
 }
