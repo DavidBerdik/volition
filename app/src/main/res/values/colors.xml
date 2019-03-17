@@ -3,4 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorRESLogoOrange">#D7941D</color>
+    <color name="colorRESLogoGreen">#2BB673</color>
+    <color name="colorRESLogoWhite">#FFFFFF</color>
 </resources>

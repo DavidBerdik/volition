@@ -37,20 +37,19 @@ import android.support.annotation.NonNull;
  */
 
 // TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
-
 @Database(
-    entities = {MedicationChoiceEntity.class
+
+    entities = {
+      TreatmentPlan.class,
+      MedicationChoice.class
     },
     version = 1)
-
-
-
 public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
+  public abstract TreatmentPlanDao treatmentPlanDao();
   public abstract MedicationChoiceDAO medicationChoiceDAO();
-
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
 
