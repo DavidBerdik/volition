@@ -1,17 +1,22 @@
 <resources>
-    <string name="app_name">Volition</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="volition">Volition</string>
-    <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
-    <string name="counseling">Counseling</string>
-    <string name="medManagement">Med Management</string>
-    <string name="supportMeeting">Support Group Meeting</string>
-    <string name="outcomeMeasure">Outcome Measure</string>
-    <string name="lessonPlanner">Lesson Planner</string>
-    <string name="treatmentEffectivnessAssessment">Treatment Effectiveness Assessment</string>
-    <string name="cleanTimeTracking">Clean Time Tracking</string>
-    <string name="readJournalResponce">Reading Responce / Journal</string>
-    <string name="update">Update</string>
+  <string name="app_name">Volition</string>
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
+  <string name="volition">Volition</string>
+  <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
+  <string name="counseling">Counseling</string>
+  <string name="medManagement">Med Management</string>
+  <string name="supportMeeting">Support Group Meeting</string>
+  <string name="outcomeMeasure">Outcome Measure</string>
+  <string name="lessonPlanner">Lesson Planner</string>
+  <string name="treatmentEffectivnessAssessment">Treatment Effectiveness Assessment</string>
+  <string name="cleanTimeTracking">Clean Time Tracking</string>
+  <string name="readJournalResponce">Reading Responce / Journal</string>
+  <string name="update">Update</string>
+  <string name="menubar_home">Home</string>
+  <string name="menubar_activity">Activity</string>
+  <string name="menubar_plan">Plan</string>
+  <string name="home_welcome">Welcome Back</string>
+  <string name="home_clean">Days Clean:</string>
 </resources>
