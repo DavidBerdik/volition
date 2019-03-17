@@ -27,8 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(mNavigationListener);
   }
 
-  private OnNavigationItemSelectedListener mNavigationListener = new OnNavigationItemSelectedListener()
-  {
+  private OnNavigationItemSelectedListener mNavigationListener = new OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
