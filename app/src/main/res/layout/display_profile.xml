@@ -15,7 +15,7 @@
     android:layout_marginBottom="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/entered"
+    android:text="@string/display_profile_entered"
     android:textAlignment="center"
     android:textSize="18sp"
     app:layout_constraintBottom_toTopOf="@+id/name_label"
@@ -29,7 +29,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/name_colon"
+    android:text="@string/display_profile_name_colon"
     app:layout_constraintEnd_toStartOf="@+id/recorded_name"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/info_entered"/>
@@ -41,7 +41,7 @@
     android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_name"
+    android:text="@string/display_profile_example_name"
     app:layout_constraintBottom_toTopOf="@+id/recorded_dob"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/name_label"
@@ -53,7 +53,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/dob_colon"
+    android:text="@string/display_profile_dob_colon"
     app:layout_constraintEnd_toStartOf="@+id/recorded_dob"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/name_label"/>
@@ -65,7 +65,7 @@
     android:layout_marginBottom="16dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_dob"
+    android:text="@string/display_profile_example_dob"
     app:layout_constraintBottom_toTopOf="@+id/recorded_gender"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/dob_label"
@@ -77,7 +77,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/gender_colon"
+    android:text="@string/display_profile_gender_colon"
     app:layout_constraintEnd_toStartOf="@+id/recorded_gender"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/dob_label"/>
@@ -88,7 +88,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_gender"
+    android:text="@string/display_profile_example_gender"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/gender_label"
     app:layout_constraintTop_toBottomOf="@+id/recorded_dob"/>
@@ -99,7 +99,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/person_colon"
+    android:text="@string/display_profile_person_colon"
     app:layout_constraintEnd_toStartOf="@+id/recorded_person"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/gender_label"/>
@@ -110,7 +110,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_person"
+    android:text="@string/display_profile_example_person"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/person_label"
     app:layout_constraintTop_toBottomOf="@+id/recorded_gender"/>
@@ -121,7 +121,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/drugs"
+    android:text="@string/create_profile_drugs"
     app:layout_constraintEnd_toStartOf="@+id/recorded_drug"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/person_label"/>
@@ -132,7 +132,7 @@
     android:layout_marginTop="24dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_drug"
+    android:text="@string/display_profile_example_drug"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/drug_label"
     app:layout_constraintTop_toBottomOf="@+id/recorded_person"/>
@@ -144,7 +144,7 @@
     android:layout_marginBottom="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/substance_use"
+    android:text="@string/create_profile_substance_use"
     app:layout_constraintBottom_toTopOf="@+id/last_use_label"
     app:layout_constraintEnd_toStartOf="@+id/recorded_type"
     app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +156,7 @@
     android:layout_marginTop="24dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_type"
+    android:text="@string/display_profile_example_type"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/substance_use_label"
     app:layout_constraintTop_toBottomOf="@+id/recorded_drug"/>
@@ -167,7 +167,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="8dp"
-    android:text="@string/last_use_colon"
+    android:text="@string/display_profile_last_use_colon"
     app:layout_constraintEnd_toStartOf="@+id/recorded_date"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/recorded_type"/>
@@ -178,7 +178,7 @@
     android:layout_marginTop="36dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="16dp"
-    android:text="@string/example_date"
+    android:text="@string/display_profile_example_date"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/last_use_label"
     app:layout_constraintTop_toBottomOf="@+id/recorded_type"/>
@@ -190,7 +190,7 @@
     android:layout_marginStart="162dp"
     android:layout_marginEnd="157dp"
     android:backgroundTint="@color/res_gold"
-    android:text="@string/continue_str"
+    android:text="@string/display_profile_continue"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/last_use_label"/>

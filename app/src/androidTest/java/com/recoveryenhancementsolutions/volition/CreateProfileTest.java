@@ -30,6 +30,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Auto-generated test. Tests create_profile.xml
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class CreateProfileTest {

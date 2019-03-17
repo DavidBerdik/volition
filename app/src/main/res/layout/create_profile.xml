@@ -10,7 +10,7 @@
   <LinearLayout
     android:id="@+id/LinearLayout01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -34,13 +34,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/name"
+        android:hint="@string/create_profile_name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/date_of_birth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/name"/>
+        tools:text="@string/create_profile_name"/>
 
       <EditText
         android:id="@+id/date_of_birth"
@@ -51,13 +51,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/date_of_birth"
+        android:hint="@string/create_profile_date_of_birth"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/gender_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="@string/date_of_birth"/>
+        tools:text="@string/create_profile_date_of_birth"/>
       <Spinner
         android:id="@+id/gender_spinner"
         android:layout_width="fill_parent"
@@ -67,7 +67,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:dropDownWidth="match_parent"
-        android:entries="@array/gender_array"
+        android:entries="@array/create_profile_gender_array"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@+id/are_you"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,14 +80,14 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/are_you"
+        android:text="@string/create_profile_are_you"
         android:textAlignment="viewStart"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/user_type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_spinner"
-        tools:text="@string/are_you"/>
+        tools:text="@string/create_profile_are_you"/>
       <RadioGroup
         android:id="@+id/user_type"
         android:layout_width="match_parent"
@@ -104,17 +104,17 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:buttonTint="@color/res_gold"
-          android:text="@string/support"
+          android:text="@string/create_profile_support"
           android:visibility="visible"
-          tools:text="@string/support"/>
+          tools:text="@string/create_profile_support"/>
         <RadioButton
           android:id="@+id/radioClient"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:buttonTint="@color/res_gold"
-          android:text="@string/client"
+          android:text="@string/create_profile_client"
           android:visibility="visible"
-          tools:text="@string/client"/>
+          tools:text="@string/create_profile_client"/>
       </RadioGroup>
       <TextView
         android:id="@+id/drug_of_choice"
@@ -123,13 +123,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/drugs"
+        android:text="@string/create_profile_drugs"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/drug_selection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_type"
-        tools:text="@string/drugs"/>
+        tools:text="@string/create_profile_drugs"/>
       <RadioGroup
         android:id="@+id/drug_selection"
         android:layout_width="match_parent"
@@ -146,88 +146,88 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/heroin"
-          tools:text="@string/heroin"/>
+          android:text="@string/create_profile_heroin"
+          tools:text="@string/create_profile_heroin"/>
         <RadioButton
           android:id="@+id/radioOpiates"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/other_opiates"
-          tools:text="@string/other_opiates"/>
+          android:text="@string/create_profile_other_opiates"
+          tools:text="@string/create_profile_other_opiates"/>
         <RadioButton
           android:id="@+id/radioAlcohol"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/alcohol"
-          tools:text="@string/alcohol"/>
+          android:text="@string/create_profile_alcohol"
+          tools:text="@string/create_profile_alcohol"/>
         <RadioButton
           android:id="@+id/radioCocaine"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/cocaine"
-          tools:text="@string/cocaine"/>
+          android:text="@string/create_profile_cocaine"
+          tools:text="@string/create_profile_cocaine"/>
         <RadioButton
           android:id="@+id/radioMarijuana"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/marijuana"
-          tools:text="@string/marijuana"/>
+          android:text="@string/create_profile_marijuana"
+          tools:text="@string/create_profile_marijuana"/>
         <RadioButton
           android:id="@+id/radioMeth"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/meth"
-          tools:text="@string/meth"/>
+          android:text="@string/create_profile_meth"
+          tools:text="@string/create_profile_meth"/>
         <RadioButton
           android:id="@+id/radioBen"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/ben"
-          tools:text="@string/ben"/>
+          android:text="@string/create_profile_ben"
+          tools:text="@string/create_profile_ben"/>
         <RadioButton
           android:id="@+id/radioTranquilizers"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/other_tranquil"
-          tools:text="@string/other_tranquil"/>
+          android:text="@string/create_profile_other_tranquil"
+          tools:text="@string/create_profile_other_tranquil"/>
         <RadioButton
           android:id="@+id/radioSedatives"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/sedatives"
-          tools:text="@string/sedatives"/>
+          android:text="@string/create_profile_sedatives"
+          tools:text="@string/create_profile_sedatives"/>
         <RadioButton
           android:id="@+id/radioInhalants"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/inhalants"
-          tools:text="@string/inhalants"/>
+          android:text="@string/create_profile_inhalants"
+          tools:text="@string/create_profile_inhalants"/>
         <RadioButton
           android:id="@+id/radioOther"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
-          android:text="@string/other"
-          tools:text="@string/other"/>
+          android:text="@string/create_profile_other"
+          tools:text="@string/create_profile_other"/>
       </RadioGroup>
       <EditText
         android:id="@+id/enter_other"
@@ -237,7 +237,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/if_other"
+        android:hint="@string/create_profile_if_other"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
         android:textSize="14sp"
@@ -245,7 +245,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drug_selection"
-        tools:text="@string/other"/>
+        tools:text="@string/create_profile_other"/>
       <TextView
         android:id="@+id/substance_use"
         android:layout_width="match_parent"
@@ -253,13 +253,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/substance_use"
+        android:text="@string/create_profile_substance_use"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/use_type_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_other"
-        tools:text="@string/substance_use"/>
+        tools:text="@string/create_profile_substance_use"/>
       <Spinner
         android:id="@+id/use_type_spinner"
         android:layout_width="fill_parent"
@@ -268,7 +268,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:dropDownWidth="match_parent"
-        android:entries="@array/use_type_array"
+        android:entries="@array/create_profile_use_type_array"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@+id/clean_date"
         app:layout_constraintEnd_toEndOf="parent"
@@ -283,13 +283,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/clean_date"
+        android:hint="@string/create_profile_clean_date"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/record_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/use_type_spinner"
-        tools:text="@string/clean_date"/>
+        tools:text="@string/create_profile_clean_date"/>
       <Button
         android:id="@+id/record_button"
         android:layout_width="wrap_content"
@@ -300,7 +300,7 @@
         android:layout_marginEnd="144dp"
         android:background="@color/res_green"
         android:backgroundTint="@color/res_green"
-        android:text="@string/record_answers"
+        android:text="@string/create_profile_record_answers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
