@@ -10,10 +10,22 @@ import android.widget.TextView;
 
 /**
  * The HomeActivity that contains functionality and interactions relevant to the activity_home
- * document. Displays a generic welcoming message to the client as well as the number of days
- * that they have been clean. Includes a navigation menu at the bottom.
+ * document. Displays a generic welcoming message to the client as well as the number of days that
+ * they have been clean. Includes a navigation menu at the bottom.
  */
 public class HomeActivity extends AppCompatActivity {
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_home);
+
+    mButtonTestItem = findViewById(R.id.buttonTestItem);
+    mDaysCleanMessage = findViewById(R.id.clean);
+
+    BottomNavigationView navigation = findViewById(R.id.menubar);
+    navigation.setOnNavigationItemSelectedListener(mNavigationListener);
+  }
 
   private TextView mButtonTestItem;
   private TextView mDaysCleanMessage;
@@ -36,17 +48,5 @@ public class HomeActivity extends AppCompatActivity {
       return false;
     }
   };
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_home);
-
-    mButtonTestItem = findViewById(R.id.buttonTestItem);
-    mDaysCleanMessage = findViewById(R.id.clean);
-
-    BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setOnNavigationItemSelectedListener(mNavigationListener);
-  }
 
 }
