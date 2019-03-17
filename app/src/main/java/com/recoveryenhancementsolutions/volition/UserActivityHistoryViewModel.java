@@ -27,6 +27,16 @@ public class UserActivityHistoryViewModel extends AndroidViewModel {
   }
 
   /**
+   * Sets a test database for the ViewModel. This should only be used for unit testing this
+   * ViewModel.
+   *
+   * @param db The VolitionDatabase to use for testing the ViewModel
+   */
+  public void setTestDatabase(VolitionDatabase db) {
+    this.db = db;
+  }
+
+  /**
    * Inserts a user activity in the database.
    *
    * @param year Activity's year
