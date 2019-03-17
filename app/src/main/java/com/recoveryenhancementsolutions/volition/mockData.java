@@ -11,16 +11,32 @@ import java.util.List;
 public class mockData {
 
 
-  public static List<tempUserActivity> getTempUserActivityList() {
+  public static List<UserActivityEntity> getTempUserActivityList() {
 
-    List<tempUserActivity> listOfActivites = new ArrayList<>();
-    tempUserActivity tempUserActivity1 = new tempUserActivity("Name1",1, new Date());
-    tempUserActivity tempUserActivity2 = new tempUserActivity("Name2",2, new Date());
-    tempUserActivity tempUserActivity3 = new tempUserActivity("Name3",3, new Date());
+    ArrayList<UserActivityEntity> listOfActivites = new ArrayList<>();
 
-    listOfActivites.add(tempUserActivity1);
-    listOfActivites.add(tempUserActivity2);
-    listOfActivites.add(tempUserActivity3);
+    UserActivityEntity test1 = new UserActivityEntity();
+    UserActivityEntity test2 = new UserActivityEntity();
+    UserActivityEntity test3 = new UserActivityEntity();
+
+    test1.setId(1);
+    test1.setDate(new Date());
+    test1.setDate(2019,1,1);
+    test1.setDesc("This is a description for user activity test1");
+
+    test1.setId(2);
+    test1.setDate(new Date());
+    test1.setDate(2019,2,2);
+    test1.setDesc("This is a description for user activity test2");
+
+    test3.setId(1);
+    test3.setDate(new Date());
+    test3.setDate(2019,3,3);
+    test3.setDesc("This is a description for user activity test3");
+
+    listOfActivites.add(test1);
+    listOfActivites.add(test2);
+    listOfActivites.add(test3);
 
     return listOfActivites;
   }
@@ -30,6 +46,14 @@ public class mockData {
     String[] arrayOfString = new String[1];
     arrayOfString[0] = "This is a sample string for testing the UI.";
     return arrayOfString;
+  }
+
+  public ArrayList<String> getStringArrayList(){
+    ArrayList<String> testList = new ArrayList();
+    String testString = "This is a sample string for testing the UI";
+    testList.add(testString);
+    return testList;
+
   }
 
   public String getDateAsString(){
