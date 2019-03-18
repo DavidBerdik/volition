@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import java.util.Date;
 
 public class ViewActivitiesActivity extends AppCompatActivity {
 
@@ -58,5 +59,8 @@ public class ViewActivitiesActivity extends AppCompatActivity {
 
         //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void pushActivity(Date day, String desc) {
     }
 }
