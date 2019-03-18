@@ -56,7 +56,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
         detail5Ago = (TextView) findViewById(R.id.details5DaysAgo);
         detail6Ago = (TextView) findViewById(R.id.details6DaysAgo);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 }
