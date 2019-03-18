@@ -1,5 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,12 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.List;
+import java.util.Date;
+import java.util.Calendar;
+
 public class ViewActivitiesActivity extends AppCompatActivity {
 
     private TextView detailToday, detail1Ago, detail2Ago, detail3Ago, detail4Ago, detail5Ago,
                      detail6Ago, labelToday, label1Ago, label2Ago, label3Ago, label4Ago, label5Ago,
                      label6Ago; //Might be reduced in the future
     private TextView mTextMessage;
+
+    private UserActivityHistoryViewModel actViewModel;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,6 +47,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_activities);
 
+        //Initializing TextViews
         mTextMessage = (TextView) findViewById(R.id.message);
         labelToday = (TextView) findViewById(R.id.labelToday);
         label1Ago = (TextView) findViewById(R.id.labelYesterday);
@@ -56,7 +65,31 @@ public class ViewActivitiesActivity extends AppCompatActivity {
         detail5Ago = (TextView) findViewById(R.id.details5DaysAgo);
         detail6Ago = (TextView) findViewById(R.id.details6DaysAgo);
 
+        //Initializing ViewModel
+        actViewModel = ViewModelProviders.of(this).get(UserActivityHistoryViewModel.class);
+
+        subscribeUIActivities();
         //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void subscribeUIActivities() {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_WEEK);
+
+        actViewModel.getActivitiesByDate(year, month, day).observe(this, new Observer<List<UserActivityEntity>>() {
+            @Override
+            public void onChanged(@NonNull final List<UserActivityEntity> activities) {
+                //showActivityInUI(activities, new Date());
+            }
+        });
+    }
+
+    private void showActivityInUI(final @NonNull List<UserActivityEntity> activities) {
+
     }
 }
