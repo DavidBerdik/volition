@@ -22,7 +22,7 @@ public class QuestionaireActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.questionaire_activity);
 
         final TextView qOne = (TextView) findViewById(R.id.questionOne);
         final TextView qTwo = (TextView) findViewById(R.id.questionTwo);
