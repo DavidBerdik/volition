@@ -74,25 +74,31 @@ public class ViewActivitiesActivity extends AppCompatActivity {
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    /**
+     * Retrieves activity descriptions for the current and previous dates
+     */
     private void subscribeUIActivities() {
-
         Date date = new Date();
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
+
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_WEEK);
 
+        //Separate Observers for each date
         for (int i = 0; i < 7; i++) {
             actViewModel.getActivitiesByDate(year, month, day).observe(this, new Observer<List<UserActivityEntity>>() {
                 @Override
                 public void onChanged(@NonNull final List<UserActivityEntity> activities) {
                     final ArrayList<String> activityList = new ArrayList<String>();
+                    //Compiles a list of activity descriptions for a specific date
                     for (UserActivityEntity activity : activities)
                         activityList.add(activity.getDesc());
                     updateDayActivities(cal, activityList);
                 }
             });
+            //Decrements the current date and updates year, month, and day (for later Observers)
             cal.add(Calendar.DAY_OF_MONTH, -1);
             year = cal.get(Calendar.YEAR);
             month = cal.get(Calendar.MONTH);
