@@ -1,4 +1,5 @@
-package costellon.duq.volitionws;
+package com.recoveryenhancementsolutions.volition;
+
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ *
+ * */
+
+
+public class QuestionaireActivity extends AppCompatActivity {
 
     public static int answerCounter = 0;
     public static int yesAnswers = 0;
