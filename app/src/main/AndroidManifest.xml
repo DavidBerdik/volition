@@ -20,16 +20,16 @@
     </activity>
     <activity
       android:exported="true"
-      android:label="Volition"
-      android:name=".CreateProfile">
+      android:label="@string/app_name"
+      android:name=".CreateProfileActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
     <activity
       android:exported="true"
-      android:label="Volition"
-      android:name=".DisplayProfile">
+      android:label="@string/app_name"
+      android:name=".DisplayProfileActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>

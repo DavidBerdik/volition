@@ -40,7 +40,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/create_profile_name"/>
+        tools:text="@string/create_profile_name"
+        tools:ignore="Autofill"/>
 
       <EditText
         android:id="@+id/date_of_birth"
@@ -50,6 +51,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:focusableInTouchMode="false"
         android:ems="10"
         android:hint="@string/create_profile_date_of_birth"
         android:inputType="date"
@@ -57,7 +59,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="@string/create_profile_date_of_birth"/>
+        tools:text="@string/create_profile_date_of_birth"
+        tools:ignore="Autofill"/>
       <Spinner
         android:id="@+id/gender_spinner"
         android:layout_width="fill_parent"
@@ -245,7 +248,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drug_selection"
-        tools:text="@string/create_profile_other"/>
+        tools:text="@string/create_profile_other"
+        tools:ignore="Autofill"/>
       <TextView
         android:id="@+id/substance_use"
         android:layout_width="match_parent"
@@ -282,6 +286,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:focusableInTouchMode="false"
         android:ems="10"
         android:hint="@string/create_profile_clean_date"
         android:inputType="date"
@@ -289,7 +294,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/use_type_spinner"
-        tools:text="@string/create_profile_clean_date"/>
+        tools:text="@string/create_profile_clean_date"
+        tools:ignore="Autofill"
+        android:focusable="true"/>
       <Button
         android:id="@+id/record_button"
         android:layout_width="wrap_content"

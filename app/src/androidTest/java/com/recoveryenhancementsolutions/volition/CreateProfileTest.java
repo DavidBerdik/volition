@@ -31,15 +31,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Auto-generated test. Tests create_profile.xml
+ * Auto-generated test. Tests activity_create_profile.xml
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class CreateProfileTest {
 
   @Rule
-  public ActivityTestRule<CreateProfile> mActivityTestRule = new ActivityTestRule<>(
-      CreateProfile.class);
+  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      CreateProfileActivity.class);
 
   @Test
   public void createProfileTest() {
