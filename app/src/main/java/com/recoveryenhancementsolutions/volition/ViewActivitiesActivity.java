@@ -75,7 +75,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     }
 
     private void subscribeUIActivities() {
-        final ArrayList<String> activityList = new ArrayList<String>();
+
         Date date = new Date();
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -87,13 +87,16 @@ public class ViewActivitiesActivity extends AppCompatActivity {
             actViewModel.getActivitiesByDate(year, month, day).observe(this, new Observer<List<UserActivityEntity>>() {
                 @Override
                 public void onChanged(@NonNull final List<UserActivityEntity> activities) {
+                    final ArrayList<String> activityList = new ArrayList<String>();
                     for (UserActivityEntity activity : activities)
                         activityList.add(activity.getDesc());
                     updateDayActivities(cal, activityList);
                 }
             });
-            activityList.clear();
             cal.add(Calendar.DAY_OF_MONTH, -1);
+            year = cal.get(Calendar.YEAR);
+            month = cal.get(Calendar.MONTH);
+            day = cal.get(Calendar.DAY_OF_WEEK);
         }
     }
 
