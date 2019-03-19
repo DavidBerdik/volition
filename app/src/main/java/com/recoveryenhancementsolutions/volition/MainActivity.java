@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
   private TextView mTextMessage;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-      = new BottomNavigationView.OnNavigationItemSelectedListener() {
+          = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

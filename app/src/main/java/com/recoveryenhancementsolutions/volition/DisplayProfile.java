@@ -24,7 +24,7 @@ public class DisplayProfile extends AppCompatActivity {
         Disorder = (TextView) findViewById(R.id.recorded_type);
         CleanDate = (TextView) findViewById(R.id.recorded_date);
 
-        name.setText(getIntent().getStringExtra("name"));
+        name.setText(getIntent().getStringExtra("Name"));
         DOB.setText(getIntent().getStringExtra("Date of Birth"));
         Gender.setText(getIntent().getStringExtra("Gender"));
         TypeOfPerson.setText(getIntent().getStringExtra("Type of Person"));

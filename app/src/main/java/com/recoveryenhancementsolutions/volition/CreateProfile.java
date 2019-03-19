@@ -20,8 +20,10 @@ public class CreateProfile extends AppCompatActivity {
     EditText editText, editText2, editText3,editText4;
     Button send;
     RadioGroup rg, rg2;
-    RadioButton rb, rb2;
+    RadioButton rb, rb2, check1, check2, rs, rc;
     ArrayAdapter<CharSequence> adapter,adapter2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class CreateProfile extends AppCompatActivity {
             public void onClick(View v) {
                 //stuff to be passed here
 
+                String checker = "";
                 String name = editText.getText().toString();
                 String DOB = editText2.getText().toString();
                 String Gender = spinner.getSelectedItem().toString();
@@ -67,8 +70,16 @@ public class CreateProfile extends AppCompatActivity {
                 int rID = rg.getCheckedRadioButtonId();
                 int rID2 = rg2.getCheckedRadioButtonId();
 
-                rb = findViewById(rID);
-                rb2 = findViewById(rID2);
+                rb = (RadioButton)findViewById(rID);
+                rb2 = (RadioButton)findViewById(rID2);
+
+                rs = (RadioButton) findViewById(R.id.radioSupport);
+                rc = (RadioButton) findViewById(R.id.radioClient);
+
+
+
+
+                //check1 = (RadioButton) findViewById(R.id.rb);
 
                 String whatareyou = rb.getText() + "";
                 String whatdrug = rb2.getText()+"";
@@ -77,18 +88,42 @@ public class CreateProfile extends AppCompatActivity {
                     whatdrug = editText3.getText().toString();
                 }
 
-                String CleanDate = editText3.getText().toString();
+                String CleanDate = editText4.getText().toString();
 
-                Intent intent = new Intent(CreateProfile.this,DisplayProfile.class);
-                //more stuff here
-                intent.putExtra("Name", name);
-                intent.putExtra("Date of Birth", DOB );
-                intent.putExtra("Gender", Gender);
-                intent.putExtra("Type of Person",whatareyou);
-                intent.putExtra("Drug of Choice",whatdrug);
-                intent.putExtra("Disorder", Subdisorder );
-                intent.putExtra("CleanDate", CleanDate );
-                startActivity(intent);
+
+
+                if((checker.equals(name)) || (checker.equals(DOB)) || (checker.equals(Gender)) || (checker.equals(Subdisorder)) || (checker.equals(CleanDate))) {
+
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Please enter all fields",
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
+                else if(rs.isChecked() || rc.isChecked())
+                {
+                    Intent intent = new Intent(CreateProfile.this, DisplayProfile.class);
+                    //more stuff here
+                    intent.putExtra("Name", name);
+                    intent.putExtra("Date of Birth", DOB);
+                    intent.putExtra("Gender", Gender);
+                    intent.putExtra("Type of Person", whatareyou);
+                    intent.putExtra("Drug of Choice", whatdrug);
+                    intent.putExtra("Disorder", Subdisorder);
+                    intent.putExtra("CleanDate", CleanDate);
+                    startActivity(intent);
+                }
+
+
+                else {
+
+
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                "Please mark at least one field",
+                                Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+
 
 
 
