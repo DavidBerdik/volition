@@ -13,7 +13,7 @@ public class DemographicDataEntity {
     private String patientName;
 
     private int age;
-    private Date dateOfBirth;
+    private String dateOfBirth;//MM-DD-YYYY
     private String gender;
     private boolean isPersonInRecovery; //True - person in recovery FALSE - Family/Support
 
@@ -32,7 +32,8 @@ public class DemographicDataEntity {
     private String Other;
     private boolean disorderOpioid;
     private boolean disorderAlcohol;
-    private Date lastClean;
+    private String lastClean;//MM-DD-YYYY
+    private final int fetchID = 1;
 
     public String getPatientName() {
         return patientName;
@@ -50,11 +51,11 @@ public class DemographicDataEntity {
         this.age = age;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -178,11 +179,11 @@ public class DemographicDataEntity {
         this.disorderAlcohol = disorderAlcohol;
     }
 
-    public Date getLastClean() {
+    public String getLastClean() {
         return lastClean;
     }
 
-    public void setLastClean(Date lastClean) {
+    public void setLastClean(String lastClean) {
         this.lastClean = lastClean;
     }
 }
