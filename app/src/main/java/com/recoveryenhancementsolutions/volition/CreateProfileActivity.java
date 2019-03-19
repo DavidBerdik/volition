@@ -25,6 +25,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     final Calendar calendar = Calendar.getInstance();
 
     final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+      @Override
       public void onDateSet(DatePicker view, int year, int month, int day) {
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month);
@@ -32,7 +33,7 @@ public class CreateProfileActivity extends AppCompatActivity {
       }
     };
 
-    EditText dateOfBirth = (EditText) findViewById(R.id.date_of_birth);
+    final EditText dateOfBirth = (EditText) findViewById(R.id.date_of_birth);
     dateOfBirth.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -44,7 +45,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     });
 
-    EditText cleanDate = (EditText) findViewById(R.id.clean_date);
+    final EditText cleanDate = (EditText) findViewById(R.id.clean_date);
     cleanDate.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
