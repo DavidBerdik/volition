@@ -8,12 +8,38 @@
   android:layout_height="match_parent"
   tools:context=".ReportUseActivity">
 
+  <Button
+    android:id="@+id/report_use_yes"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:textStyle="bold"
+    android:layout_width="88dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="64dp"
+    android:layout_marginEnd="16dp"
+    android:background="@color/colorRESLogoGreen"
+    android:text="@string/button_yes"
+    android:textColor="@android:color/black"
+    app:layout_constraintEnd_toStartOf="@+id/space"
+    app:layout_constraintTop_toBottomOf="@+id/report_use_question"/>
+  <Button
+    android:id="@+id/report_use_no"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:textStyle="bold"
+    android:layout_width="88dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="64dp"
+    android:layout_marginStart="16dp"
+    android:background="@color/colorRESLogoGreen"
+    android:text="@string/button_no"
+    android:textColor="@android:color/black"
+    app:layout_constraintStart_toEndOf="@+id/space"
+    app:layout_constraintTop_toBottomOf="@+id/report_use_question"/>
   <TextView
     android:id="@+id/report_use_question"
     android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="48dp"
+    android:layout_marginTop="64dp"
     android:text="@string/report_use_question"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
@@ -36,28 +62,15 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:menu="@menu/menubar"/>
-  <Button
-    android:id="@+id/report_use_yes"
-    style="@style/Widget.AppCompat.Button.Colored"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@color/colorRESLogoGreen"
-    android:text="@string/button_yes"
-    android:textColor="@android:color/black"
-    tools:layout_editor_absoluteX="88dp"
-    tools:layout_editor_absoluteY="222dp"/>
-  <Button
-    android:id="@+id/report_use_no"
-    style="@style/Widget.AppCompat.Button.Colored"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="84dp"
-    android:background="@color/colorRESLogoGreen"
-    android:text="@string/button_no"
-    android:textColor="@android:color/black"
+  <Space
+    android:id="@+id/space"
+    android:layout_width="47dp"
+    android:layout_height="50dp"
+    android:layout_marginTop="64dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     app:layout_constraintEnd_toEndOf="parent"
-    tools:layout_editor_absoluteY="222dp"/>
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/report_use_question"/>
 
 </android.support.constraint.ConstraintLayout>
