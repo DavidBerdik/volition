@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
 /**
- * Unit test for the HomeActivity class. Interacts with several buttons and confirms their output.
+ * Unit test for the ReportUseActivity class. Interacts with several buttons and confirms their
+ * output.
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
