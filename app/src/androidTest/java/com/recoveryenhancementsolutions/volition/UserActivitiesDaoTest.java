@@ -46,7 +46,7 @@ public class UserActivitiesDaoTest {
    * Closes the temporary test database.
    */
   @After
-  public void closeDb() throws IOException {
+  public void closeDb() {
     db.close();
   }
 
