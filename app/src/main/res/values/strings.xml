@@ -1,5 +1,7 @@
 <resources>
   <string name="app_name">Volition</string>
+  <string name="button_yes">Yes</string>
+  <string name="button_no">No</string>
   <string name="menubar_home">Home</string>
   <string name="menubar_activity">Activity</string>
   <string name="menubar_plan">Plan</string>

@@ -36,5 +36,28 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:menu="@menu/menubar"/>
+  <Button
+    android:id="@+id/report_use_yes"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorRESLogoGreen"
+    android:text="@string/button_yes"
+    android:textColor="@android:color/black"
+    tools:layout_editor_absoluteX="88dp"
+    tools:layout_editor_absoluteY="222dp"/>
+  <Button
+    android:id="@+id/report_use_no"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="84dp"
+    android:background="@color/colorRESLogoGreen"
+    android:text="@string/button_no"
+    android:textColor="@android:color/black"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:layout_editor_absoluteY="222dp"/>
 
 </android.support.constraint.ConstraintLayout>
