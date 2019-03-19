@@ -51,6 +51,52 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     mDb.treatmentPlanDao().insertTreatmentPlan(treatmentPlan.getValue());
   }
 
+  private void onAddCounselButtonClicked(){
 
+  }
+  private void onSubCounselButtonClicked(){
 
+  }
+  private void onAddMedManagementButtonClicked(){
+
+  }
+  private void onSubMedMangaementButtonClicked(){
+
+  }
+  private void onAddSupportGroupMeetingButtonClicked(){
+
+  }
+  private void onSubSupportGroupButtonClicked(){
+
+  }
+  private void onAddOutcomeMeasureButtonClicked(){
+
+  }
+  private void onSubOutcomeMeasureButtonClicked(){
+
+  }
+  private void onAddLessonPlannerButtonClicked(){
+
+  }
+  private void onSubLessonPlannerButtonClicked(){
+
+  }
+  private void onAddTreatmentEffectivnessAssessmentButtonClicked(){
+
+  }
+  private void onSubTreatmentEffectivnessAssessmentButtonCLicked(){
+
+  }
+  private void onAddCleanTimeTrackingButton(){
+
+  }
+  private void onSubCleanTimeTrackingButton(){
+
+  }
+  private void onAddReadResponceButton(){
+
+  }
+  private void onSubReadResponceButton(){
+
+  }
 }
