@@ -9,7 +9,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
-import com.recoveryenhancementsolutions.volition.utilities.ExceptionLoggingUtility;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import org.junit.After;
 import org.junit.Before;
@@ -78,14 +77,14 @@ public class UserActivityViewModelTest {
     try {
       assertEquals(5, liveDataTest.getNestedLiveDataObj(viewModel.getAllActivities()).size());
     } catch (InterruptedException e) {
-      Log.e(TAG, new ExceptionLoggingUtility().getStackTraceString(e));
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     // Query the database for the activity with ID 3 and check that it matches the original.
     try {
       assertEquals(3, liveDataTest.getNestedLiveDataObj(viewModel.getActivitiesByID(3)).getId());
     } catch (InterruptedException e) {
-      Log.e(TAG, new ExceptionLoggingUtility().getStackTraceString(e));
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     // Query the database for the activity with date August 13, 2017 and check that it matches the
@@ -95,7 +94,7 @@ public class UserActivityViewModelTest {
           liveDataTest.getNestedLiveDataObj(viewModel.getActivitiesByDate(2017, 8, 13)).get(0)
               .getId());
     } catch (final InterruptedException e) {
-      Log.e(TAG, new ExceptionLoggingUtility().getStackTraceString(e));
+      Log.e(TAG, Log.getStackTraceString(e));
     }
   }
 

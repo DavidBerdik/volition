@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.util.Log;
-import com.recoveryenhancementsolutions.volition.utilities.ExceptionLoggingUtility;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -108,7 +107,7 @@ public class UserActivityViewModel extends AndroidViewModel {
           .parse(year + "-" + month + "-" + day);
       return getActivitiesByDate(date);
     } catch (ParseException e) {
-      Log.e(TAG, new ExceptionLoggingUtility().getStackTraceString(e));
+      Log.e(TAG, Log.getStackTraceString(e));
     }
     return null;
   }
