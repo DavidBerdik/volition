@@ -39,7 +39,7 @@ public class ReportUseActivity extends AppCompatActivity {
     final Button noButton = findViewById(R.id.report_use_no);
     noButton.setOnClickListener(noButtonListener);
 
-    final BottomNavigationView navigation = findViewById(R.id.navigation);
+    final BottomNavigationView navigation = findViewById(R.id.menubar);
     navigation.getMenu().getItem(1).setChecked(false);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
