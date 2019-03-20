@@ -1,6 +1,52 @@
 <resources>
-    <string name="app_name">Volition</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+  <string name="app_name">Volition</string>
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
+  <string name="name">Enter Name</string>
+  <string name="date_of_birth">Enter Date of Birth</string>
+  <string-array name="gender_array">
+    <item>Select Gender</item>
+    <item>Female</item>
+    <item>Male</item>
+    <item>Other</item>
+  </string-array>
+  <string name="are_you">Are you:</string>
+  <string name="client">Person in Recovery/Seeking Recovery</string>
+  <string name="support">Family or Support Person</string>
+  <string name="drugs">Drug of Choice:</string>
+  <string name="heroin">Heroin</string>
+  <string name="other_opiates">Other Opiates and Synthetics</string>
+  <string name="alcohol">Alcohol</string>
+  <string name="cocaine">Cocaine/Crack</string>
+  <string name="marijuana">Marijuana</string>
+  <string name="meth">Methamphetamine</string>
+  <string name="ben">Benzodiazepines</string>
+  <string name="other_tranquil">Other Non-Benzodiazepine Tranquilizers</string>
+  <string name="sedatives">Barbiturates, Sedatives, or Hypnotics</string>
+  <string name="inhalants">Inhalants</string>
+  <string name="other">Other</string>
+  <string name="if_other">Please enter name of other drug here.</string>
+  <string name="substance_use">Substance Use Disorder:</string>
+  <string-array name="use_type_array">
+    <item>Select Type</item>
+    <item>Opioid Use Disorder</item>
+    <item>Alcohol Use Disorder</item>
+  </string-array>
+  <string name="clean_date">Enter Date of Last Use/Clean Date</string>
+  <string name="record_answers">Record Answers</string>
+  <string name="entered">Here\'s the information you entered</string>
+  <string name="name_colon">Name:</string>
+  <string name="example_name">Replace with name entered</string>
+  <string name="dob_colon">Date of Birth:</string>
+  <string name="example_dob">Replace with date of birth</string>
+  <string name="gender_colon">Gender:</string>
+  <string name="example_gender">Replace with gender selected</string>
+  <string name="person_colon">I am a: </string>
+  <string name="example_person">Replace with the option selected</string>
+  <string name="example_drug">Replace with the drug selected</string>
+  <string name="example_type">Replace with the type selected</string>
+  <string name="last_use_colon">Date of Last Use/Clean Date:</string>
+  <string name="example_date">Replace with the date entered</string>
+  <string name="continue_str">Continue</string>
 </resources>
