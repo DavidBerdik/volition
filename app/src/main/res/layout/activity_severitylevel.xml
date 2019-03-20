@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="734dp"
+
+        android:background="#FFA500"
+        android:padding="10dp"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context="com.example.layoutborder.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#FFFFFF"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+
+        android:alpha=".4"
+        android:padding="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/LOGO"
+        />
+
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+
+        <TableRow>
+
+            <TextView
+                android:text="Total Score:"
+
+                android:layout_column="1"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="bottom"
+                android:layout_gravity="bottom"
+
+                android:textSize="24dp"
+                android:textColor="#009933"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.113"/>
+
+            <EditText
+                android:width="600px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-255dp"
+                android:layout_marginRight="56dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="Specifier:"
+                android:layout_column="1"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="left"
+
+                android:textSize="24dp"
+                android:textColor="#009933"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.113"/>
+
+            <EditText
+                android:width="600px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-255dp"
+                android:layout_marginRight="56dp"/>
+        </TableRow>
+
+
+
+
+    </TableLayout>
+    <TableLayout
+
+        android:layout_width="0dp"
+        android:layout_height="700dp"
+        android:layout_marginBottom="500dp"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:layout_height="500dp"
+                android:layout_width="0dp"
+                android:layout_column="1"
+                android:text=""
+                android:padding="5dip" />
+            <TextView
+                android:layout_column="1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="20dp"
+                android:gravity="left"
+                android:text=" Current Severity"
+                android:textSize="20dp"
+                android:textColor="#FF9900"
+                android:layout_gravity="bottom"
+
+                android:padding="10dp"
+
+
+
+                />
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#FFA500" />
+
+
+
+
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="left"
+                android:text="305.50 (F11.10)"
+                android:textColor="#FF9900"
+                android:padding="3dip" />
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:text="Mild: Presence of 2-3 symptoms
+"
+                android:textColor="#FF9900"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="left"
+                android:text="304.00 (F11.20)"
+                android:textColor="#FF9900"
+                android:padding="3dip" />
+            <TextView
+                android:layout_column="1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="right"
+                android:text="Moderate: Presence of 4-5 symptoms.
+"
+                android:textColor="#FF9900"
+
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:alpha="100"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="left"
+                android:text="304.00 (F11.20)"
+                android:textColor="#FFA500"
+                android:padding="3dip" />
+            <TextView
+                android:layout_column="1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="right"
+                android:text="Severe: Presence of 6 or more symptoms."
+
+                android:textColor="#FF9900"
+                android:padding="3dip" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>
+
