@@ -2,7 +2,6 @@ package com.recoveryenhancementsolutions.volition;
 
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,16 +16,17 @@ public class MockData {
 
   /**
    * Creates list containing UserActivityEntity objects for testing
+   *
    * @return list of UserActivityEntity objects with populated fields
    */
 
-  public static List<UserActivityEntity> getTempUserActivityList() {
+  public List<UserActivityEntity> getTempUserActivityList() {
 
-    ArrayList<UserActivityEntity> listOfActivites = new ArrayList<>();
+    final ArrayList<UserActivityEntity> listOfActivites = new ArrayList<>();
 
-    UserActivityEntity testActivity1 = new UserActivityEntity();
-    UserActivityEntity testActivity2 = new UserActivityEntity();
-    UserActivityEntity testActivity3 = new UserActivityEntity();
+    final UserActivityEntity testActivity1 = new UserActivityEntity();
+    final UserActivityEntity testActivity2 = new UserActivityEntity();
+    final UserActivityEntity testActivity3 = new UserActivityEntity();
 
     testActivity1.setId(1);
     testActivity1.setDate(new Date());
@@ -52,28 +52,34 @@ public class MockData {
 
   /**
    * creates string array with random strings for testing the UI
+   *
    * @return a string array containing 3 random test strings
    */
   public String[] getStringArray() {
-    Random rand = new Random();
-    int randomNumber1 = rand.nextInt();
-    int randomNumber2 = rand.nextInt();
-    int randomNumber3 = rand.nextInt();
+    final Random rand = new Random();
+    final int randomNumber1 = rand.nextInt();
+    final int randomNumber2 = rand.nextInt();
+    final int randomNumber3 = rand.nextInt();
 
-    String[] arrayOfString = new String[3];
-    arrayOfString[0] = "This is a sample string for testing the UI with a random number: " + randomNumber1;
-    arrayOfString[1] = "This is a sample string for testing the UI with a random number: " + randomNumber2;
-    arrayOfString[2] = "This is a sample string for testing the UI with a random number: " + randomNumber3;
+    final String[] arrayOfString = new String[3];
+    arrayOfString[0] =
+        "This is a sample string for testing the UI with a random number: " + randomNumber1;
+    arrayOfString[1] =
+        "This is a sample string for testing the UI with a random number: " + randomNumber2;
+    arrayOfString[2] =
+        "This is a sample string for testing the UI with a random number: " + randomNumber3;
 
     return arrayOfString;
   }
+
   /**
    * creates string ArrayList with a sample string for testing the UI
+   *
    * @return a string ArrayList containing a test string
    */
   public ArrayList<String> getStringArrayList() {
-    ArrayList<String> testStringList = new ArrayList();
-    String testString = "This is a sample string for testing the UI";
+    final ArrayList<String> testStringList = new ArrayList();
+    final String testString = "This is a sample string for testing the UI";
     testStringList.add(testString);
     return testStringList;
 
@@ -81,28 +87,29 @@ public class MockData {
 
   /**
    * Creates sample date object as string
-    * @return a formatted date as a string with pattern E yyyy.MM.dd
+   *
+   * @return a formatted date as a string with pattern E yyyy.MM.dd
    */
   public String getDateAsString() {
 
-    Date date = new Date();
-    final String DATE_FORMAT_STRING = "E yyyy.MM.dd";
-    SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT_STRING, Locale.US);
-    String formattedDate = format.format(date);
+    final Date date = new Date();
+    final String DATE_FORMAT_STRING = "yyyy.MM.dd";
+    final SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT_STRING, Locale.US);
+    final String formattedDate = format.format(date);
     return formattedDate;
 
   }
 
   /**
    * Creates sample random date object
+   *
    * @return sample random date object
    */
   public Date getDateAsDateObject() {
-    Random random = new Random();
+    final Random random = new Random();
     return new Date(Math.abs(System.currentTimeMillis() - random.nextLong()));
 
   }
-
 
 
 }
