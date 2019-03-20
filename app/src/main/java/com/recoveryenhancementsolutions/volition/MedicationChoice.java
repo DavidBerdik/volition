@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MedicationChoice extends AppCompatActivity {
-  private TextView medTextMessage;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
