@@ -12,7 +12,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     /**
      * The apps loaded Database.
      */
-    private VolitionDatabase mDb;
+    private VolitionDatabase db;
 
     /**
      * Live Data representing the treatment plan stored in the database.
@@ -27,21 +27,33 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     public TreatmentPlanViewModel(Application application) {
         super(application);
 
-        mDb =VolitionDatabase.getDatabase(this.getApplication());
-        treatmentPlan = mDb.treatmentPlanDao().loadTreatmentPlan();
+        db =VolitionDatabase.getDatabase(this.getApplication());
+
+        if(db.treatmentPlanDao().getNumTreatmentPlans() == 0){
+            generateTreatmentPlan();
+        }
+
+        treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan();
     }
 
     /**
      * Refreshes the data loaded from the database.
      */
     public void refreshDb(){
-        treatmentPlan = mDb.treatmentPlanDao().loadTreatmentPlan();
+        treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan();
     }
 
     /**
      * Updates the database with the values of treatmentPlan.
      */
     public void updateDb(){
-        mDb.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlan.getValue());
+        db.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlan.getValue());
+    }
+
+    /**
+     * Generates a new treatmentPlan.
+     */
+    private void generateTreatmentPlan(){
+
     }
 }

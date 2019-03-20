@@ -5,7 +5,6 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
@@ -21,7 +20,7 @@ public interface TreatmentPlanDao {
    *
    * @return A LiveData object containing a TreatmentPlan Entity.
    */
-  @Query("select * from TreatmentPlanEntity where treatmentPlanID = 1")
+  @Query("SELECT * FROM TreatmentPlanEntity WHERE Id = 1")
   LiveData<TreatmentPlanEntity> loadTreatmentPlan();
 
   /**
@@ -41,8 +40,16 @@ public interface TreatmentPlanDao {
   void insertTreatmentPlanEntity(TreatmentPlanEntity treatmentPlanEntity);
 
   /**
+   * Returns the number of entries in the treatment plan table.
+   *
+   * @return The current number of TreatmentPlanEntities.
+   */
+  @Query("SELECT COUNT(*) FROM TreatmentPlanEntity")
+  int getNumTreatmentPlans();
+
+  /**
    * Removes all TreatmentPlanEntities from the database.
    */
-  @Query("DELETE FROM TreatmentPlan")
+  @Query("DELETE FROM TreatmentPlanEntity")
   void deleteAll();
 }
