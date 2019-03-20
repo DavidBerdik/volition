@@ -128,7 +128,7 @@ public class CreateProfile extends AppCompatActivity {
     radioSedatives.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((CheckBox) v).isChecked()) {
-         // data.setUseSedatives(true);
+         data.setUseBarbituresOrHypno(true);
         }
       }
     });
