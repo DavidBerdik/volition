@@ -9,194 +9,280 @@ import android.support.annotation.NonNull;
  */
 @Entity
 public class TreatmentPlanEntity {
-  /**
-   * Returns the ID of this treatmentPlan.
-   *
-   * @return the treatment plan's ID
-   */
-  public int getId(){return id;}
+    /**
+     * Returns the ID of this treatmentPlan.
+     *
+     * @return the treatment plan's ID
+     */
+    public int getId() {
+        return id;
+    }
 
-  /**
-   * Returns the number of counseling sessions the user should attend per week;
-   *
-   * @return The number of counseling sessions the user should attend per week.
-   */
-  public int getNumCounseling(){return numCounseling;}
+    /**
+     * Returns the number of counseling sessions the user should attend.
+     *
+     * @return The number of counseling sessions the user should attend.
+     */
+    public int getNumCounseling() {
+        return numCounseling;
+    }
 
-  /**
-   * Returns the number of times the user should do a medManagement per month.
-   *
-   * @return The number of times the user should do a medManagement per month.
-   */
-  public int getNumMedManagement(){return numMedManagement;}
+    /**
+     * Returns the number of times the user should do a medManagement.
+     *
+     * @return The number of times the user should do a medManagement.
+     */
+    public int getNumMedManagement() {
+        return numMedManagement;
+    }
 
-  /**
-   * Returns the number of times the user should attend support meetings per week.
-   *
-   * @return The number of times the user should attend support meetings per week.
-   */
-  public int getNumSupportMeeting(){return numSupportMeeting;}
+    /**
+     * Returns the number of times the user should attend support meetings.
+     *
+     * @return The number of times the user should attend support meetings.
+     */
+    public int getNumSupportMeeting() {
+        return numSupportMeeting;
+    }
 
-  /**
-   * Returns the number of times the user should attend lessons per week.
-   *
-   * @return The number of times the user should attend lessons per week.
-   */
-  public int getNumLessons(){return numLessons;}
+    /**
+     * Returns the number of times the user should attend lessons.
+     *
+     * @return The number of times the user should attend lessons.
+     */
+    public int getNumLessons() {
+        return numLessons;
+    }
 
-  /**
-   * Returns the number of times the user should take a treatment plan effectiveness assessment.
-   *
-   * @return The number of times the user should take a treatment plan effectiveness assessment.
-   */
-  public int getNumTreatmentEffectivenessAssessment(){return numTreatmentEffectivenessAssessment;}
+    /**
+     * Returns the number of times the user should take a treatment plan effectiveness assessment.
+     *
+     * @return The number of times the user should take a treatment plan effectiveness assessment.
+     */
+    public int getNumTreatmentEffectivenessAssessment() {
+        return numTreatmentEffectivenessAssessment;
+    }
 
-  /**
-   * Returns the number of times the user should take outcome measures per week.
-   *
-   * @return The number of times the user should take outcome measures per week.
-   */
-  public int getNumOutcomeMeasures(){return numOutcomeMeasures;}
+    /**
+     * Returns the number of times the user should do outcome measures.
+     *
+     * @return The number of times the user should do outcome measures.
+     */
+    public int getNumOutcomeMeasures() {
+        return numOutcomeMeasures;
+    }
 
-  /**
-   * Returns the number of times the user should take time tracking per week.
-   *
-   * @return The number of times the user should take time tracking per week.
-   */
-  public int getNumTimeTracking(){return numTimeTracking;}
+    /**
+     * Returns the number of times the user should do time tracking.
+     *
+     * @return The number of times the user should do time tracking.
+     */
+    public int getNumTimeTracking() {
+        return numTimeTracking;
+    }
 
-  /**
-   * Returns the number of times the user should take a reading response per week.
-   *
-   * @return The number of times the user should take a reading response per week.
-   */
-  public int getNumReadingResponse(){return numReadingResponse;}
+    /**
+     * Returns the number of times the user should do a reading response.
+     *
+     * @return The number of times the user should do a reading response.
+     */
+    public int getNumReadingResponse() {
+        return numReadingResponse;
+    }
 
-  /**
-   * Sets the ID to a new value.  This changes the primary key of the treatment plan so its use is
-   * discouraged.
-   *
-   * @param id The ID of the treatment plan.
-   */
-  public void setId(int id){ this.id = id;}
+    /**
+     * Returns the current frequency for Medication Management.
+     *
+     * @return A string representing the frequency for Medication Management in the form of "WEEKLY"
+     * or "MONTHLY".
+     */
+    public String getMedManagementFrequency(){
+        return medManagementFrequency;
+    }
 
-  /**
-   * Sets the number of times the user should attend counseling meetings per week.
-   *
-   * @param numCounseling The number of times the user should attend counseling meetings per week.
-   */
-  public void setNumCounseling(int numCounseling){this.numCounseling = numCounseling;}
+    /**
+     * Returns the current frequency for Outcome Measures.
+     *
+     * @return A string representing the frequency for Outcome Measures in the form of "WEEKLY" or
+     * "DAILY".
+     */
+    public String getOutcomeMeasureFrequency(){
+        return outcomeMeasureFrequency;
+    }
 
-  /**
-   * Sets the number of times the user should take medications per week.
-   *
-   * @param numMedManagement The number of times the user should do a medManagement per month.
-   */
-  public void setNumMedManagement(int numMedManagement){this.numMedManagement = numMedManagement;}
+    /**
+     * Sets the ID to a new value.  This changes the primary key of the treatment plan so its use is
+     * discouraged.
+     *
+     * @param id The ID of the treatment plan.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  /**
-   * Sets the number of times the user should attend support meetings per week.
-   *
-   * @param numSupportMeeting The number of times the user should attend support meetings per week.
-   */
-  public void setNumSupportMeeting(int numSupportMeeting){
-    this.numSupportMeeting = numSupportMeeting;
-  }
+    /**
+     * Sets the number of times the user should attend counseling meetings per week.
+     *
+     * @param numCounseling The number of times the user should attend counseling meetings per week.
+     */
+    public void setNumCounseling(int numCounseling) {
+        this.numCounseling = numCounseling;
+    }
 
-  /**
-   * Sets the number of times the user should attend lessons per week.
-   *
-   * @param numLessons The number of times the user should attend lessons per week.
-   */
-  public void setNumLessons(int numLessons){this.numLessons =numLessons;}
+    /**
+     * Sets the number of times the user should do a Medication Management.
+     *
+     * @param numMedManagement The number of times the user should do a Medication Management.
+     */
+    public void setNumMedManagement(int numMedManagement) {
+        this.numMedManagement = numMedManagement;
+    }
 
-  /**
-   * Sets the number of times the user should take a treatment plan effectiveness assessment per
-   * week.
-   *
-   * @param numTreatmentEffectivenessAssessment The number of times the user should take a treatment
-   * plan effectiveness assessment per week.
-   */
-  public void setNumTreatmentEffectivenessAssessment(int numTreatmentEffectivenessAssessment){
-    this.numTreatmentEffectivenessAssessment = numTreatmentEffectivenessAssessment;
-  }
+    /**
+     * Sets the number of times the user should attend support meetings per week.
+     *
+     * @param numSupportMeeting The number of times the user should attend support meetings per week.
+     */
+    public void setNumSupportMeeting(int numSupportMeeting) {
+        this.numSupportMeeting = numSupportMeeting;
+    }
 
-  /**
-   * Sets the number of outcome measures the user should take per week.
-   *
-   * @param numOutcomeMeasures The number of outcome measures the user should take per week.
-   */
-  public void setNumOutcomeMeasures(int numOutcomeMeasures){
-    this.numOutcomeMeasures = numOutcomeMeasures;
-  }
+    /**
+     * Sets the number of times the user should do lessons.
+     *
+     * @param numLessons The number of times the user should do lessons.
+     */
+    public void setNumLessons(int numLessons) {
+        this.numLessons = numLessons;
+    }
 
-  /**
-   * Sets the number of times the user should record time tracking per week.
-   *
-   * @param numTimeTracking The number of times the user should record time tracking per week.
-   */
-  public void setNumTimeTracking(int numTimeTracking){this.numTimeTracking =numTimeTracking;}
+    /**
+     * Sets the number of times the user should take a treatment plan effectiveness assessment per
+     * week.
+     *
+     * @param numTreatmentEffectivenessAssessment The number of times the user should take a
+     * treatment plan effectiveness assessment.
+     */
+    public void setNumTreatmentEffectivenessAssessment(int numTreatmentEffectivenessAssessment) {
+        this.numTreatmentEffectivenessAssessment = numTreatmentEffectivenessAssessment;
+    }
 
-  /**
-   * Sets the number of time the user should do a reading response per week.
-   * @param numReadingResponse The number of time the user should do a reading response per week.
-   */
-  public void setNumReadingResponse(int numReadingResponse){
-    this.numReadingResponse = numReadingResponse;
-  }
+    /**
+     * Sets the number of outcome measures the user should take.
+     *
+     * @param numOutcomeMeasures The number of outcome measures the user should take.
+     */
+    public void setNumOutcomeMeasures(int numOutcomeMeasures) {
+        this.numOutcomeMeasures = numOutcomeMeasures;
+    }
 
-  /**
-   * Stores the ID for this treatment plan.
-   */
-  @PrimaryKey
-  private int id;  //used to manage the treatment plan and prevent duplicates.
+    /**
+     * Sets the number of times the user should record time tracking.
+     *
+     * @param numTimeTracking The number of times the user should record time tracking.
+     */
+    public void setNumTimeTracking(int numTimeTracking) {
+        this.numTimeTracking = numTimeTracking;
+    }
 
-  /**
-   * Stores the number of times the user should go to counseling per week.
-   */
-  @NonNull
-  private int numCounseling;
+    /**
+     * Sets the number of time the user should do a reading response.
+     *
+     * @param numReadingResponse The number of time the user should do a reading response.
+     */
+    public void setNumReadingResponse(int numReadingResponse) {
+        this.numReadingResponse = numReadingResponse;
+    }
 
-  /**
-   * Stores the number of times the user should do a medManagement per month.
-   */
-  @NonNull
-  private int numMedManagement;
+    /**
+     * Sets the frequency for Medication Management to "WEEKLY".
+     */
+    public void setMedManagementWeekly(){
+        this.medManagementFrequency = "WEEKLY";
+    }
 
-  /**
-   * Stores the number of times the user should attend a support meeting per week.
-   */
-  @NonNull
-  private int numSupportMeeting;
+    /**
+     * Sets the frequency for Medication Management to "MONTHLY".
+     */
+    public void setMedManagementMontly(){
+        this.medManagementFrequency = "MONTHLY";
+    }
 
-  /**
-   * Stores the number of times the user should attend lessons per week.
-   */
-  @NonNull
-  private int numLessons;
+    /**
+     * Sets the frequency for Outcome Measures to "WEEKLY".
+     */
+    public void setOutcomeMeasureWeekly(){
+        this.outcomeMeasureFrequency = "WEEKLY";
+    }
 
-  /**
-   * Stores the number of times the user should take a treatment plan effectiveness assessment per
-   * week.
-   */
-  @NonNull
-  private int numTreatmentEffectivenessAssessment;
+    /**
+     * Sets the frequency for Outcome Measures to "DAILY".
+     */
+    public void setOutcomeMeasureDaily(){
+        this.outcomeMeasureFrequency = "DAILY";
+    }
 
-  /**
-   * Stores the number of times the user should record outcome measures per week.
-   */
-  @NonNull
-  private int numOutcomeMeasures;
+    /**
+     * Stores the ID for this treatment plan.
+     */
+    @PrimaryKey
+    private int id;  //used to manage the treatment plan and prevent duplicates.
 
-  /**
-   * Stores the number of times the user should record time tracking per week.
-   */
-  @NonNull
-  private int numTimeTracking;
+    /**
+     * Stores the number of times the user should go to counseling.
+     */
+    @NonNull
+    private int numCounseling;
 
-  /**
-   * Stores the number of times the user should take a reading response per week.
-   */
-  @NonNull
-  private int numReadingResponse;
+    /**
+     * Stores the number of times the user should do a medManagement.
+     */
+    @NonNull
+    private int numMedManagement;
+
+    /**
+     * Stores the number of times the user should attend a support meeting.
+     */
+    @NonNull
+    private int numSupportMeeting;
+
+    /**
+     * Stores the number of times the user should attend lessons.
+     */
+    @NonNull
+    private int numLessons;
+
+    /**
+     * Stores the number of times the user should take a treatment plan effectiveness assessment.
+     */
+    @NonNull
+    private int numTreatmentEffectivenessAssessment;
+
+    /**
+     * Stores the number of times the user should record outcome measures.
+     */
+    @NonNull
+    private int numOutcomeMeasures;
+
+    /**
+     * Stores the number of times the user should record time tracking.
+     */
+    @NonNull
+    private int numTimeTracking;
+
+    /**
+     * Stores the number of times the user should take a reading response.
+     */
+    @NonNull
+    private int numReadingResponse;
+
+    /**
+     * The frequency in which Medication Management should be done.
+     */
+    private String medManagementFrequency;
+
+    /**
+     * The frequency in which Outcome Measures should be done.
+     */
+    private String outcomeMeasureFrequency;
 }

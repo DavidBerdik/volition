@@ -8,9 +8,6 @@ import android.arch.lifecycle.LiveData;
  * Class manages relationship between the TreatmentPlanActivity and the Volition Database.
  */
 public class TreatmentPlanViewModel extends AndroidViewModel {
-    //MUST CHANGE MED MANAGEMENT TO WEEKLY INSTEAD OF MONTHLY
-    //MUST HANDLE CHANGING FROM WEEKLY TO DAILY WITH OUTCOME MEASURES
-    //MUST CLARIFY DEFINITIONS OF EVENTS
 
     /**
      * The apps loaded Database.
@@ -70,6 +67,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(0);
                 treatmentPlan.getValue().setNumReadingResponse(0);
                 treatmentPlan.getValue().setNumMedManagement(0);
+                treatmentPlan.getValue().setMedManagementMontly();
+                treatmentPlan.getValue().setOutcomeMeasureWeekly();
             } else if (severityScore < 4) { //Mild Abstinence
                 treatmentPlan.getValue().setNumCounseling(1);
                 treatmentPlan.getValue().setNumSupportMeeting(1);
@@ -79,6 +78,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(1);
                 treatmentPlan.getValue().setNumReadingResponse(1);
                 treatmentPlan.getValue().setNumMedManagement(0);
+                treatmentPlan.getValue().setMedManagementMontly();
+                treatmentPlan.getValue().setOutcomeMeasureWeekly();
             } else if (severityScore < 6) { //Moderate Abstinence
                 treatmentPlan.getValue().setNumCounseling(3);
                 treatmentPlan.getValue().setNumSupportMeeting(3);
@@ -88,6 +89,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(2);
                 treatmentPlan.getValue().setNumReadingResponse(2);
                 treatmentPlan.getValue().setNumMedManagement(0);
+                treatmentPlan.getValue().setMedManagementMontly();
+                treatmentPlan.getValue().setOutcomeMeasureDaily();
             } else { //Severe Abstinence
                 treatmentPlan.getValue().setNumCounseling(5);
                 treatmentPlan.getValue().setNumSupportMeeting(5);
@@ -97,6 +100,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(5);
                 treatmentPlan.getValue().setNumReadingResponse(3);
                 treatmentPlan.getValue().setNumMedManagement(0);
+                treatmentPlan.getValue().setMedManagementWeekly();
+                treatmentPlan.getValue().setOutcomeMeasureDaily();
             }
         } else if (db.MedicationChoiceDao.getMedication().getValue().equals("buprenorphine")) {
             //Less than mild severity
@@ -109,6 +114,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(0);
                 treatmentPlan.getValue().setNumReadingResponse(0);
                 treatmentPlan.getValue().setNumMedManagement(0);
+                treatmentPlan.getValue().setMedManagementMontly();
+                treatmentPlan.getValue().setOutcomeMeasureWeekly();
             } else if (severityScore < 4) { //Mild Buprenorphine
                 treatmentPlan.getValue().setNumCounseling(1);
                 treatmentPlan.getValue().setNumSupportMeeting(1);
@@ -118,6 +125,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(1);
                 treatmentPlan.getValue().setNumReadingResponse(1);
                 treatmentPlan.getValue().setNumMedManagement(1);
+                treatmentPlan.getValue().setMedManagementMontly();
+                treatmentPlan.getValue().setOutcomeMeasureWeekly();
             } else if (severityScore < 6) { //Moderate Buprenorphine
                 treatmentPlan.getValue().setNumCounseling(3);
                 treatmentPlan.getValue().setNumSupportMeeting(3);
@@ -127,6 +136,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(2);
                 treatmentPlan.getValue().setNumReadingResponse(2);
                 treatmentPlan.getValue().setNumMedManagement(2);
+                treatmentPlan.getValue().setMedManagementMontly();
+                treatmentPlan.getValue().setOutcomeMeasureDaily();
             } else { //Severe Buprenorphine
                 treatmentPlan.getValue().setNumCounseling(5);
                 treatmentPlan.getValue().setNumSupportMeeting(5);
@@ -136,6 +147,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.getValue().setNumTimeTracking(5);
                 treatmentPlan.getValue().setNumReadingResponse(3);
                 treatmentPlan.getValue().setNumMedManagement(1);
+                treatmentPlan.getValue().setMedManagementWeekly();
+                treatmentPlan.getValue().setOutcomeMeasureDaily();
             }
         }
     }
