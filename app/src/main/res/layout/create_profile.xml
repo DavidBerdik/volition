@@ -104,6 +104,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:buttonTint="@color/res_gold"
+          android:onClick="addSupportListener"
           android:text="@string/support"
           android:visibility="visible"
           tools:text="@string/support"/>
@@ -112,6 +113,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:buttonTint="@color/res_gold"
+          android:onClick="addClientListener"
           android:text="@string/client"
           android:visibility="visible"
           tools:text="@string/client"/>
@@ -146,6 +148,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addHeroinListener"
           android:text="@string/heroin"
           tools:text="@string/heroin"/>
         <RadioButton
@@ -154,6 +157,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addOpiatesListener"
           android:text="@string/other_opiates"
           tools:text="@string/other_opiates"/>
         <RadioButton
@@ -162,6 +166,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addAlocholListener"
           android:text="@string/alcohol"
           tools:text="@string/alcohol"/>
         <RadioButton
@@ -170,6 +175,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addCocaineListener"
           android:text="@string/cocaine"
           tools:text="@string/cocaine"/>
         <RadioButton
@@ -178,6 +184,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addMarijuanaListener"
           android:text="@string/marijuana"
           tools:text="@string/marijuana"/>
         <RadioButton
@@ -186,6 +193,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addMethListener"
           android:text="@string/meth"
           tools:text="@string/meth"/>
         <RadioButton
@@ -194,6 +202,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addBenListener"
           android:text="@string/ben"
           tools:text="@string/ben"/>
         <RadioButton
@@ -202,6 +211,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addTranqListener"
           android:text="@string/other_tranquil"
           tools:text="@string/other_tranquil"/>
         <RadioButton
@@ -210,6 +220,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addSedativesListener"
           android:text="@string/sedatives"
           tools:text="@string/sedatives"/>
         <RadioButton
@@ -218,6 +229,7 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
+          android:onClick="addInhalantsListener"
           android:text="@string/inhalants"
           tools:text="@string/inhalants"/>
         <RadioButton
@@ -291,6 +303,7 @@
         app:layout_constraintTop_toBottomOf="@+id/use_type_spinner"
         tools:text="@string/clean_date"/>
       <Button
+
         android:id="@+id/record_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
