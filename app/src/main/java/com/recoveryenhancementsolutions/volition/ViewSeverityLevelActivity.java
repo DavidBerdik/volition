@@ -1,26 +1,23 @@
-package com.recoveryenhancementsolutions.volition.View_Severity_Level;
+package com.recoveryenhancementsolutions.volition;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
-import com.recoveryenhancementsolutions.volition.Questionnaire;
-import com.recoveryenhancementsolutions.volition.R;
-import java.util.List;
+
 
 
 
 public class ViewSeverityLevelActivity extends AppCompatActivity {
 
-  private ViewSeverityLevelViewModel mViewModel;
 
-  private TextView mSeverityTextView;
-
+  /**
+   *
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -35,7 +32,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     observeSeverityLevel();
   }
 
-
+  /**
+   *
+   */
   private void observeSeverityLevel() {
     mViewModel.severity.observe(this, new Observer<String>() {
       @Override
@@ -55,6 +54,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
 
     mSeverityTextView.setText(sb.toString());
   }
+  private ViewSeverityLevelViewModel mViewModel;
+
+  private TextView mSeverityTextView;
 }
 
 
