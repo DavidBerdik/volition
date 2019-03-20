@@ -32,7 +32,7 @@ public class MedicationChoice extends AppCompatActivity {
     abstainB.setOnClickListener(new OnClickListener() {
       @Override
         public void onClick(View v) {
-        startActivity(new Intent(MedicationChoice.this, TreatmentPlanActivity.class));
+        //startActivity(new Intent(MedicationChoice.this, TreatmentPlanActivity.class));
 
         Toast.makeText(MedicationChoice.this,"DataSaved",Toast.LENGTH_LONG).show();
       }
@@ -41,7 +41,7 @@ public class MedicationChoice extends AppCompatActivity {
     medicationB.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-          startActivity(new Intent(MedicationChoice.this, TreatmentPlanActivity.class));
+          //startActivity(new Intent(MedicationChoice.this, TreatmentPlanActivity.class));
         }
     });
 
