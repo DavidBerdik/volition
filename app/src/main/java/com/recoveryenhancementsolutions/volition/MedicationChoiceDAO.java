@@ -10,6 +10,9 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+/**
+ * Temporary file, should be overriden by feature/VOL-43-access-database
+ */
 
 @Dao
 public interface MedicationChoiceDAO {

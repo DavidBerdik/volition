@@ -8,17 +8,6 @@ import android.arch.lifecycle.LiveData;
  * Class manages relationship between the TreatmentPlanActivity and the Volition Database.
  */
 public class TreatmentPlanViewModel extends AndroidViewModel {
-
-    /**
-     * The apps loaded Database.
-     */
-    private VolitionDatabase db;
-
-    /**
-     * Live Data representing the treatment plan stored in the database.
-     */
-    public LiveData<TreatmentPlanEntity> treatmentPlan;
-
     /**
      * Constructor method to initialize a new TreatmentPlanViewModel
      *
@@ -37,13 +26,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     }
 
     /**
-     * Refreshes the data loaded from the database.
-     */
-    public void refreshDb() {
-        treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan();
-    }
-
-    /**
      * Updates the database with the values of treatmentPlan.
      */
     public void updateDb() {
@@ -51,105 +33,93 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     }
 
     /**
+     * Live Data representing the treatment plan stored in the database.
+     */
+    public LiveData<TreatmentPlanEntity> treatmentPlan;
+
+    /**
      * Generates a new treatmentPlan.
      */
     private void generateTreatmentPlan() {
-        int severityScore; //NEED TABLE FROM DIFFERENT SCRUM TEAM
-
-        if (db.MedicationChoiceDao.getMedication().getValue().equals("abstain")) {
-            //Less than mild severity
-            if (severityScore < 2) {
-                treatmentPlan.getValue().setNumCounseling(0);
-                treatmentPlan.getValue().setNumSupportMeeting(0);
-                treatmentPlan.getValue().setNumLessons(0);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(0);
-                treatmentPlan.getValue().setNumOutcomeMeasures(0);
-                treatmentPlan.getValue().setNumTimeTracking(0);
-                treatmentPlan.getValue().setNumReadingResponse(0);
-                treatmentPlan.getValue().setNumMedManagement(0);
-                treatmentPlan.getValue().setMedManagementMontly();
-                treatmentPlan.getValue().setOutcomeMeasureWeekly();
-            } else if (severityScore < 4) { //Mild Abstinence
-                treatmentPlan.getValue().setNumCounseling(1);
-                treatmentPlan.getValue().setNumSupportMeeting(1);
-                treatmentPlan.getValue().setNumLessons(1);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(1);
-                treatmentPlan.getValue().setNumOutcomeMeasures(1);
-                treatmentPlan.getValue().setNumTimeTracking(1);
-                treatmentPlan.getValue().setNumReadingResponse(1);
-                treatmentPlan.getValue().setNumMedManagement(0);
-                treatmentPlan.getValue().setMedManagementMontly();
-                treatmentPlan.getValue().setOutcomeMeasureWeekly();
-            } else if (severityScore < 6) { //Moderate Abstinence
-                treatmentPlan.getValue().setNumCounseling(3);
-                treatmentPlan.getValue().setNumSupportMeeting(3);
-                treatmentPlan.getValue().setNumLessons(2);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(1);
-                treatmentPlan.getValue().setNumOutcomeMeasures(3);
-                treatmentPlan.getValue().setNumTimeTracking(2);
-                treatmentPlan.getValue().setNumReadingResponse(2);
-                treatmentPlan.getValue().setNumMedManagement(0);
-                treatmentPlan.getValue().setMedManagementMontly();
-                treatmentPlan.getValue().setOutcomeMeasureDaily();
+        String severityLevel = db.questionnaireDao().findSeverityLevel();
+        TreatmentPlanEntity treatmentPlan = new TreatmentPlanEntity();
+        if (db.medicationChoiceDao().getMedication().getValue().equals("abstain")) {
+            if (severityLevel.equals("MILD")) { //Mild Abstinence
+                treatmentPlan.setNumCounseling(1);
+                treatmentPlan.setNumSupportMeeting(1);
+                treatmentPlan.setNumLessons(1);
+                treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+                treatmentPlan.setNumOutcomeMeasures(1);
+                treatmentPlan.setNumTimeTracking(1);
+                treatmentPlan.setNumReadingResponse(1);
+                treatmentPlan.setNumMedManagement(0);
+                treatmentPlan.setMedManagementMontly();
+                treatmentPlan.setOutcomeMeasureWeekly();
+            } else if (severityLevel.equals("MODERATE")) { //Moderate Abstinence
+                treatmentPlan.setNumCounseling(3);
+                treatmentPlan.setNumSupportMeeting(3);
+                treatmentPlan.setNumLessons(2);
+                treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+                treatmentPlan.setNumOutcomeMeasures(3);
+                treatmentPlan.setNumTimeTracking(2);
+                treatmentPlan.setNumReadingResponse(2);
+                treatmentPlan.setNumMedManagement(0);
+                treatmentPlan.setMedManagementMontly();
+                treatmentPlan.setOutcomeMeasureDaily();
             } else { //Severe Abstinence
-                treatmentPlan.getValue().setNumCounseling(5);
-                treatmentPlan.getValue().setNumSupportMeeting(5);
-                treatmentPlan.getValue().setNumLessons(3);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(1);
-                treatmentPlan.getValue().setNumOutcomeMeasures(5);
-                treatmentPlan.getValue().setNumTimeTracking(5);
-                treatmentPlan.getValue().setNumReadingResponse(3);
-                treatmentPlan.getValue().setNumMedManagement(0);
-                treatmentPlan.getValue().setMedManagementWeekly();
-                treatmentPlan.getValue().setOutcomeMeasureDaily();
+                treatmentPlan.setNumCounseling(5);
+                treatmentPlan.setNumSupportMeeting(5);
+                treatmentPlan.setNumLessons(3);
+                treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+                treatmentPlan.setNumOutcomeMeasures(5);
+                treatmentPlan.setNumTimeTracking(5);
+                treatmentPlan.setNumReadingResponse(3);
+                treatmentPlan.setNumMedManagement(0);
+                treatmentPlan.setMedManagementWeekly();
+                treatmentPlan.setOutcomeMeasureDaily();
             }
-        } else if (db.MedicationChoiceDao.getMedication().getValue().equals("buprenorphine")) {
-            //Less than mild severity
-            if (severityScore < 2) {
-                treatmentPlan.getValue().setNumCounseling(0);
-                treatmentPlan.getValue().setNumSupportMeeting(0);
-                treatmentPlan.getValue().setNumLessons(0);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(0);
-                treatmentPlan.getValue().setNumOutcomeMeasures(0);
-                treatmentPlan.getValue().setNumTimeTracking(0);
-                treatmentPlan.getValue().setNumReadingResponse(0);
-                treatmentPlan.getValue().setNumMedManagement(0);
-                treatmentPlan.getValue().setMedManagementMontly();
-                treatmentPlan.getValue().setOutcomeMeasureWeekly();
-            } else if (severityScore < 4) { //Mild Buprenorphine
-                treatmentPlan.getValue().setNumCounseling(1);
-                treatmentPlan.getValue().setNumSupportMeeting(1);
-                treatmentPlan.getValue().setNumLessons(1);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(1);
-                treatmentPlan.getValue().setNumOutcomeMeasures(1);
-                treatmentPlan.getValue().setNumTimeTracking(1);
-                treatmentPlan.getValue().setNumReadingResponse(1);
-                treatmentPlan.getValue().setNumMedManagement(1);
-                treatmentPlan.getValue().setMedManagementMontly();
-                treatmentPlan.getValue().setOutcomeMeasureWeekly();
-            } else if (severityScore < 6) { //Moderate Buprenorphine
-                treatmentPlan.getValue().setNumCounseling(3);
-                treatmentPlan.getValue().setNumSupportMeeting(3);
-                treatmentPlan.getValue().setNumLessons(2);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(1);
-                treatmentPlan.getValue().setNumOutcomeMeasures(3);
-                treatmentPlan.getValue().setNumTimeTracking(2);
-                treatmentPlan.getValue().setNumReadingResponse(2);
-                treatmentPlan.getValue().setNumMedManagement(2);
-                treatmentPlan.getValue().setMedManagementMontly();
-                treatmentPlan.getValue().setOutcomeMeasureDaily();
+        } else if (db.medicationChoiceDao().getMedication().getValue().equals("buprenorphine")) {
+            if (severityLevel.equals("MILD")) { //Mild Buprenorphine
+                treatmentPlan.setNumCounseling(1);
+                treatmentPlan.setNumSupportMeeting(1);
+                treatmentPlan.setNumLessons(1);
+                treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+                treatmentPlan.setNumOutcomeMeasures(1);
+                treatmentPlan.setNumTimeTracking(1);
+                treatmentPlan.setNumReadingResponse(1);
+                treatmentPlan.setNumMedManagement(1);
+                treatmentPlan.setMedManagementMontly();
+                treatmentPlan.setOutcomeMeasureWeekly();
+            } else if (severityLevel.equals("MODERATE")) { //Moderate Buprenorphine
+                treatmentPlan.setNumCounseling(3);
+                treatmentPlan.setNumSupportMeeting(3);
+                treatmentPlan.setNumLessons(2);
+                treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+                treatmentPlan.setNumOutcomeMeasures(3);
+                treatmentPlan.setNumTimeTracking(2);
+                treatmentPlan.setNumReadingResponse(2);
+                treatmentPlan.setNumMedManagement(2);
+                treatmentPlan.setMedManagementMontly();
+                treatmentPlan.setOutcomeMeasureDaily();
             } else { //Severe Buprenorphine
-                treatmentPlan.getValue().setNumCounseling(5);
-                treatmentPlan.getValue().setNumSupportMeeting(5);
-                treatmentPlan.getValue().setNumLessons(3);
-                treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(1);
-                treatmentPlan.getValue().setNumOutcomeMeasures(5);
-                treatmentPlan.getValue().setNumTimeTracking(5);
-                treatmentPlan.getValue().setNumReadingResponse(3);
-                treatmentPlan.getValue().setNumMedManagement(1);
-                treatmentPlan.getValue().setMedManagementWeekly();
-                treatmentPlan.getValue().setOutcomeMeasureDaily();
+                treatmentPlan.setNumCounseling(5);
+                treatmentPlan.setNumSupportMeeting(5);
+                treatmentPlan.setNumLessons(3);
+                treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+                treatmentPlan.setNumOutcomeMeasures(5);
+                treatmentPlan.setNumTimeTracking(5);
+                treatmentPlan.setNumReadingResponse(3);
+                treatmentPlan.setNumMedManagement(1);
+                treatmentPlan.setMedManagementWeekly();
+                treatmentPlan.setOutcomeMeasureDaily();
             }
         }
+        db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlan);
     }
+
+    /**
+     * The apps loaded Database.
+     */
+    private VolitionDatabase db;
+
 }

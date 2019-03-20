@@ -1,6 +1,10 @@
 package com.recoveryenhancementsolutions.volition;
 
-
+/**
+ * Temporary file taken from feature/VOL-50-View-Severity-Level
+ *
+ * Should be written over by feature/VOL-50-View-Security-Level
+ */
 
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
@@ -14,51 +18,14 @@ import java.util.List;
 public interface QuestionnaireDao {
 
   @Insert(onConflict = REPLACE)
-  void insertQuestionnaire(Questionnaire questionnaire);
-  @Query("DELETE FROM Questionnaire")
+  void insertQuestionnaire(QuestionnaireEntity questionnaire);
+  @Query("DELETE FROM QuestionnaireEntity")
   void deleteAll();
 
-  @Query("SELECT * FROM Questionnaire")
-  LiveData<List<Questionnaire>> findQuestionnaire();
+  @Query("SELECT * FROM QuestionnaireEntity")
+  LiveData<List<QuestionnaireEntity>> findQuestionnaire();
 
-  @Query("SELECT severityLevel FROM Questionnaire")
+  @Query("SELECT severityLevel FROM QuestionnaireEntity")
   String findSeverityLevel();
-
-  @Query("SELECT severityLevel FROM Questionnaire")
-  LiveData<String> findSeverityLevelString();
-
-  @Query("SELECT q1 FROM Questionnaire")
-  LiveData<Integer> findQ1();
-
-  @Query("SELECT q2 FROM Questionnaire")
-  LiveData<Integer> findQ2();
-
-  @Query("SELECT q3 FROM Questionnaire")
-  LiveData<Integer> findQ3();
-
-  @Query("SELECT q4 FROM Questionnaire")
-  LiveData<Integer> findQ4();
-
-  @Query("SELECT q5 FROM Questionnaire")
-  LiveData<Integer> findQ5();
-
-  @Query("SELECT q6 FROM Questionnaire")
-  LiveData<Integer> findQ6();
-
-  @Query("SELECT q7 FROM Questionnaire")
-  LiveData<Integer> findQ7();
-
-  @Query("SELECT q8 FROM Questionnaire")
-  LiveData<Integer> findQ8();
-
-  @Query("SELECT q9 FROM Questionnaire")
-  LiveData<Integer> findQ9();
-
-  @Query("SELECT q10 FROM Questionnaire")
-  LiveData<Integer> findQ10();
-
-  @Query("SELECT q11 FROM Questionnaire")
-  LiveData<Integer> findQ11();
-
 
 }
