@@ -27,11 +27,11 @@
             </intent-filter>
         </activity>
         <activity
+          android:name=".ViewSeverityLevelActivity"
           android:exported="true"
-          android:label="@string/app_name"
-          android:name=".View_Severity_Level.ViewSeverityLevelActivity">
+          android:label="@string/app_name">
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
