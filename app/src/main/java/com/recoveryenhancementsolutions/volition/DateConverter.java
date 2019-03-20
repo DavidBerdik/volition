@@ -16,6 +16,9 @@ public class DateConverter {
    */
   @TypeConverter
   public static Date toDate(Long value) {
+    if (value == null) {
+      return null;
+    }
     return new Date(value);
   }
 
@@ -27,6 +30,10 @@ public class DateConverter {
    */
   @TypeConverter
   public static Long toLong(Date value) {
+    if (value == null) {
+      return null;
+    }
+
     return value.getTime();
   }
 
