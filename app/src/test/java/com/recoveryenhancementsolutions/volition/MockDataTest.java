@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class MockDataTest {
    */
   @Test
   public void getStringArray() {
-    assertEquals(3,MOCK_DATA.getStringArray().length);
+    assertEquals(3, MOCK_DATA.getStringArray().length);
   }
 
   /**
@@ -33,7 +34,7 @@ public class MockDataTest {
    */
   @Test
   public void getStringArrayList() {
-    assertEquals(1,MOCK_DATA.getStringArrayList().size());
+    assertEquals(1, MOCK_DATA.getStringArrayList().size());
   }
 
   /**
@@ -42,10 +43,10 @@ public class MockDataTest {
   @Test
   public void getDateAsString() {
     final Date date = new Date();
-    final String DATE_FORMAT_STRING = "yyyy.MM.dd";
+    final String DATE_FORMAT_STRING = "yyyy-MM-dd";
     final SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT_STRING, Locale.US);
     final String formattedDate = format.format(date);
-    assertEquals(formattedDate,MOCK_DATA.getDateAsString());
+    assertEquals(formattedDate, MOCK_DATA.getDateAsString());
   }
 
   /**

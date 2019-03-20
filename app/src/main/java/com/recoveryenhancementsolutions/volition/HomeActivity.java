@@ -15,19 +15,7 @@ import android.widget.TextView;
  */
 public class HomeActivity extends AppCompatActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_home);
-
-    buttonTestItem = findViewById(R.id.buttonTestItem);
-    daysCleanMessage = findViewById(R.id.clean);
-
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setSelectedItemId(R.id.menubar_home);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
-  }
-
+  private TextView buttonTestItem;
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -45,7 +33,18 @@ public class HomeActivity extends AppCompatActivity {
       return false;
     }
   };
-
-  private TextView buttonTestItem;
   private TextView daysCleanMessage;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_home);
+
+    buttonTestItem = findViewById(R.id.buttonTestItem);
+    daysCleanMessage = findViewById(R.id.clean);
+
+    final BottomNavigationView navigation = findViewById(R.id.menubar);
+    navigation.setSelectedItemId(R.id.menubar_home);
+    navigation.setOnNavigationItemSelectedListener(navigationListener);
+  }
 }

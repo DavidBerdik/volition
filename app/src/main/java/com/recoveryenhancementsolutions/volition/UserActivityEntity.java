@@ -35,27 +35,6 @@ public class UserActivityEntity {
   private String desc;
 
   /**
-   * Sets the activity's ID. Since the activity ID is an auto-increment value set by the database,
-   * use of this setter is discouraged since the value set will be changed.
-   *
-   * @param id The ID of the activity.
-   */
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  /**
-   * Sets the activity's date.
-   *
-   * @param date Date object containing the activity's date.
-   */
-  public void setDate(Date date) {
-    final Calendar cal = Calendar.getInstance();
-    cal.setTime(date);
-    setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
-  }
-
-  /**
    * Sets the activity's date.
    *
    * @param year Activity's year
@@ -72,21 +51,22 @@ public class UserActivityEntity {
   }
 
   /**
-   * Sets the activity's description.
-   *
-   * @param desc Activity's description
-   */
-  public void setDesc(String desc) {
-    this.desc = desc;
-  }
-
-  /**
    * Returns the activity's ID.
    *
    * @return The activity's ID
    */
   public int getId() {
     return id;
+  }
+
+  /**
+   * Sets the activity's ID. Since the activity ID is an auto-increment value set by the database,
+   * use of this setter is discouraged since the value set will be changed.
+   *
+   * @param id The ID of the activity.
+   */
+  public void setId(int id) {
+    this.id = id;
   }
 
   /**
@@ -99,11 +79,31 @@ public class UserActivityEntity {
   }
 
   /**
+   * Sets the activity's date.
+   *
+   * @param date Date object containing the activity's date.
+   */
+  public void setDate(Date date) {
+    final Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
    * Returns the activity's description.
    *
    * @return The activity's description
    */
   public String getDesc() {
     return desc;
+  }
+
+  /**
+   * Sets the activity's description.
+   *
+   * @param desc Activity's description
+   */
+  public void setDesc(String desc) {
+    this.desc = desc;
   }
 }

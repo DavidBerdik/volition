@@ -15,6 +15,9 @@ import java.util.Locale;
  */
 public class UserActivityViewModel extends AndroidViewModel {
 
+  private static final String TAG = "UserActivityViewModel";
+  private VolitionDatabase db;
+
   /**
    * Constructor for the "User Activity History" ViewModel.
    *
@@ -122,7 +125,4 @@ public class UserActivityViewModel extends AndroidViewModel {
   public LiveData<List<UserActivityEntity>> getActivitiesByDate(final Date date) {
     return db.userActivitiesDao().getActivitiesByDate(date);
   }
-
-  private VolitionDatabase db;
-  private static final String TAG = "UserActivityViewModel";
 }

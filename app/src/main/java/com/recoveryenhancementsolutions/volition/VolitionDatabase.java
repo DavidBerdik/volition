@@ -44,40 +44,12 @@ import android.support.annotation.NonNull;
         UserActivityEntity.class
     },
     version = 1)
-    @TypeConverters(DateConverter.class)
+@TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
-  // TODO: Place DAO instantiation method calls here, as in the following commented-out example
-  // public abstract WordDao wordDao();
-  public abstract UserActivitiesDao userActivitiesDao();
-
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
-
-  /**
-   * Factory method implementing Singleton design pattern for VolitionDatabase class.
-   *
-   * @param context Object providing access to application context.
-   * @return Instance of VolitionDatabase (same instance returned on every call).
-   */
-  static VolitionDatabase getDatabase(final Context context) {
-    if (INSTANCE == null) {
-      synchronized (VolitionDatabase.class) {
-        if (INSTANCE == null) {
-          INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-              VolitionDatabase.class, "volition_database")
-              // Wipes and rebuilds instead of migrating if no Migration object.
-              // Migration is not part of this codelab.
-              .fallbackToDestructiveMigration()
-              .addCallback(sVolitionDatabaseCallback)
-              .build();
-        }
-      }
-    }
-    return INSTANCE;
-  }
-
   /**
    * Object providing methods that are called if an existing database is opened or a new database is
    * created.
@@ -108,6 +80,33 @@ public abstract class VolitionDatabase extends RoomDatabase {
       new PopulateDbAsync(INSTANCE).execute();
     }
   };
+
+  /**
+   * Factory method implementing Singleton design pattern for VolitionDatabase class.
+   *
+   * @param context Object providing access to application context.
+   * @return Instance of VolitionDatabase (same instance returned on every call).
+   */
+  static VolitionDatabase getDatabase(final Context context) {
+    if (INSTANCE == null) {
+      synchronized (VolitionDatabase.class) {
+        if (INSTANCE == null) {
+          INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+              VolitionDatabase.class, "volition_database")
+              // Wipes and rebuilds instead of migrating if no Migration object.
+              // Migration is not part of this codelab.
+              .fallbackToDestructiveMigration()
+              .addCallback(sVolitionDatabaseCallback)
+              .build();
+        }
+      }
+    }
+    return INSTANCE;
+  }
+
+  // TODO: Place DAO instantiation method calls here, as in the following commented-out example
+  // public abstract WordDao wordDao();
+  public abstract UserActivitiesDao userActivitiesDao();
 
   /**
    * Skeleton code that does nothing but could be filled in to clear the database and populate it

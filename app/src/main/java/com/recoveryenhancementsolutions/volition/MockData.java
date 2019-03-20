@@ -93,7 +93,7 @@ public class MockData {
   public String getDateAsString() {
 
     final Date date = new Date();
-    final String DATE_FORMAT_STRING = "yyyy.MM.dd";
+    final String DATE_FORMAT_STRING = "yyyy-MM-dd";
     final SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT_STRING, Locale.US);
     final String formattedDate = format.format(date);
     return formattedDate;
