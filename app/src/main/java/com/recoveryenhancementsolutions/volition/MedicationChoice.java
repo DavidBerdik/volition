@@ -33,6 +33,7 @@ public class MedicationChoice extends AppCompatActivity {
       @Override
         public void onClick(View v) {
         startActivity(new Intent(MedicationChoice.this, TreatmentPlanActivity.class));
+
         Toast.makeText(MedicationChoice.this,"DataSaved",Toast.LENGTH_LONG).show();
       }
     });
