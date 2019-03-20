@@ -6,7 +6,6 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.After;
@@ -46,7 +45,7 @@ public class UserActivitiesDaoTest {
    * Closes the temporary test database.
    */
   @After
-  public void closeDb() throws IOException {
+  public void closeDb() {
     db.close();
   }
 

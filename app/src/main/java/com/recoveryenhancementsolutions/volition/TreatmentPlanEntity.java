@@ -24,9 +24,9 @@ public class TreatmentPlanEntity {
   public int getNumCounseling(){return numCounseling;}
 
   /**
-   * Returns the number of times the user should take their medication per week.
+   * Returns the number of times the user should do a medManagement per month.
    *
-   * @return The number of times the user should take their medication per week.
+   * @return The number of times the user should do a medManagement per month.
    */
   public int getNumMedManagement(){return numMedManagement;}
 
@@ -90,7 +90,7 @@ public class TreatmentPlanEntity {
   /**
    * Sets the number of times the user should take medications per week.
    *
-   * @param numMedManagement The number of times the user should take medications per week.
+   * @param numMedManagement The number of times the user should do a medManagement per month.
    */
   public void setNumMedManagement(int numMedManagement){this.numMedManagement = numMedManagement;}
 
@@ -158,7 +158,7 @@ public class TreatmentPlanEntity {
   private int numCounseling;
 
   /**
-   * Stores the number of times the user should take their medication per week.
+   * Stores the number of times the user should do a medManagement per month.
    */
   @NonNull
   private int numMedManagement;
