@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QuestionaireActivity"
+            android:name=".QuestionnaireActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
