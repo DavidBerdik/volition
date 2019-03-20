@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
-import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
+
+
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 import android.arch.lifecycle.LiveData;
@@ -14,6 +15,8 @@ public interface QuestionnaireDao {
 
   @Insert(onConflict = REPLACE)
   void insertQuestionnaire(Questionnaire questionnaire);
+  @Query("DELETE FROM Questionnaire")
+  void deleteAll();
 
   @Query("SELECT * FROM Questionnaire")
   LiveData<List<Questionnaire>> findQuestionnaire();
@@ -25,37 +28,37 @@ public interface QuestionnaireDao {
   LiveData<String> findSeverityLevelString();
 
   @Query("SELECT q1 FROM Questionnaire")
-  LiveData<Boolean> findQ1();
+  LiveData<Integer> findQ1();
 
   @Query("SELECT q2 FROM Questionnaire")
-  LiveData<Boolean> findQ2();
+  LiveData<Integer> findQ2();
 
   @Query("SELECT q3 FROM Questionnaire")
-  LiveData<Boolean> findQ3();
+  LiveData<Integer> findQ3();
 
   @Query("SELECT q4 FROM Questionnaire")
-  LiveData<Boolean> findQ4();
+  LiveData<Integer> findQ4();
 
   @Query("SELECT q5 FROM Questionnaire")
-  LiveData<Boolean> findQ5();
+  LiveData<Integer> findQ5();
 
   @Query("SELECT q6 FROM Questionnaire")
-  LiveData<Boolean> findQ6();
+  LiveData<Integer> findQ6();
 
   @Query("SELECT q7 FROM Questionnaire")
-  LiveData<Boolean> findQ7();
+  LiveData<Integer> findQ7();
 
   @Query("SELECT q8 FROM Questionnaire")
-  LiveData<Boolean> findQ8();
+  LiveData<Integer> findQ8();
 
   @Query("SELECT q9 FROM Questionnaire")
-  LiveData<Boolean> findQ9();
+  LiveData<Integer> findQ9();
 
   @Query("SELECT q10 FROM Questionnaire")
-  LiveData<Boolean> findQ10();
+  LiveData<Integer> findQ10();
 
   @Query("SELECT q11 FROM Questionnaire")
-  LiveData<Boolean> findQ11();
+  LiveData<Integer> findQ11();
 
 
 }
