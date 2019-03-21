@@ -37,7 +37,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
 
   private TextView mTextMessage;
 
-  private UserActivityHistoryViewModel actViewModel;
+  private UserActivityViewModel actViewModel;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
     @Override
@@ -78,41 +78,41 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     // Load the views of of the currently displayed dates.
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.labelToday),
-        (TextView) findViewById(R.id.detailsToday)));
+        (TextView) findViewById(R.id.label_today),
+        (TextView) findViewById(R.id.details_today)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.labelYesterday),
-        (TextView) findViewById(R.id.detailsYesterday)));
+        (TextView) findViewById(R.id.label_yesterday),
+        (TextView) findViewById(R.id.details_yesterday)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label2DaysAgo),
-        (TextView) findViewById(R.id.details2DaysAgo)));
+        (TextView) findViewById(R.id.label_2_days),
+        (TextView) findViewById(R.id.details_2_days)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label3DaysAgo),
-        (TextView) findViewById(R.id.details3DaysAgo)));
+        (TextView) findViewById(R.id.label_3_days),
+        (TextView) findViewById(R.id.details_3_days)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label4DaysAgo),
-        (TextView) findViewById(R.id.details4DaysAgo)));
+        (TextView) findViewById(R.id.label_4_days),
+        (TextView) findViewById(R.id.details_4_days)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label5DaysAgo),
-        (TextView) findViewById(R.id.details5DaysAgo)));
+        (TextView) findViewById(R.id.label_5_days),
+        (TextView) findViewById(R.id.details_5_days)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label6DaysAgo),
-        (TextView) findViewById(R.id.details6DaysAgo)));
+        (TextView) findViewById(R.id.label_6_days),
+        (TextView) findViewById(R.id.details_6_days)));
 
     //Initializing ViewModel
-    actViewModel = ViewModelProviders.of(this).get(UserActivityHistoryViewModel.class);
+    actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
     subscribeUIActivities();
   }
 

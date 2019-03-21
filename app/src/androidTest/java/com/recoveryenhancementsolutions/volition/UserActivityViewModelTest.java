@@ -8,6 +8,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import org.junit.After;
 import org.junit.Before;
@@ -19,15 +20,11 @@ import org.junit.runner.RunWith;
  * Unit test for the "User Activity History" ViewModel.
  */
 @RunWith(AndroidJUnit4.class)
-public class UserActivityHistoryViewModelTest {
+public class UserActivityViewModelTest {
 
   @Rule
   public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
-
-  private UserActivityHistoryViewModel viewModel;
-  private LiveDataTestUtility liveDataTest;
-  private VolitionDatabase db;
 
   /**
    * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
@@ -36,7 +33,7 @@ public class UserActivityHistoryViewModelTest {
   public void loadViewModel() {
     // Load the ViewModel
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
-        .get(UserActivityHistoryViewModel.class);
+        .get(UserActivityViewModel.class);
 
     // Set the ViewModel to use a test database instead of the app's real database.
     final Context context = InstrumentationRegistry.getTargetContext();
@@ -80,14 +77,14 @@ public class UserActivityHistoryViewModelTest {
     try {
       assertEquals(5, liveDataTest.getNestedLiveDataObj(viewModel.getAllActivities()).size());
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     // Query the database for the activity with ID 3 and check that it matches the original.
     try {
       assertEquals(3, liveDataTest.getNestedLiveDataObj(viewModel.getActivitiesByID(3)).getId());
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     // Query the database for the activity with date August 13, 2017 and check that it matches the
@@ -96,8 +93,13 @@ public class UserActivityHistoryViewModelTest {
       assertEquals(2,
           liveDataTest.getNestedLiveDataObj(viewModel.getActivitiesByDate(2017, 8, 13)).get(0)
               .getId());
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
     }
   }
+
+  private UserActivityViewModel viewModel;
+  private LiveDataTestUtility liveDataTest;
+  private VolitionDatabase db;
+  private static final String TAG = "UserActivityViewModelTest";
 }

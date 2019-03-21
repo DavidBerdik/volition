@@ -1,168 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+  <ScrollView
+    android:id="@+id/ScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:layout_editor_absoluteX="46dp"
+    tools:layout_editor_absoluteY="0dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/labelToday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Today"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/todayDetails" />
+    <RelativeLayout
+      android:id="@+id/relativeLayout1"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_gravity="center_horizontal"
+      android:orientation="vertical">
 
 
-            <TextView
-                android:id="@+id/detailsToday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="some stuff kjasdh sadkj hsdsakjdhasdjksh kasjdh sakjd hsdkjash dksajh ioug ih hui ouio uy huio huo puo puo uiouiop puio puio puio puio puio puio puiop uio uiopuio puiop uiop uio"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/labelToday"
-                app:layout_constraintTop_toTopOf="parent" />
+      <TextView
+        android:id="@+id/label_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/details_today"
+        android:layout_marginStart="12dp"
+        android:text="Today"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/details_today" />
 
-            <TextView
-                android:id="@+id/labelYesterday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="yesterday"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/DetailsYesterday" />
 
-            <TextView
-                android:id="@+id/detailsYesterday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="More Activities"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/todayDetails"
-                app:layout_constraintTop_toBottomOf="@+id/todayDetails" />
+      <TextView
+        android:id="@+id/label_yesterday"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignTop="@+id/details_yesterday"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:text="yesterday"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/label2DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="2 days ago"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/details2DaysAgo" />
 
-            <TextView
-                android:id="@+id/details2DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="Somestuff"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/DetailsYesterday"
-                app:layout_constraintTop_toBottomOf="@+id/DetailsYesterday" />
 
-            <TextView
-                android:id="@+id/label3DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="3 days ago"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/details3DaysAgo" />
+      <TextView
+        android:id="@+id/label_2_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/details_2_days"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:text="2 days ago"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/details3DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="abopenboae;lg jgj akltrejb "
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/details2DaysAgo"
-                app:layout_constraintTop_toBottomOf="@+id/details2DaysAgo" />
 
-            <TextView
-                android:id="@+id/label4DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="4 days ago"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/details4DaysAgo" />
 
-            <TextView
-                android:id="@+id/details4DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="ok it went away theank tgod"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/details3DaysAgo"
-                app:layout_constraintTop_toBottomOf="@+id/details3DaysAgo" />
+      <TextView
+        android:id="@+id/label_3_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/details_3_days"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:text="3 days ago"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/label5DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="5 days ago"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/details5DaysAgo" />
 
-            <TextView
-                android:id="@+id/details5DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="F"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/details4DaysAgo"
-                app:layout_constraintTop_toBottomOf="@+id/details4DaysAgo" />
 
-            <TextView
-                android:id="@+id/label6DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="6 days ago"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/details6DaysAgo" />
+      <TextView
+        android:id="@+id/label_4_days"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignTop="@+id/details_4_days"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:text="4 days ago"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/details6DaysAgo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="G"
-                app:layout_constraintStart_toStartOf="@+id/details5DaysAgo"
-                app:layout_constraintTop_toBottomOf="@+id/details5DaysAgo" />
 
-        </LinearLayout>
-    </ScrollView>
+      <TextView
+        android:id="@+id/label_5_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/details_5_days"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:text="5 days ago"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
+
+
+      <TextView
+        android:id="@+id/label_6_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/details_6_days"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:text="6 days ago"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="16sp" />
+
+      <TextView
+        android:id="@+id/details_today"
+        android:background="@drawable/back"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/label_6_days"
+        android:text="Today's activities here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+      <TextView
+        android:id="@+id/details_yesterday"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_today"
+        android:layout_alignStart="@+id/details_today"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="Yesterday's activities here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+      <TextView
+        android:id="@+id/details_2_days"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_yesterday"
+        android:layout_alignStart="@+id/details_today"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="2 day's ago activities show here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+      <TextView
+        android:id="@+id/details_3_days"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_2_days"
+        android:layout_alignStart="@+id/details_today"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="3 day's activities show here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+      <TextView
+        android:id="@+id/details_4_days"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_3_days"
+        android:layout_alignStart="@+id/details_today"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="4 day's ago activities show here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+      <TextView
+        android:id="@+id/details_5_days"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_4_days"
+        android:layout_alignStart="@+id/details_today"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="5 day's ago activities show here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+      <TextView
+        android:id="@+id/details_6_days"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_5_days"
+        android:layout_alignStart="@+id/details_today"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="80dp"
+        android:text="6 day's ago activities show here"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"/>
+
+
+    </RelativeLayout>
+  </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>
