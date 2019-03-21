@@ -22,21 +22,17 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    */
   private class DateView {
 
+    public Calendar day;
     public TextView title;
     public TextView content;
 
-    public DateView(TextView title, TextView content) {
+    public DateView(Calendar day, TextView title, TextView content) {
+      this.day = (Calendar)day.clone();
       this.title = title;
       this.content = content;
     }
   }
 
-  /**
-   * When the activity starts, the calendar displays only display the past dates and "today".  In
-   * the event that "today" changes while the activity is running, pushActivity would not know which
-   * View to update.
-   */
-  private Calendar today;
   private ArrayList<DateView> dateViews = new ArrayList<DateView>();
 
   private TextView mTextMessage;
@@ -73,7 +69,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     // Store today's date with a time of 0 for relative date calculation.
-    today = Calendar.getInstance();
+    Calendar today = Calendar.getInstance();
     today.set(Calendar.HOUR_OF_DAY, 0);
     today.set(Calendar.MINUTE, 0);
     today.set(Calendar.SECOND, 0);
@@ -81,24 +77,37 @@ public class ViewActivitiesActivity extends AppCompatActivity {
 
     // Load the views of of the currently displayed dates.
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.labelToday),
         (TextView) findViewById(R.id.detailsToday)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.labelYesterday),
         (TextView) findViewById(R.id.detailsYesterday)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.label2DaysAgo),
         (TextView) findViewById(R.id.details2DaysAgo)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.label3DaysAgo),
         (TextView) findViewById(R.id.details3DaysAgo)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.label4DaysAgo),
         (TextView) findViewById(R.id.details4DaysAgo)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.label5DaysAgo),
         (TextView) findViewById(R.id.details5DaysAgo)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
+        today,
         (TextView) findViewById(R.id.label6DaysAgo),
         (TextView) findViewById(R.id.details6DaysAgo)));
 
@@ -115,21 +124,8 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    * @param descs All the activities that were done on the given day.
    */
   private void updateDayActivities(final Calendar day, ArrayList<String> descs) {
-    Calendar dayNoTime; // Activity day with the time set to 0 for accurate millisecond difference.
-    int dist; // How many days ago these activities occured.
     StringBuilder activityBuffer = new StringBuilder();
-
-    dayNoTime = (Calendar) day.clone();
-    dayNoTime.set(Calendar.HOUR_OF_DAY, 0);
-    dayNoTime.set(Calendar.MINUTE, 0);
-    dayNoTime.set(Calendar.SECOND, 0);
-    dayNoTime.set(Calendar.MILLISECOND, 0);
-    dist = (int) TimeUnit.MILLISECONDS
-        .toDays(today.getTimeInMillis() - dayNoTime.getTimeInMillis());
-
-    if (dist < 0 || dist >= dateViews.size()) {
-      return;
-    }
+    Calendar dayNoTime; // Activity day with the time set to 0 for accurate millisecond difference.
 
     for (int i = 0; i < descs.size(); ++i) {
       activityBuffer.append(descs.get(i));
@@ -137,7 +133,18 @@ public class ViewActivitiesActivity extends AppCompatActivity {
         activityBuffer.append('\n');
       }
     }
-    dateViews.get(dist).content.setText(activityBuffer);
+
+    dayNoTime = (Calendar) day.clone();
+    dayNoTime.set(Calendar.HOUR_OF_DAY, 0);
+    dayNoTime.set(Calendar.MINUTE, 0);
+    dayNoTime.set(Calendar.SECOND, 0);
+    dayNoTime.set(Calendar.MILLISECOND, 0);
+
+    for (DateView d : dateViews) {
+      if (d.day.equals(dayNoTime)) {
+        d.content.setText(activityBuffer);
+      }
+    }
   }
 
   /**
