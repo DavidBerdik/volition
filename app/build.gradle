@@ -21,7 +21,6 @@ android {
         disable 'AllowBackup'
         disable 'RtlHardcoded'
 
-
     }
 }
 
