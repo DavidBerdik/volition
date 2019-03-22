@@ -25,7 +25,7 @@ public class LiveDataTestUtility {
     final Object[] objects = new Object[1];
     final CountDownLatch latch = new CountDownLatch(1);
 
-    final Observer observer = new Observer() {
+    final Observer<T> observer = new Observer<T>() {
       @Override
       public void onChanged(@Nullable final Object o) {
         objects[0] = o;
@@ -35,6 +35,7 @@ public class LiveDataTestUtility {
     };
     liveData.observeForever(observer);
     latch.await(2, TimeUnit.SECONDS);
+    //noinspection unchecked
     return (T) objects[0];
   }
 }

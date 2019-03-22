@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 public class UserActivityViewModelTest {
 
   @Rule
-  public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
+  public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
 
   /**
@@ -40,9 +40,6 @@ public class UserActivityViewModelTest {
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
     viewModel.setTestDatabase(db);
-
-    // Load the LiveData test utility.
-    liveDataTest = new LiveDataTestUtility();
   }
 
   /**
@@ -75,14 +72,16 @@ public class UserActivityViewModelTest {
 
     // Query the database for all entries and check that the returned list contains 5 entries.
     try {
-      assertEquals(5, liveDataTest.getNestedLiveDataObj(viewModel.getAllActivities()).size());
+      assertEquals(5,
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getAllActivities()).size());
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
     // Query the database for the activity with ID 3 and check that it matches the original.
     try {
-      assertEquals(3, liveDataTest.getNestedLiveDataObj(viewModel.getActivitiesByID(3)).getId());
+      assertEquals(3,
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getActivitiesByID(3)).getId());
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
@@ -91,15 +90,14 @@ public class UserActivityViewModelTest {
     // original.
     try {
       assertEquals(2,
-          liveDataTest.getNestedLiveDataObj(viewModel.getActivitiesByDate(2017, 8, 13)).get(0)
-              .getId());
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getActivitiesByDate(2017, 8, 13))
+              .get(0).getId());
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
   }
 
   private UserActivityViewModel viewModel;
-  private LiveDataTestUtility liveDataTest;
   private VolitionDatabase db;
   private static final String TAG = "UserActivityViewModelTest";
 }

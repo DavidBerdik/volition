@@ -2,7 +2,6 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,6 +31,10 @@ public class UserActivityEntity {
    * @param date Date object containing the activity's date.
    */
   public void setDate(final Date date) {
+    /*
+    Instead of directly setting the Date object passed in, time is stripped from the Date object
+    to ensure that times are not included in the database.
+    */
     final Calendar cal = Calendar.getInstance();
     cal.setTime(date);
     setDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
@@ -93,18 +96,15 @@ public class UserActivityEntity {
    * Stores the activity ID.
    */
   @PrimaryKey(autoGenerate = true)
-  @NonNull
   private int id;
 
   /**
    * Stores the date when the activity took place in the form of a timestamp.
    */
-  @NonNull
   private Date date;
 
   /**
    * Stores the activity description.
    */
-  @NonNull
   private String desc;
 }
