@@ -122,7 +122,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    * loaded.
    * @param descs All the activities that were done on the given day.
    */
-  private void updateDayActivities(final Calendar day, ArrayList<String> descs) {
+  protected void updateDayActivities(final Calendar day, ArrayList<String> descs) {
     StringBuilder activityBuffer = new StringBuilder();
     Calendar dayNoTime; // Activity day with the time set to 0 for accurate millisecond difference.
 
