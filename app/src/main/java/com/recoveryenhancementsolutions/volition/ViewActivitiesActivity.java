@@ -21,9 +21,9 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    */
   private class DateView {
 
-    public Calendar day;
-    public TextView title;
-    public TextView content;
+    final public Calendar day;
+    final public TextView title;
+    final public TextView content;
 
     public DateView(Calendar day, TextView title, TextView content) {
       this.day = (Calendar)day.clone();
@@ -31,30 +31,6 @@ public class ViewActivitiesActivity extends AppCompatActivity {
       this.content = content;
     }
   }
-
-  private ArrayList<DateView> dateViews = new ArrayList<DateView>();
-
-  private TextView mTextMessage;
-
-  private UserActivityViewModel actViewModel;
-
-  private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.navigation_home:
-          mTextMessage.setText(R.string.title_home);
-          return true;
-        case R.id.navigation_dashboard:
-          mTextMessage.setText(R.string.title_dashboard);
-          return true;
-        case R.id.navigation_notifications:
-          mTextMessage.setText(R.string.title_notifications);
-          return true;
-      }
-      return false;
-    }
-  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +91,24 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     subscribeUIActivities();
   }
 
+  private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+      switch (item.getItemId()) {
+        case R.id.navigation_home:
+          mTextMessage.setText(R.string.title_home);
+          return true;
+        case R.id.navigation_dashboard:
+          mTextMessage.setText(R.string.title_dashboard);
+          return true;
+        case R.id.navigation_notifications:
+          mTextMessage.setText(R.string.title_notifications);
+          return true;
+      }
+      return false;
+    }
+  };
+
   /**
    * Sets the activity text for the corresponding views on the calendar.
    *
@@ -122,7 +116,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    * loaded.
    * @param descs All the activities that were done on the given day.
    */
-  private void updateDayActivities(final Calendar day, ArrayList<String> descs) {
+  protected void updateDayActivities(final Calendar day, ArrayList<String> descs) {
     StringBuilder activityBuffer = new StringBuilder();
     Calendar dayNoTime; // Activity day with the time set to 0 for accurate millisecond difference.
 
@@ -179,4 +173,8 @@ public class ViewActivitiesActivity extends AppCompatActivity {
       day = cal.get(Calendar.DAY_OF_WEEK);
     }
   }
+
+  private ArrayList<DateView> dateViews = new ArrayList<DateView>();
+  private TextView mTextMessage;
+  private UserActivityViewModel actViewModel;
 }
