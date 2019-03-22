@@ -144,9 +144,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    * Retrieves activity descriptions for the current and previous dates
    */
   private void subscribeUIActivities() {
-    Date date = new Date();
     final Calendar cal = Calendar.getInstance();
-    cal.setTime(date);
 
     int year = cal.get(Calendar.YEAR);
     int month = cal.get(Calendar.MONTH);

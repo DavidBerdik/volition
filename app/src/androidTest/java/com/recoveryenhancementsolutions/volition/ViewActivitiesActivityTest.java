@@ -10,6 +10,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -31,6 +34,16 @@ public class ViewActivitiesActivityTest {
    */
   @Test
   public void testActivityUpdating() {
-    assertEquals(0, 1);
+    Calendar cal = new GregorianCalendar();
+    cal.set(2019, 03, 21);
+    ArrayList<String> sampleDescs = new ArrayList<String>();
+    for (int i = 0; i < 7; i++) {
+      sampleDescs.add("Sample " +i + " days ago 1");
+      sampleDescs.add("Sample " +i + " days ago 2");
+
+      activityTestRule.getActivity().updateDayActivities(cal, sampleDescs);
+      cal.add(Calendar.DAY_OF_MONTH, -1);
+      sampleDescs.clear();
+    }
   }
 }
