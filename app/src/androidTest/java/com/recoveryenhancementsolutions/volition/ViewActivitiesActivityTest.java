@@ -30,12 +30,11 @@ public class ViewActivitiesActivityTest {
       ViewActivitiesActivity.class);
 
   /**
-   * Checks that an activity description is always placed on the correct calendar day.
+   * Creates 7 dates (each with 2 activity descriptions) and adds them into the TextViews
    */
   @Test
   public void testActivityUpdating() {
-    Calendar cal = new GregorianCalendar();
-    cal.set(2019, 03, 21);
+    Calendar cal = Calendar.getInstance();
     ArrayList<String> sampleDescs = new ArrayList<String>();
     for (int i = 0; i < 7; i++) {
       sampleDescs.add("Sample " +i + " days ago 1");

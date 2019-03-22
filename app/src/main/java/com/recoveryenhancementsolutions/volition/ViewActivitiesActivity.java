@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class ViewActivitiesActivity extends AppCompatActivity {
@@ -21,12 +20,12 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    */
   private class DateView {
 
-    final public Calendar day;
-    final public TextView title;
-    final public TextView content;
+    public final Calendar day;
+    public final TextView title;
+    public final TextView content;
 
     public DateView(Calendar day, TextView title, TextView content) {
-      this.day = (Calendar)day.clone();
+      this.day = (Calendar) day.clone();
       this.title = title;
       this.content = content;
     }
@@ -44,7 +43,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     // Store today's date with a time of 0 for relative date calculation.
-    Calendar today = Calendar.getInstance();
+    final Calendar today = Calendar.getInstance();
     today.set(Calendar.HOUR_OF_DAY, 0);
     today.set(Calendar.MINUTE, 0);
     today.set(Calendar.SECOND, 0);
@@ -91,24 +90,6 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     subscribeUIActivities();
   }
 
-  private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.navigation_home:
-          mTextMessage.setText(R.string.title_home);
-          return true;
-        case R.id.navigation_dashboard:
-          mTextMessage.setText(R.string.title_dashboard);
-          return true;
-        case R.id.navigation_notifications:
-          mTextMessage.setText(R.string.title_notifications);
-          return true;
-      }
-      return false;
-    }
-  };
-
   /**
    * Sets the activity text for the corresponding views on the calendar.
    *
@@ -117,8 +98,9 @@ public class ViewActivitiesActivity extends AppCompatActivity {
    * @param descs All the activities that were done on the given day.
    */
   protected void updateDayActivities(final Calendar day, ArrayList<String> descs) {
-    StringBuilder activityBuffer = new StringBuilder();
-    Calendar dayNoTime; // Activity day with the time set to 0 for accurate millisecond difference.
+    final StringBuilder activityBuffer = new StringBuilder();
+    // Activity day with the time set to 0 for accurate millisecond difference.
+    final Calendar dayNoTime = (Calendar) day.clone();
 
     for (int i = 0; i < descs.size(); ++i) {
       activityBuffer.append(descs.get(i));
@@ -127,7 +109,6 @@ public class ViewActivitiesActivity extends AppCompatActivity {
       }
     }
 
-    dayNoTime = (Calendar) day.clone();
     dayNoTime.set(Calendar.HOUR_OF_DAY, 0);
     dayNoTime.set(Calendar.MINUTE, 0);
     dayNoTime.set(Calendar.SECOND, 0);
@@ -172,7 +153,26 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     }
   }
 
-  private ArrayList<DateView> dateViews = new ArrayList<DateView>();
-  private TextView mTextMessage;
+  private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+      switch (item.getItemId()) {
+        case R.id.navigation_home:
+          mTextMessage.setText(R.string.title_home);
+          return true;
+        case R.id.navigation_dashboard:
+          mTextMessage.setText(R.string.title_dashboard);
+          return true;
+        case R.id.navigation_notifications:
+          mTextMessage.setText(R.string.title_notifications);
+          return true;
+      }
+      return false;
+    }
+  };
+
+  private final ArrayList<DateView> dateViews = new ArrayList<DateView>();
   private UserActivityViewModel actViewModel;
+
+  private TextView mTextMessage;
 }
