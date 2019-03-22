@@ -1,6 +1,8 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
+import android.content.Context;
 
 /**
  * Initialize the database with temporary data for UI testing purposes
@@ -8,11 +10,16 @@ import android.app.Application;
 public class TempDatabaseInitializer {
 
   /**
-   * Constructor for the database initializer
+   * Constructor for the database initializer. Creates a temporary in memory database
+   *
    * @param application Application object for the UserActivityViewModel
+   * @param context Context object for the UserActivityViewModel
    */
-  public TempDatabaseInitializer(Application application) {
+  public TempDatabaseInitializer(Application application, Context context) {
     userActivityViewModel = new UserActivityViewModel(application);
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
+        .build();
+    userActivityViewModel.setTestDatabase(db);
   }
 
   /**
@@ -25,8 +32,8 @@ public class TempDatabaseInitializer {
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
     // Create 5 User Activity Descriptions
-    final String[] userActivityDesc = {"This is a", "test of the", "emergency", "broadcast",
-        "system."};
+    final String[] userActivityDesc = {"This is a", "test of the", "temporary", "database",
+        "initializer."};
 
     // Insert the entities.
     for (int x = 0; x < 5; x++) {
@@ -35,5 +42,12 @@ public class TempDatabaseInitializer {
               userActivityDesc[x]);
     }
   }
+
+  public VolitionDatabase getDb (){
+    return db;
+  }
+
+
   private UserActivityViewModel userActivityViewModel;
+  private VolitionDatabase db;
 }
