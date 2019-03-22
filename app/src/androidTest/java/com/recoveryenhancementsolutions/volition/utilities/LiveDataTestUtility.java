@@ -25,9 +25,9 @@ public class LiveDataTestUtility {
     final Object[] objects = new Object[1];
     final CountDownLatch latch = new CountDownLatch(1);
 
-    Observer observer = new Observer() {
+    final Observer observer = new Observer() {
       @Override
-      public void onChanged(@Nullable Object o) {
+      public void onChanged(@Nullable final Object o) {
         objects[0] = o;
         latch.countDown();
         liveData.removeObserver(this);

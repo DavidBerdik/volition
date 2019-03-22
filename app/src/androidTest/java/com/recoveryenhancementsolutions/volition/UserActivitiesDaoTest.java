@@ -23,11 +23,7 @@ import static org.junit.Assert.*;
 public class UserActivitiesDaoTest {
 
   @Rule
-  public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
-
-  private LiveDataTestUtility liveDataTest;
-  private UserActivitiesDao userActivitiesDao;
-  private VolitionDatabase db;
+  public final InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
   /**
    * Creates the temporary test database.
@@ -74,7 +70,7 @@ public class UserActivitiesDaoTest {
     }
 
     // Insert the entities.
-    for (UserActivityEntity entity : userActivityEntity) {
+    for (final UserActivityEntity entity : userActivityEntity) {
       userActivitiesDao.insertActivity(entity);
     }
 
@@ -91,8 +87,12 @@ public class UserActivitiesDaoTest {
 
     // Query the database for the activity with date August 13, 2017 and check that it matches the
     // original.
-    Date aug13 = new SimpleDateFormat("yyyy-MM-dd").parse("2017-8-13");
+    final Date aug13 = new SimpleDateFormat("yyyy-MM-dd").parse("2017-8-13");
     assertEquals(userActivityEntity[1].getDate(), liveDataTest.getNestedLiveDataObj(
         userActivitiesDao.getActivitiesByDate(aug13)).get(0).getDate());
   }
+
+  private LiveDataTestUtility liveDataTest;
+  private UserActivitiesDao userActivitiesDao;
+  private VolitionDatabase db;
 }
