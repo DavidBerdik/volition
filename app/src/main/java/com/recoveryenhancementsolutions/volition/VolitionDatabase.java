@@ -41,16 +41,19 @@ import android.support.annotation.NonNull;
 
 @Database(
     entities = {
-        UserActivityEntity.class
+        UserActivityEntity.class,
+        DemographicDataEntity.class
     },
     version = 1)
-    @TypeConverters(DateConverter.class)
+@TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
+
+  public abstract DemographicDataDao demographicDataDao();
 
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
@@ -118,11 +121,13 @@ public abstract class VolitionDatabase extends RoomDatabase {
     // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
     // private final WordDao mDao;
     private final UserActivitiesDao userActivitiesDao;
+    private final DemographicDataDao demographicDataDao;
 
     PopulateDbAsync(VolitionDatabase db) {
       // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
       // mDao = db.wordDao();
       userActivitiesDao = db.userActivitiesDao();
+      demographicDataDao = db.demographicDataDao();
     }
 
     @Override
