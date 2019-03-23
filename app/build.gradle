@@ -21,6 +21,7 @@ android {
         disable 'AllowBackup'
         disable 'RtlHardcoded'
 
+
     }
 }
 
@@ -50,5 +51,5 @@ dependencies {
     // Test helpers: Only needed for automated testing
     testImplementation "android.arch.core:core-testing:$lifecycle_version"
     testImplementation "android.arch.persistence.room:testing:$room_version"
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation "android.arch.core:core-testing:$lifecycle_version"
 }
