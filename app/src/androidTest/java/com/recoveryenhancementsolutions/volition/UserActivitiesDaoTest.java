@@ -23,18 +23,13 @@ import static org.junit.Assert.*;
 public class UserActivitiesDaoTest {
 
   @Rule
-  public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
-
-  private LiveDataTestUtility liveDataTest;
-  private UserActivitiesDao userActivitiesDao;
-  private VolitionDatabase db;
+  public final InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
   /**
    * Creates the temporary test database.
    */
   @Before
   public void createDb() {
-    liveDataTest = new LiveDataTestUtility();
     final Context context = InstrumentationRegistry.getTargetContext();
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
         .build();
@@ -74,7 +69,7 @@ public class UserActivitiesDaoTest {
     }
 
     // Insert the entities.
-    for (UserActivityEntity entity : userActivityEntity) {
+    for (final UserActivityEntity entity : userActivityEntity) {
       userActivitiesDao.insertActivity(entity);
     }
 
@@ -82,17 +77,21 @@ public class UserActivitiesDaoTest {
     assertNotNull(db);
 
     // Query the database for all entries and check that the returned list contains 5 entries.
-    assertEquals(5, liveDataTest.getNestedLiveDataObj(userActivitiesDao.getAllActivities())
-        .size());
+    assertEquals(5,
+        LiveDataTestUtility.getNestedLiveDataObj(userActivitiesDao.getAllActivities()).size());
 
     // Query the database for the activity with ID 3 and check that it matches the original.
-    assertEquals(3, liveDataTest.getNestedLiveDataObj(userActivitiesDao.getActivitiesByID(3))
-        .getId());
+    assertEquals(3,
+        LiveDataTestUtility.getNestedLiveDataObj(userActivitiesDao.getActivitiesByID(3)).getId());
 
     // Query the database for the activity with date August 13, 2017 and check that it matches the
     // original.
-    Date aug13 = new SimpleDateFormat("yyyy-MM-dd").parse("2017-8-13");
-    assertEquals(userActivityEntity[1].getDate(), liveDataTest.getNestedLiveDataObj(
-        userActivitiesDao.getActivitiesByDate(aug13)).get(0).getDate());
+    final Date aug13 = new SimpleDateFormat("yyyy-MM-dd").parse("2017-8-13");
+    assertEquals(userActivityEntity[1].getDate(),
+        LiveDataTestUtility.getNestedLiveDataObj(userActivitiesDao.getActivitiesByDate(aug13))
+            .get(0).getDate());
   }
+
+  private UserActivitiesDao userActivitiesDao;
+  private VolitionDatabase db;
 }
