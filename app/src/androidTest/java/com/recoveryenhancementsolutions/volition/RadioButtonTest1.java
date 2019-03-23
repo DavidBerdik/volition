@@ -26,14 +26,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest2 {
+public class RadioButtonTest1 {
 
   @Rule
-  public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(
-      MainActivity.class);
+  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      CreateProfileActivity.class);
 
   @Test
-  public void mainActivityTest2() {
+  public void radioButtonTest1() {
     ViewInteraction appCompatRadioButton = onView(
         allOf(withId(R.id.radioSupport), withText("Family or Support Person"),
             childAtPosition(

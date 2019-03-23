@@ -19,7 +19,7 @@ public interface UserActivitiesDao {
    * @param userActivityEntity A UserActivityEntity object containing the activity to be inserted.
    */
   @Insert
-  void insertActivity(final UserActivityEntity userActivityEntity);
+  void insertActivity(UserActivityEntity userActivityEntity);
 
   /**
    * Retrieves all user activities from the database.
@@ -36,7 +36,7 @@ public interface UserActivitiesDao {
    * @return A LiveData object containing the user activities with the given ID.
    */
   @Query("SELECT * FROM UserActivityEntity WHERE id = :id")
-  LiveData<UserActivityEntity> getActivitiesByID(final int id);
+  LiveData<UserActivityEntity> getActivitiesByID(int id);
 
   /**
    * Retrieves all user activities that took place on a given date from the database.
@@ -46,5 +46,5 @@ public interface UserActivitiesDao {
    * defined by the value of "date."
    */
   @Query("SELECT * FROM UserActivityEntity WHERE date = :date")
-  LiveData<List<UserActivityEntity>> getActivitiesByDate(final Date date);
+  LiveData<List<UserActivityEntity>> getActivitiesByDate(Date date);
 }

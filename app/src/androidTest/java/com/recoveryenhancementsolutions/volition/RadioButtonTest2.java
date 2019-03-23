@@ -26,14 +26,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class RadioButtonTest2 {
 
   @Rule
-  public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(
-      MainActivity.class);
+  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      CreateProfileActivity.class);
 
   @Test
-  public void mainActivityTest() {
+  public void radioButtonTest2() {
     ViewInteraction appCompatRadioButton = onView(
         allOf(withId(R.id.radioClient), withText("Person in Recovery/Seeking Recovery"),
             childAtPosition(
@@ -45,14 +45,25 @@ public class MainActivityTest {
     appCompatRadioButton.perform(scrollTo(), click());
 
     ViewInteraction appCompatRadioButton2 = onView(
-        allOf(withId(R.id.radioMeth), withText("Methamphetamine"),
+        allOf(withId(R.id.radioSedatives), withText("Barbiturates, Sedatives, or Hypnotics"),
             childAtPosition(
                 allOf(withId(R.id.drug_selection),
                     childAtPosition(
                         withId(R.id.RelativeLayout01),
                         6)),
-                5)));
+                8)));
     appCompatRadioButton2.perform(scrollTo(), click());
+
+    ViewInteraction radioButton = onView(
+        allOf(withId(R.id.radioInhalants),
+            childAtPosition(
+                allOf(withId(R.id.drug_selection),
+                    childAtPosition(
+                        withId(R.id.RelativeLayout01),
+                        6)),
+                9),
+            isDisplayed()));
+    radioButton.check(matches(isDisplayed()));
 
     ViewInteraction button = onView(
         allOf(withId(R.id.record_button),
@@ -64,6 +75,17 @@ public class MainActivityTest {
                 11),
             isDisplayed()));
     button.check(matches(isDisplayed()));
+
+    ViewInteraction button2 = onView(
+        allOf(withId(R.id.record_button),
+            childAtPosition(
+                allOf(withId(R.id.RelativeLayout01),
+                    childAtPosition(
+                        withId(R.id.LinearLayout01),
+                        0)),
+                11),
+            isDisplayed()));
+    button2.check(matches(isDisplayed()));
   }
 
   private static Matcher<View> childAtPosition(
