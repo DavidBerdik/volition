@@ -6,16 +6,16 @@ import android.arch.lifecycle.LiveData;
 import java.util.Date;
 
 /**
- * ViewModel for the "HomeActivity" class. Retrieves the number of days clean from the database.
+ * ViewModel for "DaysClean" in the database. Handles the number of days clean from the database.
  */
-public class HomeActivityViewModel extends AndroidViewModel {
+public class DaysCleanViewModel extends AndroidViewModel {
 
   /**
-   * Constructor for the "HomeActivity" class' ViewModel.
+   * Constructor for the ViewModel.
    *
    * @param application Application object for the ViewModel.
    */
-  public HomeActivityViewModel(final Application application) {
+  public DaysCleanViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
   }
