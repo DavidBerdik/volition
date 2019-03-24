@@ -43,6 +43,10 @@ public class TempDatabaseInitializer {
     }
   }
 
+  /**
+   * Get the VolitionDatabase
+   * @return VolitionDatabase
+   */
   public VolitionDatabase getDb (){
     return db;
   }
