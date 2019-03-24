@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition;
+package com.recoveryenhancementsolutions.volition.database;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

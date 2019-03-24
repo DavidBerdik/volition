@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition;
+package com.recoveryenhancementsolutions.volition.views;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import com.recoveryenhancementsolutions.volition.R;
 
 public class MainActivity extends AppCompatActivity {
 

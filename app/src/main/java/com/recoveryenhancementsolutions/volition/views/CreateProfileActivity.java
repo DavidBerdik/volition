@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition;
+package com.recoveryenhancementsolutions.volition.views;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -7,9 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import java.text.SimpleDateFormat;
+import com.recoveryenhancementsolutions.volition.R;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Class for running activity_create_profile.xml

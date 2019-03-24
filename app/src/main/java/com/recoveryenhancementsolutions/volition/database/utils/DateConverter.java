@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition;
+package com.recoveryenhancementsolutions.volition.database.utils;
 
 import android.arch.persistence.room.TypeConverter;
 import java.util.Date;

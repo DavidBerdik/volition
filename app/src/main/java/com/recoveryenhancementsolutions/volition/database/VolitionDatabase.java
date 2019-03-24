@@ -1,4 +1,4 @@
-package com.recoveryenhancementsolutions.volition;
+package com.recoveryenhancementsolutions.volition.database;
 /*
  * Copyright (C) 2017 Google Inc.
  *
@@ -30,6 +30,7 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import com.recoveryenhancementsolutions.volition.database.utils.DateConverter;
 
 /**
  * Class in which database entities and DAO instantiation methods are specified (see the TO-DO
