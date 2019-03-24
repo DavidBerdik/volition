@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -61,7 +62,7 @@ public class UserActivityEntity {
    *
    * @param desc Activity's description
    */
-  public void setDesc(final String desc) {
+  public void setDesc(final @NonNull String desc) {
     this.desc = desc;
   }
 
@@ -79,6 +80,7 @@ public class UserActivityEntity {
    *
    * @return The activity's date
    */
+  @NonNull
   public Date getDate() {
     return date;
   }
@@ -88,6 +90,7 @@ public class UserActivityEntity {
    *
    * @return The activity's description
    */
+  @NonNull
   public String getDesc() {
     return desc;
   }
@@ -101,10 +104,12 @@ public class UserActivityEntity {
   /**
    * Stores the date when the activity took place in the form of a timestamp.
    */
+  @NonNull
   private Date date;
 
   /**
    * Stores the activity description.
    */
+  @NonNull
   private String desc;
 }
