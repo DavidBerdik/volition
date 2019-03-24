@@ -104,12 +104,14 @@ public class UserActivityEntity {
   /**
    * Stores the date when the activity took place in the form of a timestamp.
    */
+  @SuppressWarnings("NullableProblems")
   @NonNull
   private Date date;
 
   /**
    * Stores the activity description.
    */
+  @SuppressWarnings("NullableProblems")
   @NonNull
   private String desc;
 }
