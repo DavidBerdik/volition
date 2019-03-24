@@ -18,44 +18,36 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    Button abstainB = findViewById(R.id.abstain);
+    final Button abstainButton = findViewById(R.id.abstain);
+    final Button medicationButton = findViewById(R.id.medication);
 
-    Button medicationB = findViewById(R.id.medication);
-
-    //OnClick method for the bup button
-    //when the button is clicked, the user's choice
-    //of bup is sent to the database and stored,
-    //and then the intent takes the user to the next page (treatmentPlan).
-    abstainB.setOnClickListener(new OnClickListener() {
+    abstainButton.setOnClickListener(new OnClickListener() {
       @Override
-        public void onClick(View v, final VolitionDatabase voldat) {
+        public void onClick(View view) {
 
-        MedicationChoiceActivity med = new MedicationChoiceActivity();
-        med.medication = "abstain";
-        voldat.medicationChoiceDAO().insertMedication(med);
+        MedicationChoiceEntity med = new MedicationChoiceEntity();
+        med.medication = "Abstain";
+        db.medicationChoiceDAO().insertMedication(med);
 
-        startActivity(new Intent(MedicationChoiceActivity.this, TreatmentPlanActivity.class));
+        startActivity(new Intent(MedicationChoiceActivity.this, MainActivity.class));
 
-        Toast.makeText(MedicationChoiceActivity.this,MedicationChoiceDAO.getMedication(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(MedicationChoiceActivity.this,MedicationChoiceDAO.getMedication(),Toast.LENGTH_LONG).show();
       }
     });
 
-    //OnClick method for the bup button
-    //when the button is clicked, the user's choice
-    //of bup is sent to the database and stored,
-    //and then the intent takes the user to the next page (treatmentPlan).
-    medicationB.setOnClickListener(new OnClickListener() {
+    medicationButton.setOnClickListener(new OnClickListener() {
       @Override
-      public void onClick(View v, final VolitonDatabase voldat) {
-        MedicationChoiceActivity med = new MedicationChoiceActivity();
-        med.medication = "abstain";
-        voldat.medicationChoiceDAO().insertMedication(med);
+      public void onClick(View view) {
 
-        startActivity(new Intent(MedicationChoiceActivity.this, TreatmentPlanActivity.class));
+        MedicationChoiceEntity med = new MedicationChoiceEntity();
+        med.medication = "Buprenorphine";
+        db.medicationChoiceDAO().insertMedication(med);
 
-        Toast.makeText(MedicationChoiceActivity.this,"DataSaved",Toast.LENGTH_LONG).show();
+        startActivity(new Intent(MedicationChoiceActivity.this, MainActivity.class));
+
+        //Toast.makeText(MedicationChoiceActivity.this,MedicationChoiceDAO.getMedication(),Toast.LENGTH_LONG).show();
         }
     });
   }
-
+  private VolitionDatabase db = VolitionDatabase.getDatabase(MedicationChoiceActivity.this);
 }
