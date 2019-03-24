@@ -5,8 +5,9 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/RESlogoBackground"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
-  tools:context=".MedicationChoice"
+  tools:context=".MedicationChoiceActivity"
   tools:showIn="@layout/activity_medication_choice">
 
   <Button

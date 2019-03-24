@@ -20,7 +20,7 @@
     <activity
       android:exported="true"
       android:label="@string/title_activity_medication_choice"
-      android:name=".MedicationChoice"
+      android:name=".MedicationChoiceActivity"
       android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity

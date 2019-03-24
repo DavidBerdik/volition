@@ -41,7 +41,7 @@ import android.support.annotation.NonNull;
 @Database(
 
     entities = {
-      MedicationChoice.class,
+      MedicationChoiceEntity.class,
       UserActivityEntity.class
     },
     version = 1)
