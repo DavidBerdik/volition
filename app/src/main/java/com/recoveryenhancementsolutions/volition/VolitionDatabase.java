@@ -40,7 +40,7 @@ import android.support.annotation.NonNull;
 @Database(
 
     entities = {
-      MedicationChoice.class
+      MedicationChoiceEntity.class
     },
     version = 1)
   public abstract class VolitionDatabase extends RoomDatabase {
