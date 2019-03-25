@@ -14,7 +14,7 @@ import org.junit.Test;
 /**
  * Unit test for TempDatabaseInitiazlizer
  */
-public class TempDatabaseInitializerUserActivityTest {
+public class UserActivityMockDBTest {
 
 
   @Rule
@@ -30,7 +30,7 @@ public class TempDatabaseInitializerUserActivityTest {
 
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(UserActivityViewModel.class);
-    TempDatabaseInitializerUserActivity testDb = new TempDatabaseInitializerUserActivity(viewModel.getApplication(),
+    UserActivityMockDB testDb = new UserActivityMockDB(viewModel.getApplication(),
         context);
 
     //set the database in the userActivityViewModel class
@@ -65,6 +65,6 @@ public class TempDatabaseInitializerUserActivityTest {
   }
   private final Context context = InstrumentationRegistry.getTargetContext();
   private LiveDataTestUtility liveDataTest;
-  private static final String TAG = "TempDatabaseInitializerUserActivityTest";
+  private static final String TAG = "UserActivityMockDBTest";
   private UserActivityViewModel viewModel;
 }

@@ -7,7 +7,7 @@ import android.content.Context;
 /**
  * Initialize the database with temporary data for UI testing purposes
  */
-public class TempDatabaseInitializerUserActivity {
+public class UserActivityMockDB {
 
   /**
    * Constructor for the database initializer. Creates a temporary in memory database
@@ -15,7 +15,7 @@ public class TempDatabaseInitializerUserActivity {
    * @param application Application object for the UserActivityViewModel
    * @param context Context object for the UserActivityViewModel
    */
-  public TempDatabaseInitializerUserActivity(final Application application, final Context context) {
+  public UserActivityMockDB(final Application application, final Context context) {
     userActivityViewModel = new UserActivityViewModel(application);
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
         .build();
