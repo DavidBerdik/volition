@@ -25,6 +25,8 @@ public class CreateProfile extends AppCompatActivity {
   EditText editText, editText2, editText3,editText4;
   Button send;
   RadioGroup rg, rg2;
+  String CleanDateResult = "";
+  String BirthdayResult ="";
   RadioButton rb, rb2;
   int flag = 0; //flag1, flag2, flag3, flag4, flag5, flag6, flag7, flag8, flag9, flag10, flag11,flag12;
   private RadioButton radioSupport, radioClient, radioHeroin, radioOpiates, radioAlcohol, radioCocaine, radioMarijuana, radioMeth, radioBen, radioTranquilizers, radioSedatives, radioInhalants;
@@ -67,6 +69,32 @@ public class CreateProfile extends AppCompatActivity {
         calendar.set(Calendar.DAY_OF_MONTH, day);
       }
     };
+
+    final EditText dateOfBirth = (EditText) findViewById(R.id.date_of_birth);
+    dateOfBirth.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        DatePickerDialog pickDate = new DatePickerDialog(CreateProfile.this, date,
+                2000, calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        BirthdayResult = calendar.get(Calendar.MONTH) +"-" + calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.YEAR);
+        pickDate.show();
+      }
+
+    });
+
+    final EditText cleanDate = (EditText) findViewById(R.id.clean_date);
+    cleanDate.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        DatePickerDialog pickDate = new DatePickerDialog(CreateProfile.this, date,
+                2019, calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        CleanDateResult = calendar.get(Calendar.MONTH) +"-" + calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.YEAR);
+        pickDate.show();
+      }
+
+    });
 
     send.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -141,9 +169,9 @@ public class CreateProfile extends AppCompatActivity {
           whatdrug = editText3.getText().toString();
         }
 
-        String CleanDate = editText4.getText().toString();
+        String CleanDate2 = editText4.getText().toString();
 
-        if((checker.equals(name)) || (checker.equals(DOB)) || (checker.equals(Gender)) || (checker.equals(Subdisorder)) || (checker.equals(CleanDate)) || flag ==0) {
+        if((checker.equals(name)) || (checker.equals(DOB)) || (checker.equals(Gender)) || (checker.equals(Subdisorder)) || (checker.equals(CleanDate2)) || flag ==0) {
 
           Toast toast = Toast.makeText(getApplicationContext(),
                   "Please enter all fields",
@@ -155,12 +183,12 @@ public class CreateProfile extends AppCompatActivity {
           Intent intent = new Intent(CreateProfile.this, DisplayProfile.class);
           //more stuff here
           intent.putExtra("Name", name);
-          intent.putExtra("Date of Birth", DOB);
+          intent.putExtra("Date of Birth", CleanDateResult);
           intent.putExtra("Gender", Gender);
           intent.putExtra("Type of Person", whatareyou);
           intent.putExtra("Drug of Choice", whatdrug);
           intent.putExtra("Disorder", Subdisorder);
-          intent.putExtra("CleanDate", CleanDate);
+          intent.putExtra("CleanDate", CleanDateResult);
           startActivity(intent);
 
 
@@ -172,6 +200,8 @@ public class CreateProfile extends AppCompatActivity {
     });
 
     }
+
+
 
   }
 
