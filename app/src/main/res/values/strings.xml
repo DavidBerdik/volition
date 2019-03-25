@@ -57,4 +57,18 @@
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="activity_view_activities_label_today">Today</string>
+  <string name="activity_view_activities_label_yesterday">Yesterday</string>
+  <string name="activity_view_activities_label_2_days">2 days ago</string>
+  <string name="activity_view_activities_label_3_days">3 days ago</string>
+  <string name="activity_view_activities_label_4_days">4 days ago</string>
+  <string name="activity_view_activities_label_5_days">5 days ago</string>
+  <string name="activity_view_activities_label_6_days">6 days ago</string>
+  <string name="activity_view_activities_details_today">Activities from today show here</string>
+  <string name="activity_view_activities_details_yesterday">Activities from yesterday show here</string>
+  <string name="activity_view_activities_details_2_days">Activities from 2 days ago show here</string>
+  <string name="activity_view_activities_details_3_days">Activities from 3 days ago show here</string>
+  <string name="activity_view_activities_details_4_days">Activities from 4 days ago show here</string>
+  <string name="activity_view_activities_details_5_days">Activities from 5 days ago show here</string>
+  <string name="activity_view_activities_details_6_days">Activities from 6 days ago show here</string>
 </resources>

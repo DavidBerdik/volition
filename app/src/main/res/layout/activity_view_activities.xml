@@ -19,7 +19,7 @@
         <RelativeLayout
             android:id="@+id/relativeLayout1"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/details_today"
                 android:layout_marginStart="12dp"
-                android:text="Today"
+                android:text="@string/activity_view_activities_label_today"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
                 android:layout_alignTop="@+id/details_yesterday"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="0dp"
-                android:text="yesterday"
+                android:text="@string/activity_view_activities_label_yesterday"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp" />
 
@@ -57,7 +57,7 @@
                 android:layout_alignTop="@+id/details_2_days"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="0dp"
-                android:text="2 days ago"
+                android:text="@string/activity_view_activities_label_2_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp" />
 
@@ -70,7 +70,7 @@
                 android:layout_alignTop="@+id/details_3_days"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="0dp"
-                android:text="3 days ago"
+                android:text="@string/activity_view_activities_label_3_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp" />
 
@@ -83,7 +83,7 @@
                 android:layout_alignTop="@+id/details_4_days"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="0dp"
-                android:text="4 days ago"
+                android:text="@string/activity_view_activities_label_4_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp" />
 
@@ -95,7 +95,7 @@
                 android:layout_alignTop="@+id/details_5_days"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="0dp"
-                android:text="5 days ago"
+                android:text="@string/activity_view_activities_label_5_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp" />
 
@@ -107,7 +107,7 @@
                 android:layout_alignTop="@+id/details_6_days"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="0dp"
-                android:text="6 days ago"
+                android:text="@string/activity_view_activities_label_6_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp" />
 
@@ -118,7 +118,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_toEndOf="@+id/label_6_days"
-                android:text="Today's activities here"
+                android:text="@string/activity_view_activities_details_today"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
@@ -130,7 +130,7 @@
                 android:layout_alignStart="@+id/details_today"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="40dp"
-                android:text="Yesterday's activities here"
+                android:text="@string/activity_view_activities_details_yesterday"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
@@ -142,7 +142,7 @@
                 android:layout_alignStart="@+id/details_today"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="40dp"
-                android:text="2 day's ago activities show here"
+                android:text="@string/activity_view_activities_details_2_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
@@ -154,7 +154,7 @@
                 android:layout_alignStart="@+id/details_today"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="40dp"
-                android:text="3 day's activities show here"
+                android:text="@string/activity_view_activities_details_3_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
@@ -166,7 +166,7 @@
                 android:layout_alignStart="@+id/details_today"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="40dp"
-                android:text="4 day's ago activities show here"
+                android:text="@string/activity_view_activities_details_4_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
@@ -178,7 +178,7 @@
                 android:layout_alignStart="@+id/details_today"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="40dp"
-                android:text="5 day's ago activities show here"
+                android:text="@string/activity_view_activities_details_5_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
@@ -191,7 +191,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="80dp"
-                android:text="6 day's ago activities show here"
+                android:text="@string/activity_view_activities_details_6_days"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="14sp"/>
 
