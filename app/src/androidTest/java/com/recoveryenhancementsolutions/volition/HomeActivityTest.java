@@ -6,9 +6,17 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import java.util.Date;
+import java.util.Locale;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,37 +33,50 @@ public class HomeActivityTest {
       HomeActivity.class);
 
   /**
-   * Tests that each button is capable of responding to a single click on the home screen.
+   * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
    */
-  @Test
-  public void homeActivityTest_Single() {
-    onView(withId(R.id.menubar_home)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_plan)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
+  @Before
+  public void loadViewModel() {
+    viewModel = ViewModelProviders.of(activityTestRule.getActivity())
+        .get(DaysCleanViewModel.class);
+
+    // Set the ViewModel to use a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
+    viewModel.setTestDatabase(db);
   }
 
   /**
-   * Tests that each button can accept multiple inputs in a somewhat random order, multiple times.
+   * Closes the temporary test database.
    */
-  @Test
-  public void homeActivityTest_Multiple() {
-    onView(withId(R.id.menubar_plan)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_home)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_plan)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_home)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
+  @After
+  public void closeDb() {
+    db.close();
   }
 
+  /**
+   * Tests that the LiveData information is being pulled at least once.
+   */
+  @Test
+  public void homeActivityTest_Single() {
+    // Check to make sure we load the default state
+    onView(withId(R.id.clean)).check(
+        matches(withText(String.format(Locale.getDefault(), "%s", R.string.home_clean))));
+
+    DemographicDataEntity demographicDataEntity = new DemographicDataEntity();
+    demographicDataEntity.setPatientName("Example Name");
+    demographicDataEntity.setLastClean(new Date(new Date().getTime() - 8 * 24 * 60 * 60 * 1000));
+
+    // Sets a new demographic data object with a clean date of 8 days ago.
+    db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
+
+    // Check to make sure it works properly.
+    onView(withId(R.id.clean)).check(
+        matches(withText(String.format(Locale.getDefault(), "%s %d", R.string.home_clean, 8))));
+  }
+
+  private DaysCleanViewModel viewModel;
+  private VolitionDatabase db;
+  private static final String TAG = "HomeActivityTest";
 }
