@@ -55,8 +55,11 @@ public abstract class VolitionDatabase extends RoomDatabase {
     // TODO: Place DAO instantiation method calls here, as in the following commented-out example
     // public abstract WordDao wordDao();
     public abstract MedicationChoiceDAO medicationChoiceDao();
+
     public abstract QuestionnaireDao questionnaireDao();
+
     public abstract TreatmentPlanDao treatmentPlanDao();
+
     public abstract UserActivitiesDao userActivitiesDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
@@ -85,6 +88,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
     /**
      * Object providing methods that are called if an existing database is opened or a new database is
      * created.
@@ -117,19 +121,21 @@ public abstract class VolitionDatabase extends RoomDatabase {
     };
 
 
-  /**
-   * Skeleton code that does nothing but could be filled in to clear the database and populate it
-   * with test data in the background.
-   */
-  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+    /**
+     * Skeleton code that does nothing but could be filled in to clear the database and populate it
+     * with test data in the background.
+     */
+    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
         // private final WordDao mDao;
         private final UserActivitiesDao userActivitiesDao;
-    PopulateDbAsync(final VolitionDatabase db) {
-      // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
-      // mDao = db.wordDao();
-      userActivitiesDao = db.userActivitiesDao();
-    }
+
+        PopulateDbAsync(final VolitionDatabase db) {
+            // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
+            // mDao = db.wordDao();
+            userActivitiesDao = db.userActivitiesDao();
+        }
+
         @Override
         protected Void doInBackground(final Void... params) {
             // If you want to clear and initialize the database, place code here such as in the following commented-out example:
@@ -145,7 +151,9 @@ public abstract class VolitionDatabase extends RoomDatabase {
       */
             return null;
         }
-  // marking the instance as volatile to ensure atomic access to the variable
-  private static volatile VolitionDatabase INSTANCE;
 
+        // marking the instance as volatile to ensure atomic access to the variable
+        private static volatile VolitionDatabase INSTANCE;
+
+    }
 }
