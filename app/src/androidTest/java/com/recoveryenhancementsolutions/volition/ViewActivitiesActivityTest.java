@@ -18,8 +18,8 @@ import org.junit.runner.RunWith;
 public class ViewActivitiesActivityTest {
 
   @Rule
-  public ActivityTestRule<ViewActivitiesActivity> activityTestRule = new ActivityTestRule<>(
-      ViewActivitiesActivity.class);
+  public ActivityTestRule<PlanActivity> activityTestRule = new ActivityTestRule<>(
+      PlanActivity.class);
 
   /**
    * Creates 7 dates (each with 2 activity descriptions) and adds them into the TextViews

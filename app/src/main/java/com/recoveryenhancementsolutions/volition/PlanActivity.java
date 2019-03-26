@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ViewActivitiesActivity extends AppCompatActivity {
+public class PlanActivity extends AppCompatActivity {
 
   /**
    * Structure for storing a date's corresponding TextViews for the title and descriptions.
@@ -21,26 +21,39 @@ public class ViewActivitiesActivity extends AppCompatActivity {
   private class DateView {
 
     public final Calendar day;
-    public final TextView title;
-    public final TextView content;
+    public TextView title;
+    public TextView content;
+
+    private String desc;
 
     public DateView(Calendar day, TextView title, TextView content) {
       this.day = (Calendar) day.clone();
       this.title = title;
       this.content = content;
     }
+    public DateView(Calendar day) {
+      this.day = (Calendar) day.clone();
+      title = null;
+      content = null;
+    }
+
+    public void update(TextView title, TextView content, String desc) {
+      this.title = title;
+      this.content = content;
+      this.desc = desc;
+    }
   }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_view_activities);
+    setContentView(R.layout.activity_plan);
 
-    //Initializing TextViews
+    //Initializing Navigation Bar
     mTextMessage = (TextView) findViewById(R.id.message);
 
-    //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-    //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+    navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     // Store today's date with a time of 0 for relative date calculation.
     final Calendar today = Calendar.getInstance();
@@ -48,42 +61,35 @@ public class ViewActivitiesActivity extends AppCompatActivity {
     today.set(Calendar.MINUTE, 0);
     today.set(Calendar.SECOND, 0);
     today.set(Calendar.MILLISECOND, 0);
+    mostRecentDay = 0;
 
     // Load the views of of the currently displayed dates.
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label_today),
-        (TextView) findViewById(R.id.details_today)));
+        (TextView) findViewById(R.id.day_of_week_1),
+        (TextView) findViewById(R.id.textview_day_1)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label_yesterday),
-        (TextView) findViewById(R.id.details_yesterday)));
+        (TextView) findViewById(R.id.day_of_week_2),
+        (TextView) findViewById(R.id.textview_day_2)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label_2_days),
-        (TextView) findViewById(R.id.details_2_days)));
+        (TextView) findViewById(R.id.day_of_week_3),
+        (TextView) findViewById(R.id.textview_day_3)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.label_3_days),
-        (TextView) findViewById(R.id.details_3_days)));
-    today.add(Calendar.DAY_OF_MONTH, -1);
-    dateViews.add(new DateView(
-        today,
-        (TextView) findViewById(R.id.label_4_days),
-        (TextView) findViewById(R.id.details_4_days)));
-    today.add(Calendar.DAY_OF_MONTH, -1);
-    dateViews.add(new DateView(
-        today,
-        (TextView) findViewById(R.id.label_5_days),
-        (TextView) findViewById(R.id.details_5_days)));
-    today.add(Calendar.DAY_OF_MONTH, -1);
-    dateViews.add(new DateView(
-        today,
-        (TextView) findViewById(R.id.label_6_days),
-        (TextView) findViewById(R.id.details_6_days)));
+        (TextView) findViewById(R.id.day_of_week_4),
+        (TextView) findViewById(R.id.textview_day_4)));
+
+    //Three DateViews not being used when the Activity is first loaded
+    for (int i = 0; i < 3; i++) {
+      today.add(Calendar.DAY_OF_MONTH, -1);
+      dateViews.add(new DateView(
+          today));
+    }
 
     //Initializing ViewModel
     actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
@@ -172,6 +178,7 @@ public class ViewActivitiesActivity extends AppCompatActivity {
   };
 
   private final ArrayList<DateView> dateViews = new ArrayList<DateView>();
+  private int mostRecentDay; //Which index of dateViews is the most recent being shown on screen
   private UserActivityViewModel actViewModel;
 
   private TextView mTextMessage;
