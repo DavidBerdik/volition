@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_plan);
     viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
+    treatmentPlan = viewModel.getTreatmentPlan();
 
     counselingView = findViewById(R.id.counselingView);
     medManagementView = findViewById(R.id.medManagementView);
@@ -28,14 +30,14 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     timeTrackingView = findViewById(R.id.timeTrackingView);
     readingResponseView = findViewById(R.id.readingResponseView);
 
-    counselingView.setText(viewModel.treatmentPlan.getValue().getNumCounseling());
-    medManagementView.setText(viewModel.treatmentPlan.getValue().getNumMedManagement());
-    supportMeetingView.setText(viewModel.treatmentPlan.getValue().getNumSupportMeeting());
-    lessonView.setText(viewModel.treatmentPlan.getValue().getNumLessons());
-    treatmentEffectiveView.setText(viewModel.treatmentPlan.getValue().getNumTreatmentEffectivenessAssessment());
-    outcomeMeasureView.setText(viewModel.treatmentPlan.getValue().getNumOutcomeMeasures());
-    timeTrackingView.setText(viewModel.treatmentPlan.getValue().getNumTimeTracking());
-    readingResponseView.setText(viewModel.treatmentPlan.getValue().getNumReadingResponse());
+    counselingView.setText(treatmentPlan.getValue().getNumCounseling());
+    medManagementView.setText(treatmentPlan.getValue().getNumMedManagement());
+    supportMeetingView.setText(treatmentPlan.getValue().getNumSupportMeeting());
+    lessonView.setText(treatmentPlan.getValue().getNumLessons());
+    treatmentEffectiveView.setText(treatmentPlan.getValue().getNumTreatmentEffectivenessAssessment());
+    outcomeMeasureView.setText(treatmentPlan.getValue().getNumOutcomeMeasures());
+    timeTrackingView.setText(treatmentPlan.getValue().getNumTimeTracking());
+    readingResponseView.setText(treatmentPlan.getValue().getNumReadingResponse());
   }
 
   /**
@@ -51,7 +53,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddCounselButtonClicked(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumCounseling(num);
+    viewModel.treatmentPlan.setNumCounseling(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -66,7 +69,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumCounseling(num);
+    viewModel.treatmentPlan.setNumCounseling(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -75,7 +79,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddMedManagementButtonClicked(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumMedManagement(num);
+    viewModel.treatmentPlan.setNumMedManagement(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -90,7 +95,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumMedManagement(num);
+    viewModel.treatmentPlan.setNumMedManagement(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -99,7 +105,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddSupportGroupMeetingButtonClicked(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumSupportMeeting(num);
+    viewModel.treatmentPlan.setNumSupportMeeting(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -114,7 +121,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumSupportMeeting(num);
+    viewModel.treatmentPlan.setNumSupportMeeting(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -123,7 +131,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddOutcomeMeasureButtonClicked(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumOutcomeMeasures(num);
+    viewModel.treatmentPlan.setNumOutcomeMeasures(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -138,7 +147,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumOutcomeMeasures(num);
+    viewModel.treatmentPlan.setNumOutcomeMeasures(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -147,7 +157,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddLessonPlannerButtonClicked(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumLessons(num);
+    viewModel.treatmentPlan.setNumLessons(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -162,7 +173,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumLessons(num);
+    viewModel.treatmentPlan.setNumLessons(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -171,7 +183,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddTreatmentEffectivnessAssessmentButtonClicked(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(num);
+    viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -186,7 +199,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumTreatmentEffectivenessAssessment(num);
+    viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -195,7 +209,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddCleanTimeTrackingButton(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumTimeTracking(num);
+    viewModel.treatmentPlan.setNumTimeTracking(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -210,7 +225,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumTimeTracking(num);
+    viewModel.treatmentPlan.setNumTimeTracking(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -219,7 +235,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   private void onAddReadResponseButton(){
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
-    viewModel.treatmentPlan.getValue().setNumReadingResponse(num);
+    viewModel.treatmentPlan.setNumReadingResponse(num);
+    viewModel.updateDb();
   }
 
   /**
@@ -234,8 +251,14 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     else{
       num--;
     }
-    viewModel.treatmentPlan.getValue().setNumReadingResponse(num);
+    viewModel.treatmentPlan.setNumReadingResponse(num);
+    viewModel.updateDb();
   }
+
+  /**
+   * Treatment plan to display data from
+   */
+  private LiveData<TreatmentPlanEntity> treatmentPlan;
 
   /**
    * The view model used to access the database.
