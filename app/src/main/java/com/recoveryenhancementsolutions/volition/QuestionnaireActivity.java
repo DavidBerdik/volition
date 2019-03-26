@@ -1,15 +1,19 @@
 package com.recoveryenhancementsolutions.volition;
 
 
+import android.arch.lifecycle.Observer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+import java.util.List;
 
 public class QuestionnaireActivity extends AppCompatActivity {
+  private QuestionnaireActivityViewModel mViewModel;
 
   public static int answerCounter = 0;
   public static int yesAnswers = 0;
@@ -27,6 +31,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static Boolean qNineAnswer;
   public static Boolean qTenAnswer;
   public static Boolean qElevenAnswer;
+
+  final VolitionDatabase db;
 
   /**
    * The method onCreate will initialize the Activity with the view of
@@ -72,6 +78,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
 
+
+    private void insertQuestionOne() {
+      mViewModel.questionnaire.observe(this, new Observer<List<Questionnaire>>() {
+        @Override
+        public void onChanged(@Nullable List<Questionnaire> questionnaires) {
+          saveStatus(questionnaires); //Need to pass proper arguments
+        }
+      });
+    }
 
 
     YESbtn.setOnClickListener(new View.OnClickListener() {
