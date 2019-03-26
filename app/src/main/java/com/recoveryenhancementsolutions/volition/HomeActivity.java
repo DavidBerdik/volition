@@ -44,11 +44,10 @@ public class HomeActivity extends AppCompatActivity {
       // If this is the case, have an empty days clean String.
       try {
         final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
-        daysCleanMessage
-            .setText(String.format(Locale.getDefault(), "%s %d", R.string.home_clean, days));
+        daysCleanMessage.setText(R.string.home_clean);
+        daysCleanMessage.append(" " + days);
       } catch (NullPointerException e) {
-        daysCleanMessage
-            .setText(String.format(Locale.getDefault(), "%s", R.string.home_clean));
+        daysCleanMessage.setText(R.string.home_clean);
       }
     }
   };
