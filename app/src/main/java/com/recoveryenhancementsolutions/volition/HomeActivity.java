@@ -1,12 +1,16 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import java.util.Date;
 
 /**
  * The HomeActivity that contains functionality and interactions relevant to the activity_home
@@ -23,10 +27,21 @@ public class HomeActivity extends AppCompatActivity {
     buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
 
+    final DaysCleanViewModel daysCleanViewModel = ViewModelProviders.of(this).get(DaysCleanViewModel.class);
+    daysCleanViewModel.getLastCleanDate().observe(this, daysCleanObserver);
+
     final BottomNavigationView navigation = findViewById(R.id.menubar);
     navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
+
+  private Observer<Date> daysCleanObserver = new Observer<Date>() {
+    @Override
+    public void onChanged(@NonNull Date date) {
+      final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
+      daysCleanMessage.setText(R.string.home_clean + " " + days);
+    }
+  };
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override

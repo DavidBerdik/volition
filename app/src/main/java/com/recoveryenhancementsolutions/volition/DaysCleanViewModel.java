@@ -23,10 +23,10 @@ public class DaysCleanViewModel extends AndroidViewModel {
   /**
    * Retrieves the last date clean as stored in the database.
    *
-   * @return A LiveData object containing a String representing the last listed date of being clean.
+   * @return A LiveData object containing a Date representing the last listed date of being clean.
    */
-  public LiveData<String> getLastCleanDate() {
-    return db.demographicDataDAO().queryLastCleanDate();
+  public LiveData<Date> getLastCleanDate() {
+    return db.demographicDataDao().queryLastCleanDate();
   }
 
   private VolitionDatabase db;
