@@ -23,18 +23,21 @@ public class MedicationChoiceActivity extends AppCompatActivity {
 
     abstainButton.setOnClickListener(new OnClickListener() {
       @Override
-        public void onClick(View view) {
+      public void onClick(View view) {
 
         MedicationChoiceEntity med = new MedicationChoiceEntity();
         med.medication = "Abstain";
         db.medicationChoiceDAO().insertMedication(med);
 
-        startActivity(new Intent(MedicationChoiceActivity.this, MainActivity.class));
+        startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
 
         //Toast.makeText(MedicationChoiceActivity.this,MedicationChoiceDAO.getMedication(),Toast.LENGTH_LONG).show();
       }
     });
 
+    /*
+
+     */
     medicationButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -43,11 +46,12 @@ public class MedicationChoiceActivity extends AppCompatActivity {
         med.medication = "Buprenorphine";
         db.medicationChoiceDAO().insertMedication(med);
 
-        startActivity(new Intent(MedicationChoiceActivity.this, MainActivity.class));
+        startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
 
         //Toast.makeText(MedicationChoiceActivity.this,MedicationChoiceDAO.getMedication(),Toast.LENGTH_LONG).show();
-        }
+      }
     });
   }
+
   private VolitionDatabase db = VolitionDatabase.getDatabase(MedicationChoiceActivity.this);
 }
