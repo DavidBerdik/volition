@@ -19,6 +19,7 @@ package com.recoveryenhancementsolutions.volition;
  * This is a modification of the "Room with a View" class WordRoomDatabase obtained from
  * https://github.com/googlecodelabs/android-room-with-a-view/blob/master/app/src/main/java/com/example/android/roomwordssample/WordRoomDatabase.java
  * Modifications are largely to change the entities and DAO methods as well as the class name.
+ * Also modified to conform with project coding standards.
  */
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
@@ -37,7 +38,8 @@ import android.support.annotation.NonNull;
  * test data pre-populated in the database.
  */
 
-// TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
+//TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
+
 @Database(
         entities = {
                 MedicationChoiceEntity.class,
@@ -79,10 +81,10 @@ public abstract class VolitionDatabase extends RoomDatabase {
                             .build();
                 }
             }
+
         }
         return INSTANCE;
     }
-
     /**
      * Object providing methods that are called if an existing database is opened or a new database is
      * created.
@@ -114,22 +116,20 @@ public abstract class VolitionDatabase extends RoomDatabase {
         }
     };
 
-    /**
-     * Skeleton code that does nothing but could be filled in to clear the database and populate it
-     * with test data in the background.
-     */
-    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
+  /**
+   * Skeleton code that does nothing but could be filled in to clear the database and populate it
+   * with test data in the background.
+   */
+  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
         // private final WordDao mDao;
         private final UserActivitiesDao userActivitiesDao;
-
-        PopulateDbAsync(VolitionDatabase db) {
-            // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
-            // mDao = db.wordDao();
-            userActivitiesDao = db.userActivitiesDao();
-        }
-
+    PopulateDbAsync(final VolitionDatabase db) {
+      // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
+      // mDao = db.wordDao();
+      userActivitiesDao = db.userActivitiesDao();
+    }
         @Override
         protected Void doInBackground(final Void... params) {
             // If you want to clear and initialize the database, place code here such as in the following commented-out example:
@@ -145,5 +145,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
       */
             return null;
         }
-    }
+  // marking the instance as volatile to ensure atomic access to the variable
+  private static volatile VolitionDatabase INSTANCE;
+
 }
