@@ -36,7 +36,7 @@ public interface TreatmentPlanDao {
    *
    * @param treatmentPlanEntity The TreatmentPlanEntity to be inserted.
    */
-  @Insert(onConflict = IGNORE)
+  @Insert(onConflict = REPLACE)
   void insertTreatmentPlanEntity(TreatmentPlanEntity treatmentPlanEntity);
 
   /**
@@ -45,7 +45,7 @@ public interface TreatmentPlanDao {
    * @return The current number of TreatmentPlanEntities.
    */
   @Query("SELECT COUNT(*) FROM TreatmentPlanEntity")
-  int getNumTreatmentPlans();
+  Integer getNumTreatmentPlans();
 
   /**
    * Removes all TreatmentPlanEntities from the database.

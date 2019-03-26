@@ -111,16 +111,6 @@ public class TreatmentPlanEntity {
     }
 
     /**
-     * Sets the ID to a new value.  This changes the primary key of the treatment plan so its use is
-     * discouraged.
-     *
-     * @param id The ID of the treatment plan.
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
      * Sets the number of times the user should attend counseling meetings per week.
      *
      * @param numCounseling The number of times the user should attend counseling meetings per week.
@@ -195,6 +185,34 @@ public class TreatmentPlanEntity {
     }
 
     /**
+     * Sets the activity's ID. Since the activity ID is an auto-increment value set by the database,
+     * use of this setter is discouraged since the value set will be changed.
+     *
+     * @param id The ID of the activity.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Manually sets the value of frequency for medManagementFrequency.  Values for this field must
+     * be either "WEEKLY" or "MONTHLY". Because of this, use of the setMedManagementWeekly() or
+     * setMedManagementMonthly() are encouraged to be used instead.
+     *
+     * @param frequency The string value of the frequency Medication management should be done.
+     */
+    public void setMedManagementFrequency(String frequency){this.medManagementFrequency = frequency;}
+
+    /**
+     * Manually sets the value of frequency for outcomeMeasureFrequency. Values for this field must
+     * be either "WEEKLY" or "DAILY". Because of this, use of the setOutcomeMeasureWeekly() or
+     * setOutcomeMeasureMonthly() are encouraged to be used instead.
+     *
+     * @param frequency The string value of the frequency outcome measures should be done.
+     */
+    public void setOutcomeMeasureFrequency(String frequency){this.outcomeMeasureFrequency = frequency;}
+
+    /**
      * Sets the frequency for Medication Management to "WEEKLY".
      */
     public void setMedManagementWeekly(){
@@ -204,7 +222,7 @@ public class TreatmentPlanEntity {
     /**
      * Sets the frequency for Medication Management to "MONTHLY".
      */
-    public void setMedManagementMontly(){
+    public void setMedManagementMonthly(){
         this.medManagementFrequency = "MONTHLY";
     }
 
@@ -225,7 +243,8 @@ public class TreatmentPlanEntity {
     /**
      * Stores the ID for this treatment plan.
      */
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private int id;  //used to manage the treatment plan and prevent duplicates.
 
     /**

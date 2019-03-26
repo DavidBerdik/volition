@@ -19,6 +19,7 @@ public interface QuestionnaireDao {
 
   @Insert(onConflict = REPLACE)
   void insertQuestionnaire(QuestionnaireEntity questionnaire);
+
   @Query("DELETE FROM QuestionnaireEntity")
   void deleteAll();
 
