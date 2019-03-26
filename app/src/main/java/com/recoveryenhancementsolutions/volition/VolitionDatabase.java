@@ -19,12 +19,14 @@ package com.recoveryenhancementsolutions.volition;
  * This is a modification of the "Room with a View" class WordRoomDatabase obtained from
  * https://github.com/googlecodelabs/android-room-with-a-view/blob/master/app/src/main/java/com/example/android/roomwordssample/WordRoomDatabase.java
  * Modifications are largely to change the entities and DAO methods as well as the class name.
+ * Also modified to conform with project coding standards.
  */
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -36,20 +38,22 @@ import android.support.annotation.NonNull;
  * test data pre-populated in the database.
  */
 
-// TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
-@Database(
+// TODO: Place entity class references here, one class per line (to facilitate merges).
 
+@Database(
     entities = {
-      MedicationChoiceEntity.class
+        UserActivityEntity.class,
+        MedicationChoiceEntity.class
     },
     version = 1)
+    @TypeConverters(DateConverter.class)
+
   public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
+  public abstract UserActivitiesDao userActivitiesDao();
   public abstract MedicationChoiceDAO medicationChoiceDAO();
-  // marking the instance as volatile to ensure atomic access to the variable
-  private static volatile VolitionDatabase INSTANCE;
 
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.
@@ -66,7 +70,7 @@ import android.support.annotation.NonNull;
               // Wipes and rebuilds instead of migrating if no Migration object.
               // Migration is not part of this codelab.
               .fallbackToDestructiveMigration()
-              .addCallback(sVolitionDatabaseCallback)
+              .addCallback(volitionDatabaseCallback)
               .build();
         }
       }
@@ -78,14 +82,14 @@ import android.support.annotation.NonNull;
    * Object providing methods that are called if an existing database is opened or a new database is
    * created.
    */
-  private static RoomDatabase.Callback sVolitionDatabaseCallback = new RoomDatabase.Callback() {
+  private static RoomDatabase.Callback volitionDatabaseCallback = new RoomDatabase.Callback() {
 
     /**
      * Method called when an existing database is opened.
      * @param db Object representing database that has been opened.
      */
     @Override
-    public void onOpen(@NonNull SupportSQLiteDatabase db) {
+    public void onOpen(@NonNull final SupportSQLiteDatabase db) {
       super.onOpen(db);
       // If you want to clear and repopulate data when the app restarts, keep the following
       // line uncommented and fill in the PopulateDbAsync skeleton code below.
@@ -97,7 +101,7 @@ import android.support.annotation.NonNull;
      * @param db Object representing database that is being created.
      */
     @Override
-    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+    public void onCreate(@NonNull final SupportSQLiteDatabase db) {
       super.onCreate(db);
       // If you want to populate data when the database is created for the first time,
       // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
@@ -113,10 +117,12 @@ import android.support.annotation.NonNull;
 
     // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
     // private final WordDao mDao;
+    private final UserActivitiesDao userActivitiesDao;
 
-    PopulateDbAsync(VolitionDatabase db) {
+    PopulateDbAsync(final VolitionDatabase db) {
       // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
       // mDao = db.wordDao();
+      userActivitiesDao = db.userActivitiesDao();
     }
 
     @Override
@@ -135,4 +141,7 @@ import android.support.annotation.NonNull;
       return null;
     }
   }
+  // marking the instance as volatile to ensure atomic access to the variable
+  private static volatile VolitionDatabase INSTANCE;
+
 }
