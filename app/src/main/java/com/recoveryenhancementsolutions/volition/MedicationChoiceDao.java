@@ -15,7 +15,7 @@ import android.arch.persistence.room.Update;
  */
 
 @Dao
-public interface MedicationChoiceDAO {
+public interface MedicationChoiceDao {
 
   @Query("SELECT * FROM MedicationChoiceEntity")
   MedicationChoiceEntity getMedication();

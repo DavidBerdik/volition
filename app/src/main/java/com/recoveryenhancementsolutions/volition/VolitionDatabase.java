@@ -54,7 +54,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
     // TODO: Place DAO instantiation method calls here, as in the following commented-out example
     // public abstract WordDao wordDao();
-    public abstract MedicationChoiceDAO medicationChoiceDao();
+    public abstract MedicationChoiceDao medicationChoiceDao();
 
     public abstract QuestionnaireDao questionnaireDao();
 
@@ -129,11 +129,16 @@ public abstract class VolitionDatabase extends RoomDatabase {
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
         // private final WordDao mDao;
         private final UserActivitiesDao userActivitiesDao;
-
+        private final TreatmentPlanDao treatmentPlanDao;
+        private final QuestionnaireDao questionnaireDao;
+        private final MedicationChoiceDao medicationChoiceDao;
         PopulateDbAsync(final VolitionDatabase db) {
             // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
             // mDao = db.wordDao();
             userActivitiesDao = db.userActivitiesDao();
+            treatmentPlanDao = db.treatmentPlanDao();
+            questionnaireDao = db.questionnaireDao();
+            medicationChoiceDao = db.medicationChoiceDao();
         }
 
         @Override

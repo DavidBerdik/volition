@@ -2,8 +2,128 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ec1d37e016ec99785aac7c560ff473f4",
+    "identityHash": "742e14a270336f1519fc1cdbab725e9e",
     "entities": [
+      {
+        "tableName": "MedicationChoiceEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "fields": [
+          {
+            "fieldPath": "medication",
+            "columnName": "medication",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "medication"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "QuestionnaireEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
+        "fields": [
+          {
+            "fieldPath": "severityLevel",
+            "columnName": "severityLevel",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "severityLevel"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "TreatmentPlanEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `numCounseling` INTEGER NOT NULL, `numMedManagement` INTEGER NOT NULL, `numSupportMeeting` INTEGER NOT NULL, `numLessons` INTEGER NOT NULL, `numTreatmentEffectivenessAssessment` INTEGER NOT NULL, `numOutcomeMeasures` INTEGER NOT NULL, `numTimeTracking` INTEGER NOT NULL, `numReadingResponse` INTEGER NOT NULL, `medManagementFrequency` TEXT, `outcomeMeasureFrequency` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numCounseling",
+            "columnName": "numCounseling",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numMedManagement",
+            "columnName": "numMedManagement",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numSupportMeeting",
+            "columnName": "numSupportMeeting",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numLessons",
+            "columnName": "numLessons",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numTreatmentEffectivenessAssessment",
+            "columnName": "numTreatmentEffectivenessAssessment",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numOutcomeMeasures",
+            "columnName": "numOutcomeMeasures",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numTimeTracking",
+            "columnName": "numTimeTracking",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numReadingResponse",
+            "columnName": "numReadingResponse",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "medManagementFrequency",
+            "columnName": "medManagementFrequency",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "outcomeMeasureFrequency",
+            "columnName": "outcomeMeasureFrequency",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
       {
         "tableName": "UserActivityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
@@ -39,7 +159,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ec1d37e016ec99785aac7c560ff473f4\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"742e14a270336f1519fc1cdbab725e9e\")"
     ]
   }
 }
