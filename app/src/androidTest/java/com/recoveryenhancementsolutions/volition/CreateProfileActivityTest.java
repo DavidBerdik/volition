@@ -40,6 +40,7 @@ public class CreateProfileActivityTest {
 
   @Test
   public void createProfileActivityTest() {
+    // Test opening the Date of Birth date picker
     ViewInteraction appCompatEditText = onView(
         allOf(withId(R.id.date_of_birth),
             childAtPosition(
@@ -50,6 +51,7 @@ public class CreateProfileActivityTest {
                 1)));
     appCompatEditText.perform(scrollTo(), click());
 
+    // Test opening of year selection in the Date of Birth date picker
     ViewInteraction appCompatTextView = onView(
         allOf(withClassName(is("android.support.v7.widget.AppCompatTextView")),
             withText(String.valueOf(Calendar.getInstance().get(Calendar.YEAR))),
@@ -61,6 +63,7 @@ public class CreateProfileActivityTest {
             isDisplayed()));
     appCompatTextView.perform(click());
 
+    // Test year scrolling and choosing in the Date of Birth date picker
     DataInteraction appCompatTextView2 = onData(anything())
         .inAdapterView(allOf(withClassName(is("android.widget.YearPickerView")),
             childAtPosition(
@@ -69,39 +72,21 @@ public class CreateProfileActivityTest {
         .atPosition(96);
     appCompatTextView2.perform(scrollTo(), click());
 
-    ViewInteraction appCompatImageButton = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Next month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                2)));
-    appCompatImageButton.perform(scrollTo(), click());
+    // Test 3 uses of the "Next Month" button in the Date of Birth date picker
+    for (int x = 0; x < 3; x++) {
+      ViewInteraction appCompatImageButton = onView(
+          allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
+              withContentDescription("Next month"),
+              childAtPosition(
+                  allOf(withClassName(is("android.widget.DayPickerView")),
+                      childAtPosition(
+                          withClassName(is("com.android.internal.widget.DialogViewAnimator")),
+                          0)),
+                  2)));
+      appCompatImageButton.perform(scrollTo(), click());
+    }
 
-    ViewInteraction appCompatImageButton2 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Next month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                2)));
-    appCompatImageButton2.perform(scrollTo(), click());
-
-    ViewInteraction appCompatImageButton3 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Next month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                2)));
-    appCompatImageButton3.perform(scrollTo(), click());
-
+    // Test clicking the "OK" button in the Date of Birth date picker
     ViewInteraction appCompatButton = onView(
         allOf(withId(android.R.id.button1), withText("OK"),
             childAtPosition(
@@ -111,6 +96,7 @@ public class CreateProfileActivityTest {
                 3)));
     appCompatButton.perform(scrollTo(), click());
 
+    // Test opening the Last Date Clean date picker
     ViewInteraction appCompatEditText2 = onView(
         allOf(withId(R.id.clean_date),
             childAtPosition(
@@ -121,61 +107,21 @@ public class CreateProfileActivityTest {
                 10)));
     appCompatEditText2.perform(scrollTo(), click());
 
-    ViewInteraction appCompatImageButton4 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Previous month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                1)));
-    appCompatImageButton4.perform(scrollTo(), click());
+    // Test 5 uses of the "Previous Month" button in the Last Date Clean date picker
+    for (int x = 0; x < 5; x++) {
+      ViewInteraction appCompatImageButton4 = onView(
+          allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
+              withContentDescription("Previous month"),
+              childAtPosition(
+                  allOf(withClassName(is("android.widget.DayPickerView")),
+                      childAtPosition(
+                          withClassName(is("com.android.internal.widget.DialogViewAnimator")),
+                          0)),
+                  1)));
+      appCompatImageButton4.perform(scrollTo(), click());
+    }
 
-    ViewInteraction appCompatImageButton5 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Previous month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                1)));
-    appCompatImageButton5.perform(scrollTo(), click());
-
-    ViewInteraction appCompatImageButton6 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Previous month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                1)));
-    appCompatImageButton6.perform(scrollTo(), click());
-
-    ViewInteraction appCompatImageButton7 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Previous month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                1)));
-    appCompatImageButton7.perform(scrollTo(), click());
-
-    ViewInteraction appCompatImageButton8 = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
-            withContentDescription("Previous month"),
-            childAtPosition(
-                allOf(withClassName(is("android.widget.DayPickerView")),
-                    childAtPosition(
-                        withClassName(is("com.android.internal.widget.DialogViewAnimator")),
-                        0)),
-                1)));
-    appCompatImageButton8.perform(scrollTo(), click());
-
+    // Test clicking the "OK" button in the Last Date Clean date picker
     ViewInteraction appCompatButton2 = onView(
         allOf(withId(android.R.id.button1), withText("OK"),
             childAtPosition(

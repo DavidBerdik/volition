@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
@@ -41,7 +40,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         dobCalendar.set(Calendar.MONTH, month);
         dobCalendar.set(Calendar.DAY_OF_MONTH, day);
         final EditText dob = findViewById(R.id.date_of_birth);
-        dob.setText(new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(dobCalendar.getTime()));
+        dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
       }
     };
 
@@ -59,8 +58,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         cleanDateCalendar.set(Calendar.MONTH, month);
         cleanDateCalendar.set(Calendar.DAY_OF_MONTH, day);
         final EditText cleanDate = findViewById(R.id.clean_date);
-        cleanDate.setText(
-            new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(cleanDateCalendar.getTime()));
+        cleanDate.setText(DateFormat.getDateInstance().format(cleanDateCalendar.getTime()));
       }
     };
 
