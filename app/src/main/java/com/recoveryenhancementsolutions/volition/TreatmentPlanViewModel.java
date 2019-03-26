@@ -19,9 +19,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
      *
      * @param application The application creating the TreatmentPlanViewModel.
      */
-    public TreatmentPlanViewModel(Application application) {
+    public TreatmentPlanViewModel(final Application application) {
         super(application);
-
         db = VolitionDatabase.getDatabase(this.getApplication());
 
         //Make sure a treatment plan does not already exist.
