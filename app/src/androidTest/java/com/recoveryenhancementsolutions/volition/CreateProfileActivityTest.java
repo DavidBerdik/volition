@@ -22,6 +22,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import java.util.Calendar;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -50,7 +51,8 @@ public class CreateProfileActivityTest {
     appCompatEditText.perform(scrollTo(), click());
 
     ViewInteraction appCompatTextView = onView(
-        allOf(withClassName(is("android.support.v7.widget.AppCompatTextView")), withText("2000"),
+        allOf(withClassName(is("android.support.v7.widget.AppCompatTextView")),
+            withText(String.valueOf(Calendar.getInstance().get(Calendar.YEAR))),
             childAtPosition(
                 childAtPosition(
                     withClassName(is("android.widget.LinearLayout")),
