@@ -2,7 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 
 import android.arch.lifecycle.Observer;
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class QuestionnaireActivity extends AppCompatActivity {
+
   private QuestionnaireActivityViewModel mViewModel;
 
   public static int answerCounter = 0;
@@ -32,21 +33,22 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static Boolean qTenAnswer;
   public static Boolean qElevenAnswer;
 
-  final VolitionDatabase db;
+//  final VolitionDatabase db;
 
   /**
-   * The method onCreate will initialize the Activity with the view of
-   * the questionnaire_activity xml. The Text View for every question is created with the opacity
-   * for each question and is initially set to 0. Question one's opacity says at the default value
-   * of 100 for the initial view to begin the questionnaire. There are yes and No event listeners for
-   * the Yes and No button clicks while taking the questionnaire
+   * The method onCreate will initialize the Activity with the view of the questionnaire_activity
+   * xml. The Text View for every question is created with the opacity for each question and is
+   * initially set to 0. Question one's opacity says at the default value of 100 for the initial
+   * view to begin the questionnaire. There are yes and No event listeners for the Yes and No button
+   * clicks while taking the questionnaire
+   *
    * @param savedInstanceState stores the saved state in order to recreate the activity.
    */
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.questionaire_activity);
+    setContentView(R.layout.activity_questionnaire);
 
     final TextView qOne = (TextView) findViewById(R.id.questionOne);
     final TextView qTwo = (TextView) findViewById(R.id.questionTwo);
@@ -79,15 +81,14 @@ public class QuestionnaireActivity extends AppCompatActivity {
     severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
 
 
-    private void insertQuestionOne() {
-      mViewModel.questionnaire.observe(this, new Observer<List<Questionnaire>>() {
+    /*private void insertQuestionOne() {
+      mViewModel.questionnaire.observe(this, new Observer<List<QuestionnaireActivityEntity>>() {
         @Override
-        public void onChanged(@Nullable List<Questionnaire> questionnaires) {
-          saveStatus(questionnaires); //Need to pass proper arguments
+        public void onChanged(@Nullable List<QuestionnaireActivityEntity> questionnaireActivityEntities) {
+          saveStatus(questionnaireActivityEntities); //Need to pass proper arguments
         }
       });
-    }
-
+    } */
 
     YESbtn.setOnClickListener(new View.OnClickListener() {
 
@@ -178,7 +179,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
           severityResult.setTextColor(severityResult.getTextColors().withAlpha(100));
 
           severityLevel = yesAnswers - noAnswers;
-
+          startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+          /*
           if (severityLevel <= 3) {
             severityResult.setText("Mild");
           }
@@ -189,8 +191,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
           if (severityLevel >= 6) {
             severityResult.setText("Severe");
-          }
+          } */
         }
+
       }
     });
 
@@ -277,12 +280,16 @@ public class QuestionnaireActivity extends AppCompatActivity {
         }
 
         if (answerCounter == 11) {
+
           qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
           qElevenAnswer = false;
           severityResult.setTextColor(severityResult.getTextColors().withAlpha(100));
 
           severityLevel = yesAnswers - noAnswers;
 
+          startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+
+          /*
           if (severityLevel <= 3) {
             severityResult.setText("Mild");
           }
@@ -293,9 +300,12 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
           if (severityLevel >= 6) {
             severityResult.setText("Severe");
-          }
+          } */
+
         }
+
       }
+
     });
 
 

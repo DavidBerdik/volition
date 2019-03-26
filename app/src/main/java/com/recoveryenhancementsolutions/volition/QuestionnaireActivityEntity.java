@@ -4,10 +4,10 @@ import android.arch.persistence.room.Entity;
 import android.support.annotation.NonNull;
 
 /**
- * Database entity for storing the Questionnaire information.
+ * Database entity for storing the QuestionnaireActivityEntity information.
  */
 @Entity(primaryKeys = {"id"})
-public class Questionnaire {
+public class QuestionnaireActivityEntity {
 
   @NonNull
   public int id;

@@ -14,50 +14,50 @@ import java.util.List;
 public interface QuestionnaireDao {
 
   @Insert(onConflict = REPLACE)
-  void insertQuestionnaire(Questionnaire questionnaire);
-  @Query("DELETE FROM Questionnaire")
+  void insertQuestionnaire(QuestionnaireActivityEntity questionnaireActivityEntity);
+  @Query("DELETE FROM QuestionnaireActivityEntity")
   void deleteAll();
 
-  @Query("SELECT * FROM Questionnaire")
-  LiveData<List<Questionnaire>> findQuestionnaire();
+  @Query("SELECT * FROM QuestionnaireActivityEntity")
+  LiveData<List<QuestionnaireActivityEntity>> findQuestionnaire();
 
-  @Query("SELECT severityLevel FROM Questionnaire")
+  @Query("SELECT severityLevel FROM QuestionnaireActivityEntity")
   String findSeverityLevel();
 
-  @Query("SELECT severityLevel FROM Questionnaire")
+  @Query("SELECT severityLevel FROM QuestionnaireActivityEntity")
   LiveData<String> findSeverityLevelString();
 
-  @Query("SELECT q1 FROM Questionnaire")
+  @Query("SELECT q1 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ1();
 
-  @Query("SELECT q2 FROM Questionnaire")
+  @Query("SELECT q2 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ2();
 
-  @Query("SELECT q3 FROM Questionnaire")
+  @Query("SELECT q3 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ3();
 
-  @Query("SELECT q4 FROM Questionnaire")
+  @Query("SELECT q4 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ4();
 
-  @Query("SELECT q5 FROM Questionnaire")
+  @Query("SELECT q5 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ5();
 
-  @Query("SELECT q6 FROM Questionnaire")
+  @Query("SELECT q6 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ6();
 
-  @Query("SELECT q7 FROM Questionnaire")
+  @Query("SELECT q7 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ7();
 
-  @Query("SELECT q8 FROM Questionnaire")
+  @Query("SELECT q8 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ8();
 
-  @Query("SELECT q9 FROM Questionnaire")
+  @Query("SELECT q9 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ9();
 
-  @Query("SELECT q10 FROM Questionnaire")
+  @Query("SELECT q10 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ10();
 
-  @Query("SELECT q11 FROM Questionnaire")
+  @Query("SELECT q11 FROM QuestionnaireActivityEntity")
   LiveData<Integer> findQ11();
 
 
