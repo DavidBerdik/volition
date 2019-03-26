@@ -10,7 +10,7 @@ import android.arch.persistence.room.Update;
  * group's full task later.
  */
 @Dao
-public interface DemographicDataDao {
+public interface DemographicDataDAO {
 
   /**
    * Inserts a new DemographicDataEntity into the database.
