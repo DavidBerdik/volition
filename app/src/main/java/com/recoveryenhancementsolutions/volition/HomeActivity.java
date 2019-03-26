@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * The HomeActivity that contains functionality and interactions relevant to the activity_home
@@ -27,7 +28,8 @@ public class HomeActivity extends AppCompatActivity {
     buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
 
-    final DaysCleanViewModel daysCleanViewModel = ViewModelProviders.of(this).get(DaysCleanViewModel.class);
+    final DaysCleanViewModel daysCleanViewModel = ViewModelProviders.of(this)
+        .get(DaysCleanViewModel.class);
     daysCleanViewModel.getLastCleanDate().observe(this, daysCleanObserver);
 
     final BottomNavigationView navigation = findViewById(R.id.menubar);
@@ -37,9 +39,17 @@ public class HomeActivity extends AppCompatActivity {
 
   private Observer<Date> daysCleanObserver = new Observer<Date>() {
     @Override
-    public void onChanged(@NonNull Date date) {
-      final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
-      daysCleanMessage.setText(R.string.home_clean + " " + days);
+    public void onChanged(@Nullable Date date) {
+      // We should only have a NullPointerException if nothing is entered into the DB yet.
+      // If this is the case, have an empty days clean String.
+      try {
+        final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
+        daysCleanMessage
+            .setText(String.format(Locale.getDefault(), "%s %d", R.string.home_clean, days));
+      } catch (NullPointerException e) {
+        daysCleanMessage
+            .setText(String.format(Locale.getDefault(), "%s", R.string.home_clean));
+      }
     }
   };
 
