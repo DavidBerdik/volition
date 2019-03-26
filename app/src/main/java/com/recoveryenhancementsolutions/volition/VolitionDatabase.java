@@ -46,13 +46,14 @@ import android.support.annotation.NonNull;
         MedicationChoiceEntity.class
     },
     version = 1)
-    @TypeConverters(DateConverter.class)
+@TypeConverters(DateConverter.class)
 
-  public abstract class VolitionDatabase extends RoomDatabase {
+public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
+
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
   /**
@@ -141,6 +142,7 @@ import android.support.annotation.NonNull;
       return null;
     }
   }
+
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
 
