@@ -19,4 +19,6 @@
   <string name="menubar_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
+    <string name="add">+</string>
+    <string name="sub">-</string>
 </resources>

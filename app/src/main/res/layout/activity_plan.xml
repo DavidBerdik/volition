@@ -7,6 +7,196 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/addLessonPlannerButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="372dp" />
+
+    <Button
+        android:id="@+id/addTreatmentEffectivnessAssessmentButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="427dp" />
+
+    <Button
+        android:id="@+id/addCleanTimeTrackingButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="490dp" />
+
+    <Button
+        android:id="@+id/addReadResponceButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="558dp" />
+
+    <Button
+        android:id="@+id/subReadResponceJournalButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addReadResponceButton"
+        tools:layout_editor_absoluteY="558dp" />
+
+    <Button
+        android:id="@+id/subCleanTimeTrackingButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addCleanTimeTrackingButton"
+        tools:layout_editor_absoluteY="490dp" />
+
+    <Button
+        android:id="@+id/subTreatmentEffectivenessAssessmentButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addTreatmentEffectivnessAssessmentButton"
+        tools:layout_editor_absoluteY="427dp" />
+
+    <Button
+        android:id="@+id/addOutcomeMeasureButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addOutcomeMeasureButton"
+        tools:layout_editor_absoluteY="307dp" />
+
+    <Button
+        android:id="@+id/subLessonPlannerButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addLessonPlannerButton"
+        tools:layout_editor_absoluteY="372dp" />
+
+    <Button
+        android:id="@+id/addOutcomeMeasureButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="307dp" />
+
+    <Button
+        android:id="@+id/addMedManagementButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <Button
+        android:id="@+id/subSupportGroupButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addSupportGroupMeetingButton"
+        tools:layout_editor_absoluteY="243dp" />
+
+    <Button
+        android:id="@+id/subMedMangaementButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addMedManagementButton"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <Button
+        android:id="@+id/addSupportGroupMeetingButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="243dp" />
+
+    <Button
+        android:id="@+id/subCounselButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_subroundbutton"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/sub"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/addCounselButton"
+        tools:layout_editor_absoluteY="118dp" />
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
@@ -27,7 +217,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/update"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/textView"
@@ -59,10 +249,13 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/counselingView"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="0.668"
         app:layout_constraintStart_toEndOf="@+id/counselingView"
-        tools:layout_editor_absoluteY="127dp"
         tools:text="@string/counseling" />
 
     <TextView
@@ -70,9 +263,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/medManagementView"
+        app:layout_constraintEnd_toStartOf="@+id/subMedMangaementButton"
+        app:layout_constraintHorizontal_bias="0.377"
         app:layout_constraintStart_toEndOf="@+id/medManagementView"
-        tools:layout_editor_absoluteY="189dp"
         tools:text="@string/medManagement" />
 
     <TextView
@@ -80,7 +276,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/subSupportGroupButton"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toEndOf="@+id/supportMeetingView"
         tools:layout_editor_absoluteY="255dp"
         tools:text="@string/supportMeeting" />
@@ -88,21 +287,27 @@
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="23dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/outcomeMeasureView"
+        app:layout_constraintEnd_toStartOf="@+id/addOutcomeMeasureButton"
+        app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toEndOf="@+id/outcomeMeasureView"
-        tools:layout_editor_absoluteY="317dp"
         tools:text="@string/outcomeMeasure" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="113dp"
-        android:layout_height="51dp"
+        android:layout_width="191dp"
+        android:layout_height="36dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/treatmentEffectiveView"
+        app:layout_constraintEnd_toStartOf="@+id/subTreatmentEffectivenessAssessmentButton"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/treatmentEffectiveView"
-        tools:layout_editor_absoluteY="427dp"
         tools:text="@string/treatmentEffectivnessAssessment" />
 
     <TextView
@@ -110,9 +315,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lessonView"
+        app:layout_constraintEnd_toStartOf="@+id/subLessonPlannerButton"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toEndOf="@+id/lessonView"
-        tools:layout_editor_absoluteY="381dp"
         tools:text="@string/lessonPlanner" />
 
     <TextView
@@ -120,19 +328,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/timeTrackingView"
+        app:layout_constraintEnd_toStartOf="@+id/subCleanTimeTrackingButton"
+        app:layout_constraintHorizontal_bias="0.256"
         app:layout_constraintStart_toEndOf="@+id/timeTrackingView"
-        tools:layout_editor_absoluteY="510dp"
         tools:text="@string/cleanTimeTracking" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="120dp"
+        android:layout_width="181dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/readingResponseView"
+        app:layout_constraintEnd_toStartOf="@+id/subReadResponceJournalButton"
+        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toEndOf="@+id/readingResponseView"
-        tools:layout_editor_absoluteY="558dp"
         tools:text="@string/readJournalResponce" />
 
     <TextView
@@ -181,7 +395,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="441dp" />
+        tools:layout_editor_absoluteY="435dp" />
 
     <TextView
         android:id="@+id/timeTrackingView"
@@ -190,7 +404,7 @@
         android:layout_marginStart="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="510dp" />
+        tools:layout_editor_absoluteY="500dp" />
 
     <TextView
         android:id="@+id/readingResponseView"
@@ -199,6 +413,18 @@
         android:layout_marginStart="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="575dp" />
+        tools:layout_editor_absoluteY="568dp" />
+
+    <Button
+        android:id="@+id/addCounselButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="@string/add"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="118dp" />
 
 </android.support.constraint.ConstraintLayout>
