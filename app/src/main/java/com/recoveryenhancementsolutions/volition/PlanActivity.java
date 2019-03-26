@@ -21,13 +21,13 @@ public class PlanActivity extends AppCompatActivity {
         textView = findViewById(R.id.textview_day_4);
         textView.setText(sampletext);
         textView = findViewById(R.id.day_of_week_1);
-        textView.setText("M");
+        textView.setText("T");
         textView = findViewById(R.id.day_of_week_2);
-        textView.setText("T");
-        textView = findViewById(R.id.day_of_week_3);
         textView.setText("W");
-        textView = findViewById(R.id.day_of_week_4);
+        textView = findViewById(R.id.day_of_week_3);
         textView.setText("T");
+        textView = findViewById(R.id.day_of_week_4);
+        textView.setText("M");
 
     }
 
