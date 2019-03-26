@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import java.util.Date;
 
 /**
  * A skeleton file for the DemographicDataEntity. It is being worked on by another group and they
@@ -10,6 +11,15 @@ import android.support.annotation.NonNull;
  */
 @Entity
 public class DemographicDataEntity {
+
+  /**
+   * Gets the name of the patient that is using this application.
+   *
+   * @return A String object containing the patient's name.
+   */
+  public String getPatientName(String patientName) {
+    return patientName;
+  }
 
   /**
    * Sets the name of the patient that is using this application.
@@ -23,23 +33,23 @@ public class DemographicDataEntity {
   /**
    * Fetches the last fate of being clean.
    *
-   * @return A MM-DD-YYYY string representing the date.
+   * @return A Date object representing the date.
    */
-  public String getLastClean() {
+  public Date getLastClean() {
     return lastClean;
   }
 
   /**
    * Sets the last date of being clean in the database
    *
-   * @param date A MM-DD-YYYY string representing the date.
+   * @param date A Date object representing the date.
    */
-  public void setLastClean(final String date) {
+  public void setLastClean(final Date date) {
     lastClean = date;
   }
 
   @PrimaryKey
   @NonNull
   private String patientName;
-  private String lastClean;//MM-DD-YYYY
+  private Date lastClean;
 }

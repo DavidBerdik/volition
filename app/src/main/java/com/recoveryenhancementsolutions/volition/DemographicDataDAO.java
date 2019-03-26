@@ -1,9 +1,11 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+import java.util.Date;
 
 /**
  * DAO for interacting with the DemographicDataEntity. Skeleton file, should be replaced by another
@@ -31,8 +33,8 @@ public interface DemographicDataDAO {
   /**
    * Retrieves the last date of being clean from the database.
    *
-   * @return A String object representing the last date of being clean.
+   * @return A Date object contained in LiveData representing the last date of being clean.
    */
   @Query("SELECT lastClean FROM DemographicDataEntity LIMIT 1")
-  String queryLastCleanDate();
+  LiveData<Date> queryLastCleanDate();
 }
