@@ -17,7 +17,7 @@ public class DemographicDataEntity {
    *
    * @return A String object containing the patient's name.
    */
-  public String getPatientName(String patientName) {
+  public String getPatientName() {
     return patientName;
   }
 
@@ -26,7 +26,7 @@ public class DemographicDataEntity {
    *
    * @param patientName A String object containing the patient's name.
    */
-  public void setPatientName(String patientName) {
+  public void setPatientName(final String patientName) {
     this.patientName = patientName;
   }
 
