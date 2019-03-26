@@ -64,7 +64,6 @@ public class UserActivityMockDBTest {
 
   }
   private final Context context = InstrumentationRegistry.getTargetContext();
-  private LiveDataTestUtility liveDataTest;
   private static final String TAG = "UserActivityMockDBTest";
 
 }
