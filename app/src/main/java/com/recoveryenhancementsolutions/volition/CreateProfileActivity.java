@@ -73,7 +73,7 @@ public class CreateProfileActivity extends AppCompatActivity {
       @Override
       public void onClick(final View view) {
         final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
-            dateOfBirthListener, 2000, dobCalendar.get(Calendar.MONTH),
+            dateOfBirthListener, dobCalendar.get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
             dobCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
       }
