@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 /**
@@ -9,16 +10,16 @@ import android.support.annotation.NonNull;
 @Entity(primaryKeys = {"id"})
 public class QuestionnaireActivityEntity {
 
-  @NonNull
+@NonNull
   public int id;
 public String totalYes;
   public boolean q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11;
   public String severityLevel;
 
 
-  /*public void setId(int id) {
+  public void setId(int id) {
     this.id = id;
-  }*/
+  }
   public void setTotalYes(String totalYes) {
     this.totalYes =totalYes;
   }
@@ -52,9 +53,10 @@ public String totalYes;
   public void setQ10(Boolean q10) {
     this.q10 = q10;
   }
-  public void setq11(Boolean q11) {
+  public void setQ11(Boolean q11) {
     this.q11 = q11;
   }
+  public void setSeverityLevel(String severityLevel) {this.severityLevel=severityLevel;}
 /*  public int getId() {
     return id;
   }*/
