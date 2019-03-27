@@ -32,7 +32,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
      * Updates the database with the values of treatmentPlan.
      */
     public void updateDb() {
-        db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlan);
+        db.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlan);
     }
 
     /**

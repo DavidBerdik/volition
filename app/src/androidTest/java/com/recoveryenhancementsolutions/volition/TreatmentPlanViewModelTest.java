@@ -39,6 +39,7 @@ public class TreatmentPlanViewModelTest {
         final Context context = InstrumentationRegistry.getTargetContext();
         db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
                 .build();
+
         // Load the LiveData test utility.
         liveDataTest = new LiveDataTestUtility();
     }
