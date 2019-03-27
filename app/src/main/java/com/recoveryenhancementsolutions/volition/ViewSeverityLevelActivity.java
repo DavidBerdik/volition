@@ -10,15 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+/**
+ * This class accesses database for questionnaire and displays desired information, specifically the severity level and total yes answers
+ */
 public class ViewSeverityLevelActivity extends AppCompatActivity {
 
-  private TextView specifier;
-  private TextView totalYesTv;
+
 
   /**
-   *
-   * @param savedInstanceState
+   * The onCreate method sets the view to the proper xml and accesses the view model for this activity
+   *@param savedInstanceState
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     observeSeverityLevel();
   }
 
+  /**
+   * observeTotalYes creates an observer for the string value of total yes in the database and calls a method to show it in UI
+   */
   private void observeTotalYes() {
     mViewModel.totalYes.observe(this, new Observer<String>() {
       @Override
@@ -45,7 +49,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
       }
     });
   }
-
+  /**
+   *  appends a string into the total yes text view and is entered by a string builder
+   */
   private void showTotalYesInUi(final @NonNull String totalYes) {
     StringBuilder sb = new StringBuilder();
 
@@ -55,7 +61,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   }
 
   /**
-   *
+   * observeSeverityLevel creates an observer for the string value of severity in the database and calls a method to show it in UI
    */
   private void observeSeverityLevel() {
     mViewModel.severity.observe(this, new Observer<String>() {
@@ -65,7 +71,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
       }
     });
   }
-
+  /**
+   *  appends a string into the specifier text view and is entered by a string builder
+   */
   private void showSeverityLevelInUi(final @NonNull String severity) {
     StringBuilder sb = new StringBuilder();
 
@@ -75,6 +83,8 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   }
 
   private ViewSeverityLevelViewModel mViewModel;
+  private TextView specifier;
+  private TextView totalYesTv;
 
 
 }
