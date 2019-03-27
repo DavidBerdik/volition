@@ -9,6 +9,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
+import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
@@ -35,35 +37,33 @@ public class HomeActivityTest {
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(DemographicDataViewModel.class);
 
-    // Set the ViewModel to use a test database instead of the app's real database.
-    final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
-        .allowMainThreadQueries().build();
-    viewModel.setTestDatabase(db);
-  }
-
-  /**
-   * Closes the temporary test database.
-   */
-  @After
-  public void closeDb() {
-    db.close();
-  }
-
-  /**
-   * Tests that the LiveData information is being pulled at least once.
-   */
-  @Test
-  public void homeActivityTest_Single() {
-    DemographicDataEntity demographicDataEntity = new DemographicDataEntity();
+    // Sets up some entry data.
+    demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Patient");
     demographicDataEntity.setLastClean(new Date(new Date().getTime() - 8 * 24 * 60 * 60 * 1000));
-
+    viewModel.deleteDemographicData(demographicDataEntity);
     viewModel.insertDemographicData(demographicDataEntity);
-
-    assertEquals("Days Clean: 8", activityTestRule.getActivity().getDaysCleanText());
+    activityTestRule.getActivity().recreate();
   }
 
-  private VolitionDatabase db;
+  /**
+   * Tests that the DemographicDataViewModel is functioning once.
+   */
+  @Test
+  public void homeActivityTest_SingleUpdate() {
+    try {
+      assertEquals(demographicDataEntity.getLastClean(),
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    assertEquals("Days Clean: 8", activityTestRule.getActivity().getDaysCleanText());
+
+    viewModel.deleteDemographicData(demographicDataEntity);
+  }
+
+  private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
+  private static final String TAG = "HomeActivityTest";
 }

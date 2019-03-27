@@ -49,6 +49,15 @@ public class DemographicDataViewModel extends AndroidViewModel {
   }
 
   /**
+   * Deletes a DemographicDataEntity in the database.
+   *
+   * @param demographicDataEntity The entity to be deleted.
+   */
+  public void deleteDemographicData(DemographicDataEntity demographicDataEntity) {
+    db.demographicDataDao().deleteDemographicInfo(demographicDataEntity);
+  }
+
+  /**
    * Retrieves the last date clean as stored in the database.
    *
    * @return A LiveData object containing a Date representing the last listed date of being clean.
