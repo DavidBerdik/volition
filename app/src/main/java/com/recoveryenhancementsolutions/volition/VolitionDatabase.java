@@ -39,28 +39,22 @@ import android.support.annotation.NonNull;
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 @Database(
-    entities = {UserActivityEntity.class, QuestionnaireActivityEntity.class}, version = 1)
-    @TypeConverters(DateConverter.class)
-
     entities = {
       MedicationChoiceEntity.class,
-      UserActivityEntity.class
+      UserActivityEntity.class,
+QuestionnaireActivityEntity.class
     },
     version = 1)
 @TypeConverters(DateConverter.class)
 
 
 public abstract class VolitionDatabase extends RoomDatabase {
-  public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
   public abstract QuestionnaireDao questionnaireModel();
-
-  // marking the instance as volatile to ensure atomic access to the variable
-  private static volatile VolitionDatabase INSTANCE;
-  public abstract MedicationChoiceDAO medicationChoiceDAO();
+    public abstract MedicationChoiceDAO medicationChoiceDAO();
 
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.
