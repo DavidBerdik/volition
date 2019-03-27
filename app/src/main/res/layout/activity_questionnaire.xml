@@ -8,7 +8,6 @@ android:layout_height="match_parent"
 tools:context=".QuestionnaireActivity">
 
 <RelativeLayout
-  android:id="@+id/relativeLayout"
   android:layout_width="0dp"
   android:layout_height="734dp"
 
@@ -56,7 +55,6 @@ intended?"
 
 
 <ImageView
-  android:id="@+id/imageView4"
   android:layout_width="0dp"
   android:layout_height="314dp"
   android:layout_weight="1"
