@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
   }
 
   /**
-   * Recreates the Activity but using a testing database. Should only be used for testing.
+   * Recreates the observer but using a testing database. Should only be used for testing.
    *
    * @param db A VolitionDatabase test object.
    */

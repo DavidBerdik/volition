@@ -26,7 +26,7 @@ public class DemographicDataEntity {
    *
    * @param patientName A String object containing the patient's name.
    */
-  public void setPatientName(final String patientName) {
+  public void setPatientName(final @NonNull String patientName) {
     this.patientName = patientName;
   }
 
@@ -44,7 +44,7 @@ public class DemographicDataEntity {
    *
    * @param date A Date object representing the date.
    */
-  public void setLastClean(final Date date) {
+  public void setLastClean(final @NonNull Date date) {
     lastClean = date;
   }
 

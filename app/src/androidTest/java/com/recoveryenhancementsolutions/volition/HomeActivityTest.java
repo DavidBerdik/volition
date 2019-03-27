@@ -42,7 +42,8 @@ public class HomeActivityTest {
     // Sets up some entry data.
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Patient");
-    demographicDataEntity.setLastClean(new Date(new Date().getTime() - 5 * 24 * 60 * 60 * 1000));
+    demographicDataEntity
+        .setLastClean(new Date(new Date().getTime() - DAYS_CLEAN * 24 * 60 * 60 * 1000));
 
     // Tell the activity to use the testing database.
     activityTestRule.getActivity().onCreateTest(db);
@@ -62,13 +63,11 @@ public class HomeActivityTest {
   }
 
   /**
-   * Tests that the DemographicDataViewModel is functioning once.
+   * Tests that the activity is fetching the existing data and displaying it.
    */
   @Test
   public void homeActivityTest_ViewModel() {
-    // Tell the activity to use the testing database.
-    activityTestRule.getActivity().onCreateTest(db);
-
+    // Fetching the data...
     try {
       assertEquals(demographicDataEntity.getLastClean(),
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
@@ -76,19 +75,22 @@ public class HomeActivityTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
+    // Converting the data...
     try {
-      assertEquals(5, DateConverter
+      assertEquals(DAYS_CLEAN, DateConverter
           .daysBetween(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
               new Date()));
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
-    assertEquals("Days Clean: 5", activityTestRule.getActivity().getDaysCleanText());
+    // Updating the TextView...
+    assertEquals("Days Clean: " + DAYS_CLEAN, activityTestRule.getActivity().getDaysCleanText());
   }
 
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
   private VolitionDatabase db;
+  private final int DAYS_CLEAN = 3;
   private static final String TAG = "HomeActivityTest";
 }
