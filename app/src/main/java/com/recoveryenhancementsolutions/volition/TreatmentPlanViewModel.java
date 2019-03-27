@@ -23,10 +23,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         super(application);
         db = VolitionDatabase.getDatabase(this.getApplication());
 
-        //Make sure a treatment plan does not already exist.
-        if (db.treatmentPlanDao().getNumTreatmentPlans().intValue() == 0) {
-            generateTreatmentPlan();
-        }
+        generateTreatmentPlan();
 
         treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan().getValue();
     }
@@ -77,7 +74,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         }
 
         //A new treatmentPlanEntity to add to the database
-        treatmentPlan = new TreatmentPlanEntity();
+        this.treatmentPlan = new TreatmentPlanEntity();
 
         if (medicationChoice.equals("ABSTAIN")) {
             if (severityLevel.equals("MILD")) { //Mild Abstinence
