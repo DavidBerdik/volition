@@ -21,8 +21,6 @@ public interface QuestionnaireDao {
   @Query("SELECT * FROM QuestionnaireActivityEntity")
   LiveData<List<QuestionnaireActivityEntity>> findQuestionnaire();
 
-  @Query("SELECT severityLevel FROM QuestionnaireActivityEntity")
-  String findSeverityLevel();
 
   @Query("SELECT severityLevel FROM QuestionnaireActivityEntity")
   LiveData<String> findSeverityLevelString();
@@ -31,37 +29,37 @@ public interface QuestionnaireDao {
   LiveData<String> findTotalYes();
 
   @Query("SELECT q1 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ1();
+  LiveData<Boolean> findQ1();
 
   @Query("SELECT q2 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ2();
+  LiveData<Boolean> findQ2();
 
   @Query("SELECT q3 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ3();
+  LiveData<Boolean> findQ3();
 
   @Query("SELECT q4 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ4();
+  LiveData<Boolean> findQ4();
 
   @Query("SELECT q5 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ5();
+  LiveData<Boolean> findQ5();
 
   @Query("SELECT q6 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ6();
+  LiveData<Boolean> findQ6();
 
   @Query("SELECT q7 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ7();
+  LiveData<Boolean> findQ7();
 
   @Query("SELECT q8 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ8();
+  LiveData<Boolean> findQ8();
 
   @Query("SELECT q9 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ9();
+  LiveData<Boolean> findQ9();
 
   @Query("SELECT q10 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ10();
+  LiveData<Boolean> findQ10();
 
   @Query("SELECT q11 FROM QuestionnaireActivityEntity")
-  LiveData<Integer> findQ11();
+  LiveData<Boolean> findQ11();
 
 
 }
