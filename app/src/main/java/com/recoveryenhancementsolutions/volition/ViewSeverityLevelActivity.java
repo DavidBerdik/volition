@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 public class ViewSeverityLevelActivity extends AppCompatActivity {
 
-
+  final TextView specifier = (TextView) findViewById(R.id.specifier_tv);
+  final TextView totalYesTv = (TextView) findViewById(R.id.totalScore_tv);
   /**
    *
    * @param savedInstanceState
@@ -22,8 +23,11 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.severity_activity);
-    mSeverityTextView = findViewById(R.id.severe_tv);
+    setContentView(R.layout.activity_severitylevel);
+
+
+    observeTotalYes();
+
 
     // Get a reference to the ViewModel for this screen.
     mViewModel = ViewModelProviders.of(this).get(ViewSeverityLevelViewModel.class);
@@ -32,6 +36,25 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     observeSeverityLevel();
   }
 
+
+  private void observeTotalYes() {
+    mViewModel.totalYes.observe(this, new Observer<String>() {
+      @Override
+      public void onChanged(@Nullable String totalYes) {
+        showTotalYesInUi(totalYes);
+      }
+    });
+  }
+  private void showTotalYesInUi(final @NonNull String totalYes) {
+    StringBuilder sb = new StringBuilder();
+
+    //sb.append("Severity Level:");
+
+    totalYesTv.append(totalYes);
+    //sb.append("\n");
+
+    //mViewModel.setText(sb.toString());
+  }
   /**
    *
    */
@@ -47,12 +70,12 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   private void showSeverityLevelInUi(final @NonNull String severity) {
     StringBuilder sb = new StringBuilder();
 
-    sb.append("Severity Level:");
+    //sb.append("Severity Level:");
 
-    sb.append(severity);
-    sb.append("\n");
+    specifier.append(severity);
+    //sb.append("\n");
 
-    mSeverityTextView.setText(sb.toString());
+  //mViewModel.setText(specifier.toString());
   }
   private ViewSeverityLevelViewModel mViewModel;
 
