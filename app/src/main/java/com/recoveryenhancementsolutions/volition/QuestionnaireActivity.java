@@ -16,24 +16,26 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
   private QuestionnaireActivityViewModel mViewModel;
 
-  public static int answerCounter = 0;
-  public static int yesAnswers = 0;
-  public static int noAnswers = 0;
-  public static int severityLevel = 0;
+  public int answerCounter = 0;
+  public int yesAnswers = 0;
+  public int noAnswers = 0;
+  public int severityLevel = 0;
 
-  public static Boolean qOneAnswer;
-  public static Boolean qTwoAnswer;
-  public static Boolean qThreeAnswer;
-  public static Boolean qFourAnswer;
-  public static Boolean qFiveAnswer;
-  public static Boolean qSixAnswer;
-  public static Boolean qSevenAnswer;
-  public static Boolean qEightAnswer;
-  public static Boolean qNineAnswer;
-  public static Boolean qTenAnswer;
-  public static Boolean qElevenAnswer;
+  public Boolean qOneAnswer;
+  public Boolean qTwoAnswer;
+  public Boolean qThreeAnswer;
+  public Boolean qFourAnswer;
+  public Boolean qFiveAnswer;
+  public Boolean qSixAnswer;
+  public Boolean qSevenAnswer;
+  public Boolean qEightAnswer;
+  public Boolean qNineAnswer;
+  public Boolean qTenAnswer;
+  public Boolean qElevenAnswer;
+  public String severityString;
 
-//  final VolitionDatabase db;
+
+private VolitionDatabase mDb;
 
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -63,7 +65,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final TextView qEleven = (TextView) findViewById(R.id.questionEleven);
 
     final TextView severityResult = (TextView) findViewById(R.id.severityResponse);
-
+    mDb = VolitionDatabase.getDatabase(this.getApplication());
     Button YESbtn = (Button) findViewById(R.id.YESbtn);
     Button NObtn = (Button) findViewById(R.id.NObtn);
 
@@ -180,18 +182,18 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
           severityLevel = yesAnswers - noAnswers;
           startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-          /*
+
           if (severityLevel <= 3) {
-            severityResult.setText("Mild");
+            severityString="Mild";
           }
 
           if (severityLevel > 3 && severityLevel <= 5) {
-            severityResult.setText("Moderate");
+            severityString="Moderate";
           }
 
           if (severityLevel >= 6) {
-            severityResult.setText("Severe");
-          } */
+            severityString="Severe";
+          }
         }
 
       }
@@ -289,18 +291,18 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
           startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
 
-          /*
+
           if (severityLevel <= 3) {
-            severityResult.setText("Mild");
+            severityString="Mild";
           }
 
           if (severityLevel > 3 && severityLevel <= 5) {
-            severityResult.setText("Moderate");
+            severityString="Moderate";
           }
 
           if (severityLevel >= 6) {
-            severityResult.setText("Severe");
-          } */
+            severityString="Severe";
+          }
 
         }
 
@@ -308,6 +310,25 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     });
 
-
   }
+   /* private static void addQuestionnaire()
+    {
+        QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
+        String totalYes= Integer.toString(yesAnswers);
+        questionnaireActivityEntity.totalYes=totalYes;
+        questionnaireActivityEntity.q1=qOneAnswer;
+        questionnaireActivityEntity.q2=qOneAnswer;
+        questionnaireActivityEntity.q3=qOneAnswer;
+        questionnaireActivityEntity.q4=qOneAnswer;
+        questionnaireActivityEntity.q5=qOneAnswer;
+        questionnaireActivityEntity.q6=qOneAnswer;
+        questionnaireActivityEntity.q7=qOneAnswer;
+        questionnaireActivityEntity.q8=qOneAnswer;
+        questionnaireActivityEntity.q9=qOneAnswer;
+        questionnaireActivityEntity.q10=qOneAnswer;
+        questionnaireActivityEntity.q11=qOneAnswer;
+        questionnaireActivityEntity.severityLevel=severityString;
+        mDb.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
+    }*/
+
 }
