@@ -109,7 +109,8 @@
           android:buttonTint="@color/res_gold"
           android:text="@string/create_profile_support"
           android:visibility="visible"
-          tools:text="@string/create_profile_support"/>
+          tools:text="@string/create_profile_support"
+            android:checked="true"/>
         <RadioButton
           android:id="@+id/radioClient"
           android:layout_width="match_parent"
@@ -150,7 +151,8 @@
           android:layout_weight="1"
           android:buttonTint="@color/res_gold"
           android:text="@string/create_profile_heroin"
-          tools:text="@string/create_profile_heroin"/>
+          tools:text="@string/create_profile_heroin"
+            android:checked="true"/>
         <RadioButton
           android:id="@+id/radioOpiates"
           android:layout_width="match_parent"

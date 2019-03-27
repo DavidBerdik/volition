@@ -20,6 +20,9 @@ public class DisplayProfile extends AppCompatActivity {
     setContentView(R.layout.display_profile);
     Button send;
 
+    //
+    //database insertion
+
 
     name = (TextView) findViewById(R.id.recorded_name);
     DOB = (TextView) findViewById(R.id.recorded_dob);
@@ -29,7 +32,7 @@ public class DisplayProfile extends AppCompatActivity {
     Disorder = (TextView) findViewById(R.id.recorded_type);
     CleanDate = (TextView) findViewById(R.id.recorded_date);
 
-    name.setText(getIntent().getStringExtra("name"));
+    name.setText(getIntent().getStringExtra("Name"));
     DOB.setText(getIntent().getStringExtra("Date of Birth"));
     Gender.setText(getIntent().getStringExtra("Gender"));
     TypeOfPerson.setText(getIntent().getStringExtra("Type of Person"));
@@ -41,6 +44,8 @@ public class DisplayProfile extends AppCompatActivity {
     send.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+
+
         Intent intent = new Intent(DisplayProfile.this, MainActivity.class);
         startActivity(intent);
       }

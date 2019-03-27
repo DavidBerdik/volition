@@ -37,18 +37,18 @@ import android.support.annotation.NonNull;
  */
 
 // TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
-  /*
-@Database(
-    entities = {
 
-    },
-    version = 1)
-    */
+@Database(
+        entities = {
+                DemographicDataEntity.class
+        },
+        version = 1)
+
 public abstract class VolitionDatabase extends RoomDatabase {
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
-
+  public abstract DemographicDataDAO demographicDataDAO();
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
 
@@ -63,12 +63,12 @@ public abstract class VolitionDatabase extends RoomDatabase {
       synchronized (VolitionDatabase.class) {
         if (INSTANCE == null) {
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-              VolitionDatabase.class, "volition_database")
-              // Wipes and rebuilds instead of migrating if no Migration object.
-              // Migration is not part of this codelab.
-              .fallbackToDestructiveMigration()
-              .addCallback(sVolitionDatabaseCallback)
-              .build();
+                  VolitionDatabase.class, "volition_database")
+                  // Wipes and rebuilds instead of migrating if no Migration object.
+                  // Migration is not part of this codelab.
+                  .fallbackToDestructiveMigration()
+                  .addCallback(sVolitionDatabaseCallback)
+                  .build();
         }
       }
     }
@@ -114,10 +114,11 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
     // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
     // private final WordDao mDao;
-
+    private final DemographicDataDAO demographicDataDAO;
     PopulateDbAsync(VolitionDatabase db) {
       // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
       // mDao = db.wordDao();
+      demographicDataDAO = db.demographicDataDAO();
     }
 
     @Override
