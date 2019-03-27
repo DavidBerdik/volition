@@ -16,26 +16,26 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
   private QuestionnaireActivityViewModel mViewModel;
 
-  public int answerCounter = 0;
-  public int yesAnswers = 0;
-  public int noAnswers = 0;
-  public int severityLevel = 0;
+  public static int answerCounter = 0;
+  public static int yesAnswers = 0;
+  public static int noAnswers = 0;
+  public static int severityLevel = 0;
 
-  public Boolean qOneAnswer;
-  public Boolean qTwoAnswer;
-  public Boolean qThreeAnswer;
-  public Boolean qFourAnswer;
-  public Boolean qFiveAnswer;
-  public Boolean qSixAnswer;
-  public Boolean qSevenAnswer;
-  public Boolean qEightAnswer;
-  public Boolean qNineAnswer;
-  public Boolean qTenAnswer;
-  public Boolean qElevenAnswer;
-  public String severityString;
+  public static Boolean qOneAnswer;
+  public static Boolean qTwoAnswer;
+  public static Boolean qThreeAnswer;
+  public static Boolean qFourAnswer;
+  public static Boolean qFiveAnswer;
+  public static Boolean qSixAnswer;
+  public static Boolean qSevenAnswer;
+  public static Boolean qEightAnswer;
+  public static Boolean qNineAnswer;
+  public static Boolean qTenAnswer;
+  public static Boolean qElevenAnswer;
+  public static String severityString;
 
 
-private VolitionDatabase mDb;
+private static VolitionDatabase mDb;
 
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -289,7 +289,6 @@ private VolitionDatabase mDb;
 
           severityLevel = yesAnswers - noAnswers;
 
-          startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
 
 
           if (severityLevel <= 3) {
@@ -304,6 +303,8 @@ private VolitionDatabase mDb;
             severityString="Severe";
           }
 
+          //addQuestionnaire();
+          startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
         }
 
       }
@@ -311,24 +312,28 @@ private VolitionDatabase mDb;
     });
 
   }
-   /* private static void addQuestionnaire()
+
+    private static void addQuestionnaire()
     {
+
         QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
+        questionnaireActivityEntity.setQ1(qOneAnswer);
+      questionnaireActivityEntity.setQ2(qTwoAnswer);
+      questionnaireActivityEntity.setQ3(qThreeAnswer);
+      questionnaireActivityEntity.setQ4(qFourAnswer);
+      questionnaireActivityEntity.setQ5(qFiveAnswer);
+      questionnaireActivityEntity.setQ6(qSixAnswer);
+      questionnaireActivityEntity.setQ7(qSevenAnswer);
+      questionnaireActivityEntity.setQ8(qEightAnswer);
+      questionnaireActivityEntity.setQ9(qNineAnswer);
+      questionnaireActivityEntity.setQ10(qTenAnswer);
+      questionnaireActivityEntity.setQ11(qElevenAnswer);
         String totalYes= Integer.toString(yesAnswers);
-        questionnaireActivityEntity.totalYes=totalYes;
-        questionnaireActivityEntity.q1=qOneAnswer;
-        questionnaireActivityEntity.q2=qOneAnswer;
-        questionnaireActivityEntity.q3=qOneAnswer;
-        questionnaireActivityEntity.q4=qOneAnswer;
-        questionnaireActivityEntity.q5=qOneAnswer;
-        questionnaireActivityEntity.q6=qOneAnswer;
-        questionnaireActivityEntity.q7=qOneAnswer;
-        questionnaireActivityEntity.q8=qOneAnswer;
-        questionnaireActivityEntity.q9=qOneAnswer;
-        questionnaireActivityEntity.q10=qOneAnswer;
-        questionnaireActivityEntity.q11=qOneAnswer;
-        questionnaireActivityEntity.severityLevel=severityString;
+        questionnaireActivityEntity.setTotalYes(totalYes);
+        questionnaireActivityEntity.setId(1);
+
+        questionnaireActivityEntity.setSeverityLevel(severityString);
         mDb.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
-    }*/
+    }
 
 }
