@@ -8,7 +8,6 @@
   android:layout_height="match_parent"
   tools:context=".HomeActivity">
 
-
   <TextView
     android:id="@+id/textview_day_1"
     android:layout_width="80dp"
@@ -150,6 +149,4 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
-
-
 </android.support.constraint.ConstraintLayout>

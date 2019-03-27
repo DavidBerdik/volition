@@ -123,6 +123,6 @@ public class UserActivityViewModel extends AndroidViewModel {
     return db.userActivitiesDao().getActivitiesByDate(date);
   }
 
-  private VolitionDatabase db;
+  public VolitionDatabase db;
   private static final String TAG = "UserActivityViewModel";
 }
