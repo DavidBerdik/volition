@@ -30,20 +30,37 @@ public class HomeActivityTest {
       HomeActivity.class);
 
   /**
-   * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
+   * Creates a testing environment to be used to the HomeActivity class with a test database.
    */
   @Before
-  public void loadViewModel() {
-    viewModel = ViewModelProviders.of(activityTestRule.getActivity())
-        .get(DemographicDataViewModel.class);
+  public void loadTestEnvironment() {
+    // Create a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
 
     // Sets up some entry data.
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Patient");
-    demographicDataEntity.setLastClean(new Date(new Date().getTime() - 8 * 24 * 60 * 60 * 1000));
-    viewModel.deleteDemographicData(demographicDataEntity);
+    demographicDataEntity.setLastClean(new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000));
+
+    // Tell the activity to use the testing database.
+    activityTestRule.getActivity().onCreateTest(db);
+
+    viewModel = ViewModelProviders.of(activityTestRule.getActivity())
+        .get(DemographicDataViewModel.class);
+    viewModel.setTestDatabase(db);
     viewModel.insertDemographicData(demographicDataEntity);
-    activityTestRule.getActivity().recreate();
+
+    activityTestRule.getActivity().onCreateTest(db);
+  }
+
+  /**
+   * Cleans up the testing environment.
+   */
+  @After
+  public void cleanTestEnvironment() {
+    db.close();
   }
 
   /**
@@ -58,12 +75,11 @@ public class HomeActivityTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
-    assertEquals("Days Clean: 8", activityTestRule.getActivity().getDaysCleanText());
-
-    viewModel.deleteDemographicData(demographicDataEntity);
+    assertEquals("Days Clean: 10", activityTestRule.getActivity().getDaysCleanText());
   }
 
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
+  private VolitionDatabase db;
   private static final String TAG = "HomeActivityTest";
 }

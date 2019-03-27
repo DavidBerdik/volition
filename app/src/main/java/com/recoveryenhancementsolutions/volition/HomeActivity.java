@@ -28,6 +28,18 @@ public class HomeActivity extends AppCompatActivity {
     return daysCleanMessage.getText().toString();
   }
 
+  /**
+   * Recreates the Activity but using a testing database. Should only be used for testing.
+   *
+   * @param db A VolitionDatabase test object.
+   */
+  public void onCreateTest(VolitionDatabase db) {
+    final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demographicDataViewModel.setTestDatabase(db);
+    demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
