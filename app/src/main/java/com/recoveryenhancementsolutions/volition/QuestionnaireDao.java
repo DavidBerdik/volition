@@ -27,6 +27,9 @@ public interface QuestionnaireDao {
   @Query("SELECT severityLevel FROM Questionnaire")
   LiveData<String> findSeverityLevelString();
 
+  @Query("SELECT totalYes FROM Questionnaire")
+  LiveData<String> findTotalYes();
+
   @Query("SELECT q1 FROM Questionnaire")
   LiveData<Integer> findQ1();
 
