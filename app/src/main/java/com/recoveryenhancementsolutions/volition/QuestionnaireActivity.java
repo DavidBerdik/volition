@@ -186,18 +186,18 @@ private static VolitionDatabase mDb;
           severityLevel = yesAnswers - noAnswers;
 
 
-          if (severityLevel <= 3) {
+          if (yesAnswers <= 3) {
             severityString="Mild";
           }
 
-          if (severityLevel > 3 && severityLevel <= 5) {
+          if (yesAnswers > 3 && yesAnswers <= 5) {
             severityString="Moderate";
           }
 
-          if (severityLevel >= 6) {
+          if (yesAnswers >= 6) {
             severityString="Severe";
           }
-          mViewModel.addQuestionnaire(qOneAnswer, qTwoAnswer, qThreeAnswer, qFourAnswer, qFiveAnswer, qSixAnswer, qSevenAnswer, qEightAnswer, qNineAnswer, qTenAnswer, qElevenAnswer, yesAnswers,severityString);
+          mViewModel.populateAsync(mDb);
           startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
         }
 
@@ -296,19 +296,19 @@ private static VolitionDatabase mDb;
 
 
 
-          if (severityLevel <= 3) {
+          if (yesAnswers <= 3) {
             severityString="Mild";
           }
 
-          if (severityLevel > 3 && severityLevel <= 5) {
+          if (yesAnswers > 3 && yesAnswers <= 5) {
             severityString="Moderate";
           }
 
-          if (severityLevel >= 6) {
+          if (yesAnswers >= 6) {
             severityString="Severe";
           }
 
-          mViewModel.addQuestionnaire(qOneAnswer, qTwoAnswer, qThreeAnswer, qFourAnswer, qFiveAnswer, qSixAnswer, qSevenAnswer, qEightAnswer, qNineAnswer, qTenAnswer, qElevenAnswer, yesAnswers,severityString);
+          mViewModel.populateAsync(mDb);
           startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
         }
 
