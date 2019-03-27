@@ -2,18 +2,24 @@ package com.recoveryenhancementsolutions.volition;
 
 
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 
 @Dao
+@SuppressWarnings("unused")
+/*
+Currently many methods are unused, it is expected more and more will
+come into use as more components are finished and added
+*/
 public interface DemographicDataDAO {
-    @Insert
-    void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
-    @Update
-    void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
+
+  @Insert
+  void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
+
+  @Update
+  void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
 
 
     /*
@@ -23,47 +29,62 @@ public interface DemographicDataDAO {
     should allow for  easier access of this information for the other functions of this application
     */
 
-    String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1";// commonly used component of query
+  String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
 
-    @Query("SELECT patientName "+genericQuery)
-    String queryPatientName();
-    @Query("SELECT age "+genericQuery)
-    int queryPatientAge();
-    @Query("SELECT dateOfBirth "+genericQuery)
-    String queryDoB();
-    @Query("SELECT gender "+genericQuery)
-    String queryPatientGender();
-    @Query("SELECT isPersonInRecovery "+genericQuery)
-    boolean queryIsInRecovery();
+  @Query("SELECT patientName " + genericQuery)
+  String queryPatientName();
 
-    @Query("SELECT useHeroin "+genericQuery)
-    boolean queryIsUsingHeroin();
-    @Query("SELECT useOpiateOrSynth "+genericQuery)
-    boolean queryIsUsingOpiateOrSynth();
-    @Query("SELECT useAlcohol "+genericQuery)
-    boolean queryIsUsingAlcohol();
-    @Query("SELECT useCrackOrCocaine "+genericQuery)
-    boolean queryIsUsingCrackOrCo();
-    @Query("SELECT useMarijuana "+genericQuery)
-    boolean queryIsUsingMarijuana();
-    @Query("SELECT useMethamphetamine "+genericQuery)
-    boolean queryIsUsingMeth();
-    @Query("SELECT useBenzo "+genericQuery)
-    boolean queryIsUsingBenzo();
-    @Query("SELECT useNonBeznoTrang "+genericQuery)
-    boolean queryIsUsingNonBenzoTranq();
-    @Query("SELECT useBarbituresOrHypno "+genericQuery)
-    boolean queryIsUsingBarbOrHypno();
-    @Query("SELECT useInhalants "+genericQuery)
-    boolean queryIsUsingInhalants();
+  @Query("SELECT age " + genericQuery)
+  int queryPatientAge();
 
-    @Query("SELECT Other "+genericQuery)
-    String queryOtherUsedDrugs();
+  @Query("SELECT dateOfBirth " + genericQuery)
+  String queryDoB();
 
-    @Query("SELECT disorderAlcohol "+genericQuery)
-    boolean queryIsHavingAlcoholDisorder();
-    @Query("SELECT disorderOpioid "+genericQuery)
-    boolean queryIsHavingOpioidDisorder();
-    @Query("SELECT lastClean "+genericQuery)
-    String queryLastCleanDate();
+  @Query("SELECT gender " + genericQuery)
+  String queryPatientGender();
+
+  @Query("SELECT isPersonInRecovery " + genericQuery)
+  boolean queryIsInRecovery();
+
+  @Query("SELECT useHeroin " + genericQuery)
+  boolean queryIsUsingHeroin();
+
+  @Query("SELECT useOpiateOrSynth " + genericQuery)
+  boolean queryIsUsingOpiateOrSynth();
+
+  @Query("SELECT useAlcohol " + genericQuery)
+  boolean queryIsUsingAlcohol();
+
+  @Query("SELECT useCrackOrCocaine " + genericQuery)
+  boolean queryIsUsingCrackOrCo();
+
+  @Query("SELECT useMarijuana " + genericQuery)
+  boolean queryIsUsingMarijuana();
+
+  @Query("SELECT useMethamphetamine " + genericQuery)
+  boolean queryIsUsingMeth();
+
+  @Query("SELECT useBenzo " + genericQuery)
+  boolean queryIsUsingBenzo();
+
+  @Query("SELECT useNonBeznoTrang " + genericQuery)
+  boolean queryIsUsingNonBenzoTranq();
+
+  @Query("SELECT useBarbituresOrHypno " + genericQuery)
+  boolean queryIsUsingBarbOrHypno();
+
+  @Query("SELECT useInhalants " + genericQuery)
+  boolean queryIsUsingInhalants();
+
+  @Query("SELECT Other " + genericQuery)
+  String queryOtherUsedDrugs();
+
+  @Query("SELECT disorderAlcohol " + genericQuery)
+  boolean queryIsHavingAlcoholDisorder();
+
+  @Query("SELECT disorderOpioid " + genericQuery)
+  boolean queryIsHavingOpioidDisorder();
+
+  @Query("SELECT lastClean " + genericQuery)
+  String queryLastCleanDate();
 }

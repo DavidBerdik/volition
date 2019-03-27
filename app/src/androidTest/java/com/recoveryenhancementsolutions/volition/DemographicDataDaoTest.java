@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 //import android.arch.core.executor.testing.InstantTaskExecutorRule;
+
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -15,33 +16,34 @@ import org.junit.Assert;
 @RunWith(AndroidJUnit4.class)
 public class DemographicDataDaoTest {
 
-    private DemographicDataDAO demographicDataDAO;
-    private VolitionDatabase db;
+  private DemographicDataDAO demographicDataDAO;
+  private VolitionDatabase db;
 
-    @Before
-    public void createDb(){
-       final Context context = InstrumentationRegistry.getTargetContext();
-        db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
-               .allowMainThreadQueries().build();
-        demographicDataDAO = db.demographicDataDAO();
-    }
-    @After
-    public void closeDb() {
-        db.close();
-    }
+  @Before
+  public void createDb() {
+    final Context context = InstrumentationRegistry.getTargetContext();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
+    demographicDataDAO = db.demographicDataDAO();
+  }
 
-    @Test
-    public void testDemographicDataDao() {
-        DemographicDataEntity patient = new DemographicDataEntity();
-        patient.setAge(15);
-        patient.setPatientName("Bob");
-        patient.setDateOfBirth("12-04-1976");
-        patient.setUseAlcohol(true);
-        demographicDataDAO.insertDemographicInfo(patient);
+  @After
+  public void closeDb() {
+    db.close();
+  }
 
-        Assert.assertEquals(15,demographicDataDAO.queryPatientAge());
-        Assert.assertNotEquals(51,demographicDataDAO.queryPatientAge());
-        Assert.assertFalse(demographicDataDAO.queryIsUsingBenzo());
-        Assert.assertTrue(demographicDataDAO.queryIsUsingAlcohol());
-    }
+  @Test
+  public void testDemographicDataDao() {
+    DemographicDataEntity patient = new DemographicDataEntity();
+    patient.setAge(15);
+    patient.setPatientName("Bob");
+    patient.setDateOfBirth("12-04-1976");
+    patient.setUseAlcohol(true);
+    demographicDataDAO.insertDemographicInfo(patient);
+
+    Assert.assertEquals(15, demographicDataDAO.queryPatientAge());
+    Assert.assertNotEquals(51, demographicDataDAO.queryPatientAge());
+    Assert.assertFalse(demographicDataDAO.queryIsUsingBenzo());
+    Assert.assertTrue(demographicDataDAO.queryIsUsingAlcohol());
+  }
 }
