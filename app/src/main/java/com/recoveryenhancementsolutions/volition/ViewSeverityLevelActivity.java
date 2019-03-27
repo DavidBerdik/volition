@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,15 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * This class accesses database for questionnaire and displays desired information, specifically the severity level and total yes answers
+ * This class accesses database for questionnaire and displays desired information, specifically the
+ * severity level and total yes answers
  */
 public class ViewSeverityLevelActivity extends AppCompatActivity {
 
 
-
   /**
-   * The onCreate method sets the view to the proper xml and accesses the view model for this activity
-   *@param savedInstanceState
+   * The onCreate method sets the view to the proper xml and accesses the view model for this
+   * activity
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +37,17 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     observeTotalYes();
     // Update the UI whenever there's a change in the ViewModel's data.
     observeSeverityLevel();
+    TPButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
+      }
+    });
   }
 
   /**
-   * observeTotalYes creates an observer for the string value of total yes in the database and calls a method to show it in UI
+   * observeTotalYes creates an observer for the string value of total yes in the database and calls
+   * a method to show it in UI
    */
   private void observeTotalYes() {
     mViewModel.totalYes.observe(this, new Observer<String>() {
@@ -49,8 +57,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
       }
     });
   }
+
   /**
-   *  appends a string into the total yes text view and is entered by a string builder
+   * appends a string into the total yes text view and is entered by a string builder
    */
   private void showTotalYesInUi(final @NonNull String totalYes) {
     StringBuilder sb = new StringBuilder();
@@ -61,7 +70,8 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   }
 
   /**
-   * observeSeverityLevel creates an observer for the string value of severity in the database and calls a method to show it in UI
+   * observeSeverityLevel creates an observer for the string value of severity in the database and
+   * calls a method to show it in UI
    */
   private void observeSeverityLevel() {
     mViewModel.severity.observe(this, new Observer<String>() {
@@ -71,8 +81,9 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
       }
     });
   }
+
   /**
-   *  appends a string into the specifier text view and is entered by a string builder
+   * appends a string into the specifier text view and is entered by a string builder
    */
   private void showSeverityLevelInUi(final @NonNull String severity) {
     StringBuilder sb = new StringBuilder();

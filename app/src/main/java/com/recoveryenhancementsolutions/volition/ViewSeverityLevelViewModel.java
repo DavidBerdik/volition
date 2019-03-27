@@ -23,7 +23,8 @@ public class ViewSeverityLevelViewModel extends AndroidViewModel {
 
     // Books is a LiveData object so updates are observed.
     severity = mDb.questionnaireModel().findSeverityLevelString();
-    totalYes= mDb.questionnaireModel().findTotalYes();
+    totalYes = mDb.questionnaireModel().findTotalYes();
   }
+
   private VolitionDatabase mDb;
 }
