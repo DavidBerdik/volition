@@ -24,7 +24,7 @@ public interface MedicationChoiceDAO {
    */
 
   @Query("SELECT * FROM MedicationChoiceEntity")
-  LiveData<String> getMedication();
+  LiveData<MedicationChoiceEntity> getMedication();
 
   /**
    * Inserts a medication choice into the database.

@@ -11,6 +11,10 @@ import android.support.annotation.NonNull;
 @Entity(primaryKeys = "medication")
 public class MedicationChoiceEntity {
 
+  public void insertMed(final @NonNull String med){
+    this.med = med;
+  }
+
   /**
    * Sets the choice from the user as a String The string is passed from a button press in the
    * activity
@@ -20,5 +24,7 @@ public class MedicationChoiceEntity {
   @ColumnInfo(name = "medication")
   public String medication;
 
+  @NonNull
+  public String med;
 
 }
