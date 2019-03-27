@@ -99,9 +99,9 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name = "specifier"> Specifier: </string>
   <string name = "severity"> Current Severity: </string>
   <string name="threezerofive"> 305.50 (F11.10)</string>
-  <string name = "mild"> Mild: Presence of 2-3 symptoms</string>
+  <string name = "mild"> Mild: Presence of 2–3 symptoms</string>
   <string name = "threezerofour"> 304.00 (F11.20)</string>
-  <string name = "moderate">Moderate: Presence of 4-5 symptoms.</string>
+  <string name = "moderate">Moderate: Presence of 4–5 symptoms.</string>
   <string name = "threezerofour2">304.00 (F11.20)</string>
   <string name = "severe">Severe: Presence of 6 or more symptoms.</string>
   <string name = "plan"> Treatment Plan</string>
