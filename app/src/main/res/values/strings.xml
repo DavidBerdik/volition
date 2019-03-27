@@ -57,4 +57,6 @@
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="plan_previous_week">P</string>
+  <string name="plan_next_week">N</string>
 </resources>
