@@ -37,7 +37,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static String severityString;
 
 
-private static VolitionDatabase mDb;
+  private static VolitionDatabase mDb;
 
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -53,8 +53,8 @@ private static VolitionDatabase mDb;
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
-   // mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivity.class);
-      mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
+    // mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivity.class);
+    mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     final TextView qOne = (TextView) findViewById(R.id.questionOne);
     final TextView qTwo = (TextView) findViewById(R.id.questionTwo);
     final TextView qThree = (TextView) findViewById(R.id.questionThree);
@@ -185,17 +185,16 @@ private static VolitionDatabase mDb;
 
           severityLevel = yesAnswers - noAnswers;
 
-
           if (yesAnswers <= 3) {
-            severityString="Mild";
+            severityString = "Mild";
           }
 
           if (yesAnswers > 3 && yesAnswers <= 5) {
-            severityString="Moderate";
+            severityString = "Moderate";
           }
 
           if (yesAnswers >= 6) {
-            severityString="Severe";
+            severityString = "Severe";
           }
           mViewModel.populateAsync(mDb);
           startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
@@ -294,18 +293,16 @@ private static VolitionDatabase mDb;
 
           severityLevel = yesAnswers - noAnswers;
 
-
-
           if (yesAnswers <= 3) {
-            severityString="Mild";
+            severityString = "Mild";
           }
 
           if (yesAnswers > 3 && yesAnswers <= 5) {
-            severityString="Moderate";
+            severityString = "Moderate";
           }
 
           if (yesAnswers >= 6) {
-            severityString="Severe";
+            severityString = "Severe";
           }
 
           mViewModel.populateAsync(mDb);
@@ -317,28 +314,4 @@ private static VolitionDatabase mDb;
     });
 
   }
-/*
-    private static void addQuestionnaire()
-    {
-
-        QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
-        questionnaireActivityEntity.setQ1(qOneAnswer);
-      questionnaireActivityEntity.setQ2(qTwoAnswer);
-      questionnaireActivityEntity.setQ3(qThreeAnswer);
-      questionnaireActivityEntity.setQ4(qFourAnswer);
-      questionnaireActivityEntity.setQ5(qFiveAnswer);
-      questionnaireActivityEntity.setQ6(qSixAnswer);
-      questionnaireActivityEntity.setQ7(qSevenAnswer);
-      questionnaireActivityEntity.setQ8(qEightAnswer);
-      questionnaireActivityEntity.setQ9(qNineAnswer);
-      questionnaireActivityEntity.setQ10(qTenAnswer);
-      questionnaireActivityEntity.setQ11(qElevenAnswer);
-        String totalYes= Integer.toString(yesAnswers);
-        questionnaireActivityEntity.setTotalYes(totalYes);
-        questionnaireActivityEntity.setId(1);
-
-        questionnaireActivityEntity.setSeverityLevel(severityString);
-        mDb.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
-    }
-*/
 }
