@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * The HomeActivity that contains functionality and interactions relevant to the activity_home
@@ -19,6 +18,15 @@ import java.util.Locale;
  * they have been clean. Includes a navigation menu at the bottom.
  */
 public class HomeActivity extends AppCompatActivity {
+
+  /**
+   * Retrieves the text stored in daysCleanMessage. Only needed for testing.
+   *
+   * @return A String object containing the text inside daysCleanMessage.
+   */
+  public String getDaysCleanText() {
+    return daysCleanMessage.getText().toString();
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +36,16 @@ public class HomeActivity extends AppCompatActivity {
     buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
 
-    final DaysCleanViewModel daysCleanViewModel = ViewModelProviders.of(this)
-        .get(DaysCleanViewModel.class);
-    daysCleanViewModel.getLastCleanDate().observe(this, daysCleanObserver);
+    final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
     final BottomNavigationView navigation = findViewById(R.id.menubar);
     navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
-  private Observer<Date> daysCleanObserver = new Observer<Date>() {
+  private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
     public void onChanged(@Nullable Date date) {
       // We should only have a NullPointerException if nothing is entered into the DB yet.

@@ -6,16 +6,16 @@ import android.arch.lifecycle.LiveData;
 import java.util.Date;
 
 /**
- * ViewModel for "DaysClean" in the database. Handles the number of days clean from the database.
+ * ViewModel for "DemographicDataEntity" in the database.
  */
-public class DaysCleanViewModel extends AndroidViewModel {
+public class DemographicDataViewModel extends AndroidViewModel {
 
   /**
    * Constructor for the ViewModel.
    *
    * @param application Application object for the ViewModel.
    */
-  public DaysCleanViewModel(final Application application) {
+  public DemographicDataViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
   }
@@ -28,6 +28,24 @@ public class DaysCleanViewModel extends AndroidViewModel {
    */
   public void setTestDatabase(final VolitionDatabase db) {
     this.db = db;
+  }
+
+  /**
+   * Inserts a new DemographicDataEntity into the database.
+   *
+   * @param demographicDataEntity The entity to be inserted.
+   */
+  public void insertDemographicData(DemographicDataEntity demographicDataEntity) {
+    db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
+  }
+
+  /**
+   * Updates a DemographicDataEntity in the database.
+   *
+   * @param demographicDataEntity The entity to be updated.
+   */
+  public void updateDemographicData(DemographicDataEntity demographicDataEntity) {
+    db.demographicDataDao().updateDemographicInfo(demographicDataEntity);
   }
 
   /**
