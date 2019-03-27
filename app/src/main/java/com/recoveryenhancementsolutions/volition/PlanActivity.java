@@ -3,15 +3,15 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -79,11 +79,10 @@ public class PlanActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_plan);
 
-    //Initializing TextViews
-    mTextMessage = (TextView) findViewById(R.id.message);
-
-    //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-    //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    // Init navbar.
+    final BottomNavigationView navigation = findViewById(R.id.menubar);
+    navigation.setSelectedItemId(R.id.menubar_home);
+    navigation.setOnNavigationItemSelectedListener(navigationListener);
 
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
       @Override
@@ -201,18 +200,17 @@ public class PlanActivity extends AppCompatActivity {
     }
   }
 
-  private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
-        case R.id.navigation_home:
-          mTextMessage.setText(R.string.title_home);
+        case R.id.menubar_home:
+          Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+          startActivity(i);
           return true;
-        case R.id.navigation_dashboard:
-          mTextMessage.setText(R.string.title_dashboard);
+        case R.id.menubar_activity:
           return true;
-        case R.id.navigation_notifications:
-          mTextMessage.setText(R.string.title_notifications);
+        case R.id.menubar_plan:
           return true;
       }
       return false;
@@ -221,6 +219,4 @@ public class PlanActivity extends AppCompatActivity {
 
   private final ArrayList<DateView> dateViews = new ArrayList<DateView>();
   private UserActivityViewModel actViewModel;
-
-  private TextView mTextMessage;
 }
