@@ -3,39 +3,33 @@ package com.recoveryenhancementsolutions.volition;
 import android.app.Application;
 
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
+
 import android.os.AsyncTask;
 
-import java.util.Date;
-import java.util.List;
-
+/**
+ * This class abstracts the database away from the view severity level activity and allows it to view LiveData objects taken from the database
+ */
 public class QuestionnaireActivityViewModel extends AndroidViewModel {
 
-    //public final LiveData<List<QuestionnaireActivityEntity>> questionnaire;
+    /**
+     * creates a task to query the database from an asynchronus thread
+     * @param db connection to the database class
+     */
     public static void populateAsync(final VolitionDatabase db) {
 
         PopulateDbAsync task = new PopulateDbAsync(db);
         task.execute();
     }
-    private VolitionDatabase modelDB;
-    private static VolitionDatabase mDb;
 
     public QuestionnaireActivityViewModel(Application application) {
         super(application);
         createDb();
-        mDb = VolitionDatabase.getDatabase(this.getApplication());
-
-       // questionnaire = modelDB.questionnaireModel().insertQuestionnaire(); //Needs what to pass
-    }
+        }
 
     public void createDb() {
-        modelDB = VolitionDatabase.getDatabase(this.getApplication());
+        mDb = VolitionDatabase.getDatabase(this.getApplication());
     }
 
-   private static void insert(QuestionnaireActivityEntity questionnaireActivityEntity)
-   {
-       mDb.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
-   }
     public static void addQuestionnaire(boolean qOneAnswer, boolean qTwoAnswer, boolean qThreeAnswer, boolean qFourAnswer, boolean qFiveAnswer, boolean qSixAnswer,
                                          boolean qSevenAnswer, boolean qEightAnswer, boolean qNineAnswer, boolean qTenAnswer, boolean qElevenAnswer, int yesAnswers, String severityString )
     {
@@ -79,4 +73,5 @@ addQuestionnaire(QuestionnaireActivity.qOneAnswer,QuestionnaireActivity.qTwoAnsw
         }
 
     }
+    private static VolitionDatabase mDb;
 }
