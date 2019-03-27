@@ -4,10 +4,10 @@ import android.arch.persistence.room.Entity;
 import android.support.annotation.NonNull;
 
 /**
- * Database entity for storing the Questionnaire information.
+ * Database entity for storing the QuestionnaireActivityEntity information.
  */
 @Entity(primaryKeys = {"id"})
-public class Questionnaire {
+public class QuestionnaireActivityEntity {
 
   @NonNull
   public int id;
@@ -16,9 +16,9 @@ public String totalYes;
   public String severityLevel;
 
 
-  public void setId(int id) {
+  /*public void setId(int id) {
     this.id = id;
-  }
+  }*/
   public void setTotalYes(String totalYes) {
     this.totalYes =totalYes;
   }
@@ -55,9 +55,9 @@ public String totalYes;
   public void setq11(Boolean q11) {
     this.q11 = q11;
   }
-  public int getId() {
+/*  public int getId() {
     return id;
-  }
+  }*/
   public Boolean getQ1(){return q1;}
   public Boolean getQ2(){return q2;}
   public Boolean getQ3(){return q3;}
