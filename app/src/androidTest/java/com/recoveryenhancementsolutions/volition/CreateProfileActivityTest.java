@@ -5,6 +5,7 @@ import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
@@ -16,15 +17,18 @@ import static org.hamcrest.Matchers.is;
 
 import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.DatePicker;
 import java.util.Calendar;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
@@ -96,7 +100,7 @@ public class CreateProfileActivityTest {
                 3)));
     appCompatButton.perform(scrollTo(), click());
 
-    // Test opening the Last Date Clean date picker
+    // Test opening the Last Date Used date picker
     ViewInteraction appCompatEditText2 = onView(
         allOf(withId(R.id.clean_date),
             childAtPosition(
@@ -107,7 +111,7 @@ public class CreateProfileActivityTest {
                 10)));
     appCompatEditText2.perform(scrollTo(), click());
 
-    // Test 5 uses of the "Previous Month" button in the Last Date Clean date picker
+    // Test 5 uses of the "Previous Month" button in the Last Date Used date picker
     for (int x = 0; x < 5; x++) {
       ViewInteraction appCompatImageButton4 = onView(
           allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
@@ -121,7 +125,7 @@ public class CreateProfileActivityTest {
       appCompatImageButton4.perform(scrollTo(), click());
     }
 
-    // Test clicking the "OK" button in the Last Date Clean date picker
+    // Test clicking the "OK" button in the Last Date Used date picker
     ViewInteraction appCompatButton2 = onView(
         allOf(withId(android.R.id.button1), withText("OK"),
             childAtPosition(
@@ -130,6 +134,20 @@ public class CreateProfileActivityTest {
                     0),
                 3)));
     appCompatButton2.perform(scrollTo(), click());
+
+    // Test setting the "Date of Birth" EditText to January 19, 2038
+    onView(withId(R.id.date_of_birth)).perform(scrollTo(), click());
+    onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
+        .perform(PickerActions.setDate(2038, 1, 19));
+    onView(withId(android.R.id.button1)).perform(click());
+    onView(withId(R.id.date_of_birth)).check(matches(withText("Jan 19, 2038")));
+
+    // Test setting the "Last Date Used" EditText to March 14, 2015
+    onView(withId(R.id.clean_date)).perform(scrollTo(), click());
+    onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
+        .perform(PickerActions.setDate(2015, 3, 14));
+    onView(withId(android.R.id.button1)).perform(click());
+    onView(withId(R.id.clean_date)).check(matches(withText("Mar 14, 2015")));
   }
 
   private static Matcher<View> childAtPosition(
