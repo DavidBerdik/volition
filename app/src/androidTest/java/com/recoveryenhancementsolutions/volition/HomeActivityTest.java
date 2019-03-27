@@ -42,7 +42,7 @@ public class HomeActivityTest {
     // Sets up some entry data.
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Patient");
-    demographicDataEntity.setLastClean(new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000));
+    demographicDataEntity.setLastClean(new Date(new Date().getTime() - 5 * 24 * 60 * 60 * 1000));
 
     // Tell the activity to use the testing database.
     activityTestRule.getActivity().onCreateTest(db);
@@ -51,8 +51,6 @@ public class HomeActivityTest {
         .get(DemographicDataViewModel.class);
     viewModel.setTestDatabase(db);
     viewModel.insertDemographicData(demographicDataEntity);
-
-    activityTestRule.getActivity().onCreateTest(db);
   }
 
   /**
@@ -67,7 +65,10 @@ public class HomeActivityTest {
    * Tests that the DemographicDataViewModel is functioning once.
    */
   @Test
-  public void homeActivityTest_SingleUpdate() {
+  public void homeActivityTest_ViewModel() {
+    // Tell the activity to use the testing database.
+    activityTestRule.getActivity().onCreateTest(db);
+
     try {
       assertEquals(demographicDataEntity.getLastClean(),
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
@@ -75,7 +76,15 @@ public class HomeActivityTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
-    assertEquals("Days Clean: 10", activityTestRule.getActivity().getDaysCleanText());
+    try {
+      assertEquals(5, DateConverter
+          .daysBetween(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
+              new Date()));
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    assertEquals("Days Clean: 5", activityTestRule.getActivity().getDaysCleanText());
   }
 
   private DemographicDataEntity demographicDataEntity;
