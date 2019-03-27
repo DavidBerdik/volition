@@ -2,6 +2,8 @@ package com.recoveryenhancementsolutions.volition;
 
 
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -51,7 +53,8 @@ private static VolitionDatabase mDb;
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
-
+   // mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivity.class);
+      mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     final TextView qOne = (TextView) findViewById(R.id.questionOne);
     final TextView qTwo = (TextView) findViewById(R.id.questionTwo);
     final TextView qThree = (TextView) findViewById(R.id.questionThree);
@@ -181,7 +184,7 @@ private static VolitionDatabase mDb;
           severityResult.setTextColor(severityResult.getTextColors().withAlpha(100));
 
           severityLevel = yesAnswers - noAnswers;
-          startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+
 
           if (severityLevel <= 3) {
             severityString="Mild";
@@ -194,6 +197,8 @@ private static VolitionDatabase mDb;
           if (severityLevel >= 6) {
             severityString="Severe";
           }
+          mViewModel.addQuestionnaire(qOneAnswer, qTwoAnswer, qThreeAnswer, qFourAnswer, qFiveAnswer, qSixAnswer, qSevenAnswer, qEightAnswer, qNineAnswer, qTenAnswer, qElevenAnswer, yesAnswers,severityString);
+          startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
         }
 
       }
@@ -303,7 +308,7 @@ private static VolitionDatabase mDb;
             severityString="Severe";
           }
 
-          //addQuestionnaire();
+          mViewModel.addQuestionnaire(qOneAnswer, qTwoAnswer, qThreeAnswer, qFourAnswer, qFiveAnswer, qSixAnswer, qSevenAnswer, qEightAnswer, qNineAnswer, qTenAnswer, qElevenAnswer, yesAnswers,severityString);
           startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
         }
 
@@ -312,7 +317,7 @@ private static VolitionDatabase mDb;
     });
 
   }
-
+/*
     private static void addQuestionnaire()
     {
 
@@ -335,5 +340,5 @@ private static VolitionDatabase mDb;
         questionnaireActivityEntity.setSeverityLevel(severityString);
         mDb.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
     }
-
+*/
 }
