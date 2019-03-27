@@ -71,7 +71,7 @@
                 android:text="Total Score:"
 
                 android:textColor="#009933"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-255dp"
                 android:layout_marginRight="56dp"
-                android:width="600px" />
+                android:width="600dp" />
         </TableRow>
 
         <TableRow>
@@ -101,7 +101,7 @@
                 android:text="Specifier:"
 
                 android:textColor="#009933"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-255dp"
                 android:layout_marginRight="56dp"
-                android:width="600px" />
+                android:width="600dp" />
         </TableRow>
 
 
@@ -153,7 +153,7 @@
                 android:text=" Current Severity"
                 android:textColor="#FF9900"
 
-                android:textSize="20dp"
+                android:textSize="20sp"
 
 
                 />

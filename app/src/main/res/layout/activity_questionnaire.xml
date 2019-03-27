@@ -44,7 +44,7 @@ tools:context=".QuestionnaireActivity">
   android:text="Do you often take larger amounts of opioids or
 take opioids over a longer period of time than
 intended?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -76,7 +76,7 @@ intended?"
   android:text="Do you often have a persistent desire or
 unsuccessful efforts to cut down or control
 opioid use?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -95,7 +95,7 @@ opioid use?"
   android:text="Do you spend a great deal of time in activities
 necessary to obtain opioids, use opioids, or
 recover from their effects?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -113,7 +113,7 @@ recover from their effects?"
   android:gravity="center"
   android:text="Do you experience cravings or a strong desire to
 use opioids"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -132,7 +132,7 @@ use opioids"
   android:text="Does recurrent opioid use result in failing to
 fulfill major role obligations at work, school or
 home?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -152,7 +152,7 @@ home?"
 persistent or recurrent social or interpersonal
 problems that are caused or exacerbated by the
 effects of opioids?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -171,7 +171,7 @@ effects of opioids?"
   android:text="Do you reduce or give up important social,
 occupational or recreational activities because
 of opioid use?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -189,7 +189,7 @@ of opioid use?"
   android:gravity="center"
   android:text="Do you often use opioids in situations in which it
 is physically hazardous?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -209,7 +209,7 @@ is physically hazardous?"
 persistent or recurrent physical or psychological
 problem that has been caused or exacerbated
 by opioids?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -230,7 +230,7 @@ need for increased amounts of opioids to
 achieve intoxication or desired effect or a
 diminished effect with continued use of the
 same amount of opioid?"
-  android:textSize="24dp"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -249,7 +249,7 @@ same amount of opioid?"
   android:text="Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
 Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: Dysphoic mood. \n
 •Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia."
-  android:textSize="15dp"
+  android:textSize="15sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"

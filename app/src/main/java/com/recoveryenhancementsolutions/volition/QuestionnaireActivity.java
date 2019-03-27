@@ -1,22 +1,18 @@
 package com.recoveryenhancementsolutions.volition;
 
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.List;
 
 public class QuestionnaireActivity extends AppCompatActivity {
 
-  private QuestionnaireActivityViewModel mViewModel;
+
 
   public static int answerCounter = 0;
   public static int yesAnswers = 0;
@@ -37,7 +33,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static String severityString;
 
 
-  private static VolitionDatabase mDb;
+
 
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -53,7 +49,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
-    // mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivity.class);
     mViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     final TextView qOne = (TextView) findViewById(R.id.questionOne);
     final TextView qTwo = (TextView) findViewById(R.id.questionTwo);
@@ -85,15 +80,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
 
-
-    /*private void insertQuestionOne() {
-      mViewModel.questionnaire.observe(this, new Observer<List<QuestionnaireActivityEntity>>() {
-        @Override
-        public void onChanged(@Nullable List<QuestionnaireActivityEntity> questionnaireActivityEntities) {
-          saveStatus(questionnaireActivityEntities); //Need to pass proper arguments
-        }
-      });
-    } */
 
     YESbtn.setOnClickListener(new View.OnClickListener() {
 
@@ -314,4 +300,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     });
 
   }
+  private static VolitionDatabase mDb;
+  private QuestionnaireActivityViewModel mViewModel;
 }
