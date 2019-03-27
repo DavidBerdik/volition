@@ -15,8 +15,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Unit test for the Medication Choice DAO
+ */
 @RunWith(AndroidJUnit4.class)
-
 public class MedicationChoiceDAOTest {
 
   @Rule
@@ -27,10 +29,10 @@ public class MedicationChoiceDAOTest {
    */
   @Before
   public void createDb() {
+
     final Context context = InstrumentationRegistry.getTargetContext();
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
         .build();
-    medicationChoiceDAO = db.medicationChoiceDAO();
   }
 
   /**
@@ -42,13 +44,14 @@ public class MedicationChoiceDAOTest {
   }
 
   /**
-   * Performs several tests involving the Medication Choice DAO
+   * Performs several tests involving the Medication Choice DAO Tests inserting a medication choice
+   * into the database and checks that the values match
    */
 
 
   @Test
   public void insertMedicationTest() {
-    MedicationChoiceEntity mc = new MedicationChoiceEntity();
+    final MedicationChoiceEntity mc = new MedicationChoiceEntity();
     mc.medication = "this is a test";
     db.medicationChoiceDAO().insertMedication(mc);
 
@@ -64,7 +67,6 @@ public class MedicationChoiceDAOTest {
     }
   }
 
-  private MedicationChoiceDAO medicationChoiceDAO;
   private VolitionDatabase db;
   private static final String TAG = "MedicationChoiceDAOTest";
 
