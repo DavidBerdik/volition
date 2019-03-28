@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-
 @Entity
 @SuppressWarnings({"unused", "WeakerAccess", "FieldCanBeLocal"})
 /*
@@ -29,48 +28,16 @@ Currently many methods are unused (mainly the getMethods(), it is expected
 more and more will come into use as more components are finished and added
 */
 
-/**
+/*
  * Entity for storing demographic information
  */
 public class DemographicDataEntity {
-
-  @PrimaryKey
-  @NonNull
-  private String patientName;
-
-  private int age;
-  private Date dateOfBirth;
-  private String gender;
-  private boolean isPersonInRecovery;//True - person in recovery FALSE - Family/Support
-
-  //Booleans regarding the usage of a drug
-  private boolean useHeroin;
-  private boolean useOpiateOrSynth;
-  private boolean useAlcohol;
-  private boolean useCrackOrCocaine;
-  private boolean useMarijuana;
-  private boolean useMethamphetamine;
-  private boolean useBenzo;
-  private boolean useNonBeznoTrang;
-  private boolean useBarbituresOrHypno;
-  private boolean useInhalants;
-
-  private String useOther;
-  private boolean disorderOpioid;
-  private boolean disorderAlcohol;
-  private Date lastClean;
-  private int fetchID = 1;
-
-
-  /*
-  A series of set and get methods for the object
-  */
-
   /**
    * get patient name
    *
    * @return String name of patient
    */
+  @NonNull
   public String getPatientName() {
     return patientName;
   }
@@ -80,7 +47,7 @@ public class DemographicDataEntity {
    *
    * @param patientName name of patient
    */
-  public void setPatientName(String patientName) {
+  public void setPatientName(@NonNull String patientName) {
     this.patientName = patientName;
   }
 
@@ -399,4 +366,33 @@ public class DemographicDataEntity {
   public int getFetchID() {
     return fetchID;
   }
+
+  @PrimaryKey
+  @SuppressWarnings("NullableProblems")
+  @NonNull
+  private String patientName;
+
+  private int age;
+  private Date dateOfBirth;
+  private String gender;
+  private boolean isPersonInRecovery;//True - person in recovery FALSE - Family/Support
+
+  //Booleans regarding the usage of a drug
+  private boolean useHeroin;
+  private boolean useOpiateOrSynth;
+  private boolean useAlcohol;
+  private boolean useCrackOrCocaine;
+  private boolean useMarijuana;
+  private boolean useMethamphetamine;
+  private boolean useBenzo;
+  private boolean useNonBeznoTrang;
+  private boolean useBarbituresOrHypno;
+  private boolean useInhalants;
+
+  private String useOther;
+  private boolean disorderOpioid;
+  private boolean disorderAlcohol;
+  private Date lastClean;
+  private int fetchID = 1;
+
 }

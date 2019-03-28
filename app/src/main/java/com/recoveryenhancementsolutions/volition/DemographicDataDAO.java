@@ -15,7 +15,7 @@ Currently many methods are unused, it is expected more and more will
 come into use as more components are finished and added
 */
 
-/**
+/*
  *  DAO file for the DataDemographic Entity
  */
 public interface DemographicDataDAO {
@@ -97,7 +97,7 @@ public interface DemographicDataDAO {
   /**
    * Retrieves the patient usage of Opiates/Synthetics
    *
-   * @@return a boolean indicating true or false
+   * @return a boolean indicating true or false
    */
   @Query("SELECT useOpiateOrSynth " + genericQuery)
   boolean queryIsUsingOpiateOrSynth();
