@@ -55,6 +55,55 @@
         },
         "indices": [],
         "foreignKeys": []
+<<<<<<< HEAD
+=======
+      },
+      {
+        "tableName": "DemographicDataEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `lastClean` INTEGER, PRIMARY KEY(`patientName`))",
+        "fields": [
+          {
+            "fieldPath": "patientName",
+            "columnName": "patientName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastClean",
+            "columnName": "lastClean",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+            "columnNames": [
+              "patientName"
+            ],
+            "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+        {
+        "tableName": "MedicationChoiceEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "fields": [
+          {
+            "fieldPath": "medication",
+            "columnName": "medication",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "medication"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+>>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
       }
     ],
     "setupQueries": [
