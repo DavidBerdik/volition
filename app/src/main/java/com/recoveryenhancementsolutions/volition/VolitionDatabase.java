@@ -42,6 +42,7 @@ import android.support.annotation.NonNull;
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 
 @Database(
+
         entities = {
                 UserActivityEntity.class,
                 TreatmentPlanEntity.class,
@@ -61,7 +62,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
     public abstract QuestionnaireDao questionnaireDao();
 
-    public abstract MedicationChoiceDao medicationChoiceDao();
+    public abstract MedicationChoiceDAO medicationChoiceDao();
 
     /**
      * Factory method implementing Singleton design pattern for VolitionDatabase class.
@@ -128,7 +129,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
         private final UserActivitiesDao userActivitiesDao;
         private final TreatmentPlanDao treatmentPlanDao;
         private final QuestionnaireDao questionnaireDao;
-        private final MedicationChoiceDao medicationChoiceDao;
+        private final MedicationChoiceDAO medicationChoiceDao;
 
         PopulateDbAsync(final VolitionDatabase db) {
             // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
@@ -156,7 +157,8 @@ public abstract class VolitionDatabase extends RoomDatabase {
         }
     }
 
+}
+
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile VolitionDatabase INSTANCE;
-
 }
