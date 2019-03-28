@@ -26,6 +26,7 @@
         >
 
       <EditText
+          android:autofillHints="name"
           android:id="@+id/name"
           android:layout_width="match_parent"
           android:layout_height="40dp"
@@ -44,6 +45,7 @@
           tools:ignore="Autofill"/>
 
       <EditText
+          android:importantForAutofill="no"
           android:id="@+id/date_of_birth"
           android:layout_width="match_parent"
           android:layout_height="40dp"
@@ -233,6 +235,7 @@
             tools:text="@string/create_profile_other"/>
       </RadioGroup>
       <EditText
+          android:autofillHints="enter_other"
           android:id="@+id/enter_other"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -279,6 +282,7 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/substance_use"/>
       <EditText
+          android:importantForAutofill="no"
           android:id="@+id/clean_date"
           android:layout_width="0dp"
           android:layout_height="40dp"
