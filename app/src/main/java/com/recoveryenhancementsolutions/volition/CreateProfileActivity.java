@@ -10,7 +10,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 import android.widget.Button;
 import android.content.Intent;
 
@@ -97,10 +96,10 @@ public class CreateProfileActivity extends AppCompatActivity {
     });
 
     final Button send;
-    send = (Button) findViewById(R.id.record_button);
+    send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View v) {
+      public void onClick( final View v) {
         sendOff();
       }
 
@@ -111,7 +110,7 @@ public class CreateProfileActivity extends AppCompatActivity {
        * latest commit on March 27, 2019. However for now it will be simply a button until
        * confirmation
        */
-      public void sendOff() {
+      private void sendOff() {
         //Intent goes to the next activity in the Work Flow.
         Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
         startActivity(intent);
