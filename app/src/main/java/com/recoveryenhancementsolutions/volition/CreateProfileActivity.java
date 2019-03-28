@@ -22,9 +22,6 @@ public class CreateProfileActivity extends AppCompatActivity {
     setContentView(R.layout.activity_create_profile);
 
     final Calendar dobCalendar = Calendar.getInstance();
-    final EditText dateOfBirth = findViewById(R.id.date_of_birth);
-    final Calendar cleanDateCalendar = Calendar.getInstance();
-    final EditText cleanDate = findViewById(R.id.clean_date);
 
     final DatePickerDialog.OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
       /**
@@ -44,6 +41,8 @@ public class CreateProfileActivity extends AppCompatActivity {
       }
     };
 
+    final Calendar cleanDateCalendar = Calendar.getInstance();
+
     final DatePickerDialog.OnDateSetListener cleanDateListener = new OnDateSetListener() {
       /**
        * Event handler for when a date of last use is chosen by the user.
@@ -62,7 +61,7 @@ public class CreateProfileActivity extends AppCompatActivity {
       }
     };
 
-    dateOfBirth.setOnClickListener(new OnClickListener() {
+    findViewById(R.id.date_of_birth).setOnClickListener(new OnClickListener() {
       /**
        * Event handler for triggering the display of the Date of Birth date picker when the user
        * taps on the "dateOfBirth" EditText object.
@@ -78,7 +77,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     });
 
-    cleanDate.setOnClickListener(new OnClickListener() {
+    findViewById(R.id.clean_date).setOnClickListener(new OnClickListener() {
       /**
        * Event handler for triggering the display of the Last Use Date date picker when the user
        * taps on the "cleanDate" EditText object.
