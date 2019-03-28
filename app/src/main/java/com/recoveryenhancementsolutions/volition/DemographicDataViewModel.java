@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.os.AsyncTask;
 import java.util.Date;
 
 /**
@@ -35,26 +36,8 @@ public class DemographicDataViewModel extends AndroidViewModel {
    *
    * @param demographicDataEntity The entity to be inserted.
    */
-  public void insertDemographicData(DemographicDataEntity demographicDataEntity) {
-    db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
-  }
-
-  /**
-   * Updates a DemographicDataEntity in the database.
-   *
-   * @param demographicDataEntity The entity to be updated.
-   */
-  public void updateDemographicData(DemographicDataEntity demographicDataEntity) {
-    db.demographicDataDao().updateDemographicInfo(demographicDataEntity);
-  }
-
-  /**
-   * Deletes a DemographicDataEntity in the database.
-   *
-   * @param demographicDataEntity The entity to be deleted.
-   */
-  public void deleteDemographicData(DemographicDataEntity demographicDataEntity) {
-    db.demographicDataDao().deleteDemographicInfo(demographicDataEntity);
+  public void insertDemographicData(final DemographicDataEntity demographicDataEntity) {
+    new insertAsyncTask(db.demographicDataDao()).execute(demographicDataEntity);
   }
 
   /**
@@ -64,6 +47,21 @@ public class DemographicDataViewModel extends AndroidViewModel {
    */
   public LiveData<Date> getLastCleanDate() {
     return db.demographicDataDao().queryLastCleanDate();
+  }
+
+  private static class insertAsyncTask extends AsyncTask<DemographicDataEntity, Void, Void> {
+
+    insertAsyncTask(DemographicDataDAO dao) {
+      demographicDataDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final DemographicDataEntity... params) {
+      demographicDataDao.insertDemographicInfo(params[0]);
+      return null;
+    }
+
+    private DemographicDataDAO demographicDataDao;
   }
 
   private VolitionDatabase db;

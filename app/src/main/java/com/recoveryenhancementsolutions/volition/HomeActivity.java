@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
    *
    * @param db A VolitionDatabase test object.
    */
-  public void onCreateTest(VolitionDatabase db) {
+  public void onCreateTest(final VolitionDatabase db) {
     final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
     demographicDataViewModel.setTestDatabase(db);
@@ -41,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
   }
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
 
@@ -59,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
 
   private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
-    public void onChanged(@Nullable Date date) {
+    public void onChanged(final Date date) {
       // We should only have a NullPointerException if nothing is entered into the DB yet.
       // If this is the case, have an empty days clean String.
       try {
@@ -74,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
       switch (item.getItemId()) {
         case R.id.menubar_home:
           buttonTestItem.setText(R.string.menubar_home);
