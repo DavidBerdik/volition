@@ -52,7 +52,7 @@
     <activity
         android:exported="true"
         android:label="@string/app_name"
-        android:name=".PlanActivity">
+        android:name=".ActivityActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
