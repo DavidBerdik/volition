@@ -6,21 +6,20 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".MainActivity">
-    <RelativeLayout
-      android:layout_width="0dp"
-      android:layout_height="734dp"
 
-      android:padding="10dp"
-      android:background="#FFA500"
-      app:layout_constraintBaseline_toBaselineOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      tools:context="com.example.layoutborder.MainActivity">
 
         <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal">
+
+          android:orientation="horizontal"
+          android:layout_width="0dp"
+          android:layout_height="734dp"
+
+          android:padding="10dp"
+          android:background="#FFA500"
+          app:layout_constraintBaseline_toBaselineOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          tools:context="com.example.layoutborder.MainActivity">
 
             <TextView
               android:layout_width="fill_parent"
@@ -31,10 +30,9 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
-
 
     <ImageView
+      android:contentDescription="@string/desc"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="30"
@@ -68,10 +66,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="bottom"
-                android:text="Total Score:"
+                android:text="@string/total"
 
                 android:textColor="#009933"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -81,12 +79,13 @@
                 app:layout_constraintVertical_bias="0.113" />
 
             <EditText
+                android:hint = "@string/severity"
                 android:id="@+id/totalScore_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-255dp"
                 android:layout_marginRight="56dp"
-                android:width="600px" />
+                android:width="600dp" />
         </TableRow>
 
         <TableRow>
@@ -98,10 +97,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="left"
-                android:text="Specifier:"
+                android:text="@string/specifier"
 
                 android:textColor="#009933"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -111,12 +110,13 @@
                 app:layout_constraintVertical_bias="0.113" />
 
             <EditText
+              android:autofillHints="username"
                 android:id="@+id/specifier_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-255dp"
                 android:layout_marginRight="56dp"
-                android:width="600px" />
+                android:width="600dp" />
         </TableRow>
 
 
@@ -150,10 +150,10 @@
                 android:layout_marginRight="20dp"
                 android:gravity="left"
                 android:padding="10dp"
-                android:text=" Current Severity"
+                android:text="@string/severity"
                 android:textColor="#FF9900"
 
-                android:textSize="20dp"
+                android:textSize="20sp"
 
 
                 />
@@ -175,7 +175,7 @@
                 android:layout_marginRight="20dp"
                 android:gravity="left"
                 android:padding="3dip"
-                android:text="305.50 (F11.10)"
+                android:text="@string/threezerofive"
                 android:textColor="#FF9900" />
 
             <TextView
@@ -185,8 +185,7 @@
                 android:layout_marginRight="30dp"
                 android:gravity="right"
                 android:padding="3dip"
-                android:text="Mild: Presence of 2-3 symptoms
-"
+                android:text="@string/mild"
                 android:textColor="#FF9900" />
         </TableRow>
 
@@ -200,7 +199,7 @@
                 android:layout_marginRight="20dp"
                 android:gravity="left"
                 android:padding="3dip"
-                android:text="304.00 (F11.20)"
+                android:text="@string/threezerofour"
                 android:textColor="#FF9900" />
 
             <TextView
@@ -211,8 +210,7 @@
                 android:layout_marginRight="30dp"
                 android:gravity="right"
                 android:padding="3dip"
-                android:text="Moderate: Presence of 4-5 symptoms.
-"
+                android:text="@string/moderate"
 
                 android:textColor="#FF9900" />
         </TableRow>
@@ -228,7 +226,7 @@
                 android:alpha="100"
                 android:gravity="left"
                 android:padding="3dip"
-                android:text="304.00 (F11.20)"
+                android:text="@string/threezerofour2"
                 android:textColor="#FFA500" />
 
             <TextView
@@ -240,7 +238,7 @@
                 android:gravity="right"
                 android:padding="3dip"
 
-                android:text="Severe: Presence of 6 or more symptoms."
+                android:text="@string/severe"
                 android:textColor="#FF9900" />
         </TableRow>
 
@@ -256,7 +254,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="#00FA9A"
-        android:text="Treatment Plan"
+        android:text="@string/plan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
         app:layout_constraintStart_toStartOf="parent"

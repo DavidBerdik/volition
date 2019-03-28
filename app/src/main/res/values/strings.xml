@@ -58,4 +58,52 @@
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="q1"> Do you often take larger amounts of opioids or
+take opioids over a longer period of time than
+intended?</string>
+  <string name="q2"> Do you often have a persistent desire or
+unsuccessful efforts to cut down or control
+opioid use?</string>
+  <string name="q3"> Do you spend a great deal of time in activities
+necessary to obtain opioids, use opioids, or
+recover from their effects?</string>
+  <string name="q4"> Do you experience cravings or a strong desire to
+use opioids</string>
+  <string name="q5"> Does recurrent opioid use result in failing to
+fulfill major role obligations at work, school or
+home?</string>
+  <string name="q6"> Do you continue to use opioids despite having
+persistent or recurrent social or interpersonal
+problems that are caused or exacerbated by the
+effects of opioids?</string>
+  <string name="q7"> Do you reduce or give up important social,
+occupational or recreational activities because
+of opioid use?</string>
+  <string name="q8"> Do you often use opioids in situations in which it
+is physically hazardous?</string>
+  <string name="q9"> Do you continue to use opioids despite having a
+persistent or recurrent physical or psychological
+problem that has been caused or exacerbated
+by opioids?</string>
+  <string name="q10"> Do you have a tolerance to opioids defined as a
+need for increased amounts of opioids to
+achieve intoxication or desired effect or a
+diminished effect with continued use of the
+same amount of opioid?</string>
+  <string name="q11"> Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
+Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: Dysphoic mood. \n
+•Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia.</string>
+<string name = "yes"> Yes </string>
+  <string name = "no" > No </string>
+  <string name = "total"> Total Score: </string>
+  <string name = "specifier"> Specifier: </string>
+  <string name = "severity"> Current Severity: </string>
+  <string name="threezerofive"> 305.50 (F11.10)</string>
+  <string name = "mild"> Mild: Presence of 2–3 symptoms</string>
+  <string name = "threezerofour"> 304.00 (F11.20)</string>
+  <string name = "moderate">Moderate: Presence of 4–5 symptoms.</string>
+  <string name = "threezerofour2">304.00 (F11.20)</string>
+  <string name = "severe">Severe: Presence of 6 or more symptoms.</string>
+  <string name = "plan"> Treatment Plan</string>
+  <string name = "desc"> Company logo </string>
 </resources>

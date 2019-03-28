@@ -40,7 +40,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     TPButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
+       // startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
       }
     });
   }

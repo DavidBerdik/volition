@@ -7,20 +7,18 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".QuestionnaireActivity">
 
-<RelativeLayout
-  android:layout_width="0dp"
-  android:layout_height="734dp"
 
-  android:padding="10dp"
-  android:background="#FFA500"
-  app:layout_constraintBaseline_toBaselineOf="parent"
-  app:layout_constraintEnd_toEndOf="parent"
-  app:layout_constraintStart_toStartOf="parent"
-  tools:context="com.example.layoutborder.QuestionaireActivity">
 
   <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="0dp"
+    android:layout_height="734dp"
+
+    android:padding="10dp"
+    android:background="#FFA500"
+    app:layout_constraintBaseline_toBaselineOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:context="com.example.layoutborder.QuestionaireActivity"
     android:orientation="horizontal">
 
     <TextView
@@ -30,9 +28,9 @@ tools:context=".QuestionnaireActivity">
       android:gravity="center_vertical|center_horizontal"
       android:textSize="40sp"/>
 
-  </LinearLayout>
+</LinearLayout
+  >
 
-</RelativeLayout>
 
 <TextView
   android:id="@+id/questionOne"
@@ -41,10 +39,8 @@ tools:context=".QuestionnaireActivity">
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you often take larger amounts of opioids or
-take opioids over a longer period of time than
-intended?"
-  android:textSize="24dp"
+  android:text="@string/q1"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -55,6 +51,7 @@ intended?"
 
 
 <ImageView
+  android:contentDescription="@string/desc"
   android:layout_width="0dp"
   android:layout_height="314dp"
   android:layout_weight="1"
@@ -73,10 +70,8 @@ intended?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you often have a persistent desire or
-unsuccessful efforts to cut down or control
-opioid use?"
-  android:textSize="24dp"
+  android:text="@string/q2"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -92,10 +87,8 @@ opioid use?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you spend a great deal of time in activities
-necessary to obtain opioids, use opioids, or
-recover from their effects?"
-  android:textSize="24dp"
+  android:text="@string/q3"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -111,9 +104,8 @@ recover from their effects?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you experience cravings or a strong desire to
-use opioids"
-  android:textSize="24dp"
+  android:text="@string/q4"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -129,10 +121,8 @@ use opioids"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Does recurrent opioid use result in failing to
-fulfill major role obligations at work, school or
-home?"
-  android:textSize="24dp"
+  android:text="@string/q5"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -148,11 +138,8 @@ home?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you continue to use opioids despite having
-persistent or recurrent social or interpersonal
-problems that are caused or exacerbated by the
-effects of opioids?"
-  android:textSize="24dp"
+  android:text="@string/q6"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -168,10 +155,8 @@ effects of opioids?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you reduce or give up important social,
-occupational or recreational activities because
-of opioid use?"
-  android:textSize="24dp"
+  android:text="@string/q7"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -187,9 +172,8 @@ of opioid use?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you often use opioids in situations in which it
-is physically hazardous?"
-  android:textSize="24dp"
+  android:text="@string/q8"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -205,11 +189,8 @@ is physically hazardous?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you continue to use opioids despite having a
-persistent or recurrent physical or psychological
-problem that has been caused or exacerbated
-by opioids?"
-  android:textSize="24dp"
+  android:text="@string/q9"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -225,12 +206,8 @@ by opioids?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="center"
-  android:text="Do you have a tolerance to opioids defined as a
-need for increased amounts of opioids to
-achieve intoxication or desired effect or a
-diminished effect with continued use of the
-same amount of opioid?"
-  android:textSize="24dp"
+  android:text="@string/q10"
+  android:textSize="24sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -246,10 +223,8 @@ same amount of opioid?"
   android:layout_marginLeft="20dp"
   android:layout_marginRight="20dp"
   android:gravity="left"
-  android:text="Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
-Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: Dysphoic mood. \n
-•Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia."
-  android:textSize="15dp"
+  android:text="@string/q11"
+  android:textSize="15sp"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
@@ -278,7 +253,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   android:layout_marginTop="30dp"
   android:layout_below="@id/questionOne"
   android:background="#00FA9A"
-  android:text="Yes"
+  android:text="@string/yes"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintHorizontal_bias="0.811"
@@ -294,7 +269,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   android:layout_marginTop="30dp"
   android:layout_below="@id/questionOne"
   android:background="#00FA9A"
-  android:text="No"
+  android:text="@string/no"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"
   app:layout_constraintHorizontal_bias="0.229"
