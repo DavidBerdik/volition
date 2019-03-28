@@ -22,6 +22,10 @@ off on setting these methods package-private
 Currently many methods are unused (mainly the getMethods(), it is expected
 more and more will come into use as more components are finished and added
 */
+
+/**
+ * Entity for storing demographic information
+ */
 public class DemographicDataEntity {
 
   @PrimaryKey
@@ -55,10 +59,21 @@ public class DemographicDataEntity {
   /*
   A series of set and get methods for the object
   */
+
+  /**
+   * get patient name
+   *
+   * @return String name of patient
+   */
   String getPatientName() {
     return patientName;
   }
 
+  /**
+   * set name of patient
+   *
+   * @param patientName name of patient
+   */
   public void setPatientName(String patientName) {
     this.patientName = patientName;
   }
