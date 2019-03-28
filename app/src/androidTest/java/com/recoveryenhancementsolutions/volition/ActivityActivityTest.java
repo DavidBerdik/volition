@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
  * Unit test for the "User Activity History" ViewModel.
  */
 @RunWith(AndroidJUnit4.class)
-public class PlanActivityTest {
+public class ActivityActivityTest {
 
   @Rule
   public ActivityTestRule<PlanActivity> activityTestRule = new ActivityTestRule<>(

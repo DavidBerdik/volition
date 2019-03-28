@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/menubar"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@color/res_green"
+    app:elevation="0dp"
+    app:itemBackground="@color/res_green"
+    app:itemHorizontalTranslationEnabled="false"
+    app:itemIconTint="@android:color/black"
+    app:itemTextColor="@android:color/black"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/menubar"/>
+
+  <HorizontalScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="130dp"
+    android:layout_gravity="center_horizontal"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+      android:id="@+id/linearLayout1"
+      android:layout_width="wrap_content"
+      android:layout_height="130dp"
+      android:layout_gravity="center_horizontal"
+      android:gravity="center_horizontal"
+      android:orientation="horizontal">
+
+      <TextView
+        android:id="@+id/textview_day_1"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+      <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <TextView
+        android:id="@+id/textview_day_2"
+        android:layout_width="83dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+      <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <TextView
+        android:id="@+id/textview_day_3"
+        android:layout_width="83dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+      <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <TextView
+        android:id="@+id/textview_day_4"
+        android:layout_width="83dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+      <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <TextView
+        android:id="@+id/textview_day_5"
+        android:layout_width="83dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+      <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <TextView
+        android:id="@+id/textview_day_6"
+        android:layout_width="83dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+      <Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+      <TextView
+        android:id="@+id/textview_day_7"
+        android:layout_width="83dp"
+        android:layout_height="100dp"
+        android:background="@color/res_green_transparent"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
+
+
+    </LinearLayout>
+  </HorizontalScrollView>
+
+</android.support.constraint.ConstraintLayout>

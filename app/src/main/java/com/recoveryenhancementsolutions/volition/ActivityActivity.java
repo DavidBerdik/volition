@@ -20,10 +20,10 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Loads the activities for each day and displays them to the user.
- * Allows the user to go back/forward by 4 days on the calendar.
+ * Loads the activities for each day and displays them to the user. Allows the user to go
+ * back/forward by 4 days on the calendar.
  */
-public class PlanActivity extends AppCompatActivity {
+public class ActivityActivity extends AppCompatActivity {
 
   /**
    * Structure for storing a date's corresponding TextViews for the title and descriptions.
@@ -42,14 +42,16 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     /**
-     * Change the day associated with these labels.
-     * Updates the title label to reflect the day.
+     * Change the day associated with these labels. Updates the title label to reflect the day.
+     *
      * @param day The new day to associate with.
      */
     public void setDay(Calendar day) {
       this.day = (Calendar) day.clone();
-      title.setText(day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-          getResources().getConfiguration().locale));
+      if (title != null) {
+        title.setText(day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
+            getResources().getConfiguration().locale));
+      }
     }
 
     public Calendar getDay() {
@@ -77,13 +79,15 @@ public class PlanActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_plan);
+    // TEMP: Eventually make this R.layout.activity_activity
+    setContentView(R.layout.activity_activity_testing);
 
     // Init navbar.
     final BottomNavigationView navigation = findViewById(R.id.menubar);
     navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
+    /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -96,6 +100,7 @@ public class PlanActivity extends AppCompatActivity {
         cycle(false);
       }
     });
+    */
 
     // Store today's date with a time of 0 for relative date calculation.
     final Calendar today = Calendar.getInstance();
@@ -124,6 +129,21 @@ public class PlanActivity extends AppCompatActivity {
         today,
         (TextView) findViewById(R.id.day_of_week_4),
         (TextView) findViewById(R.id.textview_day_4)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
+    dateViews.add(new DateView(
+        today,
+        (TextView) findViewById(R.id.day_of_week_4), // TEMP
+        (TextView) findViewById(R.id.textview_day_5)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
+    dateViews.add(new DateView(
+        today,
+        (TextView) findViewById(R.id.day_of_week_4), // TEMP
+        (TextView) findViewById(R.id.textview_day_6)));
+    today.add(Calendar.DAY_OF_MONTH, -1);
+    dateViews.add(new DateView(
+        today,
+        (TextView) findViewById(R.id.day_of_week_4), // TEMP
+        (TextView) findViewById(R.id.textview_day_7)));
     today.add(Calendar.DAY_OF_MONTH, -1);
 
     //Initializing ViewModel
