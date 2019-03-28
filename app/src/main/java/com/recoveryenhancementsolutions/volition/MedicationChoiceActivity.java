@@ -8,13 +8,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 /**
- * UI Activity that allows the user to select a medication or abstain
+ * UI Activity that allows the user to select a medication or abstain.
  */
+
 public class MedicationChoiceActivity extends AppCompatActivity {
 
   public String medAnswer;
-  private static VolitionDatabase db;
 
+  /**
+   * OnCreate method that initializes objects and the screen to be used in the onClick methods.
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -24,6 +28,11 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     final Button medicationButton = findViewById(R.id.medication);
     final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
     db = VolitionDatabase.getDatabase(this.getApplication());
+
+    /**
+     * Button that allows the user to choose to abstain from medication.
+     * When clicked, this will send the string "Abstain" to the Medication Choice table.
+     */
 
     abstainButton.setOnClickListener(new OnClickListener() {
       @Override
@@ -35,6 +44,10 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       }
     });
 
+    /**
+     * Button that allows the user to choose to take them medication.
+     * When clicked, this will send the string "Buprenorphine" to the Medication Choice table.
+     */
     medicationButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -45,4 +58,5 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       }
     });
   }
+  private static VolitionDatabase db;
 }

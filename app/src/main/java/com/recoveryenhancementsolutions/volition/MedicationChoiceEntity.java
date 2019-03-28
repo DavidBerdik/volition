@@ -11,8 +11,14 @@ import android.support.annotation.NonNull;
 @Entity(primaryKeys = "medication")
 public class MedicationChoiceEntity {
 
+
+  /**
+   * Insert medication method to be used in the Medication Choice view model.
+   *
+   * @param med String that stores the medication name.
+   */
   public void insertMed(final String med){
-    this.med = med;
+    this.medication = med;
   }
 
   /**
@@ -23,8 +29,4 @@ public class MedicationChoiceEntity {
   @NonNull
   @ColumnInfo(name = "medication")
   public String medication;
-
-  @NonNull
-  public String med;
-
 }

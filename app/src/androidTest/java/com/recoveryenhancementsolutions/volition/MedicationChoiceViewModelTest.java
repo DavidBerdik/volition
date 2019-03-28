@@ -18,12 +18,20 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Unit test for the Medication Choice Activity View Model.
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class MedicationChoiceViewModelTest {
 
   @Rule
   public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
+
+  /**
+   * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
+   */
 
   @Before
   public void loadViewModel() {
@@ -37,21 +45,29 @@ public class MedicationChoiceViewModelTest {
     viewModel.setTestDatabase(db);
 
     MedicationChoiceEntity medication = new MedicationChoiceEntity();
-    medication.insertMed("Buprenorphine");
+    medication.insertMed("Abstain");
     viewModel.insertMedication(medication);
   }
+
+
+  /**
+   * Closes the temporary test database.
+   */
 
   @After
   public void closeDb() {
     db.close();
   }
 
+  /**
+   * Performs a test with the Medication Choice View Model
+   */
   @Test
   public void testMedicationChoiceViewModel() {
 
     try {
-      assertEquals("Buprenorphine",
-          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMedication()));
+      assertEquals("Abstain",
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMedication()).medication);
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
