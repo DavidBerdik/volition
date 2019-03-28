@@ -37,7 +37,7 @@ public class DemographicDataDaoTest {
     DemographicDataEntity patient = new DemographicDataEntity();
     patient.setAge(15);
     patient.setPatientName("Bob");
-    patient.setDateOfBirth("12-04-1976");
+    patient.setDisorderAlcohol(true);
     patient.setUseAlcohol(true);
     demographicDataDAO.insertDemographicInfo(patient);
 
