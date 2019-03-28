@@ -103,7 +103,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         sendOff();
       }
 
-      /*
+      /**
        *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
        * the database. Only these four will be added from my method because Collin is handling
        * the outputs from the buttons and is adding them to the database according to his
