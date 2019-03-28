@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -196,5 +197,5 @@ public interface DemographicDataDAO {
    * @return Date of their last clean
    */
   @Query("SELECT lastClean " + genericQuery)
-  Date queryLastCleanDate();
+  LiveData<Date> queryLastCleanDate();
 }
