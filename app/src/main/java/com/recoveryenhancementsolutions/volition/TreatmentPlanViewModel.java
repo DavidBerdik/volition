@@ -70,7 +70,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         //severity level are null. This should ONLY occur during a JUnit test.
         try {
             severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
-            medicationChoice = db.medicationChoiceDao().getMedication().getValue().getMedication();
+            medicationChoice = db.medicationChoiceDao().getMedication().getValue();
         } catch (NullPointerException e) {
             medicationChoice = "ABSTAIN";
             severityLevel = "MODERATE";
