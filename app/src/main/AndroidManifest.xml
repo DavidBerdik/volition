@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateProfile"
+            android:name=".CreateProfileActivity"
             android:exported="true"
             android:label="Volition">
             <intent-filter>

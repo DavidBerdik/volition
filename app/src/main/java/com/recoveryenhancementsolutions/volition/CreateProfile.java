@@ -5,9 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.content.Intent;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -19,34 +17,26 @@ import java.util.Calendar;
 import java.util.Locale;
 
 /**
- * Class for running only create_profile.xml
+ * Class for running activity_create_profile.xml
+ * Which includes two pop-up calendars
  */
 public class CreateProfile extends AppCompatActivity {
-  private Button send;
+
+  /*
+   *The four private variables below are global due to being used multiple times
+   * Both Birthday Result and Clean Date Result are used in the calendar method
+   * while the name and gender are used from whoever is making the method that outputs name
+   * and gender.
+   */
   private String BirthdayResult;
   private String CleanDateResult;
-  private RadioButton rb, rb2;
-  private boolean isPersonInRecovery;
-  private boolean useHeroin;
-  private boolean useOpiateOrSynth;
-  private boolean useAlcohol;
-  private boolean useCrackOrCocaine;
-  private boolean useMarijuana;
-  private boolean useMethamphetamine;
-  private boolean useBenzo;
-  private boolean useNonBeznoTrang;
-  private boolean useBarbituresOrHypno;
-  private boolean useInhalants;
-  private boolean disorderOpioid;
-  private boolean disorderAlcohol;
-  String name = "";
-  String Gender = "";
-  private RadioButton radioSupport, radioClient, radioHeroin, radioOpiates, radioAlcohol, radioCocaine, radioMarijuana, radioMeth, radioBen, radioTranquilizers, radioSedatives, radioInhalants;
-  ArrayAdapter<CharSequence> adapter,adapter2;
+  private String name = "";
+  private String Gender = "";
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.create_profile);
+    setContentView(R.layout.activity_create_profile);
     final DemographicDataEntity patient = new DemographicDataEntity();
     final DemographicDataDAO demographicDataDAO;
 
@@ -55,14 +45,11 @@ public class CreateProfile extends AppCompatActivity {
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
             .allowMainThreadQueries().build();
     demographicDataDAO = db.demographicDataDAO();
+    final Button send;
     send = (Button) findViewById(R.id.record_button);
 
-
-
     final Calendar dobCalendar = Calendar.getInstance();
-    final EditText dateOfBirth = findViewById(R.id.date_of_birth);
     final Calendar cleanDateCalendar = Calendar.getInstance();
-    final EditText cleanDate = findViewById(R.id.clean_date);
 
     final DatePickerDialog.OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
       /**
@@ -105,48 +92,37 @@ public class CreateProfile extends AppCompatActivity {
       }
     };
 
-
-
-
     send.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        //stuff to be passed here
+        /*
+         *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
+         * the database. Only these four will be added from my method because Collin is handling
+         * the outputs from the buttons and is adding them to the database according to his
+         * latest commit on March 27, 2019.
+         */
         sendOff();
         }
 
       public void sendOff(){
+        //Intent goes to the next activity in the Work Flow after adding to the database.
         Intent intent = new Intent(CreateProfile.this, QuestionnaireActivity.class);
-
         patient.setDateOfBirth(BirthdayResult);
         patient.setPatientName(name);
         patient.setGender(Gender);
         patient.setLastClean(CleanDateResult);
-        patient.setPersonInRecovery(isPersonInRecovery);
-        patient.setUseHeroin(useHeroin);
-        patient.setUseOpiateOrSynth(useOpiateOrSynth);
-        patient.setUseAlcohol(useAlcohol);
-        patient.setUseCrackOrCocaine(useCrackOrCocaine);
-        patient.setUseMarijuana(useMarijuana);
-        patient.setUseMethamphetamine(useMethamphetamine);
-        patient.setUseBenzo(useBenzo);
-        patient.setUseNonBeznoTrang(useNonBeznoTrang);
-        patient.setUseInhalants(useInhalants);
-        patient.setDisorderOpioid(disorderOpioid);
-        patient.setDisorderAlcohol(disorderAlcohol);
-
         demographicDataDAO.insertDemographicInfo(patient);
         startActivity(intent);
-      }
+       }
 
       });
 
     }
 
-    }
+}
 
 
 
 
 
-//}
+

@@ -31,7 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Auto-generated test. Tests create_profile.xml
+ * Auto-generated test. Tests activity_create_profilee_profile.xml
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
