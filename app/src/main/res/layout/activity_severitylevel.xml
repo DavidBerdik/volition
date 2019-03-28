@@ -47,7 +47,7 @@
       />
 
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TableLayout
         android:id="@+id/tableLayout2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -79,7 +79,9 @@
                 app:layout_constraintVertical_bias="0.113" />
 
             <EditText
-                android:hint = "@string/severity"
+                tools:ignore = "autoFill"
+                android:hint="@string/severity"
+                android:inputType="text"
                 android:id="@+id/totalScore_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,7 +112,9 @@
                 app:layout_constraintVertical_bias="0.113" />
 
             <EditText
-              android:autofillHints="username"
+              tools:ignore = "autoFill"
+              android:hint="@string/username"
+                android:inputType="none"
                 android:id="@+id/specifier_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
