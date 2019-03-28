@@ -59,10 +59,24 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    * @param medication Medication object for the View Model.
    */
 
-  public void insertMedication(MedicationChoiceEntity medication){
-    db.medicationChoiceDAO().insertMedication(medication);
+  public void insertMedication(final MedicationChoiceEntity medication) {
+    new insertAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
 
+  private static class insertAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void> {
+
+    private MedicationChoiceDAO asyncTaskDao;
+
+    insertAsyncTask(final MedicationChoiceDAO dao) {
+      asyncTaskDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final MedicationChoiceEntity... params) {
+      asyncTaskDao.insertMedication(params[0]);
+      return null;
+    }
+  }
   /**
    * Adds a medication to the database.
    *
