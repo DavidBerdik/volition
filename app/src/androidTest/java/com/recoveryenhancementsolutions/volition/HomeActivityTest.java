@@ -55,14 +55,6 @@ public class HomeActivityTest {
   }
 
   /**
-   * Cleans up the testing environment.
-   */
-  @After
-  public void cleanTestEnvironment() {
-    db.close();
-  }
-
-  /**
    * Tests that the activity is fetching the existing data and displaying it.
    */
   @Test
@@ -91,6 +83,6 @@ public class HomeActivityTest {
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
   private VolitionDatabase db;
-  private final int DAYS_CLEAN = 2;
+  private final int DAYS_CLEAN = 5;
   private static final String TAG = "HomeActivityTest";
 }
