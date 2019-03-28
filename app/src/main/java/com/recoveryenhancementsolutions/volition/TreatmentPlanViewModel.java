@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.os.AsyncTask;
 
 /**
  * Class manages relationship between the TreatmentPlanActivity and the Volition Database.
@@ -26,13 +27,14 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         generateTreatmentPlan();
 
         treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan().getValue();
+        treatmentPlanDao = db.treatmentPlanDao();
     }
 
     /**
      * Updates the database with the values of treatmentPlan.
      */
-    public void updateDb() {
-        db.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlan);
+    public void insertDb() {
+        db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlan);
     }
 
     /**
@@ -67,8 +69,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         //plan set to mild abstinence if the database tables containing medicationChoice and
         //severity level are null. This should ONLY occur during a JUnit test.
         try {
-            severityLevel = db.questionnaireDao().findSeverityLevel().toUpperCase();
-            medicationChoice = db.medicationChoiceDao().getMedication().getMedication();
+            severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
+            medicationChoice = db.medicationChoiceDao().getMedication().getValue().getMedication();
         } catch (NullPointerException e) {
             medicationChoice = "ABSTAIN";
             severityLevel = "MODERATE";
@@ -150,11 +152,39 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
             }
         }
         treatmentPlan.setId(1);
-        this.updateDb();
+        this.insertDb();
+    }
+
+    /**
+     * Inserts treatment plan into the database using a background thread
+     *
+     * @param treatmentPlanEntity the entity to be added to the database.
+     */
+    void insert(TreatmentPlanEntity treatmentPlanEntity) {
+        new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
+    }
+
+    private static class insertAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
+        private TreatmentPlanDao mAsyncTaskDao;
+
+        insertAsyncTask(TreatmentPlanDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final TreatmentPlanEntity... params) {
+            mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
+            return null;
+        }
     }
 
     /**
      * The apps loaded Database.
      */
     private VolitionDatabase db;
+
+    /**
+     * The treatmentPlans Dao
+     */
+    private TreatmentPlanDao treatmentPlanDao;
 }

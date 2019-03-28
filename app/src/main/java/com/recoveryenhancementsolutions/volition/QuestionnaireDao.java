@@ -28,6 +28,6 @@ public interface QuestionnaireDao {
     LiveData<List<QuestionnaireEntity>> findQuestionnaire();
 
     @Query("SELECT severityLevel FROM QuestionnaireEntity")
-    String findSeverityLevel();
+    LiveData<String> findSeverityLevel();
 
 }

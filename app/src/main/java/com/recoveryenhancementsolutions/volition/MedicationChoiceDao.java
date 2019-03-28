@@ -18,7 +18,7 @@ import android.arch.persistence.room.Update;
 public interface MedicationChoiceDao {
 
     @Query("SELECT * FROM MedicationChoiceEntity")
-    MedicationChoiceEntity getMedication();
+    LiveData<MedicationChoiceEntity> getMedication();
 
     @Insert(onConflict = REPLACE)
     void insertMedication(MedicationChoiceEntity medication);
