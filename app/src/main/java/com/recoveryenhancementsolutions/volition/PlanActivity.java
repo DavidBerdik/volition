@@ -128,8 +128,11 @@ public class PlanActivity extends AppCompatActivity {
 
     //Initializing ViewModel
     actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
-    DELETEME();
     subscribeUIActivities();
+  }
+
+  protected UserActivityViewModel getViewModel() {
+    return actViewModel;
   }
 
   /**
@@ -155,7 +158,7 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     Calendar rightmost = dateViews.get(0).day;
-    rightmost.add(Calendar.DAY_OF_MONTH, forward ? 4 : -4);
+    rightmost.add(Calendar.DAY_OF_MONTH, forward ? dateViews.size() : -dateViews.size());
 
     for (DateView dv : dateViews) {
       dv.setDay(rightmost);
@@ -163,41 +166,6 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     subscribeUIActivities();
-  }
-
-  private void DELETEME() {
-    Thread t = new Thread() {
-      public void run() {
-        actViewModel.db.clearAllTables();
-
-        // Create 5 User Activity Dates
-        final int[] userActivityYear = {2019, 2019, 2019, 2019, 2019};
-        final int[] userActivityMonth = {3, 3, 3, 3, 3};
-        final int[] userActivityDay = {24, 23, 22, 21, 20};
-
-        // Create 5 User Activity Descriptions
-        final String[] userActivityDesc = {"This is a", "test of the", "emergency", "broadcast",
-            "system."};
-
-        // Insert the entities.
-        for (int x = 0; x < 5; x++) {
-          actViewModel.insertActivity(userActivityYear[x], userActivityMonth[x], userActivityDay[x],
-              userActivityDesc[x]);
-        }
-
-        try {
-          Thread.sleep(1500);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    };
-    t.start();
-    try {
-      t.wait();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
