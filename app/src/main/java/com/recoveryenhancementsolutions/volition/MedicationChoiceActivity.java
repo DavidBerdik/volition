@@ -17,7 +17,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
 
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
-   * @param savedInstanceState
+   * @param savedInstanceState Saved Instance state of the phone
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
