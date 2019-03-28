@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import static java.lang.Thread.sleep;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 public class MedicationChoiceActivity extends AppCompatActivity {
 
   public String medAnswer;
-  private static VolitionDatabase mDb;
+  private static VolitionDatabase db;
   private MedicationChoiceViewModel mViewModel;
 
   @Override
@@ -28,15 +29,14 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     final Button abstainButton = findViewById(R.id.abstain);
     final Button medicationButton = findViewById(R.id.medication);
     final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
-    mDb = VolitionDatabase.getDatabase(this.getApplication());
+    db = VolitionDatabase.getDatabase(this.getApplication());
 
     abstainButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         medAnswer = "Abstain";
-        mViewModel.populateAsync(mDb);
+        mViewModel.populateAsync(db);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
-
         //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
       }
     });
@@ -45,7 +45,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         medAnswer = "Buprenorphine";
-        mViewModel.populateAsync(mDb);
+        mViewModel.populateAsync(db);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
         //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
       }

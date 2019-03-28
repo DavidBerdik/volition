@@ -10,17 +10,10 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     PopulateDbAsync task = new PopulateDbAsync(db);
     task.execute();
   }
-  private VolitionDatabase modelDB;
-  private static VolitionDatabase mDb;
-
-  public void createDb() {
-    modelDB = VolitionDatabase.getDatabase(this.getApplication());
-  }
 
   public MedicationChoiceViewModel(final Application application) {
     super(application);
-    createDb();
-    mDb = VolitionDatabase.getDatabase(this.getApplication());
+    db = VolitionDatabase.getDatabase(this.getApplication());
   }
 
   public void insertMedication(MedicationChoiceEntity med){
@@ -30,8 +23,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   public static void addMedication(String medAnswer){
     MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
     medicationChoiceEntity.insertMed(medAnswer);
-
-    mDb.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
+    db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
   }
 
   public static void populateWithData(VolitionDatabase db){
@@ -41,17 +33,17 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
   private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
-    private final VolitionDatabase mDb;
+    VolitionDatabase db;
 
     PopulateDbAsync(VolitionDatabase db) {
-      mDb = db;
+      db = db;
     }
 
     @Override
     protected Void doInBackground(final Void... params) {
-      populateWithData(mDb);
+      populateWithData(db);
       return null;
     }
   }
-  private VolitionDatabase db;
+  private static VolitionDatabase db;
 }
