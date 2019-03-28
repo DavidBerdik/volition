@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 public class MedicationChoiceViewModel extends AndroidViewModel {
@@ -9,6 +10,14 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   public static void populateAsync(final VolitionDatabase db){
     PopulateDbAsync task = new PopulateDbAsync(db);
     task.execute();
+  }
+
+  public void setTestDatabase(final VolitionDatabase db) {
+    this.db = db;
+  }
+
+  public LiveData<MedicationChoiceEntity> getMed(){
+    return db.medicationChoiceDAO().getMedication();
   }
 
   public MedicationChoiceViewModel(final Application application) {
