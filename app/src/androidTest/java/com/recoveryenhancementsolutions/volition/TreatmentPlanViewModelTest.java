@@ -42,13 +42,7 @@ public class TreatmentPlanViewModelTest {
 
         // Load the LiveData test utility.
         liveDataTest = new LiveDataTestUtility();
-    }
 
-    /**
-     * Performs several test involving the Treatment Plan ViewModel
-     */
-    @Test
-    public void testTreatmentPlanViewModel() {
         //Fill in supplementary database entries
         MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
         medicationChoiceEntity.setMedication("ABSTAIN");
@@ -57,9 +51,16 @@ public class TreatmentPlanViewModelTest {
         QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
         questionnaireEntity.setSeverityLevel("MODERATE");
         db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
-
         viewModel.setTestDatabase(db);
         viewModel.generateTreatmentPlan();
+        db.treatmentPlanDao().insertTreatmentPlanEntity(viewModel.treatmentPlan);
+    }
+
+    /**
+     * Performs several test involving the Treatment Plan ViewModel
+     */
+    @Test
+    public void testTreatmentPlanViewModel() {
 
         //Check the values of the treatment plan. Should match the moderate abstinence plan.
         try {
@@ -87,46 +88,6 @@ public class TreatmentPlanViewModelTest {
             Log.e(TAG, Log.getStackTraceString(e));
         }
 
-        //Update treatment plan data in the viewModel
-        viewModel.treatmentPlan.setNumCounseling(10);
-        viewModel.treatmentPlan.setNumMedManagement(10);
-        viewModel.treatmentPlan.setNumReadingResponse(10);
-        viewModel.treatmentPlan.setNumTimeTracking(10);
-        viewModel.treatmentPlan.setNumOutcomeMeasures(10);
-        viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(10);
-        viewModel.treatmentPlan.setNumLessons(10);
-        viewModel.treatmentPlan.setNumSupportMeeting(10);
-        viewModel.treatmentPlan.setMedManagementWeekly();
-        viewModel.treatmentPlan.setOutcomeMeasureWeekly();
-
-        //Test updateDb method of viewModel
-        viewModel.updateDb();
-
-        //Check if the values of the db's treatment plan successfully updated.
-        try {
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumCounseling());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumSupportMeeting());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumLessons());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumOutcomeMeasures());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumTimeTracking());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumReadingResponse());
-            assertEquals(10, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getNumMedManagement());
-            assertEquals("WEEKLY", liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getMedManagementFrequency());
-            assertEquals("WEEKLY", liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
-                    .loadTreatmentPlan()).getOutcomeMeasureFrequency());
-        } catch (InterruptedException e) {
-            Log.e(TAG, Log.getStackTraceString(e));
-        }
     }
 
     private TreatmentPlanViewModel viewModel;

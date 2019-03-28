@@ -157,4 +157,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
      */
     private VolitionDatabase db;
 
+    /**
+     * The apps treatmentPlan dao
+     */
+    private TreatmentPlanDao treatmentPlanDao;
 }
