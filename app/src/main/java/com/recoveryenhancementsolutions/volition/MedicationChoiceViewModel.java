@@ -29,8 +29,10 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    */
 
   public static void populateAsync(final VolitionDatabase db){
-    PopulateDbAsync task = new PopulateDbAsync(db);
-    task.execute();
+    insertAsyncTask insert = new insertAsyncTask(med);
+    updateAsyncTask update = new updateAsyncTask(med);
+    insert.execute();
+    update.execute();
   }
 
   /**
@@ -77,12 +79,32 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
       return null;
     }
   }
+
+  public void updateMedication(final MedicationChoiceEntity medication){
+    new updateAsyncTask(db.medicationChoiceDAO()).execute(medication);
+  }
+
+  private static class updateAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void>{
+
+    private MedicationChoiceDAO asyncTaskDao;
+
+    updateAsyncTask(final MedicationChoiceDAO dao) {
+      asyncTaskDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final MedicationChoiceEntity... params) {
+      asyncTaskDao.updateMedication(params[0]);
+      return null;
+    }
+  }
+
   /**
    * Adds a medication to the database.
    *
    * @param medAnswer String that holds the user's medication choice.
    */
-
+/*
   public static void addMedication(String medAnswer){
     MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
     medicationChoiceEntity.insertMed(medAnswer);
@@ -94,7 +116,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param medAnswer String that holds the user's medication choice.
    */
-
+/*
   public static void updateMedication(String medAnswer){
     MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
     medicationChoiceEntity.insertMed(medAnswer);
@@ -106,7 +128,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param db Volition Database to use for testing.
    */
-
+/*
   public static void populateWithData(VolitionDatabase db){
     MedicationChoiceActivity medicationChoiceActivity = new MedicationChoiceActivity();
     addMedication(medicationChoiceActivity.medAnswer);
@@ -118,7 +140,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   /**
    * Creates a background thread to asynchronously insert and update the MedicationChoice table.
    */
-
+/*
   private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
     VolitionDatabase db;
@@ -128,6 +150,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
      *
      * @param db Volition database for testing.
      */
+/*
     PopulateDbAsync(VolitionDatabase db) {
       db = db;
     }
@@ -138,12 +161,14 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
      * @param params Parameters for the doInBackground method.
      * @return Returns null
      */
-
+/*
     @Override
     protected Void doInBackground(final Void... params) {
       populateWithData(db);
       return null;
     }
   }
+  */
+  private static MedicationChoiceDAO med;
   private static VolitionDatabase db;
 }
