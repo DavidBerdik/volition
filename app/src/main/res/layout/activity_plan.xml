@@ -1,64 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:minHeight="0dp"
     tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/addOutcomeMeasureButton"
+        android:layout_width="46dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_addroundbutton"
+        android:backgroundTint="@color/res_gold"
+        android:text="@string/add"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addSupportGroupMeetingButton" />
 
     <Button
         android:id="@+id/addLessonPlannerButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="372dp" />
+        app:layout_constraintTop_toBottomOf="@+id/addOutcomeMeasureButton" />
 
     <Button
         android:id="@+id/addTreatmentEffectivnessAssessmentButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="427dp" />
+        app:layout_constraintTop_toBottomOf="@+id/addLessonPlannerButton" />
 
     <Button
         android:id="@+id/addCleanTimeTrackingButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="490dp" />
+        app:layout_constraintTop_toBottomOf="@+id/addTreatmentEffectivnessAssessmentButton" />
 
     <Button
         android:id="@+id/addReadResponceButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="558dp" />
+        app:layout_constraintTop_toBottomOf="@+id/addCleanTimeTrackingButton" />
 
     <Button
         android:id="@+id/subReadResponceJournalButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -66,12 +87,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addReadResponceButton"
-        tools:layout_editor_absoluteY="558dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subCleanTimeTrackingButton" />
 
     <Button
         android:id="@+id/subCleanTimeTrackingButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -79,12 +101,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addCleanTimeTrackingButton"
-        tools:layout_editor_absoluteY="490dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subTreatmentEffectivenessAssessmentButton" />
 
     <Button
         android:id="@+id/subTreatmentEffectivenessAssessmentButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -92,12 +115,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addTreatmentEffectivnessAssessmentButton"
-        tools:layout_editor_absoluteY="427dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subLessonPlannerButton" />
 
     <Button
-        android:id="@+id/addOutcomeMeasureButton"
+        android:id="@+id/subOutcomeMeasureButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -105,12 +129,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addOutcomeMeasureButton"
-        tools:layout_editor_absoluteY="307dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subSupportGroupButton" />
 
     <Button
         android:id="@+id/subLessonPlannerButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -118,36 +143,26 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addLessonPlannerButton"
-        tools:layout_editor_absoluteY="372dp" />
-
-    <Button
-        android:id="@+id/addOutcomeMeasureButton"
-        android:layout_width="46dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/ic_addroundbutton"
-        android:backgroundTint="@color/res_gold"
-        android:text="@string/add"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="307dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subOutcomeMeasureButton" />
 
     <Button
         android:id="@+id/addMedManagementButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="182dp" />
+        app:layout_constraintTop_toBottomOf="@+id/addCounselButton" />
 
     <Button
         android:id="@+id/subSupportGroupButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -155,36 +170,40 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addSupportGroupMeetingButton"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintTop_toBottomOf="@+id/subMedMangaementButton" />
 
     <Button
         android:id="@+id/subMedMangaementButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="182dp" />
+        app:layout_constraintEnd_toStartOf="@+id/addMedManagementButton"
+        app:layout_constraintTop_toBottomOf="@+id/subCounselButton" />
 
     <Button
         android:id="@+id/addSupportGroupMeetingButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintTop_toBottomOf="@+id/addMedManagementButton" />
 
     <Button
         android:id="@+id/subCounselButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
         android:backgroundTint="@color/res_green"
@@ -194,7 +213,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/addCounselButton"
-        tools:layout_editor_absoluteY="118dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -204,6 +223,7 @@
         app:itemIconTint="@color/common_google_signin_btn_text_dark_focused"
         app:itemTextColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
@@ -224,13 +244,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Volition"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="50dp"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/volition" />
 
     <TextView
@@ -239,202 +260,225 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Recommended Treatment Plan"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="82dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:text="@string/recommendedTreatmentPlan" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:id="@+id/counseling"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="124dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Counseling"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/counselingView"
         app:layout_constraintEnd_toStartOf="@+id/subCounselButton"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/counselingView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/counseling" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        android:id="@+id/medManagement"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Med Management"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/medManagementView"
         app:layout_constraintEnd_toStartOf="@+id/subMedMangaementButton"
-        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/medManagementView"
+        app:layout_constraintTop_toBottomOf="@+id/counseling"
         tools:text="@string/medManagement" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        android:id="@+id/supportGroupMeeting"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Support Group Meeting"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintEnd_toStartOf="@+id/subSupportGroupButton"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/supportMeetingView"
-        tools:layout_editor_absoluteY="255dp"
+        app:layout_constraintTop_toBottomOf="@+id/medManagement"
         tools:text="@string/supportMeeting" />
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+        android:id="@+id/outcomeMeasure"
+        android:layout_width="0dp"
         android:layout_height="23dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="43dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Outcome Measure"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/outcomeMeasureView"
-        app:layout_constraintEnd_toStartOf="@+id/addOutcomeMeasureButton"
-        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintEnd_toStartOf="@+id/subOutcomeMeasureButton"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/outcomeMeasureView"
+        app:layout_constraintTop_toBottomOf="@+id/supportGroupMeeting"
         tools:text="@string/outcomeMeasure" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="191dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/treatmentEffectivenessAssessment"
+        android:layout_width="0dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Treatment Effectiveness Assessment"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/treatmentEffectiveView"
         app:layout_constraintEnd_toStartOf="@+id/subTreatmentEffectivenessAssessmentButton"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/treatmentEffectiveView"
+        app:layout_constraintTop_toBottomOf="@+id/lessonPlanner"
         tools:text="@string/treatmentEffectivnessAssessment" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:id="@+id/lessonPlanner"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="43dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Lesson Planner"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lessonView"
         app:layout_constraintEnd_toStartOf="@+id/subLessonPlannerButton"
-        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/lessonView"
+        app:layout_constraintTop_toBottomOf="@+id/outcomeMeasure"
         tools:text="@string/lessonPlanner" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:id="@+id/cleanTimeTracking"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Clean Time Tracking"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/timeTrackingView"
         app:layout_constraintEnd_toStartOf="@+id/subCleanTimeTrackingButton"
-        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/timeTrackingView"
+        app:layout_constraintTop_toBottomOf="@+id/treatmentEffectivenessAssessment"
         tools:text="@string/cleanTimeTracking" />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="181dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:id="@+id/readingResponceJournal"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Reading Responce / Journal"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintBaseline_toBaselineOf="@+id/readingResponseView"
         app:layout_constraintEnd_toStartOf="@+id/subReadResponceJournalButton"
-        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toEndOf="@+id/readingResponseView"
+        app:layout_constraintTop_toBottomOf="@+id/cleanTimeTracking"
         tools:text="@string/readJournalResponce" />
 
     <TextView
         android:id="@+id/counselingView"
-        android:layout_width="37dp"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="127dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/medManagementView"
-        android:layout_width="34dp"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="189dp" />
+        app:layout_constraintTop_toBottomOf="@+id/counselingView" />
 
     <TextView
         android:id="@+id/supportMeetingView"
-        android:layout_width="31dp"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="43dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="255dp" />
+        app:layout_constraintTop_toBottomOf="@+id/medManagementView" />
 
     <TextView
         android:id="@+id/outcomeMeasureView"
-        android:layout_width="31dp"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="317dp" />
+        app:layout_constraintTop_toBottomOf="@+id/supportMeetingView" />
 
     <TextView
         android:id="@+id/lessonView"
-        android:layout_width="39dp"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="45dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="381dp" />
+        app:layout_constraintTop_toBottomOf="@+id/outcomeMeasureView" />
 
     <TextView
         android:id="@+id/treatmentEffectiveView"
-        android:layout_width="31dp"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="45dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintTop_toBottomOf="@+id/lessonView" />
 
     <TextView
         android:id="@+id/timeTrackingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_marginTop="45dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="500dp" />
+        app:layout_constraintTop_toBottomOf="@+id/treatmentEffectiveView" />
 
     <TextView
         android:id="@+id/readingResponseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_marginTop="45dp"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="568dp" />
+        app:layout_constraintTop_toBottomOf="@+id/timeTrackingView" />
 
     <Button
         android:id="@+id/addCounselButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="118dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

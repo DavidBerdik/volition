@@ -3,7 +3,6 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,8 +17,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_plan);
-    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
-    treatmentPlan = viewModel.getTreatmentPlan();
+    //  viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
+    //  treatmentPlan = viewModel.getTreatmentPlan();
 
     counselingView = findViewById(R.id.counselingView);
     medManagementView = findViewById(R.id.medManagementView);
@@ -30,15 +29,32 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     timeTrackingView = findViewById(R.id.timeTrackingView);
     readingResponseView = findViewById(R.id.readingResponseView);
 
-    counselingView.setText(treatmentPlan.getValue().getNumCounseling());
-    medManagementView.setText(treatmentPlan.getValue().getNumMedManagement());
-    supportMeetingView.setText(treatmentPlan.getValue().getNumSupportMeeting());
-    lessonView.setText(treatmentPlan.getValue().getNumLessons());
-    treatmentEffectiveView.setText(treatmentPlan.getValue().getNumTreatmentEffectivenessAssessment());
-    outcomeMeasureView.setText(treatmentPlan.getValue().getNumOutcomeMeasures());
-    timeTrackingView.setText(treatmentPlan.getValue().getNumTimeTracking());
-    readingResponseView.setText(treatmentPlan.getValue().getNumReadingResponse());
+    /**
+     * Calls used for database entry when applicable
+     */
+
+    // counselingView.setText(treatmentPlan.getValue().getNumCounseling());
+    // medManagementView.setText(treatmentPlan.getValue().getNumMedManagement());
+    // supportMeetingView.setText(treatmentPlan.getValue().getNumSupportMeeting());
+    // lessonView.setText(treatmentPlan.getValue().getNumLessons());
+    // treatmentEffectiveView.setText(treatmentPlan.getValue().getNumTreatmentEffectivenessAssessment());
+    // outcomeMeasureView.setText(treatmentPlan.getValue().getNumOutcomeMeasures());
+    // timeTrackingView.setText(treatmentPlan.getValue().getNumTimeTracking());
+    // readingResponseView.setText(treatmentPlan.getValue().getNumReadingResponse());
+
+    /**
+     * Assertion of values for testing purposes
+     */
+    counselingView.setText("3");
+    medManagementView.setText("2");
+    supportMeetingView.setText("3");
+    lessonView.setText("2");
+    treatmentEffectiveView.setText("1");
+    outcomeMeasureView.setText("3");
+    timeTrackingView.setText("2");
+    readingResponseView.setText("2");
   }
+
 
   /**
    * Method runs when the refresh button in the xml files is clicked.
