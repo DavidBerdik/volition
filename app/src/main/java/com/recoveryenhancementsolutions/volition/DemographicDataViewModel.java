@@ -51,7 +51,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
   private static class insertAsyncTask extends AsyncTask<DemographicDataEntity, Void, Void> {
 
-    insertAsyncTask(DemographicDataDAO dao) {
+    insertAsyncTask(final DemographicDataDAO dao) {
       demographicDataDao = dao;
     }
 
