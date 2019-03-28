@@ -24,7 +24,7 @@
 
     <HorizontalScrollView
         android:layout_width="fill_parent"
-        android:layout_height="160dp"
+        android:layout_height="130dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -41,67 +41,125 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="50dp"
-                android:gravity="fill_horizontal"
+                android:gravity="top|fill_horizontal"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
+                <Space
+                    android:layout_width="24dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/day_of_week_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/day_of_week_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/day_of_week_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/day_of_week_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/day_of_week_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/day_of_week_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="61dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/day_of_week_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="M"
+                    android:textSize="23sp" />
+
+                <Space
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/detailsLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="130dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
                 android:gravity="bottom|fill_horizontal"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintStart_toStartOf="parent">
 
 
                 <TextView
                     android:id="@+id/textview_day_1"
-                    android:layout_width="80dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
@@ -114,7 +172,7 @@
 
                 <TextView
                     android:id="@+id/textview_day_2"
-                    android:layout_width="83dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
@@ -127,7 +185,7 @@
 
                 <TextView
                     android:id="@+id/textview_day_3"
-                    android:layout_width="83dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
@@ -140,7 +198,7 @@
 
                 <TextView
                     android:id="@+id/textview_day_4"
-                    android:layout_width="83dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
@@ -153,7 +211,7 @@
 
                 <TextView
                     android:id="@+id/textview_day_5"
-                    android:layout_width="83dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
@@ -166,7 +224,7 @@
 
                 <TextView
                     android:id="@+id/textview_day_6"
-                    android:layout_width="83dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
@@ -179,7 +237,7 @@
 
                 <TextView
                     android:id="@+id/textview_day_7"
-                    android:layout_width="83dp"
+                    android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:background="@color/res_green_transparent"
                     android:textAlignment="center"
