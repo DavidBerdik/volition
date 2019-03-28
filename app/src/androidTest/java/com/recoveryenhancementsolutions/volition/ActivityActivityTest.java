@@ -1,11 +1,15 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Calendar;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,39 +23,27 @@ import org.junit.runner.RunWith;
 public class ActivityActivityTest {
 
   @Rule
-  public ActivityTestRule<PlanActivity> activityTestRule = new ActivityTestRule<>(
-      PlanActivity.class);
+  public ActivityTestRule<ActivityActivity> activityTestRule = new ActivityTestRule<>(
+      ActivityActivity.class);
 
   @Before
   public void initDB() {
-    Thread t = new Thread() {
-      public void run() {
-        activityTestRule.getActivity().getViewModel().getDB().clearAllTables();
+    // Set the ViewModel to use a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
+    activityTestRule.getActivity().getViewModel().setTestDatabase(db);
 
-        // TODO: Make today.
-        // Create 4 User Activity Dates
-        final int[] userActivityYear = {2019, 2019, 2019, 2019};
-        final int[] userActivityMonth = {3, 3, 3, 3};
-        final int[] userActivityDay = {24, 23, 22, 21};
+    final Calendar today = Calendar.getInstance();
+    today.set(Calendar.HOUR_OF_DAY, 0);
+    today.set(Calendar.MINUTE, 0);
+    today.set(Calendar.SECOND, 0);
+    today.set(Calendar.MILLISECOND, 0);
 
-        // Insert the entities.
-        for (int x = 0; x < userActivityDesc.length; x++) {
-          activityTestRule.getActivity().getViewModel().insertActivity(userActivityYear[x], userActivityMonth[x], userActivityDay[x],
-              userActivityDesc[x]);
-        }
-      }
-    };
-
-    t.start();
-
-    /*
-    try {
-      t.wait();
-      Thread.sleep(2000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+    for (String desc : userActivityDesc) {
+      activityTestRule.getActivity().getViewModel().insertActivity(today.getTime(), desc);
+      today.add(Calendar.DAY_OF_MONTH, -1);
     }
-    */
   }
 
   /**
@@ -59,25 +51,31 @@ public class ActivityActivityTest {
    */
   @Test
   public void testCalendar() {
-    Calendar cal = Calendar.getInstance();
-    ArrayList<TextView> textViews = new ArrayList<TextView>();
+    for (int i = 0; i < activityTestRule.getActivity().getDayCount(); i++) {
+      // Wait for this day to load.
+      while (!activityTestRule.getActivity().didActivitiesLoad(i)) {
+      }
 
-    textViews.add((TextView) activityTestRule.getActivity().findViewById(R.id.textview_day_1));
-    textViews.add((TextView) activityTestRule.getActivity().findViewById(R.id.textview_day_2));
-    textViews.add((TextView) activityTestRule.getActivity().findViewById(R.id.textview_day_3));
-    textViews.add((TextView) activityTestRule.getActivity().findViewById(R.id.textview_day_4));
+      String value = activityTestRule.getActivity().getActivityBuffer(i);
 
-    for (int i = 0; i < textViews.size(); i++) {
-      String value = textViews.get(i).getText().toString();
-
-      Log.i("UserActivityViewModelTest",
-          "Label " + i + "; expect:\"" + userActivityDesc[i] + "\" got:\"" + value + '"');
+      Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i] + "\" got:\"" + value + '"');
 
       //Assert.assertEquals(userActivityDesc[i], value);
-
-      cal.add(Calendar.DAY_OF_MONTH, -1);
     }
   }
 
-  private final String[] userActivityDesc = {"Took medication", "Went to the doctor\nTook medication", "Test 3", "Test 4"};
+  //@Before
+  //public void dontdie() { while(true); }
+
+  private final String logTag = "ActivityActivityTest";
+  private final String[] userActivityDesc = {
+      "Test 1",
+      "Test 2",
+      "Test 3",
+      "Test 4",
+      "Test 5",
+      "Test 6",
+      "Test 7"
+  };
+  private VolitionDatabase db;
 }

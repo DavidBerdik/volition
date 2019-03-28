@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -9,10 +10,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,7 +31,6 @@ public class ActivityActivity extends AppCompatActivity {
 
     public final TextView title;
     public final TextView content;
-    public LiveData<List<UserActivityEntity>> data;
 
     public DateView(Calendar day, TextView title, TextView content) {
       this.title = title;
@@ -58,6 +56,19 @@ public class ActivityActivity extends AppCompatActivity {
       return day;
     }
 
+    public void observe(LifecycleOwner owner) {
+      data = actViewModel.getActivitiesByDate(day.getTime());
+      data.observe(owner, this);
+      loaded = false;
+    }
+
+    public void unobserve(LifecycleOwner owner) {
+      if (data != null) {
+        data.removeObservers(owner);
+        data = null;
+      }
+    }
+
     @Override
     public void onChanged(@NonNull final List<UserActivityEntity> activities) {
       final StringBuilder activityBuffer = new StringBuilder();
@@ -71,9 +82,16 @@ public class ActivityActivity extends AppCompatActivity {
       }
 
       content.setText(activityBuffer);
+      loaded = true;
+    }
+
+    public boolean isLoaded() {
+      return loaded;
     }
 
     private Calendar day;
+    private LiveData<List<UserActivityEntity>> data;
+    private boolean loaded;
   }
 
   @Override
@@ -156,12 +174,26 @@ public class ActivityActivity extends AppCompatActivity {
   }
 
   /**
-   * Retrieves activity descriptions for the current and previous dates
+   * @return The amount of days currently being displayed.
+   */
+  protected int getDayCount() {
+    return dateViews.size();
+  }
+
+  protected String getActivityBuffer(int at) {
+    return dateViews.get(at).content.getText().toString();
+  }
+
+  protected boolean didActivitiesLoad(int at) {
+    return dateViews.get(at).isLoaded();
+  }
+
+  /**
+   * Sets observers for all dates currently being displayed.
    */
   private void subscribeUIActivities() {
     for (DateView dv : dateViews) {
-      dv.data = actViewModel.getActivitiesByDate(dv.day.getTime());
-      dv.data.observe(this, dv);
+      dv.observe(this);
     }
   }
 
@@ -172,9 +204,7 @@ public class ActivityActivity extends AppCompatActivity {
    */
   private void cycle(boolean forward) {
     for (DateView dv : dateViews) {
-      if (dv.data != null) {
-        dv.data.removeObservers(this);
-      }
+      dv.unobserve(this);
     }
 
     Calendar rightmost = dateViews.get(0).day;
