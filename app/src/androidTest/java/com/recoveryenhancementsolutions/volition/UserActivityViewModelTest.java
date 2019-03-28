@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
  * Unit test for the "User Activity History" ViewModel.
  */
 @RunWith(AndroidJUnit4.class)
-public class UserActivityViewModelTest {
+public class serActivityViewModelTest {
 
   @Rule
   public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
