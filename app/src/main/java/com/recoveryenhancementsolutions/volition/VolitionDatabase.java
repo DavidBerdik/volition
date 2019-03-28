@@ -56,8 +56,11 @@ public abstract class VolitionDatabase extends RoomDatabase {
     // TODO: Place DAO instantiation method calls here, as in the following commented-out example
     // public abstract WordDao wordDao();
     public abstract UserActivitiesDao userActivitiesDao();
+
     public abstract TreatmentPlanDao treatmentPlanDao();
+
     public abstract QuestionnaireDao questionnaireDao();
+
     public abstract MedicationChoiceDao medicationChoiceDao();
 
     /**

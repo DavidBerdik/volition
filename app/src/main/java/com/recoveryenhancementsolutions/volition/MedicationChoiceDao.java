@@ -17,12 +17,12 @@ import android.arch.persistence.room.Update;
 @Dao
 public interface MedicationChoiceDao {
 
-  @Query("SELECT * FROM MedicationChoiceEntity")
-  MedicationChoiceEntity getMedication();
+    @Query("SELECT * FROM MedicationChoiceEntity")
+    MedicationChoiceEntity getMedication();
 
-  @Insert(onConflict = REPLACE)
-  void insertMedication(MedicationChoiceEntity medication);
+    @Insert(onConflict = REPLACE)
+    void insertMedication(MedicationChoiceEntity medication);
 
-  @Update(onConflict = REPLACE)
-  void updateMedication(MedicationChoiceEntity medication);
+    @Update(onConflict = REPLACE)
+    void updateMedication(MedicationChoiceEntity medication);
 }

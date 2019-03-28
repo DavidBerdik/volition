@@ -49,9 +49,10 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
 
     /**
      * Returns a live data object containing the user's treatment plan.
+     *
      * @return
      */
-    public LiveData<TreatmentPlanEntity> getTreatmentPlan(){
+    public LiveData<TreatmentPlanEntity> getTreatmentPlan() {
         return db.treatmentPlanDao().loadTreatmentPlan();
     }
 
@@ -68,7 +69,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         try {
             severityLevel = db.questionnaireDao().findSeverityLevel().toUpperCase();
             medicationChoice = db.medicationChoiceDao().getMedication().getMedication();
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             medicationChoice = "ABSTAIN";
             severityLevel = "MODERATE";
         }
@@ -135,7 +136,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
                 treatmentPlan.setNumMedManagement(2);
                 treatmentPlan.setMedManagementMonthly();
                 treatmentPlan.setOutcomeMeasureDaily();
-            } else{ //Severe Buprenorphine
+            } else { //Severe Buprenorphine
                 treatmentPlan.setNumCounseling(5);
                 treatmentPlan.setNumSupportMeeting(5);
                 treatmentPlan.setNumLessons(3);
@@ -156,9 +157,4 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
      * The apps loaded Database.
      */
     private VolitionDatabase db;
-
-    /**
-     * The apps treatmentPlan dao
-     */
-    private TreatmentPlanDao treatmentPlanDao;
 }

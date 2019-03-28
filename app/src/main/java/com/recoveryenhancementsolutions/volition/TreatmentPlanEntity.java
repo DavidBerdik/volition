@@ -96,7 +96,7 @@ public class TreatmentPlanEntity {
      * @return A string representing the frequency for Medication Management in the form of "WEEKLY"
      * or "MONTHLY".
      */
-    public String getMedManagementFrequency(){
+    public String getMedManagementFrequency() {
         return medManagementFrequency;
     }
 
@@ -106,7 +106,7 @@ public class TreatmentPlanEntity {
      * @return A string representing the frequency for Outcome Measures in the form of "WEEKLY" or
      * "DAILY".
      */
-    public String getOutcomeMeasureFrequency(){
+    public String getOutcomeMeasureFrequency() {
         return outcomeMeasureFrequency;
     }
 
@@ -151,7 +151,7 @@ public class TreatmentPlanEntity {
      * week.
      *
      * @param numTreatmentEffectivenessAssessment The number of times the user should take a
-     * treatment plan effectiveness assessment.
+     *                                            treatment plan effectiveness assessment.
      */
     public void setNumTreatmentEffectivenessAssessment(int numTreatmentEffectivenessAssessment) {
         this.numTreatmentEffectivenessAssessment = numTreatmentEffectivenessAssessment;
@@ -201,7 +201,9 @@ public class TreatmentPlanEntity {
      *
      * @param frequency The string value of the frequency Medication management should be done.
      */
-    public void setMedManagementFrequency(String frequency){this.medManagementFrequency = frequency;}
+    public void setMedManagementFrequency(String frequency) {
+        this.medManagementFrequency = frequency;
+    }
 
     /**
      * Manually sets the value of frequency for outcomeMeasureFrequency. Values for this field must
@@ -210,33 +212,35 @@ public class TreatmentPlanEntity {
      *
      * @param frequency The string value of the frequency outcome measures should be done.
      */
-    public void setOutcomeMeasureFrequency(String frequency){this.outcomeMeasureFrequency = frequency;}
+    public void setOutcomeMeasureFrequency(String frequency) {
+        this.outcomeMeasureFrequency = frequency;
+    }
 
     /**
      * Sets the frequency for Medication Management to "WEEKLY".
      */
-    public void setMedManagementWeekly(){
+    public void setMedManagementWeekly() {
         this.medManagementFrequency = "WEEKLY";
     }
 
     /**
      * Sets the frequency for Medication Management to "MONTHLY".
      */
-    public void setMedManagementMonthly(){
+    public void setMedManagementMonthly() {
         this.medManagementFrequency = "MONTHLY";
     }
 
     /**
      * Sets the frequency for Outcome Measures to "WEEKLY".
      */
-    public void setOutcomeMeasureWeekly(){
+    public void setOutcomeMeasureWeekly() {
         this.outcomeMeasureFrequency = "WEEKLY";
     }
 
     /**
      * Sets the frequency for Outcome Measures to "DAILY".
      */
-    public void setOutcomeMeasureDaily(){
+    public void setOutcomeMeasureDaily() {
         this.outcomeMeasureFrequency = "DAILY";
     }
 
