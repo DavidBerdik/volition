@@ -42,6 +42,7 @@ import android.support.annotation.NonNull;
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 
 @Database(
+<<<<<<< HEAD
         entities = {
                 UserActivityEntity.class,
                 TreatmentPlanEntity.class,
@@ -49,10 +50,18 @@ import android.support.annotation.NonNull;
                 MedicationChoiceEntity.class
         },
         version = 1)
+=======
+    entities = {
+        UserActivityEntity.class,
+        MedicationChoiceEntity.class
+    },
+    version = 1)
+>>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
+<<<<<<< HEAD
     // TODO: Place DAO instantiation method calls here, as in the following commented-out example
     // public abstract WordDao wordDao();
     public abstract UserActivitiesDao userActivitiesDao();
@@ -70,6 +79,23 @@ public abstract class VolitionDatabase extends RoomDatabase {
      * @return Instance of VolitionDatabase (same instance returned on every call).
      */
     static VolitionDatabase getDatabase(final Context context) {
+=======
+  // TODO: Place DAO instantiation method calls here, as in the following commented-out example
+  // public abstract WordDao wordDao();
+  public abstract UserActivitiesDao userActivitiesDao();
+
+  public abstract MedicationChoiceDAO medicationChoiceDAO();
+
+  /**
+   * Factory method implementing Singleton design pattern for VolitionDatabase class.
+   *
+   * @param context Object providing access to application context.
+   * @return Instance of VolitionDatabase (same instance returned on every call).
+   */
+  static VolitionDatabase getDatabase(final Context context) {
+    if (INSTANCE == null) {
+      synchronized (VolitionDatabase.class) {
+>>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
         if (INSTANCE == null) {
             synchronized (VolitionDatabase.class) {
                 if (INSTANCE == null) {
@@ -155,8 +181,15 @@ public abstract class VolitionDatabase extends RoomDatabase {
             return null;
         }
     }
+<<<<<<< HEAD
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile VolitionDatabase INSTANCE;
+=======
+  }
+
+  // marking the instance as volatile to ensure atomic access to the variable
+  private static volatile VolitionDatabase INSTANCE;
+>>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
 
 }
