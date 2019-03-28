@@ -19,13 +19,6 @@ import android.content.Intent;
  */
 public class CreateProfileActivity extends AppCompatActivity {
 
-  /**
-   * The two private variables below are global due to being used multiple times Was both Birthday
-   * Result and Clean Date Result are used in the calendar method Was name and gender from whoever
-   * is making the method that outputs name and gender but calendar fix causes test issues so to
-   * avoid conflict I am not including.
-   */
-
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -111,7 +104,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         sendOff();
       }
 
-      /**
+      /*
        *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
        * the database. Only these four will be added from my method because Collin is handling
        * the outputs from the buttons and is adding them to the database according to his
