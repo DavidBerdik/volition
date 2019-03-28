@@ -12,17 +12,17 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     task.execute();
   }
 
+  public MedicationChoiceViewModel(final Application application) {
+    super(application);
+    db = VolitionDatabase.getDatabase(this.getApplication());
+  }
+
   public void setTestDatabase(final VolitionDatabase db) {
     this.db = db;
   }
 
-  public LiveData<MedicationChoiceEntity> getMed(){
+  public LiveData<MedicationChoiceEntity> getMedication(){
     return db.medicationChoiceDAO().getMedication();
-  }
-
-  public MedicationChoiceViewModel(final Application application) {
-    super(application);
-    db = VolitionDatabase.getDatabase(this.getApplication());
   }
 
   public void insertMedication(MedicationChoiceEntity med){

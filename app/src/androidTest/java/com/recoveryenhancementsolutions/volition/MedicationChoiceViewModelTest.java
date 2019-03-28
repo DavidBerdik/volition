@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
 import android.arch.lifecycle.LiveData;
@@ -34,6 +35,10 @@ public class MedicationChoiceViewModelTest {
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
     viewModel.setTestDatabase(db);
+
+    MedicationChoiceEntity medication = new MedicationChoiceEntity();
+    medication.insertMed("Buprenorphine");
+    viewModel.insertMedication(medication);
   }
 
   @After
@@ -43,13 +48,10 @@ public class MedicationChoiceViewModelTest {
 
   @Test
   public void testMedicationChoiceViewModel() {
-    MedicationChoiceEntity medication = new MedicationChoiceEntity();
-    medication.insertMed("Buprenorphine");
-    viewModel.insertMedication(medication);
 
     try {
       assertEquals("Buprenorphine",
-          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMed()));
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMedication()));
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }

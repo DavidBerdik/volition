@@ -1,16 +1,11 @@
 package com.recoveryenhancementsolutions.volition;
 
-import static java.lang.Thread.sleep;
-
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * UI Activity that allows the user to select a medication or abstain
@@ -19,7 +14,6 @@ public class MedicationChoiceActivity extends AppCompatActivity {
 
   public String medAnswer;
   private static VolitionDatabase db;
-  private MedicationChoiceViewModel mViewModel;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

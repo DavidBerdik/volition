@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 @Entity(primaryKeys = "medication")
 public class MedicationChoiceEntity {
 
-  public void insertMed(final @NonNull String med){
+  public void insertMed(final String med){
     this.med = med;
   }
 
