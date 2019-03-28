@@ -49,7 +49,7 @@ public class DemographicDataEntity {
   private boolean useBarbituresOrHypno;
   private boolean useInhalants;
 
-  private String Other;
+  private String useOther;
   private boolean disorderOpioid;
   private boolean disorderAlcohol;
   private String lastClean;//MM-DD-YYYY
@@ -65,7 +65,7 @@ public class DemographicDataEntity {
    *
    * @return String name of patient
    */
-  String getPatientName() {
+  public String getPatientName() {
     return patientName;
   }
 
@@ -78,154 +78,280 @@ public class DemographicDataEntity {
     this.patientName = patientName;
   }
 
+  /**
+   * get age of patient
+   *
+   * @return int patient age
+   */
   public int getAge() {
     return age;
   }
 
+  /**
+   * set age of patient
+   *
+   * @param age age of patient
+   */
   public void setAge(int age) {
     this.age = age;
   }
 
+  /**
+   * @return Date of birth
+   */
   public String getDateOfBirth() {
     return dateOfBirth;
   }
 
+  /**
+   * @param dateOfBirth the date of birth
+   */
   public void setDateOfBirth(String dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
+  /**
+   * @return gender of patient
+   */
   public String getGender() {
     return gender;
   }
 
+  /**
+   * @param gender gender of patient
+   */
   public void setGender(String gender) {
     this.gender = gender;
   }
 
+  /**
+   * @return is the patient in recovery
+   */
   public boolean isPersonInRecovery() {
     return isPersonInRecovery;
   }
 
+  /**
+   * @param personInRecovery sets if the person is in recovery
+   */
   public void setPersonInRecovery(boolean personInRecovery) {
     isPersonInRecovery = personInRecovery;
   }
 
+  /**
+   * @return does the patient use heroin
+   */
   public boolean isUseHeroin() {
     return useHeroin;
   }
 
+  /**
+   * @param useHeroin sets the use of heroin
+   */
   public void setUseHeroin(boolean useHeroin) {
     this.useHeroin = useHeroin;
   }
 
+  /**
+   * @return does the patient use synthetics or other opiates
+   */
   public boolean isUseOpiateOrSynth() {
     return useOpiateOrSynth;
   }
 
+  /**
+   * @param useOpiateOrSynth sets use of synthetics or other opiates
+   */
   public void setUseOpiateOrSynth(boolean useOpiateOrSynth) {
     this.useOpiateOrSynth = useOpiateOrSynth;
   }
 
+  /**
+   * @return does the patient use
+   */
   public boolean isUseAlcohol() {
     return useAlcohol;
   }
 
+  /**
+   * @param useAlcohol sets use of alcohol
+   */
   public void setUseAlcohol(boolean useAlcohol) {
     this.useAlcohol = useAlcohol;
   }
 
+  /**
+   * @return does the patient use crack/cocaine
+   */
   public boolean isUseCrackOrCocaine() {
     return useCrackOrCocaine;
   }
 
+  /**
+   * @param useCrackOrCocaine sets use of crack or cocaine
+   */
   public void setUseCrackOrCocaine(boolean useCrackOrCocaine) {
     this.useCrackOrCocaine = useCrackOrCocaine;
   }
 
+  /**
+   * @return does the patient use Marijuana
+   */
   public boolean isUseMarijuana() {
     return useMarijuana;
   }
 
+  /**
+   * @param useMarijuana sets use of Marijuana
+   */
   public void setUseMarijuana(boolean useMarijuana) {
     this.useMarijuana = useMarijuana;
   }
 
+  /**
+   * @return does the patient use methamphetamine
+   */
   public boolean isUseMethamphetamine() {
     return useMethamphetamine;
   }
 
+  /**
+   * @param useMethamphetamine sets use of methamphetamine
+   */
   public void setUseMethamphetamine(boolean useMethamphetamine) {
     this.useMethamphetamine = useMethamphetamine;
   }
 
+  /**
+   * @return does the patient use benzodiazepines
+   */
   public boolean isUseBenzo() {
     return useBenzo;
   }
 
+  /**
+   * @param useBenzo sets use of benzodiazepines
+   */
   public void setUseBenzo(boolean useBenzo) {
     this.useBenzo = useBenzo;
   }
 
+  /**
+   * @return does the patient use tranquilizers
+   */
   public boolean isUseNonBeznoTrang() {
     return useNonBeznoTrang;
   }
 
+  /**
+   * @param useNonBeznoTrang set use of tranquilizers
+   */
   public void setUseNonBeznoTrang(boolean useNonBeznoTrang) {
     this.useNonBeznoTrang = useNonBeznoTrang;
   }
 
+  /**
+   * @return does the patient use Barbitures or Hypno
+   */
   public boolean isUseBarbituresOrHypno() {
     return useBarbituresOrHypno;
   }
 
+  /**
+   * @param useBarbituresOrHypno set use of barbitures or hypnotics
+   */
   public void setUseBarbituresOrHypno(boolean useBarbituresOrHypno) {
     this.useBarbituresOrHypno = useBarbituresOrHypno;
   }
 
+  /**
+   * @return does the patient use inhalants
+   */
   public boolean isUseInhalants() {
     return useInhalants;
   }
 
+  /**
+   * @param useInhalants sets use of inhalants
+   */
   public void setUseInhalants(boolean useInhalants) {
     this.useInhalants = useInhalants;
   }
 
+  /**
+   * @return other drugs the patient may use
+   */
   public String getOther() {
-    return Other;
+    return useOther;
   }
 
-  public void setOther(String other) {
-    Other = other;
+  /**
+   * @param useOther sets the use of other drugs
+   */
+  public void setOther(String useOther) {
+    this.useOther = useOther;
   }
 
+  /**
+   * @return does the patient have an opioid disorder
+   */
   public boolean isDisorderOpioid() {
     return disorderOpioid;
   }
 
+  /**
+   * @param disorderOpioid sets if the patient has an opioid disorder
+   */
   public void setDisorderOpioid(boolean disorderOpioid) {
     this.disorderOpioid = disorderOpioid;
   }
 
+  /**
+   * @return does the patient have an alcohol disorder
+   */
   public boolean isDisorderAlcohol() {
     return disorderAlcohol;
   }
 
+  /**
+   * sets whether the patient has an alcohol disorder
+   *
+   * @param disorderAlcohol has alcohol disorder
+   */
   public void setDisorderAlcohol(boolean disorderAlcohol) {
     this.disorderAlcohol = disorderAlcohol;
   }
 
+  /**
+   * returns last clean date
+   *
+   * @return Date last clean
+   */
   public String getLastClean() {
     return lastClean;
   }
 
+  /**
+   * sets last clean date
+   *
+   * @param lastClean Date last clean
+   */
   public void setLastClean(String lastClean) {
     this.lastClean = lastClean;
   }
 
+  /**
+   * @param fetchID id for fetching
+   */
   public void setFetchID(int fetchID) {
     //intentionally left blank, fetchID should not be changed
   }
 
+  /**
+   * returns FetchID
+   *
+   * @return FetchID as int
+   */
   public int getFetchID() {
     return fetchID;
   }
