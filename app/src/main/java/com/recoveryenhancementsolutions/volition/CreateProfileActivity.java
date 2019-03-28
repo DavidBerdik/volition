@@ -27,10 +27,10 @@ public class CreateProfileActivity extends AppCompatActivity {
      * while the name and gender are used from whoever is making the method that outputs name
      * and gender.
      */
-    private String BirthdayResult;
-    private String CleanDateResult;
-    private String name = "";
-    private String Gender = "";
+    private String birthdayResult;
+    private String cleanDateResult;
+    private String name;
+    private String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 final EditText dob = findViewById(R.id.date_of_birth);
                 dob.setText(new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(dobCalendar.getTime()));
                 dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
-                BirthdayResult = dob.toString();
+                birthdayResult = dob.toString();
             }
         };
 
@@ -87,7 +87,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 cleanDate.setText(
                         new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(cleanDateCalendar.getTime()));
                 cleanDate.setText(DateFormat.getDateInstance().format(cleanDateCalendar.getTime()));
-                CleanDateResult = cleanDate.toString();
+                cleanDateResult = cleanDate.toString();
             }
         };
 
@@ -105,10 +105,10 @@ public class CreateProfileActivity extends AppCompatActivity {
             public void sendOff(){
                 //Intent goes to the next activity in the Work Flow after adding to the database.
                 Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
-                patient.setDateOfBirth(BirthdayResult);
+                patient.setDateOfBirth(birthdayResult);
                 patient.setPatientName(name);
-                patient.setGender(Gender);
-                patient.setLastClean(CleanDateResult);
+                patient.setGender(gender);
+                patient.setLastClean(cleanDateResult);
                 demographicDataDAO.insertDemographicInfo(patient);
                 startActivity(intent);
             }
