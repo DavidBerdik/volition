@@ -21,22 +21,32 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * This is testing that the "Buprenorphine" and "Abstain" buttons work
+ */
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MedicationChoiceActivityTest {
 
+  /**
+   * Creates the test object
+   */
   @Rule
   public ActivityTestRule<MedicationChoiceActivity> mActivityTestRule = new ActivityTestRule<>(
       MedicationChoiceActivity.class);
 
+  /**
+   * Creates the Medication Choice Activity Test
+   */
   @Test
   public void medicationChoiceActivityTest() {
     ViewInteraction button = onView(
-        allOf(withId(R.id.medication),isDisplayed()));
+        allOf(withId(R.id.medication), isDisplayed()));
     button.check(matches(isDisplayed()));
 
     ViewInteraction button2 = onView(
-        allOf(withId(R.id.abstain),isDisplayed()));
+        allOf(withId(R.id.abstain), isDisplayed()));
     button2.check(matches(isDisplayed()));
   }
 }
