@@ -52,14 +52,26 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     new insertAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
 
+  /**
+   * Class for running insert asynchronously
+   */
   private static class insertAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void> {
 
     private MedicationChoiceDAO asyncTaskDao;
 
+    /**
+     * creates the insertAsync task
+     * @param dao Dao object for insertAsyncTask method
+     */
     insertAsyncTask(final MedicationChoiceDAO dao) {
       asyncTaskDao = dao;
     }
 
+    /**
+     * Makes the insert run on a separate thread
+     * @param params Paremeters
+     * @return Returns null
+     */
     @Override
     protected Void doInBackground(final MedicationChoiceEntity... params) {
       asyncTaskDao.insertMedication(params[0]);
@@ -67,18 +79,34 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     }
   }
 
+  /**
+   * Updates the medication in the MedicationChoice table
+   * @param medication Medication object for the ViewModel
+   */
   public void updateMedication(final MedicationChoiceEntity medication){
     new updateAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
 
+  /**
+   * Class for running update asynchronously
+   */
   private static class updateAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void>{
 
     private MedicationChoiceDAO asyncTaskDao;
 
+    /**
+     * creates the updateAsync task
+     * @param dao Dao object for this method
+     */
     updateAsyncTask(final MedicationChoiceDAO dao) {
       asyncTaskDao = dao;
     }
 
+    /**
+     * Makes the update run on a separate thread
+     * @param params Parameters fro this method
+     * @return Returns null
+     */
     @Override
     protected Void doInBackground(final MedicationChoiceEntity... params) {
       asyncTaskDao.updateMedication(params[0]);

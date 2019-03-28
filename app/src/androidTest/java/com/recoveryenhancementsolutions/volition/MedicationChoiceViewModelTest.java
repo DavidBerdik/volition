@@ -52,10 +52,10 @@ public class MedicationChoiceViewModelTest {
    * Closes the temporary test database.
    */
 
-  @After
-  public void closeDb() {
-    db.close();
-  }
+ // @After
+ // public void closeDb() {
+    //db.close();
+ // }
 
   /**
    * Performs a test with the Medication Choice View Model
