@@ -21,20 +21,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
   }
-
-  /**
-   * Asynchronously populate the database.
-   *
-   * @param db the Volition Database to use for testing.
-   */
-
-  public static void populateAsync(final VolitionDatabase db){
-    insertAsyncTask insert = new insertAsyncTask(med);
-    updateAsyncTask update = new updateAsyncTask(med);
-    insert.execute();
-    update.execute();
-  }
-
+  
   /**
    * Set the test database for this View Model.
    *

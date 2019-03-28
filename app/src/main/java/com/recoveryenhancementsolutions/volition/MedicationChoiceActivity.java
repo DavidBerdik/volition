@@ -14,6 +14,7 @@ import android.widget.Button;
 public class MedicationChoiceActivity extends AppCompatActivity {
 
   public String medAnswer;
+  public MedicationChoiceEntity medication;
 
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
@@ -38,7 +39,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         medAnswer = "Abstain";
-        mViewModel.populateAsync(db);
+        mViewModel.insertMedication(medication);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
         //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
       }
@@ -52,7 +53,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         medAnswer = "Buprenorphine";
-        mViewModel.populateAsync(db);
+        mViewModel.insertMedication(medication);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
         //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
       }
