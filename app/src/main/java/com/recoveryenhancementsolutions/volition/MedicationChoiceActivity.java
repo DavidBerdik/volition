@@ -13,9 +13,6 @@ import android.widget.Button;
 
 public class MedicationChoiceActivity extends AppCompatActivity {
 
-  public String medAnswer;
-  public MedicationChoiceEntity medication;
-
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
    *
@@ -29,7 +26,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     final Button abstainButton = findViewById(R.id.abstain);
     final Button medicationButton = findViewById(R.id.medication);
     final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
-    VolitionDatabase db = VolitionDatabase.getDatabase(this.getApplication());
+    final MedicationChoiceEntity medication = new MedicationChoiceEntity();
 
     /**
      * Button that allows the user to choose to abstain from medication.
@@ -39,7 +36,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     abstainButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        medAnswer = "Abstain";
+        medication.medication = "Abstain";
         mViewModel.insertMedication(medication);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
         //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
@@ -53,7 +50,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     medicationButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        medAnswer = "Buprenorphine";
+        medication.medication = "Buprenorphine";
         mViewModel.insertMedication(medication);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
         //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
