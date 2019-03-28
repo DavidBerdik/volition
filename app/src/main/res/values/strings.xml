@@ -98,6 +98,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name = "total"> Total Score: </string>
   <string name = "specifier"> Specifier: </string>
   <string name = "severity"> Current Severity: </string>
+  <string name=  "username"> Username: </string>
   <string name="threezerofive"> 305.50 (F11.10)</string>
   <string name = "mild"> Mild: Presence of 2–3 symptoms</string>
   <string name = "threezerofour"> 304.00 (F11.20)</string>

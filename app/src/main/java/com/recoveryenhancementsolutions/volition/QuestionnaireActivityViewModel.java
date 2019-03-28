@@ -28,6 +28,10 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
     createDb();
   }
 
+  public void setTestDatabase(final VolitionDatabase db) {
+    this.mDb = db;
+  }
+
   public void createDb() {
     mDb = VolitionDatabase.getDatabase(this.getApplication());
   }
