@@ -42,8 +42,8 @@ import android.support.annotation.NonNull;
 @Database(
 
     entities = {
-      MedicationChoiceEntity.class,
-      UserActivityEntity.class,
+        MedicationChoiceEntity.class,
+        UserActivityEntity.class,
     },
     version = 1)
 @TypeConverters(DateConverter.class)
@@ -143,6 +143,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
       return null;
     }
   }
+
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
 }

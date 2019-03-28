@@ -18,6 +18,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
 
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
+   *
    * @param savedInstanceState Saved Instance state of the phone
    */
   @Override
@@ -28,7 +29,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     final Button abstainButton = findViewById(R.id.abstain);
     final Button medicationButton = findViewById(R.id.medication);
     final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
-    db = VolitionDatabase.getDatabase(this.getApplication());
+    VolitionDatabase db = VolitionDatabase.getDatabase(this.getApplication());
 
     /**
      * Button that allows the user to choose to abstain from medication.
@@ -59,5 +60,4 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       }
     });
   }
-  private static VolitionDatabase db;
 }

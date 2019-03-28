@@ -47,15 +47,14 @@ public class MedicationChoiceViewModelTest {
     viewModel.insertMedication(medication);
   }
 
-
   /**
    * Closes the temporary test database.
    */
 
- // @After
- // public void closeDb() {
-    //db.close();
- // }
+  // @After
+  // public void closeDb() {
+  //db.close();
+  // }
 
   /**
    * Performs a test with the Medication Choice View Model
@@ -70,6 +69,7 @@ public class MedicationChoiceViewModelTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
   }
+
   private MedicationChoiceViewModel viewModel;
   private VolitionDatabase db;
   private static final String TAG = "MedicationChoiceViewModelTest";

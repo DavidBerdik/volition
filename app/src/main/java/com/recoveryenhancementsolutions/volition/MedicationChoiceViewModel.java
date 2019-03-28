@@ -38,7 +38,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    * @return Returns LiveData of type MedicationChoiceEntity.
    */
 
-  public LiveData<MedicationChoiceEntity> getMedication(){
+  public LiveData<MedicationChoiceEntity> getMedication() {
     return db.medicationChoiceDAO().getMedication();
   }
 
@@ -61,6 +61,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
     /**
      * creates the insertAsync task
+     *
      * @param dao Dao object for insertAsyncTask method
      */
     insertAsyncTask(final MedicationChoiceDAO dao) {
@@ -69,6 +70,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
     /**
      * Makes the insert run on a separate thread
+     *
      * @param params Paremeters
      * @return Returns null
      */
@@ -81,21 +83,23 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
   /**
    * Updates the medication in the MedicationChoice table
+   *
    * @param medication Medication object for the ViewModel
    */
-  public void updateMedication(final MedicationChoiceEntity medication){
+  public void updateMedication(final MedicationChoiceEntity medication) {
     new updateAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
 
   /**
    * Class for running update asynchronously
    */
-  private static class updateAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void>{
+  private static class updateAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void> {
 
     private MedicationChoiceDAO asyncTaskDao;
 
     /**
      * creates the updateAsync task
+     *
      * @param dao Dao object for this method
      */
     updateAsyncTask(final MedicationChoiceDAO dao) {
@@ -104,6 +108,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
     /**
      * Makes the update run on a separate thread
+     *
      * @param params Parameters fro this method
      * @return Returns null
      */
@@ -113,6 +118,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
       return null;
     }
   }
+
   private static MedicationChoiceDAO med;
   private static VolitionDatabase db;
 }
