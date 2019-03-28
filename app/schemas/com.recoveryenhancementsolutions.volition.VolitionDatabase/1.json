@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ec1d37e016ec99785aac7c560ff473f4",
+    "identityHash": "b6f0169add16cc4e1877b7e4b34a6e93",
     "entities": [
       {
         "tableName": "UserActivityEntity",
@@ -35,11 +35,31 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "MedicationChoiceEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "fields": [
+          {
+            "fieldPath": "medication",
+            "columnName": "medication",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "medication"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ec1d37e016ec99785aac7c560ff473f4\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b6f0169add16cc4e1877b7e4b34a6e93\")"
     ]
   }
 }
