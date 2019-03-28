@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+import java.util.Date;
 
 
 @Dao
@@ -67,7 +68,7 @@ public interface DemographicDataDAO {
    * @return a Date with the Date of Birth of the patient
    */
   @Query("SELECT dateOfBirth " + genericQuery)
-  String queryDoB();
+  Date queryDoB();
 
   /**
    * Retrieves the patient gender
@@ -170,7 +171,7 @@ public interface DemographicDataDAO {
    *
    * @return a String containing the other drug(s) used
    */
-  @Query("SELECT Other " + genericQuery)
+  @Query("SELECT useOther " + genericQuery)
   String queryOtherUsedDrugs();
 
   /**
@@ -195,5 +196,5 @@ public interface DemographicDataDAO {
    * @return Date of their last clean
    */
   @Query("SELECT lastClean " + genericQuery)
-  String queryLastCleanDate();
+  Date queryLastCleanDate();
 }

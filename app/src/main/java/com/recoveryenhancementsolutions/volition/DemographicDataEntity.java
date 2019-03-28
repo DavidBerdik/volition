@@ -3,6 +3,12 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 @Entity
@@ -33,7 +39,7 @@ public class DemographicDataEntity {
   private String patientName;
 
   private int age;
-  private String dateOfBirth;//MM-DD-YYYY
+  private Date dateOfBirth;
   private String gender;
   private boolean isPersonInRecovery;//True - person in recovery FALSE - Family/Support
 
@@ -52,7 +58,7 @@ public class DemographicDataEntity {
   private String useOther;
   private boolean disorderOpioid;
   private boolean disorderAlcohol;
-  private String lastClean;//MM-DD-YYYY
+  private Date lastClean;
   private int fetchID = 1;
 
 
@@ -99,15 +105,34 @@ public class DemographicDataEntity {
   /**
    * @return Date of birth
    */
-  public String getDateOfBirth() {
+  public Date getDateOfBirth() {
     return dateOfBirth;
   }
 
   /**
    * @param dateOfBirth the date of birth
    */
-  public void setDateOfBirth(String dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
+  public void setDateOfBirth(Date dateOfBirth) {
+    //Strips time and passes calendar date
+    final Calendar cal = Calendar.getInstance();
+    cal.setTime(dateOfBirth);
+    setDateOfBirth(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Sets the activity's date.
+   *
+   * @param year birth year
+   * @param month birth month
+   * @param day birth day
+   */
+  public void setDateOfBirth(final int year, final int month, final int day) {
+    try {
+      this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+          + month + "-" + day);
+    } catch (final ParseException e) {
+      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+    }
   }
 
   /**
@@ -281,14 +306,14 @@ public class DemographicDataEntity {
   /**
    * @return other drugs the patient may use
    */
-  public String getOther() {
+  public String getUseOther() {
     return useOther;
   }
 
   /**
    * @param useOther sets the use of other drugs
    */
-  public void setOther(String useOther) {
+  public void setUseOther(String useOther) {
     this.useOther = useOther;
   }
 
@@ -327,7 +352,7 @@ public class DemographicDataEntity {
    *
    * @return Date last clean
    */
-  public String getLastClean() {
+  public Date getLastClean() {
     return lastClean;
   }
 
@@ -336,8 +361,27 @@ public class DemographicDataEntity {
    *
    * @param lastClean Date last clean
    */
-  public void setLastClean(String lastClean) {
-    this.lastClean = lastClean;
+  public void setLastClean(Date lastClean) {
+    //Strips time and passes Calendar Date
+    final Calendar cal = Calendar.getInstance();
+    cal.setTime(lastClean);
+    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Sets the date of last clean
+   *
+   * @param year last clean year
+   * @param month last clean month
+   * @param day last clean day
+   */
+  public void setLastClean(final int year, final int month, final int day) {
+    try {
+      this.lastClean = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+          + month + "-" + day);
+    } catch (final ParseException e) {
+      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+    }
   }
 
   /**

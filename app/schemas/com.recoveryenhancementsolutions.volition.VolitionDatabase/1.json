@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "84fbe19b60fc0e15f7371041abca7ce9",
+    "identityHash": "8164124f2de413c5a403348891e5f759",
     "entities": [
       {
         "tableName": "DemographicDataEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `age` INTEGER NOT NULL, `dateOfBirth` TEXT, `gender` TEXT, `isPersonInRecovery` INTEGER NOT NULL, `useHeroin` INTEGER NOT NULL, `useOpiateOrSynth` INTEGER NOT NULL, `useAlcohol` INTEGER NOT NULL, `useCrackOrCocaine` INTEGER NOT NULL, `useMarijuana` INTEGER NOT NULL, `useMethamphetamine` INTEGER NOT NULL, `useBenzo` INTEGER NOT NULL, `useNonBeznoTrang` INTEGER NOT NULL, `useBarbituresOrHypno` INTEGER NOT NULL, `useInhalants` INTEGER NOT NULL, `Other` TEXT, `disorderOpioid` INTEGER NOT NULL, `disorderAlcohol` INTEGER NOT NULL, `lastClean` TEXT, `fetchID` INTEGER NOT NULL, PRIMARY KEY(`patientName`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `age` INTEGER NOT NULL, `dateOfBirth` INTEGER, `gender` TEXT, `isPersonInRecovery` INTEGER NOT NULL, `useHeroin` INTEGER NOT NULL, `useOpiateOrSynth` INTEGER NOT NULL, `useAlcohol` INTEGER NOT NULL, `useCrackOrCocaine` INTEGER NOT NULL, `useMarijuana` INTEGER NOT NULL, `useMethamphetamine` INTEGER NOT NULL, `useBenzo` INTEGER NOT NULL, `useNonBeznoTrang` INTEGER NOT NULL, `useBarbituresOrHypno` INTEGER NOT NULL, `useInhalants` INTEGER NOT NULL, `useOther` TEXT, `disorderOpioid` INTEGER NOT NULL, `disorderAlcohol` INTEGER NOT NULL, `lastClean` INTEGER, `fetchID` INTEGER NOT NULL, PRIMARY KEY(`patientName`))",
         "fields": [
           {
             "fieldPath": "patientName",
@@ -23,7 +23,7 @@
           {
             "fieldPath": "dateOfBirth",
             "columnName": "dateOfBirth",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": false
           },
           {
@@ -99,8 +99,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "Other",
-            "columnName": "Other",
+            "fieldPath": "useOther",
+            "columnName": "useOther",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -119,7 +119,7 @@
           {
             "fieldPath": "lastClean",
             "columnName": "lastClean",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": false
           },
           {
@@ -173,7 +173,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"84fbe19b60fc0e15f7371041abca7ce9\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8164124f2de413c5a403348891e5f759\")"
     ]
   }
 }
