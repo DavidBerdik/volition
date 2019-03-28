@@ -2,8 +2,142 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ec1d37e016ec99785aac7c560ff473f4",
+    "identityHash": "84fbe19b60fc0e15f7371041abca7ce9",
     "entities": [
+      {
+        "tableName": "DemographicDataEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `age` INTEGER NOT NULL, `dateOfBirth` TEXT, `gender` TEXT, `isPersonInRecovery` INTEGER NOT NULL, `useHeroin` INTEGER NOT NULL, `useOpiateOrSynth` INTEGER NOT NULL, `useAlcohol` INTEGER NOT NULL, `useCrackOrCocaine` INTEGER NOT NULL, `useMarijuana` INTEGER NOT NULL, `useMethamphetamine` INTEGER NOT NULL, `useBenzo` INTEGER NOT NULL, `useNonBeznoTrang` INTEGER NOT NULL, `useBarbituresOrHypno` INTEGER NOT NULL, `useInhalants` INTEGER NOT NULL, `Other` TEXT, `disorderOpioid` INTEGER NOT NULL, `disorderAlcohol` INTEGER NOT NULL, `lastClean` TEXT, `fetchID` INTEGER NOT NULL, PRIMARY KEY(`patientName`))",
+        "fields": [
+          {
+            "fieldPath": "patientName",
+            "columnName": "patientName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateOfBirth",
+            "columnName": "dateOfBirth",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isPersonInRecovery",
+            "columnName": "isPersonInRecovery",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useHeroin",
+            "columnName": "useHeroin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useOpiateOrSynth",
+            "columnName": "useOpiateOrSynth",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useAlcohol",
+            "columnName": "useAlcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useCrackOrCocaine",
+            "columnName": "useCrackOrCocaine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useMarijuana",
+            "columnName": "useMarijuana",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useMethamphetamine",
+            "columnName": "useMethamphetamine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useBenzo",
+            "columnName": "useBenzo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useNonBeznoTrang",
+            "columnName": "useNonBeznoTrang",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useBarbituresOrHypno",
+            "columnName": "useBarbituresOrHypno",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useInhalants",
+            "columnName": "useInhalants",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Other",
+            "columnName": "Other",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "disorderOpioid",
+            "columnName": "disorderOpioid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "disorderAlcohol",
+            "columnName": "disorderAlcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastClean",
+            "columnName": "lastClean",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fetchID",
+            "columnName": "fetchID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "patientName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
       {
         "tableName": "UserActivityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
@@ -39,7 +173,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ec1d37e016ec99785aac7c560ff473f4\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"84fbe19b60fc0e15f7371041abca7ce9\")"
     ]
   }
 }
