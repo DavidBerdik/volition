@@ -1,9 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
-import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
 import android.content.Context;

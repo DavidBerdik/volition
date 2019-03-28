@@ -64,8 +64,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   }
 
   /**
-   *
-   * Adds a medication to the test database.
+   * Adds a medication to the database.
    *
    * @param medAnswer String that holds the user's medication choice.
    */
@@ -77,6 +76,18 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   }
 
   /**
+   * Updates the medication in the database
+   *
+   * @param medAnswer String that holds the user's medication choice.
+   */
+
+  public static void updateMedication(String medAnswer){
+    MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
+    medicationChoiceEntity.insertMed(medAnswer);
+    db.medicationChoiceDAO().updateMedication(medicationChoiceEntity);
+  }
+
+  /**
    * Populate the test database with data.
    *
    * @param db Volition Database to use for testing.
@@ -85,6 +96,9 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   public static void populateWithData(VolitionDatabase db){
     MedicationChoiceActivity medicationChoiceActivity = new MedicationChoiceActivity();
     addMedication(medicationChoiceActivity.medAnswer);
+    if(!db.equals(null)) {
+      updateMedication(medicationChoiceActivity.medAnswer);
+    }
   }
 
   /**
