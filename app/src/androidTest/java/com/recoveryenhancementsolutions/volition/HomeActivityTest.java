@@ -91,6 +91,6 @@ public class HomeActivityTest {
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
   private VolitionDatabase db;
-  private final int DAYS_CLEAN = 3;
+  private final int DAYS_CLEAN = 2;
   private static final String TAG = "HomeActivityTest";
 }
