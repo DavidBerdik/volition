@@ -26,6 +26,7 @@ public class MedicationChoiceEntity {
    * activity
    */
 
+  @SuppressWarnings("NullableProblems")
   @NonNull
   @ColumnInfo(name = "medication")
   public String medication;
