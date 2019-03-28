@@ -21,7 +21,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
   }
-  
+
   /**
    * Set the test database for this View Model.
    *
