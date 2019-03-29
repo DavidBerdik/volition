@@ -26,6 +26,9 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ * The first test for the radio buttons on the UI
+ */
 public class RadioButtonTest1 {
 
   @Rule
@@ -33,6 +36,10 @@ public class RadioButtonTest1 {
       CreateProfileActivity.class);
 
   @Test
+  /**
+   * This radio button test checks for the presence of the Family or Support Person button, presses
+   * it, and verifies the remainder radio buttons existence
+   */
   public void radioButtonTest1() {
     ViewInteraction appCompatRadioButton = onView(
         allOf(withId(R.id.radioSupport), withText("Family or Support Person"),
