@@ -22,10 +22,14 @@ import android.content.Intent;
 public class CreateProfileActivity extends AppCompatActivity {
 
 
-  /**
+  /*
    * All of these public methods take in the current view @c
    * Then they check if the Corresponding RadioButton has been selected
    * If the RadioButton has been selected the corresponding field in the database is set to true
+   */
+
+  /**
+   * @param c the current view @c
    */
   public void addSupportListener(View c) {
     RadioButton radioSupport = findViewById(R.id.radioSupport);
@@ -34,6 +38,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * @param c the current view @c
+   */
   public void addClientListener(View c) {
     RadioButton radioClient = findViewById(R.id.radioClient);
     if (radioClient.isChecked()) {
@@ -41,6 +48,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * @param c the current view @c
+   */
   public void addHeroinListener(View c) {
     RadioButton radioHeroin = findViewById(R.id.radioHeroin);
     if (radioHeroin.isChecked()) {
@@ -54,6 +64,10 @@ public class CreateProfileActivity extends AppCompatActivity {
       data.setUseMarijuana(true);
     }
   }
+
+  /**
+   * @param c the current view @c
+   */
   public void addOpiatesListener(View c) {
     RadioButton radioOpiates = findViewById(R.id.radioOpiates);
     if (radioOpiates.isChecked()) {
@@ -68,6 +82,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * @param c the current view @c
+   */
   public void addCocaineListener(View c) {
     RadioButton radioCocaine = findViewById(R.id.radioCocaine);
     if (radioCocaine.isChecked()) {
@@ -82,6 +99,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * @param c the current view @c
+   */
   public void addBenListener(View c) {
     RadioButton radioBen = findViewById(R.id.radioBen);
     if (radioBen.isChecked()) {
@@ -95,6 +115,10 @@ public class CreateProfileActivity extends AppCompatActivity {
       data.setUseNonBeznoTrang(true);
     }
   }
+
+  /**
+   * @param c the current view @c
+   */
   public void addSedativesListener(View c) {
     RadioButton radioSedatives = findViewById(R.id.radioSedatives);
     if (radioSedatives.isChecked()) {
@@ -102,6 +126,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * @param c the current view @c
+   */
   public void addInhalantsListener(View c) {
     RadioButton radioInhalants = findViewById(R.id.radioInhalants);
     if (radioInhalants.isChecked()) {
@@ -190,7 +217,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick( final View v) {
+      public void onClick(final View v) {
         sendOff();
       }
 
