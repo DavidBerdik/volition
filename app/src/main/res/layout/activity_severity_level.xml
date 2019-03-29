@@ -39,7 +39,7 @@
     android:padding="30dp"
 
     android:alpha=".4"
-    android:contentDescription="@string/desc"
+    android:contentDescription="@string/severity_desc"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:layout_column="1"
         android:layout_gravity="bottom"
         android:gravity="bottom"
-        android:text="@string/total"
+        android:text="@string/severity_total"
 
         android:textColor="#009933"
         android:textSize="24sp"
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="-255dp"
         android:layout_marginRight="56dp"
-        android:hint="@string/severity"
+        android:hint="@string/severity_current"
         android:inputType="text"
         android:width="600dp"
         tools:ignore="autoFill"/>
@@ -99,7 +99,7 @@
         android:layout_marginRight="20dp"
         android:layout_column="1"
         android:gravity="left"
-        android:text="@string/specifier"
+        android:text="@string/severity_specifier"
 
         android:textColor="#009933"
         android:textSize="24sp"
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="-255dp"
         android:layout_marginRight="56dp"
-        android:hint="@string/username"
+        android:hint="@string/severity_username"
         android:inputType="none"
         android:width="600dp"
         tools:ignore="autoFill"/>
@@ -154,7 +154,7 @@
         android:layout_gravity="bottom"
         android:padding="10dp"
         android:gravity="left"
-        android:text="@string/severity"
+        android:text="@string/severity_current"
         android:textColor="#FF9900"
 
         android:textSize="20sp"
@@ -179,7 +179,7 @@
         android:layout_column="1"
         android:padding="3dip"
         android:gravity="left"
-        android:text="@string/threezerofive"
+        android:text="@string/severity_threezerofive"
         android:textColor="#FF9900"/>
 
       <TextView
@@ -189,7 +189,7 @@
         android:layout_marginRight="30dp"
         android:padding="3dip"
         android:gravity="right"
-        android:text="@string/mild"
+        android:text="@string/severity_mild"
         android:textColor="#FF9900"/>
     </TableRow>
 
@@ -203,7 +203,7 @@
         android:layout_column="1"
         android:padding="3dip"
         android:gravity="left"
-        android:text="@string/threezerofour"
+        android:text="@string/severity_threezerofour"
         android:textColor="#FF9900"/>
 
       <TextView
@@ -214,7 +214,7 @@
         android:layout_column="1"
         android:padding="3dip"
         android:gravity="right"
-        android:text="@string/moderate"
+        android:text="@string/severity_moderate"
 
         android:textColor="#FF9900"/>
     </TableRow>
@@ -230,7 +230,7 @@
         android:padding="3dip"
         android:alpha="100"
         android:gravity="left"
-        android:text="@string/threezerofour2"
+        android:text="@string/severity_threezerofour2"
         android:textColor="#FFA500"/>
 
       <TextView
@@ -242,7 +242,7 @@
         android:padding="3dip"
         android:gravity="right"
 
-        android:text="@string/severe"
+        android:text="@string/severity_severe"
         android:textColor="#FF9900"/>
     </TableRow>
 
@@ -258,7 +258,7 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:background="#00FA9A"
-    android:text="@string/plan"
+    android:text="@string/severity_plan"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="@+id/tableLayout2"
     app:layout_constraintStart_toStartOf="parent"
