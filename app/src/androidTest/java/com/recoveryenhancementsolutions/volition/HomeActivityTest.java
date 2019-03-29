@@ -50,7 +50,7 @@ public class HomeActivityTest {
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(DemographicDataViewModel.class);
     viewModel.setTestDatabase(db);
-    viewModel.insertDemographicData(demographicDataEntity);
+    db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
   }
 
   /**
@@ -58,6 +58,13 @@ public class HomeActivityTest {
    */
   @Test
   public void homeActivityTest_ViewModel() {
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     // Fetching the data...
     try {
       assertEquals(demographicDataEntity.getLastClean(),
@@ -88,6 +95,6 @@ public class HomeActivityTest {
 
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
-  private final int DAYS_CLEAN = 5;
+  private final int DAYS_CLEAN = 9;
   private static final String TAG = "HomeActivityTest";
 }
