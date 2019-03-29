@@ -189,26 +189,17 @@ public class ActivityActivity extends AppCompatActivity {
   }
 
   /**
-   * Sets observers for all dates currently being displayed.
-   */
-  private void subscribeUIActivities() {
-    for (DateView dv : dateViews) {
-      dv.observe(this);
-    }
-  }
-
-  /**
    * Change what set of days are being displayed.
    *
-   * @param forward If set, displays the next days on the calendar.  Otherwise, the previous days.
+   * @param by How many days to add to the rightmost day.  For example, 7 would load the next week.
    */
-  private void cycle(boolean forward) {
+  protected void cycle(int by) {
     for (DateView dv : dateViews) {
       dv.unobserve(this);
     }
 
     Calendar rightmost = dateViews.get(0).day;
-    rightmost.add(Calendar.DAY_OF_MONTH, forward ? dateViews.size() : -dateViews.size());
+    rightmost.add(Calendar.DAY_OF_MONTH, by);
 
     for (DateView dv : dateViews) {
       dv.setDay(rightmost);
@@ -216,6 +207,24 @@ public class ActivityActivity extends AppCompatActivity {
     }
 
     subscribeUIActivities();
+  }
+
+  /**
+   * Change what set of days are being displayed.
+   *
+   * @param forward If set, displays the next days on the calendar.  Otherwise, the previous days.
+   */
+  protected void cycle(boolean forward) {
+    cycle(forward ? dateViews.size() : -dateViews.size());
+  }
+
+  /**
+   * Sets observers for all dates currently being displayed.
+   */
+  private void subscribeUIActivities() {
+    for (DateView dv : dateViews) {
+      dv.observe(this);
+    }
   }
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
