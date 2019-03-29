@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 /**
  * View Model for the Medication Choice Activity.
  */
-
 public class MedicationChoiceViewModel extends AndroidViewModel {
 
   /**
@@ -16,7 +15,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param application Application object for the View Model.
    */
-
   public MedicationChoiceViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
@@ -27,7 +25,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param db the Volition Database to use for testing.
    */
-
   public void setTestDatabase(final VolitionDatabase db) {
     this.db = db;
   }
@@ -37,7 +34,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @return Returns LiveData of type MedicationChoiceEntity.
    */
-
   public LiveData<MedicationChoiceEntity> getMedication() {
     return db.medicationChoiceDAO().getMedication();
   }
@@ -47,7 +43,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param medication Medication object for the View Model.
    */
-
   public void insertMedication(final MedicationChoiceEntity medication) {
     new insertAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
@@ -56,8 +51,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    * Class for running insert asynchronously
    */
   private static class insertAsyncTask extends AsyncTask<MedicationChoiceEntity, Void, Void> {
-
-    private MedicationChoiceDAO asyncTaskDao;
 
     /**
      * creates the insertAsync task
@@ -79,6 +72,8 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
       asyncTaskDao.insertMedication(params[0]);
       return null;
     }
+
+    private MedicationChoiceDAO asyncTaskDao;
   }
 
   /**
@@ -109,7 +104,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     /**
      * Makes the update run on a separate thread
      *
-     * @param params Parameters fro this method
+     * @param params Parameters for this method
      * @return Returns null
      */
     @Override
@@ -119,6 +114,5 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     }
   }
 
-  private static MedicationChoiceDAO med;
-  private static VolitionDatabase db;
+  private VolitionDatabase db;
 }

@@ -18,7 +18,7 @@ public class MedicationChoiceEntity {
    * @param med String that stores the medication name.
    */
   public void insertMed(final String med){
-    this.medication = med;
+    medication = med;
   }
 
   /**
