@@ -1,15 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-
+import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -17,18 +9,32 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
+import static android.support.test.espresso.action.ViewActions.*;
+import static android.support.test.espresso.assertion.ViewAssertions.*;
+import static android.support.test.espresso.matcher.ViewMatchers.*;
+
+import com.recoveryenhancementsolutions.volition.R;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.is;
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-/**
- * The second test for the radio buttons on the UI
- */
 public class RadioButtonTest2 {
 
   @Rule
@@ -36,10 +42,7 @@ public class RadioButtonTest2 {
       CreateProfileActivity.class);
 
   @Test
-  /**
-   * This test selects multiple buttons and verifies their selection has occurred properly
-   */
-  public void radioButtonTest2() {
+  public void createProfileActivityTest2temp() {
     ViewInteraction appCompatRadioButton = onView(
         allOf(withId(R.id.radioClient), withText("Person in Recovery/Seeking Recovery"),
             childAtPosition(
@@ -78,9 +81,8 @@ public class RadioButtonTest2 {
                     childAtPosition(
                         withId(R.id.LinearLayout01),
                         0)),
-                11),
-            isDisplayed()));
-    button.check(matches(isDisplayed()));
+                11)));
+    button.perform(scrollTo());
 
     ViewInteraction button2 = onView(
         allOf(withId(R.id.record_button),

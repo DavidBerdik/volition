@@ -31,7 +31,7 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addSupportListener(View c) {
+  public void addSupportListener(final View c) {
     RadioButton radioSupport = findViewById(R.id.radioSupport);
     if (radioSupport.isChecked()) {
       data.setPersonInRecovery(false);//set to false because not in Recovery
@@ -41,7 +41,7 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addClientListener(View c) {
+  public void addClientListener(final View c) {
     RadioButton radioClient = findViewById(R.id.radioClient);
     if (radioClient.isChecked()) {
       data.setPersonInRecovery(true);
@@ -51,14 +51,14 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addHeroinListener(View c) {
+  public void addHeroinListener(final View c) {
     RadioButton radioHeroin = findViewById(R.id.radioHeroin);
     if (radioHeroin.isChecked()) {
       data.setUseHeroin(true);
     }
   }
 
-  public void addMarijuanaListener(View c) {
+  public void addMarijuanaListener(final View c) {
     RadioButton radioMarijuana = findViewById(R.id.radioMarijuana);
     if (radioMarijuana.isChecked()) {
       data.setUseMarijuana(true);
@@ -68,14 +68,14 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addOpiatesListener(View c) {
+  public void addOpiatesListener(final View c) {
     RadioButton radioOpiates = findViewById(R.id.radioOpiates);
     if (radioOpiates.isChecked()) {
       data.setUseOpiateOrSynth(true);
     }
   }
 
-  public void addAlocholListener(View c) {
+  public void addAlocholListener(final View c) {
     RadioButton radioAlcohol = findViewById(R.id.radioAlcohol);
     if (radioAlcohol.isChecked()) {
       data.setUseAlcohol(true);
@@ -85,14 +85,14 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addCocaineListener(View c) {
+  public void addCocaineListener(final View c) {
     RadioButton radioCocaine = findViewById(R.id.radioCocaine);
     if (radioCocaine.isChecked()) {
       data.setUseCrackOrCocaine(true);
     }
   }
 
-  public void addMethListener(View c) {
+  public void addMethListener(final View c) {
     RadioButton radioMeth = findViewById(R.id.radioMeth);
     if (radioMeth.isChecked()) {
       data.setUseMethamphetamine(true);
@@ -102,14 +102,14 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addBenListener(View c) {
+  public void addBenListener(final View c) {
     RadioButton radioBen = findViewById(R.id.radioBen);
     if (radioBen.isChecked()) {
       data.setUseBenzo(true);
     }
   }
 
-  public void addTranqListener(View c) {
+  public void addTranqListener(final View c) {
     RadioButton radioTranquilizers = findViewById(R.id.radioTranquilizers);
     if (radioTranquilizers.isChecked()) {
       data.setUseNonBeznoTrang(true);
@@ -119,7 +119,7 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addSedativesListener(View c) {
+  public void addSedativesListener(final View c) {
     RadioButton radioSedatives = findViewById(R.id.radioSedatives);
     if (radioSedatives.isChecked()) {
       data.setUseOpiateOrSynth(true);
@@ -129,7 +129,7 @@ public class CreateProfileActivity extends AppCompatActivity {
   /**
    * @param c the current view @c
    */
-  public void addInhalantsListener(View c) {
+  public void addInhalantsListener(final View c) {
     RadioButton radioInhalants = findViewById(R.id.radioInhalants);
     if (radioInhalants.isChecked()) {
       data.setUseInhalants(true);
