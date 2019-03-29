@@ -1,90 +1,50 @@
 package com.recoveryenhancementsolutions.volition;
 
-
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+import java.util.Date;
 
-
+/**
+ * DAO for interacting with the DemographicDataEntity. Skeleton file, should be replaced by another
+ * group's full task later.
+ */
 @Dao
-@SuppressWarnings("unused")
-/*
-Currently many methods are unused, it is expected more and more will
-come into use as more components are finished and added
-*/
 public interface DemographicDataDAO {
 
+  /**
+   * Inserts a new DemographicDataEntity into the database.
+   *
+   * @param demographicDataEntity An object representing the DemographicDataEntity.
+   */
   @Insert
   void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
 
+  /**
+   * Updates the DemographicDataEntity inside the database.
+   *
+   * @param demographicDataEntity An object representing the DemographicDataEntity.
+   */
   @Update
   void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
 
+  /**
+   * Deletes the DemographicDataEntity inside the database.
+   *
+   * @param demographicDataEntity An object representing the DemographicDataEntity.
+   */
+  @Delete
+  void deleteDemographicInfo(DemographicDataEntity demographicDataEntity);
 
-    /*
-    Other components of the volition application may need to access the data of the patient.
-    Rather than having to access the object created and use the get method on them, since this
-    will be a table of one, they can call the generic query on this class to receive it which
-    should allow for  easier access of this information for the other functions of this application
-    */
-
-  String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
-
-  @Query("SELECT patientName " + genericQuery)
-  String queryPatientName();
-
-  @Query("SELECT age " + genericQuery)
-  int queryPatientAge();
-
-  @Query("SELECT dateOfBirth " + genericQuery)
-  String queryDoB();
-
-  @Query("SELECT gender " + genericQuery)
-  String queryPatientGender();
-
-  @Query("SELECT isPersonInRecovery " + genericQuery)
-  boolean queryIsInRecovery();
-
-  @Query("SELECT useHeroin " + genericQuery)
-  boolean queryIsUsingHeroin();
-
-  @Query("SELECT useOpiateOrSynth " + genericQuery)
-  boolean queryIsUsingOpiateOrSynth();
-
-  @Query("SELECT useAlcohol " + genericQuery)
-  boolean queryIsUsingAlcohol();
-
-  @Query("SELECT useCrackOrCocaine " + genericQuery)
-  boolean queryIsUsingCrackOrCo();
-
-  @Query("SELECT useMarijuana " + genericQuery)
-  boolean queryIsUsingMarijuana();
-
-  @Query("SELECT useMethamphetamine " + genericQuery)
-  boolean queryIsUsingMeth();
-
-  @Query("SELECT useBenzo " + genericQuery)
-  boolean queryIsUsingBenzo();
-
-  @Query("SELECT useNonBeznoTrang " + genericQuery)
-  boolean queryIsUsingNonBenzoTranq();
-
-  @Query("SELECT useBarbituresOrHypno " + genericQuery)
-  boolean queryIsUsingBarbOrHypno();
-
-  @Query("SELECT useInhalants " + genericQuery)
-  boolean queryIsUsingInhalants();
-
-  @Query("SELECT Other " + genericQuery)
-  String queryOtherUsedDrugs();
-
-  @Query("SELECT disorderAlcohol " + genericQuery)
-  boolean queryIsHavingAlcoholDisorder();
-
-  @Query("SELECT disorderOpioid " + genericQuery)
-  boolean queryIsHavingOpioidDisorder();
-
-  @Query("SELECT lastClean " + genericQuery)
-  String queryLastCleanDate();
+  /**
+   * Retrieves the last date of being clean from the database.
+   *
+   * @return A Date object contained in LiveData representing the last date of being clean.
+   */
+  @Query("SELECT lastClean FROM DemographicDataEntity LIMIT 1")
+  LiveData<Date> queryLastCleanDate();
+>>>>>>> 44f4c049bc3b5d55f9315e87e4499aa5a7211ebe
 }
