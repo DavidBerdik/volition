@@ -39,12 +39,11 @@ import android.support.annotation.NonNull;
  */
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
-
 @Database(
     entities = {
+        MedicationChoiceEntity.class,
         UserActivityEntity.class,
         DemographicDataEntity.class,
-        MedicationChoiceEntity.class
     },
     version = 1)
 @TypeConverters(DateConverter.class)

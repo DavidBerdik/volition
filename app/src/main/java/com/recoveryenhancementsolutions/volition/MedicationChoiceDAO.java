@@ -24,7 +24,7 @@ public interface MedicationChoiceDAO {
    */
 
   @Query("SELECT * FROM MedicationChoiceEntity")
-  LiveData<String> getMedication();
+  LiveData<MedicationChoiceEntity> getMedication();
 
   /**
    * Inserts a medication choice into the database.
@@ -33,7 +33,7 @@ public interface MedicationChoiceDAO {
    */
 
   @Insert(onConflict = IGNORE)
-  void insertMedication(MedicationChoiceEntity medication);
+  void insertMedication(final MedicationChoiceEntity medication);
 
   /**
    * Updates the medication choice in the database.
@@ -42,5 +42,5 @@ public interface MedicationChoiceDAO {
    */
 
   @Update(onConflict = REPLACE)
-  void updateMedication(MedicationChoiceEntity medication);
+  void updateMedication(final MedicationChoiceEntity medication);
 }
