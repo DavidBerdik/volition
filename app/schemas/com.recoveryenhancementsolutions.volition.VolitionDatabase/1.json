@@ -3,10 +3,14 @@
   "database": {
     "version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "identityHash": "742e14a270336f1519fc1cdbab725e9e",
 =======
     "identityHash": "b6f0169add16cc4e1877b7e4b34a6e93",
 >>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
+=======
+    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
+>>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
     "entities": [
       {
         "tableName": "MedicationChoiceEntity",
@@ -29,6 +33,7 @@
         "foreignKeys": []
       },
       {
+<<<<<<< HEAD
         "tableName": "QuestionnaireEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
         "fields": [
@@ -129,6 +134,8 @@
         "foreignKeys": []
       },
       {
+=======
+>>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
         "tableName": "UserActivityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
         "fields": [
@@ -162,7 +169,7 @@
       },
       {
         "tableName": "DemographicDataEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `lastClean` INTEGER, PRIMARY KEY(`patientName`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `lastClean` INTEGER, `age` INTEGER NOT NULL, `dateOfBirth` INTEGER, `gender` TEXT, `isPersonInRecovery` INTEGER NOT NULL, `useHeroin` INTEGER NOT NULL, `useOpiateOrSynth` INTEGER NOT NULL, `useAlcohol` INTEGER NOT NULL, `useCrackOrCocaine` INTEGER NOT NULL, `useMarijuana` INTEGER NOT NULL, `useMethamphetamine` INTEGER NOT NULL, `useBenzo` INTEGER NOT NULL, `useNonBeznoTrang` INTEGER NOT NULL, `useBarbituresOrHypno` INTEGER NOT NULL, `useInhalants` INTEGER NOT NULL, `useOther` TEXT, `disorderOpioid` INTEGER NOT NULL, `disorderAlcohol` INTEGER NOT NULL, `fetchID` INTEGER NOT NULL, PRIMARY KEY(`patientName`))",
         "fields": [
           {
             "fieldPath": "patientName",
@@ -175,31 +182,119 @@
             "columnName": "lastClean",
             "affinity": "INTEGER",
             "notNull": false
-          }
-        ],
-        "primaryKey": {
-            "columnNames": [
-              "patientName"
-            ],
-            "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-        {
-        "tableName": "MedicationChoiceEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
-        "fields": [
+          },
           {
-            "fieldPath": "medication",
-            "columnName": "medication",
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateOfBirth",
+            "columnName": "dateOfBirth",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
             "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isPersonInRecovery",
+            "columnName": "isPersonInRecovery",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useHeroin",
+            "columnName": "useHeroin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useOpiateOrSynth",
+            "columnName": "useOpiateOrSynth",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useAlcohol",
+            "columnName": "useAlcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useCrackOrCocaine",
+            "columnName": "useCrackOrCocaine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useMarijuana",
+            "columnName": "useMarijuana",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useMethamphetamine",
+            "columnName": "useMethamphetamine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useBenzo",
+            "columnName": "useBenzo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useNonBeznoTrang",
+            "columnName": "useNonBeznoTrang",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useBarbituresOrHypno",
+            "columnName": "useBarbituresOrHypno",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useInhalants",
+            "columnName": "useInhalants",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useOther",
+            "columnName": "useOther",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "disorderOpioid",
+            "columnName": "disorderOpioid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "disorderAlcohol",
+            "columnName": "disorderAlcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fetchID",
+            "columnName": "fetchID",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "medication"
+            "patientName"
           ],
           "autoGenerate": false
         },
@@ -210,10 +305,14 @@
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"742e14a270336f1519fc1cdbab725e9e\")"
 =======
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b6f0169add16cc4e1877b7e4b34a6e93\")"
 >>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
+=======
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
+>>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
     ]
   }
 }

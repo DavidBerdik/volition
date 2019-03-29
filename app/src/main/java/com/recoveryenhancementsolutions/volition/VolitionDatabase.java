@@ -49,6 +49,7 @@ import android.support.annotation.NonNull;
         },
         version = 1)
 
+
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
@@ -57,7 +58,9 @@ public abstract class VolitionDatabase extends RoomDatabase {
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
+
   public abstract DemographicDataDAO demographicDataDao();
+
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
   /**
