@@ -19,10 +19,20 @@ public class ViewSeverityLevelViewModel extends AndroidViewModel {
     db = VolitionDatabase.getDatabase(this.getApplication());
   }
 
+  /**
+   * Retrieves the severity String from the ViewSeverityLevel database.
+   *
+   * @return A LiveData object containing a String to represent the severity.
+   */
   public LiveData<String> getSeverity() {
     return db.questionnaireModel().findSeverityLevelString();
   }
 
+  /**
+   * Retrieves the total amount of yes answers from the ViewSeverityLevel database.
+   *
+   * @return A LiveData object containing a String to represent the total "Yes" responses.
+   */
   public LiveData<String> getTotalYesAnswers() {
     return db.questionnaireModel().findTotalYes();
   }
