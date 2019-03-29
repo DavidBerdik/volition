@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class QuestionnaireActivity extends AppCompatActivity {
-
 
   public static int answerCounter = 0;
   public static int yesAnswers = 0;
@@ -30,7 +28,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static Boolean qElevenAnswer;
   public static String severityString;
 
-
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
    * xml. The Text View for every question is created with the opacity for each question and is
@@ -40,13 +37,12 @@ public class QuestionnaireActivity extends AppCompatActivity {
    *
    * @param savedInstanceState stores the saved state in order to recreate the activity.
    */
-
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
-    questionnateActivityViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
 
+    ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
 
@@ -98,7 +94,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
      * @param v takes the view during onClick event.
      */
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
       answerCounter++;
       yesAnswers++;
 
@@ -107,62 +103,52 @@ public class QuestionnaireActivity extends AppCompatActivity {
         qTwo.setTextColor(qTwo.getTextColors().withAlpha(100));
         qOneAnswer = true;
       }
-
-      if (answerCounter == 2) {
+      else if (answerCounter == 2) {
         qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
         qThree.setTextColor(qThree.getTextColors().withAlpha(100));
         qTwoAnswer = true;
       }
-
-      if (answerCounter == 3) {
+      else if (answerCounter == 3) {
         qThree.setTextColor(qThree.getTextColors().withAlpha(0));
         qFour.setTextColor(qFour.getTextColors().withAlpha(100));
         qThreeAnswer = true;
       }
-
-      if (answerCounter == 4) {
+      else if (answerCounter == 4) {
         qFour.setTextColor(qFour.getTextColors().withAlpha(0));
         qFive.setTextColor(qFive.getTextColors().withAlpha(100));
         qFourAnswer = true;
       }
-
-      if (answerCounter == 5) {
+      else if (answerCounter == 5) {
         qFive.setTextColor(qFive.getTextColors().withAlpha(0));
         qSix.setTextColor(qSix.getTextColors().withAlpha(100));
         qFiveAnswer = true;
       }
-
-      if (answerCounter == 6) {
+      else if (answerCounter == 6) {
         qSix.setTextColor(qSix.getTextColors().withAlpha(0));
         qSeven.setTextColor(qSeven.getTextColors().withAlpha(100));
         qSixAnswer = true;
       }
-
-      if (answerCounter == 7) {
+      else if (answerCounter == 7) {
         qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
         qEight.setTextColor(qEight.getTextColors().withAlpha(100));
         qSevenAnswer = true;
       }
-
-      if (answerCounter == 8) {
+      else if (answerCounter == 8) {
         qEight.setTextColor(qEight.getTextColors().withAlpha(0));
         qNine.setTextColor(qNine.getTextColors().withAlpha(100));
         qEightAnswer = true;
       }
-
-      if (answerCounter == 9) {
+      else if (answerCounter == 9) {
         qNine.setTextColor(qNine.getTextColors().withAlpha(0));
         qTen.setTextColor(qTen.getTextColors().withAlpha(100));
         qNineAnswer = true;
       }
-
-      if (answerCounter == 10) {
+      else if (answerCounter == 10) {
         qTen.setTextColor(qTen.getTextColors().withAlpha(0));
         qEleven.setTextColor(qEleven.getTextColors().withAlpha(100));
         qTenAnswer = true;
       }
-
-      if (answerCounter == 11) {
+      else if (answerCounter == 11) {
         qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
         qElevenAnswer = true;
         severityResult.setTextColor(severityResult.getTextColors().withAlpha(100));
@@ -172,14 +158,13 @@ public class QuestionnaireActivity extends AppCompatActivity {
         if (yesAnswers <= 3) {
           severityString = "Mild";
         }
-
-        if (yesAnswers > 3 && yesAnswers <= 5) {
+        else if (yesAnswers <= 5) {
           severityString = "Moderate";
         }
-
-        if (yesAnswers >= 6) {
+        else {
           severityString = "Severe";
         }
+
         QuestionnaireActivityViewModel.populateAsync(db);
         startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
       }
@@ -203,7 +188,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
      * @param v takes the view during the onClick event.
      */
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
       answerCounter++;
       noAnswers++;
 
@@ -212,62 +197,52 @@ public class QuestionnaireActivity extends AppCompatActivity {
         qTwo.setTextColor(qTwo.getTextColors().withAlpha(100));
         qOneAnswer = false;
       }
-
-      if (answerCounter == 2) {
+      else if (answerCounter == 2) {
         qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
         qThree.setTextColor(qThree.getTextColors().withAlpha(100));
         qTwoAnswer = false;
       }
-
-      if (answerCounter == 3) {
+      else if (answerCounter == 3) {
         qThree.setTextColor(qThree.getTextColors().withAlpha(0));
         qFour.setTextColor(qFour.getTextColors().withAlpha(100));
         qThreeAnswer = false;
       }
-
-      if (answerCounter == 4) {
+      else if (answerCounter == 4) {
         qFour.setTextColor(qFour.getTextColors().withAlpha(0));
         qFive.setTextColor(qFive.getTextColors().withAlpha(100));
         qFourAnswer = false;
       }
-
-      if (answerCounter == 5) {
+      else if (answerCounter == 5) {
         qFive.setTextColor(qFive.getTextColors().withAlpha(0));
         qSix.setTextColor(qSix.getTextColors().withAlpha(100));
         qFiveAnswer = false;
       }
-
-      if (answerCounter == 6) {
+      else if (answerCounter == 6) {
         qSix.setTextColor(qSix.getTextColors().withAlpha(0));
         qSeven.setTextColor(qSeven.getTextColors().withAlpha(100));
         qSixAnswer = false;
       }
-
-      if (answerCounter == 7) {
+      else if (answerCounter == 7) {
         qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
         qEight.setTextColor(qEight.getTextColors().withAlpha(100));
         qSevenAnswer = false;
       }
-
-      if (answerCounter == 8) {
+      else if (answerCounter == 8) {
         qEight.setTextColor(qEight.getTextColors().withAlpha(0));
         qNine.setTextColor(qNine.getTextColors().withAlpha(100));
         qEightAnswer = false;
       }
-
-      if (answerCounter == 9) {
+      else if (answerCounter == 9) {
         qNine.setTextColor(qNine.getTextColors().withAlpha(0));
         qTen.setTextColor(qTen.getTextColors().withAlpha(100));
         qNineAnswer = false;
       }
-
-      if (answerCounter == 10) {
+      else if (answerCounter == 10) {
         qTen.setTextColor(qTen.getTextColors().withAlpha(0));
         qEleven.setTextColor(qEleven.getTextColors().withAlpha(100));
         qTenAnswer = false;
       }
-
-      if (answerCounter == 11) {
+      else if (answerCounter == 11) {
 
         qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
         qElevenAnswer = false;
@@ -278,12 +253,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
         if (yesAnswers <= 3) {
           severityString = "Mild";
         }
-
-        if (yesAnswers > 3 && yesAnswers <= 5) {
+        else if (yesAnswers <= 5) {
           severityString = "Moderate";
         }
-
-        if (yesAnswers >= 6) {
+        else {
           severityString = "Severe";
         }
 
@@ -306,5 +279,4 @@ public class QuestionnaireActivity extends AppCompatActivity {
   private TextView qTen;
   private TextView qEleven;
   private VolitionDatabase db;
-  private QuestionnaireActivityViewModel questionnateActivityViewModel;
 }
