@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,7 +40,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     TPButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-       // startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
+        startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
       }
     });
   }
