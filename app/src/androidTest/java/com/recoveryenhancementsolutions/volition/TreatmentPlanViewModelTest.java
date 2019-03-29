@@ -32,9 +32,6 @@ public class TreatmentPlanViewModelTest {
      */
     @Before
     public void loadViewModel() {
-        viewModel = ViewModelProviders.of(activityTestRule.getActivity())
-                .get(TreatmentPlanViewModel.class);
-
         //Set the ViewModel to use a test database instead of the app's real database
         final Context context = InstrumentationRegistry.getTargetContext();
         db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
@@ -45,12 +42,16 @@ public class TreatmentPlanViewModelTest {
 
         //Fill in supplementary database entries
         MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
-        medicationChoiceEntity.setMedication("ABSTAIN");
-        db.medicationChoiceDao().insertMedication(medicationChoiceEntity);
+        medicationChoiceEntity.medication = "ABSTAIN";
+        db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
 
         QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
         questionnaireEntity.setSeverityLevel("MODERATE");
         db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
+
+        viewModel = ViewModelProviders.of(activityTestRule.getActivity())
+            .get(TreatmentPlanViewModel.class);
+
         viewModel.setTestDatabase(db);
         viewModel.generateTreatmentPlan();
         db.treatmentPlanDao().insertTreatmentPlanEntity(viewModel.treatmentPlan);

@@ -24,9 +24,12 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public TreatmentPlanViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
+  }
 
-    generateTreatmentPlan();
-
+  /**
+   * Loads in a pre-existing treatmentPlan
+   */
+  public void loadTreatmentPlan(){
     treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan().getValue();
     treatmentPlanDao = db.treatmentPlanDao();
   }
@@ -70,6 +73,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     try {
       severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
       medicationChoice = db.medicationChoiceDAO().getMedication().getValue();
+      if(medicationChoice.equals("ABSTAIN")){}
+      if(severityLevel.equals("MODERATE")){}
     } catch (NullPointerException e) {
       medicationChoice = "ABSTAIN";
       severityLevel = "MODERATE";
