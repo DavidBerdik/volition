@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/ScrollView01"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   >
@@ -103,7 +102,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/are_you">
         <RadioButton
-          android:id="@+id/radioSupport"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:buttonTint="@color/res_gold"
@@ -144,7 +142,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drug_of_choice">
         <RadioButton
-          android:id="@+id/radioHeroin"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -160,7 +157,6 @@
           android:text="@string/create_profile_other_opiates"
           tools:text="@string/create_profile_other_opiates"/>
         <RadioButton
-          android:id="@+id/radioAlcohol"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -168,7 +164,6 @@
           android:text="@string/create_profile_alcohol"
           tools:text="@string/create_profile_alcohol"/>
         <RadioButton
-          android:id="@+id/radioCocaine"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -176,7 +171,6 @@
           android:text="@string/create_profile_cocaine"
           tools:text="@string/create_profile_cocaine"/>
         <RadioButton
-          android:id="@+id/radioMarijuana"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -184,7 +178,6 @@
           android:text="@string/create_profile_marijuana"
           tools:text="@string/create_profile_marijuana"/>
         <RadioButton
-          android:id="@+id/radioMeth"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -192,7 +185,6 @@
           android:text="@string/create_profile_meth"
           tools:text="@string/create_profile_meth"/>
         <RadioButton
-          android:id="@+id/radioBen"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -200,7 +192,6 @@
           android:text="@string/create_profile_ben"
           tools:text="@string/create_profile_ben"/>
         <RadioButton
-          android:id="@+id/radioTranquilizers"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -208,7 +199,6 @@
           android:text="@string/create_profile_other_tranquil"
           tools:text="@string/create_profile_other_tranquil"/>
         <RadioButton
-          android:id="@+id/radioSedatives"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
@@ -216,7 +206,6 @@
           android:text="@string/create_profile_sedatives"
           tools:text="@string/create_profile_sedatives"/>
         <RadioButton
-          android:id="@+id/radioInhalants"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="1"
