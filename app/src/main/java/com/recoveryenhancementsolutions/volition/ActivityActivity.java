@@ -19,7 +19,7 @@ public class ActivityActivity extends AppCompatActivity {
         }
         else
         setContentView(R.layout.activity_activity_port);
-fillViews();
+        fillViews();
     }
 
     public void fillViews()
@@ -47,15 +47,15 @@ fillViews();
         textView = findViewById(R.id.textview_day_7);
         textView.setText(sampletext);
         textView = findViewById(R.id.day_of_week_1);
-        textView.setText("S");
+        textView.setText("Che");
         textView = findViewById(R.id.day_of_week_2);
-        textView.setText("S");
+        textView.setText("MEP");
         textView = findViewById(R.id.day_of_week_3);
-        textView.setText("F");
+        textView.setText("SD");
         textView = findViewById(R.id.day_of_week_4);
-        textView.setText("T");
+        textView.setText("TSD");
         textView = findViewById(R.id.day_of_week_5);
-        textView.setText("W");
+        textView.setText("SD");
         textView = findViewById(R.id.day_of_week_6);
         textView.setText("T");
         textView = findViewById(R.id.day_of_week_7);
