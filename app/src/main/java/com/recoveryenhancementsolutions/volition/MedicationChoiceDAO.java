@@ -28,4 +28,18 @@ public interface MedicationChoiceDAO {
   /**
    * Inserts a medication choice into the database.
    *
-   * @param medi
+   * @param medication a MedicationChoiceEntity object containing the string to be inserted.
+   */
+
+  @Insert(onConflict = IGNORE)
+  void insertMedication(MedicationChoiceEntity medication);
+
+  /**
+   * Updates the medication choice in the database.
+   *
+   * @param medication a MedicationChoiceEntity object containing the string to be inserted.
+   */
+
+  @Update(onConflict = REPLACE)
+  void updateMedication(MedicationChoiceEntity medication);
+}
