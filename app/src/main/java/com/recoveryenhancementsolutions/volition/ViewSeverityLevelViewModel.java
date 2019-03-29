@@ -9,22 +9,23 @@ import android.arch.lifecycle.LiveData;
  */
 public class ViewSeverityLevelViewModel extends AndroidViewModel {
 
-  public final LiveData<String> severity;
-  public final LiveData<String> totalYes;
-
   /**
    * Constructor for the "View Severity Level" ViewModel.
    *
    * @param application Application object for the ViewModel.
    */
-  public ViewSeverityLevelViewModel(Application application) {
+  public ViewSeverityLevelViewModel(final Application application) {
     super(application);
-    mDb = VolitionDatabase.getDatabase(this.getApplication());
-
-    // Books is a LiveData object so updates are observed.
-    severity = mDb.questionnaireModel().findSeverityLevelString();
-    totalYes = mDb.questionnaireModel().findTotalYes();
+    db = VolitionDatabase.getDatabase(this.getApplication());
   }
 
-  private VolitionDatabase mDb;
+  public LiveData<String> getSeverity() {
+    return db.questionnaireModel().findSeverityLevelString();
+  }
+
+  public LiveData<String> getTotalYesAnswers() {
+    return db.questionnaireModel().findTotalYes();
+  }
+
+  private VolitionDatabase db;
 }

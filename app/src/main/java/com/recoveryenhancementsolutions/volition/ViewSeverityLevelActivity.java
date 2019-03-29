@@ -49,7 +49,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * a method to show it in UI
    */
   private void observeTotalYes() {
-    mViewModel.totalYes.observe(this, new Observer<String>() {
+    mViewModel.getTotalYesAnswers().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String totalYes) {
         showTotalYesInUi(totalYes);
@@ -73,7 +73,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * calls a method to show it in UI
    */
   private void observeSeverityLevel() {
-    mViewModel.severity.observe(this, new Observer<String>() {
+    mViewModel.getSeverity().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String severity) {
         showSeverityLevelInUi(severity);
