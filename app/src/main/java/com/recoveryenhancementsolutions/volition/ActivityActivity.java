@@ -105,6 +105,7 @@ public class ActivityActivity extends AppCompatActivity {
     navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
+    // Code for left and right-scrolling buttons (Commented out in case needed in the future)
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
       @Override

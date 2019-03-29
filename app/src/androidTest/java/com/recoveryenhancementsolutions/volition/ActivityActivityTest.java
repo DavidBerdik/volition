@@ -1,5 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
+import static android.support.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread;
+
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -20,7 +22,7 @@ import org.junit.runner.RunWith;
  * Unit test for the "User Activity History" ViewModel.
  */
 @RunWith(AndroidJUnit4.class)
-public class ActivityActivityTest {
+public class ActivityActivityTest extends Thread{
 
   @Rule
   public final ActivityTestRule<ActivityActivity> activityTestRule = new ActivityTestRule<>(
@@ -45,7 +47,17 @@ public class ActivityActivityTest {
       today.add(Calendar.DAY_OF_MONTH, -1);
     }
 
-    activityTestRule.getActivity().cycle(0);
+    try {
+      runOnUiThread(new Runnable() {
+        public void run() {
+          activityTestRule.getActivity().cycle(0);
+        }
+      });
+    }
+    catch(java.lang.Throwable e){
+      e.printStackTrace();
+    }
+
   }
 
   /**
@@ -56,15 +68,13 @@ public class ActivityActivityTest {
     for (int i = 0; i < activityTestRule.getActivity().getDayCount(); i++) {
       // Wait for this day to load.
       while (!activityTestRule.getActivity().didActivitiesLoad(i)) {
-        Log.i(logTag, "Loading Label " +i);
       }
-      Log.i(logTag, "Label " + i + ": " + activityTestRule.getActivity().getActivityBuffer(i));
 
       String value = activityTestRule.getActivity().getActivityBuffer(i);
 
       Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i] + "\" got:\"" + value + '"');
 
-      //Assert.assertEquals(userActivityDesc[i], value);
+      Assert.assertEquals(userActivityDesc[i], value);
 
     }
   }
