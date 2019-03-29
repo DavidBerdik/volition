@@ -17,7 +17,7 @@ public class QuestionnaireActivityEntity {
   public String severityLevel;
 
   /**
-   * sets id value in the database
+   * Sets id value in the database.
    *
    * @param id primary key recieved to be set
    */
@@ -26,7 +26,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets total yes value in the database
+   * Sets total yes value in the database.
    *
    * @param totalYes string value to be printed in the view severity level
    */
@@ -35,7 +35,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q1 boolean value for specific question representing either yes or no
    */
@@ -44,7 +44,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q2 boolean value for specific question representing either yes or no
    */
@@ -53,7 +53,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q3 boolean value for specific question representing either yes or no
    */
@@ -62,7 +62,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q4 boolean value for specific question representing either yes or no
    */
@@ -71,7 +71,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q5 boolean value for specific question representing either yes or no
    */
@@ -80,7 +80,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q6 boolean value for specific question representing either yes or no
    */
@@ -89,7 +89,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q7 boolean value for specific question representing either yes or no
    */
@@ -98,7 +98,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q8 boolean value for specific question representing either yes or no
    */
@@ -107,7 +107,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q9 boolean value for specific question representing either yes or no
    */
@@ -116,7 +116,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q10 boolean value for specific question representing either yes or no
    */
@@ -125,7 +125,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q11 boolean value for specific question representing either yes or no
    */
@@ -134,7 +134,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * sets string that represents severity level either mild, moderate, or severe
+   * Sets string that represents severity level either mild, moderate, or severe.
    *
    * @param severityLevel string to be displayed in view severity level
    */
@@ -143,7 +143,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of id for this specific object
    */
@@ -152,7 +152,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q1 for this specific object
    */
@@ -161,7 +161,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q2 for this specific object
    */
@@ -170,7 +170,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q3 for this specific object
    */
@@ -179,7 +179,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q4 for this specific object
    */
@@ -188,7 +188,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q5 for this specific object
    */
@@ -197,7 +197,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q6 for this specific object
    */
@@ -206,7 +206,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q7 for this specific object
    */
@@ -215,7 +215,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q8 for this specific object
    */
@@ -224,7 +224,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q9 for this specific object
    */
@@ -233,7 +233,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q10 for this specific object
    */
@@ -242,7 +242,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q11 for this specific object
    */

@@ -32,7 +32,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     Button TPButton = findViewById(R.id.TPButton);
 
     // Get a reference to the ViewModel for this screen.
-    mViewModel = ViewModelProviders.of(this).get(ViewSeverityLevelViewModel.class);
+    viewSeverityViewModel = ViewModelProviders.of(this).get(ViewSeverityLevelViewModel.class);
     observeTotalYes();
     // Update the UI whenever there's a change in the ViewModel's data.
     observeSeverityLevel();
@@ -49,7 +49,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * a method to show it in UI
    */
   private void observeTotalYes() {
-    mViewModel.getTotalYesAnswers().observe(this, new Observer<String>() {
+    viewSeverityViewModel.getTotalYesAnswers().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String totalYes) {
         showTotalYesInUi(totalYes);
@@ -73,7 +73,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * calls a method to show it in UI
    */
   private void observeSeverityLevel() {
-    mViewModel.getSeverity().observe(this, new Observer<String>() {
+    viewSeverityViewModel.getSeverity().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String severity) {
         showSeverityLevelInUi(severity);
@@ -92,7 +92,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     specifier.setText(sb.toString());
   }
 
-  private ViewSeverityLevelViewModel mViewModel;
+  private ViewSeverityLevelViewModel viewSeverityViewModel;
   private TextView specifier;
   private TextView totalYesTv;
 

@@ -10,6 +10,9 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ * Tests bringing up activity and total score and specifier values.
+ */
 public class ViewSeverityLevelActivityTest {
 
   @Rule

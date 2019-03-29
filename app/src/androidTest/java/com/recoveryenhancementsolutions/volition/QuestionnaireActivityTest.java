@@ -24,12 +24,19 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ * It tests the questionnaire activity. It goes to the questionnaire activity and tests the
+ * yes and no buttons to answer each question.
+ */
 public class QuestionnaireActivityTest {
 
   @Rule
   public ActivityTestRule<QuestionnaireActivity> mActivityTestRule = new ActivityTestRule<>(
       QuestionnaireActivity.class);
 
+    /**
+     * Goes through each question in the questionnaire.
+     */
   @Test
   public void questionnaireActivityTest() {
     ViewInteraction appCompatButton = onView(
@@ -153,6 +160,11 @@ public class QuestionnaireActivityTest {
         parentMatcher.describeTo(description);
       }
 
+        /**
+         * Makes sure the view matches safely with the parent.
+         * @param view what is shown on the app.
+         * @return returns the parent. 
+         */
       @Override
       public boolean matchesSafely(View view) {
         ViewParent parent = view.getParent();
