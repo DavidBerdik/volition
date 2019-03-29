@@ -26,6 +26,9 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ * The second test for the radio buttons on the UI
+ */
 public class RadioButtonTest2 {
 
   @Rule
@@ -33,6 +36,9 @@ public class RadioButtonTest2 {
       CreateProfileActivity.class);
 
   @Test
+  /**
+   * This test selects multiple buttons and verifies their selection has occurred properly
+   */
   public void radioButtonTest2() {
     ViewInteraction appCompatRadioButton = onView(
         allOf(withId(R.id.radioClient), withText("Person in Recovery/Seeking Recovery"),
