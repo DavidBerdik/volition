@@ -70,8 +70,7 @@ public class RadioButtonTest2 {
                     childAtPosition(
                         withId(R.id.RelativeLayout01),
                         6)),
-                9),
-            isDisplayed()));
+                9)));
     radioButton.perform(scrollTo());
 
     ViewInteraction radioButton2 = onView(
