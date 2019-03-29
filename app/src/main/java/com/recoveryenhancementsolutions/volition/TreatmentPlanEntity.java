@@ -116,7 +116,7 @@ public class TreatmentPlanEntity {
    *
    * @param numCounseling The number of times the user should attend counseling meetings per week.
    */
-  public void setNumCounseling(int numCounseling) {
+  public void setNumCounseling(final int numCounseling) {
     this.numCounseling = numCounseling;
   }
 
@@ -125,7 +125,7 @@ public class TreatmentPlanEntity {
    *
    * @param numMedManagement The number of times the user should do a Medication Management.
    */
-  public void setNumMedManagement(int numMedManagement) {
+  public void setNumMedManagement(final int numMedManagement) {
     this.numMedManagement = numMedManagement;
   }
 
@@ -134,7 +134,7 @@ public class TreatmentPlanEntity {
    *
    * @param numSupportMeeting The number of times the user should attend support meetings per week.
    */
-  public void setNumSupportMeeting(int numSupportMeeting) {
+  public void setNumSupportMeeting(final int numSupportMeeting) {
     this.numSupportMeeting = numSupportMeeting;
   }
 
@@ -143,7 +143,7 @@ public class TreatmentPlanEntity {
    *
    * @param numLessons The number of times the user should do lessons.
    */
-  public void setNumLessons(int numLessons) {
+  public void setNumLessons(final int numLessons) {
     this.numLessons = numLessons;
   }
 
@@ -154,7 +154,8 @@ public class TreatmentPlanEntity {
    * @param numTreatmentEffectivenessAssessment The number of times the user should take a treatment
    * plan effectiveness assessment.
    */
-  public void setNumTreatmentEffectivenessAssessment(int numTreatmentEffectivenessAssessment) {
+  public void setNumTreatmentEffectivenessAssessment(
+      final int numTreatmentEffectivenessAssessment) {
     this.numTreatmentEffectivenessAssessment = numTreatmentEffectivenessAssessment;
   }
 
@@ -163,7 +164,7 @@ public class TreatmentPlanEntity {
    *
    * @param numOutcomeMeasures The number of outcome measures the user should take.
    */
-  public void setNumOutcomeMeasures(int numOutcomeMeasures) {
+  public void setNumOutcomeMeasures(final int numOutcomeMeasures) {
     this.numOutcomeMeasures = numOutcomeMeasures;
   }
 
@@ -172,7 +173,7 @@ public class TreatmentPlanEntity {
    *
    * @param numTimeTracking The number of times the user should record time tracking.
    */
-  public void setNumTimeTracking(int numTimeTracking) {
+  public void setNumTimeTracking(final int numTimeTracking) {
     this.numTimeTracking = numTimeTracking;
   }
 
@@ -181,7 +182,7 @@ public class TreatmentPlanEntity {
    *
    * @param numReadingResponse The number of time the user should do a reading response.
    */
-  public void setNumReadingResponse(int numReadingResponse) {
+  public void setNumReadingResponse(final int numReadingResponse) {
     this.numReadingResponse = numReadingResponse;
   }
 
@@ -191,7 +192,7 @@ public class TreatmentPlanEntity {
    *
    * @param id The ID of the activity.
    */
-  public void setId(int id) {
+  public void setId(final int id) {
     this.id = id;
   }
 
@@ -202,7 +203,7 @@ public class TreatmentPlanEntity {
    *
    * @param frequency The string value of the frequency Medication management should be done.
    */
-  public void setMedManagementFrequency(String frequency) {
+  public void setMedManagementFrequency(final String frequency) {
     this.medManagementFrequency = frequency;
   }
 
@@ -213,7 +214,7 @@ public class TreatmentPlanEntity {
    *
    * @param frequency The string value of the frequency outcome measures should be done.
    */
-  public void setOutcomeMeasureFrequency(String frequency) {
+  public void setOutcomeMeasureFrequency(final String frequency) {
     this.outcomeMeasureFrequency = frequency;
   }
 

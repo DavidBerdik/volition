@@ -29,7 +29,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   /**
    * Loads in a pre-existing treatmentPlan
    */
-  public void loadTreatmentPlan(){
+  public void loadTreatmentPlan() {
     treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan().getValue();
     treatmentPlanDao = db.treatmentPlanDao();
   }
@@ -75,8 +75,10 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     try {
       severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
       medicationChoice = db.medicationChoiceDAO().getMedication().getValue();
-      if(medicationChoice.equals("ABSTAIN")){}
-      if(severityLevel.equals("MODERATE")){}
+      if (medicationChoice.equals("ABSTAIN")) {
+      }
+      if (severityLevel.equals("MODERATE")) {
+      }
     } catch (NullPointerException e) {
       medicationChoice = "ABSTAIN";
       severityLevel = "MODERATE";
@@ -166,15 +168,15 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @param treatmentPlanEntity the entity to be added to the database.
    */
-  void insert(TreatmentPlanEntity treatmentPlanEntity) {
+  void insert(final TreatmentPlanEntity treatmentPlanEntity) {
     new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   private static class insertAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
 
-    private TreatmentPlanDao mAsyncTaskDao;
+    private final TreatmentPlanDao mAsyncTaskDao;
 
-    insertAsyncTask(TreatmentPlanDao dao) {
+    insertAsyncTask(final TreatmentPlanDao dao) {
       mAsyncTaskDao = dao;
     }
 

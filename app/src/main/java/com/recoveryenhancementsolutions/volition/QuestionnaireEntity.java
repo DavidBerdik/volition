@@ -15,7 +15,7 @@ public class QuestionnaireEntity {
    *
    * @param severityLevel The new severity level
    */
-  public void setSeverityLevel(String severityLevel) {
+  public void setSeverityLevel(final String severityLevel) {
     this.severityLevel = severityLevel;
   }
 

@@ -28,7 +28,7 @@ public interface TreatmentPlanDao {
    * @param treatmentPlanEntity The TreatmentPlanEntity to be updated.
    */
   @Update(onConflict = REPLACE)
-  void updateTreatmentPlanEntity(TreatmentPlanEntity treatmentPlanEntity);
+  void updateTreatmentPlanEntity(final TreatmentPlanEntity treatmentPlanEntity);
 
   /**
    * Inserts a new TreatmentPlanEntity into the database. The treatmentPlanId should always be 1.
@@ -36,7 +36,7 @@ public interface TreatmentPlanDao {
    * @param treatmentPlanEntity The TreatmentPlanEntity to be inserted.
    */
   @Insert(onConflict = REPLACE)
-  void insertTreatmentPlanEntity(TreatmentPlanEntity treatmentPlanEntity);
+  void insertTreatmentPlanEntity(final TreatmentPlanEntity treatmentPlanEntity);
 
   /**
    * Returns the number of entries in the treatment plan table.
