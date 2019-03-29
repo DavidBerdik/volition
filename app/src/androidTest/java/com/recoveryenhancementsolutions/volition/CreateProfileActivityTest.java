@@ -308,6 +308,17 @@ public class CreateProfileActivityTest {
         .perform(PickerActions.setDate(2015, 3, 14));
     onView(withId(android.R.id.button1)).perform(click());
     onView(withId(R.id.clean_date)).check(matches(withText("Mar 14, 2015")));
+
+    //Testing if the button calls QuestionnaireActivity
+    ViewInteraction appCompatButton4 = onView(
+        allOf(withId(R.id.record_button), withText("Record Answers"),
+            childAtPosition(
+                allOf(withId(R.id.RelativeLayout01),
+                    childAtPosition(
+                        withId(R.id.LinearLayout01),
+                        0)),
+                11)));
+    appCompatButton4.perform(scrollTo(), click());
   }
 
   private static Matcher<View> childAtPosition(

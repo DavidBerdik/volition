@@ -12,6 +12,8 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Button;
+import android.content.Intent;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
@@ -178,6 +180,29 @@ public class CreateProfileActivity extends AppCompatActivity {
             cleanDateListener, cleanDateCalendar.get(Calendar.YEAR),
             cleanDateCalendar.get(Calendar.MONTH), cleanDateCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
+      }
+
+    });
+
+    final Button send;
+    send = findViewById(R.id.record_button);
+    send.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick( final View v) {
+        sendOff();
+      }
+
+      /**
+       *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
+       * the database. Only these four will be added from my method because Collin is handling
+       * the outputs from the buttons and is adding them to the database according to his
+       * latest commit on March 27, 2019. However for now it will be simply a button until
+       * confirmation
+       */
+      private void sendOff() {
+        //Intent goes to the next activity in the Work Flow.
+        Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
+        startActivity(intent);
       }
 
     });

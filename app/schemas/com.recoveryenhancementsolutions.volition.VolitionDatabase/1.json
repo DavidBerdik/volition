@@ -58,11 +58,12 @@
             "patientName"
           ],
           "autoGenerate": false
+
         },
         "indices": [],
         "foreignKeys": []
       },
-      {
+        {
         "tableName": "MedicationChoiceEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
         "fields": [
