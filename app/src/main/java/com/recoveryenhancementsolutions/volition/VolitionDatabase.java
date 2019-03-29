@@ -43,7 +43,7 @@ import android.support.annotation.NonNull;
         QuestionnaireActivityEntity.class,
         UserActivityEntity.class,
         DemographicDataEntity.class,
-        MedicationChoiceEntity.class
+        MedicationChoiceEntity.class,
     },
     version = 1)
 @TypeConverters(DateConverter.class)

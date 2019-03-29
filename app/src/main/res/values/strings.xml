@@ -107,4 +107,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name = "severe">Severe: Presence of 6 or more symptoms.</string>
   <string name = "plan"> Treatment Plan</string>
   <string name = "desc"> Company logo </string>
+  <string name="buprenorphine_button"> Buprenorphine</string>
+  <string name="abstain_button"> Abstain</string>
+  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
 </resources>
