@@ -163,7 +163,7 @@ public class QuestionnaireActivityTest {
         /**
          * Makes sure the view matches safely with the parent.
          * @param view what is shown on the app.
-         * @return returns the parent. 
+         * @return returns the parent.
          */
       @Override
       public boolean matchesSafely(View view) {
