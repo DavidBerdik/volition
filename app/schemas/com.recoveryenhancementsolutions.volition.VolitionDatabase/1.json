@@ -42,6 +42,7 @@
       },
       {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "tableName": "TreatmentPlanEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `numCounseling` INTEGER NOT NULL, `numMedManagement` INTEGER NOT NULL, `numSupportMeeting` INTEGER NOT NULL, `numLessons` INTEGER NOT NULL, `numTreatmentEffectivenessAssessment` INTEGER NOT NULL, `numOutcomeMeasures` INTEGER NOT NULL, `numTimeTracking` INTEGER NOT NULL, `numReadingResponse` INTEGER NOT NULL, `medManagementFrequency` TEXT, `outcomeMeasureFrequency` TEXT)",
         "fields": [
@@ -109,10 +110,26 @@
             "fieldPath": "outcomeMeasureFrequency",
             "columnName": "outcomeMeasureFrequency",
             "affinity": "TEXT",
+=======
+        "tableName": "DemographicDataEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `lastClean` INTEGER, PRIMARY KEY(`patientName`))",
+        "fields": [
+          {
+            "fieldPath": "patientName",
+            "columnName": "patientName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastClean",
+            "columnName": "lastClean",
+            "affinity": "INTEGER",
+>>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
             "notNull": false
           }
         ],
         "primaryKey": {
+<<<<<<< HEAD
           "columnNames": [
             "id"
           ],
@@ -137,13 +154,23 @@
             "severityLevel"
           ],
           "autoGenerate": false
+=======
+            "columnNames": [
+              "patientName"
+            ],
+            "autoGenerate": false
+>>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
         },
         "indices": [],
         "foreignKeys": []
       },
+<<<<<<< HEAD
       {
 =======
 >>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
+=======
+        {
+>>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
         "tableName": "MedicationChoiceEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
         "fields": [

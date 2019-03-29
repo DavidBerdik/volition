@@ -28,7 +28,6 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
-import android.media.RemoteController;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
@@ -45,6 +44,7 @@ import android.support.annotation.NonNull;
 
         entities = {
                 UserActivityEntity.class,
+                DemographicDataEntity.class,
                 TreatmentPlanEntity.class,
                 QuestionnaireEntity.class,
                 MedicationChoiceEntity.class
@@ -54,15 +54,18 @@ import android.support.annotation.NonNull;
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
+
     // TODO: Place DAO instantiation method calls here, as in the following commented-out example
     // public abstract WordDao wordDao();
     public abstract UserActivitiesDao userActivitiesDao();
 
+    public abstract DemographicDataDAO demographicDataDao();
+
+    public abstract MedicationChoiceDAO medicationChoiceDAO();
+
     public abstract TreatmentPlanDao treatmentPlanDao();
 
     public abstract QuestionnaireDao questionnaireDao();
-
-    public abstract MedicationChoiceDAO medicationChoiceDao();
 
     /**
      * Factory method implementing Singleton design pattern for VolitionDatabase class.
@@ -130,6 +133,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
         private final TreatmentPlanDao treatmentPlanDao;
         private final QuestionnaireDao questionnaireDao;
         private final MedicationChoiceDAO medicationChoiceDao;
+        private final DemographicDataDAO demographicDataDao;
 
         PopulateDbAsync(final VolitionDatabase db) {
             // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
@@ -137,7 +141,8 @@ public abstract class VolitionDatabase extends RoomDatabase {
             userActivitiesDao = db.userActivitiesDao();
             treatmentPlanDao = db.treatmentPlanDao();
             questionnaireDao = db.questionnaireDao();
-            medicationChoiceDao = db.medicationChoiceDao();
+            demographicDataDao = db.demographicDataDao();
+            medicationChoiceDao = db.medicationChoiceDAO();
         }
 
         @Override
