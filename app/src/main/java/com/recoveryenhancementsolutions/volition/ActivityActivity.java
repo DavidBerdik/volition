@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -99,7 +100,12 @@ public class ActivityActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     // TEMP: Eventually make this R.layout.activity_activity
-    setContentView(R.layout.activity_activity);
+    int orientation = getResources().getConfiguration().orientation;
+    if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      setContentView(R.layout.activity_activity_land);
+    }
+    else
+      setContentView(R.layout.activity_activity_port);
 
     // Init navbar.
     final BottomNavigationView navigation = findViewById(R.id.menubar);
