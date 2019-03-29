@@ -22,15 +22,25 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ *
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ * This class will run Espesso Test on the Questionnaire Activity
+ */
 public class QuestionnaireActivityTest {
 
   @Rule
   public ActivityTestRule<QuestionnaireActivity> mActivityTestRule = new ActivityTestRule<>(
       QuestionnaireActivity.class);
 
+
   @Test
+  /**
+   * Performs test to check that the Questionnaire Activity run to go through each question the Yes and Non buttons
+   */
   public void questionnaireActivityTest() {
     ViewInteraction appCompatButton = onView(
         allOf(withId(R.id.YESbtn), withText("Yes"),
