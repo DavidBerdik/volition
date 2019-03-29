@@ -33,6 +33,7 @@ public class DateConverter {
     if (value == null) {
       return null;
     }
+
     return value.getTime();
   }
 

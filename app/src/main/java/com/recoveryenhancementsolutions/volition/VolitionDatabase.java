@@ -53,6 +53,7 @@ import android.support.annotation.NonNull;
 =======
     entities = {
         UserActivityEntity.class,
+        DemographicDataEntity.class,
         MedicationChoiceEntity.class
     },
     version = 1)
@@ -83,7 +84,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
-
+  public abstract DemographicDataDAO demographicDataDao();
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
   /**
@@ -147,6 +148,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
      * Skeleton code that does nothing but could be filled in to clear the database and populate it
      * with test data in the background.
      */
+<<<<<<< HEAD
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
@@ -164,6 +166,34 @@ public abstract class VolitionDatabase extends RoomDatabase {
             questionnaireDao = db.questionnaireDao();
             medicationChoiceDao = db.medicationChoiceDao();
         }
+=======
+    @Override
+    public void onCreate(@NonNull final SupportSQLiteDatabase db) {
+      super.onCreate(db);
+      // If you want to populate data when the database is created for the first time,
+      // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
+      new PopulateDbAsync(INSTANCE).execute();
+    }
+  };
+
+  /**
+   * Skeleton code that does nothing but could be filled in to clear the database and populate it
+   * with test data in the background.
+   */
+  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+
+    // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
+    // private final WordDao mDao;
+    private final UserActivitiesDao userActivitiesDao;
+    private final DemographicDataDAO demographicDataDao;
+
+    PopulateDbAsync(final VolitionDatabase db) {
+      // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
+      // mDao = db.wordDao();
+      userActivitiesDao = db.userActivitiesDao();
+      demographicDataDao = db.demographicDataDao();
+    }
+>>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
 
         @Override
         protected Void doInBackground(final Void... params) {
@@ -190,6 +220,9 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
   // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
+<<<<<<< HEAD
 >>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
 
+=======
+>>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
 }
