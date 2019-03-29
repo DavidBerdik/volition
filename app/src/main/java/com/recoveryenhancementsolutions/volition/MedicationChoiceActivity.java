@@ -10,7 +10,6 @@ import android.widget.Button;
 /**
  * UI Activity that allows the user to select a medication or abstain.
  */
-
 public class MedicationChoiceActivity extends AppCompatActivity {
 
   /**
@@ -19,7 +18,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
    * @param savedInstanceState Saved Instance state of the phone
    */
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_medication_choice);
 
@@ -28,14 +27,11 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
     final MedicationChoiceEntity medication = new MedicationChoiceEntity();
 
-    /**
-     * Button that allows the user to choose to abstain from medication.
-     * When clicked, this will send the string "Abstain" to the Medication Choice table.
-     */
-
+    // Button that allows the user to choose to abstain from medication.
+    // When clicked, this will send the string "Abstain" to the Medication Choice table.
     abstainButton.setOnClickListener(new OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(final View view) {
         medication.medication = "Abstain";
         mViewModel.insertMedication(medication);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
@@ -43,13 +39,11 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       }
     });
 
-    /**
-     * Button that allows the user to choose to take them medication.
-     * When clicked, this will send the string "Buprenorphine" to the Medication Choice table.
-     */
+    // Button that allows the user to choose to take them medication.
+    // When clicked, this will send the string "Buprenorphine" to the Medication Choice table.
     medicationButton.setOnClickListener(new OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(final View view) {
         medication.medication = "Buprenorphine";
         mViewModel.insertMedication(medication);
         startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
