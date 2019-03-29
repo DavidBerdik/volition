@@ -10,7 +10,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 /**
- * DAO for interacting with the MedicationChoiceEntity
+ * DAO used for interacting with the MedicationChoiceEntity
  */
 
 @Dao
@@ -28,18 +28,4 @@ public interface MedicationChoiceDAO {
   /**
    * Inserts a medication choice into the database.
    *
-   * @param medication a MedicationChoiceEntity object containing the string to be inserted.
-   */
-
-  @Insert(onConflict = IGNORE)
-  void insertMedication(MedicationChoiceEntity medication);
-
-  /**
-   * Updates the medication choice in the database.
-   *
-   * @param medication a MedicationChoiceEntity object containing the string to be inserted.
-   */
-
-  @Update(onConflict = REPLACE)
-  void updateMedication(MedicationChoiceEntity medication);
-}
+   * @param medi
