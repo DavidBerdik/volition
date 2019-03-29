@@ -10,7 +10,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -38,23 +37,14 @@ public class MedicationChoiceViewModelTest {
         .get(MedicationChoiceViewModel.class);
 
     final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+    final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
     viewModel.setTestDatabase(db);
 
-    MedicationChoiceEntity medication = new MedicationChoiceEntity();
+    final MedicationChoiceEntity medication = new MedicationChoiceEntity();
     medication.insertMed("Abstain");
     viewModel.insertMedication(medication);
   }
-
-  /**
-   * Closes the temporary test database.
-   */
-
-  // @After
-  // public void closeDb() {
-  //db.close();
-  // }
 
   /**
    * Performs a test with the Medication Choice View Model
@@ -72,6 +62,5 @@ public class MedicationChoiceViewModelTest {
   }
 
   private MedicationChoiceViewModel viewModel;
-  private VolitionDatabase db;
   private static final String TAG = "MedicationChoiceViewModelTest";
 }
