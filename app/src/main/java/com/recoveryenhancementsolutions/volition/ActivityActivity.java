@@ -20,8 +20,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Loads the activities for each day and displays them to the user. Allows the user to go
- * back/forward by 4 days on the calendar.
+ * Loads the activities for each day and displays them to the user.
  */
 public class ActivityActivity extends AppCompatActivity {
 
