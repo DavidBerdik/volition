@@ -50,7 +50,7 @@ public class ActivityActivity extends AppCompatActivity {
       this.day = (Calendar) day.clone();
       if (title != null) {
         title.setText(day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-            getResources().getConfiguration().locale).charAt(0));
+            getResources().getConfiguration().locale).charAt(0) + "");
       }
     }
 
@@ -107,9 +107,6 @@ public class ActivityActivity extends AppCompatActivity {
     navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
-    // Scroll calendar to the right to show today.
-    ((HorizontalScrollView) findViewById(R.id.hscroller)).fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
       @Override
@@ -155,23 +152,24 @@ public class ActivityActivity extends AppCompatActivity {
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.day_of_week_4), // TEMP
+        (TextView) findViewById(R.id.day_of_week_5),
         (TextView) findViewById(R.id.textview_day_5)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.day_of_week_4), // TEMP
+        (TextView) findViewById(R.id.day_of_week_6),
         (TextView) findViewById(R.id.textview_day_6)));
     today.add(Calendar.DAY_OF_MONTH, -1);
     dateViews.add(new DateView(
         today,
-        (TextView) findViewById(R.id.day_of_week_4), // TEMP
+        (TextView) findViewById(R.id.day_of_week_7),
         (TextView) findViewById(R.id.textview_day_7)));
     today.add(Calendar.DAY_OF_MONTH, -1);
 
     //Initializing ViewModel
     actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
     subscribeUIActivities();
+    scrollRight();
   }
 
   protected UserActivityViewModel getViewModel() {
@@ -203,7 +201,7 @@ public class ActivityActivity extends AppCompatActivity {
       dv.unobserve(this);
     }
 
-    Calendar rightmost = dateViews.get(0).day;
+    final Calendar rightmost = dateViews.get(0).day;
     rightmost.add(Calendar.DAY_OF_MONTH, by);
 
     for (DateView dv : dateViews) {
@@ -212,6 +210,8 @@ public class ActivityActivity extends AppCompatActivity {
     }
 
     subscribeUIActivities();
+
+    scrollRight();
   }
 
   /**
@@ -230,6 +230,17 @@ public class ActivityActivity extends AppCompatActivity {
     for (DateView dv : dateViews) {
       dv.observe(this);
     }
+  }
+
+  private void scrollRight() {
+    // Scroll calendar to the right to show today.
+    final HorizontalScrollView calScroller = (HorizontalScrollView) findViewById(R.id.hscroller);
+    calScroller.post(new Runnable() {
+      @Override
+      public void run() {
+        calScroller.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+      }
+    });
   }
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {

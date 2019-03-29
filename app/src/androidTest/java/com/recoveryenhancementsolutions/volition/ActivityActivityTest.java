@@ -3,13 +3,11 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.internal.runner.junit4.statement.UiThreadStatement;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
-import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.Calendar;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -45,7 +43,16 @@ public class ActivityActivityTest {
       today.add(Calendar.DAY_OF_MONTH, -1);
     }
 
-    activityTestRule.getActivity().cycle(0);
+    try {
+      UiThreadStatement.runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          activityTestRule.getActivity().cycle(0);
+        }
+      });
+    } catch (Throwable t) {
+      throw new AssertionError("Could not prepare test: " + t.getMessage());
+    }
   }
 
   /**
@@ -54,16 +61,15 @@ public class ActivityActivityTest {
   @Test
   public void testCalendar() {
     for (int i = 0; i < activityTestRule.getActivity().getDayCount(); i++) {
-      // Wait for this day to load.
       while (!activityTestRule.getActivity().didActivitiesLoad(i)) {
       }
 
       String value = activityTestRule.getActivity().getActivityBuffer(i);
 
-      Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i] + "\" got:\"" + value + '"');
+      Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i]
+          + "\" got:\"" + value + '"');
 
-      //Assert.assertEquals(userActivityDesc[i], value);
-
+      Assert.assertEquals(userActivityDesc[i], value);
     }
   }
 
