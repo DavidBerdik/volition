@@ -40,7 +40,6 @@ import android.support.annotation.NonNull;
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 @Database(
-
     entities = {
         MedicationChoiceEntity.class,
         UserActivityEntity.class,
@@ -50,7 +49,6 @@ import android.support.annotation.NonNull;
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
-
 
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
