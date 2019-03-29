@@ -23,7 +23,7 @@ the object.  I am unaware of how other components may need this so I will hold
 off on setting these methods package-private
 */
 
-/*
+/**
  * Entity for storing demographic information
  */
 public class DemographicDataEntity {
