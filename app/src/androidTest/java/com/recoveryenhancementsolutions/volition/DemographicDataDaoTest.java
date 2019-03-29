@@ -23,7 +23,7 @@ public class DemographicDataDaoTest {
     final Context context = InstrumentationRegistry.getTargetContext();
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
-    demographicDataDAO = db.demographicDataDAO();
+    demographicDataDAO = db.demographicDataDao();
   }
 
   @After

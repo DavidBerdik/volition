@@ -24,11 +24,6 @@ off on setting these methods package-private
 */
 
 /*
-Currently many methods are unused (mainly the getMethods(), it is expected
-more and more will come into use as more components are finished and added
-*/
-
-/*
  * Entity for storing demographic information
  */
 public class DemographicDataEntity {
@@ -47,7 +42,7 @@ public class DemographicDataEntity {
    *
    * @param patientName name of patient
    */
-  public void setPatientName(@NonNull String patientName) {
+  public void setPatientName(final @NonNull String patientName) {
     this.patientName = patientName;
   }
 
@@ -319,6 +314,7 @@ public class DemographicDataEntity {
    *
    * @return Date last clean
    */
+  @NonNull
   public Date getLastClean() {
     return lastClean;
   }
@@ -328,7 +324,7 @@ public class DemographicDataEntity {
    *
    * @param lastClean Date last clean
    */
-  public void setLastClean(Date lastClean) {
+  public void setLastClean(final @NonNull Date lastClean) {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
     cal.setTime(lastClean);
@@ -371,6 +367,7 @@ public class DemographicDataEntity {
   @SuppressWarnings("NullableProblems")
   @NonNull
   private String patientName;
+  private Date lastClean;
 
   private int age;
   private Date dateOfBirth;
@@ -392,7 +389,6 @@ public class DemographicDataEntity {
   private String useOther;
   private boolean disorderOpioid;
   private boolean disorderAlcohol;
-  private Date lastClean;
   private int fetchID = 1;
 
 }
