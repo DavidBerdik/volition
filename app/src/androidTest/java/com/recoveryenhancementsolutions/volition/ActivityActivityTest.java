@@ -8,8 +8,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
-import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.Calendar;
 import org.junit.After;
 import org.junit.Assert;
@@ -49,6 +47,7 @@ public class ActivityActivityTest extends Thread{
 
     try {
       runOnUiThread(new Runnable() {
+        @Override
         public void run() {
           activityTestRule.getActivity().cycle(0);
         }
