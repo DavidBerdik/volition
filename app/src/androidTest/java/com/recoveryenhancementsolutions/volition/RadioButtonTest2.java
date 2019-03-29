@@ -72,7 +72,18 @@ public class RadioButtonTest2 {
                         6)),
                 9),
             isDisplayed()));
-    radioButton.check(matches(isDisplayed()));
+    radioButton.perform(scrollTo());
+
+    ViewInteraction radioButton2 = onView(
+        allOf(withId(R.id.radioInhalants),
+            childAtPosition(
+                allOf(withId(R.id.drug_selection),
+                    childAtPosition(
+                        withId(R.id.RelativeLayout01),
+                        6)),
+                9),
+            isDisplayed()));
+    radioButton2.check(matches(isDisplayed()));
 
     ViewInteraction button = onView(
         allOf(withId(R.id.record_button),
