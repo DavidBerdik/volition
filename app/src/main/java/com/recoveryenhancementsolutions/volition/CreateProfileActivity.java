@@ -10,7 +10,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import java.text.DateFormat;
 import java.util.Calendar;
-import android.widget.RadioButton;
 import android.widget.Button;
 import android.content.Intent;
 
@@ -18,124 +17,8 @@ import android.content.Intent;
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
-@SuppressWarnings("unused")
+
 public class CreateProfileActivity extends AppCompatActivity {
-
-
-  /*
-   * All of these public methods take in the current view @c
-   * Then they check if the Corresponding RadioButton has been selected
-   * If the RadioButton has been selected the corresponding field in the database is set to true
-   */
-
-  /**
-   * @param c the current view @c
-   */
-  public void addSupportListener(final View c) {
-    RadioButton radioSupport = findViewById(R.id.radioSupport);
-    if (radioSupport.isChecked()) {
-      data.setPersonInRecovery(false);//set to false because not in Recovery
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addClientListener(final View c) {
-    RadioButton radioClient = findViewById(R.id.radioClient);
-    if (radioClient.isChecked()) {
-      data.setPersonInRecovery(true);
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addHeroinListener(final View c) {
-    RadioButton radioHeroin = findViewById(R.id.radioHeroin);
-    if (radioHeroin.isChecked()) {
-      data.setUseHeroin(true);
-    }
-  }
-
-  public void addMarijuanaListener(final View c) {
-    RadioButton radioMarijuana = findViewById(R.id.radioMarijuana);
-    if (radioMarijuana.isChecked()) {
-      data.setUseMarijuana(true);
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addOpiatesListener(final View c) {
-    RadioButton radioOpiates = findViewById(R.id.radioOpiates);
-    if (radioOpiates.isChecked()) {
-      data.setUseOpiateOrSynth(true);
-    }
-  }
-
-  public void addAlocholListener(final View c) {
-    RadioButton radioAlcohol = findViewById(R.id.radioAlcohol);
-    if (radioAlcohol.isChecked()) {
-      data.setUseAlcohol(true);
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addCocaineListener(final View c) {
-    RadioButton radioCocaine = findViewById(R.id.radioCocaine);
-    if (radioCocaine.isChecked()) {
-      data.setUseCrackOrCocaine(true);
-    }
-  }
-
-  public void addMethListener(final View c) {
-    RadioButton radioMeth = findViewById(R.id.radioMeth);
-    if (radioMeth.isChecked()) {
-      data.setUseMethamphetamine(true);
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addBenListener(final View c) {
-    RadioButton radioBen = findViewById(R.id.radioBen);
-    if (radioBen.isChecked()) {
-      data.setUseBenzo(true);
-    }
-  }
-
-  public void addTranqListener(final View c) {
-    RadioButton radioTranquilizers = findViewById(R.id.radioTranquilizers);
-    if (radioTranquilizers.isChecked()) {
-      data.setUseNonBeznoTrang(true);
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addSedativesListener(final View c) {
-    RadioButton radioSedatives = findViewById(R.id.radioSedatives);
-    if (radioSedatives.isChecked()) {
-      data.setUseOpiateOrSynth(true);
-    }
-  }
-
-  /**
-   * @param c the current view @c
-   */
-  public void addInhalantsListener(final View c) {
-    RadioButton radioInhalants = findViewById(R.id.radioInhalants);
-    if (radioInhalants.isChecked()) {
-      data.setUseInhalants(true);
-    }
-  }
-
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -233,11 +116,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
         startActivity(intent);
       }
-
     });
-
   }
-
-  private DemographicDataEntity data = new DemographicDataEntity();
-
 }
