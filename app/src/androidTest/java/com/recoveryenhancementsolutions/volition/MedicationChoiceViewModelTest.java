@@ -63,6 +63,7 @@ public class MedicationChoiceViewModelTest {
   public void testMedicationChoiceViewModel() {
 
     try {
+      Thread.sleep(1000);
       assertEquals("Abstain",
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMedication()).medication);
     } catch (InterruptedException e) {
