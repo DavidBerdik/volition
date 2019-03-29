@@ -76,6 +76,13 @@ public class HomeActivityTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
+    // Allow the UI one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     // Updating the TextView...
     assertEquals("Days Clean: " + DAYS_CLEAN, activityTestRule.getActivity().getDaysCleanText());
   }
