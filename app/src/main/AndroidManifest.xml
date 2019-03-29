@@ -47,11 +47,7 @@
       android:label="@string/app_name"
       android:name=".CreateProfileActivity">
       <intent-filter>
-<<<<<<< HEAD
-=======
         <action android:name="android.intent.action.MAIN"/>
-
->>>>>>> 92c2765f306c8c0bd228ff1ab2673b784ad8c5bd
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>

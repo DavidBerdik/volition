@@ -61,7 +61,7 @@ public class MedicationChoiceDAOTest {
     //check that entered value matched the entered test data
     try {
       assertEquals("this is a test",
-          LiveDataTestUtility.getNestedLiveDataObj(db.medicationChoiceDAO().getMedication()));
+          LiveDataTestUtility.getNestedLiveDataObj(db.medicationChoiceDAO().getMedication()).medication);
     } catch (InterruptedException e) {
       Log.v(TAG, e.toString());
     }
