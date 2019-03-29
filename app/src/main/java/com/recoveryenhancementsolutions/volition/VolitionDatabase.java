@@ -48,8 +48,6 @@ import android.support.annotation.NonNull;
                 MedicationChoiceEntity.class
         },
         version = 1)
-
-
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
@@ -70,24 +68,25 @@ public abstract class VolitionDatabase extends RoomDatabase {
    * @return Instance of VolitionDatabase (same instance returned on every call).
    */
   static VolitionDatabase getDatabase(final Context context) {
-    if (INSTANCE == null) {
-        synchronized (VolitionDatabase.class) {
-            if (INSTANCE == null) {
-                synchronized (VolitionDatabase.class) {
-                    if (INSTANCE == null) {
-                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                VolitionDatabase.class, "volition_database")
-                                // Wipes and rebuilds instead of migrating if no Migration object.
-                                // Migration is not part of this codelab.
-                                .fallbackToDestructiveMigration()
-                                .addCallback(volitionDatabaseCallback)
-                                .build();
-                    }
-                }
-            }
-            return INSTANCE;
-        }
-    }
+      if (INSTANCE == null) {
+          synchronized (VolitionDatabase.class) {
+              if (INSTANCE == null) {
+                  synchronized (VolitionDatabase.class) {
+                      if (INSTANCE == null) {
+                          INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                                  VolitionDatabase.class, "volition_database")
+                                  // Wipes and rebuilds instead of migrating if no Migration object.
+                                  // Migration is not part of this codelab.
+                                  .fallbackToDestructiveMigration()
+                                  .addCallback(volitionDatabaseCallback)
+                                  .build();
+                      }
+                  }
+              }
+          }
+      }
+      return INSTANCE;
+  }
 
     /**
      * Object providing methods that are called if an existing database is opened or a new database is
@@ -132,7 +131,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
         private final UserActivitiesDao userActivitiesDao;
         private final TreatmentPlanDao treatmentPlanDao;
         private final QuestionnaireDao questionnaireDao;
-        private final MedicationChoiceDao medicationChoiceDao;
+        private final MedicationChoiceDAO medicationChoiceDao;
 
         PopulateDbAsync(final VolitionDatabase db) {
             // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
@@ -150,27 +149,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
       // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
       new PopulateDbAsync(INSTANCE).execute();
     }
-  };
 
-  /**
-   * Skeleton code that does nothing but could be filled in to clear the database and populate it
-   * with test data in the background.
-   */
-  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-
-    // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
-    // private final WordDao mDao;
-    private final UserActivitiesDao userActivitiesDao;
-    private final DemographicDataDAO demographicDataDao;
-
-    PopulateDbAsync(final VolitionDatabase db) {
-      // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
-      // mDao = db.wordDao();
-      userActivitiesDao = db.userActivitiesDao();
-      demographicDataDao = db.demographicDataDao();
-    }
-
-        @Override
         protected Void doInBackground(final Void... params) {
             // If you want to clear and initialize the database, place code here such as in the following commented-out example:
       /*
@@ -185,9 +164,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
       */
             return null;
         }
-    }
-
-    // marking the instance as volatile to ensure atomic access to the variable
+  };
     private static volatile VolitionDatabase INSTANCE;
-  }
 }
