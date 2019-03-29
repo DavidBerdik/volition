@@ -2,7 +2,6 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,7 +25,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.activity_severitylevel);
+    setContentView(R.layout.activity_severity_level);
 
     specifier = findViewById(R.id.specifier_tv);
     totalYesTv = findViewById(R.id.totalScore_tv);

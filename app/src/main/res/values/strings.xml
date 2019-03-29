@@ -93,20 +93,20 @@ same amount of opioid?</string>
   <string name="q11"> Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
 Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: Dysphoic mood. \n
 •Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia.</string>
-<string name = "yes"> Yes </string>
-  <string name = "no" > No </string>
-  <string name = "total"> Total Score: </string>
-  <string name = "specifier"> Specifier: </string>
-  <string name = "severity"> Current Severity: </string>
-  <string name=  "username"> Username: </string>
+  <string name="yes"> Yes </string>
+  <string name="no"> No </string>
+  <string name="total"> Total Score: </string>
+  <string name="specifier"> Specifier: </string>
+  <string name="severity"> Current Severity: </string>
+  <string name="username"> Username: </string>
   <string name="threezerofive"> 305.50 (F11.10)</string>
-  <string name = "mild"> Mild: Presence of 2–3 symptoms</string>
-  <string name = "threezerofour"> 304.00 (F11.20)</string>
-  <string name = "moderate">Moderate: Presence of 4–5 symptoms.</string>
-  <string name = "threezerofour2">304.00 (F11.20)</string>
-  <string name = "severe">Severe: Presence of 6 or more symptoms.</string>
-  <string name = "plan"> Treatment Plan</string>
-  <string name = "desc"> Company logo </string>
+  <string name="mild"> Mild: Presence of 2–3 symptoms</string>
+  <string name="threezerofour"> 304.00 (F11.20)</string>
+  <string name="moderate">Moderate: Presence of 4–5 symptoms.</string>
+  <string name="threezerofour2">304.00 (F11.20)</string>
+  <string name="severe">Severe: Presence of 6 or more symptoms.</string>
+  <string name="plan"> Treatment Plan</string>
+  <string name="desc"> Company logo </string>
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>

@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class QuestionnaireActivity extends AppCompatActivity {
 
 
-
   public static int answerCounter = 0;
   public static int yesAnswers = 0;
   public static int noAnswers = 0;
@@ -30,8 +29,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static Boolean qTenAnswer;
   public static Boolean qElevenAnswer;
   public static String severityString;
-
-
 
 
   /**
@@ -78,7 +75,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
 
     severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
-
 
     YESbtn.setOnClickListener(new View.OnClickListener() {
 
@@ -299,6 +295,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     });
 
   }
+
   private static VolitionDatabase mDb;
   private QuestionnaireActivityViewModel mViewModel;
 }
