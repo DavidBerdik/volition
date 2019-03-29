@@ -70,6 +70,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     //prevent any issues with misnamed strings. Try catch statement generates a dummy treatment
     //plan set to mild abstinence if the database tables containing medicationChoice and
     //severity level are null. This should ONLY occur during a JUnit test.
+
+    //THIS IS A TEMPORARY FIX TO HAVE A WORKING APP FOR TOMORROW
     try {
       severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
       medicationChoice = db.medicationChoiceDAO().getMedication().getValue();
