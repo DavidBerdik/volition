@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b6f0169add16cc4e1877b7e4b34a6e93",
+    "identityHash": "e11a672b6c8d5f13342ee6f95df95615",
     "entities": [
       {
         "tableName": "MedicationChoiceEntity",
@@ -55,8 +55,6 @@
         },
         "indices": [],
         "foreignKeys": []
-<<<<<<< HEAD
-=======
       },
       {
         "tableName": "DemographicDataEntity",
@@ -76,39 +74,18 @@
           }
         ],
         "primaryKey": {
-            "columnNames": [
-              "patientName"
-            ],
-            "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-        {
-        "tableName": "MedicationChoiceEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
-        "fields": [
-          {
-            "fieldPath": "medication",
-            "columnName": "medication",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
           "columnNames": [
-            "medication"
+            "patientName"
           ],
           "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
->>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b6f0169add16cc4e1877b7e4b34a6e93\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e11a672b6c8d5f13342ee6f95df95615\")"
     ]
   }
 }
