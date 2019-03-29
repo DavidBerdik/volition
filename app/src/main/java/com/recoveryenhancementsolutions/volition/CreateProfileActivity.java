@@ -11,13 +11,13 @@ import android.widget.EditText;
 import java.text.DateFormat;
 import java.util.Calendar;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Button;
 import android.content.Intent;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
+@SuppressWarnings("unused")
 public class CreateProfileActivity extends AppCompatActivity {
 
 
@@ -27,81 +27,82 @@ public class CreateProfileActivity extends AppCompatActivity {
    * If the RadioButton has been selected the corresponding field in the database is set to true
    */
   public void addSupportListener(View c) {
-    radioSupport = (RadioButton) findViewById(R.id.radioSupport);
+    RadioButton radioSupport = findViewById(R.id.radioSupport);
     if (radioSupport.isChecked()) {
       data.setPersonInRecovery(false);//set to false because not in Recovery
     }
   }
 
   public void addClientListener(View c) {
-    radioClient = (RadioButton) findViewById(R.id.radioClient);
+    RadioButton radioClient = findViewById(R.id.radioClient);
     if (radioClient.isChecked()) {
       data.setPersonInRecovery(true);
     }
   }
+
   public void addHeroinListener(View c) {
-    radioHeroin = (RadioButton) findViewById(R.id.radioHeroin);
+    RadioButton radioHeroin = findViewById(R.id.radioHeroin);
     if (radioHeroin.isChecked()) {
       data.setUseHeroin(true);
     }
   }
 
   public void addMarijuanaListener(View c) {
-    radioMarijuana = (RadioButton) findViewById(R.id.radioMarijuana);
+    RadioButton radioMarijuana = findViewById(R.id.radioMarijuana);
     if (radioMarijuana.isChecked()) {
       data.setUseMarijuana(true);
     }
   }
   public void addOpiatesListener(View c) {
-    radioOpiates = (RadioButton) findViewById(R.id.radioOpiates);
+    RadioButton radioOpiates = findViewById(R.id.radioOpiates);
     if (radioOpiates.isChecked()) {
       data.setUseOpiateOrSynth(true);
     }
   }
 
   public void addAlocholListener(View c) {
-    radioAlcohol = (RadioButton) findViewById(R.id.radioAlcohol);
+    RadioButton radioAlcohol = findViewById(R.id.radioAlcohol);
     if (radioAlcohol.isChecked()) {
       data.setUseAlcohol(true);
     }
   }
 
   public void addCocaineListener(View c) {
-    radioCocaine = (RadioButton) findViewById(R.id.radioCocaine);
+    RadioButton radioCocaine = findViewById(R.id.radioCocaine);
     if (radioCocaine.isChecked()) {
       data.setUseCrackOrCocaine(true);
     }
   }
 
   public void addMethListener(View c) {
-    radioMeth = (RadioButton) findViewById(R.id.radioMeth);
+    RadioButton radioMeth = findViewById(R.id.radioMeth);
     if (radioMeth.isChecked()) {
       data.setUseMethamphetamine(true);
     }
   }
 
   public void addBenListener(View c) {
-    radioBen = (RadioButton) findViewById(R.id.radioBen);
+    RadioButton radioBen = findViewById(R.id.radioBen);
     if (radioBen.isChecked()) {
       data.setUseBenzo(true);
     }
   }
 
   public void addTranqListener(View c) {
-    radioTranquilizers = (RadioButton) findViewById(R.id.radioTranquilizers);
+    RadioButton radioTranquilizers = findViewById(R.id.radioTranquilizers);
     if (radioTranquilizers.isChecked()) {
       data.setUseNonBeznoTrang(true);
     }
   }
   public void addSedativesListener(View c) {
-    radioSedatives = (RadioButton) findViewById(R.id.radioSedatives);
+    RadioButton radioSedatives = findViewById(R.id.radioSedatives);
     if (radioSedatives.isChecked()) {
       data.setUseOpiateOrSynth(true);
     }
   }
 
   public void addInhalantsListener(View c) {
-    radioInhalants = (RadioButton) findViewById(R.id.radioInhalants);
+    RadioButton radioInhalants = findViewById(R.id.radioInhalants);
     if (radioInhalants.isChecked()) {
       data.setUseInhalants(true);
     }
@@ -208,19 +209,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     });
 
   }
-  private TextView mTextMessage;
-  private RadioButton radioSupport;
-  private RadioButton radioClient;
-  private RadioButton radioHeroin;
-  private RadioButton radioOpiates;
-  private RadioButton radioAlcohol;
-  private RadioButton radioCocaine;
-  private RadioButton radioMarijuana;
-  private RadioButton radioMeth;
-  private RadioButton radioBen;
-  private RadioButton radioTranquilizers;
-  private RadioButton radioSedatives;
-  private RadioButton radioInhalants;
+
   private DemographicDataEntity data = new DemographicDataEntity();
 
 }
