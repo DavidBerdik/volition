@@ -1,14 +1,18 @@
 package com.recoveryenhancementsolutions.volition;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.*;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
+import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import java.util.Date;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,37 +29,72 @@ public class HomeActivityTest {
       HomeActivity.class);
 
   /**
-   * Tests that each button is capable of responding to a single click on the home screen.
+   * Creates a testing environment to be used to the HomeActivity class with a test database.
    */
-  @Test
-  public void homeActivityTest_Single() {
-    onView(withId(R.id.menubar_home)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_plan)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
+  @Before
+  public void loadTestEnvironment() {
+    // Create a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
+
+    // Sets up some entry data.
+    demographicDataEntity = new DemographicDataEntity();
+    demographicDataEntity.setPatientName("Example Patient");
+    demographicDataEntity
+        .setLastClean(new Date(new Date().getTime() - DAYS_CLEAN * 24 * 60 * 60 * 1000));
+
+    // Tell the activity to use the testing database.
+    activityTestRule.getActivity().onCreateTest(db);
+
+    viewModel = ViewModelProviders.of(activityTestRule.getActivity())
+        .get(DemographicDataViewModel.class);
+    viewModel.setTestDatabase(db);
+    db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
   }
 
   /**
-   * Tests that each button can accept multiple inputs in a somewhat random order, multiple times.
+   * Tests that the activity is fetching the existing data and displaying it.
    */
   @Test
-  public void homeActivityTest_Multiple() {
-    onView(withId(R.id.menubar_plan)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_home)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_plan)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Plan")));
-    onView(withId(R.id.menubar_activity)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Activity")));
-    onView(withId(R.id.menubar_home)).perform(click());
-    onView(withId(R.id.buttonTestItem)).check(matches(withText("Home")));
+  public void homeActivityTest_ViewModel() {
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Fetching the data...
+    try {
+      assertEquals(demographicDataEntity.getLastClean(),
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    // Converting the data...
+    try {
+      assertEquals(DAYS_CLEAN, DateConverter
+          .daysBetween(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
+              new Date()));
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    // Allow the UI one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Updating the TextView...
+    assertEquals("Days Clean: " + DAYS_CLEAN, activityTestRule.getActivity().getDaysCleanText());
   }
 
+  private DemographicDataEntity demographicDataEntity;
+  private DemographicDataViewModel viewModel;
+  private final int DAYS_CLEAN = 9;
+  private static final String TAG = "HomeActivityTest";
 }
