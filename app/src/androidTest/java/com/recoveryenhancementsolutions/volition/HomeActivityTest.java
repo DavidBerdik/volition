@@ -12,7 +12,6 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import java.util.Date;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,7 +35,7 @@ public class HomeActivityTest {
   public void loadTestEnvironment() {
     // Create a test database instead of the app's real database.
     final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+    final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
 
     // Sets up some entry data.
@@ -89,7 +88,6 @@ public class HomeActivityTest {
 
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
-  private VolitionDatabase db;
   private final int DAYS_CLEAN = 5;
   private static final String TAG = "HomeActivityTest";
 }
