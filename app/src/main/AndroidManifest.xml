@@ -10,52 +10,60 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
-      android:exported="true"
       android:name=".MainActivity"
+      android:exported="true"
       android:label="@string/app_name">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
+      android:name=".ReportUseActivity"
       android:exported="true"
-      android:label="@string/app_name"
-      android:name=".ReportUseActivity">
+      android:label="@string/app_name">
       <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
+      android:name=".HomeActivity"
       android:exported="true"
-      android:label="@string/app_name"
-      android:name=".HomeActivity">
+      android:label="@string/app_name">
       <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
+      android:name=".MedicationChoiceActivity"
       android:exported="true"
       android:label="@string/title_activity_medication_choice"
-      android:name=".MedicationChoiceActivity"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
-      android:label="@string/app_name"
-      android:name=".CreateProfileActivity">
+      android:name=".CreateProfileActivity"
+      android:label="@string/app_name">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
+      android:name=".DisplayProfileActivity"
       android:exported="true"
-      android:label="@string/app_name"
-      android:name=".DisplayProfileActivity">
+      android:label="@string/app_name">
       <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+      android:name=".ActivityActivity"
+      android:exported="true"
+      android:label="@string/app_name">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
@@ -68,14 +76,6 @@
     </activity>
     <activity
       android:name=".ViewSeverityLevelActivity"
-      android:exported="true"
-      android:label="@string/app_name">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity
-      android:name=".ActivityActivity"
       android:exported="true"
       android:label="@string/app_name">
       <intent-filter>
