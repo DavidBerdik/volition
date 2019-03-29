@@ -100,7 +100,7 @@ public class ActivityActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     // TEMP: Eventually make this R.layout.activity_activity
-    setContentView(R.layout.activity_activity_testing);
+    setContentView(R.layout.activity_activity);
 
     // Init navbar.
     final BottomNavigationView navigation = findViewById(R.id.menubar);
@@ -108,7 +108,7 @@ public class ActivityActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
     // Scroll calendar to the right to show today.
-    ((ScrollView) findViewById(R.id.hscroller)).fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+    ((HorizontalScrollView) findViewById(R.id.hscroller)).fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
