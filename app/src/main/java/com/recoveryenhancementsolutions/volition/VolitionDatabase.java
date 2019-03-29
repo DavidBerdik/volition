@@ -41,46 +41,19 @@ import android.support.annotation.NonNull;
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 
-@Database(
-<<<<<<< HEAD
-        entities = {
+@Database(entities = {
                 UserActivityEntity.class,
                 TreatmentPlanEntity.class,
                 QuestionnaireEntity.class,
                 MedicationChoiceEntity.class
         },
         version = 1)
-=======
-    entities = {
-        UserActivityEntity.class,
-        DemographicDataEntity.class,
-        MedicationChoiceEntity.class
-    },
-    version = 1)
->>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
+
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
-<<<<<<< HEAD
-    // TODO: Place DAO instantiation method calls here, as in the following commented-out example
-    // public abstract WordDao wordDao();
-    public abstract UserActivitiesDao userActivitiesDao();
 
-    public abstract TreatmentPlanDao treatmentPlanDao();
-
-    public abstract QuestionnaireDao questionnaireDao();
-
-    public abstract MedicationChoiceDao medicationChoiceDao();
-
-    /**
-     * Factory method implementing Singleton design pattern for VolitionDatabase class.
-     *
-     * @param context Object providing access to application context.
-     * @return Instance of VolitionDatabase (same instance returned on every call).
-     */
-    static VolitionDatabase getDatabase(final Context context) {
-=======
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
@@ -95,22 +68,22 @@ public abstract class VolitionDatabase extends RoomDatabase {
    */
   static VolitionDatabase getDatabase(final Context context) {
     if (INSTANCE == null) {
-      synchronized (VolitionDatabase.class) {
->>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
-        if (INSTANCE == null) {
-            synchronized (VolitionDatabase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            VolitionDatabase.class, "volition_database")
-                            // Wipes and rebuilds instead of migrating if no Migration object.
-                            // Migration is not part of this codelab.
-                            .fallbackToDestructiveMigration()
-                            .addCallback(volitionDatabaseCallback)
-                            .build();
+        synchronized (VolitionDatabase.class) {
+            if (INSTANCE == null) {
+                synchronized (VolitionDatabase.class) {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                                VolitionDatabase.class, "volition_database")
+                                // Wipes and rebuilds instead of migrating if no Migration object.
+                                // Migration is not part of this codelab.
+                                .fallbackToDestructiveMigration()
+                                .addCallback(volitionDatabaseCallback)
+                                .build();
+                    }
                 }
             }
+            return INSTANCE;
         }
-        return INSTANCE;
     }
 
     /**
@@ -148,7 +121,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
      * Skeleton code that does nothing but could be filled in to clear the database and populate it
      * with test data in the background.
      */
-<<<<<<< HEAD
+
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
@@ -166,7 +139,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
             questionnaireDao = db.questionnaireDao();
             medicationChoiceDao = db.medicationChoiceDao();
         }
-=======
+
     @Override
     public void onCreate(@NonNull final SupportSQLiteDatabase db) {
       super.onCreate(db);
@@ -193,7 +166,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
       userActivitiesDao = db.userActivitiesDao();
       demographicDataDao = db.demographicDataDao();
     }
->>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
 
         @Override
         protected Void doInBackground(final Void... params) {
@@ -211,18 +183,8 @@ public abstract class VolitionDatabase extends RoomDatabase {
             return null;
         }
     }
-<<<<<<< HEAD
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile VolitionDatabase INSTANCE;
-=======
   }
-
-  // marking the instance as volatile to ensure atomic access to the variable
-  private static volatile VolitionDatabase INSTANCE;
-<<<<<<< HEAD
->>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
-
-=======
->>>>>>> 20d986a605e32b8b20134123c5a30c26cfa25b2d
 }
