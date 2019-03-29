@@ -9,7 +9,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import java.util.Calendar;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -52,11 +51,10 @@ public class ActivityActivityTest extends Thread{
           activityTestRule.getActivity().cycle(0);
         }
       });
-    }
-    catch(java.lang.Throwable e){
-      e.printStackTrace();
-    }
 
+    } catch (Throwable t) {
+      throw new AssertionError("Could not prepare test: " + t.getMessage());
+    }
   }
 
   /**
@@ -65,16 +63,16 @@ public class ActivityActivityTest extends Thread{
   @Test
   public void testCalendar() {
     for (int i = 0; i < activityTestRule.getActivity().getDayCount(); i++) {
-      // Wait for this day to load.
       while (!activityTestRule.getActivity().didActivitiesLoad(i)) {
       }
 
       String value = activityTestRule.getActivity().getActivityBuffer(i);
 
-      Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i] + "\" got:\"" + value + '"');
+
+      Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i]
+          + "\" got:\"" + value + '"');
 
       Assert.assertEquals(userActivityDesc[i], value);
-
     }
   }
 
