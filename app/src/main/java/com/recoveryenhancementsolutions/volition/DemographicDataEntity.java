@@ -3,7 +3,12 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-
+import android.util.Log;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @SuppressWarnings({"unused", "WeakerAccess", "FieldCanBeLocal"})
@@ -18,18 +23,354 @@ the object.  I am unaware of how other components may need this so I will hold
 off on setting these methods package-private
 */
 
-/*
-Currently many methods are unused (mainly the getMethods(), it is expected
-more and more will come into use as more components are finished and added
-*/
+/**
+ * Entity for storing demographic information
+ */
 public class DemographicDataEntity {
+  /**
+   * get patient name
+   *
+   * @return String name of patient
+   */
+  @NonNull
+  public String getPatientName() {
+    return patientName;
+  }
+
+  /**
+   * set name of patient
+   *
+   * @param patientName name of patient
+   */
+  public void setPatientName(final @NonNull String patientName) {
+    this.patientName = patientName;
+  }
+
+  /**
+   * get age of patient
+   *
+   * @return int patient age
+   */
+  public int getAge() {
+    return age;
+  }
+
+  /**
+   * set age of patient
+   *
+   * @param age age of patient
+   */
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  /**
+   * @return Date of birth
+   */
+  public Date getDateOfBirth() {
+    return dateOfBirth;
+  }
+
+  /**
+   * @param dateOfBirth the date of birth
+   */
+  public void setDateOfBirth(Date dateOfBirth) {
+    //Strips time and passes calendar date
+    final Calendar cal = Calendar.getInstance();
+    cal.setTime(dateOfBirth);
+    setDateOfBirth(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Sets the activity's date.
+   *
+   * @param year birth year
+   * @param month birth month
+   * @param day birth day
+   */
+  public void setDateOfBirth(final int year, final int month, final int day) {
+    try {
+      this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+          + month + "-" + day);
+    } catch (final ParseException e) {
+      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+    }
+  }
+
+  /**
+   * @return gender of patient
+   */
+  public String getGender() {
+    return gender;
+  }
+
+  /**
+   * @param gender gender of patient
+   */
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
+  /**
+   * @return is the patient in recovery
+   */
+  public boolean isPersonInRecovery() {
+    return isPersonInRecovery;
+  }
+
+  /**
+   * @param personInRecovery sets if the person is in recovery
+   */
+  public void setPersonInRecovery(boolean personInRecovery) {
+    isPersonInRecovery = personInRecovery;
+  }
+
+  /**
+   * @return does the patient use heroin
+   */
+  public boolean isUseHeroin() {
+    return useHeroin;
+  }
+
+  /**
+   * @param useHeroin sets the use of heroin
+   */
+  public void setUseHeroin(boolean useHeroin) {
+    this.useHeroin = useHeroin;
+  }
+
+  /**
+   * @return does the patient use synthetics or other opiates
+   */
+  public boolean isUseOpiateOrSynth() {
+    return useOpiateOrSynth;
+  }
+
+  /**
+   * @param useOpiateOrSynth sets use of synthetics or other opiates
+   */
+  public void setUseOpiateOrSynth(boolean useOpiateOrSynth) {
+    this.useOpiateOrSynth = useOpiateOrSynth;
+  }
+
+  /**
+   * @return does the patient use
+   */
+  public boolean isUseAlcohol() {
+    return useAlcohol;
+  }
+
+  /**
+   * @param useAlcohol sets use of alcohol
+   */
+  public void setUseAlcohol(boolean useAlcohol) {
+    this.useAlcohol = useAlcohol;
+  }
+
+  /**
+   * @return does the patient use crack/cocaine
+   */
+  public boolean isUseCrackOrCocaine() {
+    return useCrackOrCocaine;
+  }
+
+  /**
+   * @param useCrackOrCocaine sets use of crack or cocaine
+   */
+  public void setUseCrackOrCocaine(boolean useCrackOrCocaine) {
+    this.useCrackOrCocaine = useCrackOrCocaine;
+  }
+
+  /**
+   * @return does the patient use Marijuana
+   */
+  public boolean isUseMarijuana() {
+    return useMarijuana;
+  }
+
+  /**
+   * @param useMarijuana sets use of Marijuana
+   */
+  public void setUseMarijuana(boolean useMarijuana) {
+    this.useMarijuana = useMarijuana;
+  }
+
+  /**
+   * @return does the patient use methamphetamine
+   */
+  public boolean isUseMethamphetamine() {
+    return useMethamphetamine;
+  }
+
+  /**
+   * @param useMethamphetamine sets use of methamphetamine
+   */
+  public void setUseMethamphetamine(boolean useMethamphetamine) {
+    this.useMethamphetamine = useMethamphetamine;
+  }
+
+  /**
+   * @return does the patient use benzodiazepines
+   */
+  public boolean isUseBenzo() {
+    return useBenzo;
+  }
+
+  /**
+   * @param useBenzo sets use of benzodiazepines
+   */
+  public void setUseBenzo(boolean useBenzo) {
+    this.useBenzo = useBenzo;
+  }
+
+  /**
+   * @return does the patient use tranquilizers
+   */
+  public boolean isUseNonBeznoTrang() {
+    return useNonBeznoTrang;
+  }
+
+  /**
+   * @param useNonBeznoTrang set use of tranquilizers
+   */
+  public void setUseNonBeznoTrang(boolean useNonBeznoTrang) {
+    this.useNonBeznoTrang = useNonBeznoTrang;
+  }
+
+  /**
+   * @return does the patient use Barbitures or Hypno
+   */
+  public boolean isUseBarbituresOrHypno() {
+    return useBarbituresOrHypno;
+  }
+
+  /**
+   * @param useBarbituresOrHypno set use of barbitures or hypnotics
+   */
+  public void setUseBarbituresOrHypno(boolean useBarbituresOrHypno) {
+    this.useBarbituresOrHypno = useBarbituresOrHypno;
+  }
+
+  /**
+   * @return does the patient use inhalants
+   */
+  public boolean isUseInhalants() {
+    return useInhalants;
+  }
+
+  /**
+   * @param useInhalants sets use of inhalants
+   */
+  public void setUseInhalants(boolean useInhalants) {
+    this.useInhalants = useInhalants;
+  }
+
+  /**
+   * @return other drugs the patient may use
+   */
+  public String getUseOther() {
+    return useOther;
+  }
+
+  /**
+   * @param useOther sets the use of other drugs
+   */
+  public void setUseOther(String useOther) {
+    this.useOther = useOther;
+  }
+
+  /**
+   * @return does the patient have an opioid disorder
+   */
+  public boolean isDisorderOpioid() {
+    return disorderOpioid;
+  }
+
+  /**
+   * @param disorderOpioid sets if the patient has an opioid disorder
+   */
+  public void setDisorderOpioid(boolean disorderOpioid) {
+    this.disorderOpioid = disorderOpioid;
+  }
+
+  /**
+   * @return does the patient have an alcohol disorder
+   */
+  public boolean isDisorderAlcohol() {
+    return disorderAlcohol;
+  }
+
+  /**
+   * sets whether the patient has an alcohol disorder
+   *
+   * @param disorderAlcohol has alcohol disorder
+   */
+  public void setDisorderAlcohol(boolean disorderAlcohol) {
+    this.disorderAlcohol = disorderAlcohol;
+  }
+
+  /**
+   * returns last clean date
+   *
+   * @return Date last clean
+   */
+  @NonNull
+  public Date getLastClean() {
+    return lastClean;
+  }
+
+  /**
+   * sets last clean date
+   *
+   * @param lastClean Date last clean
+   */
+  public void setLastClean(final @NonNull Date lastClean) {
+    //Strips time and passes Calendar Date
+    final Calendar cal = Calendar.getInstance();
+    cal.setTime(lastClean);
+    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Sets the date of last clean
+   *
+   * @param year last clean year
+   * @param month last clean month
+   * @param day last clean day
+   */
+  public void setLastClean(final int year, final int month, final int day) {
+    try {
+      this.lastClean = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+          + month + "-" + day);
+    } catch (final ParseException e) {
+      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+    }
+  }
+
+  /**
+   * @param fetchID id for fetching
+   */
+  public void setFetchID(int fetchID) {
+    //intentionally left blank, fetchID should not be changed
+  }
+
+  /**
+   * returns FetchID
+   *
+   * @return FetchID as int
+   */
+  public int getFetchID() {
+    return fetchID;
+  }
 
   @PrimaryKey
+  @SuppressWarnings("NullableProblems")
   @NonNull
   private String patientName;
+  private Date lastClean;
 
   private int age;
-  private String dateOfBirth;//MM-DD-YYYY
+  private Date dateOfBirth;
   private String gender;
   private boolean isPersonInRecovery;//True - person in recovery FALSE - Family/Support
 
@@ -45,173 +386,9 @@ public class DemographicDataEntity {
   private boolean useBarbituresOrHypno;
   private boolean useInhalants;
 
-  private String Other;
+  private String useOther;
   private boolean disorderOpioid;
   private boolean disorderAlcohol;
-  private String lastClean;//MM-DD-YYYY
   private int fetchID = 1;
 
-
-  /*
-  A series of set and get methods for the object
-  */
-  String getPatientName() {
-    return patientName;
-  }
-
-  public void setPatientName(String patientName) {
-    this.patientName = patientName;
-  }
-
-  public int getAge() {
-    return age;
-  }
-
-  public void setAge(int age) {
-    this.age = age;
-  }
-
-  public String getDateOfBirth() {
-    return dateOfBirth;
-  }
-
-  public void setDateOfBirth(String dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
-
-  public boolean isPersonInRecovery() {
-    return isPersonInRecovery;
-  }
-
-  public void setPersonInRecovery(boolean personInRecovery) {
-    isPersonInRecovery = personInRecovery;
-  }
-
-  public boolean isUseHeroin() {
-    return useHeroin;
-  }
-
-  public void setUseHeroin(boolean useHeroin) {
-    this.useHeroin = useHeroin;
-  }
-
-  public boolean isUseOpiateOrSynth() {
-    return useOpiateOrSynth;
-  }
-
-  public void setUseOpiateOrSynth(boolean useOpiateOrSynth) {
-    this.useOpiateOrSynth = useOpiateOrSynth;
-  }
-
-  public boolean isUseAlcohol() {
-    return useAlcohol;
-  }
-
-  public void setUseAlcohol(boolean useAlcohol) {
-    this.useAlcohol = useAlcohol;
-  }
-
-  public boolean isUseCrackOrCocaine() {
-    return useCrackOrCocaine;
-  }
-
-  public void setUseCrackOrCocaine(boolean useCrackOrCocaine) {
-    this.useCrackOrCocaine = useCrackOrCocaine;
-  }
-
-  public boolean isUseMarijuana() {
-    return useMarijuana;
-  }
-
-  public void setUseMarijuana(boolean useMarijuana) {
-    this.useMarijuana = useMarijuana;
-  }
-
-  public boolean isUseMethamphetamine() {
-    return useMethamphetamine;
-  }
-
-  public void setUseMethamphetamine(boolean useMethamphetamine) {
-    this.useMethamphetamine = useMethamphetamine;
-  }
-
-  public boolean isUseBenzo() {
-    return useBenzo;
-  }
-
-  public void setUseBenzo(boolean useBenzo) {
-    this.useBenzo = useBenzo;
-  }
-
-  public boolean isUseNonBeznoTrang() {
-    return useNonBeznoTrang;
-  }
-
-  public void setUseNonBeznoTrang(boolean useNonBeznoTrang) {
-    this.useNonBeznoTrang = useNonBeznoTrang;
-  }
-
-  public boolean isUseBarbituresOrHypno() {
-    return useBarbituresOrHypno;
-  }
-
-  public void setUseBarbituresOrHypno(boolean useBarbituresOrHypno) {
-    this.useBarbituresOrHypno = useBarbituresOrHypno;
-  }
-
-  public boolean isUseInhalants() {
-    return useInhalants;
-  }
-
-  public void setUseInhalants(boolean useInhalants) {
-    this.useInhalants = useInhalants;
-  }
-
-  public String getOther() {
-    return Other;
-  }
-
-  public void setOther(String other) {
-    Other = other;
-  }
-
-  public boolean isDisorderOpioid() {
-    return disorderOpioid;
-  }
-
-  public void setDisorderOpioid(boolean disorderOpioid) {
-    this.disorderOpioid = disorderOpioid;
-  }
-
-  public boolean isDisorderAlcohol() {
-    return disorderAlcohol;
-  }
-
-  public void setDisorderAlcohol(boolean disorderAlcohol) {
-    this.disorderAlcohol = disorderAlcohol;
-  }
-
-  public String getLastClean() {
-    return lastClean;
-  }
-
-  public void setLastClean(String lastClean) {
-    this.lastClean = lastClean;
-  }
-
-  public void setFetchID(int fetchID) {
-    //intentionally left blank, fetchID should not be changed
-  }
-
-  public int getFetchID() {
-    return fetchID;
-  }
 }
