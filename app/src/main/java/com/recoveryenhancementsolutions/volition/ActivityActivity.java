@@ -12,6 +12,8 @@ import android.support.design.widget.BottomNavigationView.OnNavigationItemSelect
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,7 +50,7 @@ public class ActivityActivity extends AppCompatActivity {
       this.day = (Calendar) day.clone();
       if (title != null) {
         title.setText(day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-            getResources().getConfiguration().locale));
+            getResources().getConfiguration().locale).charAt(0));
       }
     }
 
@@ -104,6 +106,9 @@ public class ActivityActivity extends AppCompatActivity {
     final BottomNavigationView navigation = findViewById(R.id.menubar);
     navigation.setSelectedItemId(R.id.menubar_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
+
+    // Scroll calendar to the right to show today.
+    ((ScrollView) findViewById(R.id.hscroller)).fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
