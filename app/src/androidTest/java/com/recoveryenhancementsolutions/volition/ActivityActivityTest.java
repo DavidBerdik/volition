@@ -44,6 +44,8 @@ public class ActivityActivityTest {
       activityTestRule.getActivity().getViewModel().insertActivity(today.getTime(), desc);
       today.add(Calendar.DAY_OF_MONTH, -1);
     }
+
+    activityTestRule.getActivity().cycle(0);
   }
 
   /**
@@ -63,11 +65,9 @@ public class ActivityActivityTest {
       Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i] + "\" got:\"" + value + '"');
 
       //Assert.assertEquals(userActivityDesc[i], value);
+
     }
   }
-
-  //@Before
-  //public void dontdie() { while(true); }
 
   private final String logTag = "ActivityActivityTest";
   private final String[] userActivityDesc = {
