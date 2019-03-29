@@ -11,12 +11,6 @@ import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,11 +35,11 @@ public class MedicationChoiceActivityTest {
    */
   @Test
   public void medicationChoiceActivityTest() {
-    ViewInteraction button = onView(
+    final ViewInteraction button = onView(
         allOf(withId(R.id.medication), isDisplayed()));
     button.check(matches(isDisplayed()));
 
-    ViewInteraction button2 = onView(
+    final ViewInteraction button2 = onView(
         allOf(withId(R.id.abstain), isDisplayed()));
     button2.check(matches(isDisplayed()));
   }
