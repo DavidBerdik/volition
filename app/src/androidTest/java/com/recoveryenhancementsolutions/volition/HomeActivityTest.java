@@ -12,7 +12,6 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import java.util.Date;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,7 +35,7 @@ public class HomeActivityTest {
   public void loadTestEnvironment() {
     // Create a test database instead of the app's real database.
     final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+    final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
 
     // Sets up some entry data.
@@ -51,7 +50,7 @@ public class HomeActivityTest {
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(DemographicDataViewModel.class);
     viewModel.setTestDatabase(db);
-    viewModel.insertDemographicData(demographicDataEntity);
+    db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
   }
 
   /**
@@ -59,6 +58,13 @@ public class HomeActivityTest {
    */
   @Test
   public void homeActivityTest_ViewModel() {
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     // Fetching the data...
     try {
       assertEquals(demographicDataEntity.getLastClean(),
@@ -76,13 +82,19 @@ public class HomeActivityTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
+    // Allow the UI one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     // Updating the TextView...
     assertEquals("Days Clean: " + DAYS_CLEAN, activityTestRule.getActivity().getDaysCleanText());
   }
 
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
-  private VolitionDatabase db;
-  private final int DAYS_CLEAN = 5;
+  private final int DAYS_CLEAN = 9;
   private static final String TAG = "HomeActivityTest";
 }
