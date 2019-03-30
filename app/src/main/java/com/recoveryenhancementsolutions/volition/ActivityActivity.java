@@ -13,7 +13,6 @@ import android.support.design.widget.BottomNavigationView.OnNavigationItemSelect
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.HorizontalScrollView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,8 +20,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Loads the activities for each day and displays them to the user. Allows the user to go
- * back/forward by 4 days on the calendar.
+ * Loads the activities for each day and displays them to the user.
  */
 public class ActivityActivity extends AppCompatActivity {
 
@@ -99,13 +97,13 @@ public class ActivityActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    // TEMP: Eventually make this R.layout.activity_activity
+
     int orientation = getResources().getConfiguration().orientation;
     if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
       setContentView(R.layout.activity_activity_land);
-    }
-    else
+    } else {
       setContentView(R.layout.activity_activity_port);
+    }
 
     // Init navbar.
     final BottomNavigationView navigation = findViewById(R.id.menubar);
