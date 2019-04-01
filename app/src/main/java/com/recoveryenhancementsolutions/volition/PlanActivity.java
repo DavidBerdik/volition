@@ -7,7 +7,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
 
-public class ActivityActivity extends AppCompatActivity {
+public class PlanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,10 +15,10 @@ public class ActivityActivity extends AppCompatActivity {
 
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_activity_land);
+            setContentView(R.layout.activity_plan_land);
         }
         else
-        setContentView(R.layout.activity_activity_port);
+        setContentView(R.layout.activity_plan_port);
         fillViews();
     }
 
@@ -47,15 +47,15 @@ public class ActivityActivity extends AppCompatActivity {
         textView = findViewById(R.id.textview_day_7);
         textView.setText(sampletext);
         textView = findViewById(R.id.day_of_week_1);
-        textView.setText("Che");
+        textView.setText("S");
         textView = findViewById(R.id.day_of_week_2);
-        textView.setText("MEP");
+        textView.setText("S");
         textView = findViewById(R.id.day_of_week_3);
-        textView.setText("SD");
+        textView.setText("F");
         textView = findViewById(R.id.day_of_week_4);
-        textView.setText("TSD");
+        textView.setText("T");
         textView = findViewById(R.id.day_of_week_5);
-        textView.setText("SD");
+        textView.setText("W");
         textView = findViewById(R.id.day_of_week_6);
         textView.setText("T");
         textView = findViewById(R.id.day_of_week_7);

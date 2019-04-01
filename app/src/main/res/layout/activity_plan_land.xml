@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/menubar"
         android:layout_width="0dp"
@@ -22,16 +21,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menubar" />
 
-
     <HorizontalScrollView
         android:id="@+id/hscroller"
         android:layout_width="fill_parent"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:fadingEdge="none"
         android:fillViewport="false"
-        android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -42,7 +40,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
-
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -66,7 +63,6 @@
                         android:textAlignment="center"
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
-
 
                     <TextView
                         android:id="@+id/textview_day_7"
@@ -97,7 +93,6 @@
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
 
-
                     <TextView
                         android:id="@+id/textview_day_6"
                         android:layout_width="70dp"
@@ -126,7 +121,6 @@
                         android:textAlignment="center"
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
-
 
                     <TextView
                         android:id="@+id/textview_day_5"
@@ -157,7 +151,6 @@
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
 
-
                     <TextView
                         android:id="@+id/textview_day_4"
                         android:layout_width="70dp"
@@ -186,7 +179,6 @@
                         android:textAlignment="center"
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
-
 
                     <TextView
                         android:id="@+id/textview_day_3"
@@ -217,7 +209,6 @@
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
 
-
                     <TextView
                         android:id="@+id/textview_day_2"
                         android:layout_width="70dp"
@@ -247,7 +238,6 @@
                         android:textColor="@color/common_google_signin_btn_text_dark_focused"
                         android:textSize="23sp" />
 
-
                     <TextView
                         android:id="@+id/textview_day_1"
                         android:layout_width="70dp"
@@ -256,14 +246,8 @@
                         android:textAlignment="center"
                         android:textSize="15sp" />
                 </LinearLayout>
-
-
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
-
-
     </HorizontalScrollView>
-
-
-
 </android.support.constraint.ConstraintLayout>
+
