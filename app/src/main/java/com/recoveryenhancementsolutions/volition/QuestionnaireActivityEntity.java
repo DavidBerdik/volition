@@ -11,139 +11,139 @@ import android.support.annotation.NonNull;
 public class QuestionnaireActivityEntity {
 
   @NonNull
-  public int id;
-  public String totalYes;
-  public boolean q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11;
-  public String severityLevel;
+  private int id;
+  private String totalYes;
+  private boolean q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11;
+  private String severityLevel;
 
   /**
-   * sets id value in the database
+   * Sets id value in the database.
    *
    * @param id primary key recieved to be set
    */
-  public void setId(int id) {
+  public void setId(final int id) {
     this.id = id;
   }
 
   /**
-   * sets total yes value in the database
+   * Sets total yes value in the database.
    *
    * @param totalYes string value to be printed in the view severity level
    */
-  public void setTotalYes(String totalYes) {
+  public void setTotalYes(final String totalYes) {
     this.totalYes = totalYes;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q1 boolean value for specific question representing either yes or no
    */
-  public void setQ1(Boolean q1) {
+  public void setQ1(final Boolean q1) {
     this.q1 = q1;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q2 boolean value for specific question representing either yes or no
    */
-  public void setQ2(Boolean q2) {
+  public void setQ2(final Boolean q2) {
     this.q2 = q2;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q3 boolean value for specific question representing either yes or no
    */
-  public void setQ3(Boolean q3) {
+  public void setQ3(final Boolean q3) {
     this.q3 = q3;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q4 boolean value for specific question representing either yes or no
    */
-  public void setQ4(Boolean q4) {
+  public void setQ4(final Boolean q4) {
     this.q4 = q4;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q5 boolean value for specific question representing either yes or no
    */
-  public void setQ5(Boolean q5) {
+  public void setQ5(final Boolean q5) {
     this.q5 = q5;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q6 boolean value for specific question representing either yes or no
    */
-  public void setQ6(Boolean q6) {
+  public void setQ6(final Boolean q6) {
     this.q6 = q6;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q7 boolean value for specific question representing either yes or no
    */
-  public void setQ7(Boolean q7) {
+  public void setQ7(final Boolean q7) {
     this.q7 = q7;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q8 boolean value for specific question representing either yes or no
    */
-  public void setQ8(Boolean q8) {
+  public void setQ8(final Boolean q8) {
     this.q8 = q8;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q9 boolean value for specific question representing either yes or no
    */
-  public void setQ9(Boolean q9) {
+  public void setQ9(final Boolean q9) {
     this.q9 = q9;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q10 boolean value for specific question representing either yes or no
    */
-  public void setQ10(Boolean q10) {
+  public void setQ10(final Boolean q10) {
     this.q10 = q10;
   }
 
   /**
-   * sets specific question answer
+   * Sets specific question answer.
    *
    * @param q11 boolean value for specific question representing either yes or no
    */
-  public void setQ11(Boolean q11) {
+  public void setQ11(final Boolean q11) {
     this.q11 = q11;
   }
 
   /**
-   * sets string that represents severity level either mild, moderate, or severe
+   * Sets string that represents severity level either mild, moderate, or severe.
    *
    * @param severityLevel string to be displayed in view severity level
    */
-  public void setSeverityLevel(String severityLevel) {
+  public void setSeverityLevel(final String severityLevel) {
     this.severityLevel = severityLevel;
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of id for this specific object
    */
@@ -152,7 +152,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q1 for this specific object
    */
@@ -161,7 +161,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q2 for this specific object
    */
@@ -170,7 +170,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q3 for this specific object
    */
@@ -179,7 +179,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q4 for this specific object
    */
@@ -188,7 +188,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q5 for this specific object
    */
@@ -197,7 +197,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q6 for this specific object
    */
@@ -206,7 +206,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q7 for this specific object
    */
@@ -215,7 +215,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q8 for this specific object
    */
@@ -224,7 +224,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q9 for this specific object
    */
@@ -233,7 +233,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q10 for this specific object
    */
@@ -242,7 +242,7 @@ public class QuestionnaireActivityEntity {
   }
 
   /**
-   * method to return value of this object
+   * Method to return value of this object.
    *
    * @return returns value of q11 for this specific object
    */

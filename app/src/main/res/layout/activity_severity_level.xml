@@ -179,7 +179,7 @@
         android:layout_column="1"
         android:padding="3dip"
         android:gravity="left"
-        android:text="@string/severity_threezerofive"
+        android:text="@string/severity_mild"
         android:textColor="#FF9900"/>
 
       <TextView
@@ -189,7 +189,7 @@
         android:layout_marginRight="30dp"
         android:padding="3dip"
         android:gravity="right"
-        android:text="@string/severity_mild"
+        android:text="@string/severity_mild_symptoms"
         android:textColor="#FF9900"/>
     </TableRow>
 
@@ -203,7 +203,7 @@
         android:layout_column="1"
         android:padding="3dip"
         android:gravity="left"
-        android:text="@string/severity_threezerofour"
+        android:text="@string/severity_moderate"
         android:textColor="#FF9900"/>
 
       <TextView
@@ -214,7 +214,7 @@
         android:layout_column="1"
         android:padding="3dip"
         android:gravity="right"
-        android:text="@string/severity_moderate"
+        android:text="@string/severity_moderate_symptoms"
 
         android:textColor="#FF9900"/>
     </TableRow>
@@ -230,7 +230,7 @@
         android:padding="3dip"
         android:alpha="100"
         android:gravity="left"
-        android:text="@string/severity_threezerofour2"
+        android:text="@string/severity_severe"
         android:textColor="#FFA500"/>
 
       <TextView
@@ -242,7 +242,7 @@
         android:padding="3dip"
         android:gravity="right"
 
-        android:text="@string/severity_severe"
+        android:text="@string/severity_severe_symptoms"
         android:textColor="#FF9900"/>
     </TableRow>
 

@@ -97,15 +97,17 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="severity_specifier"> Specifier: </string>
   <string name="severity_current"> Current Severity: </string>
   <string name="severity_username"> Username: </string>
-  <string name="severity_threezerofive"> 305.50 (F11.10)</string>
-  <string name="severity_mild"> Mild: Presence of 2–3 symptoms</string>
-  <string name="severity_threezerofour"> 304.00 (F11.20)</string>
-  <string name="severity_moderate">Moderate: Presence of 4–5 symptoms.</string>
-  <string name="severity_threezerofour2">304.00 (F11.20)</string>
-  <string name="severity_severe">Severe: Presence of 6 or more symptoms.</string>
-  <string name="severity_plan"> Treatment Plan</string>
+  <string name="severity_mild_symptoms"> Presence of 2–3 symptoms </string>
+  <string name="severity_mild"> Mild</string>
+  <string name="severity_moderate_symptoms"> Presence of 4–5 symptoms.</string>
+  <string name="severity_moderate">Moderate</string>
+  <string name="severity_severe_symptoms">Presence of 6 or more symptoms.</string>
+  <string name="severity_severe">Severe</string>
+  <string name="severity_plan"> View Medication Details </string>
   <string name="severity_desc"> Company logo </string>
   <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
   <string name="medication_choice_abstain_button"> Abstain</string>
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
+  <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
+  <string name="take_questionnaire"> Take questionnaire</string>
 </resources>

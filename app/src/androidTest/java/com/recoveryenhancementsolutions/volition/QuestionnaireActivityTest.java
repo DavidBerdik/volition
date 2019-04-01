@@ -1,6 +1,4 @@
 package com.recoveryenhancementsolutions.volition;
-
-
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -22,13 +20,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-/**
- *
- */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 /**
  * This class will run Espesso Test on the Questionnaire Activity
+ * It tests the questionnaire activity. It goes to the questionnaire activity and tests the
+ * yes and no buttons to answer each question.
  */
 public class QuestionnaireActivityTest {
 
@@ -36,7 +33,9 @@ public class QuestionnaireActivityTest {
   public ActivityTestRule<QuestionnaireActivity> mActivityTestRule = new ActivityTestRule<>(
       QuestionnaireActivity.class);
 
-
+    /**
+     * Goes through each question in the questionnaire.
+     */
   @Test
   /**
    * Performs test to check that the Questionnaire Activity run to go through each question the Yes and Non buttons
@@ -163,6 +162,11 @@ public class QuestionnaireActivityTest {
         parentMatcher.describeTo(description);
       }
 
+        /**
+         * Makes sure the view matches safely with the parent.
+         * @param view what is shown on the app.
+         * @return returns the parent.
+         */
       @Override
       public boolean matchesSafely(View view) {
         ViewParent parent = view.getParent();
