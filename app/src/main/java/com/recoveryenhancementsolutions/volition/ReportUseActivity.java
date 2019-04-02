@@ -62,11 +62,11 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
-        case R.id.menubar_home:
+        case R.id.core_navigation_home:
           return true;
-        case R.id.menubar_activity:
+        case R.id.core_navigation_activity:
           return true;
-        case R.id.menubar_plan:
+        case R.id.core_navigation_plan:
           return true;
       }
       return false;
