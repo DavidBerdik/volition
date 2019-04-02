@@ -18,11 +18,11 @@ import org.junit.runner.RunWith;
  * Unit test for the "User Activity History" ViewModel.
  */
 @RunWith(AndroidJUnit4.class)
-public class ActivityActivityTest {
+public class PlanActivityTest {
 
   @Rule
-  public ActivityTestRule<ActivityActivity> activityTestRule = new ActivityTestRule<>(
-      ActivityActivity.class);
+  public ActivityTestRule<PlanActivity> activityTestRule = new ActivityTestRule<>(
+      PlanActivity.class);
 
   @Before
   public void initDB() {
@@ -73,7 +73,7 @@ public class ActivityActivityTest {
     }
   }
 
-  private final String logTag = "ActivityActivityTest";
+  private final String logTag = "PlanActivityTest";
   private final String[] userActivityDesc = {
       "Test 1",
       "Test 2",

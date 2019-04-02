@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Loads the activities for each day and displays them to the user.
  */
-public class ActivityActivity extends AppCompatActivity {
+public class PlanActivity extends AppCompatActivity {
 
   /**
    * Structure for storing a date's corresponding TextViews for the title and descriptions.
@@ -98,11 +98,11 @@ public class ActivityActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    int orientation = getResources().getConfiguration().orientation;
+    final int orientation = getResources().getConfiguration().orientation;
     if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-      setContentView(R.layout.activity_activity_land);
+      setContentView(R.layout.activity_plan_land);
     } else {
-      setContentView(R.layout.activity_activity_port);
+      setContentView(R.layout.activity_plan_port);
     }
 
     // Init navbar.
