@@ -74,7 +74,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     //THIS IS A TEMPORARY FIX TO HAVE A WORKING APP FOR TOMORROW
     try {
       severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
-      medicationChoice = db.medicationChoiceDAO().getMedication().getValue();
+      medicationChoice = db.medicationChoiceDAO().getMedication().getValue().medication;
       if (medicationChoice.equals("ABSTAIN")) {
       }
       if (severityLevel.equals("MODERATE")) {

@@ -35,9 +35,6 @@ public class TreatmentPlanViewModelTest {
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
         .build();
 
-    // Load the LiveData test utility.
-    liveDataTest = new LiveDataTestUtility();
-
     //Fill in supplementary database entries
     final MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
     medicationChoiceEntity.medication = "ABSTAIN";
@@ -63,25 +60,25 @@ public class TreatmentPlanViewModelTest {
 
     //Check the values of the treatment plan. Should match the moderate abstinence plan.
     try {
-      assertEquals(3, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumCounseling());
-      assertEquals(3, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumSupportMeeting());
-      assertEquals(2, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumLessons());
-      assertEquals(1, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
-      assertEquals(3, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumOutcomeMeasures());
-      assertEquals(2, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumTimeTracking());
-      assertEquals(2, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumReadingResponse());
-      assertEquals(0, liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals(0, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getNumMedManagement());
-      assertEquals("MONTHLY", liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals("MONTHLY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getMedManagementFrequency());
-      assertEquals("DAILY", liveDataTest.getNestedLiveDataObj(db.treatmentPlanDao()
+      assertEquals("DAILY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
           .loadTreatmentPlan()).getOutcomeMeasureFrequency());
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
@@ -90,7 +87,6 @@ public class TreatmentPlanViewModelTest {
   }
 
   private TreatmentPlanViewModel viewModel;
-  private LiveDataTestUtility liveDataTest;
   private VolitionDatabase db;
   private static final String TAG = "TreatmentPlanViewModelTest";
 }
