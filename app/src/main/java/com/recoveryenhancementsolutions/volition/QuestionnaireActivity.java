@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.ArrayList;
 
 public class QuestionnaireActivity extends AppCompatActivity {
 
@@ -14,16 +15,30 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static int yesAnswers = 0;
   public static int noAnswers = 0;
   public static int severityLevel = 0;
-
-  public static Boolean qOneAnswer;
-  public static Boolean qTwoAnswer;
+  public static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
+  public static  ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
+  /*
+  public static Boolean qOneAnswer = questionnaireAnswers.get(1);
+  public static Boolean qTwoAnswer = questionnaireAnswers.get(2);
+  public static Boolean qThreeAnswer = questionnaireAnswers.get(3);
+  public static Boolean qFourAnswer = questionnaireAnswers.get(4);
+  public static Boolean qFiveAnswer = questionnaireAnswers.get(5);
+  public static Boolean qSixAnswer = questionnaireAnswers.get(6);
+  public static Boolean qSevenAnswer = questionnaireAnswers.get(7);
+  public static Boolean qEightAnswer = questionnaireAnswers.get(8);
+  public static Boolean qNineAnswer = questionnaireAnswers.get(9);
+  public static Boolean qTenAnswer = questionnaireAnswers.get(10);
+  public static Boolean qElevenAnswer = questionnaireAnswers.get(11);
+  public static String severityString; */
+public static Boolean qOneAnswer ;
+  public static Boolean qTwoAnswer ;
   public static Boolean qThreeAnswer;
-  public static Boolean qFourAnswer;
-  public static Boolean qFiveAnswer;
+  public static Boolean qFourAnswer ;
+  public static Boolean qFiveAnswer ;
   public static Boolean qSixAnswer;
-  public static Boolean qSevenAnswer;
+  public static Boolean qSevenAnswer ;
   public static Boolean qEightAnswer;
-  public static Boolean qNineAnswer;
+  public static Boolean qNineAnswer ;
   public static Boolean qTenAnswer;
   public static Boolean qElevenAnswer;
   public static String severityString;
@@ -45,7 +60,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
-
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
     yesButton.setOnClickListener(yesClickListener);
@@ -74,96 +88,84 @@ public class QuestionnaireActivity extends AppCompatActivity {
     qTen.setTextColor(qTen.getTextColors().withAlpha(0));
     qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
 
-    severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
-  }
+    questionsForQuestionnaire.add(qOne);
+    questionsForQuestionnaire.add(qTwo);
+    questionsForQuestionnaire.add(qThree);
+    questionsForQuestionnaire.add(qFour);
+    questionsForQuestionnaire.add(qFive);
+    questionsForQuestionnaire.add(qSix);
+    questionsForQuestionnaire.add(qSeven);
+    questionsForQuestionnaire.add(qEight);
+    questionsForQuestionnaire.add(qNine);
+    questionsForQuestionnaire.add(qTen);
+    questionsForQuestionnaire.add(qEleven);
+    questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
+      questionnaireAnswers.add(false);
 
+
+
+      severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
+  }
   private final View.OnClickListener yesClickListener = new View.OnClickListener() {
     /**
-     *  The onClick method for the Yes button event listener will increment the answerCounter to
-     *  keep track of which question the App user is on in the questionnaire. The variable
-     *  yesAnswers is incremented each time the event is called for the end of the questionnaire
-     *  determine the severity level.
+     * The onClick method for the Yes button event listener will increment the answerCounter to
+     * keep track of which question the App user is on in the questionnaire. The variable
+     * yesAnswers is incremented each time the event is called for the end of the questionnaire
+     * determine the severity level.
      *
-     *  The answerCounter is used in the if conditional statement. As the App user takes the
-     *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
-     *  the Next question is set to 100 and made visible.
+     * The answerCounter is used in the if conditional statement. As the App user takes the
+     * questionnaire the opacity for the question just answered is set to 0 and the opacity for
+     * the Next question is set to 100 and made visible.
      *
-     *   Once the user answers question eleven the severity level is calculated by subtracting the
-     *   the No answers from the Yes Answers.
+     * Once the user answers question eleven the severity level is calculated by subtracting the
+     * the No answers from the Yes Answers.
      *
      * @param v takes the view during onClick event.
      */
     @Override
     public void onClick(final View v) {
-      answerCounter++;
-      yesAnswers++;
 
-      if (answerCounter == 1) {
-        qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-        qTwo.setTextColor(qTwo.getTextColors().withAlpha(100));
-        qOneAnswer = true;
-      }
-      else if (answerCounter == 2) {
-        qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-        qThree.setTextColor(qThree.getTextColors().withAlpha(100));
-        qTwoAnswer = true;
-      }
-      else if (answerCounter == 3) {
-        qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-        qFour.setTextColor(qFour.getTextColors().withAlpha(100));
-        qThreeAnswer = true;
-      }
-      else if (answerCounter == 4) {
-        qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-        qFive.setTextColor(qFive.getTextColors().withAlpha(100));
-        qFourAnswer = true;
-      }
-      else if (answerCounter == 5) {
-        qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-        qSix.setTextColor(qSix.getTextColors().withAlpha(100));
-        qFiveAnswer = true;
-      }
-      else if (answerCounter == 6) {
-        qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-        qSeven.setTextColor(qSeven.getTextColors().withAlpha(100));
-        qSixAnswer = true;
-      }
-      else if (answerCounter == 7) {
-        qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-        qEight.setTextColor(qEight.getTextColors().withAlpha(100));
-        qSevenAnswer = true;
-      }
-      else if (answerCounter == 8) {
-        qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-        qNine.setTextColor(qNine.getTextColors().withAlpha(100));
-        qEightAnswer = true;
-      }
-      else if (answerCounter == 9) {
-        qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-        qTen.setTextColor(qTen.getTextColors().withAlpha(100));
-        qNineAnswer = true;
-      }
-      else if (answerCounter == 10) {
-        qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-        qEleven.setTextColor(qEleven.getTextColors().withAlpha(100));
-        qTenAnswer = true;
-      }
-      else if (answerCounter == 11) {
-        qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-        qElevenAnswer = true;
-        severityResult.setTextColor(severityResult.getTextColors().withAlpha(100));
 
-        severityLevel = yesAnswers - noAnswers;
+      if (answerCounter <10) {
+        questionnaireAnswers.set(answerCounter, true);
+        questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
+        questionsForQuestionnaire.get(answerCounter+1).setTextColor(questionsForQuestionnaire.get(answerCounter+1).getTextColors().withAlpha(100));
+          answerCounter++;
+          yesAnswers++;
+      }
 
+      else if (answerCounter==10){
+        questionnaireAnswers.set(answerCounter, true);
+        questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
+          yesAnswers++;
+          severityLevel = yesAnswers - noAnswers;
         if (yesAnswers <= 3) {
           severityString = "Mild";
-        }
-        else if (yesAnswers <= 5) {
+        } else if (yesAnswers <= 5) {
           severityString = "Moderate";
-        }
-        else {
+        } else {
           severityString = "Severe";
         }
+          qOneAnswer = questionnaireAnswers.get(0);
+          qTwoAnswer = questionnaireAnswers.get(1);
+          qThreeAnswer = questionnaireAnswers.get(2);
+          qFourAnswer = questionnaireAnswers.get(3);
+          qFiveAnswer = questionnaireAnswers.get(4);
+         qSixAnswer = questionnaireAnswers.get(5);
+          qSevenAnswer = questionnaireAnswers.get(6);
+          qEightAnswer = questionnaireAnswers.get(7);
+          qNineAnswer = questionnaireAnswers.get(8);
+          qTenAnswer = questionnaireAnswers.get(9);
+          qElevenAnswer = questionnaireAnswers.get(10);
 
         QuestionnaireActivityViewModel.populateAsync(db);
         startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
@@ -189,83 +191,42 @@ public class QuestionnaireActivity extends AppCompatActivity {
      */
     @Override
     public void onClick(final View v) {
-      answerCounter++;
-      noAnswers++;
 
-      if (answerCounter == 1) {
-        qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-        qTwo.setTextColor(qTwo.getTextColors().withAlpha(100));
-        qOneAnswer = false;
-      }
-      else if (answerCounter == 2) {
-        qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-        qThree.setTextColor(qThree.getTextColors().withAlpha(100));
-        qTwoAnswer = false;
-      }
-      else if (answerCounter == 3) {
-        qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-        qFour.setTextColor(qFour.getTextColors().withAlpha(100));
-        qThreeAnswer = false;
-      }
-      else if (answerCounter == 4) {
-        qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-        qFive.setTextColor(qFive.getTextColors().withAlpha(100));
-        qFourAnswer = false;
-      }
-      else if (answerCounter == 5) {
-        qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-        qSix.setTextColor(qSix.getTextColors().withAlpha(100));
-        qFiveAnswer = false;
-      }
-      else if (answerCounter == 6) {
-        qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-        qSeven.setTextColor(qSeven.getTextColors().withAlpha(100));
-        qSixAnswer = false;
-      }
-      else if (answerCounter == 7) {
-        qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-        qEight.setTextColor(qEight.getTextColors().withAlpha(100));
-        qSevenAnswer = false;
-      }
-      else if (answerCounter == 8) {
-        qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-        qNine.setTextColor(qNine.getTextColors().withAlpha(100));
-        qEightAnswer = false;
-      }
-      else if (answerCounter == 9) {
-        qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-        qTen.setTextColor(qTen.getTextColors().withAlpha(100));
-        qNineAnswer = false;
-      }
-      else if (answerCounter == 10) {
-        qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-        qEleven.setTextColor(qEleven.getTextColors().withAlpha(100));
-        qTenAnswer = false;
-      }
-      else if (answerCounter == 11) {
-
-        qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-        qElevenAnswer = false;
-        severityResult.setTextColor(severityResult.getTextColors().withAlpha(100));
-
-        severityLevel = yesAnswers - noAnswers;
-
-        if (yesAnswers <= 3) {
-          severityString = "Mild";
-        }
-        else if (yesAnswers <= 5) {
-          severityString = "Moderate";
-        }
-        else {
-          severityString = "Severe";
+        if (answerCounter <10) {
+            questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
+            questionsForQuestionnaire.get(answerCounter+1).setTextColor(questionsForQuestionnaire.get(answerCounter+1).getTextColors().withAlpha(100));
+            answerCounter++;
+            noAnswers++;
         }
 
-        QuestionnaireActivityViewModel.populateAsync(db);
-        startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-      }
+        else if (answerCounter==10){
+            questionnaireAnswers.set(answerCounter, true);
+            questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
+            noAnswers++;
+            severityLevel = yesAnswers - noAnswers;
+            if (yesAnswers <= 3) {
+                severityString = "Mild";
+            } else if (yesAnswers <= 5) {
+                severityString = "Moderate";
+            } else {
+                severityString = "Severe";
+            }
+            qOneAnswer = questionnaireAnswers.get(0);
+            qTwoAnswer = questionnaireAnswers.get(1);
+            qThreeAnswer = questionnaireAnswers.get(2);
+            qFourAnswer = questionnaireAnswers.get(3);
+            qFiveAnswer = questionnaireAnswers.get(4);
+            qSixAnswer = questionnaireAnswers.get(5);
+            qSevenAnswer = questionnaireAnswers.get(6);
+            qEightAnswer = questionnaireAnswers.get(7);
+            qNineAnswer = questionnaireAnswers.get(8);
+            qTenAnswer = questionnaireAnswers.get(9);
+            qElevenAnswer = questionnaireAnswers.get(10);
+            QuestionnaireActivityViewModel.populateAsync(db);
+            startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+        }
     }
   };
-
   private TextView severityResult;
   private TextView qOne;
   private TextView qTwo;

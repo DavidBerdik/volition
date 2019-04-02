@@ -12,9 +12,9 @@ public class QuestionnaireActivityEntity {
 
   @NonNull
   private int id;
-  private String totalYes;
+  public String totalYes;
   private boolean q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11;
-  private String severityLevel;
+  public String severityLevel;
 
   /**
    * Sets id value in the database.

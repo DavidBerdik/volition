@@ -1,10 +1,13 @@
 package com.recoveryenhancementsolutions.volition;
 
-        import android.app.Application;
+import android.app.Application;
 
-        import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.AndroidViewModel;
 
-        import android.os.AsyncTask;
+import android.os.AsyncTask;
+
+
+
 
 /**
  * This class abstracts the database away from the view severity level activity and allows it to
