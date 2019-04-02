@@ -76,13 +76,13 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
       switch (item.getItemId()) {
         case R.id.core_navigation_home:
-          buttonTestItem.setText(R.string.menubar_home);
+          buttonTestItem.setText(R.string.core_navigation_home);
           return true;
         case R.id.core_navigation_activity:
-          buttonTestItem.setText(R.string.menubar_activity);
+          buttonTestItem.setText(R.string.core_navigation_activity);
           return true;
         case R.id.core_navigation_plan:
-          buttonTestItem.setText(R.string.menubar_plan);
+          buttonTestItem.setText(R.string.core_navigation_plan);
           return true;
       }
       return false;
