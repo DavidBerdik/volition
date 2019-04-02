@@ -45,7 +45,7 @@ import android.support.annotation.NonNull;
         UserActivityEntity.class,
         DemographicDataEntity.class,
     },
-    version = 1)
+    version = 2)
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {

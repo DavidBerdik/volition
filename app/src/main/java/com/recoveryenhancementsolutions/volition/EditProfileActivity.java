@@ -28,7 +28,8 @@ public class EditProfileActivity extends AppCompatActivity {
     setContentView(R.layout.activity_edit_profile_temp);
     this.setTitle("Edit Profile - TEMPORARY");
 
-    DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
+    DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
 
     final Calendar dobCalendar = Calendar.getInstance();
 
@@ -120,20 +121,23 @@ public class EditProfileActivity extends AppCompatActivity {
        */
       @Override
       public void onChanged(@Nullable DemographicDataEntity demographicDataEntity) {
-        // Set the display of the patient's name.
-        EditText name = findViewById(R.id.name);
-        name.setText(demographicDataEntity.getPatientName());
+        // Only try to set the value of each field if "demographicDataEntity" is not null.
+        if (demographicDataEntity != null) {
+          // Set the display of the patient's name.
+          EditText name = findViewById(R.id.name);
+          name.setText(demographicDataEntity.getPatientName());
 
-        // Set the date of birth in the appropriate calendar and EditText field.
-        dobCalendar.setTime(demographicDataEntity.getDateOfBirth());
-        EditText dob = findViewById(R.id.date_of_birth);
-        dob.setText(DateFormat.getDateInstance().format(demographicDataEntity.getDateOfBirth()));
+          // Set the date of birth in the appropriate calendar and EditText field.
+          dobCalendar.setTime(demographicDataEntity.getDateOfBirth());
+          EditText dob = findViewById(R.id.date_of_birth);
+          dob.setText(DateFormat.getDateInstance().format(demographicDataEntity.getDateOfBirth()));
 
-        // Set the date of last use in the appropriate calendar and EditText field.
-        cleanDateCalendar.setTime(demographicDataEntity.getLastClean());
-        EditText cleanDate = findViewById(R.id.clean_date);
-        cleanDate
-            .setText(DateFormat.getDateInstance().format(demographicDataEntity.getLastClean()));
+          // Set the date of last use in the appropriate calendar and EditText field.
+          cleanDateCalendar.setTime(demographicDataEntity.getLastClean());
+          EditText cleanDate = findViewById(R.id.clean_date);
+          cleanDate
+              .setText(DateFormat.getDateInstance().format(demographicDataEntity.getLastClean()));
+        }
       }
     });
 
