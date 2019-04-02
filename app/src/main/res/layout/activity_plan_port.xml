@@ -262,11 +262,12 @@
                         android:textSize="15sp" />
                 </LinearLayout>
 
-
             </android.support.constraint.ConstraintLayout>
+
         </LinearLayout>
 
-
     </HorizontalScrollView>
+
     </LinearLayout>
+    
 </android.support.constraint.ConstraintLayout>
