@@ -48,6 +48,15 @@ public interface DemographicDataDAO {
   String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
 
   /**
+   * Retrieves all of the patient's demographic data
+   *
+   * @return A LiveData object containing a DemographicDataEntity containing all of the patient's
+   * demographic data
+   */
+  @Query("SELECT * " + genericQuery)
+  LiveData<DemographicDataEntity> getAllDemographicData();
+
+  /**
    * Retrieves the patient name
    *
    * @return a string with the patient name
