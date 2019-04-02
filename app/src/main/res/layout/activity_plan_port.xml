@@ -37,7 +37,6 @@
         android:id="@+id/hscroller"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -269,5 +268,5 @@
     </HorizontalScrollView>
 
     </LinearLayout>
-    
+
 </android.support.constraint.ConstraintLayout>

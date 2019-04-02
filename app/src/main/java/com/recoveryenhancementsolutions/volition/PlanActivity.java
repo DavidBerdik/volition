@@ -47,8 +47,9 @@ public class PlanActivity extends AppCompatActivity {
     public void setDay(Calendar day) {
       this.day = (Calendar) day.clone();
       if (title != null) {
-        title.setText(day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-            getResources().getConfiguration().locale).charAt(0) + "");
+        String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
+            getResources().getConfiguration().locale).charAt(0) + "";
+        title.setText(str);
       }
     }
 
