@@ -13,12 +13,13 @@ public class PlanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int orientation = getResources().getConfiguration().orientation;
+        final int orientation = getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             setContentView(R.layout.activity_plan_land);
         }
-        else
-        setContentView(R.layout.activity_plan_port);
+        else {
+            setContentView(R.layout.activity_plan_port);
+        }
         fillViews();
     }
 
