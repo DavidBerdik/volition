@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/menubar"
+        android:id="@+id/core_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/res_green"
