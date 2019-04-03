@@ -14,6 +14,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static int answerCounter = 0;
   public static int yesAnswers = 0;
   public static int noAnswers = 0;
+  public static boolean prevAnswer = false;
   public static int severityLevel = 0;
   public static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
   public static  ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
@@ -156,14 +157,24 @@ public class QuestionnaireActivity extends AppCompatActivity {
          */
         @Override
         public void onClick(final View v) {
-           answerCounter--;
+           if(prevAnswer){
+             yesAnswers++;
+           }
+           answerCounter = answerCounter-1;
+          if (answerCounter <10) {
+
+            questionsForQuestionnaire.get(answerCounter + 1).setTextColor(
+                questionsForQuestionnaire.get(answerCounter + 1).getTextColors().withAlpha(0));
+            questionsForQuestionnaire.get(answerCounter).setTextColor(
+                questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(100));
+          }
 
 
         }
     };
 
   public void storeOnclickQuestionnaire(boolean value) {
-
+        prevAnswer =value;
         if (answerCounter <10) {
             questionnaireAnswers.set(answerCounter, value);
             questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
