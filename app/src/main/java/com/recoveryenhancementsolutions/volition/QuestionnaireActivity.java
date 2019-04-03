@@ -20,6 +20,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static  ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
   public static String severityString;
 
+
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
    * xml. The Text View for every question is created with the opacity for each question and is
@@ -31,18 +32,32 @@ public class QuestionnaireActivity extends AppCompatActivity {
    */
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
+
+
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
+      final Button yesButton = findViewById(R.id.YESbtn);
+      final Button noButton = findViewById(R.id.NObtn);
+      final Button backButton = findViewById(R.id.backButton);
+      final Button confirmButton = findViewById(R.id.confirmButton);
+      final Button nextButton = findViewById(R.id.nextButton);
 
     ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
-    final Button yesButton = findViewById(R.id.YESbtn);
-    final Button noButton = findViewById(R.id.NObtn);
-    final Button backButton = findViewById(R.id.backButton);
+
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
     backButton.setOnClickListener(backClickListener);
+    confirmButton.setOnClickListener(confirmButtonListener);
+    nextButton.setOnClickListener(nextButtonListener);
+
+    confirmButton.setEnabled(false);
+    confirmButton.setAlpha(0);
+   // backButton.setEnabled(false);
+   // backButton.setAlpha(0);
+    nextButton.setEnabled(false);
+    nextButton.setAlpha(0);
 
     qOne = findViewById(R.id.questionOne);
     qTwo = findViewById(R.id.questionTwo);
@@ -112,6 +127,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
      */
     @Override
     public void onClick(final View v) {
+
         storeOnclickQuestionnaire(true);
         yesAnswers++;
 
@@ -139,6 +155,48 @@ public class QuestionnaireActivity extends AppCompatActivity {
         storeOnclickQuestionnaire(false);
     }
   };
+    private final View.OnClickListener nextButtonListener = new View.OnClickListener() {
+        /**
+         *  The onClick method for the No button event listener will increment the answerCounter to
+         *  keep track of which question the App user is on in the questionnaire. The variable
+         *  noAnswers is incremented each time the event is called for the end of the questionnaire
+         *  determine the severity level.
+         *
+         *  The answerCounter is used in the if conditional statement. As the App user takes the
+         *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
+         *  the next question is set to 100 and made visible.
+         *
+         *  Once the user answers question eleven the severity level is calculated by subtracting the
+         *  the No answers from the Yes Answers.
+         *
+         * @param v takes the view during the onClick event.
+         */
+        @Override
+        public void onClick(final View v) {
+            //storeOnclickQuestionnaire(false);
+        }
+    };
+    private final View.OnClickListener confirmButtonListener = new View.OnClickListener() {
+        /**
+         *  The onClick method for the No button event listener will increment the answerCounter to
+         *  keep track of which question the App user is on in the questionnaire. The variable
+         *  noAnswers is incremented each time the event is called for the end of the questionnaire
+         *  determine the severity level.
+         *
+         *  The answerCounter is used in the if conditional statement. As the App user takes the
+         *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
+         *  the next question is set to 100 and made visible.
+         *
+         *  Once the user answers question eleven the severity level is calculated by subtracting the
+         *  the No answers from the Yes Answers.
+         *
+         * @param v takes the view during the onClick event.
+         */
+        @Override
+        public void onClick(final View v) {
+            //storeOnclickQuestionnaire(false);
+        }
+    };
     private final View.OnClickListener backClickListener = new View.OnClickListener() {
         /**
          * The onClick method for the Yes button event listener will increment the answerCounter to
@@ -158,7 +216,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
            if(prevAnswer){
-             yesAnswers++;
+             yesAnswers--;
            }
            answerCounter = answerCounter-1;
           if (answerCounter <10) {
@@ -174,6 +232,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
     };
 
   public void storeOnclickQuestionnaire(boolean value) {
+      //backButton.setEnabled(true);
+     // backButton.setAlpha(1);
         prevAnswer =value;
         if (answerCounter <10) {
             questionnaireAnswers.set(answerCounter, value);
