@@ -38,8 +38,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
     db = VolitionDatabase.getDatabase(this.getApplication());
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
+    final Button backButton = findViewById(R.id.backButton);
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
+    backButton.setOnClickListener(backClickListener);
 
     qOne = findViewById(R.id.questionOne);
     qTwo = findViewById(R.id.questionTwo);
@@ -136,6 +138,29 @@ public class QuestionnaireActivity extends AppCompatActivity {
         storeOnclickQuestionnaire(false);
     }
   };
+    private final View.OnClickListener backClickListener = new View.OnClickListener() {
+        /**
+         * The onClick method for the Yes button event listener will increment the answerCounter to
+         * keep track of which question the App user is on in the questionnaire. The variable
+         * yesAnswers is incremented each time the event is called for the end of the questionnaire
+         * determine the severity level.
+         *
+         * The answerCounter is used in the if conditional statement. As the App user takes the
+         * questionnaire the opacity for the question just answered is set to 0 and the opacity for
+         * the Next question is set to 100 and made visible.
+         *
+         * Once the user answers question eleven the severity level is calculated by subtracting the
+         * the No answers from the Yes Answers.
+         *
+         * @param v takes the view during onClick event.
+         */
+        @Override
+        public void onClick(final View v) {
+           answerCounter--;
+
+
+        }
+    };
 
   public void storeOnclickQuestionnaire(boolean value) {
 
