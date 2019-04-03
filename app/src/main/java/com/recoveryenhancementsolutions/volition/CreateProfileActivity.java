@@ -112,7 +112,7 @@ public class CreateProfileActivity extends AppCompatActivity {
        */
       private void sendOff() {
         //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
+        final Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireConfirmActivity.class);
         startActivity(intent);
       }
 
