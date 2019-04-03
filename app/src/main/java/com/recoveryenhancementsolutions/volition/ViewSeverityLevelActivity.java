@@ -26,21 +26,21 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.activity_severitylevel);
+    setContentView(R.layout.activity_severity_level);
 
     specifier = findViewById(R.id.specifier_tv);
     totalYesTv = findViewById(R.id.totalScore_tv);
     Button TPButton = findViewById(R.id.TPButton);
 
     // Get a reference to the ViewModel for this screen.
-    mViewModel = ViewModelProviders.of(this).get(ViewSeverityLevelViewModel.class);
+    viewSeverityViewModel = ViewModelProviders.of(this).get(ViewSeverityLevelViewModel.class);
     observeTotalYes();
     // Update the UI whenever there's a change in the ViewModel's data.
     observeSeverityLevel();
     TPButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-       // startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
+        startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
       }
     });
   }
@@ -50,7 +50,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * a method to show it in UI
    */
   private void observeTotalYes() {
-    mViewModel.totalYes.observe(this, new Observer<String>() {
+    viewSeverityViewModel.getTotalYesAnswers().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String totalYes) {
         showTotalYesInUi(totalYes);
@@ -62,7 +62,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * appends a string into the total yes text view and is entered by a string builder
    */
   private void showTotalYesInUi(final @NonNull String totalYes) {
-    StringBuilder sb = new StringBuilder();
+    final StringBuilder sb = new StringBuilder();
 
     sb.append(totalYes);
 
@@ -74,7 +74,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * calls a method to show it in UI
    */
   private void observeSeverityLevel() {
-    mViewModel.severity.observe(this, new Observer<String>() {
+    viewSeverityViewModel.getSeverity().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String severity) {
         showSeverityLevelInUi(severity);
@@ -86,18 +86,14 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    * appends a string into the specifier text view and is entered by a string builder
    */
   private void showSeverityLevelInUi(final @NonNull String severity) {
-    StringBuilder sb = new StringBuilder();
+    final StringBuilder sb = new StringBuilder();
 
     sb.append(severity);
 
     specifier.setText(sb.toString());
   }
 
-  private ViewSeverityLevelViewModel mViewModel;
+  private ViewSeverityLevelViewModel viewSeverityViewModel;
   private TextView specifier;
   private TextView totalYesTv;
-
-
 }
-
-

@@ -10,10 +10,10 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
+      android:exported="true"
       android:name=".MainActivity"
       android:label="@string/app_name">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
@@ -38,6 +38,9 @@
       android:label="@string/title_activity_medication_choice"
       android:name=".MedicationChoiceActivity"
       android:theme="@style/AppTheme.NoActionBar">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
     </activity>
     <activity
       android:label="@string/app_name"
@@ -59,6 +62,14 @@
       android:name=".QuestionnaireActivity"
       android:exported="true"
       android:label="@string/app_name">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".QuestionnaireConfirmActivity"
+        android:exported="true"
+        android:label="@string/app_name">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
