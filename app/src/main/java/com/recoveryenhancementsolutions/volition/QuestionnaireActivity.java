@@ -17,30 +17,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static int severityLevel = 0;
   public static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
   public static  ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
-  /*
-  public static Boolean qOneAnswer = questionnaireAnswers.get(1);
-  public static Boolean qTwoAnswer = questionnaireAnswers.get(2);
-  public static Boolean qThreeAnswer = questionnaireAnswers.get(3);
-  public static Boolean qFourAnswer = questionnaireAnswers.get(4);
-  public static Boolean qFiveAnswer = questionnaireAnswers.get(5);
-  public static Boolean qSixAnswer = questionnaireAnswers.get(6);
-  public static Boolean qSevenAnswer = questionnaireAnswers.get(7);
-  public static Boolean qEightAnswer = questionnaireAnswers.get(8);
-  public static Boolean qNineAnswer = questionnaireAnswers.get(9);
-  public static Boolean qTenAnswer = questionnaireAnswers.get(10);
-  public static Boolean qElevenAnswer = questionnaireAnswers.get(11);
-  public static String severityString; */
-public static Boolean qOneAnswer ;
-  public static Boolean qTwoAnswer ;
-  public static Boolean qThreeAnswer;
-  public static Boolean qFourAnswer ;
-  public static Boolean qFiveAnswer ;
-  public static Boolean qSixAnswer;
-  public static Boolean qSevenAnswer ;
-  public static Boolean qEightAnswer;
-  public static Boolean qNineAnswer ;
-  public static Boolean qTenAnswer;
-  public static Boolean qElevenAnswer;
   public static String severityString;
 
   /**
@@ -133,43 +109,9 @@ public static Boolean qOneAnswer ;
      */
     @Override
     public void onClick(final View v) {
+        storeOnclickQuestionnaire(true);
+        yesAnswers++;
 
-
-      if (answerCounter <10) {
-        questionnaireAnswers.set(answerCounter, true);
-        questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
-        questionsForQuestionnaire.get(answerCounter+1).setTextColor(questionsForQuestionnaire.get(answerCounter+1).getTextColors().withAlpha(100));
-          answerCounter++;
-          yesAnswers++;
-      }
-
-      else if (answerCounter==10){
-        questionnaireAnswers.set(answerCounter, true);
-        questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
-          yesAnswers++;
-          severityLevel = yesAnswers - noAnswers;
-        if (yesAnswers <= 3) {
-          severityString = "Mild";
-        } else if (yesAnswers <= 5) {
-          severityString = "Moderate";
-        } else {
-          severityString = "Severe";
-        }
-          qOneAnswer = questionnaireAnswers.get(0);
-          qTwoAnswer = questionnaireAnswers.get(1);
-          qThreeAnswer = questionnaireAnswers.get(2);
-          qFourAnswer = questionnaireAnswers.get(3);
-          qFiveAnswer = questionnaireAnswers.get(4);
-         qSixAnswer = questionnaireAnswers.get(5);
-          qSevenAnswer = questionnaireAnswers.get(6);
-          qEightAnswer = questionnaireAnswers.get(7);
-          qNineAnswer = questionnaireAnswers.get(8);
-          qTenAnswer = questionnaireAnswers.get(9);
-          qElevenAnswer = questionnaireAnswers.get(10);
-
-        QuestionnaireActivityViewModel.populateAsync(db);
-        startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-      }
     }
   };
 
@@ -191,18 +133,23 @@ public static Boolean qOneAnswer ;
      */
     @Override
     public void onClick(final View v) {
+        storeOnclickQuestionnaire(false);
+    }
+  };
+
+  public void storeOnclickQuestionnaire(boolean value) {
 
         if (answerCounter <10) {
+            questionnaireAnswers.set(answerCounter, value);
             questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
             questionsForQuestionnaire.get(answerCounter+1).setTextColor(questionsForQuestionnaire.get(answerCounter+1).getTextColors().withAlpha(100));
             answerCounter++;
-            noAnswers++;
+
         }
 
         else if (answerCounter==10){
-            questionnaireAnswers.set(answerCounter, true);
+            questionnaireAnswers.set(answerCounter, value);
             questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
-            noAnswers++;
             severityLevel = yesAnswers - noAnswers;
             if (yesAnswers <= 3) {
                 severityString = "Mild";
@@ -211,22 +158,11 @@ public static Boolean qOneAnswer ;
             } else {
                 severityString = "Severe";
             }
-            qOneAnswer = questionnaireAnswers.get(0);
-            qTwoAnswer = questionnaireAnswers.get(1);
-            qThreeAnswer = questionnaireAnswers.get(2);
-            qFourAnswer = questionnaireAnswers.get(3);
-            qFiveAnswer = questionnaireAnswers.get(4);
-            qSixAnswer = questionnaireAnswers.get(5);
-            qSevenAnswer = questionnaireAnswers.get(6);
-            qEightAnswer = questionnaireAnswers.get(7);
-            qNineAnswer = questionnaireAnswers.get(8);
-            qTenAnswer = questionnaireAnswers.get(9);
-            qElevenAnswer = questionnaireAnswers.get(10);
             QuestionnaireActivityViewModel.populateAsync(db);
             startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
         }
+        return;
     }
-  };
   private TextView severityResult;
   private TextView qOne;
   private TextView qTwo;

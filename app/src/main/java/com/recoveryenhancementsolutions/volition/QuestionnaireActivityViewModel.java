@@ -6,8 +6,7 @@ import android.arch.lifecycle.AndroidViewModel;
 
 import android.os.AsyncTask;
 
-
-
+import java.util.ArrayList;
 
 /**
  * This class abstracts the database away from the view severity level activity and allows it to
@@ -53,36 +52,22 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
     /**
      * Receives boolean variables of answers to each questions in the questionnaire and stores into
      * the entity.
-     * @param questionOneAnswer answer to question 1.
-     * @param questionTwoAnswer answer to question 2.
-     * @param questionThreeAnswer answer to question 3.
-     * @param questionFourAnswer answer to question 4.
-     * @param questionFiveAnswer answer to question 5.
-     * @param questionSixAnswer answer to question 6.
-     * @param questionSevenAnswer answer to question 7.
-     * @param questionEightAnswer answer to question 8.
-     * @param questionNineAnswer answer to question 9.
-     * @param questionTenAnswer answer to question 10.
-     * @param questionElevenAnswer answer to question 11.
      * @param yesAnswers number of yes answers in the questionnaire.
      * @param severityString name of the severity level based on yes answers in the questionnaire.
      */
-    public static void addQuestionnaire(final boolean questionOneAnswer, final boolean questionTwoAnswer,final boolean questionThreeAnswer, final
-    boolean questionFourAnswer, final boolean questionFiveAnswer, final boolean questionSixAnswer,final
-                                        boolean questionSevenAnswer, final boolean questionEightAnswer, final boolean questionNineAnswer, final boolean questionTenAnswer, final
-                                        boolean questionElevenAnswer, final int yesAnswers, final String severityString) {
+    public static void addQuestionnaire(final ArrayList<Boolean> questionnaireAnswers, final int yesAnswers, final String severityString) {
         QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
-        questionnaireActivityEntity.setQ1(questionOneAnswer);
-        questionnaireActivityEntity.setQ2(questionTwoAnswer);
-        questionnaireActivityEntity.setQ3(questionThreeAnswer);
-        questionnaireActivityEntity.setQ4(questionFourAnswer);
-        questionnaireActivityEntity.setQ5(questionFiveAnswer);
-        questionnaireActivityEntity.setQ6(questionSixAnswer);
-        questionnaireActivityEntity.setQ7(questionSevenAnswer);
-        questionnaireActivityEntity.setQ8(questionEightAnswer);
-        questionnaireActivityEntity.setQ9(questionNineAnswer);
-        questionnaireActivityEntity.setQ10(questionTenAnswer);
-        questionnaireActivityEntity.setQ11(questionElevenAnswer);
+        questionnaireActivityEntity.setQ1(questionnaireAnswers.get(0));
+        questionnaireActivityEntity.setQ2(questionnaireAnswers.get(1));
+        questionnaireActivityEntity.setQ3(questionnaireAnswers.get(2));
+        questionnaireActivityEntity.setQ4(questionnaireAnswers.get(3));
+        questionnaireActivityEntity.setQ5(questionnaireAnswers.get(4));
+        questionnaireActivityEntity.setQ6(questionnaireAnswers.get(5));
+        questionnaireActivityEntity.setQ7(questionnaireAnswers.get(6));
+        questionnaireActivityEntity.setQ8(questionnaireAnswers.get(7));
+        questionnaireActivityEntity.setQ9(questionnaireAnswers.get(8));
+        questionnaireActivityEntity.setQ10(questionnaireAnswers.get(9));
+        questionnaireActivityEntity.setQ11(questionnaireAnswers.get(10));
         String totalYes = Integer.toString(yesAnswers);
         questionnaireActivityEntity.setTotalYes(totalYes);
         questionnaireActivityEntity.setId(1);
@@ -96,13 +81,7 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
      * @param db is the database.
      */
     public static void populateWithData(final VolitionDatabase db) {
-        addQuestionnaire(QuestionnaireActivity.qOneAnswer, QuestionnaireActivity.qTwoAnswer,
-                QuestionnaireActivity.qThreeAnswer, QuestionnaireActivity.qFourAnswer,
-                QuestionnaireActivity.qFiveAnswer,
-                QuestionnaireActivity.qSixAnswer, QuestionnaireActivity.qSevenAnswer,
-                QuestionnaireActivity.qEightAnswer, QuestionnaireActivity.qNineAnswer,
-                QuestionnaireActivity.qTenAnswer
-                , QuestionnaireActivity.qElevenAnswer, QuestionnaireActivity.yesAnswers,
+        addQuestionnaire(QuestionnaireActivity.questionnaireAnswers, QuestionnaireActivity.yesAnswers,
                 QuestionnaireActivity.severityString);
 
     }
