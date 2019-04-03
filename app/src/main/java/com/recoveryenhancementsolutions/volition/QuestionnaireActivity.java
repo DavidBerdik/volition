@@ -17,7 +17,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static boolean prevAnswer = false;
   public static int severityLevel = 0;
   public static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
-  public static  ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
+  public static ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
   public static String severityString;
 
 
@@ -33,14 +33,13 @@ public class QuestionnaireActivity extends AppCompatActivity {
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
 
-
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
-      final Button yesButton = findViewById(R.id.YESbtn);
-      final Button noButton = findViewById(R.id.NObtn);
-      final Button backButton = findViewById(R.id.backButton);
-      final Button confirmButton = findViewById(R.id.confirmButton);
-      final Button nextButton = findViewById(R.id.nextButton);
+    final Button yesButton = findViewById(R.id.YESbtn);
+    final Button noButton = findViewById(R.id.NObtn);
+    final Button backButton = findViewById(R.id.backButton);
+    final Button confirmButton = findViewById(R.id.confirmButton);
+    final Button nextButton = findViewById(R.id.nextButton);
 
     ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
@@ -54,8 +53,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     confirmButton.setEnabled(false);
     confirmButton.setAlpha(0);
-   // backButton.setEnabled(false);
-   // backButton.setAlpha(0);
+    backButton.setEnabled(false);
+    backButton.setAlpha(0);
     nextButton.setEnabled(false);
     nextButton.setAlpha(0);
 
@@ -94,21 +93,20 @@ public class QuestionnaireActivity extends AppCompatActivity {
     questionsForQuestionnaire.add(qTen);
     questionsForQuestionnaire.add(qEleven);
     questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
-      questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
+    questionnaireAnswers.add(false);
 
-
-
-      severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
+    severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
   }
+
   private final View.OnClickListener yesClickListener = new View.OnClickListener() {
     /**
      * The onClick method for the Yes button event listener will increment the answerCounter to
@@ -127,10 +125,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
      */
     @Override
     public void onClick(final View v) {
-
-        storeOnclickQuestionnaire(true);
-        yesAnswers++;
-
+      storeOnclickQuestionnaire(true);
+      yesAnswers++;
+      checkBackButton();
     }
   };
 
@@ -152,113 +149,133 @@ public class QuestionnaireActivity extends AppCompatActivity {
      */
     @Override
     public void onClick(final View v) {
-        storeOnclickQuestionnaire(false);
+      storeOnclickQuestionnaire(false);
+      checkBackButton();
     }
   };
-    private final View.OnClickListener nextButtonListener = new View.OnClickListener() {
-        /**
-         *  The onClick method for the No button event listener will increment the answerCounter to
-         *  keep track of which question the App user is on in the questionnaire. The variable
-         *  noAnswers is incremented each time the event is called for the end of the questionnaire
-         *  determine the severity level.
-         *
-         *  The answerCounter is used in the if conditional statement. As the App user takes the
-         *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
-         *  the next question is set to 100 and made visible.
-         *
-         *  Once the user answers question eleven the severity level is calculated by subtracting the
-         *  the No answers from the Yes Answers.
-         *
-         * @param v takes the view during the onClick event.
-         */
-        @Override
-        public void onClick(final View v) {
-            //storeOnclickQuestionnaire(false);
-        }
-    };
-    private final View.OnClickListener confirmButtonListener = new View.OnClickListener() {
-        /**
-         *  The onClick method for the No button event listener will increment the answerCounter to
-         *  keep track of which question the App user is on in the questionnaire. The variable
-         *  noAnswers is incremented each time the event is called for the end of the questionnaire
-         *  determine the severity level.
-         *
-         *  The answerCounter is used in the if conditional statement. As the App user takes the
-         *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
-         *  the next question is set to 100 and made visible.
-         *
-         *  Once the user answers question eleven the severity level is calculated by subtracting the
-         *  the No answers from the Yes Answers.
-         *
-         * @param v takes the view during the onClick event.
-         */
-        @Override
-        public void onClick(final View v) {
-            //storeOnclickQuestionnaire(false);
-        }
-    };
-    private final View.OnClickListener backClickListener = new View.OnClickListener() {
-        /**
-         * The onClick method for the Yes button event listener will increment the answerCounter to
-         * keep track of which question the App user is on in the questionnaire. The variable
-         * yesAnswers is incremented each time the event is called for the end of the questionnaire
-         * determine the severity level.
-         *
-         * The answerCounter is used in the if conditional statement. As the App user takes the
-         * questionnaire the opacity for the question just answered is set to 0 and the opacity for
-         * the Next question is set to 100 and made visible.
-         *
-         * Once the user answers question eleven the severity level is calculated by subtracting the
-         * the No answers from the Yes Answers.
-         *
-         * @param v takes the view during onClick event.
-         */
-        @Override
-        public void onClick(final View v) {
-           if(prevAnswer){
-             yesAnswers--;
-           }
-           answerCounter = answerCounter-1;
-          if (answerCounter <10) {
+  private final View.OnClickListener nextButtonListener = new View.OnClickListener() {
+    /**
+     *  The onClick method for the No button event listener will increment the answerCounter to
+     *  keep track of which question the App user is on in the questionnaire. The variable
+     *  noAnswers is incremented each time the event is called for the end of the questionnaire
+     *  determine the severity level.
+     *
+     *  The answerCounter is used in the if conditional statement. As the App user takes the
+     *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
+     *  the next question is set to 100 and made visible.
+     *
+     *  Once the user answers question eleven the severity level is calculated by subtracting the
+     *  the No answers from the Yes Answers.
+     *
+     * @param v takes the view during the onClick event.
+     */
+    @Override
+    public void onClick(final View v) {
+      //storeOnclickQuestionnaire(false);
+    }
+  };
+  private final View.OnClickListener confirmButtonListener = new View.OnClickListener() {
+    /**
+     *  The onClick method for the No button event listener will increment the answerCounter to
+     *  keep track of which question the App user is on in the questionnaire. The variable
+     *  noAnswers is incremented each time the event is called for the end of the questionnaire
+     *  determine the severity level.
+     *
+     *  The answerCounter is used in the if conditional statement. As the App user takes the
+     *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
+     *  the next question is set to 100 and made visible.
+     *
+     *  Once the user answers question eleven the severity level is calculated by subtracting the
+     *  the No answers from the Yes Answers.
+     *
+     * @param v takes the view during the onClick event.
+     */
+    @Override
+    public void onClick(final View v) {
+      //storeOnclickQuestionnaire(false);
+    }
+  };
+  private final View.OnClickListener backClickListener = new View.OnClickListener() {
+    /**
+     * The onClick method for the Yes button event listener will increment the answerCounter to
+     * keep track of which question the App user is on in the questionnaire. The variable
+     * yesAnswers is incremented each time the event is called for the end of the questionnaire
+     * determine the severity level.
+     *
+     * The answerCounter is used in the if conditional statement. As the App user takes the
+     * questionnaire the opacity for the question just answered is set to 0 and the opacity for
+     * the Next question is set to 100 and made visible.
+     *
+     * Once the user answers question eleven the severity level is calculated by subtracting the
+     * the No answers from the Yes Answers.
+     *
+     * @param v takes the view during onClick event.
+     */
+    @Override
+    public void onClick(final View v) {
 
-            questionsForQuestionnaire.get(answerCounter + 1).setTextColor(
-                questionsForQuestionnaire.get(answerCounter + 1).getTextColors().withAlpha(0));
-            questionsForQuestionnaire.get(answerCounter).setTextColor(
-                questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(100));
-          }
+      if (prevAnswer) {
+        yesAnswers--;
+      }
+      answerCounter = answerCounter - 1;
+      checkBackButton();
+      if (answerCounter < 10) {
+
+        questionsForQuestionnaire.get(answerCounter + 1).setTextColor(
+            questionsForQuestionnaire.get(answerCounter + 1).getTextColors().withAlpha(0));
+        questionsForQuestionnaire.get(answerCounter).setTextColor(
+            questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(100));
+      }
 
 
-        }
-    };
+    }
+  };
 
   public void storeOnclickQuestionnaire(boolean value) {
-      //backButton.setEnabled(true);
-     // backButton.setAlpha(1);
-        prevAnswer =value;
-        if (answerCounter <10) {
-            questionnaireAnswers.set(answerCounter, value);
-            questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
-            questionsForQuestionnaire.get(answerCounter+1).setTextColor(questionsForQuestionnaire.get(answerCounter+1).getTextColors().withAlpha(100));
-            answerCounter++;
+    //backButton.setEnabled(true);
+    // backButton.setAlpha(1);
+    prevAnswer = value;
+    if (answerCounter < 10) {
+      questionnaireAnswers.set(answerCounter, value);
+      questionsForQuestionnaire.get(answerCounter)
+          .setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
+      questionsForQuestionnaire.get(answerCounter + 1).setTextColor(
+          questionsForQuestionnaire.get(answerCounter + 1).getTextColors().withAlpha(100));
+      answerCounter++;
 
-        }
-
-        else if (answerCounter==10){
-            questionnaireAnswers.set(answerCounter, value);
-            questionsForQuestionnaire.get(answerCounter).setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
-            severityLevel = yesAnswers - noAnswers;
-            if (yesAnswers <= 3) {
-                severityString = "Mild";
-            } else if (yesAnswers <= 5) {
-                severityString = "Moderate";
-            } else {
-                severityString = "Severe";
-            }
-            QuestionnaireActivityViewModel.populateAsync(db);
-            startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-        }
-        return;
+    } else if (answerCounter == 10) {
+      questionnaireAnswers.set(answerCounter, value);
+      questionsForQuestionnaire.get(answerCounter)
+          .setTextColor(questionsForQuestionnaire.get(answerCounter).getTextColors().withAlpha(0));
+      severityLevel = yesAnswers - noAnswers;
+      if (yesAnswers <= 3) {
+        severityString = "Mild";
+      } else if (yesAnswers <= 5) {
+        severityString = "Moderate";
+      } else {
+        severityString = "Severe";
+      }
+      QuestionnaireActivityViewModel.populateAsync(db);
+      startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
     }
+    return;
+  }
+
+  /**
+   * Method to activate back button after question one or deactivate it if it is on question one.
+   */
+  private void checkBackButton() {
+    Button backButton = (Button) findViewById(R.id.backButton);
+    if (answerCounter == 0) {
+      backButton.setEnabled(false);
+      backButton.setAlpha(0);
+    } else {
+      backButton.setEnabled(true);
+      backButton.setAlpha(1);
+    }
+
+  }
+
   private TextView severityResult;
   private TextView qOne;
   private TextView qTwo;
