@@ -42,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
 
-    buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
 
     final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
@@ -50,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
     final CoreNavigationHandler navigationHandler = new CoreNavigationHandler(
-        (BottomNavigationView) findViewById(R.id.menubar));
+        (BottomNavigationView) findViewById(R.id.menubar), this);
     navigationHandler.setSelectedItem(CoreNavigationPage.PAGE_HOME);
   }
 
@@ -69,6 +68,5 @@ public class HomeActivity extends AppCompatActivity {
     }
   };
 
-  private TextView buttonTestItem;
   private TextView daysCleanMessage;
 }
