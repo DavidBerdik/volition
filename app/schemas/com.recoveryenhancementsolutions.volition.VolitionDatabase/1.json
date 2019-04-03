@@ -4,6 +4,7 @@
     "version": 1,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "identityHash": "742e14a270336f1519fc1cdbab725e9e",
 =======
     "identityHash": "b6f0169add16cc4e1877b7e4b34a6e93",
@@ -11,6 +12,9 @@
 =======
     "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
 >>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
+=======
+    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
+>>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
     "entities": [
       {
         "tableName": "MedicationChoiceEntity",
@@ -33,6 +37,7 @@
         "foreignKeys": []
       },
       {
+<<<<<<< HEAD
 <<<<<<< HEAD
         "tableName": "QuestionnaireEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
@@ -136,6 +141,8 @@
       {
 =======
 >>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
+=======
+>>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
         "tableName": "UserActivityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
         "fields": [
@@ -306,6 +313,7 @@
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"742e14a270336f1519fc1cdbab725e9e\")"
 =======
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b6f0169add16cc4e1877b7e4b34a6e93\")"
@@ -313,6 +321,9 @@
 =======
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
 >>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
+=======
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
+>>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
     ]
   }
 }

@@ -2,7 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 /**
  * Temporary file taken from feature/VOL-50-View-Severity-Level
- *
+ * <p>
  * Should be written over by feature/VOL-50-View-Security-Level
  */
 
@@ -27,6 +27,6 @@ public interface QuestionnaireDao {
   LiveData<List<QuestionnaireEntity>> findQuestionnaire();
 
   @Query("SELECT severityLevel FROM QuestionnaireEntity")
-  String findSeverityLevel();
+  LiveData<String> findSeverityLevel();
 
 }

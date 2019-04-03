@@ -59,9 +59,7 @@ public class TreatmentPlanActivity extends AppCompatActivity {
   /**
    * Method runs when the refresh button in the xml files is clicked.
    */
-  private void onUpdateButtonClicked(){
-    viewModel.updateDb();
-  }
+  private void onUpdateButtonClicked(){ }
 
   /**
    * Method runs when add button is pressed to add a counseling session.
@@ -70,7 +68,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumCounseling(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -86,7 +83,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumCounseling(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -96,7 +92,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumMedManagement(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -112,7 +107,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumMedManagement(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -122,7 +116,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumSupportMeeting(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -138,7 +131,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumSupportMeeting(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -148,7 +140,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumOutcomeMeasures(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -164,7 +155,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumOutcomeMeasures(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -174,7 +164,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumLessons(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -190,7 +179,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumLessons(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -200,7 +188,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -216,7 +203,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -226,7 +212,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumTimeTracking(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -242,7 +227,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumTimeTracking(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -252,7 +236,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     String s = counselingView.getText().toString();
     int num = Integer.parseInt(s) + 1;
     viewModel.treatmentPlan.setNumReadingResponse(num);
-    viewModel.updateDb();
   }
 
   /**
@@ -268,7 +251,6 @@ public class TreatmentPlanActivity extends AppCompatActivity {
       num--;
     }
     viewModel.treatmentPlan.setNumReadingResponse(num);
-    viewModel.updateDb();
   }
 
   /**

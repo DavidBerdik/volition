@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class TreatmentPlanDaoTest {
     @Rule
-    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+    public final InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     /**
      * Creates the temporary test database

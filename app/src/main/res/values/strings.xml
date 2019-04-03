@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <string name="add">+</string>
     <string name="sub">-</string>
     <string name="volition">Volition</string>
@@ -27,10 +28,12 @@
         <item>Alcohol Use Disorder</item>
     </string-array>
 
+=======
+>>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
   <string name="app_name">Volition</string>
+  <string name="title_home">Home</string>
   <string name="button_yes">Yes</string>
   <string name="button_no">No</string>
-  <string name="title_home">Home</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -73,8 +76,8 @@
   <string name="menubar_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
-  <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
