@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
 
     final CoreNavigationHandler navigationHandler = new CoreNavigationHandler(
         (BottomNavigationView) findViewById(R.id.menubar));
-    navigationHandler.setSelectedItem(CoreNavigationPage.PAGE_ACTIVITY);
+    navigationHandler.setSelectedItem(CoreNavigationPage.PAGE_HOME);
   }
 
   private Observer<Date> dateObserver = new Observer<Date>() {

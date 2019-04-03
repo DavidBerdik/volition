@@ -27,10 +27,13 @@ public class CoreNavigationHandler {
     switch (page) {
       case PAGE_HOME:
         this.bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+        break;
       case PAGE_ACTIVITY:
         this.bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+        break;
       case PAGE_PLAN:
         this.bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
+        break;
     }
   }
 
