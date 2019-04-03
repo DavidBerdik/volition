@@ -11,12 +11,6 @@ import android.os.AsyncTask;
 public class TreatmentPlanViewModel extends AndroidViewModel {
 
   /**
-   * The treatment plan stored in the database.  Should only be used to update values, not read
-   * them.
-   */
-  public TreatmentPlanEntity treatmentPlan;
-
-  /**
    * Constructor method to initialize a new TreatmentPlanViewModel
    *
    * @param application The application creating the TreatmentPlanViewModel.
@@ -164,6 +158,78 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
+   * Returns the number of recommended counseling sessions to attend.
+   *
+   * @return An integer representing the number of counseling sessions to attend.
+   */
+  public int getNumCounseling() {
+    return treatmentPlan.getNumCounseling();
+  }
+
+  /**
+   * Returns the number of recommended support meetings.
+   *
+   * @return An integer representing the number of support meetings to attend.
+   */
+  public int getNumSupportMeeting() {
+    return treatmentPlan.getNumSupportMeeting();
+  }
+
+  /**
+   * Returns the number of recommended lessons.
+   *
+   * @return An integer representing the number of lessons to attend.
+   */
+  public int getNumLessons() {
+    return treatmentPlan.getNumLessons();
+  }
+
+  /**
+   * Returns the number of recommended treatmentplan effectiveness assessments.
+   *
+   * @return An integer representing the number of treatmentplan effectiveness assessments to take.
+   */
+  public int getNumTreatmentEffectivenessAssessment() {
+    return treatmentPlan.getNumTreatmentEffectivenessAssessment();
+  }
+
+  /**
+   * Returns the number of recommended reading responses to complete.
+   *
+   * @return An integer representing the number of reading responses to complete.
+   */
+  public int getNumReadingResponse() {
+    return treatmentPlan.getNumReadingResponse();
+  }
+
+  /**
+   * Returns the number of recommended medication managements.
+   *
+   * @return An integer representing the number of medication managements to do.
+   */
+  public int getNumMedManagement() {
+    return treatmentPlan.getNumMedManagement();
+  }
+
+  /**
+   * Returns the frequency of recommended medication management.
+   *
+   * @return A string representing the frequency of medication management.
+   */
+  public String getMedManagementFrequency() {
+    return treatmentPlan.getMedManagementFrequency();
+  }
+
+  /**
+   * Returns the frequency of recommended outcome measures.
+   *
+   * @return A string representing the frequency of outcome measures.
+   */
+  public String getOutcomMeasureFrequency() {
+    return treatmentPlan.getOutcomeMeasureFrequency();
+  }
+
+  /**
    * Inserts treatment plan into the database using a background thread
    *
    * @param treatmentPlanEntity the entity to be added to the database.
@@ -186,6 +252,11 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
       return null;
     }
   }
+
+  /**
+   * The treatment plan entity loaded from the database.
+   */
+  private TreatmentPlanEntity treatmentPlan;
 
   /**
    * The apps loaded Database.
