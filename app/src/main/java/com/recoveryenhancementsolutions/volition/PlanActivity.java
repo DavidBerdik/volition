@@ -107,8 +107,8 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     // Init navbar.
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setSelectedItemId(R.id.menubar_home);
+    final BottomNavigationView navigation = findViewById(R.id.core_navigation);
+    navigation.setSelectedItemId(R.id.navigation_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
     /*
@@ -251,19 +251,19 @@ public class PlanActivity extends AppCompatActivity {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
-        case R.id.menubar_home:
+        case R.id.core_navigation_home:
           Intent i = new Intent(getApplicationContext(), HomeActivity.class);
           startActivity(i);
           return true;
-        case R.id.menubar_activity:
+        case R.id.core_navigation_activity:
           return true;
-        case R.id.menubar_plan:
+        case R.id.core_navigation_plan:
           return true;
       }
       return false;
     }
   };
 
-  private final ArrayList<DateView> dateViews = new ArrayList<DateView>();
+  private final ArrayList<DateView> dateViews = new ArrayList<>();
   private UserActivityViewModel actViewModel;
 }
