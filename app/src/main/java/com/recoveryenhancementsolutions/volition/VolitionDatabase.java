@@ -41,6 +41,7 @@ import android.support.annotation.NonNull;
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 @Database(
     entities = {
+        TEAEntity.class,
         MedicationChoiceEntity.class,
         UserActivityEntity.class,
         DemographicDataEntity.class,
@@ -57,6 +58,8 @@ public abstract class VolitionDatabase extends RoomDatabase {
   public abstract DemographicDataDAO demographicDataDao();
 
   public abstract MedicationChoiceDAO medicationChoiceDAO();
+
+  public abstract TeaDAO teaDao();
 
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.
