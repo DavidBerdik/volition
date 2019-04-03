@@ -1,31 +1,166 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-
+/**
+ * Database entity for storing the users TEA responses
+ */
 @Entity(primaryKeys = "patientId")
 public class TEAEntity {
 
-  public void setId(final int id){patientId=id;}
-  public void setSubstanceInt(final int substanceI){substanceInt=substanceI;}
-  public void setHealthInt(final int healthI){healthInt=healthI;}
-  public void setLifestyleInt(final int lifestyleI){lifestyleInt=lifestyleI;}
-  public void setCommunityInt(final int communityI){communityInt=communityI;}
-  public void setSubstanceString(final String substanceS){substanceString=substanceS;}
-  public void setHealthString(final String healthS){healthString=healthS;}
-  public void setLifestyleString(final String lifestyleS){lifestyleString=lifestyleS;}
-  public void setCommunityString(final String communityS){communityString=communityS;}
+  /**
+   * Sets the primary key, probably shouldn't be used in code as id should already exist in other
+   * places
+   *
+   * @param id foreign key and primary key to recognize user
+   */
+  public void setId(final int id) {
+    patientId = id;
+  }
 
-  public int getSubstanceInt(){return substanceInt;}
-  public int getHealthInt(){return healthInt;}
-  public int getLifestyleInt(){return lifestyleInt;}
-  public int getCommunityInt(){return communityInt;}
-  public String getSubstanceString(){return substanceString;}
-  public String getHealthString(){return healthString;}
-  public String getLifestyleString(){return lifestyleString;}
-  public String getCommunityString(){return communityString;}
+  /**
+   * Sets the integer value for the question regarding substance use in the TEA activity
+   *
+   * @param substanceI answer to the substance use question
+   */
+  public void setSubstanceInt(final int substanceI) {
+    substanceInt = substanceI;
+  }
 
+  /**
+   * Sets the integer value for the question regarding health in the TEA activity
+   *
+   * @param healthI answer to the health question
+   */
+  public void setHealthInt(final int healthI) {
+    healthInt = healthI;
+  }
+
+  /**
+   * Sets the integer value for the question regarding Lifestyle in the TEA activity
+   *
+   * @param lifestyleI answer to the leftstyle question
+   */
+  public void setLifestyleInt(final int lifestyleI) {
+    lifestyleInt = lifestyleI;
+  }
+
+  /**
+   * Sets the integer value for the question regarding community in the TEA activity
+   *
+   * @param communityI answer to the community question
+   */
+  public void setCommunityInt(final int communityI) {
+    communityInt = communityI;
+  }
+
+  /**
+   * Sets the String value for the question regarding substance use in the TEA activity
+   *
+   * @param substanceS string of personal notes from substance use question
+   */
+  public void setSubstanceString(final String substanceS) {
+    substanceString = substanceS;
+  }
+
+  /**
+   * Sets the String value for the question regarding string in the TEA activity
+   *
+   * @param healthS string of personal notes from health question
+   */
+  public void setHealthString(final String healthS) {
+    healthString = healthS;
+  }
+
+  /**
+   * Sets the String value for the question regarding lifestyle in the TEA activity
+   *
+   * @param lifestyleS string of personal notes from lifestyle question
+   */
+  public void setLifestyleString(final String lifestyleS) {
+    lifestyleString = lifestyleS;
+  }
+
+  /**
+   * Sets the String value for the question regarding community in the TEA activity
+   *
+   * @param communityS string of personal notes from community question
+   */
+  public void setCommunityString(final String communityS) {
+    communityString = communityS;
+  }
+
+  /**
+   * gets an int between 1-10 regarding the objects substance use question
+   *
+   * @return the answer recorded for the substance use question
+   */
+  public int getSubstanceInt() {
+    return substanceInt;
+  }
+
+  /**
+   * gets an int between 1-10 regarding the objects health question
+   *
+   * @return the answer recorded for the health question
+   */
+  public int getHealthInt() {
+    return healthInt;
+  }
+
+  /**
+   * gets an int between 1-10 regarding the objects lifestyle question
+   *
+   * @return the answer recorded for the lifestyle question
+   */
+  public int getLifestyleInt() {
+    return lifestyleInt;
+  }
+
+  /**
+   * gets an int between 1-10 regarding the objects community question
+   *
+   * @return the answer recorded for the community question
+   */
+  public int getCommunityInt() {
+    return communityInt;
+  }
+
+  /**
+   * gets an string of personal thoughts regarding the objects substance use question
+   *
+   * @return the answer recorded for the substance use question
+   */
+  public String getSubstanceString() {
+    return substanceString;
+  }
+
+  /**
+   * gets an string of personal thoughts regarding the objects health question
+   *
+   * @return the answer recorded for the health question
+   */
+  public String getHealthString() {
+    return healthString;
+  }
+
+  /**
+   * gets an string of personal thoughts regarding the objects lifestyle question
+   *
+   * @return the answer recorded for the lifestyle question
+   */
+  public String getLifestyleString() {
+    return lifestyleString;
+  }
+
+  /**
+   * gets an string of personal thoughts regarding the objects community question
+   *
+   * @return the answer recorded for the community question
+   */
+  public String getCommunityString() {
+    return communityString;
+  }
 
 
   @SuppressWarnings("NullableProblems")
