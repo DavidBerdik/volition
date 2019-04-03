@@ -29,10 +29,10 @@ public class PlanActivity extends AppCompatActivity {
    */
   private class DateView implements Observer<List<UserActivityEntity>> {
 
-    public final TextView title;
-    public final TextView content;
+    private final TextView title;
+    private final TextView content;
 
-    public DateView(Calendar day, TextView title, TextView content) {
+    public DateView(final Calendar day, final TextView title, final TextView content) {
       this.title = title;
       this.content = content;
 
@@ -44,7 +44,7 @@ public class PlanActivity extends AppCompatActivity {
      *
      * @param day The new day to associate with.
      */
-    public void setDay(Calendar day) {
+    public void setDay(final Calendar day) {
       this.day = (Calendar) day.clone();
       if (title != null) {
         String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
@@ -57,13 +57,13 @@ public class PlanActivity extends AppCompatActivity {
       return day;
     }
 
-    public void observe(LifecycleOwner owner) {
+    public void observe(final LifecycleOwner owner) {
       data = actViewModel.getActivitiesByDate(day.getTime());
       data.observe(owner, this);
       loaded = false;
     }
 
-    public void unobserve(LifecycleOwner owner) {
+    public void unobserve(final LifecycleOwner owner) {
       if (data != null) {
         data.removeObservers(owner);
         data = null;
@@ -187,7 +187,7 @@ public class PlanActivity extends AppCompatActivity {
     return dateViews.size();
   }
 
-  protected String getActivityBuffer(int at) {
+  protected String getActivityBuffer(final int at) {
     return dateViews.get(at).content.getText().toString();
   }
 
@@ -200,7 +200,7 @@ public class PlanActivity extends AppCompatActivity {
    *
    * @param by How many days to add to the rightmost day.  For example, 7 would load the next week.
    */
-  protected void cycle(int by) {
+  protected void cycle(final int by) {
     for (DateView dv : dateViews) {
       dv.unobserve(this);
     }
@@ -223,7 +223,7 @@ public class PlanActivity extends AppCompatActivity {
    *
    * @param forward If set, displays the next days on the calendar.  Otherwise, the previous days.
    */
-  protected void cycle(boolean forward) {
+  protected void cycle(final boolean forward) {
     cycle(forward ? dateViews.size() : -dateViews.size());
   }
 
