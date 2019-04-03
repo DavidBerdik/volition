@@ -2,58 +2,36 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "identityHash": "742e14a270336f1519fc1cdbab725e9e",
-=======
-    "identityHash": "b6f0169add16cc4e1877b7e4b34a6e93",
->>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
-=======
-    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
->>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
-=======
-    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
->>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
+    "identityHash": "5b8eb4e2bb34c40335248c449786521a",
     "entities": [
       {
-        "tableName": "MedicationChoiceEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "tableName": "UserActivityEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
         "fields": [
           {
-            "fieldPath": "medication",
-            "columnName": "medication",
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "desc",
+            "columnName": "desc",
             "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "medication"
+            "id"
           ],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "tableName": "QuestionnaireEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
-        "fields": [
-          {
-            "fieldPath": "severityLevel",
-            "columnName": "severityLevel",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "severityLevel"
-          ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -139,37 +117,41 @@
         "foreignKeys": []
       },
       {
-=======
->>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
-=======
->>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
-        "tableName": "UserActivityEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
+        "tableName": "QuestionnaireEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "date",
-            "columnName": "date",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "desc",
-            "columnName": "desc",
+            "fieldPath": "severityLevel",
+            "columnName": "severityLevel",
             "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "severityLevel"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "MedicationChoiceEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "fields": [
+          {
+            "fieldPath": "medication",
+            "columnName": "medication",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "medication"
+          ],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -311,19 +293,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"742e14a270336f1519fc1cdbab725e9e\")"
-=======
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b6f0169add16cc4e1877b7e4b34a6e93\")"
->>>>>>> d0f83ad49baf02d5741fb9f859dd9956e988f2b7
-=======
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
->>>>>>> 7e0144975c8339338cc63b879bbbc0e15bc6a4f3
-=======
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
->>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5b8eb4e2bb34c40335248c449786521a\")"
     ]
   }
 }

@@ -1,5 +1,5 @@
 <resources>
-<<<<<<< HEAD
+
     <string name="add">+</string>
     <string name="sub">-</string>
     <string name="volition">Volition</string>
@@ -28,8 +28,8 @@
         <item>Alcohol Use Disorder</item>
     </string-array>
 
-=======
->>>>>>> 98cc69e28aa5108dcefd2901e17e8ba8a88a40be
+
+
   <string name="app_name">Volition</string>
   <string name="title_home">Home</string>
   <string name="button_yes">Yes</string>

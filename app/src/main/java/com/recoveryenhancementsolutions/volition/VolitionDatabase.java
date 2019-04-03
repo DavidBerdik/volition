@@ -44,7 +44,8 @@ import android.support.annotation.NonNull;
         UserActivityEntity.class,
         TreatmentPlanEntity.class,
         QuestionnaireEntity.class,
-        MedicationChoiceEntity.class
+        MedicationChoiceEntity.class,
+        DemographicDataEntity.class
 },
         version = 1)
 
@@ -112,14 +113,24 @@ public abstract class VolitionDatabase extends RoomDatabase {
             // line uncommented and fill in the PopulateDbAsync skeleton code below.
             new PopulateDbAsync(INSTANCE).execute();
         }
+
+        /**
+         * Method called when a database is first created.
+         * @param db Object representing database that is being created.
+         */
+        @Override
+        public void onCreate(@NonNull final SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            // If you want to populate data when the database is created for the first time,
+            // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
+            new PopulateDbAsync(INSTANCE).execute();
+        }
     };
 
     /**
-     * Method called when a database is first created.
-     *
-     * @param db Object representing database that is being created.
+     * Skeleton code that does nothing but could be filled in to clear the database and populate it
+     * with test data in the background.
      */
-
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
@@ -138,41 +149,18 @@ public abstract class VolitionDatabase extends RoomDatabase {
             medicationChoiceDao = db.medicationChoiceDAO();
         }
 
-        @Override
-        public void onCreate(@NonNull final SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            // If you want to populate data when the database is created for the first time,
-            // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
-            new PopulateDbAsync(INSTANCE).execute();
-        }
-
         protected Void doInBackground(final Void... params) {
             // If you want to clear and initialize the database, place code here such as in the following commented-out example:
+            /*
+            // Start the app with a lean database every time.
+            // Not needed if you only populate on creation.
+            mDao.deleteAll();
 
-            /**
-             * Skeleton code that does nothing but could be filled in to clear the database and populate it
-             * with test data in the background.
+            Word word = new Word("Hello");
+            mDao.insert(word);
+            word = new Word("World");
+            mDao.insert(word);
              */
-            private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-
-                // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
-                // private final WordDao mDao;
-                private final UserActivitiesDao userActivitiesDao;
-                private final TreatmentPlanDao treatmentPlanDao;
-                private final QuestionnaireDao questionnaireDao;
-                private final MedicationChoiceDAO medicationChoiceDao;
-                private final DemographicDataDAO demographicDataDao;
-
-                PopulateDbAsync(final VolitionDatabase db) {
-                    // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
-                    // mDao = db.wordDao();
-                    userActivitiesDao = db.userActivitiesDao();
-                    treatmentPlanDao = db.treatmentPlanDao();
-                    questionnaireDao = db.questionnaireDao();
-                    demographicDataDao = db.demographicDataDao();
-                    medicationChoiceDao = db.medicationChoiceDAO();
-                }
-            }
             return null;
         }
     }
