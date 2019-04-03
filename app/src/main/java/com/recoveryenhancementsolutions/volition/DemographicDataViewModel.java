@@ -4,6 +4,8 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -39,6 +41,15 @@ public class DemographicDataViewModel extends AndroidViewModel {
   public void insertDemographicData(final DemographicDataEntity demographicDataEntity) {
     new insertAsyncTask(db.demographicDataDao()).execute(demographicDataEntity);
   }
+
+    /**
+     * Updates the date of last use in the database.
+     *
+     * @param day A Calendar object representing the date of last use
+     */
+  public void updateLastCleanDate(final Calendar day){
+      db.demographicDataDao().queryUpdateLastCleanDate(day.getTime());
+    }
 
   /**
    * Retrieves the last date clean as stored in the database.

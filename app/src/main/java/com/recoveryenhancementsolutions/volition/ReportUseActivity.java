@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import java.util.Calendar;
 
 /**
  * The ReportUseActivity that contains functionality and interactions relevant to the
@@ -33,9 +36,15 @@ public class ReportUseActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_report_use);
 
+    //Initializing ViewModel
+    ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
+    today = Calendar.getInstance();
+
     lastClickedItem = 0;
+    answeredToday = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
+
     final Button noButton = findViewById(R.id.report_use_no);
     noButton.setOnClickListener(noButtonListener);
 
@@ -48,6 +57,8 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
       lastClickedItem = 1;
+      answeredToday = true;
+      ddViewModel.updateLastCleanDate(today);
     }
   };
 
@@ -55,8 +66,12 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
       lastClickedItem = 2;
+      answeredToday = true;
     }
   };
+
+  //TODO: Move the user to the Home page
+  private void redirect(){}
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
@@ -73,5 +88,8 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
+  private boolean answeredToday;
   private int lastClickedItem;
+  private Calendar today;
+  private DemographicDataViewModel ddViewModel;
 }

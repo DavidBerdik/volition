@@ -38,6 +38,7 @@ public interface DemographicDataDAO {
   void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
 
 
+
     /*
     Other components of the volition application may need to access the data of the patient.
     Rather than having to access the object created and use the get method on them, since this
@@ -192,10 +193,18 @@ public interface DemographicDataDAO {
   boolean queryIsHavingOpioidDisorder();
 
   /**
-   * Retrieves the patient last clean date
+   * Retrieves the patient's last clean date
    *
    * @return Date of their last clean
    */
   @Query("SELECT lastClean " + genericQuery)
   LiveData<Date> queryLastCleanDate();
+
+  /**
+   * Updates the client's last clean date
+   *
+   * @param day A Date object representing the date of last use
+   */
+  @Query("UPDATE DemographicDataEntity SET lastClean = :day WHERE fetchID = 1")
+  void queryUpdateLastCleanDate(final Date day);
 }
