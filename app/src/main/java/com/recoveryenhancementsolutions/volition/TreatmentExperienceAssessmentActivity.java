@@ -16,11 +16,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     public static ArrayList<Integer> teaAnswers = new ArrayList<>();
     public static  ArrayList<TextView> questionsForTea = new ArrayList<>();
 
-    public static int qOneAnswer;
-    public static int qTwoAnswer ;
-    public static int qThreeAnswer ;
-    public static int qFourAnswer ;
-
 
     /**
      * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -84,24 +79,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 1);
-                questionsForTea.get(answerCounter).setTextColor(questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 1);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-               // QuestionnaireActivityViewModel.populateAsync(db);
-               // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
-
+            setAnswerForTea(1);
         }
     };
 
@@ -110,25 +88,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 2);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 2);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(2);
         }
     };
     private final View.OnClickListener threeClickListener = new View.OnClickListener() {
@@ -136,25 +96,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 3);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 3);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(3);
         }
     };
     private final View.OnClickListener fourClickListener = new View.OnClickListener() {
@@ -162,24 +104,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 4);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 4);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(4);
         }
     };
     private final View.OnClickListener fiveClickListener = new View.OnClickListener() {
@@ -187,25 +112,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 5);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter,5);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(5);
         }
     };
     private final View.OnClickListener sixClickListener = new View.OnClickListener() {
@@ -213,24 +120,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 6);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 6);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(6);
         }
     };
     private final View.OnClickListener sevenClickListener = new View.OnClickListener() {
@@ -238,25 +128,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 7);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 7);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(7);
         }
     };
     private final View.OnClickListener eightClickListener = new View.OnClickListener() {
@@ -264,77 +136,44 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         @Override
         public void onClick(final View v) {
 
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 8);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 8);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(8);
         }
     };
     private final View.OnClickListener nineClickListener = new View.OnClickListener() {
 
         @Override
         public void onClick(final View v) {
-
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 9);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 9);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-                // QuestionnaireActivityViewModel.populateAsync(db);
-                // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-            }
+            setAnswerForTea(9);
         }
     };
     private final View.OnClickListener tenClickListener = new View.OnClickListener() {
 
         @Override
         public void onClick(final View v) {
-
-
-            if (answerCounter < 3) {
-                teaAnswers.set(answerCounter, 10);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-                answerCounter++;
-            } else if (answerCounter==3){
-                teaAnswers.set(answerCounter, 10);
-                questionsForTea.get(answerCounter).setTextColor(
-                        questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-                questionsForTea.get(answerCounter+1).setTextColor(
-                        questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
-
-
-            }
+         setAnswerForTea(10);
         }
     };
+
+    public void setAnswerForTea(int value) {
+        if (answerCounter < 3) {
+            teaAnswers.set(answerCounter, value);
+            questionsForTea.get(answerCounter).setTextColor(
+                    questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
+            questionsForTea.get(answerCounter+1).setTextColor(
+                    questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+            answerCounter++;
+        } else if (answerCounter==3){
+            teaAnswers.set(answerCounter, value);
+            questionsForTea.get(answerCounter).setTextColor(
+                    questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
+            questionsForTea.get(answerCounter+1).setTextColor(
+                    questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+
+            // QuestionnaireActivityViewModel.populateAsync(db);
+            // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+
+        }
+    }
 
 
     private TextView qOne;
