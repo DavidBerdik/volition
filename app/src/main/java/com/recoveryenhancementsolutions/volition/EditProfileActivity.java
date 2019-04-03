@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import java.text.DateFormat;
 import java.util.Calendar;
 
@@ -19,6 +20,9 @@ import java.util.Calendar;
  * Backend code for the "Edit Profile" activity.
  */
 public class EditProfileActivity extends AppCompatActivity {
+
+  final Calendar dobCalendar = Calendar.getInstance();
+  final Calendar cleanDateCalendar = Calendar.getInstance();
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -30,8 +34,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
     DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
-
-    final Calendar dobCalendar = Calendar.getInstance();
 
     final OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
       /**
@@ -50,8 +52,6 @@ public class EditProfileActivity extends AppCompatActivity {
         dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
       }
     };
-
-    final Calendar cleanDateCalendar = Calendar.getInstance();
 
     final OnDateSetListener cleanDateListener = new OnDateSetListener() {
       /**
@@ -113,34 +113,53 @@ public class EditProfileActivity extends AppCompatActivity {
 
     });
 
-    demogDataViewModel.getAllDemographicData().observe(this, new Observer<DemographicDataEntity>() {
-      /**
-       * Observes for retrieval of all demographic data from the database and displays the data in
-       * the appropriate fields after it has been retrieved.
-       * @param demographicDataEntity The DemographicDataEntity object
-       */
-      @Override
-      public void onChanged(@Nullable DemographicDataEntity demographicDataEntity) {
-        // Only try to set the value of each field if "demographicDataEntity" is not null.
-        if (demographicDataEntity != null) {
-          // Set the display of the patient's name.
-          EditText name = findViewById(R.id.name);
-          name.setText(demographicDataEntity.getPatientName());
-
-          // Set the date of birth in the appropriate calendar and EditText field.
-          dobCalendar.setTime(demographicDataEntity.getDateOfBirth());
-          EditText dob = findViewById(R.id.date_of_birth);
-          dob.setText(DateFormat.getDateInstance().format(demographicDataEntity.getDateOfBirth()));
-
-          // Set the date of last use in the appropriate calendar and EditText field.
-          cleanDateCalendar.setTime(demographicDataEntity.getLastClean());
-          EditText cleanDate = findViewById(R.id.clean_date);
-          cleanDate
-              .setText(DateFormat.getDateInstance().format(demographicDataEntity.getLastClean()));
-        }
-      }
-    });
+    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
 
   }
+
+  /**
+   * Sets the database component of the activity to use a test database and modifies the observer to
+   * use the in-memory database instead.
+   *
+   * @param db Database to use for testing.
+   */
+  public void setTestMode(VolitionDatabase db) {
+    DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demogDataViewModel.setTestDatabase(db);
+    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+  }
+
+  /**
+   * Observer for retrieving all demographic data for the user.
+   */
+  private Observer<DemographicDataEntity> demographicDataEntityObserver = new Observer<DemographicDataEntity>() {
+    @Override
+    public void onChanged(@Nullable DemographicDataEntity demographicDataEntity) {
+      // Only try to set the value of each field if "demographicDataEntity" is not null.
+      if (demographicDataEntity != null) {
+        // Set the display of the patient's name.
+        EditText name = findViewById(R.id.name);
+        name.setText(demographicDataEntity.getPatientName());
+
+        // Set the date of birth in the appropriate calendar and EditText field.
+        dobCalendar.setTime(demographicDataEntity.getDateOfBirth());
+        EditText dob = findViewById(R.id.date_of_birth);
+        dob.setText(DateFormat.getDateInstance().format(demographicDataEntity.getDateOfBirth()));
+
+        // Set the gender in the gender spinner.
+        Spinner gender = findViewById(R.id.gender_spinner);
+        for (int x = 0; x < gender.getAdapter().getCount(); x++)
+          if(gender.getAdapter().getItem(x).toString().contains(demographicDataEntity.getGender()))
+            gender.setSelection(x);
+
+        // Set the date of last use in the appropriate calendar and EditText field.
+        cleanDateCalendar.setTime(demographicDataEntity.getLastClean());
+        EditText cleanDate = findViewById(R.id.clean_date);
+        cleanDate
+            .setText(DateFormat.getDateInstance().format(demographicDataEntity.getLastClean()));
+      }
+    }
+  };
 
 }

@@ -3,13 +3,14 @@ package com.recoveryenhancementsolutions.volition;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,12 +37,23 @@ public class EditProfileActivityTest {
     DemographicDataEntity data = new DemographicDataEntity();
     data.setPatientName("John Doe");
     data.setDateOfBirth(1970, 1, 1);
+    data.setGender("Male");
     data.setLastClean(2038, 1, 19);
     db.demographicDataDao().insertDemographicInfo(data);
 
-    // Set the activity's ViewModel to use the test database.
-    ViewModelProviders.of(activityTestRule.getActivity()).get(DemographicDataViewModel.class)
-        .setTestDatabase(db);
+    // Set test mode on the activity.
+    activityTestRule.getActivity().setTestMode(db);
+
+    /*
+     * Delay the execution of any tests for 1 second. This is done to prevent any tests from trying
+     * to verify the content of the activity fields before the insertion is complete. There may be
+     * a better way to handle this, but this is the best that I could come up with.
+     */
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
   }
 
   /**
@@ -55,8 +67,12 @@ public class EditProfileActivityTest {
     // Check that the date of birth is Jan 1, 1970.
     onView(withId(R.id.date_of_birth)).check(matches(withText("Jan 1, 1970")));
 
+    onView(withId(R.id.gender_spinner)).check(matches(withSpinnerText("Male")));
+
     // Check that the clean date is Jan 19, 2038.
     onView(withId(R.id.clean_date)).check(matches(withText("Jan 19, 2038")));
   }
+
+  private static final String TAG = "EditProfileActivityTest";
 
 }
