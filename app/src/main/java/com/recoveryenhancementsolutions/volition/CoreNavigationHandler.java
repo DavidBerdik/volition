@@ -18,6 +18,11 @@ public class CoreNavigationHandler {
     this.bottomNavigationView.setOnNavigationItemSelectedListener(navigationListener);
   }
 
+  /**
+   * Sets the selected item ID of the BottomNavigationView object.
+   *
+   * @param page A CoreNavigationPage enum representing the page to highlight.
+   */
   public void setSelectedItem(CoreNavigationPage page) {
     switch (page) {
       case PAGE_HOME:

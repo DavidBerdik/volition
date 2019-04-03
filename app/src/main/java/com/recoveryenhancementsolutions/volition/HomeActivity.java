@@ -3,12 +3,10 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.TextView;
+import com.recoveryenhancementsolutions.volition.CoreNavigationHandler.CoreNavigationPage;
 import java.util.Date;
 
 /**
@@ -51,9 +49,9 @@ public class HomeActivity extends AppCompatActivity {
         .get(DemographicDataViewModel.class);
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setSelectedItemId(R.id.core_navigation_home);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
+    final CoreNavigationHandler navigationHandler = new CoreNavigationHandler(
+        (BottomNavigationView) findViewById(R.id.menubar));
+    navigationHandler.setSelectedItem(CoreNavigationPage.PAGE_ACTIVITY);
   }
 
   private Observer<Date> dateObserver = new Observer<Date>() {
