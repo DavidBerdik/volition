@@ -71,9 +71,9 @@
   <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
   <string name="display_profile_example_date">Replace with the date entered</string>
   <string name="display_profile_continue">Continue</string>
-  <string name="menubar_home">Home</string>
-  <string name="menubar_activity">Activity</string>
-  <string name="menubar_plan">Plan</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
