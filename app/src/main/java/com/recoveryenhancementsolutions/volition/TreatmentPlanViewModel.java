@@ -48,13 +48,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
-   * Returns a live data object containing the user's treatment plan.
-   */
-  public LiveData<TreatmentPlanEntity> getTreatmentPlan() {
-    return db.treatmentPlanDao().loadTreatmentPlan();
-  }
-
-  /**
    * Generates a new treatmentPlan.
    */
   public void generateTreatmentPlan() {
@@ -227,6 +220,15 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    */
   public String getOutcomMeasureFrequency() {
     return treatmentPlan.getOutcomeMeasureFrequency();
+  }
+
+  /**
+   * Returns the loaded treatmentPlan
+   *
+   * @return The treatmentPlanEntity loaded from the database.
+   */
+  public TreatmentPlanEntity getTreatmentPlan(){
+    return treatmentPlan;
   }
 
   /**

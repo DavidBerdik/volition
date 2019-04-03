@@ -49,7 +49,7 @@ public class TreatmentPlanViewModelTest {
 
     viewModel.setTestDatabase(db);
     viewModel.generateTreatmentPlan();
-    db.treatmentPlanDao().insertTreatmentPlanEntity(viewModel.treatmentPlan);
+    db.treatmentPlanDao().insertTreatmentPlanEntity(viewModel.getTreatmentPlan());
   }
 
   /**
