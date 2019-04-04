@@ -48,7 +48,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
      * @param day A Calendar object representing the date of last use
      */
   public void updateLastCleanDate(final Calendar day){
-      db.demographicDataDao().queryUpdateLastCleanDate(day.getTime());
+    new UpdateDaysCleanAsync(db.demographicDataDao()).execute(day);
     }
 
   /**
@@ -73,6 +73,24 @@ public class DemographicDataViewModel extends AndroidViewModel {
     }
 
     private DemographicDataDAO demographicDataDao;
+  }
+
+  /**
+   * Asynchronous task for updating the last clean date
+   */
+  private class UpdateDaysCleanAsync extends AsyncTask<Calendar, Void, Void> {
+
+    UpdateDaysCleanAsync(final DemographicDataDAO dao) {
+      demographicDataDAO = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final Calendar... params) {
+      demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime());
+      return null;
+    }
+
+    private DemographicDataDAO demographicDataDAO;
   }
 
   private VolitionDatabase db;

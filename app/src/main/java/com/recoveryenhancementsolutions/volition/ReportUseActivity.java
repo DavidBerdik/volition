@@ -53,6 +53,7 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
+  //TODO See about getting this to update the date of last use, could be easier/more sensible to work with
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
