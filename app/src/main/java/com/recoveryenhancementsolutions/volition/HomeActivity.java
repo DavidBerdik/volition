@@ -38,18 +38,8 @@ public class HomeActivity extends AppCompatActivity {
   }
 
   @Override
-  public void onPause() {
-    super.onPause();
-
-    coreNavigationHandler = null;
-  }
-
-  @Override
   public void onResume() {
     super.onResume();
-
-    coreNavigationHandler = new CoreNavigationHandler(
-        (BottomNavigationView) findViewById(R.id.menubar), this);
     coreNavigationHandler.setFocusedItem(CoreNavigationPage.PAGE_HOME);
   }
 
