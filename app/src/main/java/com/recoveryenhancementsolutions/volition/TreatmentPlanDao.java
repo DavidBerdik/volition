@@ -20,7 +20,7 @@ public interface TreatmentPlanDao {
    * @return A LiveData object containing a TreatmentPlan Entity.
    */
   @Query("SELECT * FROM TreatmentPlanEntity WHERE Id = 1")
-  LiveData<TreatmentPlanEntity> loadTreatmentPlan();
+  LiveData<TreatmentPlanEntity> getTreatmentPlan();
 
   /**
    * Updates a TreatmentPlan Entity in the database.

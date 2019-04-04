@@ -2,7 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.os.AsyncTask;
 
 /**
@@ -24,7 +24,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * Loads in a pre-existing treatmentPlan
    */
   public void loadTreatmentPlan() {
-    treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan().getValue();
+    treatmentPlan = db.treatmentPlanDao().getTreatmentPlan().getValue();
     treatmentPlanDao = db.treatmentPlanDao();
   }
 
@@ -44,28 +44,22 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public void setTestDatabase(final VolitionDatabase db) {
     db.close();
     this.db = db;
-    this.treatmentPlan = db.treatmentPlanDao().loadTreatmentPlan().getValue();
+    this.treatmentPlan = db.treatmentPlanDao().getTreatmentPlan().getValue();
   }
 
   /**
    * Generates a new treatmentPlan.
    */
   public void generateTreatmentPlan() {
-    String medicationChoice, severityLevel;
+    String medicationChoice = "", severityLevel = "";
 
     //imports severity level and medication choice from the database. sets to uppercase to
     //prevent any issues with misnamed strings. Try catch statement generates a dummy treatment
-    //plan set to mild abstinence if the database tables containing medicationChoice and
+    //plan set to moderate abstinence if the database tables containing medicationChoice and
     //severity level are null. This should ONLY occur during a JUnit test.
-
-    //THIS IS A TEMPORARY FIX TO HAVE A WORKING APP FOR TOMORROW
     try {
-      severityLevel = db.questionnaireDao().findSeverityLevel().getValue();
+      severityLevel = db.questionnaireDao().getSeverityLevel().getValue();
       medicationChoice = db.medicationChoiceDAO().getMedication().getValue().medication;
-      if (medicationChoice.equals("ABSTAIN")) {
-      }
-      if (severityLevel.equals("MODERATE")) {
-      }
     } catch (NullPointerException e) {
       medicationChoice = "ABSTAIN";
       severityLevel = "MODERATE";
@@ -73,80 +67,53 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
 
     //A new treatmentPlanEntity to add to the database
     this.treatmentPlan = new TreatmentPlanEntity();
+    if (severityLevel.equals("MILD")) { //There is no mild Buprenorphine plan currently
+      treatmentPlan.setNumCounseling(1);
+      treatmentPlan.setNumSupportMeeting(1);
+      treatmentPlan.setNumLessons(1);
+      treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+      treatmentPlan.setNumOutcomeMeasures(1);
+      treatmentPlan.setNumTimeTracking(1);
+      treatmentPlan.setNumReadingResponse(1);
+      treatmentPlan.setNumMedManagement(0);
+      treatmentPlan.setMedManagementMonthly();
+      treatmentPlan.setOutcomeMeasureWeekly();
+    } else if (severityLevel.equals("MODERATE")) {
+      treatmentPlan.setNumCounseling(3);
+      treatmentPlan.setNumSupportMeeting(3);
+      treatmentPlan.setNumLessons(2);
+      treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+      treatmentPlan.setNumOutcomeMeasures(3);
+      treatmentPlan.setNumTimeTracking(2);
+      treatmentPlan.setNumReadingResponse(2);
+      treatmentPlan.setMedManagementMonthly();
+      treatmentPlan.setOutcomeMeasureDaily();
 
-    if (medicationChoice.equals("ABSTAIN")) {
-      if (severityLevel.equals("MILD")) { //Mild Abstinence
-        treatmentPlan.setNumCounseling(1);
-        treatmentPlan.setNumSupportMeeting(1);
-        treatmentPlan.setNumLessons(1);
-        treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        treatmentPlan.setNumOutcomeMeasures(1);
-        treatmentPlan.setNumTimeTracking(1);
-        treatmentPlan.setNumReadingResponse(1);
+      //handles differences in treatment plans
+      if (medicationChoice.equals("ABSTAIN")) {
         treatmentPlan.setNumMedManagement(0);
-        treatmentPlan.setMedManagementMonthly();
-        treatmentPlan.setOutcomeMeasureWeekly();
-      } else if (severityLevel.equals("MODERATE")) { //Moderate Abstinence
-        treatmentPlan.setNumCounseling(3);
-        treatmentPlan.setNumSupportMeeting(3);
-        treatmentPlan.setNumLessons(2);
-        treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        treatmentPlan.setNumOutcomeMeasures(3);
-        treatmentPlan.setNumTimeTracking(2);
-        treatmentPlan.setNumReadingResponse(2);
-        treatmentPlan.setNumMedManagement(0);
-        treatmentPlan.setMedManagementMonthly();
-        treatmentPlan.setOutcomeMeasureDaily();
-      } else { //Severe Abstinence
-        treatmentPlan.setNumCounseling(5);
-        treatmentPlan.setNumSupportMeeting(5);
-        treatmentPlan.setNumLessons(3);
-        treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        treatmentPlan.setNumOutcomeMeasures(5);
-        treatmentPlan.setNumTimeTracking(5);
-        treatmentPlan.setNumReadingResponse(3);
-        treatmentPlan.setNumMedManagement(0);
-        treatmentPlan.setMedManagementWeekly();
-        treatmentPlan.setOutcomeMeasureDaily();
-      }
-    } else if (medicationChoice.equals("BUPRENORPHINE")) {
-      //Mild Buprenorphine plan does not exist, it will be set to the same as mild abstinence.
-      if (severityLevel.equals("MILD")) {
-        treatmentPlan.setNumCounseling(1);
-        treatmentPlan.setNumSupportMeeting(1);
-        treatmentPlan.setNumLessons(1);
-        treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        treatmentPlan.setNumOutcomeMeasures(1);
-        treatmentPlan.setNumTimeTracking(1);
-        treatmentPlan.setNumReadingResponse(1);
-        treatmentPlan.setNumMedManagement(0);
-        treatmentPlan.setMedManagementMonthly();
-        treatmentPlan.setOutcomeMeasureWeekly();
-      } else if (severityLevel.equals("MODERATE")) { //Moderate Buprenorphine
-        treatmentPlan.setNumCounseling(3);
-        treatmentPlan.setNumSupportMeeting(3);
-        treatmentPlan.setNumLessons(2);
-        treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        treatmentPlan.setNumOutcomeMeasures(3);
-        treatmentPlan.setNumTimeTracking(2);
-        treatmentPlan.setNumReadingResponse(2);
+      } else {
         treatmentPlan.setNumMedManagement(2);
-        treatmentPlan.setMedManagementMonthly();
-        treatmentPlan.setOutcomeMeasureDaily();
-      } else { //Severe Buprenorphine
-        treatmentPlan.setNumCounseling(5);
-        treatmentPlan.setNumSupportMeeting(5);
-        treatmentPlan.setNumLessons(3);
-        treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        treatmentPlan.setNumOutcomeMeasures(5);
-        treatmentPlan.setNumTimeTracking(5);
-        treatmentPlan.setNumReadingResponse(3);
+      }
+    } else { //Severe severity level
+      treatmentPlan.setNumCounseling(5);
+      treatmentPlan.setNumSupportMeeting(5);
+      treatmentPlan.setNumLessons(3);
+      treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+      treatmentPlan.setNumOutcomeMeasures(5);
+      treatmentPlan.setNumTimeTracking(5);
+      treatmentPlan.setNumReadingResponse(3);
+      treatmentPlan.setMedManagementWeekly();
+      treatmentPlan.setOutcomeMeasureDaily();
+
+      //handles differences in treatment plans
+      if (medicationChoice.equals("ABSTAIN")) {
+        treatmentPlan.setNumMedManagement(0);
+      } else {
         treatmentPlan.setNumMedManagement(1);
-        treatmentPlan.setMedManagementWeekly();
-        treatmentPlan.setOutcomeMeasureDaily();
       }
     }
-    treatmentPlan.setId(1);
+    treatmentPlan.setId(1); //Prevents the creation of multiple treatment plans
     this.insertDb();
   }
 
@@ -227,7 +194,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @return The treatmentPlanEntity loaded from the database.
    */
-  public TreatmentPlanEntity getTreatmentPlan(){
+  public TreatmentPlanEntity getTreatmentPlan() {
     return treatmentPlan;
   }
 

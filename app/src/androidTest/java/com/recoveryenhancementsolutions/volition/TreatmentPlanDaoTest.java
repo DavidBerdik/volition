@@ -71,25 +71,25 @@ public class TreatmentPlanDaoTest {
 
     //Check if treatment plan entity has the correct values
     assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumCounseling());
+        .getTreatmentPlan()).getNumCounseling());
     assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumSupportMeeting());
+        .getTreatmentPlan()).getNumSupportMeeting());
     assertEquals(4, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
+        .getTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
     assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumLessons());
+        .getTreatmentPlan()).getNumLessons());
     assertEquals(8, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumMedManagement());
+        .getTreatmentPlan()).getNumMedManagement());
     assertEquals(5, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumOutcomeMeasures());
+        .getTreatmentPlan()).getNumOutcomeMeasures());
     assertEquals(7, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumReadingResponse());
+        .getTreatmentPlan()).getNumReadingResponse());
     assertEquals(6, LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getNumTimeTracking());
+        .getTreatmentPlan()).getNumTimeTracking());
     assertEquals("MONTHLY", LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getMedManagementFrequency());
+        .getTreatmentPlan()).getMedManagementFrequency());
     assertEquals("DAILY", LiveDataTestUtility.getNestedLiveDataObj(treatmentPlanDao
-        .loadTreatmentPlan()).getOutcomeMeasureFrequency());
+        .getTreatmentPlan()).getOutcomeMeasureFrequency());
   }
 
   private TreatmentPlanDao treatmentPlanDao;

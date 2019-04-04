@@ -60,26 +60,26 @@ public class TreatmentPlanViewModelTest {
 
     //Check the values of the treatment plan. Should match the moderate abstinence plan.
     try {
-      assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumCounseling());
-      assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumSupportMeeting());
-      assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumLessons());
       assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
-      assertEquals(3, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumOutcomeMeasures());
-      assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumTimeTracking());
-      assertEquals(2, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumReadingResponse());
+          .getTreatmentPlan()).getNumCounseling());
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getNumSupportMeeting());
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getNumLessons());
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getNumOutcomeMeasures());
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getNumTimeTracking());
+      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getNumReadingResponse());
       assertEquals(0, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getNumMedManagement());
+          .getTreatmentPlan()).getNumMedManagement());
       assertEquals("MONTHLY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getMedManagementFrequency());
-      assertEquals("DAILY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .loadTreatmentPlan()).getOutcomeMeasureFrequency());
+          .getTreatmentPlan()).getMedManagementFrequency());
+      assertEquals("WEEKLY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
+          .getTreatmentPlan()).getOutcomeMeasureFrequency());
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
