@@ -32,6 +32,16 @@ public class ReportUseActivity extends AppCompatActivity {
     return lastClickedItem;
   }
 
+  /**
+   * Sets the activity as a test to prevent redirecting to other Activities
+   * TEST METHOD
+   *
+   * @param b True = in test, false = not in test
+   */
+  public void setTestEnvironment(boolean b){
+    inTest = b;
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -42,6 +52,7 @@ public class ReportUseActivity extends AppCompatActivity {
     today = Calendar.getInstance();
 
     lastClickedItem = 0;
+    inTest = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
@@ -58,7 +69,10 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 1;
       ddViewModel.updateLastCleanDate(today, today);
-      redirect();
+      //Only redirects if we are not in a testing environment
+      if (!inTest) {
+        redirect();
+      }
     }
   };
 
@@ -67,7 +81,10 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
-      redirect();
+      //Only redirects if we are not in a testing environment
+      if (!inTest) {
+        redirect();
+      }
     }
   };
 
@@ -95,4 +112,5 @@ public class ReportUseActivity extends AppCompatActivity {
   private int lastClickedItem;
   private Calendar today;
   private DemographicDataViewModel ddViewModel;
+  private boolean inTest;
 }

@@ -16,6 +16,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 /**
@@ -39,6 +42,21 @@ public class ReportUseActivityTest {
     final Context context = InstrumentationRegistry.getTargetContext();
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
             .allowMainThreadQueries().build();
+
+    activityTestRule.getActivity().setTestEnvironment(true);
+
+    demographicDataEntity = new DemographicDataEntity();
+    demographicDataEntity.setPatientName("Example Client");
+    //Assume that on Jan 1, the client hit "Yes"
+    demographicDataEntity.setLastClean(new Date(initialLogDay), new Date(initialLogDay));
+  }
+
+  /**
+   * Tests if pressing the yes and no buttons update the database correctly
+   */
+  @Test
+  public void databaseUpdateTest(){
+
   }
 
   /**
@@ -72,4 +90,9 @@ public class ReportUseActivityTest {
     onView(withId(R.id.report_use_yes)).perform(click());
     assertEquals(1, activityTestRule.getActivity().getLastClickedItem());
   }
+
+  private Calendar today = Calendar.getInstance();
+  private long initialLogDay = 1546318800000L;
+  private DemographicDataEntity demographicDataEntity;
+  private DemographicDataViewModel viewModel;
 }
