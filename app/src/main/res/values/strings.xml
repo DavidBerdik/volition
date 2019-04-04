@@ -110,4 +110,11 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
   <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
   <string name="take_questionnaire"> Take questionnaire</string>
+  <string name="tea_button"> TEA</string>
+  <string name="lesson_button"> Lesson</string>
+  <string name="journal_button"> Journal</string>
+  <string name="edu_button"> Edu.</string>
+  <string name="daily_wellness_button"> Daily Wellness</string>
+  <string name="clean_tracker_button"> Clean Tracker</string>
+  <string name="activity_title_activity_screen"> Activities</string>
 </resources>

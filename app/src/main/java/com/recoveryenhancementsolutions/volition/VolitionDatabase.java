@@ -40,7 +40,6 @@ import android.support.annotation.NonNull;
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 @Database(
     entities = {
-        QuestionnaireActivityEntity.class,
         UserActivityEntity.class,
         DemographicDataEntity.class,
         MedicationChoiceEntity.class,
@@ -53,7 +52,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
-  public abstract QuestionnaireDao questionnaireModel();
   public abstract DemographicDataDAO demographicDataDao();
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
