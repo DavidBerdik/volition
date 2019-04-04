@@ -4,9 +4,14 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +29,17 @@ public class ReportUseActivityTest {
   @Rule
   public ActivityTestRule<ReportUseActivity> activityTestRule = new ActivityTestRule<>(
       ReportUseActivity.class);
+
+  /**
+   * Creates a testing environment for the ReportUseActivity to use
+   */
+  @Before
+  public void loadTestEnvironment() {
+    // Create a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+            .allowMainThreadQueries().build();
+  }
 
   /**
    * Tests that the Yes and No buttons are responding to single clicks properly.

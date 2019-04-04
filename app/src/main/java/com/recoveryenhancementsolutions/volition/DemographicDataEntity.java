@@ -345,11 +345,6 @@ public class DemographicDataEntity {
     setLastUseReport(useRCal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
   }
 
-  //Here because the other methods are not recognized as setters
-  public void setLastClean(final @NonNull Date lastClean){
-      setLastClean(lastClean, new Date(0));
-  }
-
   /**
    * Sets the date of last clean
    *
@@ -362,8 +357,13 @@ public class DemographicDataEntity {
       this.lastClean = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
               + month + "-" + day);
     } catch (final ParseException e) {
-      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+      Log.e("DemographicDataEntity", "Last clean set");
     }
+  }
+
+  //Here because the other methods are not recognized as setters
+  public void setLastClean(final @NonNull Date lastClean){
+    setLastClean(lastClean, new Date(0));
   }
 
   /**
@@ -390,7 +390,7 @@ public class DemographicDataEntity {
       this.lastUseReport = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
               + month + "-" + day);
     } catch (final ParseException e) {
-      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+      Log.e("DemographicDataEntity", "lastUseReport set");
     }
   }
   /**

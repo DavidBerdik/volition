@@ -43,7 +43,6 @@ public class HomeActivity extends AppCompatActivity {
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
-
     buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
 

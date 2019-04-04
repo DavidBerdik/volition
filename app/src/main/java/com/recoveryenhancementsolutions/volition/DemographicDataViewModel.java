@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -97,9 +98,11 @@ public class DemographicDataViewModel extends AndroidViewModel {
     @Override
     protected Void doInBackground(final Calendar... params) {
       if(params.length == 2) {
+          Log.e("DemoDataViewModel", "Inserting " +params[0].getTime().toString());
         demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime(), params[1].getTime());
       }
       if (params.length == 1) {
+          Log.e("DemoDataViewModel", "Inserting " +params[0].getTime().toString());
         demographicDataDAO.queryUpdateLastReportDate(params[0].getTime());
       }
       return null;
