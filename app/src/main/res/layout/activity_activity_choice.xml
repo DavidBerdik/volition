@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
@@ -12,7 +11,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="35dp"
     android:layout_marginBottom="35dp"
-    android:alpha=".5"
+    android:alpha=".33"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -93,4 +92,18 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/menubar"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@color/res_green"
+    app:elevation="0dp"
+    app:itemBackground="@color/res_green"
+    app:itemHorizontalTranslationEnabled="false"
+    app:itemIconTint="@android:color/black"
+    app:itemTextColor="@android:color/black"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/menubar"/>
 </android.support.constraint.ConstraintLayout>
