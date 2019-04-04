@@ -14,6 +14,13 @@ import java.util.ArrayList;
  */
 public class QuestionnaireActivityViewModel extends AndroidViewModel {
 
+
+    public int getDisplayState() {
+        return displayState;
+    }
+    public void setDisplayState(int displayState) {
+        this.displayState = displayState;
+    }
     /**
      * This method creates a task to query the database from an asynchronous thread.
      *
@@ -107,4 +114,5 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
     }
 
     private static VolitionDatabase modelDB;
+    private int displayState = 0;
 }
