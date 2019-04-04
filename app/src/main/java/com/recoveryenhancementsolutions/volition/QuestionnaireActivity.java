@@ -57,6 +57,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
    */
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
+yesAnswers=0;
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
@@ -69,6 +70,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
+    qViewModel.setDisplayState(0);
 
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);

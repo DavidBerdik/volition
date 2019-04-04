@@ -22,6 +22,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    */
   @Override
   public void onBackPressed() {
+    //startActivity(new Intent(ViewSeverityLevelActivity.this, QuestionnaireActivity.class));
   }
 
   /**
