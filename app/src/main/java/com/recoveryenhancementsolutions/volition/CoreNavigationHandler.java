@@ -58,26 +58,25 @@ public class CoreNavigationHandler {
         switch (item.getItemId()) {
           case R.id.core_navigation_home:
             context.startActivity(new Intent(context, HomeActivity.class));
-            return true;
           case R.id.core_navigation_activity:
             // TODO: Update to reflect proper activity once it is added.
             context.startActivity(new Intent(context, ReportUseActivity.class));
-            return true;
           case R.id.core_navigation_plan:
             context.startActivity(new Intent(context, PlanActivity.class));
-            return true;
         }
-        return false;
+
+        return true;
       }
     });
   }
 
   /**
-   * Sets the selected item ID of the BottomNavigationView object.
+   * Sets the selected item ID of the BottomNavigationView object. This will also disable that
+   * specific buttom from being pressed again until changed off.
    *
    * @param page A CoreNavigationPage enum representing the page to highlight.
    */
-  public void setSelectedItem(CoreNavigationPage page) {
+  public void setFocusedItem(CoreNavigationPage page) {
     switch (page) {
       case PAGE_HOME:
         this.bottomNavigation.setSelectedItemId(R.id.core_navigation_home);

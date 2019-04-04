@@ -38,6 +38,22 @@ public class HomeActivity extends AppCompatActivity {
   }
 
   @Override
+  public void onPause() {
+    super.onPause();
+
+    coreNavigationHandler = null;
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    coreNavigationHandler = new CoreNavigationHandler(
+        (BottomNavigationView) findViewById(R.id.menubar), this);
+    coreNavigationHandler.setFocusedItem(CoreNavigationPage.PAGE_HOME);
+  }
+
+  @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
@@ -48,9 +64,9 @@ public class HomeActivity extends AppCompatActivity {
         .get(DemographicDataViewModel.class);
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
-    final CoreNavigationHandler navigationHandler = new CoreNavigationHandler(
+    coreNavigationHandler = new CoreNavigationHandler(
         (BottomNavigationView) findViewById(R.id.menubar), this);
-    navigationHandler.setSelectedItem(CoreNavigationPage.PAGE_HOME);
+    coreNavigationHandler.setFocusedItem(CoreNavigationPage.PAGE_HOME);
   }
 
   private Observer<Date> dateObserver = new Observer<Date>() {
@@ -68,5 +84,6 @@ public class HomeActivity extends AppCompatActivity {
     }
   };
 
+  private CoreNavigationHandler coreNavigationHandler;
   private TextView daysCleanMessage;
 }
