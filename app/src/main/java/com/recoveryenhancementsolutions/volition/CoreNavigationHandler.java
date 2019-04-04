@@ -48,7 +48,7 @@ public class CoreNavigationHandler {
 
       @Override
       public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
-        int id = item.getItemId();
+        final int id = item.getItemId();
 
         // Prevent us from trying to restart the same activity we're already looking at.
         if (id == bottomNavigation.getSelectedItemId()) {
