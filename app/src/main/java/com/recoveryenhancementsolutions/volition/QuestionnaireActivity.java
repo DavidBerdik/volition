@@ -20,6 +20,31 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public static ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
   public static String severityString;
 
+  /**
+   * Changes the functionality of the phones back button so that it can no longer take you to
+   * previous activities.  It also serves the same function as our own added back button
+   */
+  @Override
+  public void onBackPressed() {
+    if (qViewModel.getDisplayState() == 0) {
+
+    } else {
+      if (prevAnswer) {
+        yesAnswers--;
+      }
+      qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
+      checkBackButton();
+      if (qViewModel.getDisplayState() < 10) {
+
+        questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
+            questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
+                .withAlpha(0));
+        questionsForQuestionnaire.get(qViewModel.getDisplayState()).setTextColor(
+            questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
+                .withAlpha(100));
+      }
+    }
+  }
 
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -41,7 +66,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button confirmButton = findViewById(R.id.confirmButton);
     final Button nextButton = findViewById(R.id.nextButton);
 
-    qViewModel=ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
+    qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
 
@@ -105,30 +130,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     questionnaireAnswers.add(false);
 
     severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
-  }
-  @Override
-  public void onBackPressed()
-  {
-    if (qViewModel.getDisplayState() == 0) {
-
-    }
-    else {
-      if (prevAnswer) {
-        yesAnswers--;
-      }
-      qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
-      checkBackButton();
-      if (qViewModel.getDisplayState() < 10) {
-
-        questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
-                .withAlpha(0));
-        questionsForQuestionnaire.get(qViewModel.getDisplayState()).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
-                .withAlpha(100));
-      }
-    }
-
   }
 
   private final View.OnClickListener yesClickListener = new View.OnClickListener() {
@@ -241,14 +242,16 @@ public class QuestionnaireActivity extends AppCompatActivity {
       if (prevAnswer) {
         yesAnswers--;
       }
-      qViewModel.setDisplayState(qViewModel.getDisplayState()-1);
+      qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
       checkBackButton();
       if (qViewModel.getDisplayState() < 10) {
 
         questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState()+ 1).getTextColors().withAlpha(0));
+            questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
+                .withAlpha(0));
         questionsForQuestionnaire.get(qViewModel.getDisplayState()).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors().withAlpha(100));
+            questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
+                .withAlpha(100));
       }
 
 
@@ -262,16 +265,19 @@ public class QuestionnaireActivity extends AppCompatActivity {
     if (qViewModel.getDisplayState() < 10) {
       questionnaireAnswers.set(qViewModel.getDisplayState(), value);
       questionsForQuestionnaire.get(qViewModel.getDisplayState())
-          .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors().withAlpha(0));
+          .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
+              .withAlpha(0));
       questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
-          questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors().withAlpha(100));
+          questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
+              .withAlpha(100));
       //answerCounter++;
-      qViewModel.setDisplayState(qViewModel.getDisplayState()+1);
+      qViewModel.setDisplayState(qViewModel.getDisplayState() + 1);
 
     } else if (qViewModel.getDisplayState() == 10) {
       questionnaireAnswers.set(qViewModel.getDisplayState(), value);
       questionsForQuestionnaire.get(qViewModel.getDisplayState())
-          .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors().withAlpha(0));
+          .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
+              .withAlpha(0));
       severityLevel = yesAnswers - noAnswers;
       if (yesAnswers <= 3) {
         severityString = "Mild";
