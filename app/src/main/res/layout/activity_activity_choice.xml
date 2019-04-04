@@ -105,5 +105,5 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/menubar"/>
+    app:menu="@menu/core_navigation"/>
 </android.support.constraint.ConstraintLayout>
