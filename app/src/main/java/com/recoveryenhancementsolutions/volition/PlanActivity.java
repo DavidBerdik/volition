@@ -29,9 +29,6 @@ public class PlanActivity extends AppCompatActivity {
    */
   private class DateView implements Observer<List<UserActivityEntity>> {
 
-    private final TextView title;
-    private final TextView content;
-
     public DateView(final Calendar day, final TextView title, final TextView content) {
       this.title = title;
       this.content = content;
@@ -90,6 +87,8 @@ public class PlanActivity extends AppCompatActivity {
       return loaded;
     }
 
+    private final TextView title;
+    private final TextView content;
     private Calendar day;
     private LiveData<List<UserActivityEntity>> data;
     private boolean loaded;
