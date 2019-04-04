@@ -2,7 +2,6 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.Observer;
 import android.os.AsyncTask;
 
 /**
@@ -61,8 +60,12 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
       severityLevel = db.questionnaireDao().getSeverityLevel().getValue();
       medicationChoice = db.medicationChoiceDAO().getMedication().getValue().medication;
     } catch (NullPointerException e) {
-      medicationChoice = "ABSTAIN";
-      severityLevel = "MODERATE";
+      if(medicationChoice.equals("")){
+        medicationChoice = "ABSTAIN";
+      }
+      if(severityLevel.equals("")) {
+        severityLevel = "MODERATE";
+      }
     }
 
     //A new treatmentPlanEntity to add to the database
