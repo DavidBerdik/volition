@@ -64,6 +64,10 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
+  protected DemographicDataViewModel getViewModel(){
+    return ddViewModel;
+  }
+
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {

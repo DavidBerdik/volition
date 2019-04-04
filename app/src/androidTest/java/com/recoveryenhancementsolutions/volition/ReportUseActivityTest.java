@@ -44,11 +44,13 @@ public class ReportUseActivityTest {
             .allowMainThreadQueries().build();
 
     activityTestRule.getActivity().setTestEnvironment(true);
+    viewModel = activityTestRule.getActivity().getViewModel();
+    viewModel.setTestDatabase(db);
 
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Client");
     //Assume that on Jan 1, the client hit "Yes"
-    demographicDataEntity.setLastClean(new Date(initialLogDay), new Date(initialLogDay));
+    demographicDataEntity.setLastClean(initialLogDay, initialLogDay);
   }
 
   /**
@@ -56,7 +58,7 @@ public class ReportUseActivityTest {
    */
   @Test
   public void databaseUpdateTest(){
-
+      assertTrue(demographicDataEntity.getLastClean().equals(initialLogDay));
   }
 
   /**
@@ -92,7 +94,7 @@ public class ReportUseActivityTest {
   }
 
   private Calendar today = Calendar.getInstance();
-  private long initialLogDay = 1546318800000L;
+  private Date initialLogDay = new Date(1546318800000L); //January 1st, 2019
   private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
 }
