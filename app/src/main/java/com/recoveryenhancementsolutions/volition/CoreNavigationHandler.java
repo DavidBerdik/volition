@@ -55,16 +55,23 @@ public class CoreNavigationHandler {
           return false;
         }
 
+        final Intent destination = new Intent();
+
         switch (item.getItemId()) {
           case R.id.core_navigation_home:
-            context.startActivity(new Intent(context, HomeActivity.class));
+            destination.setClass(context, HomeActivity.class);
+            break;
           case R.id.core_navigation_activity:
             // TODO: Update to reflect proper activity once it is added.
-            context.startActivity(new Intent(context, ReportUseActivity.class));
+            destination.setClass(context, ReportUseActivity.class);
+            break;
           case R.id.core_navigation_plan:
-            context.startActivity(new Intent(context, PlanActivity.class));
+            destination.setClass(context, PlanActivity.class);
+            break;
         }
 
+        destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(destination);
         return true;
       }
     });
