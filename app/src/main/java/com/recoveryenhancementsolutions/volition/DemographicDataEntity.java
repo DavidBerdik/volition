@@ -320,15 +320,34 @@ public class DemographicDataEntity {
   }
 
   /**
-   * sets last clean date
+   * returns the date of the last use report (Yes/No I have(n't) used since my last check-in)
+   *
+   * @return A Date object of the last usage report
+   */
+  @NonNull
+  public Date getLastUseReport() {
+    return lastUseReport;
+  }
+
+  /**
+   * sets last clean date and last usage report date
    *
    * @param lastClean Date last clean
+   * @param lastUseReport Date of the report
    */
-  public void setLastClean(final @NonNull Date lastClean) {
+  public void setLastClean(final @NonNull Date lastClean, final @NonNull Date lastUseReport) {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
+    final Calendar useRCal = Calendar.getInstance();
     cal.setTime(lastClean);
+    useRCal.setTime(lastUseReport);
     setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    setLastUseReport(useRCal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  //Here because the other methods are not recognized as setters
+  public void setLastClean(final @NonNull Date lastClean){
+      setLastClean(lastClean, new Date(0));
   }
 
   /**
@@ -347,6 +366,33 @@ public class DemographicDataEntity {
     }
   }
 
+  /**
+   * Sets the date of the last usage report (called when the user answers "No")
+   *
+   * @param lastUseReport Date of the report
+   */
+  public void setLastUseReport(final @NonNull Date lastUseReport) {
+    //Strips time and passes Calendar Date
+    final Calendar cal = Calendar.getInstance();
+    cal.setTime(lastUseReport);
+    setLastUseReport(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Sets the date of the last usage report
+   *
+   * @param year The year of the report
+   * @param month The month of the report
+   * @param day The day of the report
+   */
+  public void setLastUseReport(final int year, final int month, final int day) {
+    try {
+      this.lastUseReport = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+              + month + "-" + day);
+    } catch (final ParseException e) {
+      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
+    }
+  }
   /**
    * @param fetchID id for fetching
    */
@@ -368,6 +414,7 @@ public class DemographicDataEntity {
   @NonNull
   private String patientName;
   private Date lastClean;
+  private Date lastUseReport;
 
   private int age;
   private Date dateOfBirth;

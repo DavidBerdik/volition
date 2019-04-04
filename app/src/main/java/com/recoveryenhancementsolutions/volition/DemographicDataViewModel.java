@@ -43,12 +43,22 @@ public class DemographicDataViewModel extends AndroidViewModel {
   }
 
   /**
-   * Updates the date of last use in the database.
+   * Updates the date of last use and the date of the last usage report
    *
-   * @param day A Calendar object representing the date of last use
+   * @param cleanDay A Calendar object representing the date of last use
+   * @param reportDay A Calendar object representing the date of the report
    */
-  public void updateLastCleanDate(final Calendar day){
-    new UpdateDaysCleanAsync(db.demographicDataDao()).execute(day);
+  public void updateLastCleanDate(final Calendar cleanDay, final Calendar reportDay){
+    new UpdateDaysCleanAsync(db.demographicDataDao()).execute(cleanDay, reportDay);
+  }
+
+  /**
+   * Updates the date of the last usage report
+   *
+   * @param reportDay A Calendar object representing the date of the report
+   */
+  public void updateLastReportDate(final Calendar reportDay) {
+    new UpdateDaysCleanAsync(db.demographicDataDao()).execute(reportDay);
   }
 
   /**
@@ -86,7 +96,12 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
     @Override
     protected Void doInBackground(final Calendar... params) {
-      demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime());
+      if(params.length == 2) {
+        demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime(), params[1].getTime());
+      }
+      if (params.length == 1) {
+        demographicDataDAO.queryUpdateLastReportDate(params[0].getTime());
+      }
       return null;
     }
 

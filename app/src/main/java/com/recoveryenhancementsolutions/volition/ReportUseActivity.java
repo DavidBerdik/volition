@@ -42,7 +42,6 @@ public class ReportUseActivity extends AppCompatActivity {
     today = Calendar.getInstance();
 
     lastClickedItem = 0;
-    answeredToday = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
@@ -58,8 +57,8 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
       lastClickedItem = 1;
-      answeredToday = true;
-      ddViewModel.updateLastCleanDate(today);
+      ddViewModel.updateLastCleanDate(today, today);
+      redirect();
     }
   };
 
@@ -67,7 +66,8 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
       lastClickedItem = 2;
-      answeredToday = true;
+      ddViewModel.updateLastReportDate(today);
+      redirect();
     }
   };
 
@@ -92,7 +92,6 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
-  private boolean answeredToday;
   private int lastClickedItem;
   private Calendar today;
   private DemographicDataViewModel ddViewModel;
