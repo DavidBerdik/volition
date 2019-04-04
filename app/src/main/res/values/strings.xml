@@ -51,9 +51,9 @@
   <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
   <string name="display_profile_example_date">Replace with the date entered</string>
   <string name="display_profile_continue">Continue</string>
-  <string name="menubar_home">Home</string>
-  <string name="menubar_activity">Activity</string>
-  <string name="menubar_plan">Plan</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
@@ -117,4 +117,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="daily_wellness_button"> Daily Wellness</string>
   <string name="clean_tracker_button"> Clean Tracker</string>
   <string name="activity_title_activity_screen"> Activities</string>
+  <string name="plan_previous_week">P</string>
+  <string name="plan_next_week">N</string>
 </resources>
