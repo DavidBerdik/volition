@@ -8,8 +8,10 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasCom
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,11 @@ public class CoreNavigationHandlerTest {
   @Rule
   public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
+
+  @Before
+  public void declareIntent() {
+    Intents.init();
+  }
 
   /**
    * Checks that the CoreNavigationHandler properly switches activities once.
