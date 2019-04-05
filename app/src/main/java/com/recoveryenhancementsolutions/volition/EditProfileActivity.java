@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -25,14 +26,18 @@ public class EditProfileActivity extends AppCompatActivity {
   final Calendar cleanDateCalendar = Calendar.getInstance();
 
   @Override
-  protected void onCreate(final Bundle savedInstanceState) {
+  public void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    // Until Abdulloh and Fletcher finish the real activity XML for editing a profile, I am going
-    // to use a temporary activity layout that is based on Stephanie's "Create Profile" activity.
-    setContentView(R.layout.activity_edit_profile_temp);
-    this.setTitle("Edit Profile - TEMPORARY");
+    setContentView(R.layout.activity_create_profile);
+    /*
+    Change the title on the activity to "Edit Profile" and set the text on the record button to
+    "Update Profile."
+     */
+    this.setTitle("Edit Profile");
+    final Button updateProfile = findViewById(R.id.record_button);
+    updateProfile.setText(R.string.edit_profile_update_profile);
 
-    DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
 
     final OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
@@ -123,8 +128,8 @@ public class EditProfileActivity extends AppCompatActivity {
    *
    * @param db Database to use for testing.
    */
-  public void setTestMode(VolitionDatabase db) {
-    DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+  public void setTestMode(final VolitionDatabase db) {
+    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
     demogDataViewModel.setTestDatabase(db);
     demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
@@ -135,27 +140,81 @@ public class EditProfileActivity extends AppCompatActivity {
    */
   private Observer<DemographicDataEntity> demographicDataEntityObserver = new Observer<DemographicDataEntity>() {
     @Override
-    public void onChanged(@Nullable DemographicDataEntity demographicDataEntity) {
+    public void onChanged(@Nullable final DemographicDataEntity demographicDataEntity) {
       // Only try to set the value of each field if "demographicDataEntity" is not null.
       if (demographicDataEntity != null) {
         // Set the display of the patient's name.
-        EditText name = findViewById(R.id.name);
+        final EditText name = findViewById(R.id.name);
         name.setText(demographicDataEntity.getPatientName());
 
         // Set the date of birth in the appropriate calendar and EditText field.
         dobCalendar.setTime(demographicDataEntity.getDateOfBirth());
-        EditText dob = findViewById(R.id.date_of_birth);
+        final EditText dob = findViewById(R.id.date_of_birth);
         dob.setText(DateFormat.getDateInstance().format(demographicDataEntity.getDateOfBirth()));
 
         // Set the gender in the gender spinner.
-        Spinner gender = findViewById(R.id.gender_spinner);
-        for (int x = 0; x < gender.getAdapter().getCount(); x++)
-          if(gender.getAdapter().getItem(x).toString().contains(demographicDataEntity.getGender()))
+        final Spinner gender = findViewById(R.id.gender_spinner);
+        for (int x = 0; x < gender.getAdapter().getCount(); x++) {
+          if (gender.getAdapter().getItem(x).toString()
+              .contains(demographicDataEntity.getGender())) {
             gender.setSelection(x);
+          }
+        }
+
+        // Set the "type" of the person.
+        RadioButton personType;
+        if (demographicDataEntity.isPersonInRecovery()) {
+          personType = findViewById(R.id.radioClient);
+        } else {
+          personType = findViewById(R.id.radioSupport);
+        }
+        personType.toggle();
+
+        // Set the drug of choice.
+        final RadioButton drugOfChoice;
+        if (demographicDataEntity.isUseHeroin()) {
+          drugOfChoice = findViewById(R.id.radioHeroin);
+        } else if (demographicDataEntity.isUseOpiateOrSynth()) {
+          drugOfChoice = findViewById(R.id.radioOpiates);
+        } else if (demographicDataEntity.isUseAlcohol()) {
+          drugOfChoice = findViewById(R.id.radioAlcohol);
+        } else if (demographicDataEntity.isUseCrackOrCocaine()) {
+          drugOfChoice = findViewById(R.id.radioCocaine);
+        } else if (demographicDataEntity.isUseMarijuana()) {
+          drugOfChoice = findViewById(R.id.radioMarijuana);
+        } else if (demographicDataEntity.isUseMethamphetamine()) {
+          drugOfChoice = findViewById(R.id.radioMeth);
+        } else if (demographicDataEntity.isUseBenzo()) {
+          drugOfChoice = findViewById(R.id.radioBen);
+        } else if (demographicDataEntity.isUseNonBeznoTrang()) {
+          drugOfChoice = findViewById(R.id.radioTranquilizers);
+        } else if (demographicDataEntity.isUseBarbituresOrHypno()) {
+          drugOfChoice = findViewById(R.id.radioSedatives);
+        } else if (demographicDataEntity.isUseInhalants()) {
+          drugOfChoice = findViewById(R.id.radioInhalants);
+        } else {
+          drugOfChoice = findViewById(R.id.radioOther);
+        }
+        drugOfChoice.toggle();
+
+        // If the "Other" drug of choice option was chosen, set the "Other Drug" EditText field.
+        if (demographicDataEntity.getUseOther() != null && !demographicDataEntity.getUseOther()
+            .equals("")) {
+          final EditText otherDrug = findViewById(R.id.enter_other);
+          otherDrug.setText(demographicDataEntity.getUseOther());
+        }
+
+        // Set the substance use disorder type.
+        final Spinner disorderType = findViewById(R.id.use_type_spinner);
+        if (demographicDataEntity.isDisorderOpioid()) {
+          disorderType.setSelection(1);
+        } else {
+          disorderType.setSelection(2);
+        }
 
         // Set the date of last use in the appropriate calendar and EditText field.
         cleanDateCalendar.setTime(demographicDataEntity.getLastClean());
-        EditText cleanDate = findViewById(R.id.clean_date);
+        final EditText cleanDate = findViewById(R.id.clean_date);
         cleanDate
             .setText(DateFormat.getDateInstance().format(demographicDataEntity.getLastClean()));
       }

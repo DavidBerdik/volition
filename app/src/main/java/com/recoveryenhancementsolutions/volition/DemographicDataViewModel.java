@@ -71,7 +71,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
       return null;
     }
 
-    private DemographicDataDAO demographicDataDao;
+    private final DemographicDataDAO demographicDataDao;
   }
 
   private VolitionDatabase db;

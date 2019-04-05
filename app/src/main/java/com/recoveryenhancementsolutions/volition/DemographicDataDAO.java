@@ -27,7 +27,7 @@ public interface DemographicDataDAO {
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
   @Insert
-  void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
+  void insertDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
   /**
    * Modifies a patient in the database
@@ -35,7 +35,7 @@ public interface DemographicDataDAO {
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
   @Update
-  void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
+  void updateDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
 
     /*
@@ -45,7 +45,7 @@ public interface DemographicDataDAO {
     should allow for  easier access of this information for the other functions of this application
     */
 
-  String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
+  final String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
 
   /**
    * Retrieves all of the patient's demographic data

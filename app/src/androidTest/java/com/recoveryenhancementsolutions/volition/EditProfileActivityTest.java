@@ -2,6 +2,8 @@ package com.recoveryenhancementsolutions.volition;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
+import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -20,7 +22,7 @@ import org.junit.runner.RunWith;
 public class EditProfileActivityTest {
 
   @Rule
-  public ActivityTestRule<EditProfileActivity> activityTestRule = new ActivityTestRule<>(
+  public final ActivityTestRule<EditProfileActivity> activityTestRule = new ActivityTestRule<>(
       EditProfileActivity.class);
 
   /**
@@ -34,10 +36,13 @@ public class EditProfileActivityTest {
         .allowMainThreadQueries().build();
 
     // Fill the database with test information.
-    DemographicDataEntity data = new DemographicDataEntity();
+    final DemographicDataEntity data = new DemographicDataEntity();
     data.setPatientName("John Doe");
     data.setDateOfBirth(1970, 1, 1);
     data.setGender("Male");
+    data.setPersonInRecovery(true);
+    data.setUseOther("Caffeine/Java");
+    data.setDisorderAlcohol(true);
     data.setLastClean(2038, 1, 19);
     db.demographicDataDao().insertDemographicInfo(data);
 
@@ -51,7 +56,7 @@ public class EditProfileActivityTest {
      */
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException e) {
+    } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
   }
@@ -67,7 +72,30 @@ public class EditProfileActivityTest {
     // Check that the date of birth is Jan 1, 1970.
     onView(withId(R.id.date_of_birth)).check(matches(withText("Jan 1, 1970")));
 
+    // Check that the gender is "Male."
     onView(withId(R.id.gender_spinner)).check(matches(withSpinnerText("Male")));
+
+    // Check that the person type is "person in recovery."
+    onView(withId(R.id.radioSupport)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioClient)).check(matches(isChecked()));
+
+    // Check that the drug of choice is "other" and that the EditText for displaying the custom
+    // drug type is "Caffeine/Java."
+    onView(withId(R.id.radioHeroin)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioOpiates)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioAlcohol)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioCocaine)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioMarijuana)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioMeth)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioBen)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioTranquilizers)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioSedatives)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioInhalants)).check(matches(isNotChecked()));
+    onView(withId(R.id.radioOther)).check(matches(isChecked()));
+    onView(withId(R.id.enter_other)).check(matches(withText("Caffeine/Java")));
+
+    // Check that the disorder type is "Alcohol Use Disorder."
+    onView(withId(R.id.use_type_spinner)).check(matches(withSpinnerText("Alcohol Use Disorder")));
 
     // Check that the clean date is Jan 19, 2038.
     onView(withId(R.id.clean_date)).check(matches(withText("Jan 19, 2038")));
