@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
     coreNavigationHandler = new CoreNavigationHandler(
-        (BottomNavigationView) findViewById(R.id.menubar), this);
+        (BottomNavigationView) findViewById(R.id.core_navigation), this);
     coreNavigationHandler.setFocusedItem(CoreNavigationPage.PAGE_HOME);
   }
 
