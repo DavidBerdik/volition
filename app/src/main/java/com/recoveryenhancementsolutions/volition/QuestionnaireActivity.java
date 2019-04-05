@@ -7,13 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import java.util.ArrayList;
 
 public class QuestionnaireActivity extends AppCompatActivity {
 
   public static boolean prevAnswer = false;
-  public static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
-  public static ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
   public static String severityString;
 
   /**
@@ -23,162 +20,51 @@ public class QuestionnaireActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     if (qViewModel.getDisplayState() == 0) {
-      //startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+      super.onBackPressed();
     } else {
       if (prevAnswer) {
-        qViewModel.setYesAnswers(qViewModel.getYesAnswers()-1);
+        qViewModel.setYesAnswers(qViewModel.getYesAnswers() - 1);
       }
       qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
       checkBackButton();
       if (qViewModel.getDisplayState() < 10) {
-
-        questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
-                .withAlpha(0));
-        questionsForQuestionnaire.get(qViewModel.getDisplayState()).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
-                .withAlpha(100));
+        findDisplayState();
       }
     }
   }
 
-  public void findDisplayState()
-  {
-    int state=qViewModel.getDisplayState();
-    if(state==0) {
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==1) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==2) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==3) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==4) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==5) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==6) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==7) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==8) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else if (state==9) {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-    }
-    else {
-      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-    }
+  /**
+   * This method receives a boolean value from the on click listeners and will store that value in
+   * an array list as well as checking the current display state and changing to adjust. when the
+   * questionnaire is over it will assign and store values associated with the questionnaire
+   *
+   * @param value boolean representing the answer to previous question
+   */
+  public void storeOnclickQuestionnaire(boolean value) {
 
+    prevAnswer = value;
+    if (qViewModel.getDisplayState() < 10) {
+      qViewModel.setQuestionnaireAnswers(value);
+
+      qViewModel.setDisplayState(qViewModel.getDisplayState() + 1);
+      findDisplayState();
+
+    } else if (qViewModel.getDisplayState() == 10) {
+
+      qViewModel.setQuestionnaireAnswers(value);
+
+      if (qViewModel.getYesAnswers() <= 3) {
+        severityString = "Mild";
+      } else if (qViewModel.getYesAnswers() <= 5) {
+        severityString = "Moderate";
+      } else {
+        severityString = "Severe";
+      }
+      QuestionnaireActivityViewModel.populateAsync(db);
+      startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+    }
   }
+
 
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
@@ -197,26 +83,18 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
     final Button backButton = findViewById(R.id.backButton);
-    final Button confirmButton = findViewById(R.id.confirmButton);
-    final Button nextButton = findViewById(R.id.nextButton);
 
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
-    severityResult = findViewById(R.id.severityResponse);
+    //severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
     qViewModel.setDisplayState(qViewModel.getDisplayState());
 
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
     backButton.setOnClickListener(backClickListener);
-    confirmButton.setOnClickListener(confirmButtonListener);
-    nextButton.setOnClickListener(nextButtonListener);
 
-    confirmButton.setEnabled(false);
-    confirmButton.setAlpha(0);
     backButton.setEnabled(false);
     backButton.setAlpha(0);
-    nextButton.setEnabled(false);
-    nextButton.setAlpha(0);
 
     qOne = findViewById(R.id.questionOne);
     qTwo = findViewById(R.id.questionTwo);
@@ -231,7 +109,24 @@ public class QuestionnaireActivity extends AppCompatActivity {
     qEleven = findViewById(R.id.questionEleven);
 
     findDisplayState();
-   /* qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+
+    qViewModel.fillQuestionnaireAnswers();
+
+    //severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
+  }
+
+  /**
+   * To solve the issues caused by rotation this method is called onCreate and other situations that
+   * require changing or setting display state which sets all displays to full opacity and then
+   * checks which state is currently active in the view model and changes the opacity of that state
+   */
+  private void findDisplayState() {
+    int state = qViewModel.getDisplayState();
+
+    checkBackButton();
+
+    qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+    qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
     qThree.setTextColor(qThree.getTextColors().withAlpha(0));
     qFour.setTextColor(qFour.getTextColors().withAlpha(0));
     qFive.setTextColor(qFive.getTextColors().withAlpha(0));
@@ -241,31 +136,30 @@ public class QuestionnaireActivity extends AppCompatActivity {
     qNine.setTextColor(qNine.getTextColors().withAlpha(0));
     qTen.setTextColor(qTen.getTextColors().withAlpha(0));
     qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-*/
-    questionsForQuestionnaire.add(qOne);
-    questionsForQuestionnaire.add(qTwo);
-    questionsForQuestionnaire.add(qThree);
-    questionsForQuestionnaire.add(qFour);
-    questionsForQuestionnaire.add(qFive);
-    questionsForQuestionnaire.add(qSix);
-    questionsForQuestionnaire.add(qSeven);
-    questionsForQuestionnaire.add(qEight);
-    questionsForQuestionnaire.add(qNine);
-    questionsForQuestionnaire.add(qTen);
-    questionsForQuestionnaire.add(qEleven);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
-    questionnaireAnswers.add(false);
+    if (state == 0) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(255));
+    } else if (state == 1) {
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(255));
+    } else if (state == 2) {
+      qThree.setTextColor(qThree.getTextColors().withAlpha(255));
+    } else if (state == 3) {
+      qFour.setTextColor(qFour.getTextColors().withAlpha(255));
+    } else if (state == 4) {
+      qFive.setTextColor(qFive.getTextColors().withAlpha(255));
+    } else if (state == 5) {
+      qSix.setTextColor(qSix.getTextColors().withAlpha(255));
+    } else if (state == 6) {
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(255));
+    } else if (state == 7) {
+      qEight.setTextColor(qEight.getTextColors().withAlpha(255));
+    } else if (state == 8) {
+      qNine.setTextColor(qNine.getTextColors().withAlpha(255));
+    } else if (state == 9) {
+      qTen.setTextColor(qTen.getTextColors().withAlpha(255));
+    } else {
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(255));
+    }
 
-    severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
   }
 
   private final View.OnClickListener yesClickListener = new View.OnClickListener() {
@@ -286,8 +180,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
      */
     @Override
     public void onClick(final View v) {
+      qViewModel.setYesAnswers(qViewModel.getYesAnswers() + 1);
       storeOnclickQuestionnaire(true);
-      qViewModel.setYesAnswers(qViewModel.getYesAnswers()+1);
       checkBackButton();
     }
   };
@@ -314,48 +208,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
       checkBackButton();
     }
   };
-  private final View.OnClickListener nextButtonListener = new View.OnClickListener() {
-    /**
-     *  The onClick method for the No button event listener will increment the answerCounter to
-     *  keep track of which question the App user is on in the questionnaire. The variable
-     *  noAnswers is incremented each time the event is called for the end of the questionnaire
-     *  determine the severity level.
-     *
-     *  The answerCounter is used in the if conditional statement. As the App user takes the
-     *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
-     *  the next question is set to 100 and made visible.
-     *
-     *  Once the user answers question eleven the severity level is calculated by subtracting the
-     *  the No answers from the Yes Answers.
-     *
-     * @param v takes the view during the onClick event.
-     */
-    @Override
-    public void onClick(final View v) {
-      //storeOnclickQuestionnaire(false);
-    }
-  };
-  private final View.OnClickListener confirmButtonListener = new View.OnClickListener() {
-    /**
-     *  The onClick method for the No button event listener will increment the answerCounter to
-     *  keep track of which question the App user is on in the questionnaire. The variable
-     *  noAnswers is incremented each time the event is called for the end of the questionnaire
-     *  determine the severity level.
-     *
-     *  The answerCounter is used in the if conditional statement. As the App user takes the
-     *  questionnaire the opacity for the question just answered is set to 0 and the opacity for
-     *  the next question is set to 100 and made visible.
-     *
-     *  Once the user answers question eleven the severity level is calculated by subtracting the
-     *  the No answers from the Yes Answers.
-     *
-     * @param v takes the view during the onClick event.
-     */
-    @Override
-    public void onClick(final View v) {
-      //storeOnclickQuestionnaire(false);
-    }
-  };
   private final View.OnClickListener backClickListener = new View.OnClickListener() {
     /**
      * The onClick method for the Yes button event listener will increment the answerCounter to
@@ -376,61 +228,24 @@ public class QuestionnaireActivity extends AppCompatActivity {
     public void onClick(final View v) {
 
       if (prevAnswer) {
-        qViewModel.setYesAnswers(qViewModel.getYesAnswers()-1);
+        qViewModel.setYesAnswers(qViewModel.getYesAnswers() - 1);
       }
       qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
       checkBackButton();
       if (qViewModel.getDisplayState() < 10) {
 
-        questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
-                .withAlpha(0));
-        questionsForQuestionnaire.get(qViewModel.getDisplayState()).setTextColor(
-            questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
-                .withAlpha(100));
+        findDisplayState();
       }
-
 
     }
   };
 
-  public void storeOnclickQuestionnaire(boolean value) {
-    //backButton.setEnabled(true);
-    // backButton.setAlpha(1);
-    prevAnswer = value;
-    if (qViewModel.getDisplayState() < 10) {
-      questionnaireAnswers.set(qViewModel.getDisplayState(), value);
-      questionsForQuestionnaire.get(qViewModel.getDisplayState())
-          .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
-              .withAlpha(0));
-      questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).setTextColor(
-          questionsForQuestionnaire.get(qViewModel.getDisplayState() + 1).getTextColors()
-              .withAlpha(100));
-      //answerCounter++;
-      qViewModel.setDisplayState(qViewModel.getDisplayState() + 1);
-
-    } else if (qViewModel.getDisplayState() == 10) {
-      questionnaireAnswers.set(qViewModel.getDisplayState(), value);
-      questionsForQuestionnaire.get(qViewModel.getDisplayState())
-          .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
-              .withAlpha(0));
-      if (qViewModel.getYesAnswers() <= 3) {
-        severityString = "Mild";
-      } else if (qViewModel.getYesAnswers() <= 5) {
-        severityString = "Moderate";
-      } else {
-        severityString = "Severe";
-      }
-      QuestionnaireActivityViewModel.populateAsync(db);
-      startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
-    }
-  }
 
   /**
    * Method to activate back button after question one or deactivate it if it is on question one.
    */
   private void checkBackButton() {
-    Button backButton =  findViewById(R.id.backButton);
+    Button backButton = findViewById(R.id.backButton);
     if (qViewModel.getDisplayState() == 0) {
       backButton.setEnabled(false);
       backButton.setAlpha(0);
@@ -442,7 +257,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   }
 
   private QuestionnaireActivityViewModel qViewModel;
-  private TextView severityResult;
+  //private TextView severityResult;
   private TextView qOne;
   private TextView qTwo;
   private TextView qThree;
