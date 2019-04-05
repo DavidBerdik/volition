@@ -21,6 +21,12 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
     public void setDisplayState(int displayState) {
         this.displayState = displayState;
     }
+    public int getYesAnswers() {
+        return yesAnswers;
+    }
+    public void setYesAnswers(int yesAnswers) {
+        this.yesAnswers = yesAnswers;
+    }
     /**
      * This method creates a task to query the database from an asynchronous thread.
      *
@@ -88,7 +94,7 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
      * @param db is the database.
      */
     public static void populateWithData(final VolitionDatabase db) {
-        addQuestionnaire(QuestionnaireActivity.questionnaireAnswers, QuestionnaireActivity.yesAnswers,
+        addQuestionnaire(QuestionnaireActivity.questionnaireAnswers, yesAnswers,
                 QuestionnaireActivity.severityString);
 
     }
@@ -115,4 +121,5 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
 
     private static VolitionDatabase modelDB;
     private int displayState = 0;
+    private static int yesAnswers =0;
 }

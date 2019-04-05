@@ -11,11 +11,7 @@ import java.util.ArrayList;
 
 public class QuestionnaireActivity extends AppCompatActivity {
 
-  public static int answerCounter = 0;
-  public static int yesAnswers = 0;
-  public static int noAnswers = 0;
   public static boolean prevAnswer = false;
-  public static int severityLevel = 0;
   public static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
   public static ArrayList<TextView> questionsForQuestionnaire = new ArrayList<>();
   public static String severityString;
@@ -27,10 +23,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     if (qViewModel.getDisplayState() == 0) {
-
+      //startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
     } else {
       if (prevAnswer) {
-        yesAnswers--;
+        qViewModel.setYesAnswers(qViewModel.getYesAnswers()-1);
       }
       qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
       checkBackButton();
@@ -46,6 +42,144 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
   }
 
+  public void findDisplayState()
+  {
+    int state=qViewModel.getDisplayState();
+    if(state==0) {
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==1) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==2) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==3) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==4) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==5) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==6) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==7) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==8) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else if (state==9) {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
+    }
+    else {
+      qOne.setTextColor(qOne.getTextColors().withAlpha(0));
+      qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+      qThree.setTextColor(qThree.getTextColors().withAlpha(0));
+      qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+      qFive.setTextColor(qFive.getTextColors().withAlpha(0));
+      qSix.setTextColor(qSix.getTextColors().withAlpha(0));
+      qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
+      qEight.setTextColor(qEight.getTextColors().withAlpha(0));
+      qNine.setTextColor(qNine.getTextColors().withAlpha(0));
+      qTen.setTextColor(qTen.getTextColors().withAlpha(0));
+    }
+
+  }
+
   /**
    * The method onCreate will initialize the Activity with the view of the questionnaire_activity
    * xml. The Text View for every question is created with the opacity for each question and is
@@ -57,7 +191,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
    */
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
-yesAnswers=0;
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_questionnaire);
@@ -70,7 +203,7 @@ yesAnswers=0;
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
-    qViewModel.setDisplayState(0);
+    qViewModel.setDisplayState(qViewModel.getDisplayState());
 
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
@@ -97,7 +230,8 @@ yesAnswers=0;
     qTen = findViewById(R.id.questionTen);
     qEleven = findViewById(R.id.questionEleven);
 
-    qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
+    findDisplayState();
+   /* qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
     qThree.setTextColor(qThree.getTextColors().withAlpha(0));
     qFour.setTextColor(qFour.getTextColors().withAlpha(0));
     qFive.setTextColor(qFive.getTextColors().withAlpha(0));
@@ -107,7 +241,7 @@ yesAnswers=0;
     qNine.setTextColor(qNine.getTextColors().withAlpha(0));
     qTen.setTextColor(qTen.getTextColors().withAlpha(0));
     qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-
+*/
     questionsForQuestionnaire.add(qOne);
     questionsForQuestionnaire.add(qTwo);
     questionsForQuestionnaire.add(qThree);
@@ -153,7 +287,7 @@ yesAnswers=0;
     @Override
     public void onClick(final View v) {
       storeOnclickQuestionnaire(true);
-      yesAnswers++;
+      qViewModel.setYesAnswers(qViewModel.getYesAnswers()+1);
       checkBackButton();
     }
   };
@@ -242,7 +376,7 @@ yesAnswers=0;
     public void onClick(final View v) {
 
       if (prevAnswer) {
-        yesAnswers--;
+        qViewModel.setYesAnswers(qViewModel.getYesAnswers()-1);
       }
       qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
       checkBackButton();
@@ -280,10 +414,9 @@ yesAnswers=0;
       questionsForQuestionnaire.get(qViewModel.getDisplayState())
           .setTextColor(questionsForQuestionnaire.get(qViewModel.getDisplayState()).getTextColors()
               .withAlpha(0));
-      severityLevel = yesAnswers - noAnswers;
-      if (yesAnswers <= 3) {
+      if (qViewModel.getYesAnswers() <= 3) {
         severityString = "Mild";
-      } else if (yesAnswers <= 5) {
+      } else if (qViewModel.getYesAnswers() <= 5) {
         severityString = "Moderate";
       } else {
         severityString = "Severe";
@@ -291,14 +424,13 @@ yesAnswers=0;
       QuestionnaireActivityViewModel.populateAsync(db);
       startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
     }
-    return;
   }
 
   /**
    * Method to activate back button after question one or deactivate it if it is on question one.
    */
   private void checkBackButton() {
-    Button backButton = (Button) findViewById(R.id.backButton);
+    Button backButton =  findViewById(R.id.backButton);
     if (qViewModel.getDisplayState() == 0) {
       backButton.setEnabled(false);
       backButton.setAlpha(0);
