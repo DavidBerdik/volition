@@ -8,7 +8,7 @@
     android:background="@color/res_gray">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/track_button"
         android:layout_width="180dp"
         android:layout_height="54dp"
         android:layout_marginBottom="64dp"
@@ -17,9 +17,7 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editText2" />
-
-
+        app:layout_constraintEnd_toEndOf="@+id/notes_edittext" />
 
     <TextView
         android:id="@+id/center_day_textview"
@@ -36,17 +34,17 @@
         />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/notes_edittext"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#ffffff"
+        android:background="@color/res_white"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="      Notes Here"
-        android:textColor="#444444"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:textColor="@color/res_gray"
+        app:layout_constraintBottom_toTopOf="@+id/track_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
