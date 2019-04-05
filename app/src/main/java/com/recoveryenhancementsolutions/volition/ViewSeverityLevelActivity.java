@@ -22,7 +22,12 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    */
   @Override
   public void onBackPressed() {
-    //startActivity(new Intent(ViewSeverityLevelActivity.this, QuestionnaireActivity.class));
+
+      qViewModel.setYesAnswers(0);
+
+    qViewModel.setDisplayState(0);
+
+    super.onBackPressed();
   }
 
   /**
@@ -101,6 +106,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   }
 
   private ViewSeverityLevelViewModel viewSeverityViewModel;
+  private QuestionnaireActivityViewModel qViewModel;
   private TextView specifier;
   private TextView totalYesTv;
 }
