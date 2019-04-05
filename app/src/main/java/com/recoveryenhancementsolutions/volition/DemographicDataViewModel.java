@@ -71,6 +71,10 @@ public class DemographicDataViewModel extends AndroidViewModel {
     return db.demographicDataDao().queryLastCleanDate();
   }
 
+  public LiveData<Date> getLastReportDate() {
+    return db.demographicDataDao().queryLastReportDate();
+  }
+
   private static class insertAsyncTask extends AsyncTask<DemographicDataEntity, Void, Void> {
 
     insertAsyncTask(final DemographicDataDAO dao) {
@@ -98,11 +102,11 @@ public class DemographicDataViewModel extends AndroidViewModel {
     @Override
     protected Void doInBackground(final Calendar... params) {
       if(params.length == 2) {
-          Log.e("DemoDataViewModel", "Inserting " +params[0].getTime().toString());
+          Log.e("DemoDataViewModel", "Log Date: " +params[0].getTime().toString());
         demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime(), params[1].getTime());
       }
       if (params.length == 1) {
-          Log.e("DemoDataViewModel", "Inserting " +params[0].getTime().toString());
+          Log.e("DemoDataViewModel", "Log Date " +params[0].getTime().toString());
         demographicDataDAO.queryUpdateLastReportDate(params[0].getTime());
       }
       return null;

@@ -42,6 +42,16 @@ public class ReportUseActivity extends AppCompatActivity {
     inTest = b;
   }
 
+  /**
+   * Sets the ViewModel to work with a test database
+   *
+   * @param db the test database
+   */
+  public void setTestDatabase(VolitionDatabase db)
+  {
+    ddViewModel.setTestDatabase(db);
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

@@ -200,6 +200,9 @@ public interface DemographicDataDAO {
   @Query("SELECT lastClean " + genericQuery)
   LiveData<Date> queryLastCleanDate();
 
+  @Query("SELECT lastUseReport " +genericQuery)
+  LiveData<Date> queryLastReportDate();
+
   /**
    * Updates the client's last clean date and the date of their last usage report
    *
