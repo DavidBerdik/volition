@@ -42,7 +42,7 @@ public class HomeActivityTest {
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Patient");
     demographicDataEntity
-        .setLastClean(new Date(new Date().getTime() - DAYS_CLEAN * 24 * 60 * 60 * 1000));
+        .setLastUse(new Date(new Date().getTime() - DAYS_CLEAN * 24 * 60 * 60 * 1000));
 
     // Tell the activity to use the testing database.
     activityTestRule.getActivity().onCreateTest(db);
@@ -67,7 +67,7 @@ public class HomeActivityTest {
 
     // Fetching the data...
     try {
-      assertEquals(demographicDataEntity.getLastClean(),
+      assertEquals(demographicDataEntity.getLastUse(),
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));

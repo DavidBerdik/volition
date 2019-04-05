@@ -310,37 +310,47 @@ public class DemographicDataEntity {
   }
 
   /**
-   * returns last clean date
+   * returns last use date
    *
-   * @return Date last clean
+   * @return Date or last use
    */
   @NonNull
-  public Date getLastClean() {
-    return lastClean;
+  public Date getLastUse() {
+    return lastUse;
   }
 
   /**
-   * sets last clean date
+   * returns the date of the user's last usage report (yes/no I have(n't) used since my last visit)
    *
-   * @param lastClean Date last clean
+   * @return Date of the last usage report
    */
-  public void setLastClean(final @NonNull Date lastClean) {
+  @NonNull
+  public Date getLastUseReport() {
+    return lastUseReport;
+  }
+
+  /**
+   * sets last use date
+   *
+   * @param lastUse Date last use
+   */
+  public void setLastUse(final @NonNull Date lastUse) {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
-    cal.setTime(lastClean);
-    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    cal.setTime(lastUse);
+    setLastUse(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
-   * Sets the date of last clean
+   * Sets the date of last use
    *
-   * @param year last clean year
-   * @param month last clean month
-   * @param day last clean day
+   * @param year last use year
+   * @param month last use month
+   * @param day last use day
    */
-  public void setLastClean(final int year, final int month, final int day) {
+  public void setLastUse(final int year, final int month, final int day) {
     try {
-      this.lastClean = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+      this.lastUse = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
           + month + "-" + day);
     } catch (final ParseException e) {
       Log.e("DemographicDataEntity", Log.getStackTraceString(e));
@@ -367,7 +377,8 @@ public class DemographicDataEntity {
   @SuppressWarnings("NullableProblems")
   @NonNull
   private String patientName;
-  private Date lastClean;
+  private Date lastUse; //The user's last date of use
+  private Date lastUseReport; //The date in which the user last stated whether or not they have used
 
   private int age;
   private Date dateOfBirth;

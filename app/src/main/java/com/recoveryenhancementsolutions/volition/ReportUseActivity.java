@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -53,13 +54,13 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
-  //TODO See about getting this to update the date of last use, could be easier/more sensible to work with
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
       lastClickedItem = 1;
       answeredToday = true;
-      ddViewModel.updateLastCleanDate(today);
+      ddViewModel.updateLastUseDate(today);
+      redirect();
     }
   };
 
@@ -68,11 +69,15 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 2;
       answeredToday = true;
+      redirect();
     }
   };
 
-  //TODO: Move the user to the Home page
-  private void redirect(){}
+  //TODO: Move the user to the Activity page
+  private void redirect(){
+    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+    startActivity(i);
+  }
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override

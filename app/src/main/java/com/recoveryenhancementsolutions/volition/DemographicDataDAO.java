@@ -197,14 +197,14 @@ public interface DemographicDataDAO {
    *
    * @return Date of their last clean
    */
-  @Query("SELECT lastClean " + genericQuery)
-  LiveData<Date> queryLastCleanDate();
+  @Query("SELECT lastUse " + genericQuery)
+  LiveData<Date> queryLastUseDate();
 
   /**
    * Updates the client's last clean date
    *
    * @param day A Date object representing the date of last use
    */
-  @Query("UPDATE DemographicDataEntity SET lastClean = :day WHERE fetchID = 1")
-  void queryUpdateLastCleanDate(final Date day);
+  @Query("UPDATE DemographicDataEntity SET lastUse = :day WHERE fetchID = 1")
+  void queryUpdateLastUseDate(final Date day);
 }
