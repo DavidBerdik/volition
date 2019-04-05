@@ -16,6 +16,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * A testing object used to monitor the functionality of the CoreNavigationHandler. Uses the
+ * HomeActivity class as the starting Activity.
+ */
 @RunWith(AndroidJUnit4.class)
 public class CoreNavigationHandlerTest {
 
@@ -23,6 +27,9 @@ public class CoreNavigationHandlerTest {
   public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
 
+  /**
+   * Declares a required initialization that allows Espresso to check for intent activity.
+   */
   @Before
   public void declareIntent() {
     Intents.init();
@@ -42,7 +49,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch(InterruptedException ex) {
+    } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
