@@ -42,22 +42,22 @@ public class DemographicDataViewModel extends AndroidViewModel {
     new insertAsyncTask(db.demographicDataDao()).execute(demographicDataEntity);
   }
 
-    /**
-     * Updates the date of last use in the database.
-     *
-     * @param day A Calendar object representing the date of last use
-     */
-  public void updateLastUseDate(final Calendar day){
+  /**
+   * Updates the date of last use in the database.
+   *
+   * @param day A Calendar object representing the date of last use
+   */
+  public void updateLastCleanDate(final Calendar day){
     new UpdateDaysCleanAsync(db.demographicDataDao()).execute(day);
-    }
+  }
 
   /**
    * Retrieves the last date clean as stored in the database.
    *
    * @return A LiveData object containing a Date representing the last listed date of being clean.
    */
-  public LiveData<Date> getLastUseDate() {
-    return db.demographicDataDao().queryLastUseDate();
+  public LiveData<Date> getLastCleanDate() {
+    return db.demographicDataDao().queryLastCleanDate();
   }
 
   private static class insertAsyncTask extends AsyncTask<DemographicDataEntity, Void, Void> {
@@ -86,7 +86,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
     @Override
     protected Void doInBackground(final Calendar... params) {
-      demographicDataDAO.queryUpdateLastUseDate(params[0].getTime());
+      demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime());
       return null;
     }
 

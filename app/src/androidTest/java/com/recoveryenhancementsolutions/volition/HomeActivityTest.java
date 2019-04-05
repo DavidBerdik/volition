@@ -26,7 +26,7 @@ public class HomeActivityTest {
 
   @Rule
   public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
-      HomeActivity.class);
+          HomeActivity.class);
 
   /**
    * Creates a testing environment to be used to the HomeActivity class with a test database.
@@ -36,19 +36,19 @@ public class HomeActivityTest {
     // Create a test database instead of the app's real database.
     final Context context = InstrumentationRegistry.getTargetContext();
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
-        .allowMainThreadQueries().build();
+            .allowMainThreadQueries().build();
 
     // Sets up some entry data.
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Patient");
     demographicDataEntity
-        .setLastUse(new Date(new Date().getTime() - DAYS_CLEAN * 24 * 60 * 60 * 1000));
+            .setLastClean(new Date(new Date().getTime() - DAYS_CLEAN * 24 * 60 * 60 * 1000));
 
     // Tell the activity to use the testing database.
     activityTestRule.getActivity().onCreateTest(db);
 
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
-        .get(DemographicDataViewModel.class);
+            .get(DemographicDataViewModel.class);
     viewModel.setTestDatabase(db);
     db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
   }
@@ -67,8 +67,8 @@ public class HomeActivityTest {
 
     // Fetching the data...
     try {
-      assertEquals(demographicDataEntity.getLastUse(),
-          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
+      assertEquals(demographicDataEntity.getLastClean(),
+              LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
@@ -76,8 +76,8 @@ public class HomeActivityTest {
     // Converting the data...
     try {
       assertEquals(DAYS_CLEAN, DateConverter
-          .daysBetween(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
-              new Date()));
+              .daysBetween(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
+                      new Date()));
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }

@@ -59,8 +59,7 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 1;
       answeredToday = true;
-      ddViewModel.updateLastUseDate(today);
-      redirect();
+      ddViewModel.updateLastCleanDate(today);
     }
   };
 
@@ -69,7 +68,6 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 2;
       answeredToday = true;
-      redirect();
     }
   };
 
