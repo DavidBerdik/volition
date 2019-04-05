@@ -45,7 +45,7 @@ public class ReportUseActivityTest {
     // Create a test database instead of the app's real database.
     final Context context = InstrumentationRegistry.getTargetContext();
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
-            .allowMainThreadQueries().build();
+        .allowMainThreadQueries().build();
 
     activityTestRule.getActivity().setTestEnvironment(true);
     activityTestRule.getActivity().setTestDatabase(db);
@@ -59,39 +59,12 @@ public class ReportUseActivityTest {
     db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
     viewModel.getLastCleanDate().observe(activityTestRule.getActivity(), dateObserver);
   }
+
   private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
     public void onChanged(final Date date) {
     }
   };
-  /**
-   * Tests if pressing the yes and no buttons update the database correctly
-   */
-  @Test
-  public void updateDatabaseTest() {
-    try{
-      Calendar cal = Calendar.getInstance();
-      //Initial state: both the last clean and last report should be the initial day
-      assertTrue(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()).equals(initialLogDay));
-      assertTrue(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()).equals(initialLogDay));
-
-      //click No: Last clean should be the same, last report should be updated
-      onView(withId(R.id.report_use_no)).perform(click());
-      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
-      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()), initialLogDay);
-      assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
-
-      //click Yes: Both Last clean and last report should be updated
-      onView(withId(R.id.report_use_yes)).perform(click());
-      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
-      assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
-      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
-      assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
-    }
-    catch(Exception e){
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-  }
 
   /**
    * Tests that the Yes and No buttons are responding to single clicks properly.
@@ -125,6 +98,38 @@ public class ReportUseActivityTest {
     assertEquals(2, activityTestRule.getActivity().getLastClickedItem());
     onView(withId(R.id.report_use_yes)).perform(click());
     assertEquals(1, activityTestRule.getActivity().getLastClickedItem());
+  }
+
+
+  /**
+   * Tests if pressing the yes and no buttons update the database correctly
+   */
+  @Test
+  public void updateDatabaseTest() {
+    try {
+      Calendar cal = Calendar.getInstance();
+      //Initial state: both the last clean and last report should be the initial day
+      assertTrue(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate())
+          .equals(initialLogDay));
+      assertTrue(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate())
+          .equals(initialLogDay));
+
+      //click No: Last clean should be the same, last report should be updated
+      onView(withId(R.id.report_use_no)).perform(click());
+      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
+      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
+          initialLogDay);
+      assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
+
+      //click Yes: Both Last clean and last report should be updated
+      onView(withId(R.id.report_use_yes)).perform(click());
+      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
+      assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
+      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
+      assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
+    } catch (Exception e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
   }
 
   private final Calendar today = Calendar.getInstance();
