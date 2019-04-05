@@ -51,9 +51,9 @@
   <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
   <string name="display_profile_example_date">Replace with the date entered</string>
   <string name="display_profile_continue">Continue</string>
-  <string name="menubar_home">Home</string>
-  <string name="menubar_activity">Activity</string>
-  <string name="menubar_plan">Plan</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
@@ -113,4 +113,9 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="back"> Back to previous question</string>
   <string name="next">Next Question </string>
   <string name="confirm"> Confirm Questionnaire</string>
+  <string name="plan_previous_week">P</string>
+  <string name="plan_next_week">N</string>
+  <string name="buprenorphine_button"> Buprenorphine</string>
+  <string name="abstain_button"> Abstain</string>
+  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
 </resources>

@@ -197,8 +197,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
     final Button backButton = findViewById(R.id.backButton);
-    final Button confirmButton = findViewById(R.id.confirmButton);
-    final Button nextButton = findViewById(R.id.nextButton);
 
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     severityResult = findViewById(R.id.severityResponse);
@@ -208,15 +206,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
     backButton.setOnClickListener(backClickListener);
-    confirmButton.setOnClickListener(confirmButtonListener);
-    nextButton.setOnClickListener(nextButtonListener);
 
-    confirmButton.setEnabled(false);
-    confirmButton.setAlpha(0);
+
     backButton.setEnabled(false);
     backButton.setAlpha(0);
-    nextButton.setEnabled(false);
-    nextButton.setAlpha(0);
+
 
     qOne = findViewById(R.id.questionOne);
     qTwo = findViewById(R.id.questionTwo);
