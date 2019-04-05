@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
   <item
-    android:id="@+id/menubar_home"
+    android:id="@+id/core_navigation_home"
     android:textStyle="bold"
     android:icon="@drawable/ic_home_black_24dp"
-    android:title="@string/menubar_home"/>
-
+    android:title="@string/core_navigation_home"/>
   <item
-    android:id="@+id/menubar_activity"
+    android:id="@+id/core_navigation_activity"
     android:textStyle="bold"
     android:icon="@drawable/ic_notifications_black_24dp"
-    android:title="@string/menubar_activity"/>
-
+    android:title="@string/core_navigation_activity"/>
   <item
-    android:id="@+id/menubar_plan"
+    android:id="@+id/core_navigation_plan"
     android:textStyle="bold"
     android:icon="@drawable/ic_dashboard_black_24dp"
-    android:title="@string/menubar_plan"/>
-
+    android:title="@string/core_navigation_plan"/>
 </menu>

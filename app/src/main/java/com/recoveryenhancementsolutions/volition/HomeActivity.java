@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
     final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setSelectedItemId(R.id.menubar_home);
+    navigation.setSelectedItemId(R.id.core_navigation_home);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
@@ -75,14 +75,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
       switch (item.getItemId()) {
-        case R.id.menubar_home:
-          buttonTestItem.setText(R.string.menubar_home);
+        case R.id.core_navigation_home:
+          buttonTestItem.setText(R.string.core_navigation_home);
           return true;
-        case R.id.menubar_activity:
-          buttonTestItem.setText(R.string.menubar_activity);
+        case R.id.core_navigation_activity:
+          buttonTestItem.setText(R.string.core_navigation_activity);
           return true;
-        case R.id.menubar_plan:
-          buttonTestItem.setText(R.string.menubar_plan);
+        case R.id.core_navigation_plan:
+          buttonTestItem.setText(R.string.core_navigation_plan);
           return true;
       }
       return false;
