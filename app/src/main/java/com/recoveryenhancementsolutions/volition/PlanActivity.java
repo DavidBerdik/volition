@@ -24,76 +24,6 @@ import java.util.List;
  */
 public class PlanActivity extends AppCompatActivity {
 
-  /**
-   * Structure for storing a date's corresponding TextViews for the title and descriptions.
-   */
-  private class DateView implements Observer<List<UserActivityEntity>> {
-
-    public Calendar getDay() {
-      return day;
-    }
-
-    private DateView(final Calendar day, final TextView title, final TextView content) {
-      this.title = title;
-      this.content = content;
-
-      setDay(day);
-    }
-
-    /**
-     * Change the day associated with these labels. Updates the title label to reflect the day.
-     *
-     * @param day The new day to associate with.
-     */
-    private void setDay(final Calendar day) {
-      this.day = (Calendar) day.clone();
-      if (title != null) {
-        String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-            getResources().getConfiguration().locale).charAt(0) + "";
-        title.setText(str);
-      }
-    }
-
-    private void observe(final LifecycleOwner owner) {
-      data = actViewModel.getActivitiesByDate(day.getTime());
-      data.observe(owner, this);
-      loaded = false;
-    }
-
-    private void unobserve(final LifecycleOwner owner) {
-      if (data != null) {
-        data.removeObservers(owner);
-        data = null;
-      }
-    }
-
-    @Override
-    public void onChanged(@NonNull final List<UserActivityEntity> activities) {
-      final StringBuilder activityBuffer = new StringBuilder();
-
-      //Compiles a list of activity descriptions for a specific date
-      for (int i = 0; i < activities.size(); ++i) {
-        activityBuffer.append(activities.get(i).getDesc());
-        if (i < activities.size() - 1) {
-          activityBuffer.append('\n');
-        }
-      }
-
-      content.setText(activityBuffer);
-      loaded = true;
-    }
-
-    public boolean isLoaded() {
-      return loaded;
-    }
-
-    private final TextView title;
-    private final TextView content;
-    private Calendar day;
-    private LiveData<List<UserActivityEntity>> data;
-    private boolean loaded;
-  }
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -262,6 +192,76 @@ public class PlanActivity extends AppCompatActivity {
       return false;
     }
   };
+
+  /**
+   * Structure for storing a date's corresponding TextViews for the title and descriptions.
+   */
+  private class DateView implements Observer<List<UserActivityEntity>> {
+
+    public Calendar getDay() {
+      return day;
+    }
+
+    private DateView(final Calendar day, final TextView title, final TextView content) {
+      this.title = title;
+      this.content = content;
+
+      setDay(day);
+    }
+
+    /**
+     * Change the day associated with these labels. Updates the title label to reflect the day.
+     *
+     * @param day The new day to associate with.
+     */
+    private void setDay(final Calendar day) {
+      this.day = (Calendar) day.clone();
+      if (title != null) {
+        String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
+            getResources().getConfiguration().locale).charAt(0) + "";
+        title.setText(str);
+      }
+    }
+
+    private void observe(final LifecycleOwner owner) {
+      data = actViewModel.getActivitiesByDate(day.getTime());
+      data.observe(owner, this);
+      loaded = false;
+    }
+
+    private void unobserve(final LifecycleOwner owner) {
+      if (data != null) {
+        data.removeObservers(owner);
+        data = null;
+      }
+    }
+
+    @Override
+    public void onChanged(@NonNull final List<UserActivityEntity> activities) {
+      final StringBuilder activityBuffer = new StringBuilder();
+
+      //Compiles a list of activity descriptions for a specific date
+      for (int i = 0; i < activities.size(); ++i) {
+        activityBuffer.append(activities.get(i).getDesc());
+        if (i < activities.size() - 1) {
+          activityBuffer.append('\n');
+        }
+      }
+
+      content.setText(activityBuffer);
+      loaded = true;
+    }
+
+    public boolean isLoaded() {
+      return loaded;
+    }
+
+    private final TextView title;
+    private final TextView content;
+    private Calendar day;
+    private LiveData<List<UserActivityEntity>> data;
+    private boolean loaded;
+  }
 
   private final ArrayList<DateView> dateViews = new ArrayList<>();
   private UserActivityViewModel actViewModel;
