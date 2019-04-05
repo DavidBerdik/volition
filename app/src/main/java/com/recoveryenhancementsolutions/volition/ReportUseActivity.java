@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -31,6 +32,26 @@ public class ReportUseActivity extends AppCompatActivity {
     return lastClickedItem;
   }
 
+  /**
+   * Sets the activity as a test to prevent redirecting to other Activities
+   * TEST METHOD
+   *
+   * @param b True = in test, false = not in test
+   */
+  public void setTestEnvironment(boolean b){
+    inTest = b;
+  }
+
+  /**
+   * Sets the ViewModel to work with a test database
+   *
+   * @param db the test database
+   */
+  public void setTestDatabase(VolitionDatabase db)
+  {
+    ddViewModel.setTestDatabase(db);
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -41,7 +62,7 @@ public class ReportUseActivity extends AppCompatActivity {
     today = Calendar.getInstance();
 
     lastClickedItem = 0;
-    answeredToday = false;
+    inTest = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
@@ -53,12 +74,19 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
+  protected DemographicDataViewModel getViewModel(){
+    return ddViewModel;
+  }
+
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
       lastClickedItem = 1;
-      answeredToday = true;
-      ddViewModel.updateLastCleanDate(today);
+      ddViewModel.updateLastCleanDate(today, today);
+      //Only redirects if we are not in a testing environment
+      if (!inTest) {
+        redirect();
+      }
     }
   };
 
@@ -66,12 +94,19 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
       lastClickedItem = 2;
-      answeredToday = true;
+      ddViewModel.updateLastReportDate(today);
+      //Only redirects if we are not in a testing environment
+      if (!inTest) {
+        redirect();
+      }
     }
   };
 
-  //TODO: Move the user to the Home page
-  private void redirect(){}
+  //TODO: Move the user to the Activity page
+  private void redirect(){
+    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+    startActivity(i);
+  }
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
@@ -88,8 +123,8 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
-  private boolean answeredToday;
   private int lastClickedItem;
   private Calendar today;
   private DemographicDataViewModel ddViewModel;
+  private boolean inTest;
 }
