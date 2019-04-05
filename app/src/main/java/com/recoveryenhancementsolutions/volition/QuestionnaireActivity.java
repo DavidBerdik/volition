@@ -85,7 +85,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button backButton = findViewById(R.id.backButton);
 
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
-    //severityResult = findViewById(R.id.severityResponse);
     db = VolitionDatabase.getDatabase(this.getApplication());
     qViewModel.setDisplayState(qViewModel.getDisplayState());
 
@@ -112,7 +111,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     qViewModel.fillQuestionnaireAnswers();
 
-    //severityResult.setTextColor(severityResult.getTextColors().withAlpha(0));
   }
 
   /**
@@ -257,7 +255,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
   }
 
   private QuestionnaireActivityViewModel qViewModel;
-  //private TextView severityResult;
   private TextView qOne;
   private TextView qTwo;
   private TextView qThree;
