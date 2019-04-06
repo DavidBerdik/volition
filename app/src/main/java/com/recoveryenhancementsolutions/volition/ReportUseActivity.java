@@ -33,12 +33,11 @@ public class ReportUseActivity extends AppCompatActivity {
   }
 
   /**
-   * Sets the activity as a test to prevent redirecting to other Activities
-   * TEST METHOD
+   * Sets the activity as a test to prevent redirecting to other Activities TEST METHOD
    *
    * @param b True = in test, false = not in test
    */
-  public void setTestEnvironment(boolean b){
+  public void setTestEnvironment(boolean b) {
     inTest = b;
   }
 
@@ -47,8 +46,7 @@ public class ReportUseActivity extends AppCompatActivity {
    *
    * @param db the test database
    */
-  public void setTestDatabase(VolitionDatabase db)
-  {
+  public void setTestDatabase(VolitionDatabase db) {
     ddViewModel.setTestDatabase(db);
   }
 
@@ -74,7 +72,7 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
-  protected DemographicDataViewModel getViewModel(){
+  protected DemographicDataViewModel getViewModel() {
     return ddViewModel;
   }
 
@@ -102,27 +100,35 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
-  //TODO: Move the user to the Activity page
-  private void redirect(){
-    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-    startActivity(i);
+  //TODO: Move the user to the Activity screen
+  private void redirect() {
+    intent = new Intent(getApplicationContext(), HomeActivity.class);
+    startActivity(intent);
   }
 
+  //TODO: Uncomment as more Activities are added to the dev branch
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
         case R.id.core_navigation_home:
+          intent = new Intent(getApplicationContext(), HomeActivity.class);
+          startActivity(intent);
           return true;
         case R.id.core_navigation_activity:
+          //intent = new Intent(getApplicationContext(), ActivityActivity.class);
+          //startActivity(intent);
           return true;
         case R.id.core_navigation_plan:
+          //intent = new Intent(getApplicationContext(), PlanActivity.class);
+          //startActivity(intent);
           return true;
       }
       return false;
     }
   };
 
+  private Intent intent;
   private int lastClickedItem;
   private Calendar today;
   private DemographicDataViewModel ddViewModel;
