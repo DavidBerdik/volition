@@ -9,6 +9,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -22,14 +23,18 @@ import org.junit.runner.RunWith;
 public class EditProfileActivityTest {
 
   @Rule
-  public final ActivityTestRule<EditProfileActivity> activityTestRule = new ActivityTestRule<>(
-      EditProfileActivity.class);
+  public final ActivityTestRule<CreateProfileActivity> activityTestRule = new ActivityTestRule<>(
+      CreateProfileActivity.class, false, false);
 
   /**
-   * Creates a temporary, in-memory database to use for testing EditProfileActivity.
+   * Creates a temporary, in-memory database to use for testing the edit profile activity.
    */
   @Before
   public void createTestEnvironment() {
+    // Inject the "editMode" flag to set the activity to edit mode.
+    final Intent i = new Intent();
+    i.putExtra("editMode", true);
+
     // Create a test database to use in place of the app's real database.
     final VolitionDatabase db = Room
         .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
@@ -46,7 +51,8 @@ public class EditProfileActivityTest {
     data.setLastClean(2038, 1, 19);
     db.demographicDataDao().insertDemographicInfo(data);
 
-    // Set test mode on the activity.
+    // Launch the activity and then set it to test mode.
+    activityTestRule.launchActivity(i);
     activityTestRule.getActivity().setTestMode(db);
 
     /*
