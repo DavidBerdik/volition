@@ -19,7 +19,7 @@ public interface TreatmentPlanDao {
    *
    * @return A LiveData object containing a TreatmentPlan Entity.
    */
-  @Query("SELECT * FROM TreatmentPlanEntity WHERE Id = 1")
+  @Query("SELECT * FROM TreatmentPlanEntity")
   LiveData<TreatmentPlanEntity> getTreatmentPlan();
 
   /**

@@ -2,7 +2,10 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 
 /**
  * Class manages relationship between the TreatmentPlanActivity and the Volition Database.
@@ -16,22 +19,18 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    */
   public TreatmentPlanViewModel(final Application application) {
     super(application);
+    medObserved = false;
+    questionnaireObserved = false;
     db = VolitionDatabase.getDatabase(this.getApplication());
-  }
+    treatmentPlan = db.treatmentPlanDao().getTreatmentPlan();
 
-  /**
-   * Loads in a pre-existing treatmentPlan
-   */
-  public void loadTreatmentPlan() {
-    treatmentPlan = db.treatmentPlanDao().getTreatmentPlan().getValue();
-    treatmentPlanDao = db.treatmentPlanDao();
   }
 
   /**
    * Updates the database with the values of treatmentPlan.
    */
-  public void insertDb() {
-    db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlan);
+  public void insertDb(TreatmentPlanEntity treatmentPlanEntity) {
+    db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlanEntity);
   }
 
   /**
@@ -43,7 +42,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public void setTestDatabase(final VolitionDatabase db) {
     db.close();
     this.db = db;
-    this.treatmentPlan = db.treatmentPlanDao().getTreatmentPlan().getValue();
+    this.treatmentPlan = db.treatmentPlanDao().getTreatmentPlan();
   }
 
   /**
@@ -60,146 +59,92 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
       severityLevel = db.questionnaireDao().getSeverityLevel().getValue();
       medicationChoice = db.medicationChoiceDAO().getMedication().getValue().medication;
     } catch (NullPointerException e) {
-      if(medicationChoice.equals("")){
+      if (medicationChoice.equals("")) {
         medicationChoice = "ABSTAIN";
       }
-      if(severityLevel.equals("")) {
+      if (severityLevel.equals("")) {
         severityLevel = "MODERATE";
       }
     }
 
     //A new treatmentPlanEntity to add to the database
-    this.treatmentPlan = new TreatmentPlanEntity();
+    TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
     if (severityLevel.equals("MILD")) { //There is no mild Buprenorphine plan currently
-      treatmentPlan.setNumCounseling(1);
-      treatmentPlan.setNumSupportMeeting(1);
-      treatmentPlan.setNumLessons(1);
-      treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-      treatmentPlan.setNumOutcomeMeasures(1);
-      treatmentPlan.setNumTimeTracking(1);
-      treatmentPlan.setNumReadingResponse(1);
-      treatmentPlan.setNumMedManagement(0);
-      treatmentPlan.setMedManagementMonthly();
-      treatmentPlan.setOutcomeMeasureWeekly();
+      newTreatmentPlan.setNumCounseling(1);
+      newTreatmentPlan.setNumSupportMeeting(1);
+      newTreatmentPlan.setNumLessons(1);
+      newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+      newTreatmentPlan.setNumOutcomeMeasures(1);
+      newTreatmentPlan.setNumTimeTracking(1);
+      newTreatmentPlan.setNumReadingResponse(1);
+      newTreatmentPlan.setNumMedManagement(0);
+      newTreatmentPlan.setMedManagementMonthly();
+      newTreatmentPlan.setOutcomeMeasureWeekly();
     } else if (severityLevel.equals("MODERATE")) {
-      treatmentPlan.setNumCounseling(3);
-      treatmentPlan.setNumSupportMeeting(3);
-      treatmentPlan.setNumLessons(2);
-      treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-      treatmentPlan.setNumOutcomeMeasures(3);
-      treatmentPlan.setNumTimeTracking(2);
-      treatmentPlan.setNumReadingResponse(2);
-      treatmentPlan.setMedManagementMonthly();
-      treatmentPlan.setOutcomeMeasureDaily();
+      newTreatmentPlan.setNumCounseling(3);
+      newTreatmentPlan.setNumSupportMeeting(3);
+      newTreatmentPlan.setNumLessons(2);
+      newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+      newTreatmentPlan.setNumOutcomeMeasures(3);
+      newTreatmentPlan.setNumTimeTracking(2);
+      newTreatmentPlan.setNumReadingResponse(2);
+      newTreatmentPlan.setMedManagementMonthly();
+      newTreatmentPlan.setOutcomeMeasureDaily();
 
       //handles differences in treatment plans
       if (medicationChoice.equals("ABSTAIN")) {
-        treatmentPlan.setNumMedManagement(0);
+        newTreatmentPlan.setNumMedManagement(0);
       } else {
-        treatmentPlan.setNumMedManagement(2);
+        newTreatmentPlan.setNumMedManagement(2);
       }
     } else { //Severe severity level
-      treatmentPlan.setNumCounseling(5);
-      treatmentPlan.setNumSupportMeeting(5);
-      treatmentPlan.setNumLessons(3);
-      treatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-      treatmentPlan.setNumOutcomeMeasures(5);
-      treatmentPlan.setNumTimeTracking(5);
-      treatmentPlan.setNumReadingResponse(3);
-      treatmentPlan.setMedManagementWeekly();
-      treatmentPlan.setOutcomeMeasureDaily();
+      newTreatmentPlan.setNumCounseling(5);
+      newTreatmentPlan.setNumSupportMeeting(5);
+      newTreatmentPlan.setNumLessons(3);
+      newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+      newTreatmentPlan.setNumOutcomeMeasures(5);
+      newTreatmentPlan.setNumTimeTracking(5);
+      newTreatmentPlan.setNumReadingResponse(3);
+      newTreatmentPlan.setMedManagementWeekly();
+      newTreatmentPlan.setOutcomeMeasureDaily();
 
       //handles differences in treatment plans
       if (medicationChoice.equals("ABSTAIN")) {
-        treatmentPlan.setNumMedManagement(0);
+        newTreatmentPlan.setNumMedManagement(0);
       } else {
-        treatmentPlan.setNumMedManagement(1);
+        newTreatmentPlan.setNumMedManagement(1);
       }
     }
-    treatmentPlan.setId(1); //Prevents the creation of multiple treatment plans
-    this.insertDb();
+    this.insertDb(newTreatmentPlan);
   }
 
   /**
-   * Returns the number of recommended counseling sessions to attend.
-   *
-   * @return An integer representing the number of counseling sessions to attend.
+   * Observes the medication choice table in the database. Generates a treatment plan if the
+   * questionnaire has already been loaded as well.
    */
-  public int getNumCounseling() {
-    return treatmentPlan.getNumCounseling();
-  }
+  private Observer<MedicationChoiceEntity> medObserver = new Observer<MedicationChoiceEntity>() {
+    @Override
+    public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
+      medObserved = true;
+      if (questionnaireObserved) {
+        generateTreatmentPlan();
+      }
+    }
+  };
 
   /**
-   * Returns the number of recommended support meetings.
-   *
-   * @return An integer representing the number of support meetings to attend.
+   * Observes the questionnaire table in the database. Generates a treatment plan if the medication
+   * choice has already been loaded as well.
    */
-  public int getNumSupportMeeting() {
-    return treatmentPlan.getNumSupportMeeting();
-  }
-
-  /**
-   * Returns the number of recommended lessons.
-   *
-   * @return An integer representing the number of lessons to attend.
-   */
-  public int getNumLessons() {
-    return treatmentPlan.getNumLessons();
-  }
-
-  /**
-   * Returns the number of recommended treatmentplan effectiveness assessments.
-   *
-   * @return An integer representing the number of treatmentplan effectiveness assessments to take.
-   */
-  public int getNumTreatmentEffectivenessAssessment() {
-    return treatmentPlan.getNumTreatmentEffectivenessAssessment();
-  }
-
-  /**
-   * Returns the number of recommended reading responses to complete.
-   *
-   * @return An integer representing the number of reading responses to complete.
-   */
-  public int getNumReadingResponse() {
-    return treatmentPlan.getNumReadingResponse();
-  }
-
-  /**
-   * Returns the number of recommended medication managements.
-   *
-   * @return An integer representing the number of medication managements to do.
-   */
-  public int getNumMedManagement() {
-    return treatmentPlan.getNumMedManagement();
-  }
-
-  /**
-   * Returns the frequency of recommended medication management.
-   *
-   * @return A string representing the frequency of medication management.
-   */
-  public String getMedManagementFrequency() {
-    return treatmentPlan.getMedManagementFrequency();
-  }
-
-  /**
-   * Returns the frequency of recommended outcome measures.
-   *
-   * @return A string representing the frequency of outcome measures.
-   */
-  public String getOutcomMeasureFrequency() {
-    return treatmentPlan.getOutcomeMeasureFrequency();
-  }
-
-  /**
-   * Returns the loaded treatmentPlan
-   *
-   * @return The treatmentPlanEntity loaded from the database.
-   */
-  public TreatmentPlanEntity getTreatmentPlan() {
-    return treatmentPlan;
-  }
+  private Observer<QuestionnaireEntity> questionnaireObserver = new Observer<QuestionnaireEntity>() {
+    @Override
+    public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
+      questionnaireObserved = true;
+      if(medObserved){
+        generateTreatmentPlan();
+      }
+    }
+  };
 
   /**
    * Inserts treatment plan into the database using a background thread
@@ -210,6 +155,9 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
+  /**
+   * Used to insert data into the database asynchronously
+   */
   private static class insertAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
 
     private final TreatmentPlanDao mAsyncTaskDao;
@@ -223,12 +171,34 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
       mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
       return null;
     }
+
   }
 
   /**
-   * The treatment plan entity loaded from the database.
+   * A boolean tracking if the medicaton choice has loaded in.
    */
-  private TreatmentPlanEntity treatmentPlan;
+  private boolean medObserved;
+
+  /**
+   * A boolean tracking if the questionnaire has been loaded in.
+   */
+  private boolean questionnaireObserved;
+
+  /**
+   * Live data containing the treatment plan entity loaded from the database.
+   */
+  private LiveData<TreatmentPlanEntity> treatmentPlan;
+
+  /**
+   * A live data object storing the medication choice entity from the database.
+   */
+  private LiveData<MedicationChoiceEntity> medicationChoiceEntity;
+
+
+  /**
+   * A live data object storing the questionnaire from the database.
+   */
+  private LiveData<QuestionnaireEntity> questionnaireEntity;
 
   /**
    * The apps loaded Database.
