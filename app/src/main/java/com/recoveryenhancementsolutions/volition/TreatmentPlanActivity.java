@@ -2,7 +2,6 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +36,24 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
 
         Button subCounselButton = findViewById(R.id.subCounselButton);
         Button addCounselButton = findViewById(R.id.addCounselButton);
+        Button subMedManagementButton = findViewById(R.id.subMedMangaementButton);
+        Button addMedManagementButton = findViewById(R.id.addMedManagementButton);
+        Button subSupportGroupButton = findViewById(R.id.subSupportGroupButton);
+        Button addSupportGroupButton = findViewById(R.id.addSupportGroupMeetingButton);
+        Button subOutcomeMeasureButton = findViewById(R.id.subOutcomeMeasureButton);
+        Button addOutcomeMeasureButton = findViewById(R.id.addOutcomeMeasureButton);
+        Button subLessonPlannerButton = findViewById(R.id.subLessonPlannerButton);
+        Button addLessonPlannerButton = findViewById(R.id.addLessonPlannerButton);
+        Button subTreatmentEffectivenessAssessmentButton = findViewById
+                (R.id.subTreatmentEffectivenessAssessmentButton);
+        Button addTreatmentEffectivenessAssessmentButton = findViewById
+                (R.id.addTreatmentEffectivnessAssessmentButton);
+        Button subCleanTimeTrackingButton = findViewById(R.id.subCleanTimeTrackingButton);
+        Button addCleanTimeTrackingButton = findViewById(R.id.addCleanTimeTrackingButton);
+        Button subReadResponceJournalButton = findViewById(R.id.subReadResponceJournalButton);
+        Button addReadResponceJournalButton = findViewById(R.id.addReadResponceJournalButton);
+        Button updateButton = findViewById(R.id.updateButton);
+
 
         /**
          * Button onClickListeners
@@ -44,6 +61,21 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
 
         subCounselButton.setOnClickListener(this);
         addCounselButton.setOnClickListener(this);
+        subMedManagementButton.setOnClickListener(this);
+        addMedManagementButton.setOnClickListener(this);
+        subSupportGroupButton.setOnClickListener(this);
+        addSupportGroupButton.setOnClickListener(this);
+        subOutcomeMeasureButton.setOnClickListener(this);
+        addOutcomeMeasureButton.setOnClickListener(this);
+        subLessonPlannerButton.setOnClickListener(this);
+        addLessonPlannerButton.setOnClickListener(this);
+        subTreatmentEffectivenessAssessmentButton.setOnClickListener(this);
+        addTreatmentEffectivenessAssessmentButton.setOnClickListener(this);
+        subCleanTimeTrackingButton.setOnClickListener(this);
+        addCleanTimeTrackingButton.setOnClickListener(this);
+        subReadResponceJournalButton.setOnClickListener(this);
+        addReadResponceJournalButton.setOnClickListener(this);
+        updateButton.setOnClickListener(this);
 
         /**
          * Calls used for database entry when applicable
@@ -61,28 +93,89 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         /**
          * Assertion of values for testing purposes
          */
-       // counselingView.setText("3");
-       // medManagementView.setText("2");
-       // supportMeetingView.setText("3");
-       // lessonView.setText("2");
-       // treatmentEffectiveView.setText("1");
-       // outcomeMeasureView.setText("3");
-       // timeTrackingView.setText("2");
-       // readingResponseView.setText("2");
+        counselingView.setText("3");
+        medManagementView.setText("2");
+        supportMeetingView.setText("3");
+        lessonView.setText("2");
+        treatmentEffectiveView.setText("1");
+        outcomeMeasureView.setText("3");
+        timeTrackingView.setText("2");
+        readingResponseView.setText("2");
     }
 
+    /**
+     * onClick Listener class using a switch statement to dictate proper
+     * @param v
+     */
     @Override
-    public void onClick(View v){
-        switch(v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.subCounselButton:
-                String s = counselingView.getText().toString();
-                int num = Integer.parseInt(s);
-                if (num - 1 < 0) {
-                    num = 0;
-                } else {
-                    num--;
-                }
-                viewModel.treatmentPlan.setNumCounseling(num);
+                onSubCleanTimeTrackingButton();
+                break;
+
+            case R.id.addCounselButton:
+                onAddCounselButtonClicked();
+                break;
+
+            case R.id.subMedMangaementButton:
+                onSubMedMangaementButtonClicked();
+                break;
+
+            case R.id.addMedManagementButton:
+                onAddMedManagementButtonClicked();
+                break;
+
+            case R.id.subSupportGroupButton:
+                onSubSupportGroupButtonClicked();
+                break;
+
+            case R.id.addSupportGroupMeetingButton:
+                onAddSupportGroupMeetingButtonClicked();
+                break;
+
+            case R.id.subOutcomeMeasureButton:
+                onSubOutcomeMeasureButtonClicked();
+                break;
+
+            case R.id.addOutcomeMeasureButton:
+                onAddOutcomeMeasureButtonClicked();
+                break;
+
+            case R.id.subLessonPlannerButton:
+                onSubLessonPlannerButtonClicked();
+                break;
+
+            case R.id.addLessonPlannerButton:
+                onAddLessonPlannerButtonClicked();
+                break;
+
+            case R.id.subTreatmentEffectivenessAssessmentButton:
+                onSubTreatmentEffectivnessAssessmentButtonCLicked();
+                break;
+
+            case R.id.addTreatmentEffectivnessAssessmentButton:
+                onAddTreatmentEffectivnessAssessmentButtonClicked();
+                break;
+
+            case R.id.subCleanTimeTrackingButton:
+                onSubCleanTimeTrackingButton();
+                break;
+
+            case R.id.addCleanTimeTrackingButton:
+                onAddCleanTimeTrackingButton();
+                break;
+
+            case R.id.subReadResponceJournalButton:
+                onSubReadResponseButton();
+                break;
+
+            case R.id.addReadResponceJournalButton:
+                onAddReadResponseButton();
+                break;
+
+            case R.id.updateButton:
+                onUpdateButtonClicked();
                 break;
         }
     }
@@ -106,7 +199,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtract a counseling session.
      */
     private void onSubCounselButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
