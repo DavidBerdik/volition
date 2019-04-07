@@ -345,7 +345,20 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        */
       @Override
       public void onClick(final View v) {
-        // Insert the demographic data in to the database.
+        /*
+        Set the values for the patient's name, date of birth, other drug, and last use date fields
+        and the insert the demographic data in to the database.
+         */
+        EditText name = findViewById(R.id.name);
+        data.setPatientName(name.getText().toString());
+
+        data.setDateOfBirth(dobCalendar.getTime());
+
+        EditText other = findViewById(R.id.enter_other);
+        data.setUseOther(other.getText().toString());
+
+        data.setLastClean(cleanDateCalendar.getTime());
+
         demogDataViewModel.insertDemographicData(data);
 
         //Intent goes to the next activity in the Work Flow.
