@@ -22,7 +22,7 @@
     app:layout_constraintTop_toTopOf="parent"/>
 
   <android.support.design.widget.BottomNavigationView
-    android:id="@+id/menubar"
+    android:id="@+id/core_navigation"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:background="@color/res_green"
@@ -45,7 +45,7 @@
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="@android:color/black"
-    app:layout_constraintBottom_toBottomOf="@+id/menubar"
+    app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"/>
