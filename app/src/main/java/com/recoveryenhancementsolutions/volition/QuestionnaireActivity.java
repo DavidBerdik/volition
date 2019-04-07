@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class QuestionnaireActivity extends AppCompatActivity {
 
   public static boolean prevAnswer = false;
-  public static String severityString;
 
   /**
    * Changes the functionality of the phones back button so that it can no longer take you to
@@ -45,22 +44,13 @@ public class QuestionnaireActivity extends AppCompatActivity {
     prevAnswer = value;
     if (qViewModel.getDisplayState() < 10) {
       qViewModel.setQuestionnaireAnswers(value);
-
       qViewModel.setDisplayState(qViewModel.getDisplayState() + 1);
       findDisplayState();
 
     } else if (qViewModel.getDisplayState() == 10) {
-
       qViewModel.setQuestionnaireAnswers(value);
-
-      if (qViewModel.getYesAnswers() <= 3) {
-        severityString = "Mild";
-      } else if (qViewModel.getYesAnswers() <= 5) {
-        severityString = "Moderate";
-      } else {
-        severityString = "Severe";
-      }
-      QuestionnaireActivityViewModel.populateAsync(db);
+      qViewModel.setSeverityString();
+      qViewModel.insQuestionnaire();
       startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
     }
   }
@@ -85,7 +75,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button backButton = findViewById(R.id.backButton);
 
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
-    db = VolitionDatabase.getDatabase(this.getApplication());
+    //db = VolitionDatabase.getDatabase(this.getApplication());
     qViewModel.setDisplayState(qViewModel.getDisplayState());
 
     yesButton.setOnClickListener(yesClickListener);
@@ -196,7 +186,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
   };
 
-
   /**
    * Method to activate back button after question one or deactivate it if it is on question one.
    */
@@ -213,5 +202,4 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
   private QuestionnaireActivityViewModel qViewModel;
   private TextView[] qs = new TextView[11];
-  private VolitionDatabase db;
 }

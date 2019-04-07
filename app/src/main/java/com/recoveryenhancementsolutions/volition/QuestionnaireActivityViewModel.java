@@ -80,12 +80,10 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
 
   /**
    * This method creates a task to query the database from an asynchronous thread.
-   *
-   * @param db connection to the database class
    */
-  public static void populateAsync(final VolitionDatabase db) {
+  public void insQuestionnaire() {
 
-    final PopulateDbAsync task = new PopulateDbAsync(db);
+    final PopulateDbAsync task = new PopulateDbAsync();
     task.execute();
   }
 
@@ -105,7 +103,7 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
    * @param db passes in the database.
    */
   public void setTestDatabase(final VolitionDatabase db) {
-    this.modelDB = db;
+    this.db = db;
   }
 
   /**
@@ -113,7 +111,7 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
    */
 
   public void createDb() {
-    modelDB = VolitionDatabase.getDatabase(this.getApplication());
+    db = VolitionDatabase.getDatabase(this.getApplication());
   }
 
   /**
@@ -123,7 +121,8 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
    * @param yesAnswers number of yes answers in the questionnaire.
    * @param severityString name of the severity level based on yes answers in the questionnaire.
    */
-  public static void addQuestionnaire(final ArrayList<Boolean> questionnaireAnswers,
+  public static void addQuestionnaire(VolitionDatabase db,
+      final ArrayList<Boolean> questionnaireAnswers,
       final int yesAnswers, final String severityString) {
     QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
     questionnaireActivityEntity.setQ1(questionnaireAnswers.get(0));
@@ -142,40 +141,38 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
     questionnaireActivityEntity.setId(1);
 
     questionnaireActivityEntity.setSeverityLevel(severityString);
-    modelDB.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
+    db.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
   }
 
   /**
-   * Calls add questionnaire and sends in the answers to the entity.
-   *
-   * @param db is the database.
+   * this method determines the severity based on total yes answers, by doing this in the view model
+   * passing the value between activity and view model can be avoided
    */
-  public static void populateWithData(final VolitionDatabase db) {
-    addQuestionnaire(questionnaireAnswers, yesAnswers,
-        QuestionnaireActivity.severityString);
+  public void setSeverityString() {
+    if (yesAnswers <= 3) {
+      severityString = "Mild";
+    } else if (yesAnswers <= 5) {
+      severityString = "Moderate";
+    } else {
+      severityString = "Severe";
+    }
   }
 
   /**
    * Asynchronously processes the database.
    */
-  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-
-
-    private final VolitionDatabase modelDB;
-
-    PopulateDbAsync(VolitionDatabase db) {
-      modelDB = db;
-    }
+  private class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(final Void... params) {
-      populateWithData(modelDB);
+      addQuestionnaire(db, questionnaireAnswers, yesAnswers, severityString);
       return null;
     }
   }
 
-  private static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
-  private static VolitionDatabase modelDB;
+  private ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
+  private VolitionDatabase db;
   private int displayState = 0;
-  private static int yesAnswers = 0;
+  private int yesAnswers = 0;
+  private String severityString;
 }

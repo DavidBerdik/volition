@@ -9,10 +9,6 @@ import android.support.annotation.NonNull;
 @Entity(primaryKeys = {"id"})
 public class QuestionnaireActivityEntity {
 
-  @NonNull
-  public String totalYes;
-  public String severityLevel;
-
   /**
    * Sets id value in the database.
    *
@@ -247,6 +243,26 @@ public class QuestionnaireActivityEntity {
     return q11;
   }
 
+  /**
+   * Method to return value of this object.
+   *
+   * @return returns value of totalYes for this specific object
+   */
+  public String getTotalYes() {
+    return totalYes;
+  }
+
+  /**
+   * Method to return value of this object.
+   *
+   * @return returns value of severityLevel for this specific object
+   */
+  public String getSeverityLevel() {
+    return severityLevel;
+  }
+
+  private String totalYes;
+  private String severityLevel;
   private boolean q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11;
   private int id;
 
