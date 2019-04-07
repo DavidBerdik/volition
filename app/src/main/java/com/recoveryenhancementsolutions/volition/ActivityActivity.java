@@ -10,7 +10,7 @@ import android.widget.Button;
 /**
  * UI activity that allows the user to choose between different daily activities.
  */
-public class ActivityScreenChoiceActivity extends AppCompatActivity {
+public class ActivityActivity extends AppCompatActivity {
 
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
@@ -34,7 +34,7 @@ public class ActivityScreenChoiceActivity extends AppCompatActivity {
       @Override
       public void onClick(final View view) {
         startActivity(
-            new Intent(ActivityScreenChoiceActivity.this, TreatmentAssessmentActivity.class));
+            new Intent(ActivityActivity.this, TreatmentAssessmentActivity.class));
       }
     });
 
@@ -42,7 +42,7 @@ public class ActivityScreenChoiceActivity extends AppCompatActivity {
     lessonButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityScreenChoiceActivity.this, LessonActivity.class));
+        startActivity(new Intent(ActivityActivity.this, LessonActivity.class));
       }
     });
 
@@ -50,7 +50,7 @@ public class ActivityScreenChoiceActivity extends AppCompatActivity {
     journalButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityScreenChoiceActivity.this, JournalActivity.class));
+        startActivity(new Intent(ActivityActivity.this, JournalActivity.class));
       }
     });
 
@@ -58,7 +58,7 @@ public class ActivityScreenChoiceActivity extends AppCompatActivity {
     eduButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityScreenChoiceActivity.this, EDUActivity.class));
+        startActivity(new Intent(ActivityActivity.this, EDUActivity.class));
       }
     });
 
@@ -66,7 +66,7 @@ public class ActivityScreenChoiceActivity extends AppCompatActivity {
     wellnessButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityScreenChoiceActivity.this, DailyWellnessActivity.class));
+        startActivity(new Intent(ActivityActivity.this, DailyWellnessActivity.class));
       }
     });
 
@@ -74,7 +74,7 @@ public class ActivityScreenChoiceActivity extends AppCompatActivity {
     cleanButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityScreenChoiceActivity.this, ReportUseActivity.class));
+        startActivity(new Intent(ActivityActivity.this, ReportUseActivity.class));
       }
     });
   }
