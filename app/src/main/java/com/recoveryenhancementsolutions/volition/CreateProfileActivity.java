@@ -350,6 +350,9 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        * confirmation
        */
       private void sendOff() {
+        // Insert the demographic data in to the database.
+        demogDataViewModel.insertDemographicData(data);
+
         //Intent goes to the next activity in the Work Flow.
         Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
         startActivity(intent);
