@@ -46,9 +46,18 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
+   * Returns the live data object containing the treatment plan.
+   *
+   * @return A live data object containing a treatmentPlanEntity.
+   */
+  public LiveData<TreatmentPlanEntity> getTreatmentPlan(){
+    return treatmentPlan;
+  }
+
+  /**
    * Generates a new treatmentPlan.
    */
-  public void generateTreatmentPlan() {
+  private void generateTreatmentPlan() {
     String medicationChoice = "", severityLevel = "";
 
     //imports severity level and medication choice from the database. sets to uppercase to
