@@ -4,23 +4,59 @@ import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.RadioButton;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
 
-public class CreateProfileActivity extends AppCompatActivity {
+public class CreateProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
+
+  /**
+   * Checking the selected gender, if selected, adds to the database
+   */
+  public void onItemSelected(AdapterView<?> parent, View view,
+      int pos, long id) {
+
+
+    if(parent.getId() == R.id.gender_spinner){
+      if(pos == 0 && spinnerCount > 1 ){
+        onNothingSelected(parent);
+      }
+      String gender = (String) parent.getItemAtPosition(pos);
+      data.setGender(gender);
+    }
+
+    if(parent.getId() == R.id.use_type_spinner){
+     //Talking to Rahul about Database implementation of UseType
+    }
+
+
+    spinnerCount++;
+  }
+
+  /**
+   * Lets user know to select a gender
+   */
+  public void onNothingSelected(AdapterView<?> parent) {
+   Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",Toast.LENGTH_SHORT);
+   toast.show();
+  }
 
 
   /*
@@ -143,7 +179,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     radioSedatives.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
-          // data.setUseBenzo(true); No sedatives in DemogrpahicDataEntity
+            data.setUseBarbituresOrHypno(true);
         }
       }
     });
@@ -159,7 +195,10 @@ public class CreateProfileActivity extends AppCompatActivity {
       }
     });
   }
-
+  /*
+    *Adds the listeners to the corresponding RadioButtons and Spinners
+    * Sets the buttons and Spinners to the corresponding ID's
+  */
   public void addAllListeners() {
     radioSupport = (RadioButton) findViewById(R.id.radioSupport);
     radioClient = (RadioButton) findViewById(R.id.radioClient);
@@ -185,6 +224,12 @@ public class CreateProfileActivity extends AppCompatActivity {
     addOpiatesListener();
     addSedativesListener();
     addTranqListener();
+
+    genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
+    useTypeSpinner = (Spinner) findViewById(R.id.use_type_spinner);
+
+    genderSpinner.setOnItemSelectedListener(this);
+    useTypeSpinner.setOnItemSelectedListener(this);
   }
 
   @Override
@@ -272,6 +317,7 @@ public class CreateProfileActivity extends AppCompatActivity {
       @Override
       public void onClick(final View v) {
         sendOff();
+
       }
 
       /**
@@ -302,4 +348,7 @@ public class CreateProfileActivity extends AppCompatActivity {
   private RadioButton radioTranquilizers;
   private RadioButton radioSedatives;
   private RadioButton radioInhalants;
+  private Spinner genderSpinner;
+  private Spinner useTypeSpinner;
+  private int spinnerCount = 0;
 }
