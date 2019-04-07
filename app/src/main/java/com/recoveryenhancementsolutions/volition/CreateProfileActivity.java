@@ -336,12 +336,6 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     final Button send;
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(final View v) {
-        sendOff();
-
-      }
-
       /**
        *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
        * the database. Only these four will be added from my method because Collin is handling
@@ -349,7 +343,8 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        * latest commit on March 27, 2019. However for now it will be simply a button until
        * confirmation
        */
-      private void sendOff() {
+      @Override
+      public void onClick(final View v) {
         // Insert the demographic data in to the database.
         demogDataViewModel.insertDemographicData(data);
 
