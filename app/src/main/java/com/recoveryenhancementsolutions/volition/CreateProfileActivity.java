@@ -14,14 +14,225 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
+import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 import android.content.Intent;
+import android.widget.CheckBox;
+
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
-public class CreateProfileActivity extends AppCompatActivity {
+
+public class CreateProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
+
+  /**
+   * Checking the selected gender, if selected, adds to the database
+   */
+  public void onItemSelected(AdapterView<?> parent, View view,
+      int pos, long id) {
+
+
+    if(parent.getId() == R.id.gender_spinner){
+      if(pos == 0 && spinnerCount > 1 ){
+        onNothingSelected(parent);
+      }
+      String gender = (String) parent.getItemAtPosition(pos);
+      data.setGender(gender);
+    }
+
+    if(parent.getId() == R.id.use_type_spinner){
+     //Talking to Rahul about Database implementation of UseType
+    }
+
+
+    spinnerCount++;
+  }
+
+  /**
+   * Lets user know to select a gender
+   */
+  public void onNothingSelected(AdapterView<?> parent) {
+   Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",Toast.LENGTH_SHORT);
+   toast.show();
+  }
+
+
+  /*
+   * All of these public methods take in the current view @c
+   * Then they check if the Corresponding RadioButton has been selected
+   * If the RadioButton has been selected the corresponding field in the database is set to true
+   */
+  public void addSupportListener() {
+    radioSupport = (RadioButton) findViewById(R.id.radioSupport);
+    radioSupport.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setPersonInRecovery(false);
+        }
+      }
+    });
+  }
+
+  public void addClientListener() {
+    radioClient = (RadioButton) findViewById(R.id.radioClient);
+    radioClient.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setPersonInRecovery(true);
+        }
+      }
+    });
+  }
+
+  public void addHeroinListener() {
+    radioHeroin = (RadioButton) findViewById(R.id.radioHeroin);
+    radioHeroin.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseHeroin(true);
+        }
+      }
+    });
+  }
+
+  public void addOpiatesListener() {
+    radioOpiates = (RadioButton) findViewById(R.id.radioOpiates);
+    radioOpiates.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseOpiateOrSynth(true);
+        }
+      }
+    });
+  }
+
+  public void addAlocholListener() {
+    radioAlcohol = (RadioButton) findViewById(R.id.radioAlcohol);
+    radioAlcohol.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseAlcohol(true);
+        }
+      }
+    });
+  }
+
+  public void addCocaineListener() {
+    radioCocaine = (RadioButton) findViewById(R.id.radioCocaine);
+    radioCocaine.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseCrackOrCocaine(true);
+        }
+      }
+    });
+  }
+
+  public void addMarijuanaListener() {
+    radioMarijuana = (RadioButton) findViewById(R.id.radioMarijuana);
+    radioMarijuana.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseMarijuana(true);
+        }
+      }
+    });
+  }
+
+  public void addMethListener() {
+    radioMeth = (RadioButton) findViewById(R.id.radioMeth);
+    radioMeth.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseMethamphetamine(true);
+        }
+      }
+    });
+  }
+
+  public void addBenListener() {
+    radioBen = (RadioButton) findViewById(R.id.radioBen);
+    radioBen.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseBenzo(true);
+        }
+      }
+    });
+  }
+
+  public void addTranqListener() {
+    radioTranquilizers = (RadioButton) findViewById(R.id.radioTranquilizers);
+    radioTranquilizers.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          data.setUseNonBeznoTrang(true);
+        }
+      }
+    });
+  }
+
+  public void addSedativesListener() {
+    radioSedatives = (RadioButton) findViewById(R.id.radioSedatives);
+    radioSedatives.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+            data.setUseBarbituresOrHypno(true);
+        }
+      }
+    });
+  }
+
+  public void addInhanlentsListener() {
+    radioInhalants = (RadioButton) findViewById(R.id.radioInhalants);
+    radioInhalants.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((CheckBox) v).isChecked()) {
+          data.setUseInhalants(true);
+        }
+      }
+    });
+  }
+  /*
+    *Adds the listeners to the corresponding RadioButtons and Spinners
+    * Sets the buttons and Spinners to the corresponding ID's
+  */
+  public void addAllListeners() {
+    radioSupport = (RadioButton) findViewById(R.id.radioSupport);
+    radioClient = (RadioButton) findViewById(R.id.radioClient);
+    radioHeroin = (RadioButton) findViewById(R.id.radioHeroin);
+    radioInhalants = (RadioButton) findViewById(R.id.radioInhalants);
+    radioSedatives = (RadioButton) findViewById(R.id.radioSedatives);
+    radioTranquilizers = (RadioButton) findViewById(R.id.radioTranquilizers);
+    radioBen = (RadioButton) findViewById(R.id.radioBen);
+    radioMeth = (RadioButton) findViewById(R.id.radioMeth);
+    radioMarijuana = (RadioButton) findViewById(R.id.radioMarijuana);
+    radioAlcohol = (RadioButton) findViewById(R.id.radioAlcohol);
+    radioCocaine = (RadioButton) findViewById(R.id.radioCocaine);
+    radioOpiates = (RadioButton) findViewById(R.id.radioOpiates);
+    addSupportListener();
+    addClientListener();
+    addAlocholListener();
+    addBenListener();
+    addCocaineListener();
+    addHeroinListener();
+    addInhanlentsListener();
+    addMarijuanaListener();
+    addMethListener();
+    addOpiatesListener();
+    addSedativesListener();
+    addTranqListener();
+
+    genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
+    useTypeSpinner = (Spinner) findViewById(R.id.use_type_spinner);
+
+    genderSpinner.setOnItemSelectedListener(this);
+    useTypeSpinner.setOnItemSelectedListener(this);
+  }
 
   final Calendar dobCalendar = Calendar.getInstance();
   final Calendar cleanDateCalendar = Calendar.getInstance();
@@ -51,6 +262,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     // Retrieve the relevant ViewModel for interacting with the database.
     final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
+    addAllListeners();
+
+    final Calendar dobCalendar = Calendar.getInstance();
 
     final DatePickerDialog.OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
       /**
@@ -126,6 +340,7 @@ public class CreateProfileActivity extends AppCompatActivity {
       @Override
       public void onClick(final View v) {
         sendOff();
+
       }
 
       /**
@@ -140,7 +355,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
         startActivity(intent);
       }
-
     });
 
     /*
@@ -252,4 +466,20 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
   };
 
+  private DemographicDataEntity data = new DemographicDataEntity();
+  private RadioButton radioSupport;
+  private RadioButton radioClient;
+  private RadioButton radioHeroin;
+  private RadioButton radioOpiates;
+  private RadioButton radioAlcohol;
+  private RadioButton radioCocaine;
+  private RadioButton radioMarijuana;
+  private RadioButton radioMeth;
+  private RadioButton radioBen;
+  private RadioButton radioTranquilizers;
+  private RadioButton radioSedatives;
+  private RadioButton radioInhalants;
+  private Spinner genderSpinner;
+  private Spinner useTypeSpinner;
+  private int spinnerCount = 0;
 }

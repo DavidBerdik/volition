@@ -53,4 +53,5 @@ public class DemographicDataDaoTest {
   }
   private DemographicDataDAO demographicDataDAO;
   private VolitionDatabase db;
+
 }
