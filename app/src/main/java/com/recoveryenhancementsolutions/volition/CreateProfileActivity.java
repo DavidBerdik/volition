@@ -22,7 +22,6 @@ import java.util.Calendar;
 import android.content.Intent;
 import android.widget.CheckBox;
 
-
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
@@ -44,9 +43,9 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
       data.setGender(gender);
     }
 
-    if(parent.getId() == R.id.use_type_spinner){
+    /*if(parent.getId() == R.id.use_type_spinner){
      //Talking to Rahul about Database implementation of UseType
-    }
+    }*/
 
 
     spinnerCount++;
@@ -67,7 +66,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
    * If the RadioButton has been selected the corresponding field in the database is set to true
    */
   public void addSupportListener() {
-    radioSupport = (RadioButton) findViewById(R.id.radioSupport);
+    radioSupport = findViewById(R.id.radioSupport);
     radioSupport.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -78,7 +77,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addClientListener() {
-    radioClient = (RadioButton) findViewById(R.id.radioClient);
+    radioClient = findViewById(R.id.radioClient);
     radioClient.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -89,7 +88,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addHeroinListener() {
-    radioHeroin = (RadioButton) findViewById(R.id.radioHeroin);
+    radioHeroin = findViewById(R.id.radioHeroin);
     radioHeroin.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -100,7 +99,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addOpiatesListener() {
-    radioOpiates = (RadioButton) findViewById(R.id.radioOpiates);
+    radioOpiates = findViewById(R.id.radioOpiates);
     radioOpiates.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -111,7 +110,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addAlocholListener() {
-    radioAlcohol = (RadioButton) findViewById(R.id.radioAlcohol);
+    radioAlcohol = findViewById(R.id.radioAlcohol);
     radioAlcohol.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -122,7 +121,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addCocaineListener() {
-    radioCocaine = (RadioButton) findViewById(R.id.radioCocaine);
+    radioCocaine = findViewById(R.id.radioCocaine);
     radioCocaine.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -133,7 +132,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addMarijuanaListener() {
-    radioMarijuana = (RadioButton) findViewById(R.id.radioMarijuana);
+    radioMarijuana = findViewById(R.id.radioMarijuana);
     radioMarijuana.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -144,7 +143,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addMethListener() {
-    radioMeth = (RadioButton) findViewById(R.id.radioMeth);
+    radioMeth = findViewById(R.id.radioMeth);
     radioMeth.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -155,7 +154,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addBenListener() {
-    radioBen = (RadioButton) findViewById(R.id.radioBen);
+    radioBen = findViewById(R.id.radioBen);
     radioBen.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -166,7 +165,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addTranqListener() {
-    radioTranquilizers = (RadioButton) findViewById(R.id.radioTranquilizers);
+    radioTranquilizers = findViewById(R.id.radioTranquilizers);
     radioTranquilizers.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -177,7 +176,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addSedativesListener() {
-    radioSedatives = (RadioButton) findViewById(R.id.radioSedatives);
+    radioSedatives = findViewById(R.id.radioSedatives);
     radioSedatives.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -188,7 +187,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addInhanlentsListener() {
-    radioInhalants = (RadioButton) findViewById(R.id.radioInhalants);
+    radioInhalants = findViewById(R.id.radioInhalants);
     radioInhalants.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((CheckBox) v).isChecked()) {
@@ -202,18 +201,18 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     * Sets the buttons and Spinners to the corresponding ID's
   */
   public void addAllListeners() {
-    radioSupport = (RadioButton) findViewById(R.id.radioSupport);
-    radioClient = (RadioButton) findViewById(R.id.radioClient);
-    radioHeroin = (RadioButton) findViewById(R.id.radioHeroin);
-    radioInhalants = (RadioButton) findViewById(R.id.radioInhalants);
-    radioSedatives = (RadioButton) findViewById(R.id.radioSedatives);
-    radioTranquilizers = (RadioButton) findViewById(R.id.radioTranquilizers);
-    radioBen = (RadioButton) findViewById(R.id.radioBen);
-    radioMeth = (RadioButton) findViewById(R.id.radioMeth);
-    radioMarijuana = (RadioButton) findViewById(R.id.radioMarijuana);
-    radioAlcohol = (RadioButton) findViewById(R.id.radioAlcohol);
-    radioCocaine = (RadioButton) findViewById(R.id.radioCocaine);
-    radioOpiates = (RadioButton) findViewById(R.id.radioOpiates);
+    radioSupport = findViewById(R.id.radioSupport);
+    radioClient = findViewById(R.id.radioClient);
+    radioHeroin = findViewById(R.id.radioHeroin);
+    radioInhalants = findViewById(R.id.radioInhalants);
+    radioSedatives = findViewById(R.id.radioSedatives);
+    radioTranquilizers = findViewById(R.id.radioTranquilizers);
+    radioBen = findViewById(R.id.radioBen);
+    radioMeth = findViewById(R.id.radioMeth);
+    radioMarijuana = findViewById(R.id.radioMarijuana);
+    radioAlcohol = findViewById(R.id.radioAlcohol);
+    radioCocaine = findViewById(R.id.radioCocaine);
+    radioOpiates = findViewById(R.id.radioOpiates);
     addSupportListener();
     addClientListener();
     addAlocholListener();
@@ -227,8 +226,8 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     addSedativesListener();
     addTranqListener();
 
-    genderSpinner = (Spinner) findViewById(R.id.gender_spinner);
-    useTypeSpinner = (Spinner) findViewById(R.id.use_type_spinner);
+    genderSpinner = findViewById(R.id.gender_spinner);
+    useTypeSpinner = findViewById(R.id.use_type_spinner);
 
     genderSpinner.setOnItemSelectedListener(this);
     useTypeSpinner.setOnItemSelectedListener(this);
