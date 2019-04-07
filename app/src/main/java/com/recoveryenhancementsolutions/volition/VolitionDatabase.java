@@ -19,6 +19,7 @@ package com.recoveryenhancementsolutions.volition;
  * This is a modification of the "Room with a View" class WordRoomDatabase obtained from
  * https://github.com/googlecodelabs/android-room-with-a-view/blob/master/app/src/main/java/com/example/android/roomwordssample/WordRoomDatabase.java
  * Modifications are largely to change the entities and DAO methods as well as the class name.
+ * Also modified to conform with project coding standards.
  */
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
@@ -40,9 +41,9 @@ import android.support.annotation.NonNull;
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 @Database(
     entities = {
+        MedicationChoiceEntity.class,
         UserActivityEntity.class,
         DemographicDataEntity.class,
-        MedicationChoiceEntity.class,
     },
     version = 1)
 @TypeConverters(DateConverter.class)
@@ -52,7 +53,9 @@ public abstract class VolitionDatabase extends RoomDatabase {
   // TODO: Place DAO instantiation method calls here, as in the following commented-out example
   // public abstract WordDao wordDao();
   public abstract UserActivitiesDao userActivitiesDao();
+
   public abstract DemographicDataDAO demographicDataDao();
+
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
   /**
