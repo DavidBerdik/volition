@@ -110,7 +110,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     findDisplayState();
 
     qViewModel.fillQuestionnaireAnswers();
-
   }
 
   /**
@@ -126,42 +125,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
       q.setTextColor(q.getTextColors().withAlpha(0));
     }
     qs[state].setTextColor(qs[state].getTextColors().withAlpha(255));
-        /*
-        qOne.setTextColor(qOne.getTextColors().withAlpha(0));
-        qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
-        qThree.setTextColor(qThree.getTextColors().withAlpha(0));
-        qFour.setTextColor(qFour.getTextColors().withAlpha(0));
-        qFive.setTextColor(qFive.getTextColors().withAlpha(0));
-        qSix.setTextColor(qSix.getTextColors().withAlpha(0));
-        qSeven.setTextColor(qSeven.getTextColors().withAlpha(0));
-        qEight.setTextColor(qEight.getTextColors().withAlpha(0));
-        qNine.setTextColor(qNine.getTextColors().withAlpha(0));
-        qTen.setTextColor(qTen.getTextColors().withAlpha(0));
-        qEleven.setTextColor(qEleven.getTextColors().withAlpha(0));
-        if (state == 0) {
-            qOne.setTextColor(qOne.getTextColors().withAlpha(255));
-        } else if (state == 1) {
-            qTwo.setTextColor(qTwo.getTextColors().withAlpha(255));
-        } else if (state == 2) {
-            qThree.setTextColor(qThree.getTextColors().withAlpha(255));
-        } else if (state == 3) {
-            qFour.setTextColor(qFour.getTextColors().withAlpha(255));
-        } else if (state == 4) {
-            qFive.setTextColor(qFive.getTextColors().withAlpha(255));
-        } else if (state == 5) {
-            qSix.setTextColor(qSix.getTextColors().withAlpha(255));
-        } else if (state == 6) {
-            qSeven.setTextColor(qSeven.getTextColors().withAlpha(255));
-        } else if (state == 7) {
-            qEight.setTextColor(qEight.getTextColors().withAlpha(255));
-        } else if (state == 8) {
-            qNine.setTextColor(qNine.getTextColors().withAlpha(255));
-        } else if (state == 9) {
-            qTen.setTextColor(qTen.getTextColors().withAlpha(255));
-        } else {
-            qEleven.setTextColor(qEleven.getTextColors().withAlpha(255));
-        }
-        */
   }
 
   private final View.OnClickListener yesClickListener = new View.OnClickListener() {
@@ -246,23 +209,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
       backButton.setEnabled(true);
       backButton.setAlpha(1);
     }
-
   }
 
   private QuestionnaireActivityViewModel qViewModel;
   private TextView[] qs = new TextView[11];
-  /*
-  private TextView qOne;
-  private TextView qTwo;
-  private TextView qThree;
-  private TextView qFour;
-  private TextView qFive;
-  private TextView qSix;
-  private TextView qSeven;
-  private TextView qEight;
-  private TextView qNine;
-  private TextView qTen;
-  private TextView qEleven;
-  */
   private VolitionDatabase db;
 }

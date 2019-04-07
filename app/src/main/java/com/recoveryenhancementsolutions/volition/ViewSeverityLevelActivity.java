@@ -18,12 +18,12 @@ import android.widget.TextView;
 public class ViewSeverityLevelActivity extends AppCompatActivity {
 
   /**
-   * Disable the back button
+   * Forcing a restart of the questionnaire
    */
   @Override
   public void onBackPressed() {
 
-      qViewModel.setYesAnswers(0);
+    qViewModel.setYesAnswers(0);
 
     qViewModel.setDisplayState(0);
 
@@ -73,12 +73,8 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   /**
    * appends a string into the total yes text view and is entered by a string builder
    */
-  private void showTotalYesInUi(final @NonNull String totalYes) {
-    final StringBuilder sb = new StringBuilder();
-
-    sb.append(totalYes);
-
-    totalYesTv.setText(sb.toString());
+  private void showTotalYesInUi(final @Nullable String totalYes) {
+    totalYesTv.setText(totalYes);
   }
 
   /**
@@ -97,12 +93,8 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   /**
    * appends a string into the specifier text view and is entered by a string builder
    */
-  private void showSeverityLevelInUi(final @NonNull String severity) {
-    final StringBuilder sb = new StringBuilder();
-
-    sb.append(severity);
-
-    specifier.setText(sb.toString());
+  private void showSeverityLevelInUi(final @Nullable String severity) {
+    specifier.setText(severity);
   }
 
   private ViewSeverityLevelViewModel viewSeverityViewModel;

@@ -153,7 +153,6 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
   public static void populateWithData(final VolitionDatabase db) {
     addQuestionnaire(questionnaireAnswers, yesAnswers,
         QuestionnaireActivity.severityString);
-
   }
 
   /**
@@ -173,7 +172,6 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
       populateWithData(modelDB);
       return null;
     }
-
   }
 
   private static ArrayList<Boolean> questionnaireAnswers = new ArrayList<>();
