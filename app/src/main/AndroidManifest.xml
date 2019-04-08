@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.recoveryenhancementsolutions.volition">
+    package="com.recoveryenhancementsolutions.volition">
 
   <application
     android:allowBackup="true"
@@ -67,5 +67,16 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+
+
+    <activity
+        android:exported="true"
+        android:label="@string/app_name"
+        android:name=".TreatmentPlanActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
   </application>
+
 </manifest>
