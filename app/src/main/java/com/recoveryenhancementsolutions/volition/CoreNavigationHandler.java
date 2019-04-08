@@ -41,15 +41,14 @@ public class CoreNavigationHandler {
             destination.setClass(context, HomeActivity.class);
             break;
           case R.id.core_navigation_activity:
-            // TODO: Update to reflect proper activity once it is added.
-            destination.setClass(context, ReportUseActivity.class);
+            destination.setClass(context, ActivityActivity.class);
             break;
           case R.id.core_navigation_plan:
             destination.setClass(context, PlanActivity.class);
             break;
         }
 
-        // destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(destination);
         return true;
       }
