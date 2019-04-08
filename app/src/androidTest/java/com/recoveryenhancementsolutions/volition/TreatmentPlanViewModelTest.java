@@ -48,8 +48,6 @@ public class TreatmentPlanViewModelTest {
         .get(TreatmentPlanViewModel.class);
 
     viewModel.setTestDatabase(db);
-    viewModel.generateTreatmentPlan();
-    db.treatmentPlanDao().insertTreatmentPlanEntity(viewModel.getTreatmentPlan());
   }
 
   /**

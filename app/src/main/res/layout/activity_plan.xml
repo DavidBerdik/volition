@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/addTreatmentEffectivnessAssessmentButton" />
 
     <Button
-        android:id="@+id/addReadResponceButton"
+        android:id="@+id/addReadResponceJournalButton"
         android:layout_width="46dp"
         android:layout_height="39dp"
         android:layout_marginTop="25dp"
@@ -86,7 +86,7 @@
         android:text="@string/sub"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/addReadResponceButton"
+        app:layout_constraintEnd_toStartOf="@+id/addReadResponceJournalButton"
         app:layout_constraintTop_toBottomOf="@+id/subCleanTimeTrackingButton" />
 
     <Button
