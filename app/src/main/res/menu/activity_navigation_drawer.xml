@@ -5,17 +5,21 @@
 
   <group android:checkableBehavior="single">
     <item
-      android:id="@+id/nav_camera"
-      android:title="Import"/>
+      android:id="@+id/edit_profile"
+      android:title="Edit Profile" />
     <item
-      android:id="@+id/nav_gallery"
-      android:title="Gallery"/>
+      android:id="@+id/edit_treatment"
+      android:title="Edit Treatment Plan" />
     <item
-      android:id="@+id/nav_slideshow"
-      android:title="Slideshow"/>
+      android:id="@+id/ques_class"
+      android:title="Questionnaire Classification" />
     <item
-      android:id="@+id/nav_manage"
-      android:title="Tools"/>
+      android:id="@+id/retake_ques"
+      android:title="Retake Questionnaire" />
+    <item
+      android:id="@+id/clinical_overview"
+      android:title="Clinical Overview" />
   </group>
+
 
 </menu>

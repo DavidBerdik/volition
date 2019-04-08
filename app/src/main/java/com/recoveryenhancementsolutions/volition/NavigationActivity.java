@@ -1,9 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,25 +10,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
-public class NavigationActivity extends AppCompatActivity
+public abstract class NavigationActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_navigation);
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
+  protected LinearLayout fullLayout;
+  protected ConstraintLayout activityContent;
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
-      }
-    });
+  @Override
+  public void setContentView(final int layoutID) {
+    // Your base layout here
+    fullLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.activity_navigation, null);
+    activityContent = (ConstraintLayout) fullLayout.findViewById(R.id.activity_content);
+
+    // Setting the content of layout your provided to the act_content frame
+    getLayoutInflater().inflate(layoutID, activityContent, true);
+    super.setContentView(fullLayout);
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -55,7 +53,7 @@ public class NavigationActivity extends AppCompatActivity
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.navigation, menu);
+    getMenuInflater().inflate(R.menu.activity_navigation_drawer, menu);
     return true;
   }
 
@@ -66,27 +64,24 @@ public class NavigationActivity extends AppCompatActivity
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
 
-    //noinspection SimplifiableIfStatement
-    //if (id == R.id.action_settings) {
-      //return true;
-    //}
-
     return super.onOptionsItemSelected(item);
   }
 
   @SuppressWarnings("StatementWithEmptyBody")
   @Override
-  public boolean onNavigationItemSelected(MenuItem item) {
+  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     // Handle navigation view item clicks here.
     int id = item.getItemId();
 
-    if (id == R.id.nav_camera) {
+    if (id == R.id.edit_profile) {
       // Handle the camera action
-    } else if (id == R.id.nav_gallery) {
+    } else if (id == R.id.edit_treatment) {
 
-    } else if (id == R.id.nav_slideshow) {
+    } else if (id == R.id.ques_class) {
 
-    } else if (id == R.id.nav_manage) {
+    } else if (id == R.id.retake_ques) {
+
+    } else if (id == R.id.clinical_overview) {
 
     }
 
