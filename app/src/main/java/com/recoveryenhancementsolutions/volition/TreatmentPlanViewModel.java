@@ -29,13 +29,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
-   * Clears the treatment plan database and inserts an updated treatment plan.
-   */
-  public void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
-    new updateAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
-  }
-
-  /**
    * Sets a test database for the ViewModel. This should only be used for unit testing this
    * ViewModel.
    *
@@ -97,24 +90,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     @Override
     protected Void doInBackground(final TreatmentPlanEntity... params) {
       mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
-      return null;
-    }
-  }
-
-  /**
-   * Used to update data into the database asynchronously
-   */
-  private static class updateAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
-
-    private final TreatmentPlanDao mAsyncTaskDao;
-
-    updateAsyncTask(final TreatmentPlanDao dao) {
-      mAsyncTaskDao = dao;
-    }
-
-    @Override
-    protected Void doInBackground(final TreatmentPlanEntity... params) {
-      mAsyncTaskDao.updateTreatmentPlanEntity(params[0]);
       return null;
     }
   }

@@ -110,45 +110,6 @@ public class TreatmentPlanViewModelTest {
     assertEquals(0, testTreatmentPlan.getNumMedManagement());
     assertEquals("MONTHLY", testTreatmentPlan.getMedManagementFrequency());
     assertEquals("WEEKLY", testTreatmentPlan.getOutcomeMeasureFrequency());
-
-    //Test updating the treatmentPlan
-    treatmentPlanEntity.setNumCounseling(5);
-    treatmentPlanEntity.setNumSupportMeeting(5);
-    treatmentPlanEntity.setNumLessons(3);
-    treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(1);
-    treatmentPlanEntity.setNumOutcomeMeasures(5);
-    treatmentPlanEntity.setNumTimeTracking(5);
-    treatmentPlanEntity.setNumReadingResponse(3);
-    treatmentPlanEntity.setMedManagementWeekly();
-    treatmentPlanEntity.setOutcomeMeasureDaily();
-    viewModel.updateTreatmentPlan(treatmentPlanEntity);
-
-    // Allow the database one second to update.
-    try {
-      Thread.sleep(1000);
-    } catch(InterruptedException ex) {
-      Thread.currentThread().interrupt();
-    }
-
-    //Updates testTreatmentPlan
-    try {
-      testTreatmentPlan = LiveDataTestUtility
-          .getNestedLiveDataObj(db.treatmentPlanDao().getTreatmentPlan());
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
-    assertEquals(1, testTreatmentPlan.getNumCounseling());
-    assertEquals(1, testTreatmentPlan.getNumSupportMeeting());
-    assertEquals(1, testTreatmentPlan.getNumLessons());
-    assertEquals(1, testTreatmentPlan.getNumTreatmentEffectivenessAssessment());
-    assertEquals(1, testTreatmentPlan.getNumOutcomeMeasures());
-    assertEquals(1, testTreatmentPlan.getNumTimeTracking());
-    assertEquals(1, testTreatmentPlan.getNumReadingResponse());
-    assertEquals(0, testTreatmentPlan.getNumMedManagement());
-    assertEquals("MONTHLY", testTreatmentPlan.getMedManagementFrequency());
-    assertEquals("WEEKLY", testTreatmentPlan.getOutcomeMeasureFrequency());
-
   }
 
   private TreatmentPlanViewModel viewModel;
