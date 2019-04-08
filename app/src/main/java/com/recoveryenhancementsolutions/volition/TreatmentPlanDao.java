@@ -36,6 +36,7 @@ public interface TreatmentPlanDao {
    * @param treatmentPlanEntity The TreatmentPlanEntity to be inserted.
    */
   @Insert(onConflict = REPLACE)
+
   void insertTreatmentPlanEntity(final TreatmentPlanEntity treatmentPlanEntity);
 
   /**
