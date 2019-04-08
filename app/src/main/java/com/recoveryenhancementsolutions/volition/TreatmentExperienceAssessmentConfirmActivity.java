@@ -20,7 +20,7 @@ public class TreatmentExperienceAssessmentConfirmActivity extends AppCompatActiv
     }
 
     /**
-     * When the button is clicked, it will take the user to the questionnaire.
+     * When the button is clicked, it will take the user to the Treatment Experience Assessment.
      */
     private final View.OnClickListener takeTeaClickListener = new View.OnClickListener() {
 
