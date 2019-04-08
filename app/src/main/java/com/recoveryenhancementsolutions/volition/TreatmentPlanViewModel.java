@@ -23,7 +23,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     questionnaireObserved = false;
     db = VolitionDatabase.getDatabase(this.getApplication());
     treatmentPlan = db.treatmentPlanDao().getTreatmentPlan();
-
   }
 
   /**
