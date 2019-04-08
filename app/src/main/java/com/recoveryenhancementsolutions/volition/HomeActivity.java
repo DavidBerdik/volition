@@ -40,12 +40,10 @@ public class HomeActivity extends AppCompatActivity {
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
   @Override
-  public void onResume()
-  {
+  public void onResume() {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
   }
-
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
