@@ -24,7 +24,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * Inserts a new treatment plan into the database.
    */
   public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
-    db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlanEntity);
+    insert(treatmentPlanEntity);
   }
 
   /**

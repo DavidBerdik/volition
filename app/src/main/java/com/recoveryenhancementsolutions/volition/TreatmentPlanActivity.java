@@ -22,7 +22,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     setContentView(R.layout.activity_plan);
     viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
     treatmentPlan = viewModel.getTreatmentPlan();
-
     counselingView = findViewById(R.id.counselingView);
     medManagementView = findViewById(R.id.medManagementView);
     supportMeetingView = findViewById(R.id.supportMeetingView);
@@ -446,6 +445,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         newTreatmentPlan.setNumMedManagement(1);
       }
     }
+    newTreatmentPlan.setId(1);
     viewModel.insertTreatmentPlan(newTreatmentPlan);
   }
 

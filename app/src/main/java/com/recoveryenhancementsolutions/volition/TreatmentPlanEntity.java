@@ -11,6 +11,14 @@ import android.support.annotation.NonNull;
 public class TreatmentPlanEntity {
 
   /**
+   * Returns the treatment plan's id.
+   * @return
+   */
+  public int getId(){
+    return Id;
+  }
+
+  /**
    * Returns the number of counseling sessions the user should attend.
    *
    * @return The number of counseling sessions the user should attend.
@@ -226,6 +234,23 @@ public class TreatmentPlanEntity {
   public void setOutcomeMeasureDaily() {
     this.outcomeMeasureFrequency = "DAILY";
   }
+
+  /**
+   * Changes the treatment plan's id. The id should ALWAYS be 1 to prevent multiple plans from being
+   * initialized. Changing the treatment plan's id is strongly discouraged.
+   *
+   * @param id The new id for the treatment plan.
+   */
+  public void setId(int id){
+    this.Id = id;
+  }
+
+  /**
+   * The treatment plan's id. Only used to prevent multiple plans, should ALWAYS be 1.
+   */
+  @PrimaryKey
+  @NonNull
+  private int Id;
 
   /**
    * Stores the number of times the user should go to counseling.
