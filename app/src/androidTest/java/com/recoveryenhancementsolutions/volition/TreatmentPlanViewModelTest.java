@@ -55,6 +55,18 @@ public class TreatmentPlanViewModelTest {
    */
   @Test
   public void testTreatmentPlanViewModel() {
+    TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
+    treatmentPlanEntity.setNumCounseling(1);
+    treatmentPlanEntity.setNumSupportMeeting(1);
+    treatmentPlanEntity.setNumLessons(1);
+    treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(1);
+    treatmentPlanEntity.setNumOutcomeMeasures(1);
+    treatmentPlanEntity.setNumTimeTracking(1);
+    treatmentPlanEntity.setNumReadingResponse(1);
+    treatmentPlanEntity.setNumMedManagement(0);
+    treatmentPlanEntity.setMedManagementMonthly();
+    treatmentPlanEntity.setOutcomeMeasureWeekly();
+    viewModel.insertTreatmentPlan(treatmentPlanEntity);
 
     //Check the values of the treatment plan. Should match the moderate abstinence plan.
     try {

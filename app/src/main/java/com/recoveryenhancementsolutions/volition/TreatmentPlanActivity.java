@@ -205,7 +205,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    * Method runs when the refresh button in the xml files is clicked.
    */
   private void onUpdateButtonClicked() {
-    viewModel.updateDb(treatmentPlanEntity);
+    viewModel.updateTreatmentPlan(treatmentPlanEntity);
   }
 
   /**
@@ -446,7 +446,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         newTreatmentPlan.setNumMedManagement(1);
       }
     }
-    viewModel.insertDb(newTreatmentPlan);
+    viewModel.insertTreatmentPlan(newTreatmentPlan);
   }
 
   /**
