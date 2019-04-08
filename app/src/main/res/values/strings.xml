@@ -63,4 +63,11 @@
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
+  <string-array name="activities_array">
+    <item>activity1</item>
+    <item>activity2</item>
+    <item>activity3</item>
+    <item>activity4</item>
+    <item>activity5</item>
+  </string-array>
 </resources>
