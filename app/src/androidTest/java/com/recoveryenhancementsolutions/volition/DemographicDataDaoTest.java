@@ -50,6 +50,12 @@ public class DemographicDataDaoTest {
     Assert.assertNotEquals(51, demographicDataDAO.queryPatientAge());
     Assert.assertFalse(demographicDataDAO.queryIsUsingBenzo());
     Assert.assertTrue(demographicDataDAO.queryIsUsingAlcohol());
+
+    DemographicDataEntity patient2 = patient;
+    patient2.setAge(20);
+    demographicDataDAO.insertDemographicInfo(patient2);
+    Assert.assertEquals(20, demographicDataDAO.queryPatientAge());
+
   }
   private DemographicDataDAO demographicDataDAO;
   private VolitionDatabase db;
