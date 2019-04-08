@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,7 +21,13 @@ public class ActivityActivity extends AppCompatActivity {
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_activity_choice);
+
+    final int orientation = getResources().getConfiguration().orientation;
+    if (orientation == Configuration.ORIENTATION_LANDSCAPE){
+      setContentView(R.layout.activity_activity_land);
+    } else {
+      setContentView(R.layout.activity_activity_port);
+    }
 
     final Button teaButton = findViewById(R.id.TEA);
     final Button lessonButton = findViewById(R.id.Lesson);
