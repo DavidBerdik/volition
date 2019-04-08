@@ -17,7 +17,7 @@
     android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:text="Remarks"
+    android:text="@string/remarks"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="@android:color/black"
@@ -29,6 +29,7 @@
     app:layout_constraintVertical_bias="0.131"/>
   <ImageView
     android:id="@+id/imageView"
+    android:contentDescription="@string/logo"
     android:layout_width="0dp"
     android:layout_height="314dp"
     android:layout_weight="1"
@@ -56,9 +57,9 @@
     android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:text="Write down one or two changes most important to you or click submit. "
+    android:text="@string/directions"
     android:textAlignment="center"
-    android:textColor="@android:color/black"
+    android:textColor="#555555"
 
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -94,7 +95,7 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:background="@color/res_green"
-    android:text="Submit"
+    android:text="@string/submit"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.885"

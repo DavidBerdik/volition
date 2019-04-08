@@ -15,6 +15,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
 
     public static ArrayList<Integer> teaAnswers = new ArrayList<>();
     public static  ArrayList<TextView> questionsForTea = new ArrayList<>();
+    public static  ArrayList<TextView> headersForTea = new ArrayList<>();
 
 
     /**
@@ -60,13 +61,29 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         qTwo = findViewById(R.id.questionTwo);
         qThree = findViewById(R.id.questionThree);
         qFour = findViewById(R.id.questionFour);
+
+        health = findViewById(R.id.healthText);
+        lifestyle = findViewById(R.id.lifestyleText);
+        community = findViewById(R.id.communityText);
+        substance = findViewById(R.id.substanceText);
+
         qTwo.setTextColor(qTwo.getTextColors().withAlpha(0));
         qThree.setTextColor(qThree.getTextColors().withAlpha(0));
         qFour.setTextColor(qFour.getTextColors().withAlpha(0));
+
+        health.setTextColor(qTwo.getTextColors().withAlpha(0));
+        lifestyle.setTextColor(qTwo.getTextColors().withAlpha(0));
+        community.setTextColor(qTwo.getTextColors().withAlpha(0));
+
         questionsForTea.add(qOne);
         questionsForTea.add(qTwo);
         questionsForTea.add(qThree);
         questionsForTea.add(qFour);
+
+        headersForTea.add(substance);
+        headersForTea.add(health);
+        headersForTea.add(lifestyle);
+        headersForTea.add(community);
 
         teaAnswers.add(0);
         teaAnswers.add(0);
@@ -159,8 +176,12 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
             teaAnswers.set(answerCounter, value);
             questionsForTea.get(answerCounter).setTextColor(
                     questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
+            headersForTea.get(answerCounter).setTextColor(
+                headersForTea.get(answerCounter).getTextColors().withAlpha(0));
             questionsForTea.get(answerCounter+1).setTextColor(
                     questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+            headersForTea.get(answerCounter+1).setTextColor(
+                headersForTea.get(answerCounter+1).getTextColors().withAlpha(100));
             answerCounter++;
         } else if (answerCounter==3){
             teaAnswers.set(answerCounter, value);
@@ -180,6 +201,12 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     private TextView qTwo;
     private TextView qThree;
     private TextView qFour;
+
+    private TextView substance;
+    private TextView health;
+    private TextView lifestyle;
+    private TextView community;
+
 
     private VolitionDatabase db;
 }
