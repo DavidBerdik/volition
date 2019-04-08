@@ -25,6 +25,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import android.widget.DatePicker;
+import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import java.util.Calendar;
+import java.util.Date;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
@@ -132,6 +135,10 @@ public class EditProfileActivityTest {
         .perform(PickerActions.setDate(2015, 3, 14));
     onView(withId(android.R.id.button1)).perform(click());
 
+    // Set the user's gender to "Female."
+    onView(withId(R.id.gender_spinner)).perform(scrollTo(), click());
+    onData(allOf(is(instanceOf(String.class)), is("Female"))).perform(click());
+
     // Set the user type to "Family or Support Person."
     onView(withId(R.id.radioSupport)).perform(scrollTo(), click());
 
@@ -165,6 +172,38 @@ public class EditProfileActivityTest {
 
     // Check that the name has been updated.
     assertEquals("Sarah Sample", db.demographicDataDao().queryPatientName());
+
+    // Check that the date of birth is March 14, 2015.
+    Calendar dob = Calendar.getInstance();
+    dob.setTime(db.demographicDataDao().queryDoB());
+    assertEquals(2015, dob.get(Calendar.YEAR));
+    assertEquals(2, dob.get(Calendar.MONTH));
+    assertEquals(14, dob.get(Calendar.DAY_OF_MONTH));
+
+    // Check that the gender is Female.
+    assertEquals("Female", db.demographicDataDao().queryPatientGender());
+
+    // Check that the person type is "Family or Support Person."
+    assertEquals(false, db.demographicDataDao().queryIsInRecovery());
+
+    // Check that the drug of choice is "Marijuana."
+    assertEquals(true, db.demographicDataDao().queryIsUsingMarijuana());
+    assertEquals("", db.demographicDataDao().queryOtherUsedDrugs());
+
+    // Check that the substance use disorder is ""Opioid Use Disorder."
+    assertEquals(true, db.demographicDataDao().queryIsHavingOpioidDisorder());
+
+    // Check that the last use date is February 2, 2019.
+    Calendar lastUse = Calendar.getInstance();
+    try {
+      lastUse.setTime(
+          LiveDataTestUtility.getNestedLiveDataObj(db.demographicDataDao().queryLastCleanDate()));
+    } catch (InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+    assertEquals(2019, lastUse.get(Calendar.YEAR));
+    assertEquals(1, lastUse.get(Calendar.MONTH));
+    assertEquals(2, lastUse.get(Calendar.DAY_OF_MONTH));
   }
 
   private static final String TAG = "EditProfileActivityTest";
