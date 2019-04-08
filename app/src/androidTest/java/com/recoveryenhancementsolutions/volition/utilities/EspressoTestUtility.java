@@ -18,7 +18,10 @@ public class EspressoTestUtility {
    * @return The Activity.
    */
   public static Activity getCurrentActivity() {
+    /* Acquired from: https://stackoverflow.com/a/53023272, little modifications made. */
+
     final Activity[] currentActivity = {null};
+
     getInstrumentation().runOnMainSync(new Runnable() {
       public void run() {
         Collection resumedActivities = ActivityLifecycleMonitorRegistry.getInstance()
