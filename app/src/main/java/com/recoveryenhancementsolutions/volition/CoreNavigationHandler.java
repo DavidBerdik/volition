@@ -49,7 +49,7 @@ public class CoreNavigationHandler {
             break;
         }
 
-        destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        // destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(destination);
         return true;
       }
