@@ -11,16 +11,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-public class DrawerMenuActivity extends AppCompatActivity
+public abstract class DrawerMenuActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_drawer_menu);
+  protected LinearLayout fullLayout;
+  protected FrameLayout activityContent;
 
+  @Override
+  public void setContentView(final int layoutID) {
+    fullLayout= (LinearLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
+    activityContent= (FrameLayout) fullLayout.findViewById(R.id.activity_content);
+
+    getLayoutInflater().inflate(layoutID, activityContent, true);
+    super.setContentView(fullLayout);
+    
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
