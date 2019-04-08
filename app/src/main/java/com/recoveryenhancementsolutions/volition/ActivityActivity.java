@@ -1,12 +1,18 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * UI activity that allows the user to choose between different daily activities.
@@ -25,8 +31,11 @@ public class ActivityActivity extends AppCompatActivity {
     final int orientation = getResources().getConfiguration().orientation;
     if (orientation == Configuration.ORIENTATION_LANDSCAPE){
       setContentView(R.layout.activity_activity_land);
+      isPortrait=false;
+
     } else {
       setContentView(R.layout.activity_activity_port);
+      isPortrait = true;
     }
 
     final Button teaButton = findViewById(R.id.TEA);
@@ -84,6 +93,62 @@ public class ActivityActivity extends AppCompatActivity {
         startActivity(new Intent(ActivityActivity.this, ReportUseActivity.class));
       }
     });
+
+    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
+
+    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
+
+
+
+
   }
+
+  public void onCreateTest(final VolitionDatabase db){
+    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
+    viewModel.setTestDatabase(db);
+    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
+  }
+
+
+
+  /**
+   * Observes the treatment plan table in the database. Replaces the local treatment plan with an
+   * updated copy.
+   */
+  private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>(){
+    @Override
+    public void onChanged(final TreatmentPlanEntity newTreatmentPlanEntity){
+      treatmentPlanEntity = newTreatmentPlanEntity;
+      try {
+        int TEAs = treatmentPlanEntity.getNumTreatmentEffectivenessAssessment();
+         Log.d("ActivityActivty", "onChanged: TEA's are " + TEAs);
+        if(TEAs > 0){
+          if(isPortrait)
+            findViewById(R.id.teaCompletedPortrait).setVisibility(View.VISIBLE);
+          else
+            findViewById(R.id.teaCompletedLandscape).setVisibility(View.VISIBLE);
+        }
+        else{
+          if(isPortrait)
+            findViewById(R.id.teaIncompletePortrait).setVisibility(View.VISIBLE);
+          else
+            findViewById(R.id.teaIncompleteLandscape).setVisibility(View.VISIBLE);
+        }
+      }
+      catch (NullPointerException e){
+        //do nothing since the default is to not display them anyway
+      }
+
+
+
+    }
+  };
+  private TreatmentPlanViewModel viewModel;
+  /**
+   * A treatment plan entity to handle updates to the database.
+   */
+  private TreatmentPlanEntity treatmentPlanEntity;
+  private boolean isPortrait=false;
+
 }
 
