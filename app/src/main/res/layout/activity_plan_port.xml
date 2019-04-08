@@ -13,8 +13,8 @@
         android:layout_height="54dp"
         android:layout_marginBottom="64dp"
         android:background="@color/res_green"
-        android:text="TRACK"
-        android:textColor="#ffffff"
+        android:text="@string/track_button"
+        android:textColor="@color/res_white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/notes_edittext" />
@@ -24,8 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="84dp"
         android:gravity="center"
-        android:text="[DAY]"
-        android:textColor="#111111"
+        android:text="@string/center_day_textview"
+        android:textColor="@color/res_black"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -42,7 +42,8 @@
         android:background="@color/res_white"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="      Notes Here"
+        android:autofillHints="@string/notes_edittext"
+        android:hint="@string/notes_edittext"
         android:textColor="@color/res_gray"
         app:layout_constraintBottom_toTopOf="@+id/track_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,7 @@
         android:layout_height="35dp"
         android:background="@color/res_white"
         android:gravity="center"
-        android:text="Month Progress"
+        android:text="@string/month_progress_textview"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -332,7 +333,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
-
-
 
 </android.support.constraint.ConstraintLayout>
