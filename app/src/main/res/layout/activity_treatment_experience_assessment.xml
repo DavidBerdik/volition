@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <android.support.constraint.ConstraintLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+        <ImageView
+
+            android:id="@+id/imageView4"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+
+            android:layout_marginTop="-150dp"
+
+
+
+            android:layout_weight="30"
+
+            android:alpha=".4"
+
+            android:padding="30dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.0"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:srcCompat="@drawable/pic" />
+
+
+
+
+
+        <TextView
+
+            android:id="@+id/textView"
+
+            android:layout_width="130dp"
+
+            android:layout_height="57dp"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="296dp"
+
+            android:textColor="#FFA500"
+
+            android:text="Substance Use"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.498"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.078" />
+
+
+
+        <TextView
+
+            android:id="@+id/questionOne"
+
+            android:layout_width="361dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginRight="20dp"
+
+            android:gravity="center"
+
+            android:text="How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc.
+
+"
+
+            android:textColor="@android:color/black"
+
+            android:textSize="24sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.44"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.276" />
+
+
+
+        <TextView
+
+            android:id="@+id/questionTwo"
+
+            android:layout_width="361dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginRight="20dp"
+
+            android:gravity="center"
+
+            android:text="Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself ect.
+
+"
+
+            android:textColor="@android:color/black"
+
+            android:textSize="24sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.68"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.271" />
+
+        <TextView
+
+            android:id="@+id/questionThree"
+
+            android:layout_width="361dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginRight="20dp"
+
+            android:gravity="center"
+
+            android:text="How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments
+
+"
+
+            android:textColor="@android:color/black"
+
+            android:textSize="24sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.44"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.276" />
+
+        <TextView
+
+            android:id="@+id/questionFour"
+
+            android:layout_width="361dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginRight="20dp"
+
+            android:gravity="center"
+
+            android:text="Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people
+
+"
+
+            android:textColor="@android:color/black"
+
+            android:textSize="24sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.44"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.276" />
+
+
+
+
+
+        <Button
+
+            android:id="@+id/button1"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="1"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.038"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button10"
+
+            android:layout_width="44dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="10"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="1.00"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button9"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="9"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.87"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button8"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="8"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.775"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button7"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="7"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.678"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button6"
+
+            android:layout_width="28dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="6"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.577"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button5"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="5"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.468"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button4"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="4"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.361"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button3"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="3"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.246"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+
+        <Button
+
+            android:id="@+id/button2"
+
+            android:layout_width="30dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:background="#00FA9A"
+
+            android:text="2"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.142"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.68" />
+
+
+    <TextView
+
+
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="42dp"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:text="None or not much"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.05"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.628" />
+
+        <TextView
+
+
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="42dp"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:text="Better"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.54"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.628" />
+
+        <TextView
+
+
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="42dp"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+
+            android:text="Much better"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.95"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.628" />
+
+</android.support.constraint.ConstraintLayout>
