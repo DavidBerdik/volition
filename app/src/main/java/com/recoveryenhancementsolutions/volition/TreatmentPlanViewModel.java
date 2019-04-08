@@ -18,6 +18,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public TreatmentPlanViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
+    treatmentPlanDao = db.treatmentPlanDao();
   }
 
   /**
@@ -28,10 +29,10 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
-   * Updates the database with the values of treatmentPlan.
+   * Clears the treatment plan database and inserts an updated treatment plan.
    */
-  public void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity){
-    db.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlanEntity);
+  public void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+    new updateAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**
@@ -43,6 +44,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public void setTestDatabase(final VolitionDatabase db) {
     db.close();
     this.db = db;
+    treatmentPlanDao = db.treatmentPlanDao();
   }
 
   /**
@@ -68,7 +70,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @return A string representing the user's severity level.
    */
-  public LiveData<String> getQuestionnaireEntity(){
+  public LiveData<String> getQuestionnaireEntity() {
     return db.questionnaireDao().getSeverityLevel();
   }
 
@@ -97,7 +99,24 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
       mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
       return null;
     }
+  }
 
+  /**
+   * Used to update data into the database asynchronously
+   */
+  private static class updateAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
+
+    private final TreatmentPlanDao mAsyncTaskDao;
+
+    updateAsyncTask(final TreatmentPlanDao dao) {
+      mAsyncTaskDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final TreatmentPlanEntity... params) {
+      mAsyncTaskDao.updateTreatmentPlanEntity(params[0]);
+      return null;
+    }
   }
 
   /**
@@ -106,7 +125,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   private VolitionDatabase db;
 
   /**
-   * The treatmentPlans Dao
+   * The treatmentPlan's Dao
    */
   private TreatmentPlanDao treatmentPlanDao;
 }
