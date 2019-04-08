@@ -58,6 +58,7 @@
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
+<<<<<<< HEAD
   <string name="questionnaire_question_1"> Do you often take larger amounts of opioids or
 take opioids over a longer period of time than
 intended?</string>
@@ -110,4 +111,18 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
   <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
   <string name="take_questionnaire"> Take questionnaire</string>
+=======
+  <string name="buprenorphine_button"> Buprenorphine</string>
+  <string name="abstain_button"> Abstain</string>
+  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
+  <string name="teaQuestionOne"> How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc.</string>
+  <string name="teaQuestionTwo"> Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself ect.
+</string>
+  <string name="teaQuestionThree"> How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments
+</string>
+  <string name="teaQuestionFour"> Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people
+</string>
+  <string name="tea_confirmation"> You are now being directed to the TEA. </string>
+  <string name="take_tea"> Take Treatment Experience Assessment. </string>
+>>>>>>> origin/feature/VOL-81-create-java-file-for-tea
 </resources>
