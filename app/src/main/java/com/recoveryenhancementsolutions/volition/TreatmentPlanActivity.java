@@ -33,6 +33,8 @@ public class TreatmentPlanActivity extends AppCompatActivity {
     medObserved = false;
     questionnaireObserved = false;
 
+    viewModel.getMedicationChoiceEntity().observe(this, medObserver);
+    viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
     /**
      * Calls used for database entry when applicable
      */
@@ -77,9 +79,9 @@ public class TreatmentPlanActivity extends AppCompatActivity {
    * Observes the questionnaire table in the database. Generates a treatment plan if the medication
    * choice has already been loaded as well.
    */
-  private Observer<QuestionnaireEntity> questionnaireObserver = new Observer<QuestionnaireEntity>() {
+  private Observer<String> questionnaireObserver = new Observer<String>() {
     @Override
-    public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
+    public void onChanged(@Nullable String s) {
       questionnaireObserved = true;
       if (medObserved) {
         generateTreatmentPlan();
