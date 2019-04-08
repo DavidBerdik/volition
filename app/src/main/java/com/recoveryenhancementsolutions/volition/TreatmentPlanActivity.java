@@ -190,7 +190,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add a counseling session.
      */
     private void onAddCounselButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumCounseling(num);
     }
@@ -213,7 +213,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add medication management.
      */
     private void onAddMedManagementButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumMedManagement(num);
     }
@@ -222,7 +222,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button os pressed to subtract from medication management.
      */
     private void onSubMedMangaementButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
@@ -236,7 +236,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add a support group meeting.
      */
     private void onAddSupportGroupMeetingButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumSupportMeeting(num);
     }
@@ -245,7 +245,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtract a support group meeting.
      */
     private void onSubSupportGroupButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
@@ -259,7 +259,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add an outcome measurement.
      */
     private void onAddOutcomeMeasureButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumOutcomeMeasures(num);
     }
@@ -268,7 +268,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtract an outcome measurement.
      */
     private void onSubOutcomeMeasureButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
@@ -282,7 +282,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add a lesson plan.
      */
     private void onAddLessonPlannerButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumLessons(num);
     }
@@ -291,7 +291,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtrct a lesson plan.
      */
     private void onSubLessonPlannerButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
@@ -305,7 +305,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add a treatment plan effectiveness assessment.
      */
     private void onAddTreatmentEffectivnessAssessmentButtonClicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
     }
@@ -314,7 +314,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtract a treatment plan effectiveness assessment.
      */
     private void onSubTreatmentEffectivnessAssessmentButtonCLicked() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
@@ -328,7 +328,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add clean time tracking.
      */
     private void onAddCleanTimeTrackingButton() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumTimeTracking(num);
     }
@@ -337,7 +337,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtract clean time tracking.
      */
     private void onSubCleanTimeTrackingButton() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
@@ -351,7 +351,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when add button is pressed to add read response.
      */
     private void onAddReadResponseButton() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
         viewModel.treatmentPlan.setNumReadingResponse(num);
     }
@@ -360,7 +360,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when sub button is pressed to subtract from add read response.
      */
     private void onSubReadResponseButton() {
-        String s = counselingView.getText().toString();
+        final String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
