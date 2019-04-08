@@ -76,5 +76,6 @@
     <item>9</item>
   </string-array>
   <string name="dosage_message_intro"> You have chosen to take Buprenorphine. How many
-  dosages a day would you like to take?</string>
+  doses a day would you like to take?</string>
+  <string name="confirm_dosage"> Confirm</string>
 </resources>
