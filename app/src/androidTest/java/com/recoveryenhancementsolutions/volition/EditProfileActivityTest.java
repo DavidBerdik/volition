@@ -1,19 +1,31 @@
 package com.recoveryenhancementsolutions.volition;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.AllOf.allOf;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
+import android.widget.DatePicker;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,6 +38,10 @@ public class EditProfileActivityTest {
   public final ActivityTestRule<CreateProfileActivity> activityTestRule = new ActivityTestRule<>(
       CreateProfileActivity.class, false, false);
 
+  final VolitionDatabase db = Room
+      .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
+      .allowMainThreadQueries().build();
+
   /**
    * Creates a temporary, in-memory database to use for testing the edit profile activity.
    */
@@ -34,11 +50,6 @@ public class EditProfileActivityTest {
     // Inject the "editMode" flag to set the activity to edit mode.
     final Intent i = new Intent();
     i.putExtra("editMode", true);
-
-    // Create a test database to use in place of the app's real database.
-    final VolitionDatabase db = Room
-        .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
-        .allowMainThreadQueries().build();
 
     // Fill the database with test information.
     final DemographicDataEntity data = new DemographicDataEntity();
@@ -105,6 +116,55 @@ public class EditProfileActivityTest {
 
     // Check that the clean date is Jan 19, 2038.
     onView(withId(R.id.clean_date)).check(matches(withText("Jan 19, 2038")));
+  }
+
+  /**
+   * Test if updating the profile works properly.
+   */
+  @Test
+  public void testProfileUpdate() {
+    // Set the user's name to Sarah Sample.
+    onView(withId(R.id.name)).perform(scrollTo(), replaceText("Sarah Sample"));
+
+    // Set the user's date of birth to March 14, 2015.
+    onView(withId(R.id.date_of_birth)).perform(scrollTo(), click());
+    onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
+        .perform(PickerActions.setDate(2015, 3, 14));
+    onView(withId(android.R.id.button1)).perform(click());
+
+    // Set the user type to "Family or Support Person."
+    onView(withId(R.id.radioSupport)).perform(scrollTo(), click());
+
+    // Set the Drug of Choice to "Marijuana."
+    onView(withId(R.id.radioMarijuana)).perform(scrollTo(), click());
+    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText(""));
+
+    // Set the use disorder to "Opioid Use Disorder."
+    onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
+    onData(allOf(is(instanceOf(String.class)), is("Opioid Use Disorder"))).perform(click());
+
+    // Set the user's last use date to February 2, 2019.
+    onView(withId(R.id.clean_date)).perform(scrollTo(), click());
+    onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
+        .perform(PickerActions.setDate(2019, 2, 2));
+    onView(withId(android.R.id.button1)).perform(click());
+
+    // Press the "Update Profile" button to insert the data in the database.
+    onView(withId(R.id.record_button)).perform(scrollTo(), click());
+
+    /*
+     * Delay the execution of any tests for 1 second. This is done to prevent any tests from trying
+     * to verify the content of the database before the insertion is complete. There may be
+     * a better way to handle this, but this is the best that I could come up with.
+     */
+    try {
+      Thread.sleep(1000);
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    // Check that the name has been updated.
+    assertEquals("Sarah Sample", db.demographicDataDao().queryPatientName());
   }
 
   private static final String TAG = "EditProfileActivityTest";
