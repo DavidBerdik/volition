@@ -64,7 +64,7 @@
     <TextView
         android:id="@+id/month_progress_textview"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@color/res_white"
         android:gravity="center"
         android:text="Month Progress"
@@ -91,7 +91,7 @@
     <HorizontalScrollView
         android:id="@+id/hscroller"
         android:layout_width="match_parent"
-        android:layout_height="142dp"
+        android:layout_height="135dp"
         android:background="@color/res_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -311,6 +311,27 @@
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </HorizontalScrollView>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="18dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/plan_previous_week"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="18dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/plan_next_week"
+        android:rotation="180"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
 
 

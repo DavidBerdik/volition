@@ -11,11 +11,11 @@
     <ScrollView
         android:id="@+id/vscroller"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:fadingEdge="none"
-        android:fillViewport="false"
+        android:fillViewport="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,21 +24,25 @@
         <LinearLayout
             android:id="@+id/contentsLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">
+
+
 
                 <Button
                     android:id="@+id/track_button"
-                    android:layout_width="296dp"
-                    android:layout_height="54dp"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:background="@color/res_green"
                     android:text="TRACK"
                     android:textColor="@color/res_white"
@@ -51,19 +55,34 @@
                     android:id="@+id/center_day_textview"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="[DAY]"
                     android:textColor="#111111"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Button
+                    android:id="@+id/hidden_button"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="350dp"
+                    android:background="@color/res_green"
+                    android:text="NEW"
+                    android:textColor="@color/res_white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.267"
+                    app:layout_constraintStart_toEndOf="@+id/notes_edittext"
+                    app:layout_constraintTop_toBottomOf="@+id/center_day_textview" />
+
                 <EditText
                     android:id="@+id/notes_edittext"
-                    android:layout_width="365dp"
-                    android:layout_height="133dp"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
@@ -72,41 +91,44 @@
                     android:inputType="textPersonName"
                     android:text="      Notes Here"
                     android:textColor="@color/res_gray"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/center_day_textview" />
 
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="300dp"
-                    android:layout_height="54dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="0dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:background="@color/res_green"
+                    android:text="      Notes Here"
+                    android:textColor="@color/res_gray"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/notes_edittext"
-                    app:layout_constraintTop_toBottomOf="@+id/track_button" />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@id/notes_edittext"
+                    app:layout_constraintTop_toBottomOf="@+id/track_button"/>
+
+
+
+
+
+
+
+
+
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
 
-
-
-
-
-
-
-
-
-
-
     <TextView
         android:id="@+id/month_progress_textview"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@color/res_white"
         android:gravity="center"
         android:text="Month Progress"
@@ -115,10 +137,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hscroller" />
 
+
+
+
     <HorizontalScrollView
         android:id="@+id/hscroller"
         android:layout_width="fill_parent"
-        android:layout_height="140dp"
+        android:layout_height="135dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
@@ -128,6 +153,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+
 
         <LinearLayout
             android:id="@+id/detailsLayout"
@@ -344,6 +371,11 @@
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </HorizontalScrollView>
+
+
+
+
+
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/core_navigation"
