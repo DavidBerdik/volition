@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
@@ -12,21 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-public abstract class NavigationActivity extends AppCompatActivity
+public class DrawerMenuActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  protected LinearLayout fullLayout;
-  protected ConstraintLayout activityContent;
-
   @Override
-  public void setContentView(final int layoutID) {
-    // Your base layout here
-    fullLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.activity_navigation, null);
-    activityContent = (ConstraintLayout) fullLayout.findViewById(R.id.activity_content);
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_drawer_menu);
 
-    // Setting the content of layout your provided to the act_content frame
-    getLayoutInflater().inflate(layoutID, activityContent, true);
-    super.setContentView(fullLayout);
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
@@ -53,7 +47,7 @@ public abstract class NavigationActivity extends AppCompatActivity
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.activity_navigation_drawer, menu);
+    getMenuInflater().inflate(R.menu.activity_drawer_menu_drawer, menu);
     return true;
   }
 
@@ -77,9 +71,9 @@ public abstract class NavigationActivity extends AppCompatActivity
       // Handle the camera action
     } else if (id == R.id.edit_treatment) {
 
-    } else if (id == R.id.ques_class) {
+    } else if (id == R.id.view_classification) {
 
-    } else if (id == R.id.retake_ques) {
+    } else if (id == R.id.retake_questionnaire) {
 
     } else if (id == R.id.clinical_overview) {
 
