@@ -166,11 +166,11 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
             teaAnswers.set(answerCounter, value);
             questionsForTea.get(answerCounter).setTextColor(
                     questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-            questionsForTea.get(answerCounter+1).setTextColor(
-                    questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+            //questionsForTea.get(answerCounter+1).setTextColor(
+              //      questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
 
             // QuestionnaireActivityViewModel.populateAsync(db);
-            // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
+             startActivity(new Intent(TreatmentExperienceAssessmentActivity.this, TreatmentExperienceAssessmentRemarksActivity.class));
 
         }
     }

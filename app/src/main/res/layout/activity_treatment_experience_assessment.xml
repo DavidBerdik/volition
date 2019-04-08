@@ -81,6 +81,7 @@
         <TextView
 
             android:id="@+id/questionOne"
+          android:textColor="@android:color/black"
 
             android:layout_width="361dp"
 
@@ -95,8 +96,6 @@
             android:text="How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc.
 
 "
-
-            android:textColor="@android:color/black"
 
             android:textSize="24sp"
 
@@ -123,6 +122,7 @@
             android:id="@+id/questionTwo"
 
             android:layout_width="361dp"
+          android:textColor="@android:color/black"
 
             android:layout_height="wrap_content"
 
@@ -136,7 +136,6 @@
 
 "
 
-            android:textColor="@android:color/black"
 
             android:textSize="24sp"
 
@@ -162,6 +161,7 @@
 
             android:layout_width="361dp"
 
+          android:textColor="@android:color/black"
             android:layout_height="wrap_content"
 
             android:layout_marginLeft="20dp"
@@ -173,8 +173,6 @@
             android:text="How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments
 
 "
-
-            android:textColor="@android:color/black"
 
             android:textSize="24sp"
 
@@ -206,13 +204,13 @@
 
             android:layout_marginRight="20dp"
 
+          android:textColor="@android:color/black"
             android:gravity="center"
 
             android:text="Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people
 
 "
 
-            android:textColor="@android:color/black"
 
             android:textSize="24sp"
 
