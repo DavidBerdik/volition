@@ -36,9 +36,9 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     // Init navbar.
-    final BottomNavigationView navigation = findViewById(R.id.core_navigation);
-    navigation.setSelectedItemId(R.id.navigation_home);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
+    CoreNavigationHandler.link(bottomNavigationView, this);
 
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
@@ -103,6 +103,15 @@ public class PlanActivity extends AppCompatActivity {
     actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
     subscribeUIActivities();
     scrollRight();
+  }
+
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
   }
 
   protected UserActivityViewModel getViewModel() {
@@ -264,5 +273,6 @@ public class PlanActivity extends AppCompatActivity {
   }
 
   private final ArrayList<DateView> dateViews = new ArrayList<>();
+  private BottomNavigationView bottomNavigationView;
   private UserActivityViewModel actViewModel;
 }
