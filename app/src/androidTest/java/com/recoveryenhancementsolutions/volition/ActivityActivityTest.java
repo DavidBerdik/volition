@@ -55,9 +55,45 @@ public class ActivityActivityTest {
       Thread.currentThread().interrupt();
     }
 
-    // Check that we're on the PlanActivity class.
+    // Check that we're on the TreatmentAssessmentActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
         TreatmentAssessmentActivity.class.getName());
+
+    // Click the back button to test the other buttons
+    espresso.pressBack();
+
+    // Click on the Lesson button
+    onView(withId(R.id.Lesson)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the LessonActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        LessonActivity.class.getName());
+
+    // Click the back button to test the other buttons
+    espresso.pressBack();
+
+    // Click on the Journal button
+    onView(withId(R.id.Journal)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the JournalActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        JournalActivity.class.getName());
+
+
   }
 }
 

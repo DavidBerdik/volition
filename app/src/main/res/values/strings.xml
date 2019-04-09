@@ -70,5 +70,5 @@
   <string name="activity_title_activity_screen"> Activities</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
-  <string name="res_logo_background"></string>
+  <string name="res_logo"> Logo</string>
 </resources>
