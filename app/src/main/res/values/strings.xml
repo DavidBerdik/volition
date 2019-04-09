@@ -1,6 +1,85 @@
 <resources>
-    <string name="app_name">Volition</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+  <string name="app_name">Volition</string>
+  <string name="button_yes">Yes</string>
+  <string name="button_no">No</string>
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
+  <string name="create_profile_name">Enter Name</string>
+  <string name="create_profile_date_of_birth">Enter Date of Birth</string>
+  <string-array name="create_profile_gender_array">
+    <item>Select Gender</item>
+    <item>Female</item>
+    <item>Male</item>
+    <item>Other</item>
+  </string-array>
+  <string name="create_profile_are_you">Are you:</string>
+  <string name="create_profile_client">Person in Recovery/Seeking Recovery</string>
+  <string name="create_profile_support">Family or Support Person</string>
+  <string name="create_profile_drugs">Drug of Choice:</string>
+  <string name="create_profile_heroin">Heroin</string>
+  <string name="create_profile_other_opiates">Other Opiates and Synthetics</string>
+  <string name="create_profile_alcohol">Alcohol</string>
+  <string name="create_profile_cocaine">Cocaine/Crack</string>
+  <string name="create_profile_marijuana">Marijuana</string>
+  <string name="create_profile_meth">Methamphetamine</string>
+  <string name="create_profile_ben">Benzodiazepines</string>
+  <string name="create_profile_other_tranquil">Other Non-Benzodiazepine Tranquilizers</string>
+  <string name="create_profile_sedatives">Barbiturates, Sedatives, or Hypnotics</string>
+  <string name="create_profile_inhalants">Inhalants</string>
+  <string name="create_profile_other">Other</string>
+  <string name="create_profile_if_other">Please enter name of other drug here.</string>
+  <string name="create_profile_substance_use">Substance Use Disorder:</string>
+  <string-array name="create_profile_use_type_array">
+    <item>Select Type</item>
+    <item>Opioid Use Disorder</item>
+    <item>Alcohol Use Disorder</item>
+  </string-array>
+  <string name="create_profile_clean_date">Enter Date of Last Use/Clean Date</string>
+  <string name="create_profile_record_answers">Record Answers</string>
+  <string name="display_profile_entered">Here\'s the information you entered</string>
+  <string name="display_profile_name_colon">Name:</string>
+  <string name="display_profile_example_name">Replace with name entered</string>
+  <string name="display_profile_dob_colon">Date of Birth:</string>
+  <string name="display_profile_example_dob">Replace with date of birth</string>
+  <string name="display_profile_gender_colon">Gender:</string>
+  <string name="display_profile_example_gender">Replace with gender selected</string>
+  <string name="display_profile_person_colon">I am a: </string>
+  <string name="display_profile_example_person">Replace with the option selected</string>
+  <string name="display_profile_example_drug">Replace with the drug selected</string>
+  <string name="display_profile_example_type">Replace with the type selected</string>
+  <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
+  <string name="display_profile_example_date">Replace with the date entered</string>
+  <string name="display_profile_continue">Continue</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
+  <string name="home_welcome">Welcome Back</string>
+  <string name="home_clean">Days Clean:</string>
+  <string name="title_activity_medication_choice">MedicationChoice</string>
+  <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
+  <string name="medication_choice_abstain_button"> Abstain</string>
+  <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
+  <string name="activity_tea_button"> TEA</string>
+  <string name="activity_lesson_button"> Lesson</string>
+  <string name="activity_journal_button"> Journal</string>
+  <string name="activity_edu_button"> Edu.</string>
+  <string name="activity_daily_wellness_button"> Daily Wellness</string>
+  <string name="activity_clean_tracker_button"> Clean Tracker</string>
+  <string name="activity_title_activity_screen"> Activities</string>
+  <string name="plan_previous_week">P</string>
+  <string name="plan_next_week">N</string>
+  <string-array name="dosage_choice_title">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+  </string-array>
+  <string name="dosage_choice_message"> You have chosen to take Buprenorphine. How many
+  doses a day would you like to take?</string>
+  <string name="dosage_choice_confirm"> Confirm</string>
+  <string name="dosage_choice_res_logo"> Logo</string>
 </resources>
