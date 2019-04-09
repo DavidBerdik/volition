@@ -44,7 +44,7 @@
         android:inputType="textPersonName"
         android:autofillHints="@string/notes_edittext"
         android:hint="@string/notes_edittext"
-        android:textColor="@color/res_gray"
+        android:textColor="@color/res_black"
         app:layout_constraintBottom_toTopOf="@+id/track_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
