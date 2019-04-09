@@ -41,7 +41,7 @@ public class HomeActivity extends DrawerMenuActivity {
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.drawer_menu);
+    setContentView(R.layout.activity_drawer_menu);
 
     buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
