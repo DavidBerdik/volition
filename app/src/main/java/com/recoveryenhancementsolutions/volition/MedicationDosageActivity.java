@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,7 +22,13 @@ public class MedicationDosageActivity extends AppCompatActivity {
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_dosage_choice);
+
+    final int orientation = getResources().getConfiguration().orientation;
+    if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      setContentView(R.layout.activity_dosage_choice_land);
+    } else {
+      setContentView(R.layout.activity_dosage_choice_port);
+    }
 
     final Button confirmButton = findViewById(R.id.confirmDosage);
     final MedicationDosageViewModel mViewModel = new MedicationDosageViewModel(getApplication());

@@ -75,7 +75,7 @@
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
-  <string-array name="dosage_screen_title">
+  <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
     <item>3</item>
@@ -86,7 +86,8 @@
     <item>8</item>
     <item>9</item>
   </string-array>
-  <string name="dosage_message_intro"> You have chosen to take Buprenorphine. How many
+  <string name="dosage_choice_message"> You have chosen to take Buprenorphine. How many
   doses a day would you like to take?</string>
   <string name="confirm_dosage"> Confirm</string>
+  <string name="dosage_choice_confirm"> Confirm</string>
 </resources>
