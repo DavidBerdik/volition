@@ -71,12 +71,9 @@
   <string name="activity_title_activity_screen"> Activities</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
-<<<<<<< HEAD
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
-</resources>
-=======
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -90,4 +87,3 @@
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
 </resources>
->>>>>>> e3ae1f922b6ce729496613fbd0f7f6c804f4f417
