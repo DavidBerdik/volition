@@ -200,20 +200,19 @@
         app:layout_constraintTop_toBottomOf="@+id/addMedManagementButton" />
 
     <Button
-        android:id="@+id/subCounselButton"
-        android:layout_width="46dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/ic_subroundbutton"
-        android:backgroundTint="@color/res_green"
-        android:text="@string/sub"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/addCounselButton"
-        app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/subCounselButton"
+      android:textStyle="bold"
+      android:layout_width="46dp"
+      android:layout_height="39dp"
+      android:layout_marginTop="115dp"
+      android:background="@drawable/ic_subroundbutton"
+      android:backgroundTint="@color/res_green"
+      android:text="@string/sub"
+      android:textAlignment="center"
+      android:textAllCaps="false"
+      android:textSize="18sp"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:layout_editor_absoluteX="303dp"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -240,59 +239,33 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/volition" />
+      android:id="@+id/counseling"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="124dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="8dp"
+      android:text="@string/counseling"
+      android:textColor="@color/common_google_signin_btn_text_dark_focused"
+      app:layout_constraintEnd_toStartOf="@+id/subCounselButton"
+      app:layout_constraintHorizontal_bias="0.286"
+      app:layout_constraintStart_toEndOf="@+id/counselingView"
+      app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:text="@string/recommendedTreatmentPlan" />
-
-    <TextView
-        android:id="@+id/counseling"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintEnd_toStartOf="@+id/subCounselButton"
-        app:layout_constraintHorizontal_bias="0.286"
-        app:layout_constraintStart_toEndOf="@+id/counselingView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/counseling" />
-
-    <TextView
-        android:id="@+id/medManagement"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintEnd_toStartOf="@+id/subMedMangaementButton"
-        app:layout_constraintHorizontal_bias="0.286"
-        app:layout_constraintStart_toEndOf="@+id/medManagementView"
-        app:layout_constraintTop_toBottomOf="@+id/counseling"
-        tools:text="@string/medManagement" />
+      android:id="@+id/medManagement"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="46dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="8dp"
+      android:text="@string/medManagement"
+      android:textColor="@color/common_google_signin_btn_text_dark_focused"
+      app:layout_constraintEnd_toStartOf="@+id/subMedMangaementButton"
+      app:layout_constraintHorizontal_bias="0.286"
+      app:layout_constraintStart_toEndOf="@+id/medManagementView"
+      app:layout_constraintTop_toBottomOf="@+id/counseling"
+      />
 
     <TextView
         android:id="@+id/supportGroupMeeting"
