@@ -175,11 +175,11 @@ public class CoreNavigationHandlerTest {
       Thread.currentThread().interrupt();
     }
 
-    // Check that we're on the HomeActivity class.
+    // Check that we're on the ActivityActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
         ActivityActivity.class.getName());
 
-    // Click to the Plan activity.
+    // Click to the Home activity.
     onView(withId(R.id.core_navigation_home)).perform(click());
 
     // Allow the slower devices/emulators to update.

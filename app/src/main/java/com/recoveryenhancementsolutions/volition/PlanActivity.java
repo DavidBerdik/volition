@@ -37,6 +37,9 @@ public class PlanActivity extends AppCompatActivity {
     CoreNavigationHandler.link(bottomNavigationView, this);
   }
 
+  /**
+   *
+   */
   public void fillViews() {
     String sampletext = "Visit 1 Visit 1";
 
