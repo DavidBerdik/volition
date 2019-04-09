@@ -71,18 +71,17 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * Used to insert data into the database asynchronously
    */
   private static class insertAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
-
-    private final TreatmentPlanDao mAsyncTaskDao;
-
     insertAsyncTask(final TreatmentPlanDao dao) {
-      mAsyncTaskDao = dao;
+      asyncTaskDao = dao;
     }
 
     @Override
     protected Void doInBackground(final TreatmentPlanEntity... params) {
-      mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
+      asyncTaskDao.insertTreatmentPlanEntity(params[0]);
       return null;
     }
+
+    private final TreatmentPlanDao asyncTaskDao;
   }
 
   /**
