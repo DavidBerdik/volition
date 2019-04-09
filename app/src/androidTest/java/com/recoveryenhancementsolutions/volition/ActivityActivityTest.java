@@ -16,6 +16,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Test class for ActivityActivity
+ */
 @RunWith(AndroidJUnit4.class)
 public class ActivityActivityTest {
 
@@ -39,6 +42,9 @@ public class ActivityActivityTest {
     Intents.release();
   }
 
+  /**
+   * Test that tests each button in ActivityActivity
+   */
   @Test
   public void ActivityActivityTest_Multiple() {
     // Click on the TEA button
