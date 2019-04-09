@@ -41,10 +41,6 @@ public class ActivityActivityTest {
 
   @Test
   public void ActivityActivityTest_Multiple() {
-    // Confirm that we are on the ActivityActivity page.
-    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        ActivityActivity.class.getName());
-
     // Click on the TEA button
     onView(withId(R.id.TEA)).perform(click());
 
@@ -60,7 +56,7 @@ public class ActivityActivityTest {
         TreatmentAssessmentActivity.class.getName());
 
     // Click the back button to test the other buttons
-    espresso.pressBack();
+    Espresso.pressBack();
 
     // Click on the Lesson button
     onView(withId(R.id.Lesson)).perform(click());
@@ -77,7 +73,7 @@ public class ActivityActivityTest {
         LessonActivity.class.getName());
 
     // Click the back button to test the other buttons
-    espresso.pressBack();
+    Espresso.pressBack();
 
     // Click on the Journal button
     onView(withId(R.id.Journal)).perform(click());
@@ -93,7 +89,56 @@ public class ActivityActivityTest {
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
         JournalActivity.class.getName());
 
+    // Click the back button to test the other buttons
+    Espresso.pressBack();
 
+    // Click on the EDU button
+    onView(withId(R.id.Edu)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the EDUActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        EDUActivity.class.getName());
+
+    // Click the back button to test the other buttons
+    Espresso.pressBack();
+
+    // Click on the DailyWellness button
+    onView(withId(R.id.DailyWellness)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the DailyWellnessActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        DailyWellnessActivity.class.getName());
+
+    // Click the back button to test the other buttons
+    Espresso.pressBack();
+
+    // Click on the CleanTracker button
+    onView(withId(R.id.CleanTracker)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the ReportUseActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        ReportUseActivity.class.getName());
   }
 }
 
