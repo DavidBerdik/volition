@@ -93,13 +93,13 @@
     android:layout_marginEnd="8dp"
     android:gravity="center"
     android:text="@string/activity_title_activity_screen"
-    android:textSize="45sp"
     android:textColor="#555555"
+    android:textSize="45sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
   <android.support.design.widget.BottomNavigationView
-    android:id="@+id/menubar"
+    android:id="@+id/core_navigation"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:background="@color/res_green"

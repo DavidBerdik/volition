@@ -11,13 +11,6 @@ import android.widget.Button;
 
 /**
  * UI activity that allows the user to choose between different daily activities.
-=======
-import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-
-/**
- * Skeleton activity, will be filled in by another group/task at a later date.
  */
 public class ActivityActivity extends AppCompatActivity {
 
@@ -31,7 +24,7 @@ public class ActivityActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
 
     final int orientation = getResources().getConfiguration().orientation;
-    if (orientation == Configuration.ORIENTATION_LANDSCAPE){
+    if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
       setContentView(R.layout.activity_activity_land);
     } else {
       setContentView(R.layout.activity_activity_port);
@@ -96,15 +89,16 @@ public class ActivityActivity extends AppCompatActivity {
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
     CoreNavigationHandler.link(bottomNavigationView, this);
   }
-  /*
+
+  /**
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
   @Override
-  public void onResume()
-  {
+  public void onResume() {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
   }
+
   private BottomNavigationView bottomNavigationView;
 }
 
