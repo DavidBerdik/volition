@@ -11,15 +11,6 @@ import android.support.annotation.NonNull;
 public class TreatmentPlanEntity {
 
   /**
-   * Returns the ID of this treatmentPlan.
-   *
-   * @return the treatment plan's ID
-   */
-  public int getId() {
-    return id;
-  }
-
-  /**
    * Returns the number of counseling sessions the user should attend.
    *
    * @return The number of counseling sessions the user should attend.
@@ -187,16 +178,6 @@ public class TreatmentPlanEntity {
   }
 
   /**
-   * Sets the activity's ID. Since the activity ID is an auto-increment value set by the database,
-   * use of this setter is discouraged since the value set will be changed.
-   *
-   * @param id The ID of the activity.
-   */
-  public void setId(final int id) {
-    this.id = id;
-  }
-
-  /**
    * Manually sets the value of frequency for medManagementFrequency.  Values for this field must be
    * either "WEEKLY" or "MONTHLY". Because of this, use of the setMedManagementWeekly() or
    * setMedManagementMonthly() are encouraged to be used instead.
@@ -245,13 +226,6 @@ public class TreatmentPlanEntity {
   public void setOutcomeMeasureDaily() {
     this.outcomeMeasureFrequency = "DAILY";
   }
-
-  /**
-   * Stores the ID for this treatment plan.
-   */
-  @PrimaryKey(autoGenerate = true)
-  @NonNull
-  private int id;  //used to manage the treatment plan and prevent duplicates.
 
   /**
    * Stores the number of times the user should go to counseling.
