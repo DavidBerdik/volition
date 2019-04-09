@@ -13,5 +13,5 @@ public class DailyWellnessActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_daily_wellness);
   }
-
+  public static int numberCompleted;
 }

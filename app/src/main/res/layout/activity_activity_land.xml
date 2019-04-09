@@ -32,7 +32,61 @@
   app:layout_constraintEnd_toStartOf="@+id/TEA"
   app:layout_constraintTop_toTopOf="@+id/TEA"
   app:srcCompat="@mipmap/ic_activity_complete"
-  android:contentDescription="teaCompleted"/>
+  android:contentDescription="@string/teacompleted"/>
+  <ImageView
+    android:id="@+id/EduCompletedLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/educompleted"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/Edu."
+    app:layout_constraintTop_toTopOf="@+id/Edu."
+    app:srcCompat="@mipmap/ic_activity_complete"/>
+  <ImageView
+    android:id="@+id/DailyWellnessCompletedLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/dailywellnesscompleted"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/DailyWellness"
+    app:layout_constraintTop_toTopOf="@+id/DailyWellness"
+    app:srcCompat="@mipmap/ic_activity_complete"/>
+  <ImageView
+    android:id="@+id/JournalCompletedLandscape"
+    android:layout_width="33dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/journalcompleted"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/Journal"
+    app:layout_constraintTop_toTopOf="@+id/Journal"
+    app:srcCompat="@mipmap/ic_activity_complete"/>
+  <ImageView
+    android:id="@+id/CleanTrackerCompletedLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/cleantrackercompleted"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/CleanTracker"
+    app:layout_constraintTop_toTopOf="@+id/CleanTracker"
+    app:srcCompat="@mipmap/ic_activity_complete"/>
+  <ImageView
+    android:id="@+id/lessonCompletedLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/lessoncompleted"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/Lesson"
+    app:layout_constraintTop_toTopOf="@+id/Lesson"
+    app:srcCompat="@mipmap/ic_activity_complete"/>
   <ImageView
     android:id="@+id/teaIncompleteLandscape"
     android:layout_width="wrap_content"
@@ -43,7 +97,62 @@
     app:layout_constraintEnd_toStartOf="@+id/TEA"
     app:layout_constraintTop_toTopOf="@+id/TEA"
     app:srcCompat="@mipmap/ic_activity_incomplete"
-    android:contentDescription="teaIncomplete"/>
+    android:contentDescription="@string/teaincomplete"/>
+  <ImageView
+    android:id="@+id/EduIncompleteLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/eduincomplete"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/Edu."
+    app:layout_constraintTop_toTopOf="@+id/Edu."
+    app:srcCompat="@mipmap/ic_activity_incomplete"/>
+  <ImageView
+    android:id="@+id/DailyWellnessIncompleteLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/dailywellnessincomplete"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/DailyWellness"
+    app:layout_constraintTop_toTopOf="@+id/DailyWellness"
+    app:srcCompat="@mipmap/ic_activity_incomplete"/>
+  <ImageView
+    android:id="@+id/JournalIncompleteLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/journalincomplete"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/Journal"
+    app:layout_constraintTop_toTopOf="@+id/Journal"
+    app:srcCompat="@mipmap/ic_activity_incomplete"/>
+  <ImageView
+    android:id="@+id/CleanTrackerIncompleteLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/cleantrackerincomplete"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toStartOf="@+id/CleanTracker"
+    app:layout_constraintTop_toTopOf="@+id/CleanTracker"
+    app:srcCompat="@mipmap/ic_activity_incomplete"/>
+  <ImageView
+    android:id="@+id/lessonIncompleteLandscape"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:contentDescription="@string/lessonIncomplete"
+    android:visibility="invisible"
+    app:layout_constraintEnd_toEndOf="@+id/lessonCompletedLandscape"
+    app:layout_constraintTop_toTopOf="@+id/Lesson"
+    app:srcCompat="@mipmap/ic_activity_incomplete"/>
   <Button
     android:id="@+id/TEA"
     android:layout_width="100dp"

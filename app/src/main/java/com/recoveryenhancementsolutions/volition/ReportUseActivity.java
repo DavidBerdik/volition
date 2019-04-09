@@ -74,4 +74,5 @@ public class ReportUseActivity extends AppCompatActivity {
   };
 
   private int lastClickedItem;
+  public static int numberCompleted;
 }

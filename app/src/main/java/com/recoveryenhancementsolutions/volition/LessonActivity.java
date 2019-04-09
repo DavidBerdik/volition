@@ -13,5 +13,5 @@ public class LessonActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_lesson);
   }
-
+  public static int numberCompleted;
 }
