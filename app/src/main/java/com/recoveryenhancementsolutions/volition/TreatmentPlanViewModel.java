@@ -18,20 +18,14 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public TreatmentPlanViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
+    treatmentPlanDao = db.treatmentPlanDao();
   }
 
   /**
    * Inserts a new treatment plan into the database.
    */
   public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
-    db.treatmentPlanDao().insertTreatmentPlanEntity(treatmentPlanEntity);
-  }
-
-  /**
-   * Updates the database with the values of treatmentPlan.
-   */
-  public void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity){
-    db.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlanEntity);
+    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**
@@ -43,6 +37,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public void setTestDatabase(final VolitionDatabase db) {
     db.close();
     this.db = db;
+    treatmentPlanDao = db.treatmentPlanDao();
   }
 
   /**
@@ -68,17 +63,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @return A string representing the user's severity level.
    */
-  public LiveData<String> getQuestionnaireEntity(){
+  public LiveData<String> getQuestionnaireEntity() {
     return db.questionnaireDao().getSeverityLevel();
-  }
-
-  /**
-   * Inserts treatment plan into the database using a background thread
-   *
-   * @param treatmentPlanEntity the entity to be added to the database.
-   */
-  void insert(final TreatmentPlanEntity treatmentPlanEntity) {
-    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**
@@ -97,7 +83,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
       mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
       return null;
     }
-
   }
 
   /**
@@ -106,7 +91,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   private VolitionDatabase db;
 
   /**
-   * The treatmentPlans Dao
+   * The treatmentPlan's Dao
    */
   private TreatmentPlanDao treatmentPlanDao;
 }

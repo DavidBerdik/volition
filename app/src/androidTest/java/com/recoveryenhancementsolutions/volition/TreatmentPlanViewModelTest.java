@@ -10,6 +10,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -51,10 +52,23 @@ public class TreatmentPlanViewModelTest {
   }
 
   /**
+   * Closes the temporary database.
+   */
+  @After
+  public void closeDb(){db.close();}
+
+  /**
    * Performs several test involving the Treatment Plan ViewModel
    */
   @Test
   public void testTreatmentPlanViewModel() {
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
     treatmentPlanEntity.setNumCounseling(1);
     treatmentPlanEntity.setNumSupportMeeting(1);
@@ -66,34 +80,36 @@ public class TreatmentPlanViewModelTest {
     treatmentPlanEntity.setNumMedManagement(0);
     treatmentPlanEntity.setMedManagementMonthly();
     treatmentPlanEntity.setOutcomeMeasureWeekly();
+    treatmentPlanEntity.setId(1);
     viewModel.insertTreatmentPlan(treatmentPlanEntity);
 
-    //Check the values of the treatment plan. Should match the moderate abstinence plan.
+    // Allow the database one second to update.
     try {
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumCounseling());
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumSupportMeeting());
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumLessons());
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumTreatmentEffectivenessAssessment());
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumOutcomeMeasures());
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumTimeTracking());
-      assertEquals(1, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumReadingResponse());
-      assertEquals(0, LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getNumMedManagement());
-      assertEquals("MONTHLY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getMedManagementFrequency());
-      assertEquals("WEEKLY", LiveDataTestUtility.getNestedLiveDataObj(db.treatmentPlanDao()
-          .getTreatmentPlan()).getOutcomeMeasureFrequency());
+      Thread.sleep(1000);
+    } catch(InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    //Creates a test treatmentPlan to check data
+    TreatmentPlanEntity testTreatmentPlan = new TreatmentPlanEntity();
+    try {
+      testTreatmentPlan = LiveDataTestUtility
+          .getNestedLiveDataObj(viewModel.getTreatmentPlan());
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
 
+    //Check the values of the treatment plan. Should match the moderate abstinence plan.
+    assertEquals(1, testTreatmentPlan.getNumCounseling());
+    assertEquals(1, testTreatmentPlan.getNumSupportMeeting());
+    assertEquals(1, testTreatmentPlan.getNumLessons());
+    assertEquals(1, testTreatmentPlan.getNumTreatmentEffectivenessAssessment());
+    assertEquals(1, testTreatmentPlan.getNumOutcomeMeasures());
+    assertEquals(1, testTreatmentPlan.getNumTimeTracking());
+    assertEquals(1, testTreatmentPlan.getNumReadingResponse());
+    assertEquals(0, testTreatmentPlan.getNumMedManagement());
+    assertEquals("MONTHLY", testTreatmentPlan.getMedManagementFrequency());
+    assertEquals("WEEKLY", testTreatmentPlan.getOutcomeMeasureFrequency());
   }
 
   private TreatmentPlanViewModel viewModel;

@@ -22,7 +22,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_plan);
         viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
         treatmentPlan = viewModel.getTreatmentPlan();
-
         counselingView = findViewById(R.id.counselingView);
         medManagementView = findViewById(R.id.medManagementView);
         supportMeetingView = findViewById(R.id.supportMeetingView);
@@ -197,7 +196,15 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
         @Override
         public void onChanged(@Nullable TreatmentPlanEntity newTreatmentPlanEntity) {
-            treatmentPlanEntity = newTreatmentPlanEntity;
+                treatmentPlanEntity = newTreatmentPlanEntity;
+                counselingView.setText(newTreatmentPlanEntity.getNumCounseling());
+                medManagementView.setText(newTreatmentPlanEntity.getNumMedManagement());
+                supportMeetingView.setText(newTreatmentPlanEntity.getNumSupportMeeting());
+                lessonView.setText(newTreatmentPlanEntity.getNumLessons());
+                treatmentEffectiveView.setText(newTreatmentPlanEntity.getNumTreatmentEffectivenessAssessment());
+                outcomeMeasureView.setText(newTreatmentPlanEntity.getNumOutcomeMeasures());
+                timeTrackingView.setText(newTreatmentPlanEntity.getNumTimeTracking());
+                readingResponseView.setText(newTreatmentPlanEntity.getNumReadingResponse());
         }
     };
 
@@ -205,7 +212,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Method runs when the refresh button in the xml files is clicked.
      */
     private void onUpdateButtonClicked() {
-        viewModel.updateTreatmentPlan(treatmentPlanEntity);
     }
 
     /**

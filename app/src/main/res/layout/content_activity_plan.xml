@@ -202,7 +202,7 @@
     <Button
         android:id="@+id/subCounselButton"
         android:layout_width="46dp"
-        android:layout_height="0dp"
+        android:layout_height="39dp"
         android:layout_marginTop="115dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_subroundbutton"
@@ -242,7 +242,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
@@ -381,7 +381,7 @@
     <TextView
         android:id="@+id/counselingView"
         android:layout_width="8dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="124dp"
         android:text=""
@@ -461,7 +461,7 @@
     <Button
         android:id="@+id/addCounselButton"
         android:layout_width="46dp"
-        android:layout_height="0dp"
+        android:layout_height="39dp"
         android:layout_marginTop="115dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_addroundbutton"
