@@ -42,7 +42,7 @@ public class MedicationDosageViewModelTest {
     viewModel.setTestDatabase(db);
 
     final MedicationDosageEntity de = new MedicationDosageEntity();
-    de.insertDosage(3);
+    de.dosage = 3;
     viewModel.insertDosage(de);
   }
 
