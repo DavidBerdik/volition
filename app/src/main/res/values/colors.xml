@@ -3,4 +3,7 @@
   <color name="res_green">#2BB673</color>
   <color name="res_green_transparent">#4D2BB673</color>
   <color name="res_gold">#F7941D</color>
+  <color name="res_white">#FFFFFF</color>
+  <color name="res_gray">#CCCCCC</color>
+  <color name="res_black">#000000</color>
 </resources>
