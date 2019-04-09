@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +11,13 @@ import android.widget.Button;
 
 /**
  * UI activity that allows the user to choose between different daily activities.
+=======
+import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
+
+/**
+ * Skeleton activity, will be filled in by another group/task at a later date.
  */
 public class ActivityActivity extends AppCompatActivity {
 
@@ -84,6 +92,21 @@ public class ActivityActivity extends AppCompatActivity {
         startActivity(new Intent(ActivityActivity.this, ReportUseActivity.class));
       }
     });
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+    CoreNavigationHandler.link(bottomNavigationView, this);
   }
+  /*
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume()
+  {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+  }
+  private BottomNavigationView bottomNavigationView;
 }
+
+
 
