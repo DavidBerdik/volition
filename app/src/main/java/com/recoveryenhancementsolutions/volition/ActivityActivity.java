@@ -33,7 +33,7 @@ public class ActivityActivity extends AppCompatActivity {
     final Button teaButton = findViewById(R.id.TEA);
     final Button lessonButton = findViewById(R.id.Lesson);
     final Button journalButton = findViewById(R.id.Journal);
-    final Button eduButton = findViewById(R.id.Edu_);
+    final Button eduButton = findViewById(R.id.Edu);
     final Button wellnessButton = findViewById(R.id.DailyWellness);
     final Button cleanButton = findViewById(R.id.CleanTracker);
 
@@ -41,8 +41,7 @@ public class ActivityActivity extends AppCompatActivity {
     teaButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(
-            new Intent(ActivityActivity.this, TreatmentAssessmentActivity.class));
+        startActivity(new Intent(ActivityActivity.this, TreatmentAssessmentActivity.class));
       }
     });
 

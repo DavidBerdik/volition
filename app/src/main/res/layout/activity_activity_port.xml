@@ -53,7 +53,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/TEA"/>
   <Button
-    android:id="@+id/Edu."
+    android:id="@+id/Edu"
     android:layout_width="100dp"
     android:layout_height="70dp"
     android:layout_marginTop="75dp"
@@ -82,7 +82,7 @@
     android:background="@drawable/ic_button_rectangle"
     android:text="@string/activity_clean_tracker_button"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/Edu."/>
+    app:layout_constraintTop_toBottomOf="@+id/Edu"/>
   <TextView
     android:id="@+id/textViewActivityPage"
     android:layout_width="230dp"
