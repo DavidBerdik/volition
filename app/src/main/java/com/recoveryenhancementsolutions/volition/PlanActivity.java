@@ -46,7 +46,7 @@ public class PlanActivity extends AppCompatActivity {
         hscroller.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
       }
     });
-    TextView textView = (TextView) findViewById(R.id.textview_day_1);
+    TextView textView = findViewById(R.id.textview_day_1);
     textView.setText(sampletext);
     textView = findViewById(R.id.textview_day_2);
     textView.setText(sampletext);
