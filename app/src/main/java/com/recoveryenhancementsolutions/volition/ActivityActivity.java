@@ -85,6 +85,7 @@ public class ActivityActivity extends AppCompatActivity {
         startActivity(new Intent(ActivityActivity.this, ReportUseActivity.class));
       }
     });
+
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
     CoreNavigationHandler.link(bottomNavigationView, this);
