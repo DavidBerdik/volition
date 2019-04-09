@@ -63,8 +63,6 @@
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
-
-
     <string name="month_progress_textview">Month Progress</string>
   <string name="center_day_textview">[DAY]</string>
   <string name="track_button">TRACK</string>
