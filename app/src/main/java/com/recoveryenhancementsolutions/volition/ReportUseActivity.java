@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import android.widget.Toast;
 import java.util.Calendar;
 
 /**
@@ -81,6 +82,9 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 1;
       ddViewModel.updateLastCleanDate(today, today);
+      toast = Toast.makeText(getApplicationContext(),"Recorded 'Yes' for the day",Toast.LENGTH_LONG);
+      toast.setMargin(0,0);
+      toast.show();
       //Only redirects if we are not in a testing environment
       if (!inTest) {
         redirect();
@@ -93,6 +97,7 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
+      Toast.makeText(getApplicationContext(),"Recorded 'No' for the day",Toast.LENGTH_LONG).show();
       //Only redirects if we are not in a testing environment
       if (!inTest) {
         redirect();
@@ -128,6 +133,7 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
+  private Toast toast;
   private Intent intent;
   private int lastClickedItem;
   private Calendar today;
