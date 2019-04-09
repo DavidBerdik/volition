@@ -150,5 +150,47 @@ public class CoreNavigationHandlerTest {
     // Check that we're on the ActivityActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
         ActivityActivity.class.getName());
+
+    // Click to the Plan activity.
+    onView(withId(R.id.core_navigation_plan)).perform(click());
+
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the PlanActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        PlanActivity.class.getName());
+
+    Espresso.pressBack();
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the HomeActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        ActivityActivity.class.getName());
+
+    // Click to the Plan activity.
+    onView(withId(R.id.core_navigation_home)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Check that we're on the HomeActivity class.
+    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
+        HomeActivity.class.getName());
   }
 }
