@@ -179,9 +179,9 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
             headersForTea.get(answerCounter).setTextColor(
                 headersForTea.get(answerCounter).getTextColors().withAlpha(0));
             questionsForTea.get(answerCounter+1).setTextColor(
-                    questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+                    questionsForTea.get(answerCounter+1).getTextColors().withAlpha(255));
             headersForTea.get(answerCounter+1).setTextColor(
-                headersForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+                headersForTea.get(answerCounter).getTextColors().withAlpha(255));
             answerCounter++;
         } else if (answerCounter==3){
             teaAnswers.set(answerCounter, value);
