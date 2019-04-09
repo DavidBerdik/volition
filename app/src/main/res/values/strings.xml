@@ -76,7 +76,6 @@
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
   <string-array name="dosage_screen_title">
-    <item>Doses Per Day</item>
     <item>1</item>
     <item>2</item>
     <item>3</item>

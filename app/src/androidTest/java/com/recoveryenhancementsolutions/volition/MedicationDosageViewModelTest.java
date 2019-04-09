@@ -23,8 +23,8 @@ import org.junit.runner.RunWith;
 public class MedicationDosageViewModelTest {
 
   @Rule
-  public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
-      HomeActivity.class);
+  public final ActivityTestRule<MedicationDosageActivity> activityTestRule = new ActivityTestRule<>(
+      MedicationDosageActivity.class);
 
   /**
    * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
