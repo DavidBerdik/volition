@@ -9,7 +9,7 @@
 
   <Spinner
     android:id="@+id/dosage_spinner"
-    android:layout_width="180dp"
+    android:layout_width="105dp"
     android:layout_height="55dp"
     android:layout_marginTop="10dp"
     android:layout_marginStart="100dp"

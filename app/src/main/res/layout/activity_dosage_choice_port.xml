@@ -9,10 +9,10 @@
 
   <Spinner
     android:id="@+id/dosage_spinner"
-    android:layout_width="180sp"
+    android:layout_width="105dp"
     android:layout_height="55dp"
     android:layout_marginTop="50dp"
-    android:layout_marginStart="20dp"
+    android:layout_marginStart="50dp"
     android:entries="@array/dosage_choice_title"
     android:spinnerMode="dropdown"
     app:layout_constraintStart_toStartOf="parent"

@@ -71,16 +71,12 @@
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
   <string-array name="dosage_choice_title">
-    <item>Doses Per Day</item>
     <item>1</item>
     <item>2</item>
     <item>3</item>
     <item>4</item>
     <item>5</item>
     <item>6</item>
-    <item>7</item>
-    <item>8</item>
-    <item>9</item>
   </string-array>
   <string name="dosage_choice_message"> You have chosen to take Buprenorphine. How many
   doses a day would you like to take?</string>
