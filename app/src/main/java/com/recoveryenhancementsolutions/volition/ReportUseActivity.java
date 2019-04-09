@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -83,7 +84,7 @@ public class ReportUseActivity extends AppCompatActivity {
       lastClickedItem = 1;
       ddViewModel.updateLastCleanDate(today, today);
       toast = Toast.makeText(getApplicationContext(),"Recorded 'Yes' for the day",Toast.LENGTH_LONG);
-      toast.setMargin(0,0);
+      toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
       toast.show();
       //Only redirects if we are not in a testing environment
       if (!inTest) {
@@ -97,7 +98,9 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
-      Toast.makeText(getApplicationContext(),"Recorded 'No' for the day",Toast.LENGTH_LONG).show();
+      toast = Toast.makeText(getApplicationContext(),"Recorded 'No' for the day",Toast.LENGTH_LONG);
+      toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+      toast.show();
       //Only redirects if we are not in a testing environment
       if (!inTest) {
         redirect();
