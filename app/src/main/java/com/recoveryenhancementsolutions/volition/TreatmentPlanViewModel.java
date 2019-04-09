@@ -24,7 +24,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   /**
    * Inserts a new treatment plan into the database.
    */
-  public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+  public static void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
     new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
@@ -71,6 +71,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * Used to insert data into the database asynchronously
    */
   private static class insertAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
+
     insertAsyncTask(final TreatmentPlanDao dao) {
       asyncTaskDao = dao;
     }
@@ -92,5 +93,5 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   /**
    * The treatmentPlan's Dao
    */
-  private TreatmentPlanDao treatmentPlanDao;
+  private static TreatmentPlanDao treatmentPlanDao;
 }
