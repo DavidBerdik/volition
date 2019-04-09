@@ -34,24 +34,6 @@ public class ReportUseActivity extends AppCompatActivity {
     return lastClickedItem;
   }
 
-  /**
-   * Sets the activity as a test to prevent redirecting to other Activities TEST METHOD
-   *
-   * @param b True = in test, false = not in test
-   */
-  public void setTestEnvironment(boolean b) {
-    inTest = b;
-  }
-
-  /**
-   * Sets the ViewModel to work with a test database
-   *
-   * @param db the test database
-   */
-  public void setTestDatabase(VolitionDatabase db) {
-    ddViewModel.setTestDatabase(db);
-  }
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -74,8 +56,31 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.setOnNavigationItemSelectedListener(navigationListener);
   }
 
+  /**
+   * Sets the activity as a test to prevent redirecting to other Activities (TEST METHOD)
+   *
+   * @param b True = in test, false = not in test
+   */
+  protected void setTestEnvironment(final boolean b) {
+    inTest = b;
+  }
+
+  /**
+   * Returns the ViewModel (TEST METHOD)
+   *
+   * @return the DemographicDataViewModel
+   */
   protected DemographicDataViewModel getViewModel() {
     return ddViewModel;
+  }
+
+  /**
+   * Sets the ViewModel to work with a test database (TEST METHOD)
+   *
+   * @param db the test database
+   */
+  protected void setTestDatabase(final VolitionDatabase db) {
+    ddViewModel.setTestDatabase(db);
   }
 
   private OnClickListener yesButtonListener = new OnClickListener() {
