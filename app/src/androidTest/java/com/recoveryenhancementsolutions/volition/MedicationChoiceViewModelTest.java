@@ -22,6 +22,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class MedicationChoiceViewModelTest {
 
+  //Will be replaced with the correct activity when it is created
   @Rule
   public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
