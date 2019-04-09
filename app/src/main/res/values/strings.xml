@@ -77,4 +77,16 @@
   <string name="edu_title"> EDU Page</string>
   <string name="daily_wellness_title"> Daily Wellness Page</string>
   <string name="treatment_assessment_title"> TEA Page</string>
+  <string-array name="dosage_choice_title">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+  </string-array>
+  <string name="dosage_choice_message"> You have chosen to take Buprenorphine. How many
+  doses a day would you like to take?</string>
+  <string name="dosage_choice_confirm"> Confirm</string>
+  <string name="dosage_choice_res_logo"> Logo</string>
 </resources>
