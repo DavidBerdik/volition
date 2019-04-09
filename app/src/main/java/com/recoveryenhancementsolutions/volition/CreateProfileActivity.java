@@ -5,7 +5,6 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -19,8 +18,8 @@ import java.util.Calendar;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.RadioButton;
-import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.view.View.OnFocusChangeListener;
 
 
 /**
@@ -29,8 +28,9 @@ import android.widget.Spinner;
 
 public class CreateProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
 
+
   /**
-   * Checking the selected gender, if selected, adds to the database
+   * Checking the selected gender and UseDisorder, if selected, adds to the database
    */
   public void onItemSelected(AdapterView<?> parent, View view,
       int pos, long id) {
@@ -206,6 +206,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   /*
    *Adds the listeners to the corresponding RadioButtons and Spinners
    * Sets the buttons and Spinners to the corresponding ID's
+   * Also sets the FocusChange for the Name entry
    */
   public void addAllListeners() {
     radioSupport = findViewById(R.id.radioSupport);
@@ -238,6 +239,10 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
 
     genderSpinner.setOnItemSelectedListener(this);
     useTypeSpinner.setOnItemSelectedListener(this);
+
+    name = findViewById(R.id.name);
+    OnFocusChangeListener ofcListener = new FocusListener();
+    name.setOnFocusChangeListener(ofcListener);
   }
 
   @Override
@@ -327,8 +332,9 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     send.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(final View v) {
+        data.setPatientName(name.getText().toString());
+
         demogDataViewModel.insertDemographicData(data);
-        Log.d("SDSDS", demogDataViewModel.toString());
         sendOff();
 
       }
@@ -365,4 +371,5 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   private Spinner genderSpinner;
   private Spinner useTypeSpinner;
   private int spinnerCount = 0;
+  private EditText name;
 }
