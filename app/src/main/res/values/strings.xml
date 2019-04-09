@@ -71,4 +71,5 @@
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
   <string name="activity_res_logo"> Logo</string>
+  <string name="medication_choice_logo"> Logo</string>
 </resources>
