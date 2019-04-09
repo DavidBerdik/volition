@@ -17,21 +17,21 @@ import android.widget.LinearLayout;
 public abstract class DrawerMenuActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  protected LinearLayout fullLayout;
-  protected FrameLayout activityContent;
+  protected ConstraintLayout fullLayout;
+  protected ConstraintLayout activityContent;
 
   @Override
   public void setContentView(final int layoutID) {
-    fullLayout= (LinearLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
-    activityContent= (FrameLayout) fullLayout.findViewById(R.id.activity_content);
+    fullLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.drawer_menu, null);
+    activityContent = fullLayout.findViewById(R.id.activity_content);
 
     getLayoutInflater().inflate(layoutID, activityContent, true);
     super.setContentView(fullLayout);
-    
+
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    final DrawerLayout drawer = findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
         this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
     drawer.addDrawerListener(toggle);
