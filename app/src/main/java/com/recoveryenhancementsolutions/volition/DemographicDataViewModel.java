@@ -63,18 +63,26 @@ public class DemographicDataViewModel extends AndroidViewModel {
   }
 
   /**
-   * Retrieves the last date clean as stored in the database.
+   * Retrieves the last clean date from the database
    *
-   * @return A LiveData object containing a Date representing the last listed date of being clean.
+   * @return A LiveData object containing the user's 'last clean' Date
    */
   public LiveData<Date> getLastCleanDate() {
     return db.demographicDataDao().queryLastCleanDate();
   }
 
+  /**
+   * Retrieves the last report date from the database
+   *
+   * @return A LiveData object containing the Date of the user's last Clean Tracker report
+   */
   public LiveData<Date> getLastReportDate() {
     return db.demographicDataDao().queryLastReportDate();
   }
 
+  /**
+   * Asynchronous task for inserting DemographicData entities into the database
+   */
   private static class insertAsyncTask extends AsyncTask<DemographicDataEntity, Void, Void> {
 
     insertAsyncTask(final DemographicDataDAO dao) {
