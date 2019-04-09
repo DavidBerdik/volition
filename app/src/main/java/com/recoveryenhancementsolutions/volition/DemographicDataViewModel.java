@@ -93,7 +93,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
   /**
    * Asynchronous task for updating the last clean date
    */
-  private class UpdateDaysCleanAsync extends AsyncTask<Calendar, Void, Void> {
+  private static class UpdateDaysCleanAsync extends AsyncTask<Calendar, Void, Void> {
 
     UpdateDaysCleanAsync(final DemographicDataDAO dao) {
       demographicDataDAO = dao;
