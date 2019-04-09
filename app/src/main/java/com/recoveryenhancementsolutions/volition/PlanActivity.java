@@ -13,8 +13,7 @@ public class PlanActivity extends AppCompatActivity {
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
   @Override
-  public void onResume()
-  {
+  public void onResume() {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
   }
@@ -38,7 +37,9 @@ public class PlanActivity extends AppCompatActivity {
   }
 
   /**
-   *
+   * Populates each TextView of the Plan activity scrollview with information relevant to what
+   * progress has been made towards treatment on that day in specific. Currently, all information is
+   * populated with sample data, pending changes from a database.
    */
   public void fillViews() {
     String sampletext = "Visit 1 Visit 1";
