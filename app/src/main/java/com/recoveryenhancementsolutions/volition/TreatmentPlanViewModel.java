@@ -25,7 +25,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * Inserts a new treatment plan into the database.
    */
   public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
-    insert(treatmentPlanEntity);
+    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**
@@ -65,15 +65,6 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    */
   public LiveData<String> getQuestionnaireEntity() {
     return db.questionnaireDao().getSeverityLevel();
-  }
-
-  /**
-   * Inserts treatment plan into the database using a background thread
-   *
-   * @param treatmentPlanEntity the entity to be added to the database.
-   */
-  void insert(final TreatmentPlanEntity treatmentPlanEntity) {
-    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**

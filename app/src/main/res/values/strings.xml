@@ -1,8 +1,8 @@
 <resources>
   <string name="app_name">Volition</string>
-  <string name="title_home">Home</string>
   <string name="button_yes">Yes</string>
   <string name="button_no">No</string>
+  <string name="title_home">Home</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -56,25 +56,19 @@
   <string name="core_navigation_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
-  <string name="report_use_question">Have you used since your last check-in?</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
+  <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
+  <string name="medication_choice_abstain_button"> Abstain</string>
+  <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
+  <string name="activity_tea_button"> TEA</string>
+  <string name="activity_lesson_button"> Lesson</string>
+  <string name="activity_journal_button"> Journal</string>
+  <string name="activity_edu_button"> Edu.</string>
+  <string name="activity_daily_wellness_button"> Daily Wellness</string>
+  <string name="activity_clean_tracker_button"> Clean Tracker</string>
+  <string name="activity_title_activity_screen"> Activities</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
-  <string name="buprenorphine_button"> Buprenorphine</string>
-  <string name="abstain_button"> Abstain</string>
-  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
-  <string name="add">+</string>
-  <string name="sub">-</string>
-  <string name="volition">Volition</string>
-  <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
-  <string name="counseling">Counseling</string>
-  <string name="medManagement">Med Management</string>
-  <string name="supportMeeting">Support Group Meeting</string>
-  <string name="outcomeMeasure">Outcome Measure</string>
-  <string name="lessonPlanner">Lesson Planner</string>
-  <string name="treatmentEffectivnessAssessment">Treatment Effectiveness Assessment</string>
-  <string name="cleanTimeTracking">Clean Time Tracking</string>
-  <string name="readJournalResponce">Reading Responce / Journal</string>
-  <string name="update">Update</string>
-
+  <string name="res_logo_background"></string>
 </resources>
