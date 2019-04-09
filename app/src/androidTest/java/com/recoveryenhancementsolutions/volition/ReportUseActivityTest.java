@@ -102,7 +102,7 @@ public class ReportUseActivityTest {
 
 
   /**
-   * Tests if pressing the yes and no buttons update the database correctly
+   * Tests if pressing the yes and no buttons correctly updates the database
    */
   @Test
   public void updateDatabaseTest() {
