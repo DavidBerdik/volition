@@ -15,7 +15,7 @@
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
     android:alpha=".33"
-    android:contentDescription="@string/res_logo_background"
+    android:contentDescription="@string/activity_res_logo"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
