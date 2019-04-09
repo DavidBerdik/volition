@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * THIS IS A DUMMY CLASS
  */
-public class TreatmentAssessmentActivity extends AppCompatActivity {
+public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

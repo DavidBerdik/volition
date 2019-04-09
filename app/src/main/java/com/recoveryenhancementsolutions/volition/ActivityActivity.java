@@ -41,7 +41,7 @@ public class ActivityActivity extends AppCompatActivity {
     teaButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityActivity.this, TreatmentAssessmentActivity.class));
+        startActivity(new Intent(ActivityActivity.this, TreatmentExperienceAssessmentActivity.class));
       }
     });
 

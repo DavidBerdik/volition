@@ -57,9 +57,9 @@ public class ActivityActivityTest {
       Thread.currentThread().interrupt();
     }
 
-    // Check that we're on the TreatmentAssessmentActivity class.
+    // Check that we're on the TreatmentExperienceAssessmentActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        TreatmentAssessmentActivity.class.getName());
+        TreatmentExperienceAssessmentActivity.class.getName());
 
     // Click the back button to test the other buttons
     Espresso.pressBack();
