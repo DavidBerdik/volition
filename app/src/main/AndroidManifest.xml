@@ -75,6 +75,46 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".LessonActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".JournalActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".EDUActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".DailyWellnessActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".TreatmentAssessmentActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
   </application>
 
 </manifest>
