@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -168,9 +169,15 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<MedicationChoiceEntity> medObserver = new Observer<MedicationChoiceEntity>() {
         @Override
         public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
-            medObserved = true;
-            if (questionnaireObserved) {
-                generateTreatmentPlan();
+            try {
+                medObserved = true;
+                medicationChoice = medicationChoiceEntity.medication;
+                if (questionnaireObserved) {
+                    generateTreatmentPlan();
+                }
+            }
+            catch (NullPointerException e){
+                Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
             }
         }
     };
@@ -182,9 +189,16 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<String> questionnaireObserver = new Observer<String>() {
         @Override
         public void onChanged(@Nullable String s) {
-            questionnaireObserved = true;
-            if (medObserved) {
-                generateTreatmentPlan();
+            try {
+                questionnaireObserved = true;
+                severityLevel = s;
+                if (medObserved) {
+                    generateTreatmentPlan();
+                }
+            }
+            catch(NullPointerException e)
+            {
+                Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
             }
         }
     };
@@ -196,6 +210,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
         @Override
         public void onChanged(@Nullable TreatmentPlanEntity newTreatmentPlanEntity) {
+            try {
                 treatmentPlanEntity = newTreatmentPlanEntity;
                 counselingView.setText(newTreatmentPlanEntity.getNumCounseling());
                 medManagementView.setText(newTreatmentPlanEntity.getNumMedManagement());
@@ -205,6 +220,9 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
                 outcomeMeasureView.setText(newTreatmentPlanEntity.getNumOutcomeMeasures());
                 timeTrackingView.setText(newTreatmentPlanEntity.getNumTimeTracking());
                 readingResponseView.setText(newTreatmentPlanEntity.getNumReadingResponse());
+            }catch(NullPointerException e){
+                Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
+            }
         }
     };
 
@@ -402,7 +420,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Generates a new treatmentPlan.
      */
     private void generateTreatmentPlan() {
-        String medicationChoice = "", severityLevel = "";
 
         //A new treatmentPlanEntity to add to the database
         TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
@@ -537,5 +554,15 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * A treatment plan entity to handle updates to the database.
      */
     private TreatmentPlanEntity treatmentPlanEntity;
+
+    /**
+     * A String representing the user's severityLevel
+     */
+    private String severityLevel;
+
+    /**
+     * A String representing the user's medication Choice
+     */
+    private String medicationChoice;
 }
 

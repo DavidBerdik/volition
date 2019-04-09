@@ -88,4 +88,7 @@
     <string name="activity_title_activity_screen"> Activities</string>
     <string name="res_logo_background"></string>
     <string name="title_activity_plan">activity_plan</string>
+    <String name="VOLTION">volition</String>
+    <String name="Recommended Treatment Plan">recommendedTreatmentPlan</String>
+    <String name="Cousneling">string/counseling</String>
 </resources>
