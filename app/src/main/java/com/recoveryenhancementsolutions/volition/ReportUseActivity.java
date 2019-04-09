@@ -83,6 +83,9 @@ public class ReportUseActivity extends AppCompatActivity {
     ddViewModel.setTestDatabase(db);
   }
 
+  /**
+   * Listener method for the Yes button
+   */
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -98,6 +101,9 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
+  /**
+   * Listener method for the No button
+   */
   private OnClickListener noButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -113,7 +119,12 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
-  //TODO: Move the user to the Activity screen
+
+
+  /**
+   * Redirects to another screen
+   * TODO: Move the user to the Activity screen
+   */
   private void redirect() {
     intent = new Intent(getApplicationContext(), HomeActivity.class);
     startActivity(intent);
