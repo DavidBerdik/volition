@@ -72,4 +72,9 @@
   <string name="plan_next_week">N</string>
   <string name="activity_res_logo"> Logo</string>
   <string name="medication_choice_logo"> Logo</string>
+  <string name="lesson_title"> Lesson Page</string>
+  <string name="journal_title"> Journal Page</string>
+  <string name="edu_title"> EDU Page</string>
+  <string name="daily_wellness_title"> Daily Wellness Page</string>
+  <string name="treatment_assessment_title"> TEA Page</string>
 </resources>
