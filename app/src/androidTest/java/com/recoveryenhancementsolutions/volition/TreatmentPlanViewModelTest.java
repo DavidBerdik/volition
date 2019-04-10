@@ -61,43 +61,43 @@ public class TreatmentPlanViewModelTest {
    * Performs several test involving the Treatment Plan ViewModel
    */
   @Test
-  public void testTreatmentPlanViewModel() {
-    // Allow the database one second to update.
-    try {
-      Thread.sleep(1000);
-    } catch(InterruptedException ex) {
-      Thread.currentThread().interrupt();
-    }
+    public void testTreatmentPlanViewModel() {
+      // Allow the database one second to update.
+      try {
+        Thread.sleep(1000);
+      } catch(InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
 
-    TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
-    treatmentPlanEntity.setNumCounseling(1);
-    treatmentPlanEntity.setNumSupportMeeting(1);
-    treatmentPlanEntity.setNumLessons(1);
-    treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(1);
-    treatmentPlanEntity.setNumOutcomeMeasures(1);
-    treatmentPlanEntity.setNumTimeTracking(1);
-    treatmentPlanEntity.setNumReadingResponse(1);
-    treatmentPlanEntity.setNumMedManagement(0);
-    treatmentPlanEntity.setMedManagementMonthly();
-    treatmentPlanEntity.setOutcomeMeasureWeekly();
-    treatmentPlanEntity.setId(1);
-    viewModel.insertTreatmentPlan(treatmentPlanEntity);
+      TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
+      treatmentPlanEntity.setNumCounseling(1);
+      treatmentPlanEntity.setNumSupportMeeting(1);
+      treatmentPlanEntity.setNumLessons(1);
+      treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(1);
+      treatmentPlanEntity.setNumOutcomeMeasures(1);
+      treatmentPlanEntity.setNumTimeTracking(1);
+      treatmentPlanEntity.setNumReadingResponse(1);
+      treatmentPlanEntity.setNumMedManagement(0);
+      treatmentPlanEntity.setMedManagementMonthly();
+      treatmentPlanEntity.setOutcomeMeasureWeekly();
+      treatmentPlanEntity.setId(1);
+      viewModel.insertTreatmentPlan(treatmentPlanEntity);
 
-    // Allow the database one second to update.
-    try {
-      Thread.sleep(1000);
-    } catch(InterruptedException ex) {
-      Thread.currentThread().interrupt();
-    }
+      // Allow the database one second to update.
+      try {
+        Thread.sleep(1000);
+      } catch(InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
 
-    //Creates a test treatmentPlan to check data
-    TreatmentPlanEntity testTreatmentPlan = new TreatmentPlanEntity();
-    try {
-      testTreatmentPlan = LiveDataTestUtility
-          .getNestedLiveDataObj(viewModel.getTreatmentPlan());
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
+      //Creates a test treatmentPlan to check data
+      TreatmentPlanEntity testTreatmentPlan = new TreatmentPlanEntity();
+      try {
+        testTreatmentPlan = LiveDataTestUtility
+                .getNestedLiveDataObj(viewModel.getTreatmentPlan());
+      } catch (InterruptedException e) {
+        Log.e(TAG, Log.getStackTraceString(e));
+      }
 
     //Check the values of the treatment plan. Should match the moderate abstinence plan.
     assertEquals(1, testTreatmentPlan.getNumCounseling());

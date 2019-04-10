@@ -26,7 +26,7 @@ android {
         disable 'GoogleAppIndexingWarning'
         disable 'AllowBackup'
         disable 'RtlHardcoded'
-		disable 'IconDipSize','IconDuplicatesConfig'
+        disable 'IconDipSize', 'IconDuplicatesConfig'
     }
 }
 
