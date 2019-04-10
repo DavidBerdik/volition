@@ -1,9 +1,12 @@
 package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,8 +22,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
         viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
-        treatmentPlan = viewModel.getTreatmentPlan();
-
         counselingView = findViewById(R.id.counselingView);
         medManagementView = findViewById(R.id.medManagementView);
         supportMeetingView = findViewById(R.id.supportMeetingView);
@@ -30,10 +31,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         timeTrackingView = findViewById(R.id.timeTrackingView);
         readingResponseView = findViewById(R.id.readingResponseView);
 
-        /**
-         * Button Identifiers
-         */
-
+        //Sets button identifiers
         Button subCounselButton = findViewById(R.id.subCounselButton);
         Button addCounselButton = findViewById(R.id.addCounselButton);
         Button subMedManagementButton = findViewById(R.id.subMedMangaementButton);
@@ -54,11 +52,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         Button addReadResponceJournalButton = findViewById(R.id.addReadResponceJournalButton);
         Button updateButton = findViewById(R.id.updateButton);
 
-
-        /**
-         * Button onClickListeners
-         */
-
+        //button onClickListeners
         subCounselButton.setOnClickListener(this);
         addCounselButton.setOnClickListener(this);
         subMedManagementButton.setOnClickListener(this);
@@ -77,41 +71,37 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         addReadResponceJournalButton.setOnClickListener(this);
         updateButton.setOnClickListener(this);
 
-        /**
-         * Calls used for database entry when applicable
-         */
+        //Sets initial treatmentPlanEntity values (for update use)
+        treatmentPlanEntity = new TreatmentPlanEntity();
 
-        // counselingView.setText(treatmentPlan.getValue().getNumCounseling());
-        // medManagementView.setText(treatmentPlan.getValue().getNumMedManagement());
-        // supportMeetingView.setText(treatmentPlan.getValue().getNumSupportMeeting());
-        // lessonView.setText(treatmentPlan.getValue().getNumLessons());
-        // treatmentEffectiveView.setText(treatmentPlan.getValue().getNumTreatmentEffectivenessAssessment());
-        // outcomeMeasureView.setText(treatmentPlan.getValue().getNumOutcomeMeasures());
-        // timeTrackingView.setText(treatmentPlan.getValue().getNumTimeTracking());
-        // readingResponseView.setText(treatmentPlan.getValue().getNumReadingResponse());
+        //initializes values for observer tests.
+        medObserved = false;
+        questionnaireObserved = false;
 
-        /**
-         * Assertion of values for testing purposes
-         */
-        counselingView.setText("3");
-        medManagementView.setText("2");
-        supportMeetingView.setText("3");
-        lessonView.setText("2");
-        treatmentEffectiveView.setText("1");
-        outcomeMeasureView.setText("3");
-        timeTrackingView.setText("2");
-        readingResponseView.setText("2");
+        //Initializes observers
+        viewModel.getMedicationChoiceEntity().observe(this, medObserver);
+        viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
+    }
+
+    /**
+     * Test Database
+     *
+     * @param db
+     */
+    public void onCreateTest(final VolitionDatabase db) {
+        final TreatmentPlanViewModel treatmentPlanViewModel = ViewModelProviders.of(this)
+                .get(TreatmentPlanViewModel.class);
+        treatmentPlanViewModel.setTestDatabase(db);
     }
 
     /**
      * onClick Listener class using a switch statement to dictate proper
-     * @param v
      */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.subCounselButton:
-                onSubCleanTimeTrackingButton();
+                onSubCounselButtonClicked();
                 break;
 
             case R.id.addCounselButton:
@@ -181,6 +171,44 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
+     * Observes the medication choice table in the database. Generates a treatment plan if the
+     * questionnaire has already been loaded as well.
+     */
+    private Observer<MedicationChoiceEntity> medObserver = new Observer<MedicationChoiceEntity>() {
+        @Override
+        public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
+            try {
+                medObserved = true;
+                medicationChoice = medicationChoiceEntity.medication;
+                if (questionnaireObserved) {
+                    generateTreatmentPlan();
+                }
+            }catch(NullPointerException e){
+                Log.e("TREATMENTPLANACTIVITY", Log.getStackTraceString(e));
+            }
+        }
+    };
+
+    /**
+     * Observes the questionnaire table in the database. Generates a treatment plan if the medication
+     * choice has already been loaded as well.
+     */
+    private Observer<QuestionnaireEntity> questionnaireObserver = new Observer<QuestionnaireEntity>() {
+        @Override
+        public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
+            try {
+                questionnaireObserved = true;
+                severityLevel = questionnaireEntity.getSeverityLevel();
+                if (medObserved) {
+                    generateTreatmentPlan();
+                }
+            }catch(NullPointerException e){
+                Log.e("TREATMENTPLANACTIVITY", Log.getStackTraceString(e));
+            }
+        }
+    };
+
+    /**
      * Method runs when the refresh button in the xml files is clicked.
      */
     private void onUpdateButtonClicked() {
@@ -192,21 +220,21 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddCounselButtonClicked() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumCounseling(num);
+        treatmentPlanEntity.setNumCounseling(num);
     }
 
     /**
      * Method runs when sub button is pressed to subtract a counseling session.
      */
     private void onSubCounselButtonClicked() {
-        final String s = counselingView.getText().toString();
+        String s = counselingView.getText().toString();
         int num = Integer.parseInt(s);
         if (num - 1 < 0) {
             num = 0;
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumCounseling(num);
+        treatmentPlanEntity.setNumCounseling(num);
     }
 
     /**
@@ -215,7 +243,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddMedManagementButtonClicked() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumMedManagement(num);
+        treatmentPlanEntity.setNumMedManagement(num);
     }
 
     /**
@@ -229,7 +257,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumMedManagement(num);
+        treatmentPlanEntity.setNumMedManagement(num);
     }
 
     /**
@@ -238,7 +266,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddSupportGroupMeetingButtonClicked() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumSupportMeeting(num);
+        treatmentPlanEntity.setNumSupportMeeting(num);
     }
 
     /**
@@ -252,7 +280,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumSupportMeeting(num);
+        treatmentPlanEntity.setNumSupportMeeting(num);
     }
 
     /**
@@ -261,7 +289,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddOutcomeMeasureButtonClicked() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumOutcomeMeasures(num);
+        treatmentPlanEntity.setNumOutcomeMeasures(num);
     }
 
     /**
@@ -275,7 +303,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumOutcomeMeasures(num);
+        treatmentPlanEntity.setNumOutcomeMeasures(num);
     }
 
     /**
@@ -284,7 +312,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddLessonPlannerButtonClicked() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumLessons(num);
+        treatmentPlanEntity.setNumLessons(num);
     }
 
     /**
@@ -298,7 +326,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumLessons(num);
+        treatmentPlanEntity.setNumLessons(num);
     }
 
     /**
@@ -307,7 +335,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddTreatmentEffectivnessAssessmentButtonClicked() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
+        treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(num);
     }
 
     /**
@@ -321,7 +349,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumTreatmentEffectivenessAssessment(num);
+        treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(num);
     }
 
     /**
@@ -330,7 +358,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddCleanTimeTrackingButton() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumTimeTracking(num);
+        treatmentPlanEntity.setNumTimeTracking(num);
     }
 
     /**
@@ -344,7 +372,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumTimeTracking(num);
+        treatmentPlanEntity.setNumTimeTracking(num);
     }
 
     /**
@@ -353,7 +381,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private void onAddReadResponseButton() {
         String s = counselingView.getText().toString();
         int num = Integer.parseInt(s) + 1;
-        viewModel.treatmentPlan.setNumReadingResponse(num);
+        treatmentPlanEntity.setNumReadingResponse(num);
     }
 
     /**
@@ -367,13 +395,74 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         } else {
             num--;
         }
-        viewModel.treatmentPlan.setNumReadingResponse(num);
+        treatmentPlanEntity.setNumReadingResponse(num);
     }
 
     /**
-     * Treatment plan to display data from
+     * Generates a new treatmentPlan.
      */
-    private LiveData<TreatmentPlanEntity> treatmentPlan;
+    private void generateTreatmentPlan() {
+
+        //A new treatmentPlanEntity to add to the database
+        TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
+        if (severityLevel.equals("MILD")) { //There is no mild Buprenorphine plan currently
+            newTreatmentPlan.setNumCounseling(1);
+            newTreatmentPlan.setNumSupportMeeting(1);
+            newTreatmentPlan.setNumLessons(1);
+            newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+            newTreatmentPlan.setNumOutcomeMeasures(1);
+            newTreatmentPlan.setNumTimeTracking(1);
+            newTreatmentPlan.setNumReadingResponse(1);
+            newTreatmentPlan.setNumMedManagement(0);
+            newTreatmentPlan.setMedManagementMonthly();
+            newTreatmentPlan.setOutcomeMeasureWeekly();
+        } else if (severityLevel.equals("MODERATE")) {
+            newTreatmentPlan.setNumCounseling(3);
+            newTreatmentPlan.setNumSupportMeeting(3);
+            newTreatmentPlan.setNumLessons(2);
+            newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+            newTreatmentPlan.setNumOutcomeMeasures(3);
+            newTreatmentPlan.setNumTimeTracking(2);
+            newTreatmentPlan.setNumReadingResponse(2);
+            newTreatmentPlan.setMedManagementMonthly();
+            newTreatmentPlan.setOutcomeMeasureDaily();
+
+            //handles differences in treatment plans
+            if (medicationChoice.equals("ABSTAIN")) {
+                newTreatmentPlan.setNumMedManagement(0);
+            } else {
+                newTreatmentPlan.setNumMedManagement(2);
+            }
+        } else { //Severe severity level
+            newTreatmentPlan.setNumCounseling(5);
+            newTreatmentPlan.setNumSupportMeeting(5);
+            newTreatmentPlan.setNumLessons(3);
+            newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+            newTreatmentPlan.setNumOutcomeMeasures(5);
+            newTreatmentPlan.setNumTimeTracking(5);
+            newTreatmentPlan.setNumReadingResponse(3);
+            newTreatmentPlan.setMedManagementWeekly();
+            newTreatmentPlan.setOutcomeMeasureDaily();
+
+            //handles differences in treatment plans
+            if (medicationChoice.equals("ABSTAIN")) {
+                newTreatmentPlan.setNumMedManagement(0);
+            } else {
+                newTreatmentPlan.setNumMedManagement(1);
+            }
+        }
+
+        counselingView.setText(Integer.toString(newTreatmentPlan.getNumCounseling()));
+        medManagementView.setText(Integer.toString(newTreatmentPlan.getNumMedManagement()));
+        supportMeetingView.setText(Integer.toString(newTreatmentPlan.getNumSupportMeeting()));
+        lessonView.setText(Integer.toString(newTreatmentPlan.getNumLessons()));
+        treatmentEffectiveView.setText(Integer.toString(newTreatmentPlan.getNumTreatmentEffectivenessAssessment()));
+        outcomeMeasureView.setText(Integer.toString(newTreatmentPlan.getNumOutcomeMeasures()));
+        timeTrackingView.setText(Integer.toString(newTreatmentPlan.getNumTimeTracking()));
+        readingResponseView.setText(Integer.toString(newTreatmentPlan.getNumReadingResponse()));
+
+        viewModel.insertTreatmentPlan(newTreatmentPlan);
+    }
 
     /**
      * The view model used to access the database.
@@ -405,8 +494,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private TextView lessonView;
 
     /**
-     * The TextView displaying data representing the current value of
-     * numTreatmentEffectivenessAssessment in the treatmentPlanEntity.
+     * The TextView displaying data representing the current value of numTreatmentEffectivenessAssessment
+     * in the treatmentPlanEntity.
      */
     private TextView treatmentEffectiveView;
 
@@ -427,5 +516,40 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * treatmentPlanEntity.
      */
     private TextView readingResponseView;
+
+    /**
+     * A live data object storing the medication choice entity from the database.
+     */
+    private LiveData<MedicationChoiceEntity> medicationChoiceEntity;
+
+    /**
+     * A live data object storing the questionnaire from the database.
+     */
+    private LiveData<QuestionnaireEntity> questionnaireEntity;
+
+    /**
+     * A boolean tracking if the medicaton choice has loaded in.
+     */
+    private boolean medObserved;
+
+    /**
+     * A boolean tracking if the questionnaire has been loaded in.
+     */
+    private boolean questionnaireObserved;
+
+    /**
+     * A treatment plan entity to handle updates to the database.
+     */
+    private TreatmentPlanEntity treatmentPlanEntity;
+
+    /**
+     * A String representing the user's severityLevel
+     */
+    private String severityLevel;
+
+    /**
+     * A String representing the user's medication Choice
+     */
+    private String medicationChoice;
 }
 

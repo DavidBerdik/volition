@@ -1,93 +1,70 @@
 package com.recoveryenhancementsolutions.volition;
 
+import static org.junit.Assert.assertEquals;
 
-import android.support.test.espresso.ViewInteraction;
-import android.support.test.filters.LargeTest;
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import android.util.Log;
+import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-
-@LargeTest
+/**
+ * Unit text for TreatmentPlanActivity
+ */
 @RunWith(AndroidJUnit4.class)
 public class TreatmentPlanActivityTest {
 
     @Rule
-    public ActivityTestRule<TreatmentPlanActivity> mActivityTestRule = new ActivityTestRule<>(TreatmentPlanActivity.class);
+    public final ActivityTestRule<TreatmentPlanActivity> activityTestRule = new ActivityTestRule<>(
+            TreatmentPlanActivity.class);
 
     /**
-     * Test to ensure all data displayed on screen is accurate with database
+     * Loads the ViewModel and sets it to use a temporary database for testing
      */
-    @Test
-    public void treatmentPlanActivityTest() {
-        /**
-         * Verifies textview for couselingview
-         */
-        ViewInteraction textView = onView(allOf(withId(R.id.counselingView), withText("3"),isDisplayed()));
-        textView.check(matches(withText("3")));
+    @Before
+    public void loadViewModel() {
+        //Set the ViewModel to use a test database instead of the app's real database
+        final Context context = InstrumentationRegistry.getTargetContext();
+        db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
+                .build();
 
-        /**
-         * Verifies textview for medManagementView
-         */
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.medManagementView), withText("2"),isDisplayed()));
-        textView2.check(matches(withText("2")));
+        //Fill in supplementary database entries
+        final MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
+        medicationChoiceEntity.medication = "ABSTAIN";
+        db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
 
-        /**
-         * Verifies textview for supportMeetingView
-         */
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.supportMeetingView), withText("3"),isDisplayed()));
-        textView3.check(matches(withText("3")));
+        final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
+        questionnaireEntity.setSeverityLevel("MODERATE");
+        db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
 
-        /**
-         * Verifies textview for outcomeMeasureView
-         */
-        ViewInteraction textView4 = onView(
-                allOf(withId(R.id.outcomeMeasureView), withText("3"),isDisplayed()));
-        textView4.check(matches(withText("3")));
+        TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
+        treatmentPlanEntity.setNumLessons(3);
 
-        /**
-         * Verifies textview for lessonView
-         */
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.lessonView), withText("2"),isDisplayed()));
-        textView5.check(matches(withText("2")));
+        activityTestRule.getActivity().onCreateTest(db);
 
-        /**
-         * Verifies textview for treatmentEffectivenessView
-         */
-        ViewInteraction textView6 = onView(
-                allOf(withId(R.id.treatmentEffectiveView), withText("1"),isDisplayed()));
-        textView6.check(matches(withText("1")));
-
-        /**
-         * Verifies textview for timeTrackingView
-         */
-        ViewInteraction textView7 = onView(
-                allOf(withId(R.id.timeTrackingView), withText("2"),isDisplayed()));
-        textView7.check(matches(withText("2")));
-
-        /**
-         * Verifies textview for readingResponceView
-         */
-        ViewInteraction textView8 = onView(
-                allOf(withId(R.id.readingResponseView), withText("2"),isDisplayed()));
-        textView8.check(matches(withText("2")));
+        viewModel = ViewModelProviders.of(activityTestRule.getActivity())
+                .get(TreatmentPlanViewModel.class);
+        viewModel.setTestDatabase(db);
     }
+
+    @Test
+    public void testTreatmentPlanViewModel() {
+        // Allow the database one second to update.
+
+        //New Text Data
+
+    }
+
+    private TreatmentPlanViewModel viewModel;
+    private VolitionDatabase db;
+    private static final String TAG = "TreatmentPlanViewModelTest";
 }

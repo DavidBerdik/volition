@@ -7,16 +7,15 @@ import android.support.annotation.NonNull;
 /**
  * Database entity for storing the User Treatment Plan.
  */
-@Entity
+@Entity(tableName = "TreatmentPlanEntity")
 public class TreatmentPlanEntity {
 
   /**
-   * Returns the ID of this treatmentPlan.
-   *
-   * @return the treatment plan's ID
+   * Returns the treatment plan's id.
+   * @return
    */
-  public int getId() {
-    return id;
+  public long getId(){
+    return Id;
   }
 
   /**
@@ -187,16 +186,6 @@ public class TreatmentPlanEntity {
   }
 
   /**
-   * Sets the activity's ID. Since the activity ID is an auto-increment value set by the database,
-   * use of this setter is discouraged since the value set will be changed.
-   *
-   * @param id The ID of the activity.
-   */
-  public void setId(final int id) {
-    this.id = id;
-  }
-
-  /**
    * Manually sets the value of frequency for medManagementFrequency.  Values for this field must be
    * either "WEEKLY" or "MONTHLY". Because of this, use of the setMedManagementWeekly() or
    * setMedManagementMonthly() are encouraged to be used instead.
@@ -247,11 +236,21 @@ public class TreatmentPlanEntity {
   }
 
   /**
-   * Stores the ID for this treatment plan.
+   * Changes the treatment plan's id. The id should ALWAYS be 1 to prevent multiple plans from being
+   * initialized. Changing the treatment plan's id is strongly discouraged.
+   *
+   * @param id The new id for the treatment plan.
    */
-  @PrimaryKey(autoGenerate = true)
+  public void setId(long id){
+    this.Id = id;
+  }
+
+  /**
+   * The treatment plan's id. Only used to prevent multiple plans, should ALWAYS be 1.
+   */
+  @PrimaryKey
   @NonNull
-  private int id;  //used to manage the treatment plan and prevent duplicates.
+  private long Id;
 
   /**
    * Stores the number of times the user should go to counseling.

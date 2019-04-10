@@ -24,9 +24,9 @@ public interface QuestionnaireDao {
   void deleteAll();
 
   @Query("SELECT * FROM QuestionnaireEntity")
-  LiveData<List<QuestionnaireEntity>> findQuestionnaire();
+  LiveData<QuestionnaireEntity> getQuestionnaire();
 
   @Query("SELECT severityLevel FROM QuestionnaireEntity")
-  LiveData<String> findSeverityLevel();
+  LiveData<String> getSeverityLevel();
 
 }

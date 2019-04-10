@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 import android.arch.lifecycle.LiveData;
@@ -19,8 +20,8 @@ public interface TreatmentPlanDao {
    *
    * @return A LiveData object containing a TreatmentPlan Entity.
    */
-  @Query("SELECT * FROM TreatmentPlanEntity WHERE Id = 1")
-  LiveData<TreatmentPlanEntity> loadTreatmentPlan();
+  @Query("SELECT * FROM TreatmentPlanEntity")
+  LiveData<TreatmentPlanEntity> getTreatmentPlan();
 
   /**
    * Updates a TreatmentPlan Entity in the database.
@@ -35,8 +36,7 @@ public interface TreatmentPlanDao {
    *
    * @param treatmentPlanEntity The TreatmentPlanEntity to be inserted.
    */
-  @Insert(onConflict = REPLACE)
-
+  @Insert(onConflict = IGNORE)
   void insertTreatmentPlanEntity(final TreatmentPlanEntity treatmentPlanEntity);
 
   /**

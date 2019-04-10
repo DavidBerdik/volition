@@ -41,116 +41,124 @@ import android.support.annotation.NonNull;
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 
 @Database(entities = {
-        UserActivityEntity.class,
-        TreatmentPlanEntity.class,
-        QuestionnaireEntity.class,
-        MedicationChoiceEntity.class,
-        DemographicDataEntity.class
+    UserActivityEntity.class,
+    TreatmentPlanEntity.class,
+    QuestionnaireEntity.class,
+    MedicationChoiceEntity.class,
+    DemographicDataEntity.class
 },
-        version = 1)
+    version = 1)
 
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
-    // TODO: Place DAO instantiation method calls here, as in the following commented-out example
-    // public abstract WordDao wordDao();
-    public abstract UserActivitiesDao userActivitiesDao();
+  // TODO: Place DAO instantiation method calls here, as in the following commented-out example
+  // public abstract WordDao wordDao();
+  public abstract UserActivitiesDao userActivitiesDao();
 
-    public abstract DemographicDataDAO demographicDataDao();
+  public abstract DemographicDataDAO demographicDataDao();
 
-    public abstract MedicationChoiceDAO medicationChoiceDAO();
+  public abstract MedicationChoiceDAO medicationChoiceDAO();
 
-    public abstract TreatmentPlanDao treatmentPlanDao();
+  public abstract TreatmentPlanDao treatmentPlanDao();
 
-    public abstract QuestionnaireDao questionnaireDao();
+  public abstract QuestionnaireDao questionnaireDao();
 
-    private static volatile VolitionDatabase INSTANCE;
+  private static volatile VolitionDatabase INSTANCE;
+
+  /**
+   * Factory method implementing Singleton design pattern for VolitionDatabase class.
+   *
+   * @param context Object providing access to application context.
+   * @return Instance of VolitionDatabase (same instance returned on every call).
+   */
+  static VolitionDatabase getDatabase(final Context context) {
+    if (INSTANCE == null) {
+      synchronized (VolitionDatabase.class) {
+        if (INSTANCE == null) {
+          synchronized (VolitionDatabase.class) {
+            if (INSTANCE == null) {
+              INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                  VolitionDatabase.class, "volition_database")
+                  // Wipes and rebuilds instead of migrating if no Migration object.
+                  // Migration is not part of this codelab.
+                  .fallbackToDestructiveMigration()
+                  .addCallback(volitionDatabaseCallback)
+                  .build();
+            }
+          }
+        }
+      }
+    }
+    return INSTANCE;
+  }
+
+  /**
+   * Object providing methods that are called if an existing database is opened or a new database is
+   * created.
+   */
+  private static RoomDatabase.Callback volitionDatabaseCallback = new RoomDatabase.Callback() {
+
 
     /**
-     * Factory method implementing Singleton design pattern for VolitionDatabase class.
+     * Method called when an existing database is opened.
      *
-     * @param context Object providing access to application context.
-     * @return Instance of VolitionDatabase (same instance returned on every call).
+     * @param db Object representing database that has been opened.
      */
-    static VolitionDatabase getDatabase(final Context context) {
-        if (INSTANCE == null) {
-            synchronized (VolitionDatabase.class) {
-                if (INSTANCE == null) {
-                    synchronized (VolitionDatabase.class) {
-                        if (INSTANCE == null) {
-                            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    VolitionDatabase.class, "volition_database")
-                                    // Wipes and rebuilds instead of migrating if no Migration object.
-                                    // Migration is not part of this codelab.
-                                    .fallbackToDestructiveMigration()
-                                    .addCallback(volitionDatabaseCallback)
-                                    .build();
-                        }
-                    }
-                }
-            }
-        }
-        return INSTANCE;
+    @Override
+    public void onOpen(@NonNull final SupportSQLiteDatabase db) {
+      super.onOpen(db);
+      // If you want to clear and repopulate data when the app restarts, keep the following
+      // line uncommented and fill in the PopulateDbAsync skeleton code below.
+      new PopulateDbAsync(INSTANCE).execute();
     }
 
     /**
-     * Object providing methods that are called if an existing database is opened or a new database is
-     * created.
+     * Method called when a database is first created.
+     * @param db Object representing database that is being created.
      */
-    private static RoomDatabase.Callback volitionDatabaseCallback = new RoomDatabase.Callback() {
+    @Override
+    public void onCreate(@NonNull final SupportSQLiteDatabase db) {
+      super.onCreate(db);
+      // If you want to populate data when the database is created for the first time,
+      // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
+      new PopulateDbAsync(INSTANCE).execute();
+    }
+  };
 
+  /**
+   * Skeleton code that does nothing but could be filled in to clear the database and populate it
+   * with test data in the background.
+   */
+  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
-        /**
-         * Method called when an existing database is opened.
-         *
-         * @param db Object representing database that has been opened.
-         */
-        @Override
-        public void onOpen(@NonNull final SupportSQLiteDatabase db) {
-            super.onOpen(db);
-            // If you want to clear and repopulate data when the app restarts, keep the following
-            // line uncommented and fill in the PopulateDbAsync skeleton code below.
-            new PopulateDbAsync(INSTANCE).execute();
-        }
+    // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
+    // private final WordDao mDao;
+    private final UserActivitiesDao userActivitiesDao;
+    private final TreatmentPlanDao treatmentPlanDao;
+    private final QuestionnaireDao questionnaireDao;
+    private final MedicationChoiceDAO medicationChoiceDao;
 
-        /**
-         * Method called when a database is first created.
-         * @param db Object representing database that is being created.
-         */
-        @Override
-        public void onCreate(@NonNull final SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            // If you want to populate data when the database is created for the first time,
-            // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
-            new PopulateDbAsync(INSTANCE).execute();
-        }
-    };
+    PopulateDbAsync(final VolitionDatabase db) {
+      // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
+      // mDao = db.wordDao();
+      userActivitiesDao = db.userActivitiesDao();
+      treatmentPlanDao = db.treatmentPlanDao();
+      questionnaireDao = db.questionnaireDao();
+      medicationChoiceDao = db.medicationChoiceDAO();
+    }
 
-    /**
-     * Skeleton code that does nothing but could be filled in to clear the database and populate it
-     * with test data in the background.
-     */
-    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+    protected Void doInBackground(final Void... params) {
 
-        // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
-        // private final WordDao mDao;
-        private final UserActivitiesDao userActivitiesDao;
-        private final TreatmentPlanDao treatmentPlanDao;
-        private final QuestionnaireDao questionnaireDao;
-        private final MedicationChoiceDAO medicationChoiceDao;
+      final MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
+      medicationChoiceEntity.medication = "ABSTAIN";
 
-        PopulateDbAsync(final VolitionDatabase db) {
-            // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
-            // mDao = db.wordDao();
-            userActivitiesDao = db.userActivitiesDao();
-            treatmentPlanDao = db.treatmentPlanDao();
-            questionnaireDao = db.questionnaireDao();
-            medicationChoiceDao = db.medicationChoiceDAO();
-        }
-
-        protected Void doInBackground(final Void... params) {
-            // If you want to clear and initialize the database, place code here such as in the following commented-out example:
+      final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
+      questionnaireEntity.setSeverityLevel("MODERATE");
+      questionnaireDao.insertQuestionnaire(questionnaireEntity);
+      medicationChoiceDao.insertMedication(medicationChoiceEntity);
+      // If you want to clear and initialize the database, place code here such as in the following commented-out example:
             /*
             // Start the app with a lean database every time.
             // Not needed if you only populate on creation.
@@ -161,7 +169,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
             word = new Word("World");
             mDao.insert(word);
              */
-            return null;
-        }
+      return null;
     }
+  }
 }
