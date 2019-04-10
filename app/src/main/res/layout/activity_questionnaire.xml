@@ -6,27 +6,7 @@
   android:layout_height="match_parent"
   android:textColor="@android:color/black"
   tools:context=".QuestionnaireActivity">
-  <LinearLayout
-    android:id="@+id/linearLayout"
-    android:layout_width="0dp"
-    android:layout_height="734dp"
-    android:padding="10dp"
-    android:background="#FFA500"
-    android:orientation="horizontal"
-    android:textColor="@android:color/black"
-    app:layout_constraintBaseline_toBaselineOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    tools:context="com.example.layoutborder.QuestionnaireActivity">
-    <TextView
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:background="#FFFFFF"
-      android:gravity="center_vertical|center_horizontal"
-      android:textColor="@android:color/black"
-      android:textSize="40sp"/>
-  </LinearLayout>
+
   <TextView
     android:id="@+id/questionOne"
     android:layout_width="348dp"
@@ -246,7 +226,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:layout_below="@id/questionOne"
-    android:background="#00FA9A"
+    android:background="@color/res_green"
     android:text="@string/button_yes"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -261,7 +241,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:layout_below="@id/questionOne"
-    android:background="#00FA9A"
+    android:background="@color/res_green"
     android:text="@string/button_no"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -270,20 +250,5 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
-  <Button
-    android:id="@+id/backButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:background="#00FA9A"
-    android:text="@string/back"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.553"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/linearLayout"
-    app:layout_constraintVertical_bias="0.856"/>
+
 </android.support.constraint.ConstraintLayout>

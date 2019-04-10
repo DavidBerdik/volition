@@ -25,7 +25,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
         qViewModel.setYesAnswers(qViewModel.getYesAnswers() - 1);
       }
       qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
-      checkBackButton();
+      //checkBackButton();
       if (qViewModel.getDisplayState() < 10) {
         findDisplayState();
       }
@@ -72,7 +72,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     setContentView(R.layout.activity_questionnaire);
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
-    final Button backButton = findViewById(R.id.backButton);
 
     qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
     //db = VolitionDatabase.getDatabase(this.getApplication());
@@ -80,10 +79,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
-    backButton.setOnClickListener(backClickListener);
-
-    backButton.setEnabled(false);
-    backButton.setAlpha(0);
 
     qs[0] = findViewById(R.id.questionOne);
     qs[1] = findViewById(R.id.questionTwo);
@@ -110,7 +105,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   private void findDisplayState() {
     int state = qViewModel.getDisplayState();
 
-    checkBackButton();
+   // checkBackButton();
     for (TextView q : qs) {
       q.setTextColor(q.getTextColors().withAlpha(0));
     }
@@ -137,7 +132,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     public void onClick(final View v) {
       qViewModel.setYesAnswers(qViewModel.getYesAnswers() + 1);
       storeOnclickQuestionnaire(true);
-      checkBackButton();
+     // checkBackButton();
     }
   };
 
@@ -160,7 +155,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     @Override
     public void onClick(final View v) {
       storeOnclickQuestionnaire(false);
-      checkBackButton();
+      //checkBackButton();
     }
   };
   private final View.OnClickListener backClickListener = new View.OnClickListener() {
@@ -179,7 +174,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
         qViewModel.setYesAnswers(qViewModel.getYesAnswers() - 1);
       }
       qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
-      checkBackButton();
+    //  checkBackButton();
       if (qViewModel.getDisplayState() < 10) {
         findDisplayState();
       }
@@ -189,16 +184,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
   /**
    * Method to activate back button after question one or deactivate it if it is on question one.
    */
-  private void checkBackButton() {
-    Button backButton = findViewById(R.id.backButton);
-    if (qViewModel.getDisplayState() == 0) {
-      backButton.setEnabled(false);
-      backButton.setAlpha(0);
-    } else {
-      backButton.setEnabled(true);
-      backButton.setAlpha(1);
-    }
-  }
+
 
   private QuestionnaireActivityViewModel qViewModel;
   private TextView[] qs = new TextView[11];
