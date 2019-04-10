@@ -68,7 +68,7 @@
     android:layout_marginTop="35dp"
     android:layout_marginBottom="35dp"
     android:alpha=".5"
-    android:contentDescription="@string/res_logo_background"
+    android:contentDescription="@string/dosage_choice_res_logo"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
