@@ -32,6 +32,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     outcomeMeasureView = findViewById(R.id.outcomeMeasureView);
     timeTrackingView = findViewById(R.id.timeTrackingView);
     readingResponseView = findViewById(R.id.readingResponseView);
+    medManagementDescView = findViewById(R.id.medManagement);
+    outcomeMeasureDescView = findViewById(R.id.outcomeMeasure);
 
     //Sets button identifiers
     Button subCounselButton = findViewById(R.id.subCounselButton);
@@ -183,6 +185,22 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       int dur = Toast.LENGTH_SHORT;
       Toast toast = Toast.makeText(context, msg, dur);
       toast.show();
+
+      try{
+        if(treatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")){
+          medManagementDescView.setText("Medication Management per Month");
+        }else{
+          medManagementDescView.setText("Medication Management per Week");
+        }
+
+        if(treatmentPlanEntity.getOutcomeMeasureFrequency().equals("WEEKLY")){
+          outcomeMeasureDescView.setText("Outcome Measures per Week");
+        }else{
+          outcomeMeasureDescView.setText("Outcome Measures per Day");
+        }
+      }catch(NullPointerException e){
+        Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
+      }
     }
   };
 
@@ -586,6 +604,16 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    * treatmentPlanEntity.
    */
   private TextView readingResponseView;
+
+  /**
+   * The TextView displaying the description for medication management.
+   */
+  private TextView medManagementDescView;
+
+  /**
+   * The TextView displaying the description for outcome measures.
+   */
+  private TextView outcomeMeasureDescView;
 
   /**
    * A live data object storing the medication choice entity from the database.
