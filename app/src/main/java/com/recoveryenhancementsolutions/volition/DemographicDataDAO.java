@@ -44,7 +44,7 @@ public interface DemographicDataDAO {
     should allow for  easier access of this information for the other functions of this application
     */
 
-  final String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
+  String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
 
   /**
    * Retrieves all of the patient's demographic data

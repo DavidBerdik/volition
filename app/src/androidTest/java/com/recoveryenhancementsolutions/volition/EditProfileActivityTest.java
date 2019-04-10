@@ -42,10 +42,6 @@ public class EditProfileActivityTest {
   public final ActivityTestRule<CreateProfileActivity> activityTestRule = new ActivityTestRule<>(
       CreateProfileActivity.class, false, false);
 
-  final private VolitionDatabase db = Room
-      .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
-      .allowMainThreadQueries().build();
-
   /**
    * Creates a temporary, in-memory database to use for testing the edit profile activity.
    */
@@ -175,7 +171,7 @@ public class EditProfileActivityTest {
     assertEquals("Sarah Sample", db.demographicDataDao().queryPatientName());
 
     // Check that the date of birth is March 14, 2015.
-    Calendar dob = Calendar.getInstance();
+    final Calendar dob = Calendar.getInstance();
     dob.setTime(db.demographicDataDao().queryDoB());
     assertEquals(2015, dob.get(Calendar.YEAR));
     assertEquals(2, dob.get(Calendar.MONTH));
@@ -195,11 +191,11 @@ public class EditProfileActivityTest {
     assertTrue(db.demographicDataDao().queryIsHavingOpioidDisorder());
 
     // Check that the last use date is February 2, 2019.
-    Calendar lastUse = Calendar.getInstance();
+    final Calendar lastUse = Calendar.getInstance();
     try {
       lastUse.setTime(
           LiveDataTestUtility.getNestedLiveDataObj(db.demographicDataDao().queryLastCleanDate()));
-    } catch (InterruptedException e) {
+    } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
     assertEquals(2019, lastUse.get(Calendar.YEAR));
@@ -208,5 +204,8 @@ public class EditProfileActivityTest {
   }
 
   private static final String TAG = "EditProfileActivityTest";
+  final private VolitionDatabase db = Room
+      .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
+      .allowMainThreadQueries().build();
 
 }
