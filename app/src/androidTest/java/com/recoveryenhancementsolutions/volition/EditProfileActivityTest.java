@@ -13,6 +13,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.AllOf.allOf;
@@ -27,7 +29,6 @@ import android.util.Log;
 import android.widget.DatePicker;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import java.util.Calendar;
-import java.util.Date;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
@@ -41,7 +42,7 @@ public class EditProfileActivityTest {
   public final ActivityTestRule<CreateProfileActivity> activityTestRule = new ActivityTestRule<>(
       CreateProfileActivity.class, false, false);
 
-  final VolitionDatabase db = Room
+  final private VolitionDatabase db = Room
       .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
       .allowMainThreadQueries().build();
 
@@ -184,14 +185,14 @@ public class EditProfileActivityTest {
     assertEquals("Female", db.demographicDataDao().queryPatientGender());
 
     // Check that the person type is "Family or Support Person."
-    assertEquals(false, db.demographicDataDao().queryIsInRecovery());
+    assertFalse(db.demographicDataDao().queryIsInRecovery());
 
     // Check that the drug of choice is "Marijuana."
-    assertEquals(true, db.demographicDataDao().queryIsUsingMarijuana());
+    assertTrue(db.demographicDataDao().queryIsUsingMarijuana());
     assertEquals("", db.demographicDataDao().queryOtherUsedDrugs());
 
     // Check that the substance use disorder is ""Opioid Use Disorder."
-    assertEquals(true, db.demographicDataDao().queryIsHavingOpioidDisorder());
+    assertTrue(db.demographicDataDao().queryIsHavingOpioidDisorder());
 
     // Check that the last use date is February 2, 2019.
     Calendar lastUse = Calendar.getInstance();
