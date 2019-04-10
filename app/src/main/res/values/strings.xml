@@ -3,6 +3,10 @@
   <string name="button_yes">Yes</string>
   <string name="button_no">No</string>
   <string name="title_home">Home</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
+
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -51,9 +55,6 @@
   <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
   <string name="display_profile_example_date">Replace with the date entered</string>
   <string name="display_profile_continue">Continue</string>
-  <string name="core_navigation_home">Home</string>
-  <string name="core_navigation_activity">Activity</string>
-  <string name="core_navigation_plan">Plan</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
@@ -70,6 +71,9 @@
   <string name="activity_title_activity_screen"> Activities</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
+  <string name="buprenorphine_button"> Buprenorphine</string>
+  <string name="abstain_button"> Abstain</string>
+  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
