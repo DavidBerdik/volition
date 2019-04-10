@@ -150,6 +150,14 @@ public abstract class VolitionDatabase extends RoomDatabase {
     }
 
     protected Void doInBackground(final Void... params) {
+
+      final MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
+      medicationChoiceEntity.medication = "ABSTAIN";
+
+      final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
+      questionnaireEntity.setSeverityLevel("MODERATE");
+      questionnaireDao.insertQuestionnaire(questionnaireEntity);
+      medicationChoiceDao.insertMedication(medicationChoiceEntity);
       // If you want to clear and initialize the database, place code here such as in the following commented-out example:
             /*
             // Start the app with a lean database every time.

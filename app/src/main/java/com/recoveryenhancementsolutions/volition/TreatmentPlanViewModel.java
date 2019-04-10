@@ -63,8 +63,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @return A string representing the user's severity level.
    */
-  public LiveData<String> getQuestionnaireEntity() {
-    return db.questionnaireDao().getSeverityLevel();
+  public LiveData<QuestionnaireEntity> getQuestionnaireEntity() {
+    return db.questionnaireDao().getQuestionnaire();
   }
 
   /**

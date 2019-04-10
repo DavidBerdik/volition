@@ -85,6 +85,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
 
     /**
      * Test Database
+     *
      * @param db
      */
     public void onCreateTest(final VolitionDatabase db) {
@@ -176,10 +177,15 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<MedicationChoiceEntity> medObserver = new Observer<MedicationChoiceEntity>() {
         @Override
         public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
-            medObserved = true;
+            try {
+                medObserved = true;
+                medicationChoice = medicationChoiceEntity.medication;
                 if (questionnaireObserved) {
                     generateTreatmentPlan();
                 }
+            }catch(NullPointerException e){
+                Log.e("TREATMENTPLANACTIVITY", Log.getStackTraceString(e));
+            }
         }
     };
 
@@ -187,13 +193,17 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
      * Observes the questionnaire table in the database. Generates a treatment plan if the medication
      * choice has already been loaded as well.
      */
-    private Observer<String> questionnaireObserver = new Observer<String>() {
+    private Observer<QuestionnaireEntity> questionnaireObserver = new Observer<QuestionnaireEntity>() {
         @Override
-        public void onChanged(@Nullable String s) {
-            questionnaireObserved = true;
-            severityLevel = s;
-            if (medObserved) {
-                generateTreatmentPlan();
+        public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
+            try {
+                questionnaireObserved = true;
+                severityLevel = questionnaireEntity.getSeverityLevel();
+                if (medObserved) {
+                    generateTreatmentPlan();
+                }
+            }catch(NullPointerException e){
+                Log.e("TREATMENTPLANACTIVITY", Log.getStackTraceString(e));
             }
         }
     };
@@ -442,14 +452,14 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        counselingView.setText(newTreatmentPlan.getNumCounseling());
-        medManagementView.setText(newTreatmentPlan.getNumMedManagement());
-        supportMeetingView.setText(newTreatmentPlan.getNumSupportMeeting());
-        lessonView.setText(newTreatmentPlan.getNumLessons());
-        treatmentEffectiveView.setText(newTreatmentPlan.getNumTreatmentEffectivenessAssessment());
-        outcomeMeasureView.setText(newTreatmentPlan.getNumOutcomeMeasures());
-        timeTrackingView.setText(newTreatmentPlan.getNumTimeTracking());
-        readingResponseView.setText(newTreatmentPlan.getNumReadingResponse());
+        counselingView.setText(Integer.toString(newTreatmentPlan.getNumCounseling()));
+        medManagementView.setText(Integer.toString(newTreatmentPlan.getNumMedManagement()));
+        supportMeetingView.setText(Integer.toString(newTreatmentPlan.getNumSupportMeeting()));
+        lessonView.setText(Integer.toString(newTreatmentPlan.getNumLessons()));
+        treatmentEffectiveView.setText(Integer.toString(newTreatmentPlan.getNumTreatmentEffectivenessAssessment()));
+        outcomeMeasureView.setText(Integer.toString(newTreatmentPlan.getNumOutcomeMeasures()));
+        timeTrackingView.setText(Integer.toString(newTreatmentPlan.getNumTimeTracking()));
+        readingResponseView.setText(Integer.toString(newTreatmentPlan.getNumReadingResponse()));
 
         viewModel.insertTreatmentPlan(newTreatmentPlan);
     }

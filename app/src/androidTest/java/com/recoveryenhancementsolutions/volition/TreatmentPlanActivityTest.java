@@ -49,8 +49,6 @@ public class TreatmentPlanActivityTest {
         TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
         treatmentPlanEntity.setNumLessons(3);
 
-        viewModel.setTestDatabase(db);
-
         activityTestRule.getActivity().onCreateTest(db);
 
         viewModel = ViewModelProviders.of(activityTestRule.getActivity())
@@ -61,15 +59,6 @@ public class TreatmentPlanActivityTest {
     @Test
     public void testTreatmentPlanViewModel() {
         // Allow the database one second to update.
-        try {
-            Thread.sleep(10000);
-        }
-
-
-
-        catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
 
         //New Text Data
 
