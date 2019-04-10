@@ -39,7 +39,7 @@ public class DemographicDataDaoTest {
    * Runs the database test with several inserts and queries with the use of assertions
    */
   public void testDemographicDataDao() {
-    DemographicDataEntity patient = new DemographicDataEntity();
+    final DemographicDataEntity patient = new DemographicDataEntity();
     patient.setAge(15);
     patient.setPatientName("Bob");
     patient.setDisorderAlcohol(true);
@@ -50,10 +50,8 @@ public class DemographicDataDaoTest {
     Assert.assertNotEquals(51, demographicDataDAO.queryPatientAge());
     Assert.assertFalse(demographicDataDAO.queryIsUsingBenzo());
     Assert.assertTrue(demographicDataDAO.queryIsUsingAlcohol());
-
-    DemographicDataEntity patient2 = patient;
-    patient2.setAge(20);
-    demographicDataDAO.insertDemographicInfo(patient2);
+    patient.setAge(20);
+    demographicDataDAO.insertDemographicInfo(patient);
     Assert.assertEquals(20, demographicDataDAO.queryPatientAge());
 
   }
