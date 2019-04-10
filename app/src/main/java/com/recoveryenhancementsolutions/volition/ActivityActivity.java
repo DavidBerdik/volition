@@ -1,19 +1,19 @@
 package com.recoveryenhancementsolutions.volition;
 
+
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-/**
- * UI activity that allows the user to choose between different daily activities.
- */
+
 public class ActivityActivity extends AppCompatActivity {
 
   /**
@@ -95,6 +95,9 @@ public class ActivityActivity extends AppCompatActivity {
 
     viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
 
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+    CoreNavigationHandler.link(bottomNavigationView, this);
 
   }
 
@@ -171,8 +174,19 @@ public class ActivityActivity extends AppCompatActivity {
 
     }
   };
+
+    /*
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume()
+  {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+  }
+
   private TreatmentPlanViewModel viewModel;
   private boolean isPortrait = false;
-
+  private BottomNavigationView bottomNavigationView;
 }
 
