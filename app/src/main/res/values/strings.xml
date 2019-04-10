@@ -99,5 +99,6 @@
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
   <string name="treatmentPlan_name">Recommended Treatment Plan</string>
+  <string name="finish_button">Finish</string>
 </resources>
 

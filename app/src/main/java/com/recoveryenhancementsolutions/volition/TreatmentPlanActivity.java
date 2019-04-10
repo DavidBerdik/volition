@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +56,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     Button subReadResponceJournalButton = findViewById(R.id.subReadResponceJournalButton);
     Button addReadResponceJournalButton = findViewById(R.id.addReadResponceJournalButton);
     Button updateButton = findViewById(R.id.updateButton);
+    Button finishButton = findViewById(R.id.finishButton);
 
     //button onClickListeners
     subCounselButton.setOnClickListener(this);
@@ -74,6 +76,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     subReadResponceJournalButton.setOnClickListener(this);
     addReadResponceJournalButton.setOnClickListener(this);
     updateButton.setOnClickListener(this);
+    finishButton.setOnClickListener(this);
 
     //Sets initial treatmentPlanEntity values (for update use)
     treatmentPlanEntity = new TreatmentPlanEntity();
@@ -170,12 +173,16 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       case R.id.updateButton:
         onUpdateButtonClicked();
         break;
+
+      case R.id.finishButton:
+        onFinishButtonClicked();
+        break;
     }
   }
 
   /**
-   * Observes the treatment plan table in the database. Generates a toast if any updates/changes
-   * are made to the treatment plan table.
+   * Observes the treatment plan table in the database. Generates a toast if any updates/changes are
+   * made to the treatment plan table.
    */
   private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
     @Override
@@ -186,19 +193,19 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       Toast toast = Toast.makeText(context, msg, dur);
       toast.show();
 
-      try{
-        if(treatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")){
+      try {
+        if (treatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")) {
           medManagementDescView.setText("Medication Management per Month");
-        }else{
+        } else {
           medManagementDescView.setText("Medication Management per Week");
         }
 
-        if(treatmentPlanEntity.getOutcomeMeasureFrequency().equals("WEEKLY")){
+        if (treatmentPlanEntity.getOutcomeMeasureFrequency().equals("WEEKLY")) {
           outcomeMeasureDescView.setText("Outcome Measures per Week");
-        }else{
+        } else {
           outcomeMeasureDescView.setText("Outcome Measures per Day");
         }
-      }catch(NullPointerException e){
+      } catch (NullPointerException e) {
         Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
       }
     }
@@ -249,6 +256,14 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     if (treatmentPlanLoaded) {
       viewModel.updateTreatmentPlan(treatmentPlanEntity);
     }
+  }
+
+  /**
+   * Method runs when finish button is clicked. Sends an intent to the home activity.
+   */
+  private void onFinishButtonClicked() {
+    Intent intent = new Intent(this, HomeActivity.class);
+    startActivity(intent);
   }
 
   /**
@@ -354,7 +369,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    * Method runs when sub button is pressed to subtract an outcome measurement.
    */
   private void onSubOutcomeMeasureButtonClicked() {
-    if(treatmentPlanLoaded) {
+    if (treatmentPlanLoaded) {
       String s = outcomeMeasureView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
