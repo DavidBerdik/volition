@@ -32,8 +32,8 @@ import org.junit.runner.RunWith;
 public class RadioButtonTest1 {
 
   @Rule
-  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
-      CreateProfileActivity.class);
+  public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      ProfileActivity.class);
 
   @Test
   /**

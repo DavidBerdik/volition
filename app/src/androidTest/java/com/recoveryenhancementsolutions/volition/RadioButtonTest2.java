@@ -1,7 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
 
-import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -10,21 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
-import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.assertion.ViewAssertions.*;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
 
-import com.recoveryenhancementsolutions.volition.R;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,8 +30,8 @@ import static org.hamcrest.Matchers.is;
 public class RadioButtonTest2 {
 
   @Rule
-  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
-      CreateProfileActivity.class);
+  public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      ProfileActivity.class);
 
   @Test
   public void createProfileActivityTest2temp() {

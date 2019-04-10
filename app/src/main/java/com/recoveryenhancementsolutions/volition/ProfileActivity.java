@@ -27,25 +27,25 @@ import android.view.View.OnFocusChangeListener;
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
 
-public class CreateProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
+public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
 
 
   /**
    * Checking the selected gender and UseDisorder, if selected, adds to the database
    */
-  public void onItemSelected(AdapterView<?> parent, View view,
-      int pos, long id) {
+  public void onItemSelected(final AdapterView<?> parent, final View view,
+      final int pos, final long id) {
 
     if (parent.getId() == R.id.gender_spinner) {
       if (pos == 0 && spinnerCount > 1) {
         onNothingSelected(parent);
       }
-      String gender = (String) parent.getItemAtPosition(pos);
+      final String gender = (String) parent.getItemAtPosition(pos);
       data.setGender(gender);
     }
 
     if (parent.getId() == R.id.use_type_spinner) {
-      String useType = (String) parent.getItemAtPosition(pos);
+      final String useType = (String) parent.getItemAtPosition(pos);
       if (useType.contains("Alcohol")) {
         data.setDisorderAlcohol(true);
       }
@@ -61,8 +61,8 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   /**
    * Lets user know to select a gender
    */
-  public void onNothingSelected(AdapterView<?> parent) {
-    Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
+  public void onNothingSelected(final AdapterView<?> parent) {
+    final Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
         Toast.LENGTH_SHORT);
     toast.show();
   }
@@ -235,20 +235,16 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     addSedativesListener();
     addTranqListener();
 
-    Spinner genderSpinner = findViewById(R.id.gender_spinner);
-    Spinner useTypeSpinner = findViewById(R.id.use_type_spinner);
+    final Spinner genderSpinner = findViewById(R.id.gender_spinner);
+    final Spinner useTypeSpinner = findViewById(R.id.use_type_spinner);
 
     genderSpinner.setOnItemSelectedListener(this);
     useTypeSpinner.setOnItemSelectedListener(this);
 
-    EditText name = findViewById(R.id.name);
+    final EditText name = findViewById(R.id.name);
     OnFocusChangeListener ofcListener = new FocusListener();
     name.setOnFocusChangeListener(ofcListener);
   }
-
-  final Calendar dobCalendar = Calendar.getInstance();
-  final Calendar cleanDateCalendar = Calendar.getInstance();
-  boolean editMode;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -257,10 +253,10 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     setContentView(R.layout.activity_create_profile);
 
     /*
-    If an "editMode" intent was passed to this activity with a value of "true", set "editMode"
+    If an edit mode intent was passed to this activity with a value of "true", set edit mode
     to true. Otherwise, set it to false.
      */
-    editMode = getIntent().getBooleanExtra("editMode", false);
+    editMode = getIntent().getBooleanExtra(EDIT_MODE, false);
 
      /*
     If the activity is in edit mode, change the title on the activity to "Edit Profile" and set the
@@ -269,7 +265,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     if (editMode) {
       this.setTitle("Edit Profile");
       final Button updateProfile = findViewById(R.id.record_button);
-      updateProfile.setText(R.string.edit_profile_update_profile);
+      updateProfile.setText(R.string.profile_update_profile);
     }
 
     // Retrieve the relevant ViewModel for interacting with the database.
@@ -323,7 +319,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        */
       @Override
       public void onClick(final View view) {
-        final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
+        final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             dateOfBirthListener, dobCalendar.get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
             dobCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
@@ -339,7 +335,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        */
       @Override
       public void onClick(final View view) {
-        final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
+        final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             cleanDateListener, cleanDateCalendar.get(Calendar.YEAR),
             cleanDateCalendar.get(Calendar.MONTH), cleanDateCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
@@ -368,7 +364,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
 
         data.setDateOfBirth(dobCalendar.getTime());
 
-        EditText other = findViewById(R.id.enter_other);
+        final EditText other = findViewById(R.id.enter_other);
         data.setUseOther(other.getText().toString());
 
         data.setLastClean(cleanDateCalendar.getTime());
@@ -376,7 +372,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
         demogDataViewModel.insertDemographicData(data);
 
         //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
+        Intent intent = new Intent(ProfileActivity.this, QuestionnaireActivity.class);
 
         startActivity(intent);
       }
@@ -491,7 +487,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     }
   };
 
-  private DemographicDataEntity data = new DemographicDataEntity();
+  private final DemographicDataEntity data = new DemographicDataEntity();
   private RadioButton radioSupport;
   private RadioButton radioClient;
   private RadioButton radioHeroin;
@@ -505,4 +501,8 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   private RadioButton radioSedatives;
   private RadioButton radioInhalants;
   private int spinnerCount = 0;
+  private boolean editMode;
+  private final Calendar dobCalendar = Calendar.getInstance();
+  private final Calendar cleanDateCalendar = Calendar.getInstance();
+  private final String EDIT_MODE = "editMode";
 }

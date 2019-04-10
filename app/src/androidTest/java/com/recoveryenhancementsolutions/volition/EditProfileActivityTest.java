@@ -39,8 +39,8 @@ import org.junit.runner.RunWith;
 public class EditProfileActivityTest {
 
   @Rule
-  public final ActivityTestRule<CreateProfileActivity> activityTestRule = new ActivityTestRule<>(
-      CreateProfileActivity.class, false, false);
+  public final ActivityTestRule<ProfileActivity> activityTestRule = new ActivityTestRule<>(
+      ProfileActivity.class, false, false);
 
   /**
    * Creates a temporary, in-memory database to use for testing the edit profile activity.
@@ -155,17 +155,6 @@ public class EditProfileActivityTest {
 
     // Press the "Update Profile" button to insert the data in the database.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
-
-    /*
-     * Delay the execution of any tests for 1 second. This is done to prevent any tests from trying
-     * to verify the content of the database before the insertion is complete. There may be
-     * a better way to handle this, but this is the best that I could come up with.
-     */
-    try {
-      Thread.sleep(1000);
-    } catch (final InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
 
     // Check that the name has been updated.
     assertEquals("Sarah Sample", db.demographicDataDao().queryPatientName());
