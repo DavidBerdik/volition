@@ -28,24 +28,43 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * This is a test for the medication dosage activity
+ * This tests if a dosage selection works after a medication is chosen
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MedicationDosageActivityTest {
 
   /**
-   * Create object for testing
+   * Creates the test object
    */
   @Rule
-  public ActivityTestRule<MedicationDosageActivity> mActivityTestRule = new ActivityTestRule<>(
-      MedicationDosageActivity.class);
+  public ActivityTestRule<MedicationChoiceActivity> mActivityTestRule = new ActivityTestRule<>(
+      MedicationChoiceActivity.class);
 
   /**
-   * Creates the actual test for the dosage activity
+   * Creates the test for the activity
    */
   @Test
   public void medicationDosageActivityTest() {
+    ViewInteraction appCompatButton = onView(
+        allOf(withId(R.id.medication), withText("Buprenorphine"),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                0),
+            isDisplayed()));
+    appCompatButton.perform(click());
+
+    // Added a sleep statement to match the app's execution delay.
+    // The recommended way to handle such scenarios is to use Espresso idling resources:
+    // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+    try {
+      Thread.sleep(700);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
     ViewInteraction appCompatSpinner = onView(
         allOf(withId(R.id.dosage_spinner),
             childAtPosition(
@@ -60,10 +79,10 @@ public class MedicationDosageActivityTest {
         .inAdapterView(childAtPosition(
             withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
             0))
-        .atPosition(1);
+        .atPosition(3);
     appCompatTextView.perform(click());
 
-    ViewInteraction appCompatButton = onView(
+    ViewInteraction appCompatButton2 = onView(
         allOf(withId(R.id.confirmDosage), withText("Confirm"),
             childAtPosition(
                 childAtPosition(
@@ -71,7 +90,7 @@ public class MedicationDosageActivityTest {
                     0),
                 2),
             isDisplayed()));
-    appCompatButton.perform(click());
+    appCompatButton2.perform(click());
   }
 
   private static Matcher<View> childAtPosition(
