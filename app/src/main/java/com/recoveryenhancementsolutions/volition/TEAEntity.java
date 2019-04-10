@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.persistence.room.Entity;
 import android.support.annotation.NonNull;
+
 /**
  * Database entity for storing the users TEA responses
  */
@@ -57,37 +58,10 @@ public class TEAEntity {
   /**
    * Sets the String value for the question regarding substance use in the TEA activity
    *
-   * @param substanceS string of personal notes from substance use question
+   * @param remarksS string of personal notes from substance use questions
    */
-  public void setSubstanceString(final String substanceS) {
-    substanceString = substanceS;
-  }
-
-  /**
-   * Sets the String value for the question regarding string in the TEA activity
-   *
-   * @param healthS string of personal notes from health question
-   */
-  public void setHealthString(final String healthS) {
-    healthString = healthS;
-  }
-
-  /**
-   * Sets the String value for the question regarding lifestyle in the TEA activity
-   *
-   * @param lifestyleS string of personal notes from lifestyle question
-   */
-  public void setLifestyleString(final String lifestyleS) {
-    lifestyleString = lifestyleS;
-  }
-
-  /**
-   * Sets the String value for the question regarding community in the TEA activity
-   *
-   * @param communityS string of personal notes from community question
-   */
-  public void setCommunityString(final String communityS) {
-    communityString = communityS;
+  public void setSubstanceString(final String remarksS) {
+    remarksString = remarksS;
   }
 
   /**
@@ -127,47 +101,19 @@ public class TEAEntity {
   }
 
   /**
-   * gets an string of personal thoughts regarding the objects substance use question
+   * gets an string of personal thoughts regarding the objects substance use questions
    *
-   * @return the answer recorded for the substance use question
+   * @return the answer recorded for the substance use questions
    */
-  public String getSubstanceString() {
-    return substanceString;
+  public String getRemarksString() {
+    return remarksString;
   }
-
-  /**
-   * gets an string of personal thoughts regarding the objects health question
-   *
-   * @return the answer recorded for the health question
-   */
-  public String getHealthString() {
-    return healthString;
-  }
-
-  /**
-   * gets an string of personal thoughts regarding the objects lifestyle question
-   *
-   * @return the answer recorded for the lifestyle question
-   */
-  public String getLifestyleString() {
-    return lifestyleString;
-  }
-
-  /**
-   * gets an string of personal thoughts regarding the objects community question
-   *
-   * @return the answer recorded for the community question
-   */
-  public String getCommunityString() {
-    return communityString;
-  }
-
 
   @SuppressWarnings("NullableProblems")
   @NonNull
   private int patientId;
 
   private int substanceInt, healthInt, lifestyleInt, communityInt;
-  private String substanceString, healthString, lifestyleString, communityString;
+  private String remarksString;
 
 }
