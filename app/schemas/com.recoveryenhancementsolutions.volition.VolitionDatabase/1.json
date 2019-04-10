@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
+    "identityHash": "c2e116f2296b43ec6773c5e5f759fccb",
     "entities": [
       {
         "tableName": "MedicationChoiceEntity",
@@ -189,11 +189,61 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "TreatmentExperienceAssessmentEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientId` INTEGER NOT NULL, `substanceInt` INTEGER NOT NULL, `healthInt` INTEGER NOT NULL, `lifestyleInt` INTEGER NOT NULL, `communityInt` INTEGER NOT NULL, `remarksString` TEXT, PRIMARY KEY(`patientId`))",
+        "fields": [
+          {
+            "fieldPath": "patientId",
+            "columnName": "patientId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "substanceInt",
+            "columnName": "substanceInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "healthInt",
+            "columnName": "healthInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lifestyleInt",
+            "columnName": "lifestyleInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "communityInt",
+            "columnName": "communityInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "remarksString",
+            "columnName": "remarksString",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "patientId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c2e116f2296b43ec6773c5e5f759fccb\")"
     ]
   }
 }

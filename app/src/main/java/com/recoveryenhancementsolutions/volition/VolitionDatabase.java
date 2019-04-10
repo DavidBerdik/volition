@@ -44,6 +44,7 @@ import android.support.annotation.NonNull;
         MedicationChoiceEntity.class,
         UserActivityEntity.class,
         DemographicDataEntity.class,
+        TreatmentExperienceAssessmentEntity.class
     },
     version = 1)
 @TypeConverters(DateConverter.class)
@@ -57,6 +58,8 @@ public abstract class VolitionDatabase extends RoomDatabase {
   public abstract DemographicDataDAO demographicDataDao();
 
   public abstract MedicationChoiceDAO medicationChoiceDAO();
+
+  public abstract TreatmentExperienceAssessmentDao treatmentExperienceAssessmentDao();
 
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.

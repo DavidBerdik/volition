@@ -28,8 +28,10 @@ public class TreatmentExperienceAssessmentRemarksActivity extends AppCompatActiv
       @Override
       public void onClick(final View v) {
         String remarksTxt = remarks.getText().toString();
+        TreatmentExperienceAssessmentViewModel.addRemarks(db, remarksTxt);
         startActivity(new Intent(TreatmentExperienceAssessmentRemarksActivity.this, HomeActivity.class));
       }
     };
+  private VolitionDatabase db;
 
 }

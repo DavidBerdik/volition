@@ -187,10 +187,10 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
             teaAnswers.set(answerCounter, value);
             questionsForTea.get(answerCounter).setTextColor(
                     questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-            //questionsForTea.get(answerCounter+1).setTextColor(
-              //      questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
+            headersForTea.get(answerCounter).setTextColor(
+                    headersForTea.get(answerCounter).getTextColors().withAlpha(0));
 
-            // QuestionnaireActivityViewModel.populateAsync(db);
+             TreatmentExperienceAssessmentViewModel.addTreatmentExperienceAssessment(db, teaAnswers);
              startActivity(new Intent(TreatmentExperienceAssessmentActivity.this, TreatmentExperienceAssessmentRemarksActivity.class));
 
         }
