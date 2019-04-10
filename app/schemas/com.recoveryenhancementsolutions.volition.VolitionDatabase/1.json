@@ -2,32 +2,18 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "cbddb2ed9d8bac97b817559aa82e405e",
+    "identityHash": "43a9240c91d6dbe3f87aade11ed96154",
     "entities": [
       {
         "tableName": "MedicationChoiceEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, `dosage` INTEGER NOT NULL, PRIMARY KEY(`medication`))",
         "fields": [
           {
             "fieldPath": "medication",
             "columnName": "medication",
             "affinity": "TEXT",
             "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "medication"
-          ],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "MedicationDosageEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dosage` INTEGER NOT NULL, PRIMARY KEY(`dosage`))",
-        "fields": [
+          },
           {
             "fieldPath": "dosage",
             "columnName": "dosage",
@@ -37,7 +23,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "dosage"
+            "medication"
           ],
           "autoGenerate": false
         },
@@ -213,7 +199,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"cbddb2ed9d8bac97b817559aa82e405e\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"43a9240c91d6dbe3f87aade11ed96154\")"
     ]
   }
 }

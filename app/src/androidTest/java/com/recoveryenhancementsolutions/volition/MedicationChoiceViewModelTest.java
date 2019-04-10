@@ -24,8 +24,8 @@ public class MedicationChoiceViewModelTest {
 
   //Will be replaced with the correct activity when it is created
   @Rule
-  public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
-      HomeActivity.class);
+  public final ActivityTestRule<MedicationChoiceActivity> activityTestRule = new ActivityTestRule<>(
+      MedicationChoiceActivity.class);
 
   /**
    * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
@@ -43,8 +43,10 @@ public class MedicationChoiceViewModelTest {
     viewModel.setTestDatabase(db);
 
     final MedicationChoiceEntity medication = new MedicationChoiceEntity();
-    medication.insertMed("Abstain");
+    medication.medication="Abstain";
+    medication.dosage=3;
     viewModel.insertMedication(medication);
+    viewModel.updateDosage(medication);
   }
 
   /**
@@ -57,6 +59,14 @@ public class MedicationChoiceViewModelTest {
       Thread.sleep(1000);
       assertEquals("Abstain",
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMedication()).medication);
+    } catch (InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    try {
+      Thread.sleep(1000);
+      assertEquals(3,
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getDosage()).dosage);
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }

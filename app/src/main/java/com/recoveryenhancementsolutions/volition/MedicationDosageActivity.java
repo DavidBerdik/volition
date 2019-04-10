@@ -31,17 +31,17 @@ public class MedicationDosageActivity extends AppCompatActivity {
     }
 
     final Button confirmButton = findViewById(R.id.confirmDosage);
-    final MedicationDosageViewModel mViewModel = new MedicationDosageViewModel(getApplication());
-    final MedicationDosageEntity dose = new MedicationDosageEntity();
+    final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
+    final MedicationChoiceEntity dose = new MedicationChoiceEntity();
     final Spinner dosageSpinner = findViewById(R.id.dosage_spinner);
 
     // Button click will send the integer to be stored in the database and call the next activity
-
+    // This should call the treatment plan activity when it is ready
     confirmButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
         dose.dosage = Integer.parseInt(dosageSpinner.getSelectedItem().toString());
-        mViewModel.insertDosage(dose);
+        mViewModel.updateDosage(dose);
         startActivity(new Intent(MedicationDosageActivity.this, HomeActivity.class));
       }
     });
