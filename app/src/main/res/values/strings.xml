@@ -103,4 +103,5 @@
     <item>9</item>
     <item>10</item>
   </string-array>
+  <string name="activity_back_navigation_button">Return to Activities Page</string>
 </resources>
