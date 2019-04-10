@@ -42,9 +42,9 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * @param db The VolitionDatabase to use for testing the ViewModel
    */
   public void setTestDatabase(final VolitionDatabase db) {
-    db.close();
+    this.db.close();
     this.db = db;
-    treatmentPlanDao = db.treatmentPlanDao();
+    treatmentPlanDao = this.db.treatmentPlanDao();
   }
 
   /**

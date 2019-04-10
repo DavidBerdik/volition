@@ -127,6 +127,14 @@ public class TreatmentPlanViewModelTest {
     treatmentPlanEntity.setId(1);
     viewModel.updateTreatmentPlan(treatmentPlanEntity);
 
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
+    // Reload values from the treatment plan
     try {
       testTreatmentPlan = LiveDataTestUtility
           .getNestedLiveDataObj(viewModel.getTreatmentPlan());
@@ -141,7 +149,7 @@ public class TreatmentPlanViewModelTest {
     assertEquals(5, testTreatmentPlan.getNumTreatmentEffectivenessAssessment());
     assertEquals(5, testTreatmentPlan.getNumOutcomeMeasures());
     assertEquals(5, testTreatmentPlan.getNumTimeTracking());
-    assertEquals(1, testTreatmentPlan.getNumReadingResponse());
+    assertEquals(5, testTreatmentPlan.getNumReadingResponse());
     assertEquals(1, testTreatmentPlan.getNumMedManagement());
     assertEquals("WEEKLY", testTreatmentPlan.getMedManagementFrequency());
     assertEquals("DAILY", testTreatmentPlan.getOutcomeMeasureFrequency());
