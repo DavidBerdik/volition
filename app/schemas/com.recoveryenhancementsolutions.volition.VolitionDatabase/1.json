@@ -2,17 +2,17 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ba1e1a2702b3c1e8faed6f72436a6a61",
+    "identityHash": "32ececc7627def5d234a5b285fe99aaa",
     "entities": [
       {
         "tableName": "QuestionnaireActivityEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`totalYes` TEXT NOT NULL, `severityLevel` TEXT, `q1` INTEGER NOT NULL, `q2` INTEGER NOT NULL, `q3` INTEGER NOT NULL, `q4` INTEGER NOT NULL, `q5` INTEGER NOT NULL, `q6` INTEGER NOT NULL, `q7` INTEGER NOT NULL, `q8` INTEGER NOT NULL, `q9` INTEGER NOT NULL, `q10` INTEGER NOT NULL, `q11` INTEGER NOT NULL, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`totalYes` TEXT, `severityLevel` TEXT, `q1` INTEGER NOT NULL, `q2` INTEGER NOT NULL, `q3` INTEGER NOT NULL, `q4` INTEGER NOT NULL, `q5` INTEGER NOT NULL, `q6` INTEGER NOT NULL, `q7` INTEGER NOT NULL, `q8` INTEGER NOT NULL, `q9` INTEGER NOT NULL, `q10` INTEGER NOT NULL, `q11` INTEGER NOT NULL, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "totalYes",
             "columnName": "totalYes",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "severityLevel",
@@ -291,7 +291,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ba1e1a2702b3c1e8faed6f72436a6a61\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"32ececc7627def5d234a5b285fe99aaa\")"
     ]
   }
 }
