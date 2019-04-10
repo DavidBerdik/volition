@@ -68,10 +68,8 @@
   <string name="plan_track_button">TRACK</string>
   <string name="plan_notes_edittext">Notes here</string>
   <string-array name="plan_spinner_array">
-    <item>activity1</item>
-    <item>activity2</item>
-    <item>activity3</item>
-    <item>activity4</item>
-    <item>activity5</item>
+    <item>Therapy Visit</item>
+    <item>Group Visit</item>
+    <item>Med Compliance</item>
   </string-array>
 </resources>
