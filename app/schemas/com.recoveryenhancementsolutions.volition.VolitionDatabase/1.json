@@ -2,13 +2,18 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
+    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
     "identityHash": "ba1e1a2702b3c1e8faed6f72436a6a61",
     "entities": [
       {
+        "tableName": "MedicationChoiceEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
         "tableName": "QuestionnaireActivityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`totalYes` TEXT NOT NULL, `severityLevel` TEXT, `q1` INTEGER NOT NULL, `q2` INTEGER NOT NULL, `q3` INTEGER NOT NULL, `q4` INTEGER NOT NULL, `q5` INTEGER NOT NULL, `q6` INTEGER NOT NULL, `q7` INTEGER NOT NULL, `q8` INTEGER NOT NULL, `q9` INTEGER NOT NULL, `q10` INTEGER NOT NULL, `q11` INTEGER NOT NULL, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
+            "fieldPath": "medication",
+            "columnName": "medication",
             "fieldPath": "totalYes",
             "columnName": "totalYes",
             "affinity": "TEXT",
@@ -18,48 +23,6 @@
             "fieldPath": "severityLevel",
             "columnName": "severityLevel",
             "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "q1",
-            "columnName": "q1",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "q2",
-            "columnName": "q2",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "q3",
-            "columnName": "q3",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "q4",
-            "columnName": "q4",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "q5",
-            "columnName": "q5",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "q6",
-            "columnName": "q6",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "q7",
-            "columnName": "q7",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -95,7 +58,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "medication"
           ],
           "autoGenerate": false
         },
@@ -291,6 +254,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ba1e1a2702b3c1e8faed6f72436a6a61\")"
     ]
   }
