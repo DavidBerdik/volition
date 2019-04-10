@@ -99,7 +99,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(final View v) {
+      public void onClick( final View v) {
         sendOff();
       }
 
@@ -112,7 +112,7 @@ public class CreateProfileActivity extends AppCompatActivity {
        */
       private void sendOff() {
         //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
+        final Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireConfirmActivity.class);
         startActivity(intent);
       }
 

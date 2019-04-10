@@ -13,17 +13,6 @@
       android:exported="true"
       android:label="@string/app_name"
       android:name=".MainActivity">
-      android:label="@string/app_name"
-      android:name=".ActivityActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity android:name=".QuestionnaireActivity">
-    </activity>
-    <activity
-      android:label="@string/app_name"
-      android:name=".MainActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
@@ -97,12 +86,9 @@
       android:exported="true"
       android:label="@string/app_name"
       android:name=".PlanActivity">
-      android:label="@string/app_name"
-      android:name=".PlanActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
   </application>
-
 </manifest>
