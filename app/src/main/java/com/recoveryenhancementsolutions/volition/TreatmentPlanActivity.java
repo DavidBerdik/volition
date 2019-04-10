@@ -22,7 +22,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
         viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
-        treatmentPlan = viewModel.getTreatmentPlan();
         counselingView = findViewById(R.id.counselingView);
         medManagementView = findViewById(R.id.medManagementView);
         supportMeetingView = findViewById(R.id.supportMeetingView);
@@ -82,9 +81,17 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         //Initializes observers
         viewModel.getMedicationChoiceEntity().observe(this, medObserver);
         viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
-        viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
     }
 
+    /**
+     * Test Database
+     * @param db
+     */
+    public void onCreateTest(final VolitionDatabase db) {
+        final TreatmentPlanViewModel treatmentPlanViewModel = ViewModelProviders.of(this)
+                .get(TreatmentPlanViewModel.class);
+        treatmentPlanViewModel.setTestDatabase(db);
+    }
 
     /**
      * onClick Listener class using a switch statement to dictate proper
@@ -169,16 +176,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<MedicationChoiceEntity> medObserver = new Observer<MedicationChoiceEntity>() {
         @Override
         public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
-            try {
-                medObserved = true;
-                medicationChoice = medicationChoiceEntity.medication;
+            medObserved = true;
                 if (questionnaireObserved) {
                     generateTreatmentPlan();
                 }
-            }
-            catch (NullPointerException e){
-                Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
-            }
         }
     };
 
@@ -189,39 +190,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     private Observer<String> questionnaireObserver = new Observer<String>() {
         @Override
         public void onChanged(@Nullable String s) {
-            try {
-                questionnaireObserved = true;
-                severityLevel = s;
-                if (medObserved) {
-                    generateTreatmentPlan();
-                }
-            }
-            catch(NullPointerException e)
-            {
-                Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
-            }
-        }
-    };
-
-    /**
-     * Observes the treatment plan table in the database. Replaces the local treatment plan with an
-     * updated copy.
-     */
-    private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
-        @Override
-        public void onChanged(@Nullable TreatmentPlanEntity newTreatmentPlanEntity) {
-            try {
-                treatmentPlanEntity = newTreatmentPlanEntity;
-                counselingView.setText(newTreatmentPlanEntity.getNumCounseling());
-                medManagementView.setText(newTreatmentPlanEntity.getNumMedManagement());
-                supportMeetingView.setText(newTreatmentPlanEntity.getNumSupportMeeting());
-                lessonView.setText(newTreatmentPlanEntity.getNumLessons());
-                treatmentEffectiveView.setText(newTreatmentPlanEntity.getNumTreatmentEffectivenessAssessment());
-                outcomeMeasureView.setText(newTreatmentPlanEntity.getNumOutcomeMeasures());
-                timeTrackingView.setText(newTreatmentPlanEntity.getNumTimeTracking());
-                readingResponseView.setText(newTreatmentPlanEntity.getNumReadingResponse());
-            }catch(NullPointerException e){
-                Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
+            questionnaireObserved = true;
+            severityLevel = s;
+            if (medObserved) {
+                generateTreatmentPlan();
             }
         }
     };
@@ -469,13 +441,18 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
                 newTreatmentPlan.setNumMedManagement(1);
             }
         }
+
+        counselingView.setText(newTreatmentPlan.getNumCounseling());
+        medManagementView.setText(newTreatmentPlan.getNumMedManagement());
+        supportMeetingView.setText(newTreatmentPlan.getNumSupportMeeting());
+        lessonView.setText(newTreatmentPlan.getNumLessons());
+        treatmentEffectiveView.setText(newTreatmentPlan.getNumTreatmentEffectivenessAssessment());
+        outcomeMeasureView.setText(newTreatmentPlan.getNumOutcomeMeasures());
+        timeTrackingView.setText(newTreatmentPlan.getNumTimeTracking());
+        readingResponseView.setText(newTreatmentPlan.getNumReadingResponse());
+
         viewModel.insertTreatmentPlan(newTreatmentPlan);
     }
-
-    /**
-     * Treatment plan to display data from
-     */
-    private LiveData<TreatmentPlanEntity> treatmentPlan;
 
     /**
      * The view model used to access the database.
