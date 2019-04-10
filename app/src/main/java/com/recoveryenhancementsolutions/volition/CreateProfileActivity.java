@@ -235,13 +235,13 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     addSedativesListener();
     addTranqListener();
 
-    genderSpinner = findViewById(R.id.gender_spinner);
-    useTypeSpinner = findViewById(R.id.use_type_spinner);
+    Spinner genderSpinner = findViewById(R.id.gender_spinner);
+    Spinner useTypeSpinner = findViewById(R.id.use_type_spinner);
 
     genderSpinner.setOnItemSelectedListener(this);
     useTypeSpinner.setOnItemSelectedListener(this);
 
-    name = findViewById(R.id.name);
+    EditText name = findViewById(R.id.name);
     OnFocusChangeListener ofcListener = new FocusListener();
     name.setOnFocusChangeListener(ofcListener);
   }
@@ -504,8 +504,5 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   private RadioButton radioTranquilizers;
   private RadioButton radioSedatives;
   private RadioButton radioInhalants;
-  private Spinner genderSpinner;
-  private Spinner useTypeSpinner;
   private int spinnerCount = 0;
-  private EditText name;
 }
