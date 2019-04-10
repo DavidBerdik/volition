@@ -25,12 +25,21 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ *  This class will run test on the QuestionnaireActivity to test that the buttons have proper
+ *  functionality.
+ */
 public class QuestionnaireActivityTest {
 
   @Rule
   public ActivityTestRule<QuestionnaireActivity> mActivityTestRule = new ActivityTestRule<>(
       QuestionnaireActivity.class);
 
+  /**
+   * This espresso test will run through the QuestionnaireActivity. The Yes and No buttons are
+   * tested to check the functionality for each question. At the last question the
+   * QuestionnaireActivity will go to the ViewSeverityLevelActivity.
+   */
   @Test
   public void questionnaireActivityTest2() {
     ViewInteraction appCompatButton = onView(

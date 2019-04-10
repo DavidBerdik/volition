@@ -18,15 +18,17 @@ public class QuestionnaireActivity extends AppCompatActivity {
    */
   @Override
   public void onBackPressed() {
-    if (qViewModel.getDisplayState() == 0) {
+    if (questionnaireActivityViewModel.getDisplayState() == 0) {
       super.onBackPressed();
     } else {
       if (prevAnswer) {
-        qViewModel.setYesAnswers(qViewModel.getYesAnswers() - 1);
+        questionnaireActivityViewModel
+            .setYesAnswers(questionnaireActivityViewModel.getYesAnswers() - 1);
       }
-      qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
+      questionnaireActivityViewModel
+          .setDisplayState(questionnaireActivityViewModel.getDisplayState() - 1);
       //checkBackButton();
-      if (qViewModel.getDisplayState() < 10) {
+      if (questionnaireActivityViewModel.getDisplayState() < 10) {
         findDisplayState();
       }
     }
@@ -42,15 +44,16 @@ public class QuestionnaireActivity extends AppCompatActivity {
   public void storeOnclickQuestionnaire(boolean value) {
 
     prevAnswer = value;
-    if (qViewModel.getDisplayState() < 10) {
-      qViewModel.setQuestionnaireAnswers(value);
-      qViewModel.setDisplayState(qViewModel.getDisplayState() + 1);
+    if (questionnaireActivityViewModel.getDisplayState() < 10) {
+      questionnaireActivityViewModel.setQuestionnaireAnswers(value);
+      questionnaireActivityViewModel
+          .setDisplayState(questionnaireActivityViewModel.getDisplayState() + 1);
       findDisplayState();
 
-    } else if (qViewModel.getDisplayState() == 10) {
-      qViewModel.setQuestionnaireAnswers(value);
-      qViewModel.setSeverityString();
-      qViewModel.insQuestionnaire();
+    } else if (questionnaireActivityViewModel.getDisplayState() == 10) {
+      questionnaireActivityViewModel.setQuestionnaireAnswers(value);
+      questionnaireActivityViewModel.setSeverityString();
+      questionnaireActivityViewModel.insQuestionnaire();
       startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
     }
   }
@@ -73,9 +76,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
 
-    qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
+    questionnaireActivityViewModel = ViewModelProviders.of(this)
+        .get(QuestionnaireActivityViewModel.class);
     //db = VolitionDatabase.getDatabase(this.getApplication());
-    qViewModel.setDisplayState(qViewModel.getDisplayState());
+    questionnaireActivityViewModel
+        .setDisplayState(questionnaireActivityViewModel.getDisplayState());
 
     yesButton.setOnClickListener(yesClickListener);
     noButton.setOnClickListener(noClickListener);
@@ -94,7 +99,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     findDisplayState();
 
-    qViewModel.fillQuestionnaireAnswers();
+    questionnaireActivityViewModel.fillQuestionnaireAnswers();
   }
 
   /**
@@ -103,9 +108,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
    * checks which state is currently active in the view model and changes the opacity of that state
    */
   private void findDisplayState() {
-    int state = qViewModel.getDisplayState();
+    int state = questionnaireActivityViewModel.getDisplayState();
 
-   // checkBackButton();
+    // checkBackButton();
     for (TextView q : qs) {
       q.setTextColor(q.getTextColors().withAlpha(0));
     }
@@ -130,9 +135,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
      */
     @Override
     public void onClick(final View v) {
-      qViewModel.setYesAnswers(qViewModel.getYesAnswers() + 1);
+      questionnaireActivityViewModel
+          .setYesAnswers(questionnaireActivityViewModel.getYesAnswers() + 1);
       storeOnclickQuestionnaire(true);
-     // checkBackButton();
+      // checkBackButton();
     }
   };
 
@@ -171,11 +177,13 @@ public class QuestionnaireActivity extends AppCompatActivity {
     public void onClick(final View v) {
 
       if (prevAnswer) {
-        qViewModel.setYesAnswers(qViewModel.getYesAnswers() - 1);
+        questionnaireActivityViewModel
+            .setYesAnswers(questionnaireActivityViewModel.getYesAnswers() - 1);
       }
-      qViewModel.setDisplayState(qViewModel.getDisplayState() - 1);
-    //  checkBackButton();
-      if (qViewModel.getDisplayState() < 10) {
+      questionnaireActivityViewModel
+          .setDisplayState(questionnaireActivityViewModel.getDisplayState() - 1);
+      //  checkBackButton();
+      if (questionnaireActivityViewModel.getDisplayState() < 10) {
         findDisplayState();
       }
     }
@@ -186,6 +194,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
    */
 
 
-  private QuestionnaireActivityViewModel qViewModel;
+  private QuestionnaireActivityViewModel questionnaireActivityViewModel;
   private TextView[] qs = new TextView[11];
 }
