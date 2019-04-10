@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Treatment Plan Activity is called when the user selects the option to view their treatment plan.
@@ -81,6 +83,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     //Initializes observers
     viewModel.getMedicationChoiceEntity().observe(this, medObserver);
     viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
+    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
   }
 
   /**
@@ -169,6 +172,21 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   }
 
   /**
+   * Observes the treatment plan table in the database. Generates a toast if any updates/changes
+   * are made to the treatment plan table.
+   */
+  private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
+    @Override
+    public void onChanged(final TreatmentPlanEntity treatmentPlanEntity) {
+      Context context = getApplicationContext();
+      CharSequence msg = "Your Treatment Plan was Saved!";
+      int dur = Toast.LENGTH_SHORT;
+      Toast toast = Toast.makeText(context, msg, dur);
+      toast.show();
+    }
+  };
+
+  /**
    * Observes the medication choice table in the database. Generates a treatment plan if the
    * questionnaire has already been loaded as well.
    */
@@ -176,8 +194,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
       try {
-        medObserved = true;
         medicationChoice = medicationChoiceEntity.medication;
+        medObserved = true;
         if (questionnaireObserved) {
           generateTreatmentPlan();
         }
@@ -195,8 +213,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
       try {
-        questionnaireObserved = true;
         severityLevel = questionnaireEntity.getSeverityLevel();
+        questionnaireObserved = true;
         if (medObserved) {
           generateTreatmentPlan();
         }
@@ -223,6 +241,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = counselingView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumCounseling(num);
+      counselingView.setText(Integer.toString(num));
     }
   }
 
@@ -239,6 +258,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumCounseling(num);
+      counselingView.setText(Integer.toString(num));
     }
   }
 
@@ -247,9 +267,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddMedManagementButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = medManagementView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumMedManagement(num);
+      medManagementView.setText(Integer.toString(num));
     }
   }
 
@@ -258,7 +279,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubMedMangaementButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = medManagementView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -266,6 +287,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumMedManagement(num);
+      medManagementView.setText(Integer.toString(num));
     }
   }
 
@@ -274,9 +296,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddSupportGroupMeetingButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = supportMeetingView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumSupportMeeting(num);
+      supportMeetingView.setText(Integer.toString(num));
     }
   }
 
@@ -285,7 +308,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubSupportGroupButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = supportMeetingView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -293,6 +316,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumSupportMeeting(num);
+      supportMeetingView.setText(Integer.toString(num));
     }
   }
 
@@ -301,9 +325,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddOutcomeMeasureButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = outcomeMeasureView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumOutcomeMeasures(num);
+      outcomeMeasureView.setText(Integer.toString(num));
     }
   }
 
@@ -312,7 +337,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubOutcomeMeasureButtonClicked() {
     if(treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = outcomeMeasureView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -320,6 +345,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumOutcomeMeasures(num);
+      outcomeMeasureView.setText(Integer.toString(num));
     }
   }
 
@@ -328,9 +354,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddLessonPlannerButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = lessonView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumLessons(num);
+      lessonView.setText(Integer.toString(num));
     }
   }
 
@@ -339,7 +366,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubLessonPlannerButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = lessonView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -347,6 +374,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumLessons(num);
+      lessonView.setText(Integer.toString(num));
     }
   }
 
@@ -355,9 +383,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddTreatmentEffectivnessAssessmentButtonClicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = treatmentEffectiveView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(num);
+      treatmentEffectiveView.setText(Integer.toString(num));
     }
   }
 
@@ -366,7 +395,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubTreatmentEffectivnessAssessmentButtonCLicked() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = treatmentEffectiveView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -374,6 +403,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(num);
+      treatmentEffectiveView.setText(Integer.toString(num));
     }
   }
 
@@ -382,9 +412,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddCleanTimeTrackingButton() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = timeTrackingView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumTimeTracking(num);
+      timeTrackingView.setText(Integer.toString(num));
     }
   }
 
@@ -393,7 +424,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubCleanTimeTrackingButton() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = timeTrackingView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -401,6 +432,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumTimeTracking(num);
+      timeTrackingView.setText(Integer.toString(num));
     }
   }
 
@@ -409,9 +441,10 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onAddReadResponseButton() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = readingResponseView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumReadingResponse(num);
+      readingResponseView.setText(Integer.toString(num));
     }
   }
 
@@ -420,7 +453,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onSubReadResponseButton() {
     if (treatmentPlanLoaded) {
-      String s = counselingView.getText().toString();
+      String s = readingResponseView.getText().toString();
       int num = Integer.parseInt(s);
       if (num - 1 < 0) {
         num = 0;
@@ -428,6 +461,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumReadingResponse(num);
+      readingResponseView.setText(Integer.toString(num));
     }
   }
 
