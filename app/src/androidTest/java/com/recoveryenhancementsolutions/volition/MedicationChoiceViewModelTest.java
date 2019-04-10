@@ -43,8 +43,8 @@ public class MedicationChoiceViewModelTest {
     viewModel.setTestDatabase(db);
 
     final MedicationChoiceEntity medication = new MedicationChoiceEntity();
-    medication.medication="Abstain";
-    medication.dosage=3;
+    medication.medication = "Abstain";
+    medication.dosage = 3;
     viewModel.insertMedication(medication);
     viewModel.updateDosage(medication);
   }

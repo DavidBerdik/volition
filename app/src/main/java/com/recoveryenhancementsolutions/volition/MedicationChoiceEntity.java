@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
- * Database entity for storing the users Medication Choice
+ * Database entity for storing the users Medication Choice and Dosage information
  */
 
 @Entity(primaryKeys = "medication")

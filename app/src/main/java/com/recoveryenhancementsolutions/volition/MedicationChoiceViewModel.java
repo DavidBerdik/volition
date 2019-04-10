@@ -38,6 +38,9 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
     return db.medicationChoiceDAO().getMedication();
   }
 
+  /**
+   * @return Returns LiveData of type MedicationChoiceEntity
+   */
   public LiveData<MedicationChoiceEntity> getDosage() {
     return db.medicationChoiceDAO().getDosage();
   }
@@ -52,7 +55,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   }
 
   /**
-   * Inserts a dose into the MedicationDosage table.
+   * Inserts a dose into the MedicationChoice table.
    *
    * @param dosage Medication object for the View Model.
    */
@@ -130,6 +133,9 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
   }
 
+  /**
+   * Class for running update asynchronously
+   */
   private static class updateDosageAsync extends AsyncTask<MedicationChoiceEntity, Void, Void> {
 
     private MedicationChoiceDAO asyncTaskDao;
@@ -138,6 +144,12 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
       asyncTaskDao = dao;
     }
 
+    /**
+     * Makes the update run on a separate thread
+     *
+     * @param params Parameters for this method
+     * @return returns null
+     */
     @Override
     protected Void doInBackground(final MedicationChoiceEntity... params) {
       params[0] = new MedicationChoiceEntity();

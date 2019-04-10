@@ -67,14 +67,19 @@ public class MedicationChoiceDAOTest {
     }
   }
 
+  /**
+   * Performs several tests involving the Medication Choice DAO Tests inserting a medication choice
+   * into the database and checks that the values match
+   */
   @Test
   public void insertDosageTest() {
-    MedicationChoiceEntity dc =new MedicationChoiceEntity();
+    MedicationChoiceEntity dc = new MedicationChoiceEntity();
+    dc.medication = "this is a test";
+    db.medicationChoiceDAO().insertMedication(dc);
     try {
-       dc = LiveDataTestUtility
+      dc = LiveDataTestUtility
           .getNestedLiveDataObj(db.medicationChoiceDAO().getMedication());
-    }
-    catch (InterruptedException e) {
+    } catch (InterruptedException e) {
       Log.v(TAG, e.toString());
     }
     dc.dosage = 3;
