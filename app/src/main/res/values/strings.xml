@@ -6,7 +6,6 @@
   <string name="core_navigation_home">Home</string>
   <string name="core_navigation_activity">Activity</string>
   <string name="core_navigation_plan">Plan</string>
-
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -86,4 +85,22 @@
   doses a day would you like to take?</string>
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
+  <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
+  <string-array name="daily_wellness_options_verbose">
+    <item>Poor</item>
+    <item>Moderate</item>
+    <item>Great</item>
+  </string-array>
+  <string-array name="daily_wellness_options_numeric">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+  </string-array>
 </resources>
