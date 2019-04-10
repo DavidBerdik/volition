@@ -99,7 +99,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick( final View v) {
+      public void onClick(final View v) {
         sendOff();
       }
 
