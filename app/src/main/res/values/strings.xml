@@ -86,6 +86,7 @@
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
   <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
+  <string name="daily_wellness_title">Report your Daily Wellness</string>
   <string-array name="daily_wellness_options_verbose">
     <item>Poor</item>
     <item>Moderate</item>
