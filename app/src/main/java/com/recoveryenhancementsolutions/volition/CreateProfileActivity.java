@@ -10,17 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.view.WindowManager;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.AdapterView;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 import android.content.Intent;
-import android.widget.CheckBox;
+import android.view.View.OnFocusChangeListener;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
@@ -28,25 +29,31 @@ import android.widget.CheckBox;
 
 public class CreateProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
 
+
   /**
-   * Checking the selected gender, if selected, adds to the database
+   * Checking the selected gender and UseDisorder, if selected, adds to the database
    */
   public void onItemSelected(AdapterView<?> parent, View view,
       int pos, long id) {
 
-
-    if(parent.getId() == R.id.gender_spinner){
-      if(pos == 0 && spinnerCount > 1 ){
+    if (parent.getId() == R.id.gender_spinner) {
+      if (pos == 0 && spinnerCount > 1) {
         onNothingSelected(parent);
       }
       String gender = (String) parent.getItemAtPosition(pos);
       data.setGender(gender);
     }
 
-    /*if(parent.getId() == R.id.use_type_spinner){
-     //Talking to Rahul about Database implementation of UseType
-    }*/
+    if (parent.getId() == R.id.use_type_spinner) {
+      String useType = (String) parent.getItemAtPosition(pos);
+      if (useType.contains("Alcohol")) {
+        data.setDisorderAlcohol(true);
+      }
+      if (useType.contains("Opioid")) {
+        data.setDisorderOpioid(true);
 
+      }
+    }
 
     spinnerCount++;
   }
@@ -55,10 +62,10 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
    * Lets user know to select a gender
    */
   public void onNothingSelected(AdapterView<?> parent) {
-   Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",Toast.LENGTH_SHORT);
-   toast.show();
+    Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
+        Toast.LENGTH_SHORT);
+    toast.show();
   }
-
 
   /*
    * All of these public methods take in the current view @c
@@ -180,7 +187,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     radioSedatives.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
-            data.setUseBarbituresOrHypno(true);
+          data.setUseBarbituresOrHypno(true);
         }
       }
     });
@@ -190,16 +197,18 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     radioInhalants = findViewById(R.id.radioInhalants);
     radioInhalants.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
-        if (((CheckBox) v).isChecked()) {
+        if (((RadioButton) v).isChecked()) {
           data.setUseInhalants(true);
         }
       }
     });
   }
+
   /*
-    *Adds the listeners to the corresponding RadioButtons and Spinners
-    * Sets the buttons and Spinners to the corresponding ID's
-  */
+   *Adds the listeners to the corresponding RadioButtons and Spinners
+   * Sets the buttons and Spinners to the corresponding ID's
+   * Also sets the FocusChange for the Name entry
+   */
   public void addAllListeners() {
     radioSupport = findViewById(R.id.radioSupport);
     radioClient = findViewById(R.id.radioClient);
@@ -231,6 +240,10 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
 
     genderSpinner.setOnItemSelectedListener(this);
     useTypeSpinner.setOnItemSelectedListener(this);
+
+    name = findViewById(R.id.name);
+    OnFocusChangeListener ofcListener = new FocusListener();
+    name.setOnFocusChangeListener(ofcListener);
   }
 
   final Calendar dobCalendar = Calendar.getInstance();
@@ -240,6 +253,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     setContentView(R.layout.activity_create_profile);
 
     /*
@@ -363,6 +377,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
 
         //Intent goes to the next activity in the Work Flow.
         Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
+
         startActivity(intent);
       }
     });
@@ -492,4 +507,5 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   private Spinner genderSpinner;
   private Spinner useTypeSpinner;
   private int spinnerCount = 0;
+  private EditText name;
 }
