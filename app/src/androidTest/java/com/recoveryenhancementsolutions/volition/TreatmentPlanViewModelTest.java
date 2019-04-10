@@ -55,49 +55,51 @@ public class TreatmentPlanViewModelTest {
    * Closes the temporary database.
    */
   @After
-  public void closeDb(){db.close();}
+  public void closeDb() {
+    db.close();
+  }
 
   /**
    * Performs several test involving the Treatment Plan ViewModel
    */
   @Test
-    public void testTreatmentPlanViewModel() {
-      // Allow the database one second to update.
-      try {
-        Thread.sleep(1000);
-      } catch(InterruptedException ex) {
-        Thread.currentThread().interrupt();
-      }
+  public void testTreatmentPlanViewModel() {
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
 
-      TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
-      treatmentPlanEntity.setNumCounseling(1);
-      treatmentPlanEntity.setNumSupportMeeting(1);
-      treatmentPlanEntity.setNumLessons(1);
-      treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(1);
-      treatmentPlanEntity.setNumOutcomeMeasures(1);
-      treatmentPlanEntity.setNumTimeTracking(1);
-      treatmentPlanEntity.setNumReadingResponse(1);
-      treatmentPlanEntity.setNumMedManagement(0);
-      treatmentPlanEntity.setMedManagementMonthly();
-      treatmentPlanEntity.setOutcomeMeasureWeekly();
-      treatmentPlanEntity.setId(1);
-      viewModel.insertTreatmentPlan(treatmentPlanEntity);
+    TreatmentPlanEntity treatmentPlanEntity = new TreatmentPlanEntity();
+    treatmentPlanEntity.setNumCounseling(1);
+    treatmentPlanEntity.setNumSupportMeeting(1);
+    treatmentPlanEntity.setNumLessons(1);
+    treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(1);
+    treatmentPlanEntity.setNumOutcomeMeasures(1);
+    treatmentPlanEntity.setNumTimeTracking(1);
+    treatmentPlanEntity.setNumReadingResponse(1);
+    treatmentPlanEntity.setNumMedManagement(0);
+    treatmentPlanEntity.setMedManagementMonthly();
+    treatmentPlanEntity.setOutcomeMeasureWeekly();
+    treatmentPlanEntity.setId(1);
+    viewModel.insertTreatmentPlan(treatmentPlanEntity);
 
-      // Allow the database one second to update.
-      try {
-        Thread.sleep(1000);
-      } catch(InterruptedException ex) {
-        Thread.currentThread().interrupt();
-      }
+    // Allow the database one second to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
 
-      //Creates a test treatmentPlan to check data
-      TreatmentPlanEntity testTreatmentPlan = new TreatmentPlanEntity();
-      try {
-        testTreatmentPlan = LiveDataTestUtility
-                .getNestedLiveDataObj(viewModel.getTreatmentPlan());
-      } catch (InterruptedException e) {
-        Log.e(TAG, Log.getStackTraceString(e));
-      }
+    //Creates a test treatmentPlan to check data
+    TreatmentPlanEntity testTreatmentPlan = new TreatmentPlanEntity();
+    try {
+      testTreatmentPlan = LiveDataTestUtility
+          .getNestedLiveDataObj(viewModel.getTreatmentPlan());
+    } catch (InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
 
     //Check the values of the treatment plan. Should match the moderate abstinence plan.
     assertEquals(1, testTreatmentPlan.getNumCounseling());
@@ -110,6 +112,39 @@ public class TreatmentPlanViewModelTest {
     assertEquals(0, testTreatmentPlan.getNumMedManagement());
     assertEquals("MONTHLY", testTreatmentPlan.getMedManagementFrequency());
     assertEquals("WEEKLY", testTreatmentPlan.getOutcomeMeasureFrequency());
+
+    //Tests making an update to the treatmentPlan
+    treatmentPlanEntity.setNumCounseling(5);
+    treatmentPlanEntity.setNumSupportMeeting(5);
+    treatmentPlanEntity.setNumLessons(5);
+    treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(5);
+    treatmentPlanEntity.setNumOutcomeMeasures(5);
+    treatmentPlanEntity.setNumTimeTracking(5);
+    treatmentPlanEntity.setNumReadingResponse(5);
+    treatmentPlanEntity.setNumMedManagement(1);
+    treatmentPlanEntity.setMedManagementWeekly();
+    treatmentPlanEntity.setOutcomeMeasureDaily();
+    treatmentPlanEntity.setId(1);
+    viewModel.updateTreatmentPlan(treatmentPlanEntity);
+
+    try {
+      testTreatmentPlan = LiveDataTestUtility
+          .getNestedLiveDataObj(viewModel.getTreatmentPlan());
+    } catch (InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    //Check the values of the treatment plan. Should match the moderate abstinence plan.
+    assertEquals(5, testTreatmentPlan.getNumCounseling());
+    assertEquals(5, testTreatmentPlan.getNumSupportMeeting());
+    assertEquals(5, testTreatmentPlan.getNumLessons());
+    assertEquals(5, testTreatmentPlan.getNumTreatmentEffectivenessAssessment());
+    assertEquals(5, testTreatmentPlan.getNumOutcomeMeasures());
+    assertEquals(5, testTreatmentPlan.getNumTimeTracking());
+    assertEquals(1, testTreatmentPlan.getNumReadingResponse());
+    assertEquals(1, testTreatmentPlan.getNumMedManagement());
+    assertEquals("WEEKLY", testTreatmentPlan.getMedManagementFrequency());
+    assertEquals("DAILY", testTreatmentPlan.getOutcomeMeasureFrequency());
   }
 
   private TreatmentPlanViewModel viewModel;
