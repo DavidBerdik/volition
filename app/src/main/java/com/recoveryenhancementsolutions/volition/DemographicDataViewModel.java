@@ -67,6 +67,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
     @Override
     protected Void doInBackground(final DemographicDataEntity... params) {
+      demographicDataDao.deleteDemographicInfo();
       demographicDataDao.insertDemographicInfo(params[0]);
       return null;
     }

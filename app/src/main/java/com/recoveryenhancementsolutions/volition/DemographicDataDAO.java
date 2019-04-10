@@ -37,7 +37,6 @@ public interface DemographicDataDAO {
   @Update
   void updateDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
-
     /*
     Other components of the volition application may need to access the data of the patient.
     Rather than having to access the object created and use the get method on them, since this
@@ -55,6 +54,12 @@ public interface DemographicDataDAO {
    */
   @Query("SELECT * " + genericQuery)
   LiveData<DemographicDataEntity> getAllDemographicData();
+
+  /**
+   * Deletes all demographic data from the database.
+   */
+  @Query("DELETE " + genericQuery)
+  void deleteDemographicInfo();
 
   /**
    * Retrieves the patient name
