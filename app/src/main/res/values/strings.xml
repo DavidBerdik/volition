@@ -71,5 +71,16 @@
   <string name="activity_title_activity_screen"> Activities</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
-  <string name="res_logo_background"></string>
+  <string-array name="dosage_choice_title">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+  </string-array>
+  <string name="dosage_choice_message"> You have chosen to take Buprenorphine. How many
+  doses a day would you like to take?</string>
+  <string name="dosage_choice_confirm"> Confirm</string>
+  <string name="dosage_choice_res_logo"> Logo</string>
 </resources>
