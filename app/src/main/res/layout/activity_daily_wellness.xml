@@ -5,6 +5,38 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/ic_page_border"
   tools:context=".DailyWellnessActivity">
+
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/activity_back_navigation"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@color/res_green"
+    app:elevation="0dp"
+    app:itemBackground="@color/res_green"
+    app:itemHorizontalTranslationEnabled="false"
+    app:itemIconTint="@android:color/black"
+    app:itemTextColor="@android:color/black"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/activity_back_navigation"/>
+  <ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="381dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="35dp"
+    android:layout_marginBottom="35dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/dosage_choice_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.569"
+    app:srcCompat="@drawable/pic"/>
 
 </android.support.constraint.ConstraintLayout>
