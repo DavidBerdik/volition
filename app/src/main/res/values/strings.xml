@@ -57,6 +57,7 @@
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
+  <string name="title_activity_medication_dosage">MedicationDose</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
   <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
   <string name="medication_choice_abstain_button"> Abstain</string>

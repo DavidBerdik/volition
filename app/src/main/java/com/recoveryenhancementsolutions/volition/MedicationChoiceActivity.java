@@ -46,8 +46,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       public void onClick(final View view) {
         medication.medication = "Buprenorphine";
         mViewModel.insertMedication(medication);
-        startActivity(new Intent(MedicationChoiceActivity.this, HomeActivity.class));
-        //this will really change to treatmentPlan.class, but for testing it goes to HomeActivity
+        startActivity(new Intent(MedicationChoiceActivity.this, MedicationDosageActivity.class));
       }
     });
   }

@@ -58,6 +58,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
+
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.
    *
