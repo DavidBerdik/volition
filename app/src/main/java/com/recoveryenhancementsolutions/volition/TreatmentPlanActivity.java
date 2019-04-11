@@ -1,6 +1,5 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -253,7 +252,9 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
       try {
-        severityLevel = questionnaireEntity.getSeverityLevel();
+        if (questionnaireEntity != null) {
+          severityLevel = questionnaireEntity.getSeverityLevel();
+        }
         questionnaireObserved = true;
         if (medObserved) {
           generateTreatmentPlan();
@@ -269,7 +270,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onUpdateButtonClicked() {
     if (treatmentPlanLoaded) {
-      viewModel.updateTreatmentPlan(treatmentPlanEntity);
+      TreatmentPlanViewModel.updateTreatmentPlan(treatmentPlanEntity);
     }
   }
 
@@ -536,51 +537,61 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
 
     //A new treatmentPlanEntity to add to the database
     TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
-    if (severityLevel.equals("MILD")) { //There is no mild Buprenorphine plan currently
-      newTreatmentPlan.setNumCounseling(1);
-      newTreatmentPlan.setNumSupportMeeting(1);
-      newTreatmentPlan.setNumLessons(1);
-      newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-      newTreatmentPlan.setNumOutcomeMeasures(1);
-      newTreatmentPlan.setNumTimeTracking(1);
-      newTreatmentPlan.setNumReadingResponse(1);
-      newTreatmentPlan.setNumMedManagement(0);
-      newTreatmentPlan.setMedManagementMonthly();
-      newTreatmentPlan.setOutcomeMeasureWeekly();
-    } else if (severityLevel.equals("MODERATE")) {
-      newTreatmentPlan.setNumCounseling(3);
-      newTreatmentPlan.setNumSupportMeeting(3);
-      newTreatmentPlan.setNumLessons(2);
-      newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-      newTreatmentPlan.setNumOutcomeMeasures(3);
-      newTreatmentPlan.setNumTimeTracking(2);
-      newTreatmentPlan.setNumReadingResponse(2);
-      newTreatmentPlan.setMedManagementMonthly();
-      newTreatmentPlan.setOutcomeMeasureDaily();
-
-      //handles differences in treatment plans
-      if (medicationChoice.equals("ABSTAIN")) {
+    switch (severityLevel) {
+      case "MILD":  //There is no mild Buprenorphine plan currently
+        newTreatmentPlan.setNumCounseling(1);
+        newTreatmentPlan.setNumSupportMeeting(1);
+        newTreatmentPlan.setNumLessons(1);
+        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+        newTreatmentPlan.setNumOutcomeMeasures(1);
+        newTreatmentPlan.setNumTimeTracking(1);
+        newTreatmentPlan.setNumReadingResponse(1);
         newTreatmentPlan.setNumMedManagement(0);
-      } else {
-        newTreatmentPlan.setNumMedManagement(2);
-      }
-    } else { //Severe severity level
-      newTreatmentPlan.setNumCounseling(5);
-      newTreatmentPlan.setNumSupportMeeting(5);
-      newTreatmentPlan.setNumLessons(3);
-      newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-      newTreatmentPlan.setNumOutcomeMeasures(5);
-      newTreatmentPlan.setNumTimeTracking(5);
-      newTreatmentPlan.setNumReadingResponse(3);
-      newTreatmentPlan.setMedManagementWeekly();
-      newTreatmentPlan.setOutcomeMeasureDaily();
+        newTreatmentPlan.setMedManagementMonthly();
+        newTreatmentPlan.setOutcomeMeasureWeekly();
+        //handles differences in treatment plans
+        if (medicationChoice.equals("ABSTAIN")) {
+          newTreatmentPlan.setNumMedManagement(0);
+        } else {
+          newTreatmentPlan.setNumMedManagement(2);
+        }
+        break;
+      case "MODERATE":
+        newTreatmentPlan.setNumCounseling(3);
+        newTreatmentPlan.setNumSupportMeeting(3);
+        newTreatmentPlan.setNumLessons(2);
+        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+        newTreatmentPlan.setNumOutcomeMeasures(3);
+        newTreatmentPlan.setNumTimeTracking(2);
+        newTreatmentPlan.setNumReadingResponse(2);
+        newTreatmentPlan.setMedManagementMonthly();
+        newTreatmentPlan.setOutcomeMeasureDaily();
 
-      //handles differences in treatment plans
-      if (medicationChoice.equals("ABSTAIN")) {
-        newTreatmentPlan.setNumMedManagement(0);
-      } else {
-        newTreatmentPlan.setNumMedManagement(1);
-      }
+        //handles differences in treatment plans
+        if (medicationChoice.equals("ABSTAIN")) {
+          newTreatmentPlan.setNumMedManagement(0);
+        } else {
+          newTreatmentPlan.setNumMedManagement(2);
+        }
+        break;
+      default:  //Severe severity level
+        newTreatmentPlan.setNumCounseling(5);
+        newTreatmentPlan.setNumSupportMeeting(5);
+        newTreatmentPlan.setNumLessons(3);
+        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+        newTreatmentPlan.setNumOutcomeMeasures(5);
+        newTreatmentPlan.setNumTimeTracking(5);
+        newTreatmentPlan.setNumReadingResponse(3);
+        newTreatmentPlan.setMedManagementWeekly();
+        newTreatmentPlan.setOutcomeMeasureDaily();
+
+        //handles differences in treatment plans
+        if (medicationChoice.equals("ABSTAIN")) {
+          newTreatmentPlan.setNumMedManagement(0);
+        } else {
+          newTreatmentPlan.setNumMedManagement(1);
+        }
+        break;
     }
     String s = "" + newTreatmentPlan.getNumCounseling();
     counselingView.setText(s);
@@ -601,7 +612,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
 
     treatmentPlanEntity = newTreatmentPlan;
     treatmentPlanLoaded = true;
-    viewModel.insertTreatmentPlan(newTreatmentPlan);
+    TreatmentPlanViewModel.insertTreatmentPlan(newTreatmentPlan);
   }
 
   /**
@@ -666,16 +677,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    * The TextView displaying the description for outcome measures.
    */
   private TextView outcomeMeasureDescView;
-
-  /**
-   * A live data object storing the medication choice entity from the database.
-   */
-  private LiveData<MedicationChoiceEntity> medicationChoiceEntity;
-
-  /**
-   * A live data object storing the questionnaire from the database.
-   */
-  private LiveData<QuestionnaireEntity> questionnaireEntity;
 
   /**
    * A boolean tracking if the medicaton choice has loaded in.

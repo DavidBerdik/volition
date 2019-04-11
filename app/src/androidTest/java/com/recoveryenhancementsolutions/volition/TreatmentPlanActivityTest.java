@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Unit text for TreatmentPlanActivity
+ * Test for TreatmentPlan Activity.
  */
 @RunWith(AndroidJUnit4.class)
 public class TreatmentPlanActivityTest {
@@ -76,6 +76,9 @@ public class TreatmentPlanActivityTest {
     db.close();
   }
 
+  /**
+   * Checks that all buttons work properly and verifies the values of all TextViews.
+   */
   @Test
   public void testTreatmentPlanViewModel() {
 
@@ -589,7 +592,5 @@ public class TreatmentPlanActivityTest {
     };
   }
 
-  private TreatmentPlanViewModel viewModel;
   private VolitionDatabase db;
-  private static final String TAG = "TreatmentPlanViewModelTest";
 }

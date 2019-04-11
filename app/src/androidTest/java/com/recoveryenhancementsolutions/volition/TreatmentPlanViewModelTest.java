@@ -83,7 +83,7 @@ public class TreatmentPlanViewModelTest {
     treatmentPlanEntity.setMedManagementMonthly();
     treatmentPlanEntity.setOutcomeMeasureWeekly();
     treatmentPlanEntity.setId(1);
-    viewModel.insertTreatmentPlan(treatmentPlanEntity);
+    TreatmentPlanViewModel.insertTreatmentPlan(treatmentPlanEntity);
 
     // Allow the database one second to update.
     try {
@@ -125,7 +125,7 @@ public class TreatmentPlanViewModelTest {
     treatmentPlanEntity.setMedManagementWeekly();
     treatmentPlanEntity.setOutcomeMeasureDaily();
     treatmentPlanEntity.setId(1);
-    viewModel.updateTreatmentPlan(treatmentPlanEntity);
+    TreatmentPlanViewModel.updateTreatmentPlan(treatmentPlanEntity);
 
     // Allow the database one second to update.
     try {

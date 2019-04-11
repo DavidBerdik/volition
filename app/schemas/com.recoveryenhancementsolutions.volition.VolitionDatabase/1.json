@@ -1,0 +1,299 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "140e5148582a5ddf82b12f601071d7ea",
+    "entities": [
+      {
+        "tableName": "UserActivityEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "desc",
+            "columnName": "desc",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "TreatmentPlanEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`Id` INTEGER NOT NULL, `numCounseling` INTEGER NOT NULL, `numMedManagement` INTEGER NOT NULL, `numSupportMeeting` INTEGER NOT NULL, `numLessons` INTEGER NOT NULL, `numTreatmentEffectivenessAssessment` INTEGER NOT NULL, `numOutcomeMeasures` INTEGER NOT NULL, `numTimeTracking` INTEGER NOT NULL, `numReadingResponse` INTEGER NOT NULL, `medManagementFrequency` TEXT, `outcomeMeasureFrequency` TEXT, PRIMARY KEY(`Id`))",
+        "fields": [
+          {
+            "fieldPath": "Id",
+            "columnName": "Id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numCounseling",
+            "columnName": "numCounseling",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numMedManagement",
+            "columnName": "numMedManagement",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numSupportMeeting",
+            "columnName": "numSupportMeeting",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numLessons",
+            "columnName": "numLessons",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numTreatmentEffectivenessAssessment",
+            "columnName": "numTreatmentEffectivenessAssessment",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numOutcomeMeasures",
+            "columnName": "numOutcomeMeasures",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numTimeTracking",
+            "columnName": "numTimeTracking",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numReadingResponse",
+            "columnName": "numReadingResponse",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "medManagementFrequency",
+            "columnName": "medManagementFrequency",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "outcomeMeasureFrequency",
+            "columnName": "outcomeMeasureFrequency",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "Id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "QuestionnaireEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
+        "fields": [
+          {
+            "fieldPath": "severityLevel",
+            "columnName": "severityLevel",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "severityLevel"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "MedicationChoiceEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, PRIMARY KEY(`medication`))",
+        "fields": [
+          {
+            "fieldPath": "medication",
+            "columnName": "medication",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "medication"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "DemographicDataEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientName` TEXT NOT NULL, `lastClean` INTEGER, `age` INTEGER NOT NULL, `dateOfBirth` INTEGER, `gender` TEXT, `isPersonInRecovery` INTEGER NOT NULL, `useHeroin` INTEGER NOT NULL, `useOpiateOrSynth` INTEGER NOT NULL, `useAlcohol` INTEGER NOT NULL, `useCrackOrCocaine` INTEGER NOT NULL, `useMarijuana` INTEGER NOT NULL, `useMethamphetamine` INTEGER NOT NULL, `useBenzo` INTEGER NOT NULL, `useNonBeznoTrang` INTEGER NOT NULL, `useBarbituresOrHypno` INTEGER NOT NULL, `useInhalants` INTEGER NOT NULL, `useOther` TEXT, `disorderOpioid` INTEGER NOT NULL, `disorderAlcohol` INTEGER NOT NULL, `fetchID` INTEGER NOT NULL, PRIMARY KEY(`patientName`))",
+        "fields": [
+          {
+            "fieldPath": "patientName",
+            "columnName": "patientName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastClean",
+            "columnName": "lastClean",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateOfBirth",
+            "columnName": "dateOfBirth",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isPersonInRecovery",
+            "columnName": "isPersonInRecovery",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useHeroin",
+            "columnName": "useHeroin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useOpiateOrSynth",
+            "columnName": "useOpiateOrSynth",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useAlcohol",
+            "columnName": "useAlcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useCrackOrCocaine",
+            "columnName": "useCrackOrCocaine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useMarijuana",
+            "columnName": "useMarijuana",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useMethamphetamine",
+            "columnName": "useMethamphetamine",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useBenzo",
+            "columnName": "useBenzo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useNonBeznoTrang",
+            "columnName": "useNonBeznoTrang",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useBarbituresOrHypno",
+            "columnName": "useBarbituresOrHypno",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useInhalants",
+            "columnName": "useInhalants",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "useOther",
+            "columnName": "useOther",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "disorderOpioid",
+            "columnName": "disorderOpioid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "disorderAlcohol",
+            "columnName": "disorderAlcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fetchID",
+            "columnName": "fetchID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "patientName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"140e5148582a5ddf82b12f601071d7ea\")"
+    ]
+  }
+}
