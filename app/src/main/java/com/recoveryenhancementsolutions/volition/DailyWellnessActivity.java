@@ -12,6 +12,11 @@ import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.TextView;
 
+/**
+ * Allows users to report on their daily wellness with a rating from 0 through 10. Users are
+ * provided instant feedback by a TextView at the bottom of the screen with Verbose output of their
+ * current selection.
+ */
 public class DailyWellnessActivity extends AppCompatActivity {
 
   @Override
