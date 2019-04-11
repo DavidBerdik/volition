@@ -68,6 +68,9 @@
   <string name="activity_daily_wellness_button"> Daily Wellness</string>
   <string name="activity_clean_tracker_button"> Clean Tracker</string>
   <string name="activity_title_activity_screen"> Activities</string>
+  <string name="classification_screen_title"> DSM-V Classification</string>
+  <string name="classification_screen_level"> Current level of substance abuse: </string>
+  <string name="classification_screen_button"> Retake classification</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
   <string-array name="dosage_choice_title">
