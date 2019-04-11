@@ -45,46 +45,14 @@ public class MedicationDosageActivityTest {
    */
   @Test
   public void medicationDosageActivityTest() {
-    ViewInteraction textView = onView(
-        allOf(withId(R.id.textViewMed),
-            withText("Would you like to take Buprenorphine or abstain?"),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                1),
-            isDisplayed()));
-    textView.check(matches(withText("Would you like to take Buprenorphine or abstain?")));
+    onView(withId(R.id.textViewMed)).check(matches(isDisplayed()));
+    onView(withId(R.id.textViewMed)).check(matches(withText("Would you like to take Buprenorphine or abstain?")));
 
-    ViewInteraction button = onView(
-        allOf(withId(R.id.medication),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                2),
-            isDisplayed()));
-    button.check(matches(isDisplayed()));
+    onView(withId(R.id.medication)).check(matches(isDisplayed()));
 
-    ViewInteraction button2 = onView(
-        allOf(withId(R.id.abstain),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                3),
-            isDisplayed()));
-    button2.check(matches(isDisplayed()));
+    onView(withId(R.id.abstain)).check(matches(isDisplayed()));
 
-    ViewInteraction appCompatButton = onView(
-        allOf(withId(R.id.medication), withText("Buprenorphine"),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                0),
-            isDisplayed()));
-    appCompatButton.perform(click());
+    onView(withId(R.id.medication)).perform(click());
 
     // Added a sleep statement to match the app's execution delay.
     // The recommended way to handle such scenarios is to use Espresso idling resources:
@@ -95,47 +63,13 @@ public class MedicationDosageActivityTest {
       e.printStackTrace();
     }
 
-    ViewInteraction textView2 = onView(
-        allOf(withId(R.id.dosage_message), withText(
-            "You have chosen to take Buprenorphine. How many doses a day would you like to take?"),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                1),
-            isDisplayed()));
-    textView2.check(matches(withText(
-        "You have chosen to take Buprenorphine. How many doses a day would you like to take?")));
+    onView(withId(R.id.dosage_message)).check(matches(withText("You have chosen to take Buprenorphine. How many doses a day would you like to take?")));
 
-    ViewInteraction button3 = onView(
-        allOf(withId(R.id.confirmDosage),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                3),
-            isDisplayed()));
-    button3.check(matches(isDisplayed()));
+    onView(withId(R.id.confirmDosage)).check(matches(isDisplayed()));
 
-    ViewInteraction spinner = onView(
-        allOf(withId(R.id.dosage_spinner),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                2),
-            isDisplayed()));
-    spinner.check(matches(isDisplayed()));
+    onView(withId(R.id.dosage_spinner)).check(matches(isDisplayed()));
 
-    ViewInteraction appCompatSpinner = onView(
-        allOf(withId(R.id.dosage_spinner),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                0),
-            isDisplayed()));
-    appCompatSpinner.perform(click());
+    onView(withId(R.id.dosage_spinner)).perform(click());
 
     DataInteraction appCompatTextView = onData(anything())
         .inAdapterView(childAtPosition(
@@ -144,26 +78,9 @@ public class MedicationDosageActivityTest {
         .atPosition(3);
     appCompatTextView.perform(click());
 
-    ViewInteraction textView3 = onView(
-        allOf(withId(android.R.id.text1), withText("4"),
-            childAtPosition(
-                allOf(withId(R.id.dosage_spinner),
-                    childAtPosition(
-                        IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class),
-                        2)),
-                0),
-            isDisplayed()));
-    textView3.check(matches(withText("4")));
+    onView(withId(android.R.id.text1)).check(matches(withText("4")));
 
-    ViewInteraction appCompatButton2 = onView(
-        allOf(withId(R.id.confirmDosage), withText("Confirm"),
-            childAtPosition(
-                childAtPosition(
-                    withId(android.R.id.content),
-                    0),
-                2),
-            isDisplayed()));
-    appCompatButton2.perform(click());
+    onView(withId(R.id.confirmDosage)).perform(click());
   }
 
   private static Matcher<View> childAtPosition(
