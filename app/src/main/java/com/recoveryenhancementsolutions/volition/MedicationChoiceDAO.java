@@ -42,4 +42,25 @@ public interface MedicationChoiceDAO {
 
   @Update(onConflict = REPLACE)
   void updateMedication(final MedicationChoiceEntity medication);
+
+  @Query("SELECT * FROM MedicationChoiceEntity")
+  LiveData<MedicationChoiceEntity> getDosage();
+
+  /**
+   * Inserts a medication dosage selection into the database.
+   *
+   * @param dose a MedicationDosageEntity object containing the int to be inserted
+   */
+
+  @Query("UPDATE MedicationChoiceEntity SET dosage = :dose WHERE medication = :medication")
+  void updateDosage(final int dose, final String medication);
+
+  /**
+   * Returns the dosage associated with a specific medication.
+   *
+   * @param medication The medication to search for.
+   * @return A LiveData object containing an Integer.
+   */
+  @Query("SELECT dosage FROM MedicationChoiceEntity WHERE medication = :medication")
+  LiveData<Integer> getDosage(final String medication);
 }
