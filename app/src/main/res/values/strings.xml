@@ -87,22 +87,23 @@
   <string name="dosage_choice_res_logo"> Logo</string>
   <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
   <string name="daily_wellness_title">Report your Daily Wellness</string>
+  <string name="daily_wellness_rating">Your Rating:</string>
   <string-array name="daily_wellness_options_verbose">
     <item>Poor</item>
     <item>Moderate</item>
     <item>Great</item>
   </string-array>
   <string-array name="daily_wellness_options_numeric">
-    <item>1</item>
+    <item>1 - Poor</item>
     <item>2</item>
     <item>3</item>
     <item>4</item>
-    <item>5</item>
+    <item>5 - Moderate</item>
     <item>6</item>
     <item>7</item>
     <item>8</item>
     <item>9</item>
-    <item>10</item>
+    <item>10 - Great</item>
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
 </resources>
