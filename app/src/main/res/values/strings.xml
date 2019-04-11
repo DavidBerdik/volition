@@ -95,11 +95,11 @@
   <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
   <string name="counseling">Counseling</string>
   <string name="medManagement">Medication Management</string>
+  <string name="cleanTimeTracking">Clean Time Tracking</string>
   <string name="supportMeeting">Support Meeting</string>
   <string name="outcomeMeasure">Outcome Measure</string>
   <string name="lessonPlanner">Lesson Planner</string>
   <string name="treatmentEffectivenessAssessment">Treatment Plan Effectiveness Assessment</string>
-  <string name="cleanTimeTracking">Clean Time Tracking</string>
   <string name="readResponseJournal">Read and Response Journal</string>
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
@@ -123,4 +123,10 @@
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_bottom_border"> Bottom Border</string>
+
+  <string name="volition">Volition</string>
+  <string name="readJournalResponce">Reading Responce / Journal</string>
+  <string name="menubar_home">Home</string>
+  <string name="menubar_activity">Activity</string>
+  <string name="menubar_plan">Plan</string>
 </resources>

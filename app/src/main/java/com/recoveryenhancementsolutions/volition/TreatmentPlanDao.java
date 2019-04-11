@@ -29,7 +29,7 @@ public interface TreatmentPlanDao {
    * @param treatmentPlanEntity The TreatmentPlanEntity to be updated.
    */
   @Update(onConflict = REPLACE)
-  void updateTreatmentPlanEntity(final TreatmentPlanEntity treatmentPlanEntity);
+  void updateTreatmentPlanEntity(TreatmentPlanEntity treatmentPlanEntity);
 
   /**
    * Inserts a new TreatmentPlanEntity into the database. The treatmentPlanId should always be 1.
@@ -48,6 +48,8 @@ public interface TreatmentPlanDao {
   Integer getNumTreatmentPlans();
 
   /**
+
+
    * Removes all TreatmentPlanEntities from the database.
    */
   @Query("DELETE FROM TreatmentPlanEntity")

@@ -52,8 +52,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         (R.id.addTreatmentEffectivnessAssessmentButton);
     Button subCleanTimeTrackingButton = findViewById(R.id.subCleanTimeTrackingButton);
     Button addCleanTimeTrackingButton = findViewById(R.id.addCleanTimeTrackingButton);
-    Button subReadResponceJournalButton = findViewById(R.id.subReadResponceJournalButton);
-    Button addReadResponceJournalButton = findViewById(R.id.addReadResponceJournalButton);
+    Button subReadResponseJournalButton = findViewById(R.id.subReadResponceJournalButton);
+    Button addReadResponseJournalButton = findViewById(R.id.addReadResponceJournalButton);
     Button updateButton = findViewById(R.id.updateButton);
     Button finishButton = findViewById(R.id.finishButton);
 
@@ -72,8 +72,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     addTreatmentEffectivenessAssessmentButton.setOnClickListener(this);
     subCleanTimeTrackingButton.setOnClickListener(this);
     addCleanTimeTrackingButton.setOnClickListener(this);
-    subReadResponceJournalButton.setOnClickListener(this);
-    addReadResponceJournalButton.setOnClickListener(this);
+    subReadResponseJournalButton.setOnClickListener(this);
+    addReadResponseJournalButton.setOnClickListener(this);
     updateButton.setOnClickListener(this);
     finishButton.setOnClickListener(this);
 
@@ -453,6 +453,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   /**
    * Method runs when sub button is pressed to subtract a treatment plan effectiveness assessment.
    */
+
   private void onSubTreatmentEffectivnessAssessmentButtonCLicked() {
     if (treatmentPlanLoaded) {
       String s = treatmentEffectiveView.getText().toString();
