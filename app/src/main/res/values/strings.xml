@@ -16,6 +16,8 @@
     <item>Male</item>
     <item>Other</item>
   </string-array>
+  <string name="create_profile_back_out_title">Leaving Profile Creation</string>
+  <string name="create_profile_back_out_content">Are you sure that you\'d like to cancel your profile creation? You will have to resubmit your user information.</string>
   <string name="create_profile_are_you">Are you:</string>
   <string name="create_profile_client">Person in Recovery/Seeking Recovery</string>
   <string name="create_profile_support">Family or Support Person</string>
@@ -123,7 +125,8 @@
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_bottom_border"> Bottom Border</string>
-
+  <string name="activity_startup_landing">Welcome To Your Recovery</string>
+  <string name="activity_startup_create">Create Profile</string>
   <string name="volition">Volition</string>
   <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="menubar_home">Home</string>
