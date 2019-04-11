@@ -40,7 +40,7 @@
   </string-array>
   <string name="create_profile_clean_date">Enter Date of Last Use/Clean Date</string>
   <string name="create_profile_record_answers">Record Answers</string>
-  <string name="display_profile_entered">Here\'s the information you entered</string>
+  <string name="display_profile_entered">Profile Information</string>
   <string name="display_profile_name_colon">Name:</string>
   <string name="display_profile_example_name">Replace with name entered</string>
   <string name="display_profile_dob_colon">Date of Birth:</string>
