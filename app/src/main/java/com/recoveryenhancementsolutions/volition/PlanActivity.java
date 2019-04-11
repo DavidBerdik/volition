@@ -131,8 +131,12 @@ public class PlanActivity extends AppCompatActivity {
     return dateViews.size();
   }
 
-  protected String getActivityBuffer(final int at) {
+  protected String getCalendarBuffer(final int at) {
     return dateViews.get(at).content.getText().toString();
+  }
+
+  protected String getNotesBuffer(final int at) {
+    return dateViews.get(at).notes;
   }
 
   protected boolean didActivitiesLoad(int at) {

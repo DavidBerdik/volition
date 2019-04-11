@@ -8,8 +8,11 @@ import android.support.v4.app.FragmentManager;
 
 public class PlanNoteView extends DialogFragment {
 
+  public static final String TAG = "plan-note-view";
+
   /**
    * Create a PlanNoteView with a proper Bundle.
+   *
    * @param day A locale-correct string representation of the viewing date without the time.
    * @param notes Expected to be compiled by DateView.  The message is set to this.
    * @return The instance of PlanNoteView.
@@ -41,7 +44,10 @@ public class PlanNoteView extends DialogFragment {
     return builder.create();
   }
 
+  /**
+   * Calls show with the proper tag string.
+   */
   public void show(FragmentManager manager) {
-    show(manager, "plan-note-view");
+    show(manager, TAG);
   }
 }

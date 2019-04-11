@@ -3,11 +3,16 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.assertion.ViewAssertions;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.internal.runner.junit4.statement.UiThreadStatement;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import java.util.Calendar;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -65,12 +70,36 @@ public class PlanActivityTest {
       while (!activityTestRule.getActivity().didActivitiesLoad(i)) {
       }
 
-      String value = activityTestRule.getActivity().getActivityBuffer(i);
+      String value = activityTestRule.getActivity().getCalendarBuffer(i);
 
       Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i]
           + "\" got:\"" + value + '"');
 
       Assert.assertEquals(userActivityDesc[i], value);
+    }
+  }
+
+  /**
+   * Verifies that opening a calendar day opens the notes for the correct day.
+   */
+  @Test
+  public void testNoteView() {
+    final int ids[] = {
+        R.id.textview_day_1,
+        R.id.textview_day_2,
+        R.id.textview_day_3,
+        R.id.textview_day_4,
+        R.id.textview_day_5,
+        R.id.textview_day_6,
+        R.id.textview_day_7
+    };
+
+    for (int i = 0; i < ids.length; ++i) {
+      Espresso.onView(ViewMatchers.withId(ids[i]))
+          .perform(ViewActions.scrollTo(), ViewActions.click());
+      Espresso.onView(ViewMatchers.withText(activityTestRule.getActivity().getNotesBuffer(i)))
+          .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+      Espresso.pressBack();
     }
   }
 
