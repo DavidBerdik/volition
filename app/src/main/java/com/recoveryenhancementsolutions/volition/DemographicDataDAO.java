@@ -4,6 +4,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 import java.util.Date;
@@ -22,11 +23,11 @@ come into use as more components are finished and added
 public interface DemographicDataDAO {
 
   /**
-   * Inserts a patient into the database
+   * Inserts a patient into the database, on conflict, replaces
    *
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
   void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
 
   /**
