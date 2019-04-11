@@ -9,12 +9,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
 import android.support.test.espresso.DataInteraction;
-import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -24,7 +22,6 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,7 +57,7 @@ public class MedicationDosageActivityTest {
     // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
     try {
       Thread.sleep(700);
-    } catch (InterruptedException e) {
+    } catch (final InterruptedException e) {
       e.printStackTrace();
     }
 
@@ -73,10 +70,9 @@ public class MedicationDosageActivityTest {
 
     onView(withId(R.id.dosage_spinner)).perform(click());
 
-    DataInteraction appCompatTextView = onData(anything())
+    final DataInteraction appCompatTextView = onData(anything())
         .inAdapterView(childAtPosition(
-            withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
-            0))
+            withClassName(is("android.widget.PopupWindow$PopupBackgroundView"))))
         .atPosition(3);
     appCompatTextView.perform(click());
 
@@ -86,18 +82,19 @@ public class MedicationDosageActivityTest {
   }
 
   private static Matcher<View> childAtPosition(
-      final Matcher<View> parentMatcher, final int position) {
+      final Matcher<View> parentMatcher) {
 
+    final int position = 0;
     return new TypeSafeMatcher<View>() {
       @Override
-      public void describeTo(Description description) {
+      public void describeTo(final Description description) {
         description.appendText("Child at position " + position + " in parent ");
         parentMatcher.describeTo(description);
       }
 
       @Override
-      public boolean matchesSafely(View view) {
-        ViewParent parent = view.getParent();
+      public boolean matchesSafely(final View view) {
+        final ViewParent parent = view.getParent();
         return parent instanceof ViewGroup && parentMatcher.matches(parent)
             && view.equals(((ViewGroup) parent).getChildAt(position));
       }
