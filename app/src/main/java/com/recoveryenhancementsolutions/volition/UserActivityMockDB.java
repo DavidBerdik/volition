@@ -45,9 +45,10 @@ public class UserActivityMockDB {
 
   /**
    * Get the VolitionDatabase
+   *
    * @return VolitionDatabase
    */
-  public VolitionDatabase getDb (){
+  public VolitionDatabase getDb() {
     return db;
   }
 
