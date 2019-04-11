@@ -46,7 +46,8 @@ public class MedicationDosageActivityTest {
   @Test
   public void medicationDosageActivityTest() {
     onView(withId(R.id.textViewMed)).check(matches(isDisplayed()));
-    onView(withId(R.id.textViewMed)).check(matches(withText("Would you like to take Buprenorphine or abstain?")));
+    onView(withId(R.id.textViewMed))
+        .check(matches(withText("Would you like to take Buprenorphine or abstain?")));
 
     onView(withId(R.id.medication)).check(matches(isDisplayed()));
 
@@ -63,7 +64,8 @@ public class MedicationDosageActivityTest {
       e.printStackTrace();
     }
 
-    onView(withId(R.id.dosage_message)).check(matches(withText("You have chosen to take Buprenorphine. How many doses a day would you like to take?")));
+    onView(withId(R.id.dosage_message)).check(matches(withText(
+        "You have chosen to take Buprenorphine. How many doses a day would you like to take?")));
 
     onView(withId(R.id.confirmDosage)).check(matches(isDisplayed()));
 
