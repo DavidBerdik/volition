@@ -93,17 +93,5 @@
     <item>Moderate</item>
     <item>Great</item>
   </string-array>
-  <string-array name="daily_wellness_options_numeric">
-    <item>1 - Poor</item>
-    <item>2</item>
-    <item>3</item>
-    <item>4</item>
-    <item>5 - Moderate</item>
-    <item>6</item>
-    <item>7</item>
-    <item>8</item>
-    <item>9</item>
-    <item>10 - Great</item>
-  </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
 </resources>

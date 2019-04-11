@@ -14,8 +14,8 @@ public class DailyWellnessActivity extends AppCompatActivity {
     setContentView(R.layout.activity_daily_wellness);
 
     final NumberPicker np = findViewById(R.id.daily_wellness_number_picker);
-
     np.setMinValue(1);
     np.setMaxValue(10);
+    np.setValue(5);
   }
 }
