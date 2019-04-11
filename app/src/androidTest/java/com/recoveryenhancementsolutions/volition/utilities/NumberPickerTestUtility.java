@@ -12,6 +12,8 @@ import android.support.test.espresso.action.Press;
 import android.support.test.espresso.action.Swipe;
 import android.support.test.espresso.action.Tap;
 import android.support.test.rule.ActivityTestRule;
+import android.view.InputDevice;
+import android.view.MotionEvent;
 import android.widget.NumberPicker;
 
 /**
@@ -27,7 +29,6 @@ public class NumberPickerTestUtility {
    * @param target The target number to move to.
    * @param activityTestRule The controlling ActivityTestRule.
    */
-  @SuppressWarnings("deprecation")
   public static void selectValue(final int id, final int target,
       final ActivityTestRule activityTestRule) {
     final int ROWS_PER_SWIPE = 5;
@@ -42,15 +43,16 @@ public class NumberPickerTestUtility {
           vi.perform(new GeneralSwipeAction(Swipe.FAST, GeneralLocation.TOP_CENTER,
               GeneralLocation.BOTTOM_CENTER, Press.FINGER));
         } else {
-          vi.perform(new GeneralClickAction(Tap.SINGLE, GeneralLocation.TOP_CENTER, Press.FINGER));
+          vi.perform(new GeneralClickAction(Tap.SINGLE, GeneralLocation.TOP_CENTER, Press.FINGER,
+              InputDevice.SOURCE_TOUCHSCREEN, MotionEvent.TOOL_TYPE_FINGER));
         }
       } else {
         if (delta >= ROWS_PER_SWIPE) {
           vi.perform(new GeneralSwipeAction(Swipe.FAST, GeneralLocation.BOTTOM_CENTER,
               GeneralLocation.TOP_CENTER, Press.FINGER));
         } else {
-          vi.perform(
-              new GeneralClickAction(Tap.SINGLE, GeneralLocation.BOTTOM_CENTER, Press.FINGER));
+          vi.perform(new GeneralClickAction(Tap.SINGLE, GeneralLocation.BOTTOM_CENTER, Press.FINGER,
+              InputDevice.SOURCE_TOUCHSCREEN, MotionEvent.TOOL_TYPE_FINGER));
         }
       }
 
