@@ -19,6 +19,15 @@ import android.widget.TextView;
  */
 public class DailyWellnessActivity extends AppCompatActivity {
 
+  /**
+   * Retrieves the text stored in dailyWellnessResultsView. Only needed for testing.
+   *
+   * @return A String object containing the text inside dailyWellnessResultsView.
+   */
+  public String getDailyWellnessResultsText() {
+    return dailyWellnessResultsView.getText().toString();
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
