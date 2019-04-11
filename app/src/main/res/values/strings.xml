@@ -105,4 +105,5 @@
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_bottom_border"> Bottom Border</string>
+  <string name="activity_startup_landing">Welcome To Your Recovery</string>
 </resources>
