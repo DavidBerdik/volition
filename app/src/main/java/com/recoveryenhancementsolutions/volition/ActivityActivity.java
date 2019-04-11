@@ -1,6 +1,5 @@
 package com.recoveryenhancementsolutions.volition;
 
-
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -13,7 +12,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-
+/**
+ * UI activity that allows the user to choose between different daily activities.
+ */
 public class ActivityActivity extends AppCompatActivity {
 
   /**
@@ -38,7 +39,7 @@ public class ActivityActivity extends AppCompatActivity {
     final Button teaButton = findViewById(R.id.TEA);
     final Button lessonButton = findViewById(R.id.Lesson);
     final Button journalButton = findViewById(R.id.Journal);
-    final Button eduButton = findViewById(R.id.Edu_);
+    final Button eduButton = findViewById(R.id.Edu);
     final Button wellnessButton = findViewById(R.id.DailyWellness);
     final Button cleanButton = findViewById(R.id.CleanTracker);
 
@@ -46,8 +47,7 @@ public class ActivityActivity extends AppCompatActivity {
     teaButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(
-            new Intent(ActivityActivity.this, TreatmentAssessmentActivity.class));
+        startActivity(new Intent(ActivityActivity.this, TreatmentExperienceAssessmentActivity.class));
       }
     });
 
@@ -135,7 +135,7 @@ public class ActivityActivity extends AppCompatActivity {
         int numberOfEdusFromPlan;
         int numberOfDailyWellnessFromPlan;
 
-        int numberOfUserTeasCompleted = TreatmentAssessmentActivity.numberCompleted;
+        int numberOfUserTeasCompleted = TreatmentExperienceAssessmentActivity.numberCompleted;
         int numberOfUserLessonsCompleted = LessonActivity.numberCompleted;
         int numberOfUserReportUseCompleted = ReportUseActivity.numberCompleted;
         int numberOfUserJournalsCompleted = JournalActivity.numberCompleted;
@@ -175,7 +175,7 @@ public class ActivityActivity extends AppCompatActivity {
     }
   };
 
-  /*
+  /**
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
   @Override
@@ -183,9 +183,7 @@ public class ActivityActivity extends AppCompatActivity {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
   }
-
   private TreatmentPlanViewModel viewModel;
   private boolean isPortrait = false;
   private BottomNavigationView bottomNavigationView;
 }
-

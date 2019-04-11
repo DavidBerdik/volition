@@ -65,20 +65,17 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
     public abstract QuestionnaireDao questionnaireDao();
 
-    private static volatile VolitionDatabase INSTANCE;
 
-    /**
-     * Factory method implementing Singleton design pattern for VolitionDatabase class.
-     *
-     * @param context Object providing access to application context.
-     * @return Instance of VolitionDatabase (same instance returned on every call).
-     */
-    static VolitionDatabase getDatabase(final Context context) {
+  /**
+   * Factory method implementing Singleton design pattern for VolitionDatabase class.
+   *
+   * @param context Object providing access to application context.
+   * @return Instance of VolitionDatabase (same instance returned on every call).
+   */
+  static VolitionDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (VolitionDatabase.class) {
                 if (INSTANCE == null) {
-                    synchronized (VolitionDatabase.class) {
-                        if (INSTANCE == null) {
                             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     VolitionDatabase.class, "volition_database")
                                     // Wipes and rebuilds instead of migrating if no Migration object.
@@ -89,8 +86,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
                         }
                     }
                 }
-            }
-        }
         return INSTANCE;
     }
 
@@ -164,4 +159,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
             return null;
         }
     }
+
+        private static volatile VolitionDatabase INSTANCE;
 }
