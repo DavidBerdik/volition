@@ -1,12 +1,12 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.TextView;
+import java.util.Date;
 
 /**
  * The HomeActivity that contains functionality and interactions relevant to the activity_home
@@ -15,37 +15,67 @@ import android.widget.TextView;
  */
 public class HomeActivity extends AppCompatActivity {
 
+  /**
+   * Retrieves the text stored in daysCleanMessage. Only needed for testing.
+   *
+   * @return A String object containing the text inside daysCleanMessage.
+   */
+  public String getDaysCleanText() {
+    return daysCleanMessage.getText().toString();
+  }
+
+  /**
+   * Recreates the observer but using a testing database. Should only be used for testing.
+   *
+   * @param db A VolitionDatabase test object.
+   */
+  public void onCreateTest(final VolitionDatabase db) {
+    final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demographicDataViewModel.setTestDatabase(db);
+    demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
+  }
+
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+  }
+
+  @Override
+  protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
 
-    buttonTestItem = findViewById(R.id.buttonTestItem);
     daysCleanMessage = findViewById(R.id.clean);
 
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setSelectedItemId(R.id.menubar_home);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
+    final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
+
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+    CoreNavigationHandler.link(bottomNavigationView, this);
   }
 
-  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
+  private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.menubar_home:
-          buttonTestItem.setText(R.string.menubar_home);
-          return true;
-        case R.id.menubar_activity:
-          buttonTestItem.setText(R.string.menubar_activity);
-          return true;
-        case R.id.menubar_plan:
-          buttonTestItem.setText(R.string.menubar_plan);
-          return true;
+    public void onChanged(final Date date) {
+      // We should only have a NullPointerException if nothing is entered into the DB yet.
+      // If this is the case, have an empty days clean String.
+      try {
+        final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
+        daysCleanMessage.setText(R.string.home_clean);
+        daysCleanMessage.append(" " + days);
+      } catch (NullPointerException e) {
+        daysCleanMessage.setText(R.string.home_clean);
       }
-      return false;
     }
   };
 
-  private TextView buttonTestItem;
   private TextView daysCleanMessage;
+  private BottomNavigationView bottomNavigationView;
 }

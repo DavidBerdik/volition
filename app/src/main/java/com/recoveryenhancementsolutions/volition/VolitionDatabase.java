@@ -40,8 +40,8 @@ import android.support.annotation.NonNull;
  */
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
-
 @Database(
+<<<<<<< HEAD
         entities = {
                 UserActivityEntity.class,
                 TreatmentPlanEntity.class,
@@ -49,10 +49,19 @@ import android.support.annotation.NonNull;
                 MedicationChoiceEntity.class
         },
         version = 1)
+=======
+    entities = {
+        MedicationChoiceEntity.class,
+        UserActivityEntity.class,
+        DemographicDataEntity.class,
+    },
+    version = 1)
+>>>>>>> 764b364fdd108c9dde2c87be8afdecb582a0a6a1
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
 
+<<<<<<< HEAD
     // TODO: Place DAO instantiation method calls here, as in the following commented-out example
     // public abstract WordDao wordDao();
     public abstract UserActivitiesDao userActivitiesDao();
@@ -70,6 +79,25 @@ public abstract class VolitionDatabase extends RoomDatabase {
      * @return Instance of VolitionDatabase (same instance returned on every call).
      */
     static VolitionDatabase getDatabase(final Context context) {
+=======
+  // TODO: Place DAO instantiation method calls here, as in the following commented-out example
+  // public abstract WordDao wordDao();
+  public abstract UserActivitiesDao userActivitiesDao();
+
+  public abstract DemographicDataDAO demographicDataDao();
+
+  public abstract MedicationChoiceDAO medicationChoiceDAO();
+
+  /**
+   * Factory method implementing Singleton design pattern for VolitionDatabase class.
+   *
+   * @param context Object providing access to application context.
+   * @return Instance of VolitionDatabase (same instance returned on every call).
+   */
+  static VolitionDatabase getDatabase(final Context context) {
+    if (INSTANCE == null) {
+      synchronized (VolitionDatabase.class) {
+>>>>>>> 764b364fdd108c9dde2c87be8afdecb582a0a6a1
         if (INSTANCE == null) {
             synchronized (VolitionDatabase.class) {
                 if (INSTANCE == null) {
@@ -121,6 +149,7 @@ public abstract class VolitionDatabase extends RoomDatabase {
      * Skeleton code that does nothing but could be filled in to clear the database and populate it
      * with test data in the background.
      */
+<<<<<<< HEAD
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
@@ -138,6 +167,34 @@ public abstract class VolitionDatabase extends RoomDatabase {
             questionnaireDao = db.questionnaireDao();
             medicationChoiceDao = db.medicationChoiceDao();
         }
+=======
+    @Override
+    public void onCreate(@NonNull final SupportSQLiteDatabase db) {
+      super.onCreate(db);
+      // If you want to populate data when the database is created for the first time,
+      // keep the following line uncommented and fill in the PopulateDbAsync skeleton code below.
+      new PopulateDbAsync(INSTANCE).execute();
+    }
+  };
+
+  /**
+   * Skeleton code that does nothing but could be filled in to clear the database and populate it
+   * with test data in the background.
+   */
+  private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+
+    // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
+    // private final WordDao mDao;
+    private final UserActivitiesDao userActivitiesDao;
+    private final DemographicDataDAO demographicDataDao;
+
+    PopulateDbAsync(final VolitionDatabase db) {
+      // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
+      // mDao = db.wordDao();
+      userActivitiesDao = db.userActivitiesDao();
+      demographicDataDao = db.demographicDataDao();
+    }
+>>>>>>> 764b364fdd108c9dde2c87be8afdecb582a0a6a1
 
         @Override
         protected Void doInBackground(final Void... params) {
@@ -155,8 +212,16 @@ public abstract class VolitionDatabase extends RoomDatabase {
             return null;
         }
     }
+<<<<<<< HEAD
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile VolitionDatabase INSTANCE;
 
 }
+=======
+  }
+
+  // marking the instance as volatile to ensure atomic access to the variable
+  private static volatile VolitionDatabase INSTANCE;
+}
+>>>>>>> 764b364fdd108c9dde2c87be8afdecb582a0a6a1
