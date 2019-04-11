@@ -1,5 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
@@ -10,11 +12,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -216,6 +222,15 @@ public class PlanActivity extends AppCompatActivity {
       this.content = content;
 
       setDay(day);
+
+      content.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          final String dayString = DateFormat.getDateInstance(DateFormat.FULL,
+              getResources().getConfiguration().locale).format(day.getTime());
+          PlanNoteView.create(dayString, notes).show(getSupportFragmentManager());
+        }
+      });
     }
 
     /**
@@ -235,6 +250,7 @@ public class PlanActivity extends AppCompatActivity {
     private void observe(final LifecycleOwner owner) {
       data = actViewModel.getActivitiesByDate(day.getTime());
       data.observe(owner, this);
+      notes = null;
       loaded = false;
     }
 
@@ -242,22 +258,33 @@ public class PlanActivity extends AppCompatActivity {
       if (data != null) {
         data.removeObservers(owner);
         data = null;
+        notes = null;
       }
     }
 
     @Override
     public void onChanged(@NonNull final List<UserActivityEntity> activities) {
-      final StringBuilder activityBuffer = new StringBuilder();
+      final StringBuilder calBuffer = new StringBuilder();   // Only stores activity name.
+      final StringBuilder notesBuffer = new StringBuilder(); // Stores name & notes.
 
-      //Compiles a list of activity descriptions for a specific date
+      // Compiles a list of activity descriptions for a specific date.
+      // The notes string is also updated with these activities.
+
       for (int i = 0; i < activities.size(); ++i) {
-        activityBuffer.append(activities.get(i).getDesc());
+        calBuffer.append(activities.get(i).getDesc());
+
+        notesBuffer.append(activities.get(i).getDesc());
+        notesBuffer.append(":\n");
+        notesBuffer.append(activities.get(i).getNotes());
+
         if (i < activities.size() - 1) {
-          activityBuffer.append('\n');
+          calBuffer.append('\n');
+          notesBuffer.append("\n\n");
         }
       }
 
-      content.setText(activityBuffer);
+      content.setText(calBuffer);
+      notes = notesBuffer.toString();
       loaded = true;
     }
 
@@ -269,6 +296,7 @@ public class PlanActivity extends AppCompatActivity {
     private final TextView content;
     private Calendar day;
     private LiveData<List<UserActivityEntity>> data;
+    private String notes;
     private boolean loaded;
   }
 

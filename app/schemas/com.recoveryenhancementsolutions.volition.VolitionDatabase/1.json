@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "765be3d88452d76ffe2708a22a54d6c1",
+    "identityHash": "4355518e9029b2986f9cc9ed5aad67a5",
     "entities": [
       {
         "tableName": "MedicationChoiceEntity",
@@ -26,7 +26,7 @@
       },
       {
         "tableName": "UserActivityEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `desc` TEXT NOT NULL, `notes` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -43,6 +43,12 @@
           {
             "fieldPath": "desc",
             "columnName": "desc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -193,7 +199,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"765be3d88452d76ffe2708a22a54d6c1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"4355518e9029b2986f9cc9ed5aad67a5\")"
     ]
   }
 }

@@ -38,8 +38,9 @@ public class PlanActivityTest {
     today.set(Calendar.SECOND, 0);
     today.set(Calendar.MILLISECOND, 0);
 
-    for (String desc : userActivityDesc) {
-      activityTestRule.getActivity().getViewModel().insertActivity(today.getTime(), desc);
+    for (int i = 0; i < userActivityDesc.length; ++i) {
+      activityTestRule.getActivity().getViewModel()
+          .insertActivity(today.getTime(), userActivityDesc[i], userActivityNotes[i]);
       today.add(Calendar.DAY_OF_MONTH, -1);
     }
 
@@ -82,6 +83,15 @@ public class PlanActivityTest {
       "Test 5",
       "Test 6",
       "Test 7"
+  };
+  private final String[] userActivityNotes = {
+      "Note 1",
+      "Note 2",
+      "Note 3",
+      "Note 4",
+      "Note 5",
+      "Note 6",
+      "Note 7"
   };
   private VolitionDatabase db;
 }

@@ -61,13 +61,16 @@ public class UserActivityViewModelTest {
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
     // Create 5 User Activity Descriptions
-    final String[] userActivityDesc = {"This is a", "test of the", "emergency", "broadcast",
+    final String[] userActivityDesc = {"Act 1", "Act 2", "Act 3", "Act 4", "Act 5"};
+
+    // Create 5 User Activity Notes
+    final String[] userActivityNotes = {"This is a", "test of the", "emergency", "broadcast",
         "system."};
 
     // Insert the entities.
     for (int x = 0; x < 5; x++) {
       viewModel.insertActivity(userActivityYear[x], userActivityMonth[x], userActivityDay[x],
-          userActivityDesc[x]);
+          userActivityDesc[x], userActivityNotes[x]);
     }
 
     // Query the database for all entries and check that the returned list contains 5 entries.

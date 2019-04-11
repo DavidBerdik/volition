@@ -86,4 +86,6 @@
   doses a day would you like to take?</string>
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
+  <string name="plan_note_view_done">Done</string>
+  <string name="plan_note_view_no_notes">Nothing.</string>
 </resources>

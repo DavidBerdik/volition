@@ -67,6 +67,15 @@ public class UserActivityEntity {
   }
 
   /**
+   * Sets the activity's notes.
+   *
+   * @param notes Activity's notes
+   */
+  public void setNotes(final @NonNull String notes) {
+    this.notes = notes;
+  }
+
+  /**
    * Returns the activity's ID.
    *
    * @return The activity's ID
@@ -96,6 +105,16 @@ public class UserActivityEntity {
   }
 
   /**
+   * Returns the activity's notes.
+   *
+   * @return The activity's notes
+   */
+  @NonNull
+  public String getNotes() {
+    return notes;
+  }
+
+  /**
    * Stores the activity ID.
    */
   @PrimaryKey(autoGenerate = true)
@@ -114,4 +133,11 @@ public class UserActivityEntity {
   @SuppressWarnings("NullableProblems")
   @NonNull
   private String desc;
+
+  /**
+   * Stores the activity notes.
+   */
+  @SuppressWarnings("NullableProblems")
+  @NonNull
+  private String notes;
 }

@@ -58,7 +58,10 @@ public class UserActivitiesDaoTest {
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
     // Create 5 User Activity Descriptions
-    final String[] userActivityDesc = {"This is a", "test of the", "emergency", "broadcast",
+    final String[] userActivityDesc = {"Act 1", "Act 2", "Act 3", "Act 4", "Act 5"};
+
+    // Create 5 User Activity Notes
+    final String[] userActivityNotes = {"This is a", "test of the", "emergency", "broadcast",
         "system."};
 
     // Set times and descriptions for each of the 5 entities.
@@ -66,6 +69,7 @@ public class UserActivitiesDaoTest {
       userActivityEntity[x] = new UserActivityEntity();
       userActivityEntity[x].setDate(userActivityYear[x], userActivityMonth[x], userActivityDay[x]);
       userActivityEntity[x].setDesc(userActivityDesc[x]);
+      userActivityEntity[x].setNotes(userActivityNotes[x]);
     }
 
     // Insert the entities.
