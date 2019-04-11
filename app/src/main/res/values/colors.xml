@@ -3,4 +3,5 @@
   <color name="res_green">#2BB673</color>
   <color name="res_green_transparent">#4D2BB673</color>
   <color name="res_gold">#F7941D</color>
+  <color name="text_regular">#555555</color>
 </resources>

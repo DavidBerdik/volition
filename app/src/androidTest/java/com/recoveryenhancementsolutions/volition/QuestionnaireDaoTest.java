@@ -35,7 +35,7 @@ public class QuestionnaireDaoTest {
         final Context context = InstrumentationRegistry.getTargetContext();
         db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
                 .build();
-        questionnaireActivityDao = db.questionnaireModel();
+        questionnaireActivityDao = db.questionnaireDao();
     }
 
     /**

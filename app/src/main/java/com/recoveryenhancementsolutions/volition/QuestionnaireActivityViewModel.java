@@ -142,7 +142,7 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
         questionnaireActivityEntity.setId(1);
 
         questionnaireActivityEntity.setSeverityLevel(severityString);
-        db.questionnaireModel().insertQuestionnaire(questionnaireActivityEntity);
+        db.questionnaireDao().insertQuestionnaire(questionnaireActivityEntity);
     }
 
     /**

@@ -6,7 +6,6 @@
   <string name="core_navigation_home">Home</string>
   <string name="core_navigation_activity">Activity</string>
   <string name="core_navigation_plan">Plan</string>
-
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -17,6 +16,8 @@
     <item>Male</item>
     <item>Other</item>
   </string-array>
+  <string name="create_profile_back_out_title">Leaving Profile Creation</string>
+  <string name="create_profile_back_out_content">Are you sure that you\'d like to cancel your profile creation? You will have to resubmit your user information.</string>
   <string name="create_profile_are_you">Are you:</string>
   <string name="create_profile_client">Person in Recovery/Seeking Recovery</string>
   <string name="create_profile_support">Family or Support Person</string>
@@ -41,7 +42,7 @@
   </string-array>
   <string name="create_profile_clean_date">Enter Date of Last Use/Clean Date</string>
   <string name="create_profile_record_answers">Record Answers</string>
-  <string name="display_profile_entered">Here\'s the information you entered</string>
+  <string name="display_profile_entered">Profile Information</string>
   <string name="display_profile_name_colon">Name:</string>
   <string name="display_profile_example_name">Replace with name entered</string>
   <string name="display_profile_dob_colon">Date of Birth:</string>
@@ -58,6 +59,7 @@
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
+  <string name="title_activity_medication_dosage">MedicationDose</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
   <string name="questionnaire_question_1"> Do you often take larger amounts of opioids or
 take opioids over a longer period of time than
@@ -118,14 +120,13 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="activity_title_activity_screen"> Activities</string>
   <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
   <string name="take_questionnaire"> Take questionnaire</string>
-  <string name="back"> Back to previous question</string>
-  <string name="next">Next Question </string>
-  <string name="confirm"> Confirm Questionnaire</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
-  <string name="buprenorphine_button"> Buprenorphine</string>
-  <string name="abstain_button"> Abstain</string>
-  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
+  <string name="activity_res_logo"> Logo</string>
+  <string name="lesson_title"> Lesson Page</string>
+  <string name="journal_title"> Journal Page</string>
+  <string name="edu_title"> EDU Page</string>
+  <string name="treatment_assessment_title"> TEA Page</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -138,4 +139,46 @@ Withdrawal defined as three or more of the following symptoms develop within min
   doses a day would you like to take?</string>
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
+  <string name="res_logo_background"> Logo</string>
+  <string name="add"> + </string>
+  <string name="sub"> - </string>
+  <string name="update"> update</string>
+  <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
+  <string name="counseling">Counseling</string>
+  <string name="medManagement">Medication Management</string>
+  <string name="cleanTimeTracking">Clean Time Tracking</string>
+  <string name="supportMeeting">Support Meeting</string>
+  <string name="outcomeMeasure">Outcome Measure</string>
+  <string name="lessonPlanner">Lesson Planner</string>
+  <string name="treatmentEffectivenessAssessment">Treatment Plan Effectiveness Assessment</string>
+  <string name="readResponseJournal">Read and Response Journal</string>
+  <string name="buprenorphine_button"> Buprenorphine</string>
+  <string name="abstain_button"> Abstain</string>
+  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
+  <string name="treatmentPlan_name">Recommended Treatment Plan</string>
+  <string name="finish_button">Finish</string>
+  <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
+  <string name="daily_wellness_title">Report your Daily Wellness</string>
+  <string name="daily_wellness_rating">Your Rating:</string>
+  <string-array name="daily_wellness_result_strings">
+    <item>1 (Poor)</item>
+    <item>2 (Poor)</item>
+    <item>3 (Poor)</item>
+    <item>4 (Moderate)</item>
+    <item>5 (Moderate)</item>
+    <item>6 (Moderate)</item>
+    <item>7 (Moderate)</item>
+    <item>8 (Great)</item>
+    <item>9 (Great)</item>
+    <item>10 (Great)</item>
+  </string-array>
+  <string name="activity_back_navigation_button">Return to Activity Page</string>
+  <string name="activity_bottom_border"> Bottom Border</string>
+  <string name="activity_startup_landing">Welcome To Your Recovery</string>
+  <string name="activity_startup_create">Create Profile</string>
+  <string name="volition">Volition</string>
+  <string name="readJournalResponse">Reading Response / Journal</string>
+  <string name="menubar_home">Home</string>
+  <string name="menubar_activity">Activity</string>
+  <string name="menubar_plan">Plan</string>
 </resources>
