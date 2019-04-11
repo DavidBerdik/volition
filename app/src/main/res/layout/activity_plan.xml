@@ -64,32 +64,35 @@
           android:id="@+id/lessonView"
           android:layout_width="10dp"
           android:layout_height="0dp"
+          android:layout_marginStart="16dp"
           android:text=""
           android:textColor="#555555"
           android:textSize="18sp"
-          tools:layout_editor_absoluteX="16dp"
-          tools:layout_editor_absoluteY="243dp" />
+          app:layout_constraintBaseline_toBaselineOf="@+id/lessonPlanner"
+          app:layout_constraintStart_toStartOf="parent" />
 
       <TextView
           android:id="@+id/counselingView"
           android:layout_width="10dp"
           android:layout_height="0dp"
+          android:layout_marginStart="16dp"
           android:text=""
           android:textColor="#555555"
           android:textSize="18sp"
           android:visibility="visible"
-          tools:layout_editor_absoluteX="16dp"
-          tools:layout_editor_absoluteY="23dp" />
+          app:layout_constraintBaseline_toBaselineOf="@+id/counseling"
+          app:layout_constraintStart_toStartOf="parent" />
 
       <TextView
           android:id="@+id/outcomeMeasureView"
           android:layout_width="10dp"
           android:layout_height="0dp"
+          android:layout_marginStart="16dp"
           android:text=""
           android:textColor="#555555"
           android:textSize="18sp"
-          tools:layout_editor_absoluteX="16dp"
-          tools:layout_editor_absoluteY="188dp" />
+          app:layout_constraintBaseline_toBaselineOf="@+id/outcomeMeasure"
+          app:layout_constraintStart_toStartOf="parent" />
 
       <TextView
         android:id="@+id/timeTrackingView"
