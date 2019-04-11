@@ -1,9 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
-
 /**
- * Temporary file taken from feature/VOL-50-View-Severity-Level
- *
- * Should be written over by feature/VOL-50-View-Security-Level
+ * TODO: Overwrite with VOL-50-View-Severity-Level
+ * Currently only supports minimum functionality to create a treatment plan
  */
 
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
@@ -24,9 +22,9 @@ public interface QuestionnaireDao {
   void deleteAll();
 
   @Query("SELECT * FROM QuestionnaireEntity")
-  LiveData<List<QuestionnaireEntity>> findQuestionnaire();
+  LiveData<QuestionnaireEntity> getQuestionnaire();
 
   @Query("SELECT severityLevel FROM QuestionnaireEntity")
-  String findSeverityLevel();
+  LiveData<String> getSeverityLevel();
 
 }

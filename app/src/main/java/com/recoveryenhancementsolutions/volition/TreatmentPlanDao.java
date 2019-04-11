@@ -20,8 +20,8 @@ public interface TreatmentPlanDao {
    *
    * @return A LiveData object containing a TreatmentPlan Entity.
    */
-  @Query("SELECT * FROM TreatmentPlanEntity WHERE Id = 1")
-  LiveData<TreatmentPlanEntity> loadTreatmentPlan();
+  @Query("SELECT * FROM TreatmentPlanEntity")
+  LiveData<TreatmentPlanEntity> getTreatmentPlan();
 
   /**
    * Updates a TreatmentPlan Entity in the database.
@@ -36,8 +36,8 @@ public interface TreatmentPlanDao {
    *
    * @param treatmentPlanEntity The TreatmentPlanEntity to be inserted.
    */
-  @Insert(onConflict = REPLACE)
-  void insertTreatmentPlanEntity(TreatmentPlanEntity treatmentPlanEntity);
+  @Insert(onConflict = IGNORE)
+  void insertTreatmentPlanEntity(final TreatmentPlanEntity treatmentPlanEntity);
 
   /**
    * Returns the number of entries in the treatment plan table.
@@ -48,6 +48,8 @@ public interface TreatmentPlanDao {
   Integer getNumTreatmentPlans();
 
   /**
+
+
    * Removes all TreatmentPlanEntities from the database.
    */
   @Query("DELETE FROM TreatmentPlanEntity")

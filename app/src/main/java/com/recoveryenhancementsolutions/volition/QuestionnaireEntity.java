@@ -2,7 +2,6 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 /**
@@ -16,15 +15,14 @@ public class QuestionnaireEntity {
    *
    * @param severityLevel The new severity level
    */
-  public void setSeverityLevel(String severityLevel){
+  public void setSeverityLevel(final String severityLevel) {
     this.severityLevel = severityLevel;
   }
 
   /**
    * Retrieves the current severityLevel
-   * @return
    */
-  public String getSeverityLevel(){
+  public String getSeverityLevel() {
     return severityLevel;
   }
 
@@ -34,6 +32,4 @@ public class QuestionnaireEntity {
   @PrimaryKey
   @NonNull
   private String severityLevel;
-
-
 }
