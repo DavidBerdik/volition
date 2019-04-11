@@ -65,11 +65,23 @@
     app:layout_constraintTop_toTopOf="parent"/>
   <NumberPicker
     android:id="@+id/daily_wellness_number_picker"
-    android:layout_width="79dp"
+    android:layout_width="143dp"
     android:layout_height="135dp"
     android:layout_marginTop="44dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/daily_wellness_title"/>
+  <TextView
+    android:id="@+id/daily_wellness_results"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="100dp"
+    android:text="@string/daily_wellness_rating"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+    android:textColor="@color/text_regular"
+    app:layout_constraintBottom_toTopOf="@+id/activity_back_navigation"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
