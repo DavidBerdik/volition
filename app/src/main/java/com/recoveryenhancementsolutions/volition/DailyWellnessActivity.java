@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
@@ -31,13 +32,23 @@ public class DailyWellnessActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_daily_wellness);
+
+    final int orientation = getResources().getConfiguration().orientation;
+    if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      setContentView(R.layout.activity_daily_wellness_land);
+    } else {
+      setContentView(R.layout.activity_daily_wellness_port);
+    }
 
     final NumberPicker np = findViewById(R.id.daily_wellness_number_picker);
     np.setMinValue(1);
     np.setMaxValue(10);
     np.setValue(5);
     np.setOnValueChangedListener(onValueChangeListener);
+
+    if (lastKnownValue != -1) {
+      np.setValue(lastKnownValue);
+    }
 
     outputs = getResources().getStringArray(R.array.daily_wellness_result_strings);
     dailyWellnessResultsView = findViewById(R.id.daily_wellness_results);
@@ -52,6 +63,7 @@ public class DailyWellnessActivity extends AppCompatActivity {
   }
 
   private String getWellnessString(final int rating) {
+    lastKnownValue = rating;
     return getResources().getString(R.string.daily_wellness_rating) + " " + outputs[rating - 1];
   }
 
@@ -74,4 +86,5 @@ public class DailyWellnessActivity extends AppCompatActivity {
   private Context context;
   private TextView dailyWellnessResultsView;
   private String[] outputs;
+  private static int lastKnownValue = -1;
 }
