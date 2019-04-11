@@ -51,6 +51,7 @@
   <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
   <string name="display_profile_example_date">Replace with the date entered</string>
   <string name="display_profile_continue">Continue</string>
+  <string name="profile_update_profile">Update Profile</string>
   <string name="core_navigation_home">Home</string>
   <string name="core_navigation_activity">Activity</string>
   <string name="core_navigation_plan">Plan</string>

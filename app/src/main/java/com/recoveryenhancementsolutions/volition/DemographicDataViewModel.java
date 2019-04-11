@@ -41,6 +41,16 @@ public class DemographicDataViewModel extends AndroidViewModel {
   }
 
   /**
+   * Retrieves all of the patient's demographic data
+   *
+   * @return A LiveData object containing a DemographicDataEntity containing all of the patient's
+   * demographic data
+   */
+  public LiveData<DemographicDataEntity> getAllDemographicData() {
+    return db.demographicDataDao().getAllDemographicData();
+  }
+
+  /**
    * Retrieves the last date clean as stored in the database.
    *
    * @return A LiveData object containing a Date representing the last listed date of being clean.
@@ -57,11 +67,12 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
     @Override
     protected Void doInBackground(final DemographicDataEntity... params) {
+      demographicDataDao.deleteDemographicInfo();
       demographicDataDao.insertDemographicInfo(params[0]);
       return null;
     }
 
-    private DemographicDataDAO demographicDataDao;
+    private final DemographicDataDAO demographicDataDao;
   }
 
   private VolitionDatabase db;

@@ -2,49 +2,50 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.view.WindowManager;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
-import android.widget.Button;
 import android.content.Intent;
-import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.view.View.OnFocusChangeListener;
-
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
 
-public class CreateProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
+public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
 
 
   /**
    * Checking the selected gender and UseDisorder, if selected, adds to the database
    */
-  public void onItemSelected(AdapterView<?> parent, View view,
-      int pos, long id) {
+  public void onItemSelected(final AdapterView<?> parent, final View view,
+      final int pos, final long id) {
 
     if (parent.getId() == R.id.gender_spinner) {
       if (pos == 0 && spinnerCount > 1) {
         onNothingSelected(parent);
       }
-      String gender = (String) parent.getItemAtPosition(pos);
+      final String gender = (String) parent.getItemAtPosition(pos);
       data.setGender(gender);
     }
 
     if (parent.getId() == R.id.use_type_spinner) {
-      String useType = (String) parent.getItemAtPosition(pos);
+      final String useType = (String) parent.getItemAtPosition(pos);
       if (useType.contains("Alcohol")) {
         data.setDisorderAlcohol(true);
       }
@@ -60,8 +61,8 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   /**
    * Lets user know to select a gender
    */
-  public void onNothingSelected(AdapterView<?> parent) {
-    Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
+  public void onNothingSelected(final AdapterView<?> parent) {
+    final Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
         Toast.LENGTH_SHORT);
     toast.show();
   }
@@ -149,7 +150,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addMethListener() {
-    radioMeth = (RadioButton) findViewById(R.id.radioMeth);
+    radioMeth = findViewById(R.id.radioMeth);
     radioMeth.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -160,7 +161,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addBenListener() {
-    radioBen = (RadioButton) findViewById(R.id.radioBen);
+    radioBen = findViewById(R.id.radioBen);
     radioBen.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -171,7 +172,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   }
 
   public void addTranqListener() {
-    radioTranquilizers = (RadioButton) findViewById(R.id.radioTranquilizers);
+    radioTranquilizers = findViewById(R.id.radioTranquilizers);
     radioTranquilizers.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
@@ -234,13 +235,13 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     addSedativesListener();
     addTranqListener();
 
-    genderSpinner = findViewById(R.id.gender_spinner);
-    useTypeSpinner = findViewById(R.id.use_type_spinner);
+    final Spinner genderSpinner = findViewById(R.id.gender_spinner);
+    final Spinner useTypeSpinner = findViewById(R.id.use_type_spinner);
 
     genderSpinner.setOnItemSelectedListener(this);
     useTypeSpinner.setOnItemSelectedListener(this);
 
-    name = findViewById(R.id.name);
+    final EditText name = findViewById(R.id.name);
     OnFocusChangeListener ofcListener = new FocusListener();
     name.setOnFocusChangeListener(ofcListener);
   }
@@ -251,6 +252,23 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     setContentView(R.layout.activity_create_profile);
 
+    /*
+    If an edit mode intent was passed to this activity with a value of "true", set edit mode
+    to true. Otherwise, set it to false.
+     */
+    editMode = getIntent().getBooleanExtra(EDIT_MODE, false);
+
+     /*
+    If the activity is in edit mode, change the title on the activity to "Edit Profile" and set the
+    text on the record button to "Update Profile."
+     */
+    if (editMode) {
+      this.setTitle("Edit Profile");
+      final Button updateProfile = findViewById(R.id.record_button);
+      updateProfile.setText(R.string.profile_update_profile);
+    }
+
+    // Retrieve the relevant ViewModel for interacting with the database.
     final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
     addAllListeners();
@@ -274,8 +292,6 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
         dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
       }
     };
-
-    final Calendar cleanDateCalendar = Calendar.getInstance();
 
     final DatePickerDialog.OnDateSetListener cleanDateListener = new OnDateSetListener() {
       /**
@@ -303,7 +319,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        */
       @Override
       public void onClick(final View view) {
-        final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
+        final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             dateOfBirthListener, dobCalendar.get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
             dobCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
@@ -319,7 +335,7 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        */
       @Override
       public void onClick(final View view) {
-        final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
+        final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             cleanDateListener, cleanDateCalendar.get(Calendar.YEAR),
             cleanDateCalendar.get(Calendar.MONTH), cleanDateCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
@@ -330,15 +346,6 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
     final Button send;
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(final View v) {
-        data.setPatientName(name.getText().toString());
-
-        demogDataViewModel.insertDemographicData(data);
-        sendOff();
-
-      }
-
       /**
        *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
        * the database. Only these four will be added from my method because Collin is handling
@@ -346,16 +353,141 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
        * latest commit on March 27, 2019. However for now it will be simply a button until
        * confirmation
        */
-      private void sendOff() {
+      @Override
+      public void onClick(final View v) {
+        /*
+        Set the values for the patient's name, date of birth, other drug, and last use date fields
+        and the insert the demographic data in to the database.
+         */
+        EditText name = findViewById(R.id.name);
+        data.setPatientName(name.getText().toString());
+
+        data.setDateOfBirth(dobCalendar.getTime());
+
+        final EditText other = findViewById(R.id.enter_other);
+        data.setUseOther(other.getText().toString());
+
+        data.setLastClean(cleanDateCalendar.getTime());
+
+        demogDataViewModel.insertDemographicData(data);
+
         //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(CreateProfileActivity.this, QuestionnaireActivity.class);
+        Intent intent = new Intent(ProfileActivity.this, QuestionnaireActivity.class);
 
         startActivity(intent);
       }
     });
+
+    /*
+    If the activity is in edit mode, then set the observer to wait for the existing demographic
+    information to be retrieved from the database.
+     */
+    if (editMode) {
+      demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+    }
+
   }
 
-  private DemographicDataEntity data = new DemographicDataEntity();
+  /**
+   * Sets the database component of the activity to use a test database and modifies the observer to
+   * use the in-memory database instead.
+   *
+   * @param db Database to use for testing.
+   */
+  public void setTestMode(final VolitionDatabase db) {
+    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demogDataViewModel.setTestDatabase(db);
+    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+  }
+
+  /**
+   * Observer for retrieving all demographic data for the user.
+   */
+  private Observer<DemographicDataEntity> demographicDataEntityObserver = new Observer<DemographicDataEntity>() {
+    @Override
+    public void onChanged(@Nullable final DemographicDataEntity demographicDataEntity) {
+      // Only try to set the value of each field if "demographicDataEntity" is not null.
+      if (demographicDataEntity != null) {
+        // Set the display of the patient's name.
+        final EditText name = findViewById(R.id.name);
+        name.setText(demographicDataEntity.getPatientName());
+
+        // Set the date of birth in the appropriate calendar and EditText field.
+        dobCalendar.setTime(demographicDataEntity.getDateOfBirth());
+        final EditText dob = findViewById(R.id.date_of_birth);
+        dob.setText(DateFormat.getDateInstance().format(demographicDataEntity.getDateOfBirth()));
+
+        // Set the gender in the gender spinner.
+        final Spinner gender = findViewById(R.id.gender_spinner);
+        for (int x = 0; x < gender.getAdapter().getCount(); x++) {
+          if (gender.getAdapter().getItem(x).toString()
+              .contains(demographicDataEntity.getGender())) {
+            gender.setSelection(x);
+          }
+        }
+
+        // Set the "type" of the person.
+        RadioButton personType;
+        if (demographicDataEntity.isPersonInRecovery()) {
+          personType = findViewById(R.id.radioClient);
+        } else {
+          personType = findViewById(R.id.radioSupport);
+        }
+        personType.toggle();
+
+        // Set the drug of choice.
+        final RadioButton drugOfChoice;
+        if (demographicDataEntity.isUseHeroin()) {
+          drugOfChoice = findViewById(R.id.radioHeroin);
+        } else if (demographicDataEntity.isUseOpiateOrSynth()) {
+          drugOfChoice = findViewById(R.id.radioOpiates);
+        } else if (demographicDataEntity.isUseAlcohol()) {
+          drugOfChoice = findViewById(R.id.radioAlcohol);
+        } else if (demographicDataEntity.isUseCrackOrCocaine()) {
+          drugOfChoice = findViewById(R.id.radioCocaine);
+        } else if (demographicDataEntity.isUseMarijuana()) {
+          drugOfChoice = findViewById(R.id.radioMarijuana);
+        } else if (demographicDataEntity.isUseMethamphetamine()) {
+          drugOfChoice = findViewById(R.id.radioMeth);
+        } else if (demographicDataEntity.isUseBenzo()) {
+          drugOfChoice = findViewById(R.id.radioBen);
+        } else if (demographicDataEntity.isUseNonBeznoTrang()) {
+          drugOfChoice = findViewById(R.id.radioTranquilizers);
+        } else if (demographicDataEntity.isUseBarbituresOrHypno()) {
+          drugOfChoice = findViewById(R.id.radioSedatives);
+        } else if (demographicDataEntity.isUseInhalants()) {
+          drugOfChoice = findViewById(R.id.radioInhalants);
+        } else {
+          drugOfChoice = findViewById(R.id.radioOther);
+        }
+        drugOfChoice.toggle();
+
+        // If the "Other" drug of choice option was chosen, set the "Other Drug" EditText field.
+        if (demographicDataEntity.getUseOther() != null && !demographicDataEntity.getUseOther()
+            .equals("")) {
+          final EditText otherDrug = findViewById(R.id.enter_other);
+          otherDrug.setText(demographicDataEntity.getUseOther());
+        }
+
+        // Set the substance use disorder type.
+        final Spinner disorderType = findViewById(R.id.use_type_spinner);
+        if (demographicDataEntity.isDisorderOpioid()) {
+          disorderType.setSelection(1);
+        } else {
+          disorderType.setSelection(2);
+        }
+
+        // Set the date of last use in the appropriate calendar and EditText field.
+        cleanDateCalendar.setTime(demographicDataEntity.getLastClean());
+        final EditText cleanDate = findViewById(R.id.clean_date);
+        cleanDate
+            .setText(DateFormat.getDateInstance().format(demographicDataEntity.getLastClean()));
+      }
+    }
+  };
+
+  private final DemographicDataEntity data = new DemographicDataEntity();
   private RadioButton radioSupport;
   private RadioButton radioClient;
   private RadioButton radioHeroin;
@@ -368,8 +500,9 @@ public class CreateProfileActivity extends AppCompatActivity implements OnItemSe
   private RadioButton radioTranquilizers;
   private RadioButton radioSedatives;
   private RadioButton radioInhalants;
-  private Spinner genderSpinner;
-  private Spinner useTypeSpinner;
   private int spinnerCount = 0;
-  private EditText name;
+  private boolean editMode;
+  private final Calendar dobCalendar = Calendar.getInstance();
+  private final Calendar cleanDateCalendar = Calendar.getInstance();
+  private final String EDIT_MODE = "editMode";
 }

@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 import java.util.Date;
@@ -25,8 +26,8 @@ public interface DemographicDataDAO {
    *
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
-  @Insert
-  void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  void insertDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
   /**
    * Modifies a patient in the database
@@ -34,8 +35,7 @@ public interface DemographicDataDAO {
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
   @Update
-  void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
-
+  void updateDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
     /*
     Other components of the volition application may need to access the data of the patient.
@@ -45,6 +45,21 @@ public interface DemographicDataDAO {
     */
 
   String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
+
+  /**
+   * Retrieves all of the patient's demographic data
+   *
+   * @return A LiveData object containing a DemographicDataEntity containing all of the patient's
+   * demographic data
+   */
+  @Query("SELECT * " + genericQuery)
+  LiveData<DemographicDataEntity> getAllDemographicData();
+
+  /**
+   * Deletes all demographic data from the database.
+   */
+  @Query("DELETE " + genericQuery)
+  void deleteDemographicInfo();
 
   /**
    * Retrieves the patient name
