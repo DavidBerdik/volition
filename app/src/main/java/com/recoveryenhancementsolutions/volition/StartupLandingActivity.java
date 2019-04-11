@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/**
+ * The starting Activity for the application. Allows the user to select a "Create Profile" button.
+ */
 public class StartupLandingActivity extends AppCompatActivity {
 
   @Override

@@ -16,6 +16,8 @@
     <item>Male</item>
     <item>Other</item>
   </string-array>
+  <string name="create_profile_back_out_title">Leave Profile Creation</string>
+  <string name="create_profile_back_out_content">Are you sure that you\'d like to leave profile creation?</string>
   <string name="create_profile_are_you">Are you:</string>
   <string name="create_profile_client">Person in Recovery/Seeking Recovery</string>
   <string name="create_profile_support">Family or Support Person</string>

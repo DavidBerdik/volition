@@ -2,7 +2,9 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +19,27 @@ import android.content.Intent;
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
 public class CreateProfileActivity extends AppCompatActivity {
+
+  /**
+   * Asks the user if they'd like to leave the Profile Creation context before finishing this page
+   * and sending them back.
+   */
+  @Override
+  public void onBackPressed() {
+    final Builder alert = new Builder(this)
+        .setTitle(R.string.create_profile_back_out_title)
+        .setMessage(R.string.create_profile_back_out_content)
+        .setIcon(android.R.drawable.ic_dialog_alert);
+    alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+      @Override
+      public void onClick(final DialogInterface dialog, final int whichButton) {
+        finish();
+      }
+    });
+    alert.setNegativeButton(android.R.string.no, null);
+    alert.show();
+  }
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
