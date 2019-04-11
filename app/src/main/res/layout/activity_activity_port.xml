@@ -58,12 +58,11 @@
     android:id="@+id/eduCompletedPortrait"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:contentDescription="@string/educompleted"
     android:visibility="invisible"
-    app:layout_constraintEnd_toStartOf="@+id/Edu."
-    app:layout_constraintTop_toTopOf="@+id/Edu."
+    app:layout_constraintEnd_toStartOf="@+id/Edu"
+    app:layout_constraintTop_toTopOf="@+id/Edu"
     app:srcCompat="@mipmap/ic_activity_complete"/>
   <ImageView
     android:id="@+id/JournalCompletedPortrait"
@@ -127,8 +126,8 @@
     android:layout_marginEnd="8dp"
     android:contentDescription="@string/eduincomplete"
     android:visibility="invisible"
-    app:layout_constraintEnd_toStartOf="@+id/Edu."
-    app:layout_constraintTop_toTopOf="@+id/Edu."
+    app:layout_constraintEnd_toStartOf="@+id/Edu"
+    app:layout_constraintTop_toTopOf="@+id/Edu"
     app:srcCompat="@mipmap/ic_activity_incomplete"/>
   <ImageView
     android:id="@+id/jouranlIncompletePortrait"

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import com.recoveryenhancementsolutions.volition.R.id;
 
 /**
  * UI activity that allows the user to choose between different daily activities.
@@ -127,19 +128,17 @@ public class ActivityActivity extends AppCompatActivity {
         A treatment plan entity to handle updates to the database.
        */
       try {
-
+        //Once/if EDU has a corresponding database element, we must add it here and add if logic
         int numberOfTeasFromPlan = newTreatmentPlanEntity.getNumTreatmentEffectivenessAssessment();
         int numberOfLessonsFromPlan = newTreatmentPlanEntity.getNumLessons();
-        int numberOfReportUseFromPlan;
-        int numberOfJournalsFromPlan;
-        int numberOfEdusFromPlan;
-        int numberOfDailyWellnessFromPlan;
+        int numberOfReportUseFromPlan = newTreatmentPlanEntity.getNumTimeTracking();
+        int numberOfJournalsFromPlan = newTreatmentPlanEntity.getNumReadingResponse();
+        int numberOfDailyWellnessFromPlan = newTreatmentPlanEntity.getNumOutcomeMeasures();
 
         int numberOfUserTeasCompleted = TreatmentExperienceAssessmentActivity.numberCompleted;
         int numberOfUserLessonsCompleted = LessonActivity.numberCompleted;
         int numberOfUserReportUseCompleted = ReportUseActivity.numberCompleted;
         int numberOfUserJournalsCompleted = JournalActivity.numberCompleted;
-        int numberOfUserEdusCompleted = EDUActivity.numberCompleted;
         int numberOfUserDailyWellnessCompleted = DailyWellnessActivity.numberCompleted;
         if (numberOfUserTeasCompleted >= numberOfTeasFromPlan) {
           if (isPortrait) {
@@ -165,6 +164,45 @@ public class ActivityActivity extends AppCompatActivity {
             findViewById(R.id.lessonIncompletePortrait).setVisibility(View.VISIBLE);
           } else {
             findViewById(R.id.lessonIncompleteLandscape).setVisibility(View.VISIBLE);
+          }
+        }
+        if (numberOfUserReportUseCompleted >= numberOfReportUseFromPlan) {
+          if (isPortrait) {
+            findViewById(R.id.cleanTrackerCompletedPortrait).setVisibility(View.VISIBLE);
+          } else {
+            findViewById(id.cleanTrackerCompletedLandscape).setVisibility(View.VISIBLE);
+          }
+        } else {
+          if (isPortrait) {
+            findViewById(R.id.cleanTrackerIncompletePortrait).setVisibility(View.VISIBLE);
+          } else {
+            findViewById(id.cleanTrackerIncompleteLandscape).setVisibility(View.VISIBLE);
+          }
+        }
+        if (numberOfUserJournalsCompleted >= numberOfJournalsFromPlan) {
+          if (isPortrait) {
+            findViewById(id.JournalCompletedPortrait).setVisibility(View.VISIBLE);
+          } else {
+            findViewById(id.JournalCompletedLandscape).setVisibility(View.VISIBLE);
+          }
+        } else {
+          if (isPortrait) {
+            findViewById(id.jouranlIncompletePortrait).setVisibility(View.VISIBLE);
+          } else {
+            findViewById(id.JournalIncompleteLandscape).setVisibility(View.VISIBLE);
+          }
+        }
+        if (numberOfUserDailyWellnessCompleted >= numberOfDailyWellnessFromPlan) {
+          if (isPortrait) {
+            findViewById(id.dailyWellnessCompletedPortrait).setVisibility(View.VISIBLE);
+          } else {
+            findViewById(id.dailyWellnessCompletedLandscape).setVisibility(View.VISIBLE);
+          }
+        } else {
+          if (isPortrait) {
+            findViewById(id.dailyWellnessIncompletePortrait).setVisibility(View.VISIBLE);
+          } else {
+            findViewById(id.dailyWellnessIncompleteLandscape).setVisibility(View.VISIBLE);
           }
         }
       } catch (NullPointerException e) {

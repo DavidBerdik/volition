@@ -1,25 +1,25 @@
 package com.recoveryenhancementsolutions.volition;
 
 import static android.support.constraint.Constraints.TAG;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.util.Log;
+import com.recoveryenhancementsolutions.volition.utilities.EspressoTestUtility;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import android.support.test.espresso.Espresso;
-import android.support.test.espresso.intent.Intents;
-
-import com.recoveryenhancementsolutions.volition.utilities.EspressoTestUtility;
-import org.junit.After;
 
 
 public class ActivityActivityTest {
@@ -27,7 +27,6 @@ public class ActivityActivityTest {
   /**
    * Test that the intents are working correctly for each button Probably an espresso test
    */
-
 
 
   @Rule
@@ -44,12 +43,19 @@ public class ActivityActivityTest {
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
 
-    // Sets up some entry data. With this testing data, TEA should be marked incomplete, Lessons should be marked complete
+    // Sets up some entry data. Current data TEA should be green, Lessons should be red, Report use should be green, journal should be red, daily wellness should be green
     treatmentPlanEntity = new TreatmentPlanEntity();
     treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(5);
-    treatmentPlanEntity.setNumLessons(1);
-    TreatmentExperienceAssessmentActivity.numberCompleted = 2;
+    treatmentPlanEntity.setNumLessons(5);
+    treatmentPlanEntity.setNumTimeTracking(5);
+    treatmentPlanEntity.setNumReadingResponse(5);
+    treatmentPlanEntity.setNumOutcomeMeasures(5);
+
+    TreatmentExperienceAssessmentActivity.numberCompleted = 10;
     LessonActivity.numberCompleted = 1;
+    ReportUseActivity.numberCompleted = 10;
+    JournalActivity.numberCompleted = 1;
+    DailyWellnessActivity.numberCompleted = 10;
 
     // Tell the activity to use the testing database.
     activityTestRule.getActivity().onCreateTest(db);
@@ -200,6 +206,7 @@ public class ActivityActivityTest {
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
         ReportUseActivity.class.getName());
   }
+
   private TreatmentPlanEntity treatmentPlanEntity;
   private TreatmentPlanViewModel viewModel;
 }
