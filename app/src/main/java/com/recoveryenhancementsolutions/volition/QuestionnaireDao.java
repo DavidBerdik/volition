@@ -1,11 +1,5 @@
 package com.recoveryenhancementsolutions.volition;
 
-/**
- * Temporary file taken from feature/VOL-50-View-Severity-Level
- * <p>
- * Should be written over by feature/VOL-50-View-Security-Level
- */
-
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 import android.arch.lifecycle.LiveData;
