@@ -162,9 +162,26 @@ public class AdminMenu extends AppCompatActivity
         //boolean alcoholDisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
         //boolean alcohol = demographicDataDao.queryIsUsingAlcohol();
         //boolean Opioddisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
-        boolean heroin = true;
+        boolean heroin = false;
+        boolean Opiate = false;
+        boolean crackorcocaine = false;
+        boolean marajuana = false;
+        boolean meth = false;
+        boolean benzo = true;
+        boolean Nonbenzo = false;
+        boolean barb = false;
+        boolean inhalant = false;
+        boolean useother = false;
+        boolean alcoholDisorder = true;
+        boolean alcohol = false;
+        boolean Opioddisorder = false;
+        boolean Support = true;
+        boolean Client = false;
+        String UseInfo = "REEEE";
+
         int flag =1;
 
+        String test = "yeeted off roof";
         Intent intent = new Intent(AdminMenu.this, CreateProfileActivity.class);
 
         intent.putExtra("age", age);
@@ -176,6 +193,7 @@ public class AdminMenu extends AppCompatActivity
         intent.putExtra("heroin", heroin);
         intent.putExtra("flag", flag);
 
+        intent.putExtra("condition", test);
 
 
         Calendar Cleancalendar = Calendar.getInstance();
@@ -192,9 +210,11 @@ public class AdminMenu extends AppCompatActivity
         intent.putExtra("CYear", Cleanyear);
         intent.putExtra("CMonth", Cleanmonth);
         intent.putExtra("CDay", Cleanday);
-        /*
+
         //intent.putExtra("CleanDate", CleanDate.getValue());
-        intent.putExtra("recovery", recovery);
+       // intent.putExtra("recovery", recovery);
+
+
         intent.putExtra("heroin", heroin);
         intent.putExtra("Opiate", Opiate);
         intent.putExtra("crackorcocaine", crackorcocaine);
@@ -205,12 +225,22 @@ public class AdminMenu extends AppCompatActivity
         intent.putExtra("barb", barb);
         intent.putExtra("inhalant", inhalant);
         intent.putExtra("useother", useother);
-        intent.putExtra("alcoholDisorder", alcoholDisorder);
         intent.putExtra("alcohol",alcohol);
+        intent.putExtra("condition", UseInfo);
+        intent.putExtra("family", Support);
+        intent.putExtra("recovery", Client);
+        String getGender = "Female";
+        intent.putExtra("gender", getGender);
+
+
+        intent.putExtra("alcoholDisorder", alcoholDisorder);
         intent.putExtra("Opioddisorder", Opioddisorder);
-        */
+
+
+
       //  Toast.makeText(getApplicationContext(), "vlaue is "+DOB, Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), "before change"+ year +" " + month + " " + day , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "benzo is "+ benzo, Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 

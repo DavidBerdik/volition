@@ -175,11 +175,111 @@ public class CreateProfileActivity extends AppCompatActivity {
         final EditText cleanDate = findViewById(R.id.clean_date);
         cleanDate.setText(DateFormat.getDateInstance().format(cleanDateCalendar.getTime()));
       }
+
+      final Spinner spinner = (Spinner) findViewById(R.id.gender_spinner);
+
+      String gender = getIntent().getStringExtra("gender");
+
+      if(gender.equals("Male"))
+      {
+        spinner.setSelection(2);
+      }
+      if(gender.equals("Female"))
+      {
+        spinner.setSelection(1);
+      }
+      if(gender.equals("Other"))
+      {
+        spinner.setSelection(3);
+      }
+
+
+      boolean Support = getIntent().getBooleanExtra("family", false);
+      if(Support == true)
+      {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioSupport);
+        rdb.setChecked(true);
+      }
+      boolean Client = getIntent().getBooleanExtra("recovery", false);
+      if(Client == true)
+      {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioClient);
+        rdb.setChecked(true);
+      }
       boolean heroin = getIntent().getBooleanExtra("heroin", false);
-      if (heroin = true) {
+      if (heroin == true) {
         RadioButton rdb = (RadioButton) findViewById(R.id.radioHeroin);
         rdb.setChecked(true);
       }
+      boolean Opiate = getIntent().getBooleanExtra("Opiate", false);
+      if (Opiate == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioOpiates);
+        rdb.setChecked(true);
+      }
+      boolean crackorcocaine = getIntent().getBooleanExtra("CrackCocaine", false);
+      if (crackorcocaine == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioCocaine);
+        rdb.setChecked(true);
+      }
+      boolean marajuana = getIntent().getBooleanExtra("Marajuana", false);
+      if (marajuana == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioMarijuana);
+        rdb.setChecked(true);
+      }
+      boolean meth = getIntent().getBooleanExtra("Meth", false);
+      if (meth == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioMeth);
+        rdb.setChecked(true);
+      }
+      boolean benzo = getIntent().getBooleanExtra("benzo", false);
+      if (benzo == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioBen);
+        rdb.setChecked(true);
+      }
+      boolean Nonbenzo = getIntent().getBooleanExtra("NonBenzo", false);
+      if (Nonbenzo == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioTranquilizers);
+        rdb.setChecked(true);
+      }
+      boolean barb = getIntent().getBooleanExtra("Barb", false);
+      if (barb == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioSedatives);
+        rdb.setChecked(true);
+      }
+      boolean inhalant = getIntent().getBooleanExtra("Inhalant", false);
+      if (inhalant == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioInhalants);
+        rdb.setChecked(true);
+      }
+      //String useother = getIntent().getStringExtra("useother");
+      //boolean alcoholDisorder = getIntent().getBooleanExtra("AlcoholDisorder", false);
+      boolean alcohol = getIntent().getBooleanExtra("Alcohol", false);
+      if (alcohol == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioAlcohol);
+        rdb.setChecked(true);
+      }
+      //boolean Opioddisorder = getIntent().getBooleanExtra("Opiod", false);
+
+      boolean other = getIntent().getBooleanExtra("useother", false);
+      if (other == true) {
+        RadioButton rdb = (RadioButton) findViewById(R.id.radioOther);
+        String condition = getIntent().getStringExtra("condition");
+        final EditText OtherCondition = findViewById(R.id.enter_other);
+        OtherCondition.setText(condition);
+        rdb.setChecked(true);
+      }
+
+      final Spinner DisorderSpinner = (Spinner) findViewById(R.id.use_type_spinner);
+      boolean AlcoholDisorder = getIntent().getBooleanExtra("alcoholDisorder", false);
+      if (AlcoholDisorder == true) {
+        DisorderSpinner.setSelection(2);
+      }
+      boolean OpioidDisorder = getIntent().getBooleanExtra("Opioddisorder", false);
+      if (OpioidDisorder == true) {
+        DisorderSpinner.setSelection(1);
+      }
+
+
 /*i
     if(DOB/
     try {
