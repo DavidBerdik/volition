@@ -40,7 +40,7 @@ public class ActivityActivityTest {
     treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(5);
     treatmentPlanEntity.setNumLessons(1);
     TreatmentAssessmentActivity.numberCompleted = 2;
-    LessonActivity.numberCompleted=1;
+    LessonActivity.numberCompleted = 1;
 
     // Tell the activity to use the testing database.
     activityTestRule.getActivity().onCreateTest(db);

@@ -175,12 +175,11 @@ public class ActivityActivity extends AppCompatActivity {
     }
   };
 
-    /*
+  /*
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
   @Override
-  public void onResume()
-  {
+  public void onResume() {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
   }
