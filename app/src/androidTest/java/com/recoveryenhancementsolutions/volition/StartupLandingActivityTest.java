@@ -52,6 +52,12 @@ public class StartupLandingActivityTest {
     Espresso.pressBack();
     Espresso.pressBack();
 
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
     // Click the no button.
     onView(withId(android.R.id.button2)).perform(click());
 
@@ -61,6 +67,12 @@ public class StartupLandingActivityTest {
 
     // Open the cancel Menu again.
     pressBack();
+
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
 
     // Click the yes button.
     onView(withId(android.R.id.button1)).perform(click());
