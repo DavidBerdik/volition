@@ -150,7 +150,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
     }
 
     protected Void doInBackground(final Void... params) {
-
       // If you want to clear and initialize the database, place code here such as in the following commented-out example:
             /*
             // Start the app with a lean database every time.
