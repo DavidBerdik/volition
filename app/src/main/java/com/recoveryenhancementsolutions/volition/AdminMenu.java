@@ -15,6 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.Toast;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -132,11 +135,18 @@ public class AdminMenu extends AppCompatActivity
 
         int age = 12;
         String name = "yeet";
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 2015);
-        calendar.set(Calendar.MONTH, 4);
-        calendar.set(Calendar.DATE, 28);
-        Date DOB = calendar.getTime();
+        Calendar bcalendar = Calendar.getInstance();
+        bcalendar.set(Calendar.YEAR, 2015);
+        bcalendar.set(Calendar.MONTH, 11);
+        bcalendar.set(Calendar.DAY_OF_MONTH, 28);
+
+
+        //DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy");
+        int year = bcalendar.get((Calendar.YEAR));
+        int month = bcalendar.get((Calendar.MONTH));
+        int day = bcalendar.get((Calendar.DAY_OF_MONTH));
+
+        // String test = calendar.set(Calendar.YEAR, 2015);
         //LiveData<Date> CleanDate = demographicDataDao.queryLastCleanDate();
         //boolean recovery = demographicDataDao.queryIsInRecovery();
         //boolean heroin = demographicDataDao.queryIsUsingHeroin();
@@ -152,12 +162,36 @@ public class AdminMenu extends AppCompatActivity
         //boolean alcoholDisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
         //boolean alcohol = demographicDataDao.queryIsUsingAlcohol();
         //boolean Opioddisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
+        boolean heroin = true;
+        int flag =1;
 
         Intent intent = new Intent(AdminMenu.this, CreateProfileActivity.class);
 
         intent.putExtra("age", age);
         intent.putExtra("name", name);
-        intent.putExtra("DOB", calendar);
+       // intent.putExtra("DOB", datebirth);
+        intent.putExtra("BYear", year);
+        intent.putExtra("BMonth", month);
+        intent.putExtra("BDay", day);
+        intent.putExtra("heroin", heroin);
+        intent.putExtra("flag", flag);
+
+
+
+        Calendar Cleancalendar = Calendar.getInstance();
+
+        Cleancalendar.set(Calendar.YEAR, 2016);
+        Cleancalendar.set(Calendar.MONTH, 3);
+        Cleancalendar.set(Calendar.DAY_OF_MONTH, 29);
+
+
+        //DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy");
+        int Cleanyear = Cleancalendar.get((Calendar.YEAR));
+        int Cleanmonth = Cleancalendar.get((Calendar.MONTH));
+        int Cleanday = Cleancalendar.get((Calendar.DAY_OF_MONTH));
+        intent.putExtra("CYear", Cleanyear);
+        intent.putExtra("CMonth", Cleanmonth);
+        intent.putExtra("CDay", Cleanday);
         /*
         //intent.putExtra("CleanDate", CleanDate.getValue());
         intent.putExtra("recovery", recovery);
@@ -175,7 +209,8 @@ public class AdminMenu extends AppCompatActivity
         intent.putExtra("alcohol",alcohol);
         intent.putExtra("Opioddisorder", Opioddisorder);
         */
-
+      //  Toast.makeText(getApplicationContext(), "vlaue is "+DOB, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "before change"+ year +" " + month + " " + day , Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 
