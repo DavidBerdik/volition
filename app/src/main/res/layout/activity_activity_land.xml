@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@drawable/ic_page_border">
@@ -111,4 +112,13 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:menu="@menu/core_navigation"/>
+  <ImageView
+    android:id="@+id/bottomBorder"
+    android:layout_width="730dp"
+    android:layout_height="12dp"
+    android:contentDescription="@string/activity_bottom_border"
+    app:layout_constraintBottom_toTopOf="@+id/core_navigation"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:srcCompat="@color/res_gold"/>
 </android.support.constraint.ConstraintLayout>
