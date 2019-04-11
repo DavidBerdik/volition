@@ -24,6 +24,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Loads the activities for each day and displays them to the user.
@@ -231,7 +232,7 @@ public class PlanActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
           final String dayString = DateFormat.getDateInstance(DateFormat.FULL,
-              getResources().getConfiguration().locale).format(day.getTime());
+              Locale.getDefault()).format(day.getTime());
           PlanNoteView.create(dayString, notes).show(getSupportFragmentManager());
         }
       });
@@ -246,7 +247,7 @@ public class PlanActivity extends AppCompatActivity {
       this.day = (Calendar) day.clone();
       if (title != null) {
         String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-            getResources().getConfiguration().locale).charAt(0) + "";
+            Locale.getDefault()).charAt(0) + "";
         title.setText(str);
       }
     }
