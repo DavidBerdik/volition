@@ -20,9 +20,9 @@ import android.view.View.OnClickListener;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.text.DateFormat;
 import java.util.List;
 import java.util.Locale;
 
