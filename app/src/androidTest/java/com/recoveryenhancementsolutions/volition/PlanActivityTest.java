@@ -120,7 +120,16 @@ public class PlanActivityTest {
       "Note 4",
       "Note 5",
       "Note 6",
-      "Note 7"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices tellus at vehicula"
+          + "imperdiet. Pellentesque eu libero in ipsum ultrices pharetra at vitae lacus. Proin"
+          + "pellentesque, velit in luctus dapibus, sapien odio blandit massa, at egestas risus"
+          + "velit vel ex. Vivamus quis commodo purus. Vestibulum ante ipsum primis in faucibus"
+          + "orci luctus et ultrices posuere cubilia Curae; Pellentesque vehicula eget ante eget"
+          + "maximus. Pellentesque id magna sem. Nunc a nisi consequat, lacinia erat at, dignissim"
+          + "mi. Curabitur elementum quis lacus et facilisis. Nunc dictum tristique turpis. Mauris"
+          + "ac eleifend risus, id ullamcorper ante. Vivamus ac erat mauris. Pellentesque habitant"
+          + "morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ac"
+          + "arcu eu felis interdum feugiat."
   };
   private VolitionDatabase db;
 }

@@ -5,6 +5,10 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class PlanNoteView extends DialogFragment {
 
@@ -31,15 +35,27 @@ public class PlanNoteView extends DialogFragment {
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    final LayoutInflater inflater = requireActivity().getLayoutInflater();
+    final View view = inflater.inflate(R.layout.activity_plan_note_view, null);
+    final TextView content = (TextView) view.findViewById(R.id.plan_note_view_text);
     final String notes = getArguments().getString("notes");
 
+    builder.setView(view);
+
     builder.setTitle(getArguments().getString(("day")));
+
     if (notes == null || notes.isEmpty()) {
-      builder.setMessage(getString(R.string.plan_note_view_no_notes));
+      content.setText(getString(R.string.plan_note_view_no_notes));
     } else {
-      builder.setMessage(notes);
+      content.setText(notes);
     }
-    builder.setPositiveButton(getString(R.string.plan_note_view_done), null);
+
+    view.findViewById(R.id.plan_note_view_done).setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        dismiss();
+      }
+    });
 
     return builder.create();
   }
