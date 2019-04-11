@@ -136,7 +136,7 @@
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_bottom_border"> Bottom Border</string>
   <string name="volition">Volition</string>
-  <string name="readJournalResponce">Reading Responce / Journal</string>
+  <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="menubar_home">Home</string>
   <string name="menubar_activity">Activity</string>
   <string name="menubar_plan">Plan</string>
