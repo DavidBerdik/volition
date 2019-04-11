@@ -347,11 +347,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
       /**
-       *Upon Clicking, "Record Answers" Birthday, name, gender, and CleanDate will be added to
-       * the database. Only these four will be added from my method because Collin is handling
-       * the outputs from the buttons and is adding them to the database according to his
-       * latest commit on March 27, 2019. However for now it will be simply a button until
-       * confirmation
+       * When the "Record Answers" button is clicked, update the database and send the user to
+       * the questionnaire.
        */
       @Override
       public void onClick(final View v) {
