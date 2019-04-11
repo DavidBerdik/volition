@@ -2,12 +2,13 @@
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@drawable/ic_page_border">
 
   <ImageView
-    android:id="@+id/imageView2"
+    android:id="@+id/resBackground"
     android:layout_width="390dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="150dp"
@@ -48,12 +49,14 @@
     app:layout_constraintTop_toTopOf="parent"/>
   <Button
     android:id="@+id/confirmDosage"
-    android:layout_width="wrap_content"
+    android:layout_width="96dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="52dp"
     android:layout_marginEnd="50dp"
     android:background="@drawable/ic_button_rectangle"
     android:text="@string/dosage_choice_confirm"
+    android:textColor="#000000"
+    android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/dosage_message"/>
 </android.support.constraint.ConstraintLayout>
