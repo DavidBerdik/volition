@@ -202,18 +202,23 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       int dur = Toast.LENGTH_SHORT;
       Toast toast = Toast.makeText(context, msg, dur);
       toast.show();
+      String s;
 
       try {
         if (treatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")) {
-          medManagementDescView.setText("Medication Management per Month");
+          s = "Medication Management per Month";
+          medManagementDescView.setText(s);
         } else {
-          medManagementDescView.setText("Medication Management per Week");
+          s = "Medication Management per Week";
+          medManagementDescView.setText(s);
         }
 
         if (treatmentPlanEntity.getOutcomeMeasureFrequency().equals("WEEKLY")) {
-          outcomeMeasureDescView.setText("Outcome Measures per Week");
+          s = "Outcome Measures per Week";
+          outcomeMeasureDescView.setText(s);
         } else {
-          outcomeMeasureDescView.setText("Outcome Measures per Day");
+          s = "Outcome Measures per Day";
+          outcomeMeasureDescView.setText(s);
         }
       } catch (NullPointerException e) {
         Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
@@ -284,7 +289,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = counselingView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumCounseling(num);
-      counselingView.setText(Integer.toString(num));
+      s = "" + num;
+      counselingView.setText(s);
     }
   }
 
@@ -301,7 +307,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumCounseling(num);
-      counselingView.setText(Integer.toString(num));
+      s = "" + num;
+      counselingView.setText(s);
     }
   }
 
@@ -313,7 +320,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = medManagementView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumMedManagement(num);
-      medManagementView.setText(Integer.toString(num));
+      s = "" + num;
+      medManagementView.setText(s);
     }
   }
 
@@ -330,7 +338,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumMedManagement(num);
-      medManagementView.setText(Integer.toString(num));
+      s = "" + num;
+      medManagementView.setText(s);
     }
   }
 
@@ -342,7 +351,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = supportMeetingView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumSupportMeeting(num);
-      supportMeetingView.setText(Integer.toString(num));
+      s = "" + num;
+      supportMeetingView.setText(s);
     }
   }
 
@@ -359,7 +369,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumSupportMeeting(num);
-      supportMeetingView.setText(Integer.toString(num));
+      s = "" + num;
+      supportMeetingView.setText(s);
     }
   }
 
@@ -371,7 +382,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = outcomeMeasureView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumOutcomeMeasures(num);
-      outcomeMeasureView.setText(Integer.toString(num));
+      s = "" + num;
+      outcomeMeasureView.setText(s);
     }
   }
 
@@ -388,7 +400,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumOutcomeMeasures(num);
-      outcomeMeasureView.setText(Integer.toString(num));
+      s = "" + num;
+      outcomeMeasureView.setText(s);
     }
   }
 
@@ -400,7 +413,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = lessonView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumLessons(num);
-      lessonView.setText(Integer.toString(num));
+      s = "" + num;
+      lessonView.setText(s);
     }
   }
 
@@ -417,7 +431,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumLessons(num);
-      lessonView.setText(Integer.toString(num));
+      s = "" + num;
+      lessonView.setText(s);
     }
   }
 
@@ -429,7 +444,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = treatmentEffectiveView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(num);
-      treatmentEffectiveView.setText(Integer.toString(num));
+      s = "" + num;
+      treatmentEffectiveView.setText(s);
     }
   }
 
@@ -446,7 +462,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumTreatmentEffectivenessAssessment(num);
-      treatmentEffectiveView.setText(Integer.toString(num));
+      s = "" + num;
+      treatmentEffectiveView.setText(s);
     }
   }
 
@@ -458,7 +475,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = timeTrackingView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumTimeTracking(num);
-      timeTrackingView.setText(Integer.toString(num));
+      s = "" + num;
+      timeTrackingView.setText(s);
     }
   }
 
@@ -475,7 +493,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumTimeTracking(num);
-      timeTrackingView.setText(Integer.toString(num));
+      s = "" + num;
+      timeTrackingView.setText(s);
     }
   }
 
@@ -487,7 +506,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       String s = readingResponseView.getText().toString();
       int num = Integer.parseInt(s) + 1;
       treatmentPlanEntity.setNumReadingResponse(num);
-      readingResponseView.setText(Integer.toString(num));
+      s = "" + num;
+      readingResponseView.setText(s);
     }
   }
 
@@ -504,7 +524,8 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         num--;
       }
       treatmentPlanEntity.setNumReadingResponse(num);
-      readingResponseView.setText(Integer.toString(num));
+      s = "" + num;
+      readingResponseView.setText(s);
     }
   }
 
@@ -561,16 +582,22 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         newTreatmentPlan.setNumMedManagement(1);
       }
     }
-
-    counselingView.setText(Integer.toString(newTreatmentPlan.getNumCounseling()));
-    medManagementView.setText(Integer.toString(newTreatmentPlan.getNumMedManagement()));
-    supportMeetingView.setText(Integer.toString(newTreatmentPlan.getNumSupportMeeting()));
-    lessonView.setText(Integer.toString(newTreatmentPlan.getNumLessons()));
-    treatmentEffectiveView
-        .setText(Integer.toString(newTreatmentPlan.getNumTreatmentEffectivenessAssessment()));
-    outcomeMeasureView.setText(Integer.toString(newTreatmentPlan.getNumOutcomeMeasures()));
-    timeTrackingView.setText(Integer.toString(newTreatmentPlan.getNumTimeTracking()));
-    readingResponseView.setText(Integer.toString(newTreatmentPlan.getNumReadingResponse()));
+    String s = "" + newTreatmentPlan.getNumCounseling();
+    counselingView.setText(s);
+    s = "" + newTreatmentPlan.getNumMedManagement();
+    medManagementView.setText(s);
+    s = "" + newTreatmentPlan.getNumSupportMeeting();
+    supportMeetingView.setText(s);
+    s = "" + newTreatmentPlan.getNumLessons();
+    lessonView.setText(s);
+    s = "" + newTreatmentPlan.getNumTreatmentEffectivenessAssessment();
+    treatmentEffectiveView.setText(s);
+    s = "" + newTreatmentPlan.getNumOutcomeMeasures();
+    outcomeMeasureView.setText(s);
+    s = "" + newTreatmentPlan.getNumTimeTracking();
+    timeTrackingView.setText(s);
+    s = "" + newTreatmentPlan.getNumReadingResponse();
+    readingResponseView.setText(s);
 
     treatmentPlanEntity = newTreatmentPlan;
     treatmentPlanLoaded = true;
