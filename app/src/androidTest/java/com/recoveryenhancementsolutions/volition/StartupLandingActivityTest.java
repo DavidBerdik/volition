@@ -16,6 +16,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Tests the StartupLandingPage activity and it's interactions with other pages.
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class StartupLandingActivityTest {
@@ -24,6 +27,9 @@ public class StartupLandingActivityTest {
   public ActivityTestRule<StartupLandingActivity> activityTestRule = new ActivityTestRule<>(
       StartupLandingActivity.class);
 
+  /**
+   * Test the continued use of the Create Profile button and back-out navigation.
+   */
   @Test
   public void startupLandingActivityTest() {
     // Check that we're on the StartupLandingActivity class.
