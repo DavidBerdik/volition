@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -48,13 +49,12 @@ public class TreatmentPlanActivityTest {
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(TreatmentPlanViewModel.class);
     viewModel.setTestDatabase(db);
+
   }
 
   @Test
   public void testTreatmentPlanViewModel() {
     // Allow the database one second to update.
-
-    //New Text Data
 
   }
 
