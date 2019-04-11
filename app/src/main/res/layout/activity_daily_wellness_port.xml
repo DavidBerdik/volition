@@ -83,5 +83,13 @@
     app:layout_constraintBottom_toTopOf="@+id/activity_back_navigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"/>
-
+  <ImageView
+    android:id="@+id/bottomBorder"
+    android:layout_width="730dp"
+    android:layout_height="12dp"
+    android:contentDescription="@string/app_name"
+    app:layout_constraintBottom_toTopOf="@+id/activity_back_navigation"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:srcCompat="@color/res_gold"/>
 </android.support.constraint.ConstraintLayout>
