@@ -26,14 +26,6 @@ public class CreateProfileActivity extends AppCompatActivity {
    */
   @Override
   public void onBackPressed() {
-    if (isBackAlertDisplayed) {
-      finish();
-      return;
-    }
-    else {
-      isBackAlertDisplayed = true;
-    }
-
     // Create an alert for people to confirm with the user their intent to back out.
     final Builder alert = new Builder(this)
         .setTitle(R.string.create_profile_back_out_title)
@@ -45,18 +37,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         finish();
       }
     });
-    alert.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(final DialogInterface dialog, final int whichButton) {
-        isBackAlertDisplayed = false;
-      }
-    });
-    alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
-      @Override
-      public void onCancel(final DialogInterface dialog) {
-        isBackAlertDisplayed = false;
-      }
-    });
+    alert.setNegativeButton(android.R.string.no, null);
     alert.show();
   }
 
@@ -64,8 +45,6 @@ public class CreateProfileActivity extends AppCompatActivity {
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_create_profile);
-
-    isBackAlertDisplayed = false;
 
     final Calendar dobCalendar = Calendar.getInstance();
 
@@ -163,6 +142,4 @@ public class CreateProfileActivity extends AppCompatActivity {
     });
 
   }
-
-  private boolean isBackAlertDisplayed;
 }
