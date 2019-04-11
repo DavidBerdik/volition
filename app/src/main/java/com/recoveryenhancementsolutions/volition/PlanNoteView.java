@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+/**
+ * Displays all notes for the selected day in a scroll view.
+ */
 public class PlanNoteView extends DialogFragment {
 
   public static final String TAG = "plan-note-view";
