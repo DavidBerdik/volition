@@ -86,9 +86,4 @@
   doses a day would you like to take?</string>
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
-<<<<<<< HEAD
 </resources>
-=======
-  <string name="res_logo_background">Logo</string>
-</resources>
->>>>>>> a91f39d68c9d38b4d8fe73f1f29e8ab9026b4fb9

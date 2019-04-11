@@ -42,6 +42,7 @@ public class ReportUseActivityTest {
    */
   @Before
   public void loadTestEnvironment() {
+    DemographicDataEntity demographicDataEntity;
     // Create a test database instead of the app's real database.
     final Context context = InstrumentationRegistry.getTargetContext();
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
@@ -109,10 +110,10 @@ public class ReportUseActivityTest {
     try {
       Calendar cal = Calendar.getInstance();
       //Initial state: both the last clean and last report should be the initial day
-      assertTrue(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate())
-          .equals(initialLogDay));
-      assertTrue(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate())
-          .equals(initialLogDay));
+      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
+          initialLogDay);
+      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()),
+          initialLogDay);
 
       //click No: Last clean should be the same, last report should be updated
       onView(withId(R.id.report_use_no)).perform(click());
@@ -134,7 +135,6 @@ public class ReportUseActivityTest {
 
   private final Calendar today = Calendar.getInstance();
   private final Date initialLogDay = new Date(1546318800000L); //January 1st, 2019
-  private DemographicDataEntity demographicDataEntity;
   private DemographicDataViewModel viewModel;
   private final String TAG = "RepUseActivityTest";
 }

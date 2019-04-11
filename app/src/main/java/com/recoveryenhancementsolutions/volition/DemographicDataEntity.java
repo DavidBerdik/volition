@@ -10,6 +10,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+
+/**
+ * Entity for storing demographic information
+ */
 @Entity
 @SuppressWarnings({"unused", "WeakerAccess", "FieldCanBeLocal"})
 /*
@@ -22,11 +26,8 @@ Currently set and get can be called by any class provided they have access to
 the object.  I am unaware of how other components may need this so I will hold
 off on setting these methods package-private
 */
-
-/**
- * Entity for storing demographic information
- */
 public class DemographicDataEntity {
+
   /**
    * get patient name
    *
@@ -78,7 +79,8 @@ public class DemographicDataEntity {
     //Strips time and passes calendar date
     final Calendar cal = Calendar.getInstance();
     cal.setTime(dateOfBirth);
-    setDateOfBirth(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    setDateOfBirth(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
@@ -91,7 +93,7 @@ public class DemographicDataEntity {
   public void setDateOfBirth(final int year, final int month, final int day) {
     try {
       this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
-              + month + "-" + day);
+          + month + "-" + day);
     } catch (final ParseException e) {
       Log.e("DemographicDataEntity", Log.getStackTraceString(e));
     }
@@ -341,8 +343,10 @@ public class DemographicDataEntity {
     final Calendar useRCal = Calendar.getInstance();
     cal.setTime(lastClean);
     useRCal.setTime(lastUseReport);
-    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
-    setLastUseReport(useRCal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.DAY_OF_MONTH));
+    setLastUseReport(useRCal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
@@ -355,14 +359,14 @@ public class DemographicDataEntity {
   public void setLastClean(final int year, final int month, final int day) {
     try {
       this.lastClean = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
-              + month + "-" + day);
+          + month + "-" + day);
     } catch (final ParseException e) {
       Log.e("DemographicDataEntity", "Last clean set");
     }
   }
 
   //Here because the other methods are not recognized as setters
-  public void setLastClean(final @NonNull Date lastClean){
+  public void setLastClean(final @NonNull Date lastClean) {
     setLastClean(lastClean, new Date(0));
   }
 
@@ -375,7 +379,8 @@ public class DemographicDataEntity {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
     cal.setTime(lastUseReport);
-    setLastUseReport(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    setLastUseReport(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
@@ -388,11 +393,12 @@ public class DemographicDataEntity {
   public void setLastUseReport(final int year, final int month, final int day) {
     try {
       this.lastUseReport = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
-              + month + "-" + day);
+          + month + "-" + day);
     } catch (final ParseException e) {
       Log.e("DemographicDataEntity", "lastUseReport set");
     }
   }
+
   /**
    * @param fetchID id for fetching
    */

@@ -51,16 +51,16 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:focusableInTouchMode="false"
         android:ems="10"
+        android:focusableInTouchMode="false"
         android:hint="@string/create_profile_date_of_birth"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/gender_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="@string/create_profile_date_of_birth"
-        tools:ignore="Autofill"/>
+        tools:ignore="Autofill"
+        tools:text="@string/create_profile_date_of_birth"/>
       <Spinner
         android:id="@+id/gender_spinner"
         android:layout_width="fill_parent"
