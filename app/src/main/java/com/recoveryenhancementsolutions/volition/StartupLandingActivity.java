@@ -8,6 +8,6 @@ public class StartupLandingActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_startup_landing);
+    setContentView(R.layout.activity_startup_landing_port);
   }
 }
