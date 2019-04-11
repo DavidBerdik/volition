@@ -48,7 +48,8 @@ public class ActivityActivity extends AppCompatActivity {
     teaButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(final View view) {
-        startActivity(new Intent(ActivityActivity.this, TreatmentExperienceAssessmentActivity.class));
+        startActivity(
+            new Intent(ActivityActivity.this, TreatmentExperienceAssessmentActivity.class));
       }
     });
 
@@ -221,6 +222,7 @@ public class ActivityActivity extends AppCompatActivity {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
   }
+
   private TreatmentPlanViewModel viewModel;
   private boolean isPortrait = false;
   private BottomNavigationView bottomNavigationView;
