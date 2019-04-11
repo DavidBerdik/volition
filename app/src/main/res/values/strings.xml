@@ -92,9 +92,9 @@
   <string name="supportMeeting">Support Meeting</string>
   <string name="outcomeMeasure">Outcome Measure</string>
   <string name="lessonPlanner">Lesson Planner</string>
-  <string name="treatmentEffectivnessAssessment">Treatment Plan Effectivness Assessment</string>
+  <string name="treatmentEffectivenessAssessment">Treatment Plan Effectiveness Assessment</string>
   <string name="cleanTimeTracking">Clean Time Tracking</string>
-  <string name="readlResponceJournal">Read and Responce Journal</string>
+  <string name="readResponseJournal">Read and Response Journal</string>
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>

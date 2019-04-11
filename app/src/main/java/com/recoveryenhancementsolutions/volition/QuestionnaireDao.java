@@ -1,4 +1,8 @@
 package com.recoveryenhancementsolutions.volition;
+/**
+ * TODO: Overwrite with VOL-50-View-Severity-Level
+ * Currently only supports minimum functionality to create a treatment plan
+ */
 
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 

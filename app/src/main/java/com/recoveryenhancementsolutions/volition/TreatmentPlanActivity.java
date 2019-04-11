@@ -98,6 +98,16 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     final TreatmentPlanViewModel treatmentPlanViewModel = ViewModelProviders.of(this)
         .get(TreatmentPlanViewModel.class);
     treatmentPlanViewModel.setTestDatabase(db);
+
+    //initializes values for observer tests.
+    medObserved = false;
+    questionnaireObserved = false;
+
+    //Initializes observers. Note during tests this triggers 3 additional toasts that do not appear
+    //during regular initialization
+    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
+    viewModel.getMedicationChoiceEntity().observe(this, medObserver);
+    viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
   }
 
   /**
