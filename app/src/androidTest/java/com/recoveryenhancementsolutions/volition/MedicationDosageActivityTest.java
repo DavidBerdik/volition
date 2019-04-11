@@ -43,6 +43,8 @@ public class MedicationDosageActivityTest {
 
   /**
    * Creates the test for the activity
+   * The test starts by choosing the medication as it is required for dosing. After choosing dosing
+   * Then the test checks that the medication was entered correctly and then add the dose to the table
    */
   @Test
   public void medicationDosageActivityTest() {
@@ -91,6 +93,8 @@ public class MedicationDosageActivityTest {
                 2),
             isDisplayed()));
     appCompatButton2.perform(click());
+
+
   }
 
   private static Matcher<View> childAtPosition(
