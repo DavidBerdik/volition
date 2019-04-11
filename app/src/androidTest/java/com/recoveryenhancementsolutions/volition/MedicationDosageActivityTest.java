@@ -4,6 +4,7 @@ package com.recoveryenhancementsolutions.volition;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -23,31 +24,58 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-/**
- * This tests if a dosage selection works after a medication is chosen
- */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MedicationDosageActivityTest {
 
   /**
-   * Creates the test object
+   * Creates tht test object
    */
   @Rule
   public ActivityTestRule<MedicationChoiceActivity> mActivityTestRule = new ActivityTestRule<>(
       MedicationChoiceActivity.class);
 
   /**
-   * Creates the test for the activity
-   * The test starts by choosing the medication as it is required for dosing. After choosing dosing
-   * Then the test checks that the medication was entered correctly and then add the dose to the table
+   * Tests that the buttons, text, and content all match what they are intended to say and do
    */
   @Test
   public void medicationDosageActivityTest() {
+    ViewInteraction textView = onView(
+        allOf(withId(R.id.textViewMed),
+            withText("Would you like to take Buprenorphine or abstain?"),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                1),
+            isDisplayed()));
+    textView.check(matches(withText("Would you like to take Buprenorphine or abstain?")));
+
+    ViewInteraction button = onView(
+        allOf(withId(R.id.medication),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                2),
+            isDisplayed()));
+    button.check(matches(isDisplayed()));
+
+    ViewInteraction button2 = onView(
+        allOf(withId(R.id.abstain),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                3),
+            isDisplayed()));
+    button2.check(matches(isDisplayed()));
+
     ViewInteraction appCompatButton = onView(
         allOf(withId(R.id.medication), withText("Buprenorphine"),
             childAtPosition(
@@ -67,6 +95,38 @@ public class MedicationDosageActivityTest {
       e.printStackTrace();
     }
 
+    ViewInteraction textView2 = onView(
+        allOf(withId(R.id.dosage_message), withText(
+            "You have chosen to take Buprenorphine. How many doses a day would you like to take?"),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                1),
+            isDisplayed()));
+    textView2.check(matches(withText(
+        "You have chosen to take Buprenorphine. How many doses a day would you like to take?")));
+
+    ViewInteraction button3 = onView(
+        allOf(withId(R.id.confirmDosage),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                3),
+            isDisplayed()));
+    button3.check(matches(isDisplayed()));
+
+    ViewInteraction spinner = onView(
+        allOf(withId(R.id.dosage_spinner),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                2),
+            isDisplayed()));
+    spinner.check(matches(isDisplayed()));
+
     ViewInteraction appCompatSpinner = onView(
         allOf(withId(R.id.dosage_spinner),
             childAtPosition(
@@ -84,6 +144,17 @@ public class MedicationDosageActivityTest {
         .atPosition(3);
     appCompatTextView.perform(click());
 
+    ViewInteraction textView3 = onView(
+        allOf(withId(android.R.id.text1), withText("4"),
+            childAtPosition(
+                allOf(withId(R.id.dosage_spinner),
+                    childAtPosition(
+                        IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class),
+                        2)),
+                0),
+            isDisplayed()));
+    textView3.check(matches(withText("4")));
+
     ViewInteraction appCompatButton2 = onView(
         allOf(withId(R.id.confirmDosage), withText("Confirm"),
             childAtPosition(
@@ -93,8 +164,6 @@ public class MedicationDosageActivityTest {
                 2),
             isDisplayed()));
     appCompatButton2.perform(click());
-
-
   }
 
   private static Matcher<View> childAtPosition(
