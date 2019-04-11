@@ -26,13 +26,11 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="35dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:alpha=".33"
         android:contentDescription="@string/res_logo_background"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,11 +39,13 @@
       <Button
         android:id="@+id/updateButton"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="38dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_button_rectangle"
         android:text="@string/update"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subReadResponceJournalButton"/>
 
@@ -55,8 +55,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/treatmentEffectivenessAssessment"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -66,8 +66,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@id/lessonPlanner"
         app:layout_constraintStart_toStartOf="@+id/imageView"/>
 
@@ -77,8 +77,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         android:visibility="visible"
         app:layout_constraintBaseline_toBaselineOf="@id/counseling"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,8 +90,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@id/outcomeMeasure"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="188dp"/>
@@ -102,8 +102,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/cleanTimeTracking"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -113,8 +113,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/readingResponceJournal"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -128,7 +128,8 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -138,8 +139,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:text=""
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/supportGroupMeeting"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -165,7 +166,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addLessonPlannerButton"
         app:layout_constraintTop_toBottomOf="@+id/subOutcomeMeasureButton"/>
 
@@ -180,7 +181,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addMedManagementButton"
         app:layout_constraintTop_toBottomOf="@+id/subCounselButton"/>
 
@@ -197,7 +198,7 @@
         android:text="@string/sub"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addCounselButton"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -223,8 +224,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/counseling"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subCounselButton"
         app:layout_constraintEnd_toStartOf="@+id/subCounselButton"
         app:layout_constraintHorizontal_bias="0.0"
@@ -241,7 +242,7 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addMedManagementButton"/>
 
@@ -252,8 +253,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/cleanTimeTracking"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subCleanTimeTrackingButton"
         app:layout_constraintEnd_toStartOf="@+id/subCleanTimeTrackingButton"
         app:layout_constraintHorizontal_bias="0.286"
@@ -267,8 +268,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/outcomeMeasure"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subOutcomeMeasureButton"
         app:layout_constraintEnd_toStartOf="@+id/subOutcomeMeasureButton"
         app:layout_constraintHorizontal_bias="0.286"
@@ -285,7 +286,8 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCounselButton"/>
 
@@ -296,8 +298,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/supportMeeting"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subSupportGroupButton"
         app:layout_constraintEnd_toStartOf="@+id/subSupportGroupButton"
         app:layout_constraintHorizontal_bias="0.286"
@@ -311,8 +313,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/medManagement"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subMedMangaementButton"
         app:layout_constraintEnd_toStartOf="@+id/subMedMangaementButton"
         app:layout_constraintHorizontal_bias="0.286"
@@ -326,8 +328,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/treatmentEffectivenessAssessment"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subTreatmentEffectivenessAssessmentButton"
         app:layout_constraintEnd_toStartOf="@+id/subTreatmentEffectivenessAssessmentButton"
         app:layout_constraintHorizontal_bias="0.286"
@@ -341,8 +343,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/readResponseJournal"
-        android:textColor="#555555"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/subReadResponceJournalButton"
         app:layout_constraintEnd_toStartOf="@+id/subReadResponceJournalButton"
         app:layout_constraintHorizontal_bias="0.286"
@@ -360,7 +362,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addSupportGroupMeetingButton"
         app:layout_constraintTop_toBottomOf="@+id/subMedMangaementButton"/>
 
@@ -375,7 +377,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addOutcomeMeasureButton"
         app:layout_constraintTop_toBottomOf="@+id/subSupportGroupButton"/>
 
@@ -390,7 +392,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addTreatmentEffectivnessAssessmentButton"
         app:layout_constraintTop_toBottomOf="@+id/subLessonPlannerButton"/>
 
@@ -405,7 +407,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addCleanTimeTrackingButton"
         app:layout_constraintTop_toBottomOf="@+id/subTreatmentEffectivenessAssessmentButton"/>
 
@@ -420,7 +422,7 @@
         android:backgroundTint="@color/res_green"
         android:text="@string/sub"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addReadResponceJournalButton"
         app:layout_constraintTop_toBottomOf="@+id/subCleanTimeTrackingButton"/>
 
@@ -434,7 +436,8 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCleanTimeTrackingButton"/>
 
@@ -448,7 +451,8 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTreatmentEffectivnessAssessmentButton"/>
 
@@ -462,7 +466,8 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addLessonPlannerButton"/>
 
@@ -476,7 +481,8 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addSupportGroupMeetingButton"/>
 
@@ -490,16 +496,20 @@
         android:backgroundTint="@color/res_gold"
         android:text="@string/add"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addOutcomeMeasureButton"/>
       <Button
         android:id="@+id/finishButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="38dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_button_rectangle"
         android:text="@string/finish_button"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/updateButton"
         app:layout_constraintEnd_toStartOf="@+id/updateButton"
         app:layout_constraintStart_toStartOf="parent"/>

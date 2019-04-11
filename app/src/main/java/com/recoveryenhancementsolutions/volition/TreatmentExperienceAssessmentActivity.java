@@ -10,7 +10,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_treatment_assessment);
+    setContentView(R.layout.activity_treatment_experience_assessment);
   }
 
 }
