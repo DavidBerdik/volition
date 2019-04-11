@@ -75,7 +75,6 @@
   <string name="lesson_title"> Lesson Page</string>
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
-  <string name="daily_wellness_title"> Daily Wellness Page</string>
   <string name="treatment_assessment_title"> TEA Page</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
@@ -107,5 +106,21 @@
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
   <string name="treatmentPlan_name">Recommended Treatment Plan</string>
   <string name="finish_button">Finish</string>
+  <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
+  <string name="daily_wellness_title">Report your Daily Wellness</string>
+  <string name="daily_wellness_rating">Your Rating:</string>
+  <string-array name="daily_wellness_result_strings">
+    <item>1 (Poor)</item>
+    <item>2 (Poor)</item>
+    <item>3 (Poor)</item>
+    <item>4 (Moderate)</item>
+    <item>5 (Moderate)</item>
+    <item>6 (Moderate)</item>
+    <item>7 (Moderate)</item>
+    <item>8 (Great)</item>
+    <item>9 (Great)</item>
+    <item>10 (Great)</item>
+  </string-array>
+  <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_bottom_border"> Bottom Border</string>
 </resources>
