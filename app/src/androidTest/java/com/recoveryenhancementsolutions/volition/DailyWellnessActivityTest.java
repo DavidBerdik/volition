@@ -13,6 +13,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Tests the functionality of the DailyWellnessActivity without database interaction.
+ */
 @RunWith(AndroidJUnit4.class)
 public class DailyWellnessActivityTest {
 
@@ -20,6 +23,9 @@ public class DailyWellnessActivityTest {
   public ActivityTestRule<DailyWellnessActivity> activityTestRule = new ActivityTestRule<>(
       DailyWellnessActivity.class);
 
+  /**
+   * Tests the functionality of the NumberPicker and its live updates.
+   */
   @Test
   public void dailyWellnessActivityTest() {
     // Confirm the default page setting.
