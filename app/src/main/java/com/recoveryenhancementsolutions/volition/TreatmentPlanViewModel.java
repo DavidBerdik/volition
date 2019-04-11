@@ -18,20 +18,21 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   public TreatmentPlanViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
+    treatmentPlanDao = db.treatmentPlanDao();
   }
 
   /**
    * Inserts a new treatment plan into the database.
    */
-  public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
-    insert(treatmentPlanEntity);
+  public static void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**
-   * Updates the database with the values of treatmentPlan.
+   * Inserts a new treatment plan into the database.
    */
-  public void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity){
-    db.treatmentPlanDao().updateTreatmentPlanEntity(treatmentPlanEntity);
+  public static void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+    new updateAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
   }
 
   /**
@@ -41,8 +42,9 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    * @param db The VolitionDatabase to use for testing the ViewModel
    */
   public void setTestDatabase(final VolitionDatabase db) {
-    db.close();
+    this.db.close();
     this.db = db;
+    treatmentPlanDao = this.db.treatmentPlanDao();
   }
 
   /**
@@ -68,17 +70,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @return A string representing the user's severity level.
    */
-  public LiveData<String> getQuestionnaireEntity(){
-    return db.questionnaireDao().getSeverityLevel();
-  }
-
-  /**
-   * Inserts treatment plan into the database using a background thread
-   *
-   * @param treatmentPlanEntity the entity to be added to the database.
-   */
-  void insert(final TreatmentPlanEntity treatmentPlanEntity) {
-    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
+  public LiveData<QuestionnaireEntity> getQuestionnaireEntity() {
+    return db.questionnaireDao().getQuestionnaire();
   }
 
   /**
@@ -86,18 +79,35 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    */
   private static class insertAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
 
-    private final TreatmentPlanDao mAsyncTaskDao;
-
     insertAsyncTask(final TreatmentPlanDao dao) {
-      mAsyncTaskDao = dao;
+      asyncTaskDao = dao;
     }
 
     @Override
     protected Void doInBackground(final TreatmentPlanEntity... params) {
-      mAsyncTaskDao.insertTreatmentPlanEntity(params[0]);
+      asyncTaskDao.insertTreatmentPlanEntity(params[0]);
       return null;
     }
 
+    private final TreatmentPlanDao asyncTaskDao;
+  }
+
+  /**
+   * Used to update data into the database asynchronously
+   */
+  private static class updateAsyncTask extends AsyncTask<TreatmentPlanEntity, Void, Void> {
+
+    updateAsyncTask(final TreatmentPlanDao dao) {
+      asyncTaskDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final TreatmentPlanEntity... params) {
+      asyncTaskDao.updateTreatmentPlanEntity(params[0]);
+      return null;
+    }
+
+    private final TreatmentPlanDao asyncTaskDao;
   }
 
   /**
@@ -106,7 +116,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   private VolitionDatabase db;
 
   /**
-   * The treatmentPlans Dao
+   * The treatmentPlan's Dao
    */
-  private TreatmentPlanDao treatmentPlanDao;
+  private static TreatmentPlanDao treatmentPlanDao;
 }

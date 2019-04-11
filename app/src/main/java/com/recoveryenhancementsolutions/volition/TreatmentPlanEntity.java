@@ -7,14 +7,14 @@ import android.support.annotation.NonNull;
 /**
  * Database entity for storing the User Treatment Plan.
  */
-@Entity
+@Entity(tableName = "TreatmentPlanEntity")
 public class TreatmentPlanEntity {
 
   /**
    * Returns the treatment plan's id.
    * @return
    */
-  public int getId(){
+  public long getId(){
     return Id;
   }
 
@@ -241,7 +241,7 @@ public class TreatmentPlanEntity {
    *
    * @param id The new id for the treatment plan.
    */
-  public void setId(int id){
+  public void setId(long id){
     this.Id = id;
   }
 
@@ -250,7 +250,7 @@ public class TreatmentPlanEntity {
    */
   @PrimaryKey
   @NonNull
-  private int Id;
+  private long Id;
 
   /**
    * Stores the number of times the user should go to counseling.

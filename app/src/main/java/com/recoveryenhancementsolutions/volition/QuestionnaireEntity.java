@@ -32,6 +32,4 @@ public class QuestionnaireEntity {
   @PrimaryKey
   @NonNull
   private String severityLevel;
-
-
 }
