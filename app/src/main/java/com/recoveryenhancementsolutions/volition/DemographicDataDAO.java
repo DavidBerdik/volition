@@ -4,6 +4,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 import java.util.Date;
@@ -26,7 +27,7 @@ public interface DemographicDataDAO {
    *
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
   void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
 
   /**
@@ -53,7 +54,7 @@ public interface DemographicDataDAO {
    * @return a string with the patient name
    */
   @Query("SELECT patientName " + genericQuery)
-  String queryPatientName();
+  LiveData<String> queryPatientName();
 
   /**
    * Retrieves the patient age
@@ -61,7 +62,7 @@ public interface DemographicDataDAO {
    * @return an int with the patient age
    */
   @Query("SELECT age " + genericQuery)
-  int queryPatientAge();
+  LiveData<Integer> queryPatientAge();
 
   /**
    * Retrieves the patient DoB
@@ -69,7 +70,7 @@ public interface DemographicDataDAO {
    * @return a Date with the Date of Birth of the patient
    */
   @Query("SELECT dateOfBirth " + genericQuery)
-  Date queryDoB();
+  LiveData<Date> queryDoB();
 
   /**
    * Retrieves the patient gender
@@ -77,7 +78,7 @@ public interface DemographicDataDAO {
    * @return a String with the gender of the patient
    */
   @Query("SELECT gender " + genericQuery)
-  String queryPatientGender();
+  LiveData<String> queryPatientGender();
 
   /**
    * Retrieves the patient recovery status
@@ -85,7 +86,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating the patient status, with true indicating in recovery
    */
   @Query("SELECT isPersonInRecovery " + genericQuery)
-  boolean queryIsInRecovery();
+  LiveData<Boolean> queryIsInRecovery();
 
   /**
    * Retrieves the patient use of heroin
@@ -93,7 +94,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useHeroin " + genericQuery)
-  boolean queryIsUsingHeroin();
+  LiveData<Boolean> queryIsUsingHeroin();
 
   /**
    * Retrieves the patient usage of Opiates/Synthetics
@@ -101,7 +102,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useOpiateOrSynth " + genericQuery)
-  boolean queryIsUsingOpiateOrSynth();
+  LiveData<Boolean> queryIsUsingOpiateOrSynth();
 
   /**
    * Retrieves the patient usage of Alcohol
@@ -109,7 +110,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useAlcohol " + genericQuery)
-  boolean queryIsUsingAlcohol();
+  LiveData<Boolean> queryIsUsingAlcohol();
 
   /**
    * Retrieves the patient usage of Crack/Cocaine
@@ -117,7 +118,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useCrackOrCocaine " + genericQuery)
-  boolean queryIsUsingCrackOrCo();
+  LiveData<Boolean> queryIsUsingCrackOrCo();
 
   /**
    * Retrieves the patient usage of Marijuana
@@ -125,7 +126,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useMarijuana " + genericQuery)
-  boolean queryIsUsingMarijuana();
+  LiveData<Boolean> queryIsUsingMarijuana();
 
   /**
    * Retrieves the patient usage of Meth
@@ -133,7 +134,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useMethamphetamine " + genericQuery)
-  boolean queryIsUsingMeth();
+  LiveData<Boolean> queryIsUsingMeth();
 
   /**
    * Retrieves the patient usage of Benzodiazepines
@@ -141,7 +142,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useBenzo " + genericQuery)
-  boolean queryIsUsingBenzo();
+  LiveData<Boolean> queryIsUsingBenzo();
 
   /**
    * Retrieves the patient usage of Tranquilizers
@@ -149,7 +150,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useNonBeznoTrang " + genericQuery)
-  boolean queryIsUsingNonBenzoTranq();
+  LiveData<Boolean> queryIsUsingNonBenzoTranq();
 
   /**
    * Retrieves the patient usage of Barbiturates or Hypnotics
@@ -157,7 +158,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useBarbituresOrHypno " + genericQuery)
-  boolean queryIsUsingBarbOrHypno();
+  LiveData<Boolean> queryIsUsingBarbOrHypno();
 
   /**
    * Retrieves the patient usage of Inhalants
@@ -165,7 +166,7 @@ public interface DemographicDataDAO {
    * @return a boolean indicating true or false
    */
   @Query("SELECT useInhalants " + genericQuery)
-  boolean queryIsUsingInhalants();
+  LiveData<Boolean> queryIsUsingInhalants();
 
   /**
    * Retrieves the patient's other drugs (Ones that do not fall in the categories above)
@@ -173,7 +174,7 @@ public interface DemographicDataDAO {
    * @return a String containing the other drug(s) used
    */
   @Query("SELECT useOther " + genericQuery)
-  String queryOtherUsedDrugs();
+  LiveData<String> queryOtherUsedDrugs();
 
   /**
    * Retrieves whether patient is suffering from alcohol disorder
@@ -181,7 +182,7 @@ public interface DemographicDataDAO {
    * @return a boolean describing whether the patient has an alcohol disorder
    */
   @Query("SELECT disorderAlcohol " + genericQuery)
-  boolean queryIsHavingAlcoholDisorder();
+  LiveData<Boolean> queryIsHavingAlcoholDisorder();
 
   /**
    * Retrieves whether patient is suffering from an opioid disorder
@@ -189,7 +190,7 @@ public interface DemographicDataDAO {
    * @return a boolean describing whether the patient has an opioid disorder
    */
   @Query("SELECT disorderOpioid " + genericQuery)
-  boolean queryIsHavingOpioidDisorder();
+  LiveData<Boolean> queryIsHavingOpioidDisorder();
 
   /**
    * Retrieves the patient last clean date
@@ -198,4 +199,12 @@ public interface DemographicDataDAO {
    */
   @Query("SELECT lastClean " + genericQuery)
   LiveData<Date> queryLastCleanDate();
+
+  /**
+   * Retrieves the entire patient, needs more testing
+   *
+   * @return the patient
+   */
+  @Query("SELECT * " + genericQuery)
+  LiveData<DemographicDataEntity> queryGetPatient();
 }

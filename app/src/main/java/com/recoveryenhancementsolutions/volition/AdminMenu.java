@@ -1,7 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,47 +13,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.content.Intent;
 import android.widget.Toast;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
-
 public class AdminMenu extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final Button send;
-        final Button send2;
-        final Button send3;
-        send = findViewById(R.id.button);
-        send2 = findViewById(R.id.button2);
-        send3 = findViewById(R.id.button3);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                    .setAction("Action", null).show();
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -61,7 +50,7 @@ public class AdminMenu extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -93,7 +82,7 @@ public class AdminMenu extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -104,59 +93,60 @@ public class AdminMenu extends AppCompatActivity
         else if (id == R.id.retake_ques) {toRetakeQuestionnaire();}
         else if (id == R.id.clinical_overview) {toClinicalOverview();}
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     private void toEditProfile() {
 
+        DemographicDataViewModel demographicDataViewModel = new DemographicDataViewModel(getApplication());//view model instance
+        int age;
+        try {
+            age = Integer.parseInt(demographicDataViewModel.getPatientAge().getValue() + "");
+        }
+        catch(NumberFormatException e){
+            age = 0;
+        }
 
-        int age = 12;
-        String name = "yeet";
+        String name = demographicDataViewModel.getPatientName().getValue();
         Calendar bcalendar = Calendar.getInstance();
-        bcalendar.set(Calendar.YEAR, 2015);
-        bcalendar.set(Calendar.MONTH, 11);
-        bcalendar.set(Calendar.DAY_OF_MONTH, 28);
 
+        int year;
+        int month;
+        int day;
+        try {
+            bcalendar.set(Calendar.YEAR, demographicDataViewModel.getDOB().getValue().getYear());
+            bcalendar.set(Calendar.MONTH, demographicDataViewModel.getDOB().getValue().getMonth());
+            bcalendar.set(Calendar.DAY_OF_MONTH, demographicDataViewModel.getDOB().getValue().getDay());
 
-        //DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy");
-        int year = bcalendar.get((Calendar.YEAR));
-        int month = bcalendar.get((Calendar.MONTH));
-        int day = bcalendar.get((Calendar.DAY_OF_MONTH));
+            //DateFormat dateFormat = new SimpleDateFormat("mm-dd-yyyy");
+            year = bcalendar.get((Calendar.YEAR));
+            month = bcalendar.get((Calendar.MONTH));
+            day = bcalendar.get((Calendar.DAY_OF_MONTH));
+        }
+        catch(Exception e){
+            year = 1950;
+            month = 0;
+            day = 0;
+        }
 
-        // String test = calendar.set(Calendar.YEAR, 2015);
-        //LiveData<Date> CleanDate = demographicDataDao.queryLastCleanDate();
-        //boolean recovery = demographicDataDao.queryIsInRecovery();
-        //boolean heroin = demographicDataDao.queryIsUsingHeroin();
-        //boolean Opiate = demographicDataDao.queryIsUsingOpiateOrSynth();
-        //boolean crackorcocaine = demographicDataDao.queryIsUsingCrackOrCo();
-        //boolean marajuana = demographicDataDao.queryIsUsingMarijuana();
-        //boolean meth = demographicDataDao.queryIsUsingMeth();
-        //boolean benzo = demographicDataDao.queryIsUsingBenzo();
-        //boolean Nonbenzo = demographicDataDao.queryIsUsingNonBenzoTranq();
-        //boolean barb = demographicDataDao.queryIsUsingBarbOrHypno();
-        //boolean inhalant = demographicDataDao.queryIsUsingInhalants();
-        //String useother = demographicDataDao.queryOtherUsedDrugs();
-        //boolean alcoholDisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
-        //boolean alcohol = demographicDataDao.queryIsUsingAlcohol();
-        //boolean Opioddisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
-        boolean heroin = false;
-        boolean Opiate = false;
-        boolean crackorcocaine = false;
-        boolean marajuana = false;
-        boolean meth = false;
-        boolean benzo = true;
-        boolean Nonbenzo = false;
-        boolean barb = false;
-        boolean inhalant = false;
-        boolean useother = false;
-        boolean alcoholDisorder = true;
-        boolean alcohol = false;
-        boolean Opioddisorder = false;
-        boolean Support = true;
-        boolean Client = false;
-        String UseInfo = "REEEE";
+        boolean heroin = Boolean.parseBoolean(demographicDataViewModel.getUseHeroin().getValue()+"");
+        boolean Opiate = Boolean.parseBoolean(demographicDataViewModel.getUseOpiateOrSynth().getValue()+"");
+        boolean crackorcocaine = Boolean.parseBoolean(demographicDataViewModel.getUseCrackOrCocaine().getValue()+"");
+        boolean marajuana = Boolean.parseBoolean(demographicDataViewModel.getUseMarijuana().getValue()+"");
+        boolean meth = Boolean.parseBoolean(demographicDataViewModel.getUseMethamphetamine().getValue()+"");
+        boolean benzo = Boolean.parseBoolean(demographicDataViewModel.getUseBenzo().getValue()+"");
+        boolean Nonbenzo = Boolean.parseBoolean(demographicDataViewModel.getUseNonBenzo().getValue()+"");
+        boolean barb = Boolean.parseBoolean(demographicDataViewModel.getUseBarbitures().getValue()+"");
+        boolean inhalant = Boolean.parseBoolean(demographicDataViewModel.getUseInhalants().getValue()+"");
+        boolean useother =  !(demographicDataViewModel.getUseOtherDrug().getValue() == null);
+        boolean alcoholDisorder = Boolean.parseBoolean(demographicDataViewModel.getAlcoholDisorder().getValue()+"");
+        boolean alcohol = Boolean.parseBoolean(demographicDataViewModel.getUseAlcohol().getValue()+"");
+        boolean Opioddisorder = Boolean.parseBoolean(demographicDataViewModel.getOpioidDisorder().getValue()+"");
+        boolean Support = !Boolean.parseBoolean(demographicDataViewModel.getInRecovery().getValue()+"");
+        boolean Client = Boolean.parseBoolean(demographicDataViewModel.getInRecovery().getValue()+"");
+        String UseInfo = demographicDataViewModel.getUseOtherDrug().getValue();
 
         int flag =1;
 
@@ -165,7 +155,7 @@ public class AdminMenu extends AppCompatActivity
 
         intent.putExtra("age", age);
         intent.putExtra("name", name);
-       // intent.putExtra("DOB", datebirth);
+        // intent.putExtra("DOB", datebirth);
         intent.putExtra("BYear", year);
         intent.putExtra("BMonth", month);
         intent.putExtra("BDay", day);
@@ -191,7 +181,7 @@ public class AdminMenu extends AppCompatActivity
         intent.putExtra("CDay", Cleanday);
 
         //intent.putExtra("CleanDate", CleanDate.getValue());
-       // intent.putExtra("recovery", recovery);
+        // intent.putExtra("recovery", recovery);
 
 
         intent.putExtra("heroin", heroin);
@@ -208,7 +198,7 @@ public class AdminMenu extends AppCompatActivity
         intent.putExtra("condition", UseInfo);
         intent.putExtra("family", Support);
         intent.putExtra("recovery", Client);
-        String getGender = "Female";
+        String getGender = demographicDataViewModel.getPatientGender().getValue();
         intent.putExtra("gender", getGender);
 
 
@@ -217,7 +207,7 @@ public class AdminMenu extends AppCompatActivity
 
 
 
-      //  Toast.makeText(getApplicationContext(), "vlaue is "+DOB, Toast.LENGTH_LONG).show();
+        //  Toast.makeText(getApplicationContext(), "vlaue is "+DOB, Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), "before change"+ year +" " + month + " " + day , Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), "benzo is "+ benzo, Toast.LENGTH_LONG).show();
         startActivity(intent);
