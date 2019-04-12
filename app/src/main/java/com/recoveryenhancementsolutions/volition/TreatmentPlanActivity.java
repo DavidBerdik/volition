@@ -272,8 +272,9 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private void onUpdateButtonClicked() {
     try {
+      Date startDate = treatmentPlanEntity.getLastUpdate();
       int hours = DateConverter
-          .hoursBetween(treatmentPlanEntity.getLastUpdate(), Calendar.getInstance().getTime());
+          .hoursBetween(startDate, Calendar.getInstance().getTime());
 
       //Checks if the cool down time has been reached
       if (treatmentPlanLoaded) {
