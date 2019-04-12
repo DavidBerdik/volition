@@ -62,7 +62,7 @@ public class TreatmentPlanActivityTest {
 
     // Allow the app time to update.
     try {
-      Thread.sleep(1000);
+      Thread.sleep(3000);
     } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
