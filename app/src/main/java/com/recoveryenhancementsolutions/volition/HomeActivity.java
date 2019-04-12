@@ -49,7 +49,6 @@ public class HomeActivity extends AppCompatActivity {
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
-
     daysCleanMessage = findViewById(R.id.clean);
 
     final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
