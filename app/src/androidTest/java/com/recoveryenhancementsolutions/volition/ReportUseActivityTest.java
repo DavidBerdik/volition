@@ -110,7 +110,6 @@ public class ReportUseActivityTest {
       Log.e(TAG, Log.getStackTraceString(e));
     }
   }
-<<<<<<< HEAD
 
   /**
    * Hits the yes button and then records a date using the Date Picker
@@ -161,6 +160,4 @@ public class ReportUseActivityTest {
   private DemographicDataViewModel viewModel;
   private final String TAG = "RepUseActivityTest";
 }
-=======
-}
->>>>>>> 20f02ed9c01af65cfb054ff9acc69ac5b4179d9e
+
