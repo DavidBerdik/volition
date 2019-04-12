@@ -26,8 +26,7 @@ android {
         disable 'GoogleAppIndexingWarning'
         disable 'AllowBackup'
         disable 'RtlHardcoded'
-
-
+        disable 'IconDipSize', 'IconDuplicatesConfig'
     }
 }
 
@@ -43,22 +42,32 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     // Latest versions:
     // See https://developer.android.com/jetpack/androidx/releases/lifecycle
     // and https://developer.android.com/jetpack/androidx/releases/room
     def lifecycle_version = "1.1.1"
     def room_version = "1.1.1"
+    def espresso_version = "3.0.2"
+
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+
     // Test helpers: Only needed for automated testing
+    testImplementation 'junit:junit:4.12'
     testImplementation "android.arch.core:core-testing:$lifecycle_version"
     testImplementation "android.arch.persistence.room:testing:$room_version"
+
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation "android.arch.core:core-testing:$lifecycle_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:3.0.2"
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    androidTestImplementation "android.arch.core:core-testing:$lifecycle_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espresso_version"
+
 }

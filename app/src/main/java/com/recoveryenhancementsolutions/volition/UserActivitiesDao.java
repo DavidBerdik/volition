@@ -48,3 +48,4 @@ public interface UserActivitiesDao {
   @Query("SELECT * FROM UserActivityEntity WHERE date = :date")
   LiveData<List<UserActivityEntity>> getActivitiesByDate(final Date date);
 }
+

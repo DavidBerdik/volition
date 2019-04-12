@@ -85,7 +85,7 @@ public class HomeActivityTest {
     // Allow the UI one second to update.
     try {
       Thread.sleep(1000);
-    } catch(InterruptedException ex) {
+    } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
