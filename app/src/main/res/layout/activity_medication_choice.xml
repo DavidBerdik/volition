@@ -7,15 +7,29 @@
   android:layout_height="match_parent"
   android:background="@drawable/ic_page_border"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
-  tools:context=".MedicationChoiceActivity"
-  tools:showIn="@layout/activity_medication_choice">
+  tools:context=".MedicationChoiceActivity">
 
+  <ImageView
+    android:id="@+id/resBackground"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".5"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/pic"/>
   <Button
     android:id="@+id/medication"
     style="@style/Widget.AppCompat.Button.Colored"
     android:layout_width="150sp"
     android:layout_height="50sp"
-    android:layout_marginTop="536dp"
+    android:layout_marginTop="390dp"
     android:layout_marginBottom="101dp"
     android:layout_marginStart="10sp"
     android:layout_marginEnd="30sp"
@@ -32,7 +46,7 @@
     style="@style/Widget.AppCompat.Button.Colored"
     android:layout_width="150sp"
     android:layout_height="50sp"
-    android:layout_marginTop="536dp"
+    android:layout_marginTop="390dp"
     android:layout_marginBottom="101dp"
     android:layout_marginStart="16sp"
     android:layout_marginEnd="10sp"
@@ -50,17 +64,18 @@
     android:textStyle="bold"
     android:layout_width="350sp"
     android:layout_height="150sp"
-    android:layout_marginTop="102sp"
+    android:layout_marginTop="140dp"
     android:layout_marginBottom="317dp"
     android:gravity="center"
     android:text="@string/medication_choice_question"
-    android:textColor="#555555"
+    android:textColor="@color/text_regular"
     android:textSize="35sp"
     app:layout_constraintBottom_toTopOf="@+id/abstain"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     />
+<<<<<<< HEAD
   <ImageView
     android:id="@+id/imageView3"
     android:layout_width="wrap_content"
@@ -74,4 +89,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:srcCompat="@drawable/pic"/>
+=======
+>>>>>>> eea7789b0b7e97a95d7b2085baf0b8ce8eb3bd33
 </android.support.constraint.ConstraintLayout>
