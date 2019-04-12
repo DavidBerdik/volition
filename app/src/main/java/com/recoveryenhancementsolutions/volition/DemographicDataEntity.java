@@ -23,10 +23,8 @@ the object.  I am unaware of how other components may need this so I will hold
 off on setting these methods package-private
 */
 
-/**
- * Entity for storing demographic information
- */
 public class DemographicDataEntity {
+
   /**
    * get patient name
    *
@@ -60,7 +58,7 @@ public class DemographicDataEntity {
    *
    * @param age age of patient
    */
-  public void setAge(int age) {
+  public void setAge(final int age) {
     this.age = age;
   }
 
@@ -74,11 +72,12 @@ public class DemographicDataEntity {
   /**
    * @param dateOfBirth the date of birth
    */
-  public void setDateOfBirth(Date dateOfBirth) {
+  public void setDateOfBirth(final Date dateOfBirth) {
     //Strips time and passes calendar date
     final Calendar cal = Calendar.getInstance();
     cal.setTime(dateOfBirth);
-    setDateOfBirth(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    setDateOfBirth(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
@@ -107,7 +106,7 @@ public class DemographicDataEntity {
   /**
    * @param gender gender of patient
    */
-  public void setGender(String gender) {
+  public void setGender(final String gender) {
     this.gender = gender;
   }
 
@@ -121,7 +120,7 @@ public class DemographicDataEntity {
   /**
    * @param personInRecovery sets if the person is in recovery
    */
-  public void setPersonInRecovery(boolean personInRecovery) {
+  public void setPersonInRecovery(final boolean personInRecovery) {
     isPersonInRecovery = personInRecovery;
   }
 
@@ -135,7 +134,7 @@ public class DemographicDataEntity {
   /**
    * @param useHeroin sets the use of heroin
    */
-  public void setUseHeroin(boolean useHeroin) {
+  public void setUseHeroin(final boolean useHeroin) {
     this.useHeroin = useHeroin;
   }
 
@@ -149,7 +148,7 @@ public class DemographicDataEntity {
   /**
    * @param useOpiateOrSynth sets use of synthetics or other opiates
    */
-  public void setUseOpiateOrSynth(boolean useOpiateOrSynth) {
+  public void setUseOpiateOrSynth(final boolean useOpiateOrSynth) {
     this.useOpiateOrSynth = useOpiateOrSynth;
   }
 
@@ -163,7 +162,7 @@ public class DemographicDataEntity {
   /**
    * @param useAlcohol sets use of alcohol
    */
-  public void setUseAlcohol(boolean useAlcohol) {
+  public void setUseAlcohol(final boolean useAlcohol) {
     this.useAlcohol = useAlcohol;
   }
 
@@ -177,7 +176,7 @@ public class DemographicDataEntity {
   /**
    * @param useCrackOrCocaine sets use of crack or cocaine
    */
-  public void setUseCrackOrCocaine(boolean useCrackOrCocaine) {
+  public void setUseCrackOrCocaine(final boolean useCrackOrCocaine) {
     this.useCrackOrCocaine = useCrackOrCocaine;
   }
 
@@ -191,7 +190,7 @@ public class DemographicDataEntity {
   /**
    * @param useMarijuana sets use of Marijuana
    */
-  public void setUseMarijuana(boolean useMarijuana) {
+  public void setUseMarijuana(final boolean useMarijuana) {
     this.useMarijuana = useMarijuana;
   }
 
@@ -205,7 +204,7 @@ public class DemographicDataEntity {
   /**
    * @param useMethamphetamine sets use of methamphetamine
    */
-  public void setUseMethamphetamine(boolean useMethamphetamine) {
+  public void setUseMethamphetamine(final boolean useMethamphetamine) {
     this.useMethamphetamine = useMethamphetamine;
   }
 
@@ -219,7 +218,7 @@ public class DemographicDataEntity {
   /**
    * @param useBenzo sets use of benzodiazepines
    */
-  public void setUseBenzo(boolean useBenzo) {
+  public void setUseBenzo(final boolean useBenzo) {
     this.useBenzo = useBenzo;
   }
 
@@ -233,7 +232,7 @@ public class DemographicDataEntity {
   /**
    * @param useNonBeznoTrang set use of tranquilizers
    */
-  public void setUseNonBeznoTrang(boolean useNonBeznoTrang) {
+  public void setUseNonBeznoTrang(final boolean useNonBeznoTrang) {
     this.useNonBeznoTrang = useNonBeznoTrang;
   }
 
@@ -247,7 +246,7 @@ public class DemographicDataEntity {
   /**
    * @param useBarbituresOrHypno set use of barbitures or hypnotics
    */
-  public void setUseBarbituresOrHypno(boolean useBarbituresOrHypno) {
+  public void setUseBarbituresOrHypno(final boolean useBarbituresOrHypno) {
     this.useBarbituresOrHypno = useBarbituresOrHypno;
   }
 
@@ -261,7 +260,7 @@ public class DemographicDataEntity {
   /**
    * @param useInhalants sets use of inhalants
    */
-  public void setUseInhalants(boolean useInhalants) {
+  public void setUseInhalants(final boolean useInhalants) {
     this.useInhalants = useInhalants;
   }
 
@@ -275,7 +274,7 @@ public class DemographicDataEntity {
   /**
    * @param useOther sets the use of other drugs
    */
-  public void setUseOther(String useOther) {
+  public void setUseOther(final String useOther) {
     this.useOther = useOther;
   }
 
@@ -289,7 +288,7 @@ public class DemographicDataEntity {
   /**
    * @param disorderOpioid sets if the patient has an opioid disorder
    */
-  public void setDisorderOpioid(boolean disorderOpioid) {
+  public void setDisorderOpioid(final boolean disorderOpioid) {
     this.disorderOpioid = disorderOpioid;
   }
 
@@ -305,7 +304,7 @@ public class DemographicDataEntity {
    *
    * @param disorderAlcohol has alcohol disorder
    */
-  public void setDisorderAlcohol(boolean disorderAlcohol) {
+  public void setDisorderAlcohol(final boolean disorderAlcohol) {
     this.disorderAlcohol = disorderAlcohol;
   }
 
@@ -328,7 +327,8 @@ public class DemographicDataEntity {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
     cal.setTime(lastClean);
-    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+        cal.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
@@ -350,7 +350,7 @@ public class DemographicDataEntity {
   /**
    * @param fetchID id for fetching
    */
-  public void setFetchID(int fetchID) {
+  public void setFetchID(final int fetchID) {
     //intentionally left blank, fetchID should not be changed
   }
 
@@ -389,6 +389,6 @@ public class DemographicDataEntity {
   private String useOther;
   private boolean disorderOpioid;
   private boolean disorderAlcohol;
-  private int fetchID = 1;
+  private final int fetchID = 1;
 
 }

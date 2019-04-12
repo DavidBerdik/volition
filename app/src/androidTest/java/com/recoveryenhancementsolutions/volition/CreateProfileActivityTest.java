@@ -41,8 +41,8 @@ import org.junit.runner.RunWith;
 public class CreateProfileActivityTest {
 
   @Rule
-  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
-      CreateProfileActivity.class);
+  public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      ProfileActivity.class);
 
   /**
    * Performs tests that are related to the user interface in the "Create Profile" activity.
