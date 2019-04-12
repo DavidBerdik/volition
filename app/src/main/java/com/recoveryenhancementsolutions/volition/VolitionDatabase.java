@@ -49,7 +49,11 @@ import android.support.annotation.NonNull;
     QuestionnaireEntity.class,
     MedicationChoiceEntity.class,
     DemographicDataEntity.class,
-    TreatmentExperienceAssessmentEntity.class
+
+    TreatmentExperienceAssessmentEntity.class,
+
+    QuestionnaireActivityEntity.class
+
 },
 
     version = 1)
