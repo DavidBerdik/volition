@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Treatment Plan Activity is called when the user selects the option to view their treatment plan.
@@ -196,14 +198,14 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
     @Override
     public void onChanged(final TreatmentPlanEntity treatmentPlanEntity) {
-      Context context = getApplicationContext();
-      CharSequence msg = "Your Treatment Plan was Saved!";
-      int dur = Toast.LENGTH_SHORT;
-      Toast toast = Toast.makeText(context, msg, dur);
-      toast.show();
-      String s;
-
       try {
+        Context context = getApplicationContext();
+        CharSequence msg = "Your Treatment Plan was Saved!";
+        int dur = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, msg, dur);
+        toast.show();
+        String s;
+
         if (treatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")) {
           s = "Medication Management per Month";
           medManagementDescView.setText(s);
@@ -269,8 +271,24 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    * Method runs when the refresh button in the xml files is clicked.
    */
   private void onUpdateButtonClicked() {
-    if (treatmentPlanLoaded) {
-      TreatmentPlanViewModel.updateTreatmentPlan(treatmentPlanEntity);
+    try {
+      int hours = DateConverter
+          .hoursBetween(treatmentPlanEntity.getLastUpdate(), Calendar.getInstance().getTime());
+
+      //Checks if the cool down time has been reached
+      if (treatmentPlanLoaded) {
+        if (hours < treatmentPlanEntity.getCoolDownTime()) {
+          Context context = getApplicationContext();
+          CharSequence msg = "Try again in " + (treatmentPlanEntity.getCoolDownTime() - hours) + " hours!";
+          int dur = Toast.LENGTH_SHORT;
+          Toast toast = Toast.makeText(context, msg, dur);
+          toast.show();
+        } else {
+          TreatmentPlanViewModel.updateTreatmentPlan(treatmentPlanEntity);
+        }
+      }
+    }catch(NullPointerException e){
+      Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
     }
   }
 
@@ -594,6 +612,11 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         }
         break;
     }
+    //Set time and update cool-down information. NOTE: cool down must be positive
+    Date date = Calendar.getInstance().getTime();
+    newTreatmentPlan.setCoolDownTime(8);
+    newTreatmentPlan.setLastUpdate(date);
+
     String s = "" + newTreatmentPlan.getNumCounseling();
     counselingView.setText(s);
     s = "" + newTreatmentPlan.getNumMedManagement();

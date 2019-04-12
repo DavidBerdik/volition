@@ -42,7 +42,7 @@ public class MedicationDosageActivity extends AppCompatActivity {
       public void onClick(final View view) {
         dose.dosage = Integer.parseInt(dosageSpinner.getSelectedItem().toString());
         mViewModel.updateDosage(dose);
-        startActivity(new Intent(MedicationDosageActivity.this, HomeActivity.class));
+        startActivity(new Intent(MedicationDosageActivity.this, TreatmentPlanActivity.class));
       }
     });
   }

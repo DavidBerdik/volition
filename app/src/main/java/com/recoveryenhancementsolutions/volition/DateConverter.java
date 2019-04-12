@@ -48,6 +48,10 @@ public class DateConverter {
     return Math.max(0, (int) ((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
   }
 
+  public static int hoursBetween(Date start, Date end){
+    return Math.max(0, (int) ((end.getTime() - start.getTime()) / (1000 * 60 * 60)));
+  }
+
   /**
    * Takes two timestamps (Long) and calculates the number of days between them.
    *
