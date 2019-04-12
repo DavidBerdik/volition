@@ -11,8 +11,6 @@
 
   android:layout_height="match_parent">
 
-
-
   <TextView
 
     android:id="@+id/substanceText"
@@ -769,5 +767,8 @@
     app:layout_constraintTop_toTopOf="parent"
 
     app:srcCompat="@drawable/pic"/>
+
+
+
 
 </android.support.constraint.ConstraintLayout>

@@ -209,4 +209,16 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
 
 
     private VolitionDatabase db;
+/*
+
+/**
+ * THIS IS A DUMMY CLASS
+
+public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_treatment_experience_assessment);
+  } */
+
 }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import com.recoveryenhancementsolutions.volition.CoreNavigationHandler.CoreNavigationPage;
 import java.util.Date;
 
 /**
@@ -37,26 +36,28 @@ public class HomeActivity extends AppCompatActivity {
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
   }
 
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
   @Override
   public void onResume() {
     super.onResume();
-    coreNavigationHandler.setFocusedItem(CoreNavigationPage.PAGE_HOME);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
   }
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
-
     daysCleanMessage = findViewById(R.id.clean);
 
     final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
         .get(DemographicDataViewModel.class);
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
-    coreNavigationHandler = new CoreNavigationHandler(
-        (BottomNavigationView) findViewById(R.id.core_navigation), this);
-    coreNavigationHandler.setFocusedItem(CoreNavigationPage.PAGE_HOME);
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+    CoreNavigationHandler.link(bottomNavigationView, this);
   }
 
   private Observer<Date> dateObserver = new Observer<Date>() {
@@ -74,6 +75,6 @@ public class HomeActivity extends AppCompatActivity {
     }
   };
 
-  private CoreNavigationHandler coreNavigationHandler;
   private TextView daysCleanMessage;
+  private BottomNavigationView bottomNavigationView;
 }
