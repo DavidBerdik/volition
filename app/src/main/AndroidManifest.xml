@@ -97,12 +97,6 @@
     </activity>
     <activity
       android:exported="true"
-<<<<<<< HEAD
-      android:label="Classification Screen"
-      android:name=".ClassificationScreenActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.ALTERNATIVE"/>
-=======
       android:label="@string/treatmentPlan_name"
       android:name=".TreatmentPlanActivity">
       <intent-filter>
@@ -147,7 +141,6 @@
       android:name=".TreatmentExperienceAssessmentActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
->>>>>>> eea7789b0b7e97a95d7b2085baf0b8ce8eb3bd33
       </intent-filter>
     </activity>
   </application>
