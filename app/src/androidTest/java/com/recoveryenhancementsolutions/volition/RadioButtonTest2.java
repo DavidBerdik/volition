@@ -33,69 +33,22 @@ public class RadioButtonTest2 {
   public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
       ProfileActivity.class);
 
+  /**
+   * Test the use of the radio buttons on the Profile Activity.
+   */
   @Test
   public void createProfileActivityTest2temp() {
-    ViewInteraction appCompatRadioButton = onView(
-        allOf(withId(R.id.radioClient), withText("Person in Recovery/Seeking Recovery"),
-            childAtPosition(
-                allOf(withId(R.id.user_type),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        4)),
-                1)));
-    appCompatRadioButton.perform(scrollTo(), click());
+    onView(withId(R.id.radioClient)).perform(scrollTo(), click());
 
-    ViewInteraction appCompatRadioButton2 = onView(
-        allOf(withId(R.id.radioSedatives), withText("Barbiturates, Sedatives, or Hypnotics"),
-            childAtPosition(
-                allOf(withId(R.id.drug_selection),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        6)),
-                8)));
-    appCompatRadioButton2.perform(scrollTo(), click());
+    onView(withId(R.id.radioSedatives)).perform(scrollTo(), click());
 
-    ViewInteraction radioButton = onView(
-        allOf(withId(R.id.radioInhalants),
-            childAtPosition(
-                allOf(withId(R.id.drug_selection),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        6)),
-                9)));
-    radioButton.perform(scrollTo());
+    onView(withId(R.id.radioInhalants)).perform(scrollTo());
 
-    ViewInteraction radioButton2 = onView(
-        allOf(withId(R.id.radioInhalants),
-            childAtPosition(
-                allOf(withId(R.id.drug_selection),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        6)),
-                9),
-            isDisplayed()));
-    radioButton2.check(matches(isDisplayed()));
+    onView(withId(R.id.radioInhalants)).check(matches(isDisplayed()));
 
-    ViewInteraction button = onView(
-        allOf(withId(R.id.record_button),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                11)));
-    button.perform(scrollTo());
+    onView(withId(R.id.record_button)).perform(scrollTo());
 
-    ViewInteraction button2 = onView(
-        allOf(withId(R.id.record_button),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                11),
-            isDisplayed()));
-    button2.check(matches(isDisplayed()));
+    onView(withId(R.id.record_button)).check(matches(isDisplayed()));
   }
 
   private static Matcher<View> childAtPosition(
