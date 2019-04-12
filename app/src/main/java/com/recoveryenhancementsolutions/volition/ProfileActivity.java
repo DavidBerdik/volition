@@ -21,7 +21,7 @@ import android.widget.RadioButton;
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
-public class CreateProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
   TextView name, DOB, TypeOfPerson,DrugOfChoice,Disorder,CleanDate;
 
   //gspin.setSelection();
@@ -81,7 +81,7 @@ public class CreateProfileActivity extends AppCompatActivity {
        */
       @Override
       public void onClick(final View view) {
-        final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
+        final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             dateOfBirthListener, dobCalendar.get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
             dobCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
@@ -97,7 +97,7 @@ public class CreateProfileActivity extends AppCompatActivity {
        */
       @Override
       public void onClick(final View view) {
-        final DatePickerDialog pickDate = new DatePickerDialog(CreateProfileActivity.this,
+        final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             cleanDateListener, cleanDateCalendar.get(Calendar.YEAR),
             cleanDateCalendar.get(Calendar.MONTH), cleanDateCalendar.get(Calendar.DAY_OF_MONTH));
         pickDate.show();
@@ -122,7 +122,7 @@ public class CreateProfileActivity extends AppCompatActivity {
        */
       private void sendOff() {
         //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(CreateProfileActivity.this, AdminMenuActivity.class);
+        Intent intent = new Intent(ProfileActivity.this, AdminMenuActivity.class);
         startActivity(intent);
       }
 

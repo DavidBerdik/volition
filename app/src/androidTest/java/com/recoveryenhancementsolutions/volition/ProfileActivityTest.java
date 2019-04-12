@@ -38,11 +38,11 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class CreateProfileActivityTest {
+public class ProfileActivityTest {
 
   @Rule
-  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
-      CreateProfileActivity.class);
+  public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      ProfileActivity.class);
 
   /**
    * Performs tests that are related to the user interface in the "Create Profile" activity.

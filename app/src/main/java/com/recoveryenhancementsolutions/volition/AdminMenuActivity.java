@@ -162,7 +162,7 @@ public class AdminMenuActivity extends AppCompatActivity
         int flag =1;
 
         String test = "yeeted off roof";
-        Intent intent = new Intent(AdminMenuActivity.this, CreateProfileActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, ProfileActivity.class);
 
         intent.putExtra("age", age);
         intent.putExtra("name", name);
