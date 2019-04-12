@@ -227,24 +227,27 @@ public class PlanActivity extends AppCompatActivity {
       this.content = content;
 
       setDay(day);
+    }
+
+    /**
+     * Change the day associated with these labels.  Updates the title label to reflect the day.
+     *
+     * @param day The new day to associate with.
+     */
+    private void setDay(final Calendar day) {
+      final Calendar dayClone = (Calendar) day.clone();
+
+      this.day = dayClone;
 
       content.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
           final String dayString = DateFormat.getDateInstance(DateFormat.FULL,
-              Locale.getDefault()).format(day.getTime());
+              Locale.getDefault()).format(dayClone.getTime());
           PlanNoteView.create(dayString, notes).show(getSupportFragmentManager());
         }
       });
-    }
 
-    /**
-     * Change the day associated with these labels. Updates the title label to reflect the day.
-     *
-     * @param day The new day to associate with.
-     */
-    private void setDay(final Calendar day) {
-      this.day = (Calendar) day.clone();
       if (title != null) {
         String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
             Locale.getDefault()).charAt(0) + "";
