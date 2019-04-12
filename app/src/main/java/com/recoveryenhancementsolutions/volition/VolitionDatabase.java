@@ -39,13 +39,16 @@ import android.support.annotation.NonNull;
  */
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
-@Database(
-    entities = {
-        MedicationChoiceEntity.class,
-        UserActivityEntity.class,
-        DemographicDataEntity.class,
-    },
+
+@Database(entities = {
+    UserActivityEntity.class,
+    TreatmentPlanEntity.class,
+    QuestionnaireEntity.class,
+    MedicationChoiceEntity.class,
+    DemographicDataEntity.class
+},
     version = 1)
+
 @TypeConverters(DateConverter.class)
 
 public abstract class VolitionDatabase extends RoomDatabase {
@@ -58,6 +61,12 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
+  public abstract TreatmentPlanDao treatmentPlanDao();
+
+  public abstract QuestionnaireDao questionnaireDao();
+
+  private static volatile VolitionDatabase INSTANCE;
+
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.
    *
@@ -68,13 +77,17 @@ public abstract class VolitionDatabase extends RoomDatabase {
     if (INSTANCE == null) {
       synchronized (VolitionDatabase.class) {
         if (INSTANCE == null) {
-          INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-              VolitionDatabase.class, "volition_database")
-              // Wipes and rebuilds instead of migrating if no Migration object.
-              // Migration is not part of this codelab.
-              .fallbackToDestructiveMigration()
-              .addCallback(volitionDatabaseCallback)
-              .build();
+          synchronized (VolitionDatabase.class) {
+            if (INSTANCE == null) {
+              INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                  VolitionDatabase.class, "volition_database")
+                  // Wipes and rebuilds instead of migrating if no Migration object.
+                  // Migration is not part of this codelab.
+                  .fallbackToDestructiveMigration()
+                  .addCallback(volitionDatabaseCallback)
+                  .build();
+            }
+          }
         }
       }
     }
@@ -87,8 +100,10 @@ public abstract class VolitionDatabase extends RoomDatabase {
    */
   private static RoomDatabase.Callback volitionDatabaseCallback = new RoomDatabase.Callback() {
 
+
     /**
      * Method called when an existing database is opened.
+     *
      * @param db Object representing database that has been opened.
      */
     @Override
@@ -121,32 +136,32 @@ public abstract class VolitionDatabase extends RoomDatabase {
     // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
     // private final WordDao mDao;
     private final UserActivitiesDao userActivitiesDao;
-    private final DemographicDataDAO demographicDataDao;
+    private final TreatmentPlanDao treatmentPlanDao;
+    private final QuestionnaireDao questionnaireDao;
+    private final MedicationChoiceDAO medicationChoiceDao;
 
     PopulateDbAsync(final VolitionDatabase db) {
       // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
       // mDao = db.wordDao();
       userActivitiesDao = db.userActivitiesDao();
-      demographicDataDao = db.demographicDataDao();
+      treatmentPlanDao = db.treatmentPlanDao();
+      questionnaireDao = db.questionnaireDao();
+      medicationChoiceDao = db.medicationChoiceDAO();
     }
 
-    @Override
     protected Void doInBackground(final Void... params) {
       // If you want to clear and initialize the database, place code here such as in the following commented-out example:
-      /*
-      // Start the app with a clean database every time.
-      // Not needed if you only populate on creation.
-      mDao.deleteAll();
+            /*
+            // Start the app with a lean database every time.
+            // Not needed if you only populate on creation.
+            mDao.deleteAll();
 
-      Word word = new Word("Hello");
-      mDao.insert(word);
-      word = new Word("World");
-      mDao.insert(word);
-      */
+            Word word = new Word("Hello");
+            mDao.insert(word);
+            word = new Word("World");
+            mDao.insert(word);
+             */
       return null;
     }
   }
-
-  // marking the instance as volatile to ensure atomic access to the variable
-  private static volatile VolitionDatabase INSTANCE;
 }
