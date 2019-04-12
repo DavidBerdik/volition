@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/edit_profile"
+            android:title="Edit Profile" />
+        <item
+            android:id="@+id/edit_treatment"
+            android:title="Edit Treatment Plan" />
+        <item
+            android:id="@+id/ques_class"
+            android:title="Questionnaire Classification" />
+        <item
+            android:id="@+id/retake_ques"
+            android:title="Retake Questionnaire" />
+        <item
+            android:id="@+id/clinical_overview"
+            android:title="Clinical Overview" />
+    </group>
+</menu>
