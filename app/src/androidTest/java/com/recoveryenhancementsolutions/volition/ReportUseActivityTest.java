@@ -2,19 +2,29 @@ package com.recoveryenhancementsolutions.volition;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 import android.arch.lifecycle.Observer;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,6 +33,9 @@ import org.junit.runner.RunWith;
 import java.util.Calendar;
 import java.util.Date;
 
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 /**
@@ -68,41 +81,6 @@ public class ReportUseActivityTest {
   };
 
   /**
-   * Tests that the Yes and No buttons are responding to single clicks properly.
-   */
-  @Test
-  public void reportUseActivityTest_Single() {
-    assertEquals(0, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_yes)).perform(click());
-    Log.e(TAG, "Hit yes");
-    assertEquals(1, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_no)).perform(click());
-    Log.e(TAG, "Hit no");
-    assertEquals(2, activityTestRule.getActivity().getLastClickedItem());
-  }
-
-  /**
-   * Tests that the Yes and No buttons are responding to multiple clicks properly.
-   */
-  @Test
-  public void reportUseActivityTest_Multiple() {
-    assertEquals(0, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_yes)).perform(click());
-    assertEquals(1, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_no)).perform(click());
-    assertEquals(2, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_yes)).perform(click());
-    assertEquals(1, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_no)).perform(click());
-    assertEquals(2, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_no)).perform(click());
-    assertEquals(2, activityTestRule.getActivity().getLastClickedItem());
-    onView(withId(R.id.report_use_yes)).perform(click());
-    assertEquals(1, activityTestRule.getActivity().getLastClickedItem());
-  }
-
-
-  /**
    * Tests if pressing the yes and no buttons correctly updates the database
    */
   @Test
@@ -123,7 +101,7 @@ public class ReportUseActivityTest {
       assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
 
       //click Yes: Both Last clean and last report should be updated
-      onView(withId(R.id.report_use_yes)).perform(click());
+      recordYesActivity();
       cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
       assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
       cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
@@ -131,6 +109,50 @@ public class ReportUseActivityTest {
     } catch (Exception e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
+  }
+
+  /**
+   * Hits the yes button and then records a date using the Date Picker
+   */
+  public void recordYesActivity() {
+    ViewInteraction appCompatButton = onView(
+        allOf(withId(R.id.report_use_yes), withText("Yes"),
+            childAtPosition(
+                allOf(withId(R.id.container),
+                    childAtPosition(
+                        withId(android.R.id.content),
+                        0)),
+                0),
+            isDisplayed()));
+    appCompatButton.perform(click());
+
+    ViewInteraction appCompatButton2 = onView(
+        allOf(withId(android.R.id.button1), withText("OK"),
+            childAtPosition(
+                childAtPosition(
+                    withClassName(is("android.widget.ScrollView")),
+                    0),
+                3)));
+    appCompatButton2.perform(scrollTo(), click());
+  }
+
+  private static Matcher<View> childAtPosition(
+      final Matcher<View> parentMatcher, final int position) {
+
+    return new TypeSafeMatcher<View>() {
+      @Override
+      public void describeTo(Description description) {
+        description.appendText("Child at position " + position + " in parent ");
+        parentMatcher.describeTo(description);
+      }
+
+      @Override
+      public boolean matchesSafely(View view) {
+        ViewParent parent = view.getParent();
+        return parent instanceof ViewGroup && parentMatcher.matches(parent)
+            && view.equals(((ViewGroup) parent).getChildAt(position));
+      }
+    };
   }
 
   private final Calendar today = Calendar.getInstance();
