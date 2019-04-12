@@ -37,7 +37,7 @@ public interface QuestionnaireDao {
    * Get the questionnaire entity.
    * @return A LiveData object containing a QuestionnaireEntity
    */
-  @Query("SELECT * FROM QuestionnaireEntity")
+  @Query("SELECT * FROM QuestionnaireActivityEntity")
   LiveData<QuestionnaireEntity> getQuestionnaire();
 
   /**
