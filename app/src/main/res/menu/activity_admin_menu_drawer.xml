@@ -20,6 +20,4 @@
             android:id="@+id/clinical_overview"
             android:title="Clinical Overview" />
     </group>
-
-
 </menu>

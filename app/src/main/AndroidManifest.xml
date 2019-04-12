@@ -9,11 +9,11 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".QuestionnaireConfirmActivity">
+    </activity>
+    <activity android:name=".TreatmentPlanActivity">
+    </activity>
     <activity android:name=".ClinicalOverviewActivity">
-    </activity>
-    <activity android:name=".ViewSeverityLevelActivity">
-    </activity>
-    <activity android:name=".EditTreatmentActivity">
     </activity>
     <activity android:name=".EditProfileActivity">
     </activity>

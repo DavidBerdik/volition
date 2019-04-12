@@ -13,25 +13,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import android.widget.Button;
 import android.content.Intent;
-import java.util.Date;
 import android.widget.RadioButton;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
  */
 public class CreateProfileActivity extends AppCompatActivity {
-  TextView name, DOB, TypeOfPerson,DrugOfChoice,Disorder,CleanDate;
 
-  //gspin.setSelection();
+  TextView name;
+  final Spinner spinner = findViewById(R.id.gender_spinner);
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_create_profile);
-   // DOB = (TextView) findViewById(R.id.date_of_birth);
     checkIfMod();
 
     final Calendar dobCalendar = Calendar.getInstance();
@@ -51,7 +49,9 @@ public class CreateProfileActivity extends AppCompatActivity {
         dobCalendar.set(Calendar.DAY_OF_MONTH, day);
         final EditText dob = findViewById(R.id.date_of_birth);
         dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
-        Toast.makeText(getApplicationContext(), "vlaue is "+(DateFormat.getDateInstance().format(dobCalendar.getTime())), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),
+            "vlaue is " + (DateFormat.getDateInstance().format(dobCalendar.getTime())),
+            Toast.LENGTH_LONG).show();
       }
     };
 
@@ -111,7 +111,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     send = findViewById(R.id.record_button);
     send.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick( final View v) {
+      public void onClick(final View v) {
         sendOff();
       }
 
@@ -129,178 +129,140 @@ public class CreateProfileActivity extends AppCompatActivity {
       }
 
     });
-
-
   }
+
   public void checkIfMod() {
     int flag = getIntent().getIntExtra("flag", 0);
     if (flag != 0) {
 
       final Calendar dobCalendar = Calendar.getInstance();
-      Spinner Gender = (Spinner) findViewById(R.id.gender_spinner);
-      ArrayAdapter gspin = (ArrayAdapter) Gender.getAdapter();
-      int spinnerPosition = gspin.getPosition(Gender);
-      name = (TextView) findViewById(R.id.name);
-      // DOB = (TextView) findViewById(R.id.date_of_birth);
-      // Gender = (Spinner) findViewById(R.id.gender_spinner);
-      // dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
+      Spinner Gender = findViewById(R.id.gender_spinner);
+      ArrayAdapter gSpin = (ArrayAdapter) Gender.getAdapter();
+      /*
+       * Something will always be checked here because
+       * the catch for not allowing the user to continue without filling in everything
+       * would be included in the final product.
+       */
+      @SuppressWarnings("unchecked")
+      int spinnerPosition = gSpin.getPosition(Gender);
+      name = findViewById(R.id.name);
       Gender.setSelection(spinnerPosition);
-      //String DOB = getIntent().getStringExtra("DOB");
 
-      int byear = getIntent().getIntExtra("BYear", 0);
-      int bmonth = getIntent().getIntExtra("BMonth", 0);
-      int bday = getIntent().getIntExtra("BDay", 0);
-      Toast.makeText(getApplicationContext(), "vlaue is " + byear + " " + bmonth + " " + bday,
-          Toast.LENGTH_LONG).show();
-      //dobCalendar = (Calendar)getIntent().getSerializableExtra("datebirth");
-      //dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
-      if (byear != 0) {
-        dobCalendar.set(Calendar.YEAR, byear);
-        dobCalendar.set(Calendar.MONTH, bmonth);
-        dobCalendar.set(Calendar.DAY_OF_MONTH, bday);
+      int bYear = getIntent().getIntExtra("bYear", 0);
+      int bMonth = getIntent().getIntExtra("bMonth", 0);
+      int bDay = getIntent().getIntExtra("bDay", 0);
+
+      if (bYear != 0) {
+        dobCalendar.set(Calendar.YEAR, bYear);
+        dobCalendar.set(Calendar.MONTH, bMonth);
+        dobCalendar.set(Calendar.DAY_OF_MONTH, bDay);
         final EditText dob = findViewById(R.id.date_of_birth);
         dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
       }
 
       final Calendar cleanDateCalendar = Calendar.getInstance();
-      int Cyear = getIntent().getIntExtra("CYear", 0);
-      int Cmonth = getIntent().getIntExtra("CMonth", 0);
-      int Cday = getIntent().getIntExtra("CDay", 0);
-      Toast.makeText(getApplicationContext(), "clean date is " + Cyear + " " + Cmonth + " " + Cday,
-          Toast.LENGTH_LONG).show();
-      if (byear != 0) {
-        cleanDateCalendar.set(Calendar.YEAR, Cyear);
-        cleanDateCalendar.set(Calendar.MONTH, Cmonth);
-        cleanDateCalendar.set(Calendar.DAY_OF_MONTH, Cday);
+      int cYear = getIntent().getIntExtra("cYear", 0);
+      int cMonth = getIntent().getIntExtra("cMonth", 0);
+      int cDay = getIntent().getIntExtra("cDay", 0);
+
+      if (bYear != 0) {
+        cleanDateCalendar.set(Calendar.YEAR, cYear);
+        cleanDateCalendar.set(Calendar.MONTH, cMonth);
+        cleanDateCalendar.set(Calendar.DAY_OF_MONTH, cDay);
         final EditText cleanDate = findViewById(R.id.clean_date);
         cleanDate.setText(DateFormat.getDateInstance().format(cleanDateCalendar.getTime()));
       }
 
-      final Spinner spinner = (Spinner) findViewById(R.id.gender_spinner);
-
       String gender = getIntent().getStringExtra("gender");
-
-      if(gender.equals("Male"))
-      {
+      if (gender.equals("Male")) {
         spinner.setSelection(2);
       }
-      if(gender.equals("Female"))
-      {
+      if (gender.equals("Female")) {
         spinner.setSelection(1);
       }
-      if(gender.equals("Other"))
-      {
+      if (gender.equals("Other")) {
         spinner.setSelection(3);
       }
 
-
-      boolean Support = getIntent().getBooleanExtra("family", false);
-      if(Support == true)
-      {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioSupport);
+      boolean support = getIntent().getBooleanExtra("family", false);
+      if (support) {
+        RadioButton rdb = findViewById(R.id.radioSupport);
         rdb.setChecked(true);
       }
-      boolean Client = getIntent().getBooleanExtra("recovery", false);
-      if(Client == true)
-      {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioClient);
+      boolean client = getIntent().getBooleanExtra("recovery", false);
+      if (client) {
+        RadioButton rdb = findViewById(R.id.radioClient);
         rdb.setChecked(true);
       }
       boolean heroin = getIntent().getBooleanExtra("heroin", false);
-      if (heroin == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioHeroin);
+      if (heroin) {
+        RadioButton rdb = findViewById(R.id.radioHeroin);
         rdb.setChecked(true);
       }
-      boolean Opiate = getIntent().getBooleanExtra("Opiate", false);
-      if (Opiate == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioOpiates);
+      boolean opiate = getIntent().getBooleanExtra("opiate", false);
+      if (opiate) {
+        RadioButton rdb = findViewById(R.id.radioOpiates);
         rdb.setChecked(true);
       }
-      boolean crackorcocaine = getIntent().getBooleanExtra("CrackCocaine", false);
-      if (crackorcocaine == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioCocaine);
+      boolean crackCocaine = getIntent().getBooleanExtra("CrackCocaine", false);
+      if (crackCocaine) {
+        RadioButton rdb = findViewById(R.id.radioCocaine);
         rdb.setChecked(true);
       }
-      boolean marajuana = getIntent().getBooleanExtra("Marajuana", false);
-      if (marajuana == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioMarijuana);
+      boolean marajuana = getIntent().getBooleanExtra("marajuana", false);
+      if (marajuana) {
+        RadioButton rdb = findViewById(R.id.radioMarijuana);
         rdb.setChecked(true);
       }
-      boolean meth = getIntent().getBooleanExtra("Meth", false);
-      if (meth == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioMeth);
+      boolean meth = getIntent().getBooleanExtra("meth", false);
+      if (meth) {
+        RadioButton rdb = findViewById(R.id.radioMeth);
         rdb.setChecked(true);
       }
       boolean benzo = getIntent().getBooleanExtra("benzo", false);
-      if (benzo == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioBen);
+      if (benzo) {
+        RadioButton rdb = findViewById(R.id.radioBen);
         rdb.setChecked(true);
       }
-      boolean Nonbenzo = getIntent().getBooleanExtra("NonBenzo", false);
-      if (Nonbenzo == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioTranquilizers);
+      boolean nonBenzo = getIntent().getBooleanExtra("nonBenzo", false);
+      if (nonBenzo) {
+        RadioButton rdb = findViewById(R.id.radioTranquilizers);
         rdb.setChecked(true);
       }
-      boolean barb = getIntent().getBooleanExtra("Barb", false);
-      if (barb == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioSedatives);
+      boolean barb = getIntent().getBooleanExtra("barb", false);
+      if (barb) {
+        RadioButton rdb = findViewById(R.id.radioSedatives);
         rdb.setChecked(true);
       }
-      boolean inhalant = getIntent().getBooleanExtra("Inhalant", false);
-      if (inhalant == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioInhalants);
+      boolean inhalant = getIntent().getBooleanExtra("inhalant", false);
+      if (inhalant) {
+        RadioButton rdb = findViewById(R.id.radioInhalants);
         rdb.setChecked(true);
       }
-      //String useother = getIntent().getStringExtra("useother");
-      //boolean alcoholDisorder = getIntent().getBooleanExtra("AlcoholDisorder", false);
-      boolean alcohol = getIntent().getBooleanExtra("Alcohol", false);
-      if (alcohol == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioAlcohol);
+      boolean alcohol = getIntent().getBooleanExtra("alcohol", false);
+      if (alcohol) {
+        RadioButton rdb = findViewById(R.id.radioAlcohol);
         rdb.setChecked(true);
       }
-      //boolean Opioddisorder = getIntent().getBooleanExtra("Opiod", false);
 
       boolean other = getIntent().getBooleanExtra("useother", false);
-      if (other == true) {
-        RadioButton rdb = (RadioButton) findViewById(R.id.radioOther);
+      if (other) {
+        RadioButton rdb = findViewById(R.id.radioOther);
         String condition = getIntent().getStringExtra("condition");
         final EditText OtherCondition = findViewById(R.id.enter_other);
         OtherCondition.setText(condition);
         rdb.setChecked(true);
       }
-
-      final Spinner DisorderSpinner = (Spinner) findViewById(R.id.use_type_spinner);
-      boolean AlcoholDisorder = getIntent().getBooleanExtra("alcoholDisorder", false);
-      if (AlcoholDisorder == true) {
+      final Spinner DisorderSpinner = findViewById(R.id.use_type_spinner);
+      boolean alcoholDisorder = getIntent().getBooleanExtra("alcoholDisorder", false);
+      if (alcoholDisorder) {
         DisorderSpinner.setSelection(2);
       }
-      boolean OpioidDisorder = getIntent().getBooleanExtra("Opioddisorder", false);
-      if (OpioidDisorder == true) {
+      boolean opioidDisorder = getIntent().getBooleanExtra("opiodDisorder", false);
+      if (opioidDisorder) {
         DisorderSpinner.setSelection(1);
       }
-
-
-/*i
-    if(DOB/
-    try {
-      SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-      Date date = sdf.parse(DOB);
-      dobCalendar.setTime(date);
-      dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
-    }catch(java.text.ParseException e) {
-      e.printStackTrace();
-    }
-*/
-      //TypeOfPerson = (TextView) findViewById(R.id.recorded_person);
-      //DrugOfChoice = (TextView) findViewById(R.id.recorded_drug);
-      //Disorder = (TextView) findViewById(R.id.recorded_type);
-      //CleanDate = (TextView) findViewById(R.id.clean_date);
-
       name.setText(getIntent().getStringExtra("name"));
-      //dob.setText(getIntent().getStringExtra("DOB"));
-      // Toast.makeText(getApplicationContext(), "vlaue is "+(DateFormat.getDateInstance().format(dobCalendar.getTime())), Toast.LENGTH_LONG).show();
-      //Gender.setText(getIntent().getStringExtra("DOB"));
-      //CleanDate.setText(getIntent().getStringExtra("CleanDate"));
     }
   }
 }
