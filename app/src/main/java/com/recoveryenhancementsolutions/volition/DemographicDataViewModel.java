@@ -55,6 +55,17 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
   /**
    * Updates the date of the last usage report
+   * Retrieves all of the patient's demographic data
+   *
+   * @return A LiveData object containing a DemographicDataEntity containing all of the patient's
+   * demographic data
+   */
+  public LiveData<DemographicDataEntity> getAllDemographicData() {
+    return db.demographicDataDao().getAllDemographicData();
+  }
+
+  /**
+   * Retrieves the last date clean as stored in the database.
    *
    * @param reportDay A Calendar object representing the date of the report
    */
@@ -91,11 +102,12 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
     @Override
     protected Void doInBackground(final DemographicDataEntity... params) {
+      demographicDataDao.deleteDemographicInfo();
       demographicDataDao.insertDemographicInfo(params[0]);
       return null;
     }
 
-    private DemographicDataDAO demographicDataDao;
+    private final DemographicDataDAO demographicDataDao;
   }
 
   /**
