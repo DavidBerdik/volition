@@ -222,7 +222,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
           outcomeMeasureDescView.setText(s);
         }
       } catch (NullPointerException e) {
-        Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
+        Log.e(TAG, Log.getStackTraceString(e));
       }
     }
   };
@@ -241,7 +241,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
           generateTreatmentPlan();
         }
       } catch (NullPointerException e) {
-        Log.e("TREATMENTPLANACTIVITY", Log.getStackTraceString(e));
+        Log.e(TAG, Log.getStackTraceString(e));
       }
     }
   };
@@ -262,7 +262,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
           generateTreatmentPlan();
         }
       } catch (NullPointerException e) {
-        Log.e("TREATMENTPLANACTIVITY", Log.getStackTraceString(e));
+        Log.e(TAG, Log.getStackTraceString(e));
       }
     }
   };
@@ -288,7 +288,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         }
       }
     }catch(NullPointerException e){
-      Log.e("TreatmentPlanActivity", Log.getStackTraceString(e));
+      Log.e(TAG, Log.getStackTraceString(e));
     }
   }
 
@@ -726,6 +726,11 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    * A String representing the user's severityLevel
    */
   private String severityLevel;
+
+  /**
+   * As string for logging purposes.
+   */
+  private String TAG = "TreaatmentPlanActivityCaughtException";
 
   /**
    * A String representing the user's medication Choice
