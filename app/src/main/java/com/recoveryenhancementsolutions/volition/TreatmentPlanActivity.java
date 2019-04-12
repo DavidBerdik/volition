@@ -680,7 +680,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   private TextView outcomeMeasureDescView;
 
   /**
-   * A boolean tracking if the medicaton choice has loaded in.
+   * A boolean tracking if the medication choice has loaded in.
    */
   private boolean medObserved;
 
