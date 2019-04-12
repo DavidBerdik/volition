@@ -16,11 +16,11 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AdminMenuActivityTest {
+public class AdminMenuActivityActivityTest {
 
   @Rule
-  public ActivityTestRule<AdminMenu> activityTestRule = new ActivityTestRule<>(
-      AdminMenu.class);
+  public ActivityTestRule<AdminMenuActivity> activityTestRule = new ActivityTestRule<>(
+      AdminMenuActivity.class);
 
   @Test
   public void navigateToProfile() {

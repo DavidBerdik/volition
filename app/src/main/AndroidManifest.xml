@@ -19,7 +19,7 @@
     </activity>
     <activity
       android:label="@string/title_activity_admin_menu"
-      android:name=".AdminMenu"
+      android:name=".AdminMenuActivity"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity android:name=".QuestionnaireActivity"/>
     <activity

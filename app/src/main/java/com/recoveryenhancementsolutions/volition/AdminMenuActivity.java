@@ -1,6 +1,5 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.arch.lifecycle.LiveData;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,13 +15,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.Toast;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 
-public class AdminMenu extends AppCompatActivity
+public class AdminMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -111,7 +106,13 @@ public class AdminMenu extends AppCompatActivity
 
     private void toEditProfile() {
 
+        /*
+         *This is what took us so long to get a pull request in
+         * we wanted to get this in this sprint but too time consuming
+         * this was unassigned so look forward to this next sprint.
+         */
 
+        /*
         int age = 12;
         String name = "yeet";
         Calendar bcalendar = Calendar.getInstance();
@@ -161,7 +162,7 @@ public class AdminMenu extends AppCompatActivity
         int flag =1;
 
         String test = "yeeted off roof";
-        Intent intent = new Intent(AdminMenu.this, CreateProfileActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, CreateProfileActivity.class);
 
         intent.putExtra("age", age);
         intent.putExtra("name", name);
@@ -220,24 +221,24 @@ public class AdminMenu extends AppCompatActivity
       //  Toast.makeText(getApplicationContext(), "vlaue is "+DOB, Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), "before change"+ year +" " + month + " " + day , Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), "benzo is "+ benzo, Toast.LENGTH_LONG).show();
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     private void toEditTreatment() {
-        Intent intent = new Intent(AdminMenu.this, EditTreatmentActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, EditTreatmentActivity.class);
         startActivity(intent);
     }
 
     private void toViewQuestionnaire() {
-        Intent intent = new Intent(AdminMenu.this, ViewSeverityLevelActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, ViewSeverityLevelActivity.class);
         startActivity(intent);
     }
     private void toRetakeQuestionnaire() {
-        Intent intent = new Intent(AdminMenu.this, QuestionnaireActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, QuestionnaireActivity.class);
         startActivity(intent);
     }
     private void toClinicalOverview() {
-        Intent intent = new Intent(AdminMenu.this, ClinicalOverviewActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, ClinicalOverviewActivity.class);
         startActivity(intent);
     }
 
