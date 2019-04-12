@@ -41,7 +41,7 @@ public class ReportUseActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_report_use);
+   setContentView(R.layout.activity_report_use);
 
     //Initializing ViewModel
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
