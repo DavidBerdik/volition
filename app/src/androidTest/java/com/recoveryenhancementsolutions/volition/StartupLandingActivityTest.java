@@ -44,7 +44,7 @@ public class StartupLandingActivityTest {
 
     // Check that we're on the CreateProfileActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        CreateProfileActivity.class.getName());
+        ProfileActivity.class.getName());
 
     // Until we figure out why Espresso is failing on some computers but not all,
     // Dr. Jackson has requested that we leave this portion commented out.
