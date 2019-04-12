@@ -31,7 +31,7 @@ public class ClassificationScreenActivityTest {
       ClassificationScreenActivity.class);
 
 /**
-
+test for usable UI elements (button press)
  */
   @Test
   public void classificationScreenActivityTest() {
