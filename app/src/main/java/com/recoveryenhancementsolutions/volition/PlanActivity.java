@@ -13,6 +13,7 @@ import android.view.View;
 
 public class PlanActivity extends AppCompatActivity {
 
+    /** Used to track which day's textview is "selected" */
     int dayNo = 0;
 
     @Override
@@ -29,6 +30,7 @@ public class PlanActivity extends AppCompatActivity {
         fillViews();
     }
 
+    @SuppressLint("SetTextI18n")
     public void fillViews()
     {
         String sampletext = "Visit 1 Visit 1";
@@ -76,8 +78,12 @@ public class PlanActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-    //clicking the boxes below each day's initial updates the center day textview and change selected box's color
-    public void dayClick1(View textview_day_1) {
+    /**
+     * Darkens selected day's textview and changes center_day_textview to corresponding day
+     * @param textview_day_1 The View to be modified by clickDay1.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay1(View textview_day_1) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Sunday");
         dayNo=1;
@@ -85,7 +91,12 @@ public class PlanActivity extends AppCompatActivity {
         resetColors();
         textView.setBackgroundResource(R.color.res_green);
     }
-    public void dayClick2(View textview_day_2) {
+    /**
+     * Darkens selected day's textview and changes center_day_textview to corresponding day
+     * @param textview_day_2 The View to be modified by clickDay2.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay2(View textview_day_2) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Saturday");
         dayNo=2;
@@ -93,7 +104,12 @@ public class PlanActivity extends AppCompatActivity {
         resetColors();
         textView.setBackgroundResource(R.color.res_green);
     }
-    public void dayClick3(View textview_day_3) {
+    /**
+     * Darkens selected day's textview and changes center_day_textview to corresponding day
+     * @param textview_day_3 The View to be modified by clickDay3.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay3(View textview_day_3) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Friday");
         dayNo=3;
@@ -101,7 +117,12 @@ public class PlanActivity extends AppCompatActivity {
         resetColors();
         textView.setBackgroundResource(R.color.res_green);
     }
-    public void dayClick4(View textview_day_4) {
+    /**
+     * Function called when Thursday's textview is clicked.
+     * @param textview_day_4 The View to be modified by clickDay4.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay4(View textview_day_4) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Thursday");
         dayNo=4;
@@ -109,7 +130,12 @@ public class PlanActivity extends AppCompatActivity {
         resetColors();
         textView.setBackgroundResource(R.color.res_green);
     }
-    public void dayClick5(View textview_day_5) {
+    /**
+     * Darkens selected day's textview and changes center_day_textview to corresponding day
+     * @param textview_day_5 The View to be modified by clickDay5.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay5(View textview_day_5) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Wednesday");
         dayNo=5;
@@ -117,7 +143,12 @@ public class PlanActivity extends AppCompatActivity {
         resetColors();
         textView.setBackgroundResource(R.color.res_green);
     }
-    public void dayClick6(View textview_day_6) {
+    /**
+     * Darkens selected day's textview and changes center_day_textview to corresponding day
+     * @param textview_day_6 The View to be modified by clickDay6.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay6(View textview_day_6) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Tuesday");
         dayNo=6;
@@ -125,7 +156,12 @@ public class PlanActivity extends AppCompatActivity {
         resetColors();
         textView.setBackgroundResource(R.color.res_green);
     }
-    public void dayClick7(View textview_day_7) {
+    /**
+     * Darkens selected day's textview and changes center_day_textview to corresponding day
+     * @param textview_day_7 The View to be modified by clickDay7.
+     */
+    @SuppressLint("SetTextI18n")
+    public void clickDay7(View textview_day_7) {
         TextView textView = findViewById(R.id.center_day_textview);
         textView.setText("Monday");
         dayNo=7;
@@ -134,7 +170,10 @@ public class PlanActivity extends AppCompatActivity {
         textView.setBackgroundResource(R.color.res_green);
     }
 
-    //track button
+    /**
+     * Places the user's entered notes in the textview of the selected day
+     * @param track_button The View to be modified.
+     */
     public void trackClick(View track_button) {
         //change different different textview dependng on what center-day
         EditText notes_edittext = (EditText) findViewById(R.id.notes_edittext);
@@ -169,7 +208,10 @@ public class PlanActivity extends AppCompatActivity {
 
     }
 
-    //reset colors to original light green
+    /**
+     * Resets all day's textviews to light green.
+     * Called before darkening selected textview so only one textview is dark at once.
+     */
     public void resetColors(){
         TextView textView = findViewById(R.id.textview_day_1);
         textView.setBackgroundResource(R.color.res_green_transparent);
