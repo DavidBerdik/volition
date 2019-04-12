@@ -49,7 +49,7 @@ public class DemographicDataViewModel extends AndroidViewModel {
    * @param cleanDay A Calendar object representing the date of last use
    * @param reportDay A Calendar object representing the date of the report
    */
-  public void updateLastCleanDate(final Calendar cleanDay, final Calendar reportDay){
+  public void updateLastCleanDate(final Calendar cleanDay, final Calendar reportDay) {
     new UpdateDaysCleanAsync(db.demographicDataDao()).execute(cleanDay, reportDay);
   }
 
@@ -109,12 +109,12 @@ public class DemographicDataViewModel extends AndroidViewModel {
 
     @Override
     protected Void doInBackground(final Calendar... params) {
-      if(params.length == 2) {
-          Log.e("DemoDataViewModel", "Log Date: " +params[0].getTime().toString());
+      if (params.length == 2) {
+        Log.e("DemoDataViewModel", "Log Date: " + params[0].getTime().toString());
         demographicDataDAO.queryUpdateLastCleanDate(params[0].getTime(), params[1].getTime());
       }
       if (params.length == 1) {
-          Log.e("DemoDataViewModel", "Log Date " +params[0].getTime().toString());
+        Log.e("DemoDataViewModel", "Log Date " + params[0].getTime().toString());
         demographicDataDAO.queryUpdateLastReportDate(params[0].getTime());
       }
       return null;

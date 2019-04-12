@@ -17,6 +17,7 @@ import android.app.DatePickerDialog.OnDateSetListener;
 
 import android.widget.DatePicker;
 import android.widget.Toast;
+import java.text.DateFormat;
 import java.util.Calendar;
 
 /**
@@ -48,7 +49,6 @@ public class ReportUseActivity extends AppCompatActivity {
 
     lastClickedItem = 0;
     inTest = false;
-    ready = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
@@ -59,6 +59,7 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.getMenu().getItem(1).setChecked(false);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
+    //Pulls up a Date Picker for the user to select their date of last use
     useDate = Calendar.getInstance();
     useDateListener = new OnDateSetListener() {
       /**
@@ -73,7 +74,17 @@ public class ReportUseActivity extends AppCompatActivity {
         useDate.set(Calendar.YEAR, year);
         useDate.set(Calendar.MONTH, month);
         useDate.set(Calendar.DAY_OF_MONTH, day);
-        ready = true;
+
+        final String str = DateFormat.getDateInstance().format(useDate.getTime());
+        ddViewModel.updateLastCleanDate(useDate, today);
+        toast = Toast.makeText(getApplicationContext(), "Recorded " + str +" as day of last use", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+
+        //Only redirects if we are not in a testing environment
+        if (!inTest) {
+          redirect();
+          toast.show();
+        }
       }
     };
   }
@@ -112,20 +123,10 @@ public class ReportUseActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
       lastClickedItem = 1;
-      //ddViewModel.updateLastCleanDate(today, today);
       final DatePickerDialog pickDate = new DatePickerDialog(ReportUseActivity.this,
           useDateListener, useDate.get(Calendar.YEAR), useDate.get(Calendar.MONTH),
           useDate.get(Calendar.DAY_OF_MONTH));
       pickDate.show();
-
-
-      toast = Toast.makeText(getApplicationContext(),"Recorded 'Yes' for the day",Toast.LENGTH_LONG);
-      toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
-      toast.show();
-      //Only redirects if we are not in a testing environment
-      if (ready && !inTest) {
-        redirect();
-      }
     }
   };
 
@@ -137,21 +138,21 @@ public class ReportUseActivity extends AppCompatActivity {
     public void onClick(View v) {
       lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
-      toast = Toast.makeText(getApplicationContext(),"Recorded 'No' for the day",Toast.LENGTH_LONG);
+      toast = Toast
+          .makeText(getApplicationContext(), "Recorded 'No' for the day", Toast.LENGTH_LONG);
       toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
-      toast.show();
+
       //Only redirects if we are not in a testing environment
       if (!inTest) {
         redirect();
+        toast.show();
       }
     }
   };
 
 
-
   /**
-   * Redirects to another screen
-   * TODO: Move the user to the Activity screen
+   * Redirects to another screen TODO: Move the user to the Activity screen
    */
   private void redirect() {
     intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -188,5 +189,4 @@ public class ReportUseActivity extends AppCompatActivity {
   private Intent intent;
   private int lastClickedItem;
   private boolean inTest;
-  private boolean ready;
 }
