@@ -369,7 +369,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         demogDataViewModel.insertDemographicData(data);
 
         //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(ProfileActivity.this, QuestionnaireActivity.class);
+        Intent intent = new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class);
 
         startActivity(intent);
       }
