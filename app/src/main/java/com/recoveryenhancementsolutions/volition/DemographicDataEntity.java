@@ -10,6 +10,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Entity for storing demographic information
+ */
+
 @Entity
 @SuppressWarnings({"unused", "WeakerAccess", "FieldCanBeLocal"})
 /*
@@ -23,9 +27,6 @@ the object.  I am unaware of how other components may need this so I will hold
 off on setting these methods package-private
 */
 
-/**
- * Entity for storing demographic information
- */
 public class DemographicDataEntity {
   /**
    * get patient name
