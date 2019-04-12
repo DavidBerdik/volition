@@ -17,8 +17,8 @@
     android:layout_marginEnd="16dp"
     android:background="@drawable/ic_button_rectangle"
     android:text="@string/button_yes"
-    android:textSize="16sp"
     android:textColor="@android:color/black"
+    android:textSize="16sp"
     app:layout_constraintEnd_toStartOf="@+id/space"
     app:layout_constraintTop_toBottomOf="@+id/report_use_question"/>
   <Button
@@ -30,8 +30,8 @@
     android:layout_marginStart="16dp"
     android:background="@drawable/ic_button_rectangle"
     android:text="@string/button_no"
-    android:textSize="16sp"
     android:textColor="@android:color/black"
+    android:textSize="16sp"
     app:layout_constraintStart_toEndOf="@+id/space"
     app:layout_constraintTop_toBottomOf="@+id/report_use_question"/>
   <ImageView

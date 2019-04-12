@@ -41,7 +41,7 @@ public class ReportUseActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-   setContentView(R.layout.activity_report_use);
+    setContentView(R.layout.activity_report_use);
 
     //Initializing ViewModel
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
@@ -77,7 +77,8 @@ public class ReportUseActivity extends AppCompatActivity {
 
         final String str = DateFormat.getDateInstance().format(useDate.getTime());
         ddViewModel.updateLastCleanDate(useDate, today);
-        toast = Toast.makeText(getApplicationContext(), "Recorded " + str +" as day of last use", Toast.LENGTH_LONG);
+        toast = Toast.makeText(getApplicationContext(), "Recorded " + str + " as day of last use",
+            Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
 
         //Only redirects if we are not in a testing environment
