@@ -35,7 +35,7 @@ public class StartupLandingActivity extends AppCompatActivity {
 
     @Override
     public void onClick(final View view) {
-      startActivity(new Intent(context, CreateProfileActivity.class));
+      startActivity(new Intent(context, ProfileActivity.class));
     }
   };
 
