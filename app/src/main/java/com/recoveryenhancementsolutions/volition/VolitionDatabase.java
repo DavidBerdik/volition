@@ -45,7 +45,8 @@ import android.support.annotation.NonNull;
     TreatmentPlanEntity.class,
     QuestionnaireEntity.class,
     MedicationChoiceEntity.class,
-    DemographicDataEntity.class
+    DemographicDataEntity.class,
+    QuestionnaireActivityEntity.class
 },
     version = 1)
 

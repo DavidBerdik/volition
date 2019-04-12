@@ -54,7 +54,7 @@ public class TreatmentPlanActivityTest {
     medicationChoiceEntity.medication = "ABSTAIN";
     db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
 
-    final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
+    final QuestionnaireActivityEntity questionnaireEntity = new QuestionnaireActivityEntity();
     questionnaireEntity.setSeverityLevel("MODERATE");
     db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
 

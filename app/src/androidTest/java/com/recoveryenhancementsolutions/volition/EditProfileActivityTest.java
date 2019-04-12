@@ -60,6 +60,7 @@ public class EditProfileActivityTest {
     data.setUseOther("Caffeine/Java");
     data.setDisorderAlcohol(true);
     data.setLastClean(2038, 1, 19);
+    data.setLastUseReport(2019,4,1);
     db.demographicDataDao().insertDemographicInfo(data);
 
     // Launch the activity and then set it to test mode.
