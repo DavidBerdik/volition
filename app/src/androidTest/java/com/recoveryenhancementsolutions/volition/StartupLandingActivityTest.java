@@ -2,12 +2,10 @@ package com.recoveryenhancementsolutions.volition;
 
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 
-import android.support.test.espresso.Espresso;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -48,7 +46,10 @@ public class StartupLandingActivityTest {
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
         CreateProfileActivity.class.getName());
 
-    // Clear the automatic text entry and open the back-menu.
+    // Until we figure out why Espresso is failing on some computers but not all,
+    // Dr. Jackson has requested that we leave this portion commented out.
+
+    /* // Clear the automatic text entry and open the back-menu.
     Espresso.pressBack();
     Espresso.pressBack();
 
@@ -97,7 +98,7 @@ public class StartupLandingActivityTest {
 
     // Check that we're on the CreateProfileActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        CreateProfileActivity.class.getName());
+        CreateProfileActivity.class.getName()); */
   }
 
 }
