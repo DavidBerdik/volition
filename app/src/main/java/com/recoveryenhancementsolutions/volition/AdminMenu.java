@@ -110,28 +110,7 @@ public class AdminMenu extends AppCompatActivity
     }
 
     private void toEditProfile() {
-/*
-        VolitionDatabase db = VolitionDatabase.getDatabase(this.getApplication());
-        DemographicDataDAO demographicDataDao = db.demographicDataDao();
-        int age = demographicDataDao.queryPatientAge();
-        String name = demographicDataDao.queryPatientName();
-        Date DOB = demographicDataDao.queryDoB();
-        LiveData<Date> CleanDate = demographicDataDao.queryLastCleanDate();
-        boolean recovery = demographicDataDao.queryIsInRecovery();
-        boolean heroin = demographicDataDao.queryIsUsingHeroin();
-        boolean Opiate = demographicDataDao.queryIsUsingOpiateOrSynth();
-        boolean crackorcocaine = demographicDataDao.queryIsUsingCrackOrCo();
-        boolean marajuana = demographicDataDao.queryIsUsingMarijuana();
-        boolean meth = demographicDataDao.queryIsUsingMeth();
-        boolean benzo = demographicDataDao.queryIsUsingBenzo();
-        boolean Nonbenzo = demographicDataDao.queryIsUsingNonBenzoTranq();
-        boolean barb = demographicDataDao.queryIsUsingBarbOrHypno();
-        boolean inhalant = demographicDataDao.queryIsUsingInhalants();
-        String useother = demographicDataDao.queryOtherUsedDrugs();
-        boolean alcoholDisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
-        boolean alcohol = demographicDataDao.queryIsUsingAlcohol();
-        boolean Opioddisorder = demographicDataDao.queryIsHavingAlcoholDisorder();
-*/
+
 
         int age = 12;
         String name = "yeet";
