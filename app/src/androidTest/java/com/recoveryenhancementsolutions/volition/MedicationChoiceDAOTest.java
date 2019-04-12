@@ -48,7 +48,6 @@ public class MedicationChoiceDAOTest {
    * into the database and checks that the values match
    */
 
-
   @Test
   public void insertMedicationTest() {
     final MedicationChoiceEntity mc = new MedicationChoiceEntity();
@@ -63,6 +62,37 @@ public class MedicationChoiceDAOTest {
       assertEquals("this is a test",
           LiveDataTestUtility
               .getNestedLiveDataObj(db.medicationChoiceDAO().getMedication()).medication);
+    } catch (InterruptedException e) {
+      Log.v(TAG, e.toString());
+    }
+  }
+
+  /**
+   * Performs several tests involving the Medication Choice DAO Tests inserting a medication choice
+   * into the database and checks that the values match
+   */
+  @Test
+  public void insertDosageTest() {
+    MedicationChoiceEntity dc = new MedicationChoiceEntity();
+    dc.medication = "this is a test";
+    db.medicationChoiceDAO().insertMedication(dc);
+    try {
+      dc = LiveDataTestUtility
+          .getNestedLiveDataObj(db.medicationChoiceDAO().getMedication());
+    } catch (InterruptedException e) {
+      Log.v(TAG, e.toString());
+    }
+    dc.dosage = 3;
+    db.medicationChoiceDAO().updateDosage(dc.dosage, dc.medication);
+
+    //check that db is not empty
+    assertNotNull(db);
+
+    //check that entered value matched the entered test data
+    try {
+      assertEquals(3,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(db.medicationChoiceDAO().getDosage()).dosage);
     } catch (InterruptedException e) {
       Log.v(TAG, e.toString());
     }

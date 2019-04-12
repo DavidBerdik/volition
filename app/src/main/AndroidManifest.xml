@@ -12,8 +12,11 @@
     <activity
       android:exported="true"
       android:label="@string/app_name"
-      android:name=".ActivityActivity">
+      android:name=".StartupLandingActivity"
+      android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
@@ -52,10 +55,19 @@
       </intent-filter>
     </activity>
     <activity
+      android:exported="true"
+      android:label="@string/title_activity_medication_dosage"
+      android:name=".MedicationDosageActivity"
+      android:theme="@style/AppTheme.NoActionBar">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
       android:label="@string/app_name"
       android:name=".ProfileActivity">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
@@ -70,11 +82,66 @@
     <activity
       android:exported="true"
       android:label="@string/app_name"
+      android:name=".ActivityActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
       android:name=".PlanActivity">
       <intent-filter>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/treatmentPlan_name"
+      android:name=".TreatmentPlanActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".LessonActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".JournalActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".EDUActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".DailyWellnessActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".TreatmentExperienceAssessmentActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
   </application>
-
 </manifest>

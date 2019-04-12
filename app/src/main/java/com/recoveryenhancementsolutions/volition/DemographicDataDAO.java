@@ -22,7 +22,7 @@ come into use as more components are finished and added
 public interface DemographicDataDAO {
 
   /**
-   * Inserts a patient into the database
+   * Inserts a patient into the database, on conflict, replaces the patient information.
    *
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
