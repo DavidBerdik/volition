@@ -737,4 +737,3 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private String medicationChoice;
 }
-
