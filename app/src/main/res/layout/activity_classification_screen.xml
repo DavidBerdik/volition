@@ -4,66 +4,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_page_border">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="391dp"
-        android:layout_height="348dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="35dp"
-        android:alpha=".33"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pic" />
+  <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="348dp"
+    android:layout_marginTop="35dp"
+    android:layout_marginBottom="35dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/dosage_choice_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/pic"/>
 
-    <TextView
-        android:id="@+id/classification"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/classification_screen_level"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_static" />
+  <TextView
+    android:id="@+id/classification_static"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="60dp"
+    android:layout_marginStart="20dp"
+    android:text="@string/classification_screen_level"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textColor="@color/browser_actions_title_color"
+    android:textSize="16sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/title_static"/>
 
-    <TextView
-        android:id="@+id/title_static"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/classification_screen_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+  <TextView
+    android:id="@+id/title_static"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="80dp"
+    android:text="@string/classification_screen_title"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+    android:textSize="45sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/ic_button_rectangle"
-        android:text="@string/classification_screen_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/classification"
-        app:layout_constraintVertical_bias="0.41000003" />
+  <Button
+    android:id="@+id/retake_button"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="80dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/ic_button_rectangle"
+    android:text="@string/classification_screen_button"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+  <TextView
+    android:id="@+id/classification"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="60dp"
+    android:layout_marginStart="5dp"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textColor="@color/browser_actions_title_color"
+    android:textSize="16sp"
+    app:layout_constraintStart_toEndOf="@+id/classification_static"
+    app:layout_constraintTop_toBottomOf="@+id/title_static"/>
 
 </android.support.constraint.ConstraintLayout>
