@@ -2,87 +2,179 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.recoveryenhancementsolutions.volition">
 
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity
-      android:exported="true"
-      android:label="@string/app_name"
-      android:name=".ActivityActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity android:name=".QuestionnaireActivity">
-    </activity>
-    <activity
-      android:label="@string/app_name"
-      android:name=".MainActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:exported="true"
-      android:label="@string/app_name"
-      android:name=".ReportUseActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:exported="true"
-      android:label="@string/app_name"
-      android:name=".HomeActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:exported="true"
-      android:label="@string/title_activity_medication_choice"
-      android:name=".MedicationChoiceActivity"
-      android:theme="@style/AppTheme.NoActionBar">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:label="@string/app_name"
-      android:name=".CreateProfileActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:exported="true"
-      android:label="@string/app_name"
-      android:name=".DisplayProfileActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:exported="true"
-      android:label="@string/app_name"
-      android:name=".PlanActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity
-      android:exported="true"
-      android:label="Classification Screen"
-      android:name=".ClassificationScreenActivity">
-      <intent-filter>
-        <category android:name="android.intent.category.ALTERNATIVE"/>
-      </intent-filter>
-    </activity>
-  </application>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".StartupLandingActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".QuestionnaireActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".QuestionnaireConfirmActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".ViewSeverityLevelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".ReportUseActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".HomeActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/title_activity_medication_choice"
+            android:name=".MedicationChoiceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/title_activity_medication_dosage"
+            android:name=".MedicationDosageActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".ProfileActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".DisplayProfileActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".ActivityActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="Classification Screen"
+            android:name=".ClassificationScreenActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.ALTERNATIVE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".PlanActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/treatmentPlan_name"
+            android:name=".TreatmentPlanActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".LessonActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".JournalActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".EDUActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".DailyWellnessActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:exported="true"
+            android:label="@string/app_name"
+            android:name=".TreatmentExperienceAssessmentActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>
