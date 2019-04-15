@@ -32,9 +32,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_experience_assessment);
 
-        //ViewModelProviders.of(this).get(TreatmentExperienceAssessmentActivityViewModel.class);
-
-        //   db = VolitionDatabase.getDatabase(this.getApplication());
         final Button oneButton = findViewById(R.id.button1);
         final Button twoButton = findViewById(R.id.button2);
         final Button threeButton = findViewById(R.id.button3);
@@ -174,51 +171,29 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     public void setAnswerForTea(int value) {
         if (answerCounter < 3) {
             teaAnswers.set(answerCounter, value);
-            questionsForTea.get(answerCounter).setTextColor(
-                    questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-            headersForTea.get(answerCounter).setTextColor(
-                headersForTea.get(answerCounter).getTextColors().withAlpha(0));
-            questionsForTea.get(answerCounter+1).setTextColor(
-                    questionsForTea.get(answerCounter+1).getTextColors().withAlpha(255));
-            headersForTea.get(answerCounter+1).setTextColor(
-                headersForTea.get(answerCounter).getTextColors().withAlpha(255));
+            questionsForTea.get(answerCounter).setTextColor(questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
+            headersForTea.get(answerCounter).setTextColor(headersForTea.get(answerCounter).getTextColors().withAlpha(0));
+            questionsForTea.get(answerCounter+1).setTextColor(questionsForTea.get(answerCounter+1).getTextColors().withAlpha(255));
+            headersForTea.get(answerCounter+1).setTextColor(headersForTea.get(answerCounter).getTextColors().withAlpha(255));
             answerCounter++;
         } else if (answerCounter==3){
             teaAnswers.set(answerCounter, value);
-            questionsForTea.get(answerCounter).setTextColor(
-                    questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
-            headersForTea.get(answerCounter).setTextColor(
-                    headersForTea.get(answerCounter).getTextColors().withAlpha(0));
-
-             TreatmentExperienceAssessmentViewModel.addTreatmentExperienceAssessment(db, teaAnswers);
-             startActivity(new Intent(TreatmentExperienceAssessmentActivity.this, TreatmentExperienceAssessmentRemarksActivity.class));
-
+            Intent i = new Intent(this, TreatmentExperienceAssessmentRemarksActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putIntegerArrayList("ANSWERS", teaAnswers);
+            i.putExtras(bundle);
+            startActivity(i);
         }
     }
-
 
     private TextView qOne;
     private TextView qTwo;
     private TextView qThree;
     private TextView qFour;
-
     private TextView substance;
     private TextView health;
     private TextView lifestyle;
     private TextView community;
-
-
     private VolitionDatabase db;
-/*
-
-/**
- * THIS IS A DUMMY CLASS
-
-public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_treatment_experience_assessment);
-  } */
 
 }
