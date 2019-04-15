@@ -58,7 +58,6 @@
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
-<<<<<<< HEAD
   <string name="questionnaire_question_1"> Do you often take larger amounts of opioids or
 take opioids over a longer period of time than
 intended?</string>
@@ -111,7 +110,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
   <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
   <string name="take_questionnaire"> Take questionnaire</string>
-=======
   <string name="buprenorphine_button"> Buprenorphine</string>
   <string name="abstain_button"> Abstain</string>
   <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
@@ -124,5 +122,4 @@ Withdrawal defined as three or more of the following symptoms develop within min
 </string>
   <string name="tea_confirmation"> You are now being directed to the TEA. </string>
   <string name="take_tea"> Take Treatment Experience Assessment. </string>
->>>>>>> origin/feature/VOL-81-create-java-file-for-tea
 </resources>
