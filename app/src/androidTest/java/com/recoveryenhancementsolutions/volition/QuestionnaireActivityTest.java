@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 /**
- * This class will run Espesso Test on the Questionnaire Activity
+ * This class will run Espresso Test on the Questionnaire Activity
  * It tests the questionnaire activity. It goes to the questionnaire activity and tests the
  * yes and no buttons to answer each question.
  */
@@ -38,7 +38,7 @@ public class QuestionnaireActivityTest {
      */
   @Test
   /**
-   * Performs test to check that the Questionnaire Activity run to go through each question the Yes and Non buttons
+   * Performs test to check that the Questionnaire Activity run to go through each question the Yes and No buttons
    */
   public void questionnaireActivityTest() {
     ViewInteraction appCompatButton = onView(

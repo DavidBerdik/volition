@@ -13,7 +13,7 @@ public class TreatmentExperienceAssessmentConfirmActivity extends AppCompatActiv
      */
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_activity);
+        setContentView(R.layout.activity_tea_confirmation);
         final Button takeTeaButton = findViewById(R.id.button5);
         takeTeaButton.setOnClickListener(takeTeaClickListener);
 
