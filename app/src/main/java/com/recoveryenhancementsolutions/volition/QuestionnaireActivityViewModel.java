@@ -152,11 +152,11 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
    */
   public void setSeverityString() {
     if (yesAnswers <= 3) {
-      severityString = "Mild";
+      severityString = "MILD";
     } else if (yesAnswers <= 5) {
-      severityString = "Moderate";
+      severityString = "MODERATE";
     } else {
-      severityString = "Severe";
+      severityString = "SEVERE";
     }
   }
 
