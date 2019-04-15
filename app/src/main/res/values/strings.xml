@@ -62,39 +62,39 @@
   <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="title_activity_medication_dosage">MedicationDose</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
-  <string name="questionnaire_question_1"> Do you often take larger amounts of opioids or
+  <string name="questionnaire_question_1">1. Do you often take larger amounts of opioids or
 take opioids over a longer period of time than
 intended?</string>
-  <string name="questionnaire_question_2"> Do you often have a persistent desire or
+  <string name="questionnaire_question_2">2. Do you often have a persistent desire or
 unsuccessful efforts to cut down or control
 opioid use?</string>
-  <string name="questionnaire_question_3"> Do you spend a great deal of time in activities
+  <string name="questionnaire_question_3">3. Do you spend a great deal of time in activities
 necessary to obtain opioids, use opioids, or
 recover from their effects?</string>
-  <string name="questionnaire_question_4"> Do you experience cravings or a strong desire to
+  <string name="questionnaire_question_4">4. Do you experience cravings or a strong desire to
 use opioids</string>
-  <string name="questionnaire_question_5"> Does recurrent opioid use result in failing to
+  <string name="questionnaire_question_5">5. Does recurrent opioid use result in failing to
 fulfill major role obligations at work, school or
 home?</string>
-  <string name="questionnaire_question_6"> Do you continue to use opioids despite having
+  <string name="questionnaire_question_6">6. Do you continue to use opioids despite having
 persistent or recurrent social or interpersonal
 problems that are caused or exacerbated by the
 effects of opioids?</string>
-  <string name="questionnaire_question_7"> Do you reduce or give up important social,
+  <string name="questionnaire_question_7">7. Do you reduce or give up important social,
 occupational or recreational activities because
 of opioid use?</string>
-  <string name="questionnaire_question_8"> Do you often use opioids in situations in which it
+  <string name="questionnaire_question_8">8. Do you often use opioids in situations in which it
 is physically hazardous?</string>
-  <string name="questionnaire_question_9"> Do you continue to use opioids despite having a
+  <string name="questionnaire_question_9">9. Do you continue to use opioids despite having a
 persistent or recurrent physical or psychological
 problem that has been caused or exacerbated
 by opioids?</string>
-  <string name="questionnaire_question_10"> Do you have a tolerance to opioids defined as a
+  <string name="questionnaire_question_10">10. Do you have a tolerance to opioids defined as a
 need for increased amounts of opioids to
 achieve intoxication or desired effect or a
 diminished effect with continued use of the
 same amount of opioid?</string>
-  <string name="questionnaire_question_11"> Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
+  <string name="questionnaire_question_11">11. Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
 Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: Dysphoic mood. \n
 •Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia.</string>
   <string name="severity_total"> Total Score: </string>
