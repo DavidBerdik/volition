@@ -25,7 +25,7 @@ public class ViewSeverityLevelViewModel extends AndroidViewModel {
    * @return A LiveData object containing a String to represent the severity.
    */
   public LiveData<String> getSeverity() {
-    return db.questionnaireModel().findSeverityLevelString();
+    return db.questionnaireDao().findSeverityLevelString();
   }
 
   /**
@@ -34,7 +34,7 @@ public class ViewSeverityLevelViewModel extends AndroidViewModel {
    * @return A LiveData object containing a String to represent the total "Yes" responses.
    */
   public LiveData<String> getTotalYesAnswers() {
-    return db.questionnaireModel().findTotalYes();
+    return db.questionnaireDao().findTotalYes();
   }
 
   private VolitionDatabase db;

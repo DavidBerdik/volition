@@ -169,8 +169,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
             questionsForTea.get(answerCounter+1).setTextColor(
                     questionsForTea.get(answerCounter+1).getTextColors().withAlpha(100));
 
-            // QuestionnaireActivityViewModel.populateAsync(db);
-            // startActivity(new Intent(QuestionnaireActivity.this, ViewSeverityLevelActivity.class));
 
         }
     }
@@ -182,4 +180,5 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     private TextView qFour;
 
     private VolitionDatabase db;
+
 }

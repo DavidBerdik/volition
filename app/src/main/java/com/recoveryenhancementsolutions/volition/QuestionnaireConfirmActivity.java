@@ -11,29 +11,27 @@ import android.widget.Button;
  */
 
 public class QuestionnaireConfirmActivity extends AppCompatActivity {
-    /**
-     * Shows the screen when the class is called.
-     * @param savedInstanceState stores the saved state in order to recreate the activity.
-     */
-    protected void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionnaire_confirmation);
-        final Button takeQuestionnaireButton = findViewById(R.id.takeQuestionnaire);
-        takeQuestionnaireButton.setOnClickListener(takeQClickListener);
 
+  /**
+   * Shows the screen when the class is called.
+   *
+   * @param savedInstanceState stores the saved state in order to recreate the activity.
+   */
+  protected void onCreate(final Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_questionnaire_confirmation);
+    final Button takeQuestionnaireButton = findViewById(R.id.takeQuestionnaire);
+    takeQuestionnaireButton.setOnClickListener(takeQClickListener);
+  }
+
+  /**
+   * When the button is clicked, it will take the user to the questionnaire.
+   */
+  private final View.OnClickListener takeQClickListener = new View.OnClickListener() {
+
+    @Override
+    public void onClick(final View v) {
+      startActivity(new Intent(QuestionnaireConfirmActivity.this, QuestionnaireActivity.class));
     }
-
-    /**
-     * When the button is clicked, it will take the user to the questionnaire. 
-     */
-    private final View.OnClickListener takeQClickListener = new View.OnClickListener() {
-
-        @Override
-        public void onClick(final View v) {
-            startActivity(new Intent(QuestionnaireConfirmActivity.this, QuestionnaireActivity.class));
-        }
-
-
-
-        };
-    }
+  };
+}

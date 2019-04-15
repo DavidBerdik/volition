@@ -3,33 +3,10 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-    android:textColor="@android:color/black"
+  android:background="@drawable/ic_page_border"
   android:layout_height="match_parent"
+  android:textColor="@android:color/black"
   tools:context=".QuestionnaireActivity">
-
-
-  <LinearLayout
-      android:layout_width="0dp"
-      android:layout_height="734dp"
-      android:textColor="@android:color/black"
-      android:background="#FFA500"
-      android:orientation="horizontal"
-      android:padding="10dp"
-      app:layout_constraintBaseline_toBaselineOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
-      tools:context="com.example.layoutborder.QuestionnaireActivity">
-
-      <TextView
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:background="#FFFFFF"
-          android:gravity="center_vertical|center_horizontal"
-          android:textColor="@android:color/black"
-          android:textSize="40sp" />
-
-  </LinearLayout>
 
 
   <TextView
@@ -38,9 +15,9 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-      android:textColor="@android:color/black"
     android:gravity="center"
     android:text="@string/questionnaire_question_1"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -49,9 +26,8 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
-
   <ImageView
+    android:id="@+id/imageView"
     android:layout_width="0dp"
     android:layout_height="314dp"
     android:layout_weight="1"
@@ -71,8 +47,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_2"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +57,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionThree"
     android:layout_width="361dp"
@@ -89,8 +64,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_3"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +74,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionFour"
     android:layout_width="352dp"
@@ -107,8 +81,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_4"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -117,7 +91,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionFive"
     android:layout_width="352dp"
@@ -125,8 +98,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_5"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +108,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionSix"
     android:layout_width="352dp"
@@ -143,8 +115,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_6"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +125,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionSeven"
     android:layout_width="356dp"
@@ -161,8 +132,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_7"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -171,7 +142,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionEight"
     android:layout_width="354dp"
@@ -179,8 +149,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_8"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -189,7 +159,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionNine"
     android:layout_width="354dp"
@@ -197,8 +166,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:gravity="center"
-      android:textColor="@android:color/black"
     android:text="@string/questionnaire_question_9"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -207,16 +176,15 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionTen"
     android:layout_width="352dp"
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-      android:textColor="@android:color/black"
     android:gravity="center"
     android:text="@string/questionnaire_question_10"
+    android:textColor="@android:color/black"
     android:textSize="24sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -225,7 +193,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/questionEleven"
     android:layout_width="349dp"
@@ -234,16 +201,15 @@
     android:layout_marginRight="20dp"
     android:gravity="left"
     android:text="@string/questionnaire_question_11"
+    android:textColor="@android:color/black"
     android:textSize="15sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-      android:textColor="@android:color/black"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <TextView
     android:id="@+id/severityResponse"
     android:layout_width="wrap_content"
@@ -256,37 +222,37 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-
   <Button
     android:id="@+id/YESbtn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:layout_below="@id/questionOne"
-    android:background="#00FA9A"
+    android:background="@color/res_green"
     android:text="@string/button_yes"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.811"
+    app:layout_constraintHorizontal_bias="0.78"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
-
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.603"/>
   <Button
     android:id="@+id/NObtn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:layout_below="@id/questionOne"
-    android:background="#00FA9A"
+    android:background="@color/res_green"
     android:text="@string/button_no"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.229"
+    app:layout_constraintHorizontal_bias="0.216"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.603"/>
 
 </android.support.constraint.ConstraintLayout>

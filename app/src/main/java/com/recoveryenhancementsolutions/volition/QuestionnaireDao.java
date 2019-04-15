@@ -1,5 +1,8 @@
 package com.recoveryenhancementsolutions.volition;
-
+/**
+ * TODO: Overwrite with VOL-50-View-Severity-Level
+ * Currently only supports minimum functionality to create a treatment plan
+ */
 
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
@@ -29,6 +32,13 @@ public interface QuestionnaireDao {
    */
   @Query("DELETE FROM QuestionnaireActivityEntity")
   void deleteAll();
+
+  /**
+   * Get the questionnaire entity.
+   * @return A LiveData object containing a QuestionnaireEntity
+   */
+  @Query("SELECT * FROM QuestionnaireActivityEntity")
+  LiveData<QuestionnaireEntity> getQuestionnaire();
 
   /**
    * query to find all values in database

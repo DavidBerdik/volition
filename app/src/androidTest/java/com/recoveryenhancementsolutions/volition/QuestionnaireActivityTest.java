@@ -1,5 +1,8 @@
 package com.recoveryenhancementsolutions.volition;
+
+
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -23,9 +26,14 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 /**
+<<<<<<< HEAD
  * This class will run Espresso Test on the Questionnaire Activity
  * It tests the questionnaire activity. It goes to the questionnaire activity and tests the
  * yes and no buttons to answer each question.
+=======
+ *  This class will run test on the QuestionnaireActivity to test that the buttons have proper
+ *  functionality.
+>>>>>>> e6be837a64f857c49946883997b38dba34495491
  */
 public class QuestionnaireActivityTest {
 
@@ -33,21 +41,24 @@ public class QuestionnaireActivityTest {
   public ActivityTestRule<QuestionnaireActivity> mActivityTestRule = new ActivityTestRule<>(
       QuestionnaireActivity.class);
 
-    /**
-     * Goes through each question in the questionnaire.
-     */
-  @Test
   /**
+<<<<<<< HEAD
    * Performs test to check that the Questionnaire Activity run to go through each question the Yes and No buttons
+=======
+   * This espresso test will run through the QuestionnaireActivity. The Yes and No buttons are
+   * tested to check the functionality for each question. At the last question the
+   * QuestionnaireActivity will go to the ViewSeverityLevelActivity.
+>>>>>>> e6be837a64f857c49946883997b38dba34495491
    */
-  public void questionnaireActivityTest() {
+  @Test
+  public void questionnaireActivityTest2() {
     ViewInteraction appCompatButton = onView(
         allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                14),
+                13),
             isDisplayed()));
     appCompatButton.perform(click());
 
@@ -57,7 +68,7 @@ public class QuestionnaireActivityTest {
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                14),
+                13),
             isDisplayed()));
     appCompatButton2.perform(click());
 
@@ -67,57 +78,57 @@ public class QuestionnaireActivityTest {
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                14),
             isDisplayed()));
     appCompatButton3.perform(click());
 
     ViewInteraction appCompatButton4 = onView(
-        allOf(withId(R.id.NObtn), withText("No"),
+        allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                13),
             isDisplayed()));
     appCompatButton4.perform(click());
 
     ViewInteraction appCompatButton5 = onView(
-        allOf(withId(R.id.NObtn), withText("No"),
+        allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                13),
             isDisplayed()));
     appCompatButton5.perform(click());
 
     ViewInteraction appCompatButton6 = onView(
-        allOf(withId(R.id.NObtn), withText("No"),
+        allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                13),
             isDisplayed()));
     appCompatButton6.perform(click());
 
     ViewInteraction appCompatButton7 = onView(
-        allOf(withId(R.id.NObtn), withText("No"),
+        allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                13),
             isDisplayed()));
     appCompatButton7.perform(click());
 
     ViewInteraction appCompatButton8 = onView(
-        allOf(withId(R.id.NObtn), withText("No"),
+        allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                13),
             isDisplayed()));
     appCompatButton8.perform(click());
 
@@ -127,29 +138,41 @@ public class QuestionnaireActivityTest {
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                14),
             isDisplayed()));
     appCompatButton9.perform(click());
 
+    pressBack();
+
     ViewInteraction appCompatButton10 = onView(
-        allOf(withId(R.id.NObtn), withText("No"),
+        allOf(withId(R.id.YESbtn), withText("Yes"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                13),
             isDisplayed()));
     appCompatButton10.perform(click());
 
     ViewInteraction appCompatButton11 = onView(
+        allOf(withId(R.id.YESbtn), withText("Yes"),
+            childAtPosition(
+                childAtPosition(
+                    withId(android.R.id.content),
+                    0),
+                13),
+            isDisplayed()));
+    appCompatButton11.perform(click());
+
+    ViewInteraction appCompatButton12 = onView(
         allOf(withId(R.id.NObtn), withText("No"),
             childAtPosition(
                 childAtPosition(
                     withId(android.R.id.content),
                     0),
-                15),
+                14),
             isDisplayed()));
-    appCompatButton11.perform(click());
+    appCompatButton12.perform(click());
   }
 
   private static Matcher<View> childAtPosition(
@@ -162,11 +185,6 @@ public class QuestionnaireActivityTest {
         parentMatcher.describeTo(description);
       }
 
-        /**
-         * Makes sure the view matches safely with the parent.
-         * @param view what is shown on the app.
-         * @return returns the parent.
-         */
       @Override
       public boolean matchesSafely(View view) {
         ViewParent parent = view.getParent();

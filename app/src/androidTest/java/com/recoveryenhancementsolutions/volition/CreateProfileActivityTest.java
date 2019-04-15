@@ -41,8 +41,8 @@ import org.junit.runner.RunWith;
 public class CreateProfileActivityTest {
 
   @Rule
-  public ActivityTestRule<CreateProfileActivity> mActivityTestRule = new ActivityTestRule<>(
-      CreateProfileActivity.class);
+  public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+      ProfileActivity.class);
 
   /**
    * Performs tests that are related to the user interface in the "Create Profile" activity.
@@ -50,38 +50,15 @@ public class CreateProfileActivityTest {
   @Test
   public void createProfileUiTests() {
     // Test setting a name in the "Name" EditText.
-    ViewInteraction appCompatEditText = onView(
-        allOf(withId(R.id.name),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                0)));
-    appCompatEditText.perform(scrollTo(), replaceText("Name"), closeSoftKeyboard());
+    onView(withId(R.id.name)).perform(scrollTo(), click());
 
     // Test setting a date in the "Date of Birth" EditText. Note that this test enters a date
     // directly in the field and does not make use of the date picker.
-    ViewInteraction appCompatEditText3 = onView(
-        allOf(withId(R.id.date_of_birth),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                1)));
-    appCompatEditText3.perform(scrollTo(), replaceText("Sep 9, 1989"), closeSoftKeyboard());
+    onView(withId(R.id.date_of_birth))
+        .perform(scrollTo(), replaceText("Sep 9, 1989"), closeSoftKeyboard());
 
     // Test opening the gender dropdown menu.
-    ViewInteraction appCompatSpinner = onView(
-        allOf(withId(R.id.gender_spinner),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                2)));
-    appCompatSpinner.perform(scrollTo(), click());
+    onView(withId(R.id.gender_spinner)).perform(scrollTo(), click());
 
     // Test selecting the "Other" option from the gender dropdown menu.
     DataInteraction appCompatTextView = onData(anything())
@@ -93,60 +70,22 @@ public class CreateProfileActivityTest {
 
     // Test selecting the role of the person completing the form. In this test, the
     // "Person in Recovery/Seeking Recovery" option is chosen.
-    ViewInteraction appCompatRadioButton = onView(
-        allOf(withId(R.id.radioClient), withText("Person in Recovery/Seeking Recovery"),
-            childAtPosition(
-                allOf(withId(R.id.user_type),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        4)),
-                1)));
-    appCompatRadioButton.perform(scrollTo(), click());
+    onView(allOf(withId(R.id.radioClient), withText("Person in Recovery/Seeking Recovery")))
+        .perform(scrollTo(), click());
 
     // Test selecting the drug of choice. In this test, the "Other Opiates and Synthetics" option
     // is chosen.
-    ViewInteraction appCompatRadioButton2 = onView(
-        allOf(withId(R.id.radioOpiates), withText("Other Opiates and Synthetics"),
-            childAtPosition(
-                allOf(withId(R.id.drug_selection),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        6)),
-                1)));
-    appCompatRadioButton2.perform(scrollTo(), click());
+    onView(allOf(withId(R.id.radioOpiates), withText("Other Opiates and Synthetics")))
+        .perform(scrollTo(), click());
 
     // Test changing the drug of choice selection to "Other."
-    ViewInteraction appCompatRadioButton3 = onView(
-        allOf(withId(R.id.radioOther), withText("Other"),
-            childAtPosition(
-                allOf(withId(R.id.drug_selection),
-                    childAtPosition(
-                        withId(R.id.RelativeLayout01),
-                        6)),
-                10)));
-    appCompatRadioButton3.perform(scrollTo(), click());
+    onView(allOf(withId(R.id.radioOther), withText("Other"))).perform(scrollTo(), click());
 
     // Test setting the name in the custom other drug EditText to "Other drug".
-    ViewInteraction appCompatEditText4 = onView(
-        allOf(withId(R.id.enter_other),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                7)));
-    appCompatEditText4.perform(scrollTo(), replaceText("Other drug"), closeSoftKeyboard());
+    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText("Other drug"), closeSoftKeyboard());
 
     // Test opening the Substance Use Disorder dropdown menu.
-    ViewInteraction appCompatSpinner2 = onView(
-        allOf(withId(R.id.use_type_spinner),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                9)));
-    appCompatSpinner2.perform(scrollTo(), click());
+    onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
 
     // Test selecting "Opioid Use Disorder" from the Substance Use Disorder dropdown menu.
     DataInteraction appCompatTextView2 = onData(anything())
@@ -157,15 +96,7 @@ public class CreateProfileActivityTest {
     appCompatTextView2.perform(click());
 
     // Test reopening the Substance Use Disorder dropdown menu.
-    ViewInteraction appCompatSpinner3 = onView(
-        allOf(withId(R.id.use_type_spinner),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                9)));
-    appCompatSpinner3.perform(scrollTo(), click());
+    onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
 
     // Test selecting "Alcohol Use Disorder" from the Substance Use Disorder dropdown menu.
     DataInteraction appCompatTextView3 = onData(anything())
@@ -177,26 +108,10 @@ public class CreateProfileActivityTest {
 
     // Test setting a date in the "Date of Last Use" EditText. Note that this test enters
     // a date directly in the field and does not make use of the date picker.
-    ViewInteraction appCompatEditText5 = onView(
-        allOf(withId(R.id.clean_date),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                10)));
-    appCompatEditText5.perform(scrollTo(), replaceText("Jan 1, 2019"), closeSoftKeyboard());
+    onView(withId(R.id.clean_date)).perform(scrollTo(), replaceText("Jan 1, 2019"), closeSoftKeyboard());
 
     // Test tapping on the "Record Answers" button.
-    ViewInteraction appCompatButton = onView(
-        allOf(withId(R.id.record_button), withText("Record Answers"),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                11)));
-    appCompatButton.perform(scrollTo(), click());
+    onView(withId(R.id.record_button)).perform(scrollTo(), click());
   }
 
   /**
@@ -205,15 +120,7 @@ public class CreateProfileActivityTest {
   @Test
   public void createProfileActivityDatePickerTests() {
     // Test opening the Date of Birth date picker
-    ViewInteraction appCompatEditText = onView(
-        allOf(withId(R.id.date_of_birth),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                1)));
-    appCompatEditText.perform(scrollTo(), click());
+    onView(withId(R.id.date_of_birth)).perform(scrollTo(), click());
 
     // Test opening of year selection in the Date of Birth date picker
     ViewInteraction appCompatTextView = onView(
@@ -261,15 +168,7 @@ public class CreateProfileActivityTest {
     appCompatButton.perform(scrollTo(), click());
 
     // Test opening the Last Date Used date picker
-    ViewInteraction appCompatEditText2 = onView(
-        allOf(withId(R.id.clean_date),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                10)));
-    appCompatEditText2.perform(scrollTo(), click());
+    onView(withId(R.id.clean_date)).perform(scrollTo(), click());
 
     // Test 5 uses of the "Previous Month" button in the Last Date Used date picker
     for (int x = 0; x < 5; x++) {
@@ -310,15 +209,7 @@ public class CreateProfileActivityTest {
     onView(withId(R.id.clean_date)).check(matches(withText("Mar 14, 2015")));
 
     //Testing if the button calls QuestionnaireActivity
-    ViewInteraction appCompatButton4 = onView(
-        allOf(withId(R.id.record_button), withText("Record Answers"),
-            childAtPosition(
-                allOf(withId(R.id.RelativeLayout01),
-                    childAtPosition(
-                        withId(R.id.LinearLayout01),
-                        0)),
-                11)));
-    appCompatButton4.perform(scrollTo(), click());
+    onView(allOf(withId(R.id.record_button), withText("Record Answers"))).perform(scrollTo(), click());
   }
 
   private static Matcher<View> childAtPosition(

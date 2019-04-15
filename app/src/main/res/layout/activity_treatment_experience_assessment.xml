@@ -257,4 +257,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.628" />
 
+
+  <ImageView
+    android:id="@+id/resBackground"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.562"
+    app:srcCompat="@drawable/pic"/>
+  <TextView
+    android:id="@+id/treatmentAssessmentTitle"
+    android:layout_width="265dp"
+    android:layout_height="222dp"
+    android:layout_marginTop="200dp"
+    android:layout_marginBottom="508dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:gravity="center"
+    android:text="@string/treatment_assessment_title"
+    android:textColor="#000000"
+    android:textSize="55sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.663"/>
+
 </android.support.constraint.ConstraintLayout>
