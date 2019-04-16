@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,7 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * The ReportUseActivity that contains functionality and interactions relevant to the
@@ -59,7 +62,10 @@ public class ReportUseActivity extends AppCompatActivity {
     navigation.getMenu().getItem(1).setChecked(false);
     navigation.setOnNavigationItemSelectedListener(navigationListener);
 
-    //Pulls up a Date Picker for the user to select their date of last use
+    //Observer that will retrieve the previously stored date of last use
+    ddViewModel.getLastCleanDate().observe(this, dateObserver);
+
+    //Date Picker for the user to select their date of last use
     useDate = Calendar.getInstance();
     useDateListener = new OnDateSetListener() {
       /**
@@ -75,14 +81,22 @@ public class ReportUseActivity extends AppCompatActivity {
         useDate.set(Calendar.MONTH, month);
         useDate.set(Calendar.DAY_OF_MONTH, day);
 
+        ready = false;
+        //Check to see if the date selected is the same as or before the date already stored
+        if (DateConverter.daysBetween(useDate.getTime().getTime(), new Date().getTime()) == 0){
+          //TODO: Add toast message
+        }
+        else {
+          ready = true;
+        }
         final String str = DateFormat.getDateInstance().format(useDate.getTime());
         ddViewModel.updateLastCleanDate(useDate, today);
         toast = Toast.makeText(getApplicationContext(), "Recorded " + str + " as day of last use",
             Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
 
-        //Only redirects if we are not in a testing environment
-        if (!inTest) {
+        //Only redirects if we are not in a testing environment & the date chosen was valid
+        if (!inTest && ready) {
           redirect();
           toast.show();
         }
@@ -151,16 +165,29 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
+  /**
+   * Observer for retrieving the "last clean" Date
+   */
+  private Observer<Date> dateObserver = new Observer<Date>() {
+    @Override
+    public void onChanged(final Date date) {
+      try {
+        prevUseDate = date;
+      } catch (NullPointerException e) {
+        e.printStackTrace();
+      }
+    }
+  };
 
   /**
-   * Redirects to another screen TODO: Move the user to the Activity screen
+   * Redirects to another screen
    */
   private void redirect() {
-    intent = new Intent(getApplicationContext(), HomeActivity.class);
+    intent = new Intent(getApplicationContext(), ActivityActivity.class);
     startActivity(intent);
   }
 
-  //TODO: Uncomment as more Activities are added to the dev branch
+  //TODO: Uncomment as more Activities are added to the dev branch OR replace with a return button
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -186,8 +213,10 @@ public class ReportUseActivity extends AppCompatActivity {
   private DemographicDataViewModel ddViewModel;
   private Calendar today;
   private Calendar useDate;
+  private Date prevUseDate;
   private Toast toast;
   private Intent intent;
   private int lastClickedItem;
   private boolean inTest;
+  private boolean ready;
 }
