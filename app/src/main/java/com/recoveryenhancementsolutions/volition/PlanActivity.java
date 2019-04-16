@@ -47,21 +47,6 @@ public class PlanActivity extends AppCompatActivity {
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
     CoreNavigationHandler.link(bottomNavigationView, this);
 
-    /*
-    ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        cycle(true);
-      }
-    });
-    ((ImageButton) findViewById(R.id.button_previous)).setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        cycle(false);
-      }
-    });
-    */
-
     // Store today's date with a time of 0 for relative date calculation.
     final Calendar today = Calendar.getInstance();
     today.set(Calendar.HOUR_OF_DAY, 0);
@@ -132,10 +117,20 @@ public class PlanActivity extends AppCompatActivity {
     return dateViews.size();
   }
 
+  /**
+   * Gets the content string for the calendar day at the given position.
+   * @param at Offset from today.  1 would be yesterday.
+   * @return String containing list of activities for that day.
+   */
   protected String getCalendarBuffer(final int at) {
     return dateViews.get(at).content.getText().toString();
   }
 
+  /**
+   * Gets the notes string for all activities on the calendar day at the given position.
+   * @param at Offset from today.  1 would be yesterday.
+   * @return String containing list of all notes for that day.
+   */
   protected String getNotesBuffer(final int at) {
     return dateViews.get(at).notes;
   }
