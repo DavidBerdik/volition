@@ -70,7 +70,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
-
   public abstract TreatmentExperienceAssessmentDao treatmentExperienceAssessmentDao();
 
   public abstract TreatmentPlanDao treatmentPlanDao();

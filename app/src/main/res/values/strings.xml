@@ -160,10 +160,10 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="health">Health</string>
   <string name="community">Community</string>
   <string name="substance">Substance Use</string>
-  <string name="teaQuestionOne"> How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc?</string>
-  <string name="teaQuestionTwo">Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself?</string>
-  <string name="teaQuestionThree">How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments?</string>
-  <string name="teaQuestionFour">Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people?</string>
+  <string name="tea_question_one"> How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc?</string>
+  <string name="tea_question_two">Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself?</string>
+  <string name="tea_question_three">How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments?</string>
+  <string name="tea_question_four">Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people?</string>
   <string name="one">1</string>
   <string name="two">2</string>
   <string name="three">3</string>
@@ -176,7 +176,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="ten">10</string>
   <string name="none">None or not much</string>
   <string name="better">Better</string>
-  <string name="muchBetter">Much better</string>
+  <string name="much_better">Much better</string>
   <string name="logo">This is the logo for Recovery Enhancement Solutions</string>
   <string name="remarks">Remarks</string>
   <string name="directions">Write down one or two changes most important to you or click submit. </string>

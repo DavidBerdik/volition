@@ -15,6 +15,8 @@
 
     android:id="@+id/substanceText"
 
+    android:textStyle="bold"
+
     android:layout_width="288dp"
 
     android:layout_height="57dp"
@@ -28,11 +30,9 @@
     android:layout_marginEnd="8dp"
 
     android:text="@string/substance"
-
+    android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-    android:textAlignment="center"
-    android:textStyle = "bold"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -50,6 +50,8 @@
 
     android:id="@+id/healthText"
 
+    android:textStyle="bold"
+
     android:layout_width="288dp"
 
     android:layout_height="57dp"
@@ -63,11 +65,9 @@
     android:layout_marginEnd="8dp"
 
     android:text="@string/health"
-
+    android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-    android:textAlignment="center"
-    android:textStyle = "bold"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -84,6 +84,8 @@
 
     android:id="@+id/lifestyleText"
 
+    android:textStyle="bold"
+
     android:layout_width="288dp"
 
     android:layout_height="57dp"
@@ -97,11 +99,9 @@
     android:layout_marginEnd="8dp"
 
     android:text="@string/lifestyle"
-
+    android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-    android:textAlignment="center"
-    android:textStyle = "bold"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -116,10 +116,11 @@
     app:layout_constraintVertical_bias="0.078"/>
 
 
-
   <TextView
 
     android:id="@+id/communityText"
+
+    android:textStyle="bold"
 
     android:layout_width="288dp"
 
@@ -134,11 +135,9 @@
     android:layout_marginEnd="8dp"
 
     android:text="@string/community"
-
+    android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-    android:textAlignment="center"
-    android:textStyle = "bold"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -156,6 +155,8 @@
 
     android:id="@+id/questionOne"
 
+    android:textStyle="bold"
+
     android:layout_width="361dp"
 
     android:layout_height="wrap_content"
@@ -165,9 +166,7 @@
     android:layout_marginRight="20dp"
 
     android:gravity="center"
-
-    android:text="@string/teaQuestionOne"
-    android:textStyle = "bold"
+    android:text="@string/tea_question_one"
     android:textColor="@android:color/black"
 
     android:textSize="24sp"
@@ -186,13 +185,14 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.276" />
-
+    app:layout_constraintVertical_bias="0.276"/>
 
 
   <TextView
 
     android:id="@+id/questionTwo"
+
+    android:textStyle="bold"
 
     android:layout_width="361dp"
 
@@ -203,9 +203,7 @@
     android:layout_marginRight="20dp"
 
     android:gravity="center"
-
-    android:text="@string/teaQuestionTwo"
-    android:textStyle = "bold"
+    android:text="@string/tea_question_two"
     android:textColor="@android:color/black"
 
     android:textSize="24sp"
@@ -224,12 +222,14 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.271" />
+    app:layout_constraintVertical_bias="0.271"/>
 
   <TextView
 
     android:id="@+id/questionThree"
 
+    android:textStyle="bold"
+
     android:layout_width="361dp"
 
     android:layout_height="wrap_content"
@@ -239,9 +239,7 @@
     android:layout_marginRight="20dp"
 
     android:gravity="center"
-
-    android:text="@string/teaQuestionThree"
-    android:textStyle = "bold"
+    android:text="@string/tea_question_three"
     android:textColor="@android:color/black"
 
     android:textSize="24sp"
@@ -260,25 +258,25 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.276" />
+    app:layout_constraintVertical_bias="0.276"/>
 
   <TextView
 
     android:id="@+id/questionFour"
 
+    android:textStyle="bold"
+
     android:layout_width="361dp"
 
-    android:layout_height="wrap_content"
 
+    android:layout_height="wrap_content"
 
     android:layout_marginLeft="20dp"
 
     android:layout_marginRight="20dp"
 
     android:gravity="center"
-
-    android:text="@string/teaQuestionFour"
-    android:textStyle = "bold"
+    android:text="@string/tea_question_four"
 
     android:textColor="@android:color/black"
 
@@ -298,14 +296,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.276" />
-
-
-
-
-
-
-
+    app:layout_constraintVertical_bias="0.276"/>
 
 
   <Button
@@ -316,13 +307,13 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -338,8 +329,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
-
+    app:layout_constraintVertical_bias="0.68"/>
 
 
   <Button
@@ -350,13 +340,13 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -372,8 +362,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
-
+    app:layout_constraintVertical_bias="0.68"/>
 
 
   <Button
@@ -384,13 +373,13 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -406,8 +395,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
-
+    app:layout_constraintVertical_bias="0.68"/>
 
 
   <Button
@@ -418,13 +406,13 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -440,7 +428,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
+    app:layout_constraintVertical_bias="0.68"/>
 
 
   <Button
@@ -542,7 +530,6 @@
     app:layout_constraintVertical_bias="0.68"/>
 
 
-
   <Button
 
     android:id="@+id/button3"
@@ -551,13 +538,13 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -573,8 +560,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
-
+    app:layout_constraintVertical_bias="0.68"/>
 
 
   <Button
@@ -585,13 +571,13 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -607,7 +593,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
+    app:layout_constraintVertical_bias="0.68"/>
   <Button
 
     android:id="@+id/button1"
@@ -616,14 +602,14 @@
 
     android:layout_height="wrap_content"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
 
-    android:layout_marginEnd="8dp"
-
-
     android:layout_marginBottom="8dp"
+
+    android:layout_marginStart="8dp"
+
+
+    android:layout_marginEnd="8dp"
 
     android:background="@color/res_green"
 
@@ -639,30 +625,26 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.68" />
-
-
-
+    app:layout_constraintVertical_bias="0.68"/>
 
 
   <TextView
-
 
 
     android:layout_width="wrap_content"
 
     android:layout_height="42dp"
 
-    android:layout_marginStart="8dp"
-
-    android:textColor="#555555"
     android:layout_marginTop="8dp"
+
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
 
     android:layout_marginEnd="8dp"
 
-    android:layout_marginBottom="8dp"
-
     android:text="@string/none"
+
+    android:textColor="#555555"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -674,26 +656,25 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.628" />
+    app:layout_constraintVertical_bias="0.628"/>
 
   <TextView
-
 
 
     android:layout_width="wrap_content"
 
     android:layout_height="42dp"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
-    android:textColor="#555555"
+
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
 
     android:layout_marginEnd="8dp"
 
-    android:layout_marginBottom="8dp"
-
     android:text="@string/better"
+
+    android:textColor="#555555"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -705,26 +686,25 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.628" />
+    app:layout_constraintVertical_bias="0.628"/>
 
   <TextView
-
 
 
     android:layout_width="wrap_content"
 
     android:layout_height="42dp"
 
-    android:layout_marginStart="8dp"
-
     android:layout_marginTop="8dp"
-
-    android:layout_marginEnd="8dp"
-    android:textColor="#555555"
 
     android:layout_marginBottom="8dp"
 
-    android:text="@string/muchBetter"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+
+    android:text="@string/much_better"
+
+    android:textColor="#555555"
 
     app:layout_constraintBottom_toBottomOf="parent"
 
@@ -736,14 +716,12 @@
 
     app:layout_constraintTop_toTopOf="parent"
 
-    app:layout_constraintVertical_bias="0.628" />
+    app:layout_constraintVertical_bias="0.628"/>
 
 
   <ImageView
 
     android:id="@+id/imageView4"
-
-    android:contentDescription="@string/logo"
 
     android:layout_width="415dp"
 
@@ -751,12 +729,14 @@
 
     android:layout_weight="30"
 
-
     android:layout_marginTop="-150dp"
+
 
     android:padding="30dp"
 
     android:alpha=".2"
+
+    android:contentDescription="@string/logo"
 
     app:layout_constraintEnd_toEndOf="parent"
 
@@ -767,8 +747,6 @@
     app:layout_constraintTop_toTopOf="parent"
 
     app:srcCompat="@drawable/pic"/>
-
-
 
 
 </android.support.constraint.ConstraintLayout>

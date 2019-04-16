@@ -64,12 +64,9 @@ public class TreatmentExperienceAssessmentEntity {
     remarksString = remarksS;
   }
 
-
   public int getPatientId() {
     return patientId;
   }
-
-
 
   /**
    * gets an int between 1-10 regarding the objects substance use question
@@ -106,8 +103,6 @@ public class TreatmentExperienceAssessmentEntity {
   public int getCommunityInt() {
     return communityInt;
   }
-
-
 
   /**
    * gets an string of personal thoughts regarding the objects substance use questions
