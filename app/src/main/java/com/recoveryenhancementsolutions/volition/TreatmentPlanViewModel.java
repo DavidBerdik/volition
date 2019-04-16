@@ -24,8 +24,8 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   /**
    * Inserts a new treatment plan into the database.
    */
-  public static void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
-    new insertAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);
+  public static void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity, VolitionDatabase db) {
+    new insertAsyncTask(db.treatmentPlanDao()).execute(treatmentPlanEntity);
   }
 
   /**

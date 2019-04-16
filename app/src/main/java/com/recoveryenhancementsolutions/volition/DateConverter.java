@@ -48,6 +48,13 @@ public class DateConverter {
     return Math.max(0, (int) ((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
   }
 
+  /**
+   * Takes two Date objects and calculates the number of hours between them.
+   *
+   * @param start Date object representing the starting date.
+   * @param end Date object representing the ending date.
+   * @return Integer representing the number of hours between start and end
+   */
   public static int hoursBetween(Date start, Date end){
     return Math.max(0, (int) ((end.getTime() - start.getTime()) / (1000 * 60 * 60)));
   }

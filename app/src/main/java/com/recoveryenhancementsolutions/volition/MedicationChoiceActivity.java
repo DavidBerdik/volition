@@ -34,6 +34,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       public void onClick(final View view) {
         medication.medication = "Abstain";
         mViewModel.insertMedication(medication);
+        mViewModel.generateTreatmentPlan();
         startActivity(new Intent(MedicationChoiceActivity.this, TreatmentPlanActivity.class));
       }
     });
@@ -45,6 +46,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
       public void onClick(final View view) {
         medication.medication = "Buprenorphine";
         mViewModel.insertMedication(medication);
+        mViewModel.generateTreatmentPlan();
         startActivity(new Intent(MedicationChoiceActivity.this, MedicationDosageActivity.class));
       }
     });

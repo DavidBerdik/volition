@@ -41,9 +41,9 @@ public class TreatmentPlanViewModelTest {
     medicationChoiceEntity.medication = "ABSTAIN";
     db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
 
-    final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
-    questionnaireEntity.setSeverityLevel("MODERATE");
-    db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
+    final QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
+    questionnaireActivityEntity.setSeverityLevel("MODERATE");
+    db.questionnaireDao().insertQuestionnaire(questionnaireActivityEntity);
 
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(TreatmentPlanViewModel.class);
@@ -83,7 +83,7 @@ public class TreatmentPlanViewModelTest {
     treatmentPlanEntity.setMedManagementMonthly();
     treatmentPlanEntity.setOutcomeMeasureWeekly();
     treatmentPlanEntity.setId(1);
-    TreatmentPlanViewModel.insertTreatmentPlan(treatmentPlanEntity);
+    TreatmentPlanViewModel.insertTreatmentPlan(treatmentPlanEntity,db);
 
     // Allow the database one second to update.
     try {

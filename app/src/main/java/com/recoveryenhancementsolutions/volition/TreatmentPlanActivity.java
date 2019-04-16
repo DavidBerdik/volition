@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -82,13 +81,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     //Sets initial treatmentPlanEntity values (for update use)
     treatmentPlanEntity = new TreatmentPlanEntity();
 
-    //initializes values for observer tests.
-    medObserved = false;
-    questionnaireObserved = false;
-
-    //Initializes observers
-    viewModel.getMedicationChoiceEntity().observe(this, medObserver);
-    viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
+    //Initializes observer
     viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
   }
 
@@ -100,15 +93,9 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
         .get(TreatmentPlanViewModel.class);
     treatmentPlanViewModel.setTestDatabase(db);
 
-    //initializes values for observer tests.
-    medObserved = false;
-    questionnaireObserved = false;
-
     //Initializes observers. Note during tests this triggers 3 additional toasts that do not appear
     //during regular initialization
     viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
-    viewModel.getMedicationChoiceEntity().observe(this, medObserver);
-    viewModel.getQuestionnaireEntity().observe(this, questionnaireObserver);
   }
 
   /**
@@ -197,16 +184,18 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
    */
   private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
     @Override
-    public void onChanged(final TreatmentPlanEntity treatmentPlanEntity) {
+    public void onChanged(final TreatmentPlanEntity newTreatmentPlanEntity) {
       try {
+        treatmentPlanEntity = newTreatmentPlanEntity;
+
         Context context = getApplicationContext();
-        CharSequence msg = "Your Treatment Plan was Saved!";
+        CharSequence msg = "Your Treatment Plan was Updated!";
         int dur = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, msg, dur);
         toast.show();
         String s;
 
-        if (treatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")) {
+        if (newTreatmentPlanEntity.getMedManagementFrequency().equals("MONTHLY")) {
           s = "Medication Management per Month";
           medManagementDescView.setText(s);
         } else {
@@ -214,53 +203,32 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
           medManagementDescView.setText(s);
         }
 
-        if (treatmentPlanEntity.getOutcomeMeasureFrequency().equals("WEEKLY")) {
+        if (newTreatmentPlanEntity.getOutcomeMeasureFrequency().equals("WEEKLY")) {
           s = "Outcome Measures per Week";
           outcomeMeasureDescView.setText(s);
         } else {
           s = "Outcome Measures per Day";
           outcomeMeasureDescView.setText(s);
         }
-      } catch (NullPointerException e) {
-        Log.e(TAG, Log.getStackTraceString(e));
-      }
-    }
-  };
 
-  /**
-   * Observes the medication choice table in the database. Generates a treatment plan if the
-   * questionnaire has already been loaded as well.
-   */
-  private Observer<MedicationChoiceEntity> medObserver = new Observer<MedicationChoiceEntity>() {
-    @Override
-    public void onChanged(final MedicationChoiceEntity medicationChoiceEntity) {
-      try {
-        medicationChoice = medicationChoiceEntity.medication;
-        medObserved = true;
-        if (questionnaireObserved) {
-          generateTreatmentPlan();
-        }
-      } catch (NullPointerException e) {
-        Log.e(TAG, Log.getStackTraceString(e));
-      }
-    }
-  };
+        s = "" + treatmentPlanEntity.getNumCounseling();
+        counselingView.setText(s);
+        s = "" + treatmentPlanEntity.getNumMedManagement();
+        medManagementView.setText(s);
+        s = "" + treatmentPlanEntity.getNumSupportMeeting();
+        supportMeetingView.setText(s);
+        s = "" + treatmentPlanEntity.getNumLessons();
+        lessonView.setText(s);
+        s = "" + treatmentPlanEntity.getNumTreatmentEffectivenessAssessment();
+        treatmentEffectiveView.setText(s);
+        s = "" + treatmentPlanEntity.getNumOutcomeMeasures();
+        outcomeMeasureView.setText(s);
+        s = "" + treatmentPlanEntity.getNumTimeTracking();
+        timeTrackingView.setText(s);
+        s = "" + treatmentPlanEntity.getNumReadingResponse();
+        readingResponseView.setText(s);
 
-  /**
-   * Observes the questionnaire table in the database. Generates a treatment plan if the medication
-   * choice has already been loaded as well.
-   */
-  private Observer<QuestionnaireEntity> questionnaireObserver = new Observer<QuestionnaireEntity>() {
-    @Override
-    public void onChanged(@Nullable QuestionnaireEntity questionnaireEntity) {
-      try {
-        if (questionnaireEntity != null) {
-          severityLevel = questionnaireEntity.getSeverityLevel();
-        }
-        questionnaireObserved = true;
-        if (medObserved) {
-          generateTreatmentPlan();
-        }
+        treatmentPlanLoaded = true;
       } catch (NullPointerException e) {
         Log.e(TAG, Log.getStackTraceString(e));
       }
@@ -280,15 +248,17 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
       if (treatmentPlanLoaded) {
         if (hours < treatmentPlanEntity.getCoolDownTime()) {
           Context context = getApplicationContext();
-          CharSequence msg = "Try again in " + (treatmentPlanEntity.getCoolDownTime() - hours) + " hours!";
+          CharSequence msg =
+              "Try again in " + (treatmentPlanEntity.getCoolDownTime() - hours) + " hours!";
           int dur = Toast.LENGTH_SHORT;
           Toast toast = Toast.makeText(context, msg, dur);
           toast.show();
         } else {
+          treatmentPlanEntity.setLastUpdate(Calendar.getInstance().getTime());
           TreatmentPlanViewModel.updateTreatmentPlan(treatmentPlanEntity);
         }
       }
-    }catch(NullPointerException e){
+    } catch (NullPointerException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
   }
@@ -550,95 +520,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     }
   }
 
-  /**
-   * Generates a new treatmentPlan.
-   */
-  private void generateTreatmentPlan() {
-
-    //A new treatmentPlanEntity to add to the database
-    TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
-    switch (severityLevel) {
-      case "MILD":  //There is no mild Buprenorphine plan currently
-        newTreatmentPlan.setNumCounseling(1);
-        newTreatmentPlan.setNumSupportMeeting(1);
-        newTreatmentPlan.setNumLessons(1);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        newTreatmentPlan.setNumOutcomeMeasures(1);
-        newTreatmentPlan.setNumTimeTracking(1);
-        newTreatmentPlan.setNumReadingResponse(1);
-        newTreatmentPlan.setNumMedManagement(0);
-        newTreatmentPlan.setMedManagementMonthly();
-        newTreatmentPlan.setOutcomeMeasureWeekly();
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
-          newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(2);
-        }
-        break;
-      case "MODERATE":
-        newTreatmentPlan.setNumCounseling(3);
-        newTreatmentPlan.setNumSupportMeeting(3);
-        newTreatmentPlan.setNumLessons(2);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        newTreatmentPlan.setNumOutcomeMeasures(3);
-        newTreatmentPlan.setNumTimeTracking(2);
-        newTreatmentPlan.setNumReadingResponse(2);
-        newTreatmentPlan.setMedManagementMonthly();
-        newTreatmentPlan.setOutcomeMeasureDaily();
-
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
-          newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(2);
-        }
-        break;
-      default:  //Severe severity level
-        newTreatmentPlan.setNumCounseling(5);
-        newTreatmentPlan.setNumSupportMeeting(5);
-        newTreatmentPlan.setNumLessons(3);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        newTreatmentPlan.setNumOutcomeMeasures(5);
-        newTreatmentPlan.setNumTimeTracking(5);
-        newTreatmentPlan.setNumReadingResponse(3);
-        newTreatmentPlan.setMedManagementWeekly();
-        newTreatmentPlan.setOutcomeMeasureDaily();
-
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
-          newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(1);
-        }
-        break;
-    }
-    //Set time and update cool-down information. NOTE: cool down must be positive
-    Date date = Calendar.getInstance().getTime();
-    newTreatmentPlan.setCoolDownTime(8);
-    newTreatmentPlan.setLastUpdate(date);
-
-    String s = "" + newTreatmentPlan.getNumCounseling();
-    counselingView.setText(s);
-    s = "" + newTreatmentPlan.getNumMedManagement();
-    medManagementView.setText(s);
-    s = "" + newTreatmentPlan.getNumSupportMeeting();
-    supportMeetingView.setText(s);
-    s = "" + newTreatmentPlan.getNumLessons();
-    lessonView.setText(s);
-    s = "" + newTreatmentPlan.getNumTreatmentEffectivenessAssessment();
-    treatmentEffectiveView.setText(s);
-    s = "" + newTreatmentPlan.getNumOutcomeMeasures();
-    outcomeMeasureView.setText(s);
-    s = "" + newTreatmentPlan.getNumTimeTracking();
-    timeTrackingView.setText(s);
-    s = "" + newTreatmentPlan.getNumReadingResponse();
-    readingResponseView.setText(s);
-
-    treatmentPlanEntity = newTreatmentPlan;
-    treatmentPlanLoaded = true;
-    TreatmentPlanViewModel.insertTreatmentPlan(newTreatmentPlan);
-  }
 
   /**
    * The view model used to access the database.
@@ -704,16 +585,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   private TextView outcomeMeasureDescView;
 
   /**
-   * A boolean tracking if the medication choice has loaded in.
-   */
-  private boolean medObserved;
-
-  /**
-   * A boolean tracking if the questionnaire has been loaded in.
-   */
-  private boolean questionnaireObserved;
-
-  /**
    * A boolean to check if the treatment plan has been generated.
    */
   private boolean treatmentPlanLoaded;
@@ -724,17 +595,9 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   private TreatmentPlanEntity treatmentPlanEntity;
 
   /**
-   * A String representing the user's severityLevel
-   */
-  private String severityLevel;
-
-  /**
    * As string for logging purposes.
    */
-  private String TAG = "TreaatmentPlanActivityCaughtException";
+  private String TAG = "TreatmentPlanActivityCaughtException";
 
-  /**
-   * A String representing the user's medication Choice
-   */
-  private String medicationChoice;
+
 }

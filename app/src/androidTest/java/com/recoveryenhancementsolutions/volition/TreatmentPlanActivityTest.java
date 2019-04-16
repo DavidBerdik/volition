@@ -20,6 +20,8 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import java.util.Calendar;
+import java.util.Date;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -49,16 +51,28 @@ public class TreatmentPlanActivityTest {
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
         .build();
 
-    //Fill in supplementary database entries
-    final MedicationChoiceEntity medicationChoiceEntity = new MedicationChoiceEntity();
-    medicationChoiceEntity.medication = "ABSTAIN";
-    db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
-
-    final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
-    questionnaireEntity.setSeverityLevel("MODERATE");
-    db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
 
     activityTestRule.getActivity().onCreateTest(db);
+
+    //Fill in treatment plan
+    TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
+    newTreatmentPlan.setNumCounseling(3);
+    newTreatmentPlan.setNumSupportMeeting(3);
+    newTreatmentPlan.setNumLessons(2);
+    newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+    newTreatmentPlan.setNumOutcomeMeasures(3);
+    newTreatmentPlan.setNumTimeTracking(2);
+    newTreatmentPlan.setNumReadingResponse(2);
+    newTreatmentPlan.setMedManagementMonthly();
+    newTreatmentPlan.setOutcomeMeasureDaily();
+    newTreatmentPlan.setNumMedManagement(0);
+    Date date = Calendar.getInstance().getTime();
+    long time = date.getTime() - (1000 * 60 * 60 * 24);
+    date.setTime(time);
+    newTreatmentPlan.setCoolDownTime(2);
+    newTreatmentPlan.setLastUpdate(date);
+
+    TreatmentPlanViewModel.insertTreatmentPlan(newTreatmentPlan, db);
 
     // Allow the app time to update.
     try {
