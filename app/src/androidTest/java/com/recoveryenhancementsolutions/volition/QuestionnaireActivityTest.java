@@ -26,14 +26,11 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 /**
-<<<<<<< HEAD
  * This class will run Espresso Test on the Questionnaire Activity
  * It tests the questionnaire activity. It goes to the questionnaire activity and tests the
  * yes and no buttons to answer each question.
-=======
  *  This class will run test on the QuestionnaireActivity to test that the buttons have proper
  *  functionality.
->>>>>>> e6be837a64f857c49946883997b38dba34495491
  */
 public class QuestionnaireActivityTest {
 
@@ -42,13 +39,10 @@ public class QuestionnaireActivityTest {
       QuestionnaireActivity.class);
 
   /**
-<<<<<<< HEAD
    * Performs test to check that the Questionnaire Activity run to go through each question the Yes and No buttons
-=======
    * This espresso test will run through the QuestionnaireActivity. The Yes and No buttons are
    * tested to check the functionality for each question. At the last question the
    * QuestionnaireActivity will go to the ViewSeverityLevelActivity.
->>>>>>> e6be837a64f857c49946883997b38dba34495491
    */
   @Test
   public void questionnaireActivityTest2() {
