@@ -30,15 +30,19 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
+/**
+ * Unit test for all the UI elements in the Plan Activity screen in portrait mode
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class PlanActivityTest {
+public class PlanActivityPortraitTest {
 
     @Rule
     public ActivityTestRule<PlanActivity> mActivityTestRule = new ActivityTestRule<>(PlanActivity.class);
-
+        //tests elements in the UI such as the textviews, scrollviews, and drop down menu
     @Test
-    public void planActivityTest() {
+    public void planActivityPortraitTest() {
+        //tests by tapping textview that is on the far right of the horizontal scrollview
         ViewInteraction appCompatTextView = onView(
                 allOf(withId(R.id.textview_day_1), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -48,7 +52,7 @@ public class PlanActivityTest {
                                                 6)),
                                 1)));
         appCompatTextView.perform(scrollTo(), click());
-
+        //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView2 = onView(
                 allOf(withId(R.id.textview_day_2), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -58,7 +62,7 @@ public class PlanActivityTest {
                                                 5)),
                                 1)));
         appCompatTextView2.perform(scrollTo(), click());
-
+        //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView3 = onView(
                 allOf(withId(R.id.textview_day_3), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -68,7 +72,7 @@ public class PlanActivityTest {
                                                 4)),
                                 1)));
         appCompatTextView3.perform(scrollTo(), click());
-
+        //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView4 = onView(
                 allOf(withId(R.id.textview_day_4), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -78,7 +82,7 @@ public class PlanActivityTest {
                                                 3)),
                                 1)));
         appCompatTextView4.perform(scrollTo(), click());
-
+        //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView5 = onView(
                 allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -88,7 +92,7 @@ public class PlanActivityTest {
                                                 2)),
                                 1)));
         appCompatTextView5.perform(scrollTo(), click());
-
+        //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView6 = onView(
                 allOf(withId(R.id.textview_day_6), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -98,7 +102,7 @@ public class PlanActivityTest {
                                                 1)),
                                 1)));
         appCompatTextView6.perform(scrollTo(), click());
-
+        //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView7 = onView(
                 allOf(withId(R.id.textview_day_7), withText("Visit 1 Visit 1"),
                         childAtPosition(
@@ -108,27 +112,7 @@ public class PlanActivityTest {
                                                 0)),
                                 1)));
         appCompatTextView7.perform(scrollTo(), click());
-
-        ViewInteraction appCompatTextView8 = onView(
-                allOf(withId(R.id.textview_day_4), withText("Visit 1 Visit 1"),
-                        childAtPosition(
-                                allOf(withId(R.id.vertical_layout_4),
-                                        childAtPosition(
-                                                withClassName(is("android.support.constraint.ConstraintLayout")),
-                                                3)),
-                                1)));
-        appCompatTextView8.perform(scrollTo(), click());
-
-        ViewInteraction appCompatTextView9 = onView(
-                allOf(withId(R.id.textview_day_1), withText("Visit 1 Visit 1"),
-                        childAtPosition(
-                                allOf(withId(R.id.vertical_layout_7),
-                                        childAtPosition(
-                                                withClassName(is("android.support.constraint.ConstraintLayout")),
-                                                6)),
-                                1)));
-        appCompatTextView9.perform(scrollTo(), click());
-
+        //opens spinner and select an option
         ViewInteraction appCompatSpinner = onView(
                 allOf(withId(R.id.spinner),
                         childAtPosition(
@@ -146,7 +130,7 @@ public class PlanActivityTest {
                         0))
                 .atPosition(1);
         appCompatCheckedTextView.perform(click());
-
+        //open spinner and select another option from the spinner
         ViewInteraction appCompatSpinner2 = onView(
                 allOf(withId(R.id.spinner),
                         childAtPosition(
@@ -164,7 +148,7 @@ public class PlanActivityTest {
                         0))
                 .atPosition(2);
         appCompatCheckedTextView2.perform(click());
-
+        //opens keyboard by tapping on the textbox to add notes
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.notes_edittext),
                         childAtPosition(
@@ -175,9 +159,9 @@ public class PlanActivityTest {
                                 2),
                         isDisplayed()));
         appCompatEditText.perform(click());
-
+        //press back to close keyboard
         pressBack();
-
+        //press the button "TRACK"
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.track_button), withText("TRACK"),
                         childAtPosition(
