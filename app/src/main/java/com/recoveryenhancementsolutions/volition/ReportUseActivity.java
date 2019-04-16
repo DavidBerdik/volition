@@ -49,9 +49,9 @@ public class ReportUseActivity extends AppCompatActivity {
     //Initializing ViewModel
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
     today = Calendar.getInstance();
-
     lastClickedItem = 0;
     inTest = false;
+
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
@@ -69,7 +69,7 @@ public class ReportUseActivity extends AppCompatActivity {
     useDate = Calendar.getInstance();
     useDateListener = new OnDateSetListener() {
       /**
-       * Event handler for when a date of birth is chosen by the user.
+       * Event handler for when the user must select their date of last use
        * @param view DatePicker object
        * @param year Year chosen by user
        * @param month Month chosen by user
@@ -83,20 +83,25 @@ public class ReportUseActivity extends AppCompatActivity {
 
         ready = false;
         //Check to see if the date selected is the same as or before the date already stored
-        if (DateConverter.daysBetween(useDate.getTime().getTime(), new Date().getTime()) == 0){
-          //TODO: Add toast message
+        int days = DateConverter.daysBetween(prevUseDate.getTime(), useDate.getTime().getTime());
+        Log.e("Clean Tracker","daysbetween = " +days);
+        if (days == 0){
+          toast = Toast.makeText(getApplicationContext(),
+              "ERROR: Date selected conflicts with the previously entered date", Toast.LENGTH_LONG);
+          toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+          toast.show();
         }
         else {
           ready = true;
+          ddViewModel.updateLastCleanDate(useDate, today);
         }
-        final String str = DateFormat.getDateInstance().format(useDate.getTime());
-        ddViewModel.updateLastCleanDate(useDate, today);
-        toast = Toast.makeText(getApplicationContext(), "Recorded " + str + " as day of last use",
-            Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
 
         //Only redirects if we are not in a testing environment & the date chosen was valid
         if (!inTest && ready) {
+          final String str = DateFormat.getDateInstance().format(useDate.getTime());
+          toast = Toast.makeText(getApplicationContext(), "Recorded " + str + " as day of last use",
+              Toast.LENGTH_LONG);
+          toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
           redirect();
           toast.show();
         }
@@ -155,7 +160,7 @@ public class ReportUseActivity extends AppCompatActivity {
       ddViewModel.updateLastReportDate(today);
       toast = Toast
           .makeText(getApplicationContext(), "Recorded 'No' for the day", Toast.LENGTH_LONG);
-      toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+      //toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
 
       //Only redirects if we are not in a testing environment
       if (!inTest) {
