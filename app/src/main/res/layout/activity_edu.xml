@@ -5,6 +5,22 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
+  <ImageView
+    android:id="@+id/resBackground"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.562"
+    app:srcCompat="@drawable/pic"/>
   <TextView
     android:id="@+id/eduTitle"
     android:layout_width="265dp"
@@ -20,5 +36,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.802"/>
 </android.support.constraint.ConstraintLayout>

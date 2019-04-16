@@ -16,6 +16,8 @@
     <item>Male</item>
     <item>Other</item>
   </string-array>
+  <string name="create_profile_back_out_title">Leaving Profile Creation</string>
+  <string name="create_profile_back_out_content">Are you sure that you\'d like to cancel your profile creation? You will have to resubmit your user information.</string>
   <string name="create_profile_are_you">Are you:</string>
   <string name="create_profile_client">Person in Recovery/Seeking Recovery</string>
   <string name="create_profile_support">Family or Support Person</string>
@@ -40,7 +42,7 @@
   </string-array>
   <string name="create_profile_clean_date">Enter Date of Last Use/Clean Date</string>
   <string name="create_profile_record_answers">Record Answers</string>
-  <string name="display_profile_entered">Here\'s the information you entered</string>
+  <string name="display_profile_entered">Profile Information</string>
   <string name="display_profile_name_colon">Name:</string>
   <string name="display_profile_example_name">Replace with name entered</string>
   <string name="display_profile_dob_colon">Date of Birth:</string>
@@ -54,11 +56,59 @@
   <string name="display_profile_last_use_colon">Date of Last Use/Clean Date:</string>
   <string name="display_profile_example_date">Replace with the date entered</string>
   <string name="display_profile_continue">Continue</string>
+  <string name="profile_update_profile">Update Profile</string>
   <string name="home_welcome">Welcome Back</string>
   <string name="home_clean">Days Clean:</string>
   <string name="title_activity_medication_choice">MedicationChoice</string>
   <string name="title_activity_medication_dosage">MedicationDose</string>
   <string name="report_use_question">Have you used since your last check-in?</string>
+  <string name="questionnaire_question_1"> Do you often take larger amounts of opioids or
+take opioids over a longer period of time than
+intended?</string>
+  <string name="questionnaire_question_2"> Do you often have a persistent desire or
+unsuccessful efforts to cut down or control
+opioid use?</string>
+  <string name="questionnaire_question_3"> Do you spend a great deal of time in activities
+necessary to obtain opioids, use opioids, or
+recover from their effects?</string>
+  <string name="questionnaire_question_4"> Do you experience cravings or a strong desire to
+use opioids</string>
+  <string name="questionnaire_question_5"> Does recurrent opioid use result in failing to
+fulfill major role obligations at work, school or
+home?</string>
+  <string name="questionnaire_question_6"> Do you continue to use opioids despite having
+persistent or recurrent social or interpersonal
+problems that are caused or exacerbated by the
+effects of opioids?</string>
+  <string name="questionnaire_question_7"> Do you reduce or give up important social,
+occupational or recreational activities because
+of opioid use?</string>
+  <string name="questionnaire_question_8"> Do you often use opioids in situations in which it
+is physically hazardous?</string>
+  <string name="questionnaire_question_9"> Do you continue to use opioids despite having a
+persistent or recurrent physical or psychological
+problem that has been caused or exacerbated
+by opioids?</string>
+  <string name="questionnaire_question_10"> Do you have a tolerance to opioids defined as a
+need for increased amounts of opioids to
+achieve intoxication or desired effect or a
+diminished effect with continued use of the
+same amount of opioid?</string>
+  <string name="questionnaire_question_11"> Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
+Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: Dysphoic mood. \n
+•Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia.</string>
+  <string name="severity_total"> Total Score: </string>
+  <string name="severity_specifier"> Specifier: </string>
+  <string name="severity_current"> Current Severity: </string>
+  <string name="severity_username"> Username: </string>
+  <string name="severity_mild_symptoms"> Presence of 2–3 symptoms </string>
+  <string name="severity_mild"> Mild</string>
+  <string name="severity_moderate_symptoms"> Presence of 4–5 symptoms.</string>
+  <string name="severity_moderate">Moderate</string>
+  <string name="severity_severe_symptoms">Presence of 6 or more symptoms.</string>
+  <string name="severity_severe">Severe</string>
+  <string name="severity_plan"> View Medication Details </string>
+  <string name="severity_desc"> Company logo </string>
   <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
   <string name="medication_choice_abstain_button"> Abstain</string>
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
@@ -82,6 +132,8 @@
   <string name="dailywellnessincomplete">dailyWellnessIncomplete</string>
   <string name="journalincomplete">journalIncomplete</string>
   <string name="cleantrackerincomplete">cleanTrackerIncomplete</string>
+  <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
+  <string name="take_questionnaire"> Take questionnaire</string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
   <string name="activity_res_logo"> Logo</string>
@@ -135,6 +187,8 @@
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_bottom_border"> Bottom Border</string>
+  <string name="activity_startup_landing">Welcome To Your Recovery</string>
+  <string name="activity_startup_create">Create Profile</string>
   <string name="volition">Volition</string>
   <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="menubar_home">Home</string>

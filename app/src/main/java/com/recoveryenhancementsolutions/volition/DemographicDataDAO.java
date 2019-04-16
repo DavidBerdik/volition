@@ -1,6 +1,5 @@
 package com.recoveryenhancementsolutions.volition;
 
-
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -23,12 +22,12 @@ come into use as more components are finished and added
 public interface DemographicDataDAO {
 
   /**
-   * Inserts a patient into the database, on conflict, replaces
+   * Inserts a patient into the database, on conflict, replaces the patient information.
    *
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  void insertDemographicInfo(DemographicDataEntity demographicDataEntity);
+  void insertDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
   /**
    * Modifies a patient in the database
@@ -36,7 +35,7 @@ public interface DemographicDataDAO {
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
   @Update
-  void updateDemographicInfo(DemographicDataEntity demographicDataEntity);
+  void updateDemographicInfo(final DemographicDataEntity demographicDataEntity);
 
 
     /*
@@ -47,6 +46,21 @@ public interface DemographicDataDAO {
     */
 
   String genericQuery = "FROM DemographicDataEntity WHERE fetchID = 1"; // commonly used component of query
+
+  /**
+   * Retrieves all of the patient's demographic data
+   *
+   * @return A LiveData object containing a DemographicDataEntity containing all of the patient's
+   * demographic data
+   */
+  @Query("SELECT * " + genericQuery)
+  LiveData<DemographicDataEntity> getAllDemographicData();
+
+  /**
+   * Deletes all demographic data from the database.
+   */
+  @Query("DELETE " + genericQuery)
+  void deleteDemographicInfo();
 
   /**
    * Retrieves the patient name
@@ -193,10 +207,30 @@ public interface DemographicDataDAO {
   boolean queryIsHavingOpioidDisorder();
 
   /**
-   * Retrieves the patient last clean date
+   * Retrieves the patient's last clean date
    *
    * @return Date of their last clean
    */
   @Query("SELECT lastClean " + genericQuery)
   LiveData<Date> queryLastCleanDate();
+
+  @Query("SELECT lastUseReport " +genericQuery)
+  LiveData<Date> queryLastReportDate();
+
+  /**
+   * Updates the client's last clean date and the date of their last usage report
+   *
+   * @param cleanDay A Date object representing the date of last use
+   * @param reportDay A Date object representing the date of the report
+   */
+  @Query("UPDATE DemographicDataEntity SET lastClean = :cleanDay, lastUseReport = :reportDay WHERE fetchID = 1")
+  void queryUpdateLastCleanDate(final Date cleanDay, final Date reportDay);
+
+  /**
+   * Updates the date of the client's last usage report
+   *
+   * @param reportDay A Date object representing the date of the report
+   */
+  @Query("UPDATE DemographicDataEntity SET lastUseReport = :reportDay WHERE fetchID = 1")
+  void queryUpdateLastReportDate(final Date reportDay);
 }

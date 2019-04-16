@@ -130,12 +130,13 @@ public class ActivityActivity extends AppCompatActivity {
        */
       try {
         //Once/if EDU has a corresponding database element, we must add it here and add if logic
+
         int numberOfTeasFromPlan = newTreatmentPlanEntity.getNumTreatmentEffectivenessAssessment();
         int numberOfLessonsFromPlan = newTreatmentPlanEntity.getNumLessons();
         int numberOfReportUseFromPlan = newTreatmentPlanEntity.getNumTimeTracking();
         int numberOfJournalsFromPlan = newTreatmentPlanEntity.getNumReadingResponse();
         int numberOfDailyWellnessFromPlan = newTreatmentPlanEntity.getNumOutcomeMeasures();
-
+        // TODO: 4/16/2019 This is the incorret way to get these values, they must be retrieved from the database in the future when the activity classes are completed
         int numberOfUserTeasCompleted = TreatmentExperienceAssessmentActivity.numberCompleted;
         int numberOfUserLessonsCompleted = LessonActivity.numberCompleted;
         int numberOfUserReportUseCompleted = ReportUseActivity.numberCompleted;

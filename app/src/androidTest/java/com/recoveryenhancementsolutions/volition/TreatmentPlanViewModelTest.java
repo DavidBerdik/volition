@@ -41,9 +41,9 @@ public class TreatmentPlanViewModelTest {
     medicationChoiceEntity.medication = "ABSTAIN";
     db.medicationChoiceDAO().insertMedication(medicationChoiceEntity);
 
-    final QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
-    questionnaireEntity.setSeverityLevel("MODERATE");
-    db.questionnaireDao().insertQuestionnaire(questionnaireEntity);
+    final QuestionnaireActivityEntity questionnaireActivityEntity = new QuestionnaireActivityEntity();
+    questionnaireActivityEntity.setSeverityLevel("MODERATE");
+    db.questionnaireDao().insertQuestionnaire(questionnaireActivityEntity);
 
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(TreatmentPlanViewModel.class);
