@@ -46,6 +46,9 @@ public class CoreNavigationHandler {
           case R.id.core_navigation_plan:
             destination.setClass(context, PlanActivity.class);
             break;
+          case R.id.core_navigation_profile:
+            destination.setClass(context, ProfileActivity.class);
+            destination.putExtra(EDIT_MODE, true);
         }
 
         destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -54,4 +57,6 @@ public class CoreNavigationHandler {
       }
     });
   }
+
+  private static final String EDIT_MODE = "editMode";
 }
