@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,6 +12,9 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+/**
+ * This class allows the user to enter remarks and passes them to the database.
+ */
 
 public class TreatmentExperienceAssessmentRemarksActivity extends AppCompatActivity {
 
@@ -27,21 +31,26 @@ public class TreatmentExperienceAssessmentRemarksActivity extends AppCompatActiv
     submitButton.setOnClickListener(submitRemarksClickListener);
 
     db = VolitionDatabase.getDatabase(this);
+    teaViewModel = ViewModelProviders.of(this).get(TreatmentExperienceAssessmentViewModel.class);
 
     context = this;
   }
+
+  /**
+   * When the button is clicked it passes the string. 
+   */
 
   private final View.OnClickListener submitRemarksClickListener = new View.OnClickListener() {
 
     @Override
     public void onClick(final View v) {
       final String remarksTxt = remarks.getText().toString();
-      TreatmentExperienceAssessmentViewModel
-          .addTreatmentExperienceAssessment(db, teaAnswers, remarksTxt);
+      teaViewModel.addTreatmentExperienceAssessment(teaAnswers, remarksTxt);
       startActivity(new Intent(context, HomeActivity.class));
     }
   };
 
+  private TreatmentExperienceAssessmentViewModel teaViewModel;
   private VolitionDatabase db;
   private Context context;
   private EditText remarks;

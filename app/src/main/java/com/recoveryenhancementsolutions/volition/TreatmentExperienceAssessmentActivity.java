@@ -1,10 +1,13 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -29,7 +32,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
    * The method onCreate will initialize the Activity with the view of the treatment_experience_assessment_activity
    * xml. The Text View for every question is created with the opacity for each question and is
    * initially set to 0. Question one's opacity says at the default value of 100 for the initial
-   * view to begin the questionnaire. There will be a scroll with 10 number options for the tea.
+   * view to begin the tea. There will be a scroll with 10 number options for the tea.
    *
    * @param savedInstanceState stores the saved state in order to recreate the activity.
    */
@@ -38,27 +41,9 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_treatment_experience_assessment);
 
-    final Button oneButton = findViewById(R.id.button1);
-    final Button twoButton = findViewById(R.id.button2);
-    final Button threeButton = findViewById(R.id.button3);
-    final Button fourButton = findViewById(R.id.button4);
-    final Button fiveButton = findViewById(R.id.button5);
-    final Button sixButton = findViewById(R.id.button6);
-    final Button sevenButton = findViewById(R.id.button7);
-    final Button eightButton = findViewById(R.id.button8);
-    final Button nineButton = findViewById(R.id.button9);
-    final Button tenButton = findViewById(R.id.button10);
+    final Button submit = findViewById(R.id.submit_button_tea);
 
-    oneButton.setOnClickListener(oneClickListener);
-    twoButton.setOnClickListener(twoClickListener);
-    threeButton.setOnClickListener(twoClickListener);
-    fourButton.setOnClickListener(twoClickListener);
-    fiveButton.setOnClickListener(twoClickListener);
-    sixButton.setOnClickListener(twoClickListener);
-    sevenButton.setOnClickListener(twoClickListener);
-    eightButton.setOnClickListener(twoClickListener);
-    nineButton.setOnClickListener(twoClickListener);
-    tenButton.setOnClickListener(twoClickListener);
+    submit.setOnClickListener(submitClickListener);
 
     qOne = findViewById(R.id.questionOne);
     qTwo = findViewById(R.id.questionTwo);
@@ -93,41 +78,90 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     teaAnswers.add(0);
     teaAnswers.add(0);
 
+    final NumberPicker np = findViewById(R.id.tea_number_picker);
+    np.setMinValue(1);
+    np.setMaxValue(10);
+    np.setValue(5);
+    rating = 5;
+    np.setOnValueChangedListener(onValueChangeListener);
+
+
+    if (lastKnownValue != -1) {
+      np.setValue(lastKnownValue);
+    }
+
+    tea_results = findViewById(R.id.tea_results);
+    tea_results.setText(getTeaString(np.getValue()));
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+
   }
 
-  private final View.OnClickListener oneClickListener = new View.OnClickListener() {
+  /**
+   * When the submit button is clicked, it goes to the set answer for tea and passes the rating
+   *
+   */
+
+  private final View.OnClickListener submitClickListener = new View.OnClickListener() {
 
     @Override
     public void onClick(final View v) {
-
-      setAnswerForTea(1);
+      setAnswerForTea(rating);
     }
   };
 
-  private final View.OnClickListener twoClickListener = new View.OnClickListener() {
+  /**
+   * This method displays what the user chooses on the scroll bar with rating attached
+   * @param rating passes what the user chooses on the scroll bar
+   * @return
+   */
+
+  private String getTeaString(final int rating) {
+    lastKnownValue = rating;
+    if((lastKnownValue >= 1) && (lastKnownValue <= 3)) {
+      return "Your choice: " + lastKnownValue + " (" + outputs[0] + ")";
+    }
+    else if((lastKnownValue >= 4) && (lastKnownValue <= 6)) {
+      return "Your choice: " + lastKnownValue + " (" + outputs[1] + ")";
+    }
+    else if((lastKnownValue >= 7) && (lastKnownValue <= 10)) {
+      return "Your choice: " + lastKnownValue + " (" + outputs[2] + ")";
+    }
+    else
+      return "";
+
+  }
+
+  /**
+   * Changes the rating based on the choice.
+   */
+  private NumberPicker.OnValueChangeListener onValueChangeListener = new NumberPicker.OnValueChangeListener() {
 
     @Override
-    public void onClick(final View v) {
-
-      setAnswerForTea(2);
+    public void onValueChange(final NumberPicker np, final int oldVal, final int newVal) {
+      tea_results.setText(getTeaString(np.getValue()));
+      rating = newVal;
     }
   };
 
-
-  public void setAnswerForTea(int value) {
+  /**
+   * Displays the new question. Passes a bundle of the tea answers arraylist to the remarks screen.
+   * @param rating
+   */
+  private void setAnswerForTea(int rating) {
     if (answerCounter < 3) {
-      teaAnswers.set(answerCounter, value);
+      teaAnswers.set(answerCounter, rating);
       questionsForTea.get(answerCounter)
-          .setTextColor(questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
+              .setTextColor(questionsForTea.get(answerCounter).getTextColors().withAlpha(0));
       headersForTea.get(answerCounter)
-          .setTextColor(headersForTea.get(answerCounter).getTextColors().withAlpha(0));
+              .setTextColor(headersForTea.get(answerCounter).getTextColors().withAlpha(0));
       questionsForTea.get(answerCounter + 1)
-          .setTextColor(questionsForTea.get(answerCounter + 1).getTextColors().withAlpha(255));
+              .setTextColor(questionsForTea.get(answerCounter + 1).getTextColors().withAlpha(255));
       headersForTea.get(answerCounter + 1)
-          .setTextColor(headersForTea.get(answerCounter).getTextColors().withAlpha(255));
+              .setTextColor(headersForTea.get(answerCounter).getTextColors().withAlpha(255));
       answerCounter++;
     } else if (answerCounter == 3) {
-      teaAnswers.set(answerCounter, value);
+      teaAnswers.set(answerCounter, rating);
       Intent i = new Intent(this, TreatmentExperienceAssessmentRemarksActivity.class);
       Bundle bundle = new Bundle();
       bundle.putIntegerArrayList("ANSWERS", teaAnswers);
@@ -136,7 +170,10 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     }
   }
 
-
   private VolitionDatabase db;
+  private TextView tea_results;
+  private String[] outputs = {"None or not much", "Better", "Much Better"};
+  private int rating;
+  private static int lastKnownValue = -1;
 
 }
