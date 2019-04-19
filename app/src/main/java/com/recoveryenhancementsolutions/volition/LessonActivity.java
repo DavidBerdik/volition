@@ -14,4 +14,5 @@ public class LessonActivity extends AppCompatActivity {
     setContentView(R.layout.activity_lesson);
   }
 
+  public static int numberCompleted;
 }

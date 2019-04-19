@@ -87,4 +87,5 @@ public class DailyWellnessActivity extends AppCompatActivity {
   private TextView dailyWellnessResultsView;
   private String[] outputs;
   private static int lastKnownValue = -1;
+  public static int numberCompleted;
 }

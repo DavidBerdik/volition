@@ -119,6 +119,19 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="activity_daily_wellness_button"> Daily Wellness</string>
   <string name="activity_clean_tracker_button"> Clean Tracker</string>
   <string name="activity_title_activity_screen"> Activities</string>
+  <string name="res_logo_background"> Logo</string>
+  <string name="activity_tea_completed">teaCompleted</string>
+  <string name="activity_lesson_completed">lessonCompleted</string>
+  <string name="activity_tea_incomplete">teaIncomplete</string>
+  <string name="activity_lesson_Incomplete">lessonIncomplete</string>
+  <string name="activity_edu_completed">eduCompleted</string>
+  <string name="activity_daily_wellness_completed">dailyWellnessCompleted</string>
+  <string name="activity_journal_completed">journalCompleted</string>
+  <string name="activity_clean_tracker_completed">cleanTrackerCompleted</string>
+  <string name="activity_edu_incomplete">eduIncomplete</string>
+  <string name="activity_daily_wellness_incomplete">dailyWellnessIncomplete</string>
+  <string name="activity_journal_incomplete">journalIncomplete</string>
+  <string name="activity_clean_tracker_incomplete">cleanTrackerIncomplete</string>
   <string name="classification_screen_title"> DSM-V Classification</string>
   <string name="classification_screen_level"> Current level of substance abuse: </string>
   <string name="classification_screen_button"> Retake classification</string>
@@ -143,7 +156,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   doses a day would you like to take?</string>
   <string name="dosage_choice_confirm"> Confirm</string>
   <string name="dosage_choice_res_logo"> Logo</string>
-  <string name="res_logo_background"> Logo</string>
   <string name="add"> + </string>
   <string name="sub"> - </string>
   <string name="update"> update</string>
