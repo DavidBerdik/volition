@@ -1,68 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.recoveryenhancementsolutions.volition">
+  package="com.recoveryenhancementsolutions.volition">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".AdminMenu"
-            android:label="@string/title_activity_admin_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".QuestionnaireActivity"></activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ReportUseActivity"
-            android:exported="true"
-            android:label="@string/app_name">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".HomeActivity"
-            android:exported="true"
-            android:label="@string/app_name">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MedicationChoiceActivity"
-            android:exported="true"
-            android:label="@string/title_activity_medication_choice"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".CreateProfileActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+  <application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity android:name=".ClinicalOverviewActivity">
+    </activity>
+    <activity android:name=".QuestionnaireConfirmActivity">
+    </activity>
+    <activity android:name=".TreatmentPlanActivity">
+    </activity>
+    <activity
+      android:label="@string/title_activity_admin_menu"
+      android:name=".AdminMenu"
+      android:theme="@style/AppTheme.NoActionBar"/>
+    <activity android:name=".QuestionnaireActivity"/>
+    <activity
+      android:label="@string/app_name"
+      android:name=".MainActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".ReportUseActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".HomeActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/title_activity_medication_choice"
+      android:name=".MedicationChoiceActivity"
+      android:theme="@style/AppTheme.NoActionBar">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:label="@string/app_name"
+      android:name=".CreateProfileActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".DisplayProfileActivity"
-            android:exported="true"
-            android:label="@string/app_name">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:label="@string/app_name"
+      android:name=".DisplayProfileActivity">
+      <intent-filter>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+  </application>
 
 </manifest>
