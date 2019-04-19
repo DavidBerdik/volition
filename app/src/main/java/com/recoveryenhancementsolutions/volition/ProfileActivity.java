@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -204,6 +205,17 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     });
   }
 
+  public void addOtherListener() {
+    radioOther = findViewById(R.id.radioOther);
+    radioOther.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          otherText.setAlpha(1.0f);
+        }
+      }
+    });
+  }
+
   /*
    *Adds the listeners to the corresponding RadioButtons and Spinners
    * Sets the buttons and Spinners to the corresponding ID's
@@ -222,6 +234,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioAlcohol = findViewById(R.id.radioAlcohol);
     radioCocaine = findViewById(R.id.radioCocaine);
     radioOpiates = findViewById(R.id.radioOpiates);
+    radioOther = findViewById(R.id.radioOther);
+    otherText = findViewById(R.id.enter_other);
     addSupportListener();
     addClientListener();
     addAlocholListener();
@@ -234,6 +248,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     addOpiatesListener();
     addSedativesListener();
     addTranqListener();
+    addOtherListener();
 
     final Spinner genderSpinner = findViewById(R.id.gender_spinner);
     final Spinner useTypeSpinner = findViewById(R.id.use_type_spinner);
@@ -244,6 +259,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     final EditText name = findViewById(R.id.name);
     OnFocusChangeListener ofcListener = new FocusListener();
     name.setOnFocusChangeListener(ofcListener);
+    otherText.setAlpha(0.0f);
+
   }
 
   @Override
@@ -357,6 +374,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         and the insert the demographic data in to the database.
          */
         EditText name = findViewById(R.id.name);
+        EditText otherDrug = findViewById(R.id.enter_other);
+        data.setUseOther(otherDrug.getText().toString());
         data.setPatientName(name.getText().toString());
 
         data.setDateOfBirth(dobCalendar.getTime());
@@ -497,6 +516,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private RadioButton radioTranquilizers;
   private RadioButton radioSedatives;
   private RadioButton radioInhalants;
+  private RadioButton radioOther;
+  private TextView otherText;
   private int spinnerCount = 0;
   private boolean editMode;
   private final Calendar dobCalendar = Calendar.getInstance();
