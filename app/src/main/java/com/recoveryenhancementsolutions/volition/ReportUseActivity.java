@@ -48,7 +48,6 @@ public class ReportUseActivity extends AppCompatActivity {
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
     today = Calendar.getInstance();
 
-    lastClickedItem = 0;
     inTest = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
@@ -120,7 +119,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      lastClickedItem = 1;
       final DatePickerDialog pickDate = new DatePickerDialog(ReportUseActivity.this,
           useDateListener, useDate.get(Calendar.YEAR), useDate.get(Calendar.MONTH),
           useDate.get(Calendar.DAY_OF_MONTH));
@@ -134,7 +132,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private OnClickListener noButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
       toast = Toast
           .makeText(getApplicationContext(), "Recorded 'No' for the day", Toast.LENGTH_LONG);
