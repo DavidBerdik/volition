@@ -194,7 +194,4 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="activity_startup_create">Create Profile</string>
   <string name="volition">Volition</string>
   <string name="readJournalResponse">Reading Response / Journal</string>
-  <string name="menubar_home">Home</string>
-  <string name="menubar_activity">Activity</string>
-  <string name="menubar_plan">Plan</string>
 </resources>
