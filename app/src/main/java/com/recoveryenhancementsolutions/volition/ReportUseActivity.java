@@ -38,6 +38,17 @@ public class ReportUseActivity extends AppCompatActivity {
     return lastClickedItem;
   }
 
+  /**
+   * Prepares the ActivityNavigationHandler object.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -54,10 +65,6 @@ public class ReportUseActivity extends AppCompatActivity {
 
     final Button noButton = findViewById(R.id.report_use_no);
     noButton.setOnClickListener(noButtonListener);
-
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.getMenu().getItem(1).setChecked(false);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
 
     //Pulls up a Date Picker for the user to select their date of last use
     useDate = Calendar.getInstance();
