@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 
+import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -16,13 +17,17 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 /**
  * Unit test for all the UI elements in the Plan Activity screen in landscape mode
@@ -116,6 +121,45 @@ public class PlanActivityLandscapeTest {
                                                 1)),
                                 1)));
         appCompatTextView8.perform(scrollTo(), click());
+
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.track_button), withText("TRACK")));
+        appCompatButton.perform(scrollTo(), click());
+        //open spinner
+        ViewInteraction appCompatSpinner = onView(withId(R.id.spinner));
+        appCompatSpinner.perform(scrollTo(), click());
+        //select first option from spinner
+        DataInteraction appCompatCheckedTextView = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(0);
+        appCompatCheckedTextView.perform(scrollTo(), click());
+
+        //open spinner
+        ViewInteraction appCompatSpinner2 = onView(withId(R.id.spinner));
+        appCompatSpinner2.perform(scrollTo(), click());
+        //select second option from spinner
+        DataInteraction appCompatCheckedTextView2 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(1);
+        appCompatCheckedTextView2.perform(scrollTo(), click());
+
+        //open spinner
+        ViewInteraction appCompatSpinner3 = onView(withId(R.id.spinner));
+        appCompatSpinner3.perform(scrollTo(), click());
+        //select third option from spinner
+        DataInteraction appCompatCheckedTextView3 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(2);
+        appCompatCheckedTextView3.perform(scrollTo(), click());
+
+        /*ViewInteraction appCompatEditText = onView(allOf(withId(R.id.notes_edittext), isDisplayed()));
+        appCompatEditText.perform(scrollTo(), click());
+        pressBack();*/
     }
 
     private static Matcher<View> childAtPosition(
