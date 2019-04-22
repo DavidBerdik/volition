@@ -81,9 +81,10 @@ public class ReportUseActivity extends AppCompatActivity {
         useDate.set(Calendar.YEAR, year);
         useDate.set(Calendar.MONTH, month);
         useDate.set(Calendar.DAY_OF_MONTH, day);
-
+        Log.e("RepUseactivity", "Year: "+year +" Month: " +month +" Day: "+day);
         ready = false;
-        int days = DateConverter.daysBetween(useDate.getTime().getTime(), today.getTime().getTime());
+        int days = DateConverter.daysBetween(useDate.getTime(), today.getTime());
+        Log.e("RepUseActivity", "Attempted use date: " +useDate.getTime().toString());
         //Checks if the date selected is after the current date
         if (days < 0){
           toast = Toast.makeText(getApplicationContext(),
@@ -93,6 +94,7 @@ public class ReportUseActivity extends AppCompatActivity {
           toast.show();
         }
         else {
+          Log.e("RepUseActivity", "Date: " +prevUseDate);
           days = DateConverter.daysBetween(prevUseDate.getTime(), useDate.getTime().getTime());
           //Check to see if the date selected is the same as or before the date already stored
           if (days < 0) {
@@ -147,6 +149,7 @@ public class ReportUseActivity extends AppCompatActivity {
    */
   protected void setTestDatabase(final VolitionDatabase db) {
     ddViewModel.setTestDatabase(db);
+    ddViewModel.getLastCleanDate().observe(this, dateObserver);
   }
 
   /**
@@ -227,11 +230,11 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
+  protected Date prevUseDate;
   private DatePickerDialog.OnDateSetListener useDateListener;
   private DemographicDataViewModel ddViewModel;
   private Calendar today;
   private Calendar useDate;
-  private Date prevUseDate;
   private Toast toast;
   private Intent intent;
   private int lastClickedItem;
