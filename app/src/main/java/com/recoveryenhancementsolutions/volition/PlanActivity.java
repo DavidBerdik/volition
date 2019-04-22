@@ -175,7 +175,7 @@ public class PlanActivity extends AppCompatActivity {
 
   private void scrollRight() {
     // Scroll calendar to the right to show today.
-    final HorizontalScrollView calScroller = (HorizontalScrollView) findViewById(R.id.hscroller);
+    final HorizontalScrollView calScroller = findViewById(R.id.hscroller);
     calScroller.post(new Runnable() {
       @Override
       public void run() {
@@ -207,7 +207,7 @@ public class PlanActivity extends AppCompatActivity {
   private class DateView implements Observer<List<UserActivityEntity>> {
 
     @Override
-    public void onChanged(@NonNull final List<UserActivityEntity> activities) {
+    public void onChanged(final List<UserActivityEntity> activities) {
       final StringBuilder activityBuffer = new StringBuilder();
 
       //Compiles a list of activity descriptions for a specific date
@@ -220,10 +220,6 @@ public class PlanActivity extends AppCompatActivity {
 
       content.setText(activityBuffer);
       loaded = true;
-    }
-
-    public boolean isLoaded() {
-      return loaded;
     }
 
     public Calendar getDay() {
@@ -249,6 +245,10 @@ public class PlanActivity extends AppCompatActivity {
             getResources().getConfiguration().locale).charAt(0) + "";
         title.setText(str);
       }
+    }
+
+    private boolean isLoaded() {
+      return loaded;
     }
 
     private void observe(final LifecycleOwner owner) {
