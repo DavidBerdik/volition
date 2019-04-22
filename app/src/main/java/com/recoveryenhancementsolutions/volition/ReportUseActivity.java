@@ -81,7 +81,6 @@ public class ReportUseActivity extends AppCompatActivity {
         useDate.set(Calendar.YEAR, year);
         useDate.set(Calendar.MONTH, month);
         useDate.set(Calendar.DAY_OF_MONTH, day);
-        Log.e("RepUseactivity", "Year: "+year +" Month: " +month +" Day: "+day);
         ready = false;
         int days = DateConverter.daysBetween(useDate.getTime(), today.getTime());
         Log.e("RepUseActivity", "Attempted use date: " +useDate.getTime().toString());
@@ -238,6 +237,7 @@ public class ReportUseActivity extends AppCompatActivity {
   private Toast toast;
   private Intent intent;
   private int lastClickedItem;
+  public static int numberCompleted;
   private boolean inTest;
   private boolean ready;
 }

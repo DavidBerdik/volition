@@ -13,5 +13,5 @@ public class JournalActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_journal);
   }
-
+  public static int numberCompleted;
 }
