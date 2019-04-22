@@ -66,13 +66,14 @@ public class ReportUseActivityTest {
     activityTestRule.getActivity().setTestDatabase(db);
     viewModel = activityTestRule.getActivity().getViewModel();
 
+    viewModel.getLastCleanDate().observe(activityTestRule.getActivity(), cleanObserver);
+    viewModel.getLastReportDate().observe(activityTestRule.getActivity(), reportObserver);
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Client");
     //Assume that on Jan 1, the client hit "Yes"
-    demographicDataEntity.setLastClean(initialLogDay, initialLogDay);
+    //demographicDataEntity.setLastClean(initialLogDay, initialLogDay);
     db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
-    viewModel.getLastCleanDate().observe(activityTestRule.getActivity(), cleanObserver);
-    viewModel.getLastReportDate().observe(activityTestRule.getActivity(), reportObserver);
+
   }
 
   /**
@@ -82,22 +83,30 @@ public class ReportUseActivityTest {
   public void updateDatabaseTest() {
     try {
       Calendar cal = Calendar.getInstance();
+      cal.setTime(initialLogDay);
+      //Update the database
+      viewModel.updateLastCleanDate(cal, cal);
+      //Give the database a second to update
+      try {
+        Thread.sleep(1000);
+      }
+      catch(InterruptedException ex){
+        Thread.currentThread().interrupt();
+      }
       //Initial state: both the last clean and last report should be the initial day
-      assertEquals(prevUseDay, initialLogDay);
+      assertEquals(initialLogDay, prevUseDay);
       assertEquals(prevReportDay, initialLogDay);
 
-      //click No: Last clean should be the same, last report should be updated
+      //click No: Last clean should be the same as the initial, last report should be set to today
       onView(withId(R.id.report_use_no)).perform(click());
-      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
-      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
-          initialLogDay);
+      cal.setTime(prevReportDay);
+      assertEquals(initialLogDay, prevUseDay);
       assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
 
-      //click Yes: Both Last clean and last report should be updated
+      //click Yes: Both Last clean and last report should be updated to today
       recordYesActivity();
-      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()));
       assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
-      cal.setTime(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()));
+      cal.setTime(prevUseDay);
       assertEquals(cal.get(Calendar.DAY_OF_YEAR), today.get(Calendar.DAY_OF_YEAR));
     } catch (Exception e) {
       Log.e(TAG, Log.getStackTraceString(e));
