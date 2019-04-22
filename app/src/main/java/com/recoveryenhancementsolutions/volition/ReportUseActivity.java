@@ -82,18 +82,30 @@ public class ReportUseActivity extends AppCompatActivity {
         useDate.set(Calendar.DAY_OF_MONTH, day);
 
         ready = false;
-        //Check to see if the date selected is the same as or before the date already stored
-        int days = DateConverter.daysBetween(prevUseDate.getTime(), useDate.getTime().getTime());
-        Log.e("Clean Tracker","daysbetween = " +days);
-        if (days == 0){
+        int days = DateConverter.daysBetween(useDate.getTime().getTime(), today.getTime().getTime());
+        //Checks if the date selected is after the current date
+        if (days < 0){
           toast = Toast.makeText(getApplicationContext(),
-              "ERROR: Date selected conflicts with the previously entered date", Toast.LENGTH_LONG);
+              "ERROR: Invalid date selected",
+              Toast.LENGTH_LONG);
           toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
           toast.show();
         }
         else {
-          ready = true;
-          ddViewModel.updateLastCleanDate(useDate, today);
+          days = DateConverter.daysBetween(prevUseDate.getTime(), useDate.getTime().getTime());
+          //Check to see if the date selected is the same as or before the date already stored
+          if (days < 0) {
+            toast = Toast.makeText(getApplicationContext(),
+                "ERROR: Date selected comes before the previous date entered",
+                Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+            toast.show();
+          }
+          //The date selected is valid
+          else {
+            ready = true;
+            ddViewModel.updateLastCleanDate(useDate, today);
+          }
         }
 
         //Only redirects if we are not in a testing environment & the date chosen was valid
