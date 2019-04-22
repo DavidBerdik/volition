@@ -12,6 +12,8 @@ import android.view.MenuItem;
  * provided they all feature the core_navigation menu at the bottom of the device screen.
  */
 public class CoreNavigationHandler {
+  public static int profileActivityLoadSrc = 0; /* For keeping track of the loading source for
+                                                    ProfileActivity. */
 
   /**
    * Assigns a BottomNavigationView object to the NavigationItemSelectedListener, provided a given
@@ -50,7 +52,13 @@ public class CoreNavigationHandler {
           case R.id.core_navigation_profile:
             destination.setClass(context, ProfileActivity.class);
             destination.putExtra(EDIT_MODE, true);
-            destination.putExtra(BACK_DEST, menuSrc);
+            /*
+            If "profileActivityLoadSrc" is equal to 0, set the menu source as the load source for
+            ProfileActivity.
+             */
+            if(profileActivityLoadSrc == 0)
+              profileActivityLoadSrc = menuSrc;
+            destination.putExtra(BACK_DEST, profileActivityLoadSrc);
         }
 
         destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

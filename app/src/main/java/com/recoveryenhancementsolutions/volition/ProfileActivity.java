@@ -441,6 +441,11 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
        */
       destination.setClass(this, PlanActivity.class);
     }
+    /*
+    Set the core navigation's variable for tracking ProfileActivity's load source to 0 to indicate
+    that it should be updated the next time that ProfileActivity is chosen from the navigation.
+     */
+    CoreNavigationHandler.profileActivityLoadSrc = 0;
     this.startActivity(destination);
   }
 
