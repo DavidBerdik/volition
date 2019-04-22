@@ -28,7 +28,7 @@ import android.content.Intent;
 import android.view.View.OnFocusChangeListener;
 
 /**
- * Class for running activity_create_profile.xml Which includes two pop-up calendars
+ * Class for running activity_profileich includes two pop-up calendars
  */
 
 public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
@@ -254,7 +254,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-    setContentView(R.layout.activity_create_profile);
+    setContentView(R.layout.activity_profile);
     bottomNavigationView = findViewById(R.id.core_navigation);
 
     /*
