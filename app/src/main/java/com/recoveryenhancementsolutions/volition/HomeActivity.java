@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
         daysCleanMessage.setText(R.string.home_clean);
         daysCleanMessage.append(" " + days);
-      } catch (NullPointerException e) {
+      } catch (final NullPointerException e) {
         daysCleanMessage.setText(R.string.home_clean);
       }
     }

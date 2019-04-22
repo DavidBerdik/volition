@@ -65,8 +65,9 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
    * Lets user know to select a gender
    */
   public void onNothingSelected(final AdapterView<?> parent) {
-    final Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
-        Toast.LENGTH_SHORT);
+    final Toast toast = Toast
+        .makeText(getApplicationContext(), "Please select a gender and a Use Type",
+            Toast.LENGTH_SHORT);
     toast.show();
   }
 
@@ -249,6 +250,53 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     name.setOnFocusChangeListener(ofcListener);
   }
 
+  /**
+   * Depending on the source of the activity's launch request, determine where to send the user when
+   * the back button is pressed.
+   */
+  @Override
+  public void onBackPressed() {
+    // Set "dest" equal to the ID passed via the intent. If nothing was passed, set it to 1.
+    final int dest = getIntent().getIntExtra(BACK_DEST, 1);
+    final Intent destination = new Intent();
+    if (!editMode) {
+      // If the activity is not in edit mode, use the default back button behavior.
+      super.onBackPressed();
+      return; // Since this scenario uses the default behavior, terminate this method early.
+    } else if (dest == 1) {
+      // If "dest" is 1, send the user to HomeActivity.
+      destination.setClass(this, HomeActivity.class);
+    } else if (dest == 2) {
+      // If "dest" is 2, send the user to ActivityActivity.
+      destination.setClass(this, ActivityActivity.class);
+    } else {
+      /*
+      If none of the other scenarios are true, "dest" should equal 3, so send the user to
+      PlanActivity.
+       */
+      destination.setClass(this, PlanActivity.class);
+    }
+    /*
+    Set the core navigation's variable for tracking ProfileActivity's load source to 0 to indicate
+    that it should be updated the next time that ProfileActivity is chosen from the navigation.
+     */
+    CoreNavigationHandler.profileActivityLoadSrc = 0;
+    this.startActivity(destination);
+  }
+
+  /**
+   * Sets the database component of the activity to use a test database and modifies the observer to
+   * use the in-memory database instead.
+   *
+   * @param db Database to use for testing.
+   */
+  public void setTestMode(final VolitionDatabase db) {
+    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demogDataViewModel.setTestDatabase(db);
+    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+  }
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -392,74 +440,25 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
 
   /**
    * If the activity is not in edit mode, remove the core navigation menu from being displayed, and
-   * if the core navigation menu is in edit mode, set it to the appropriate state for this activity.
+   * if the core navigation menu is in edit mode, set it to the appropriate state for this
+   * activity.
    */
   @Override
   protected void onResume() {
     super.onResume();
-    if(editMode) {
+    if (editMode) {
       // Set the correct core navigation button on the menu and make it functional.
       bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
       CoreNavigationHandler.link(bottomNavigationView, this, 4);
-    }
-    else {
+    } else {
       // Make the core navigation menu invisible and adjust the master layout's margins.
       bottomNavigationView.setVisibility(View.INVISIBLE);
       ScrollView scrollView = findViewById(R.id.scrollview_layout);
-      ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
+      ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) scrollView
+          .getLayoutParams();
       params.bottomMargin = 0;
       scrollView.setLayoutParams(params);
     }
-  }
-
-  /**
-   * Depending on the source of the activity's launch request, determine where to send the user
-   * when the back button is pressed.
-   */
-  @Override
-  public void onBackPressed() {
-    // Set "dest" equal to the ID passed via the intent. If nothing was passed, set it to 1.
-    final int dest = getIntent().getIntExtra(BACK_DEST, 1);
-    final Intent destination = new Intent();
-    if(!editMode) {
-      // If the activity is not in edit mode, use the default back button behavior.
-      super.onBackPressed();
-      return; // Since this scenario uses the default behavior, terminate this method early.
-    }
-    else if(dest == 1) {
-      // If "dest" is 1, send the user to HomeActivity.
-      destination.setClass(this, HomeActivity.class);
-    }
-    else if(dest == 2) {
-      // If "dest" is 2, send the user to ActivityActivity.
-      destination.setClass(this, ActivityActivity.class);
-    }
-    else {
-      /*
-      If none of the other scenarios are true, "dest" should equal 3, so send the user to
-      PlanActivity.
-       */
-      destination.setClass(this, PlanActivity.class);
-    }
-    /*
-    Set the core navigation's variable for tracking ProfileActivity's load source to 0 to indicate
-    that it should be updated the next time that ProfileActivity is chosen from the navigation.
-     */
-    CoreNavigationHandler.profileActivityLoadSrc = 0;
-    this.startActivity(destination);
-  }
-
-  /**
-   * Sets the database component of the activity to use a test database and modifies the observer to
-   * use the in-memory database instead.
-   *
-   * @param db Database to use for testing.
-   */
-  public void setTestMode(final VolitionDatabase db) {
-    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
-        .get(DemographicDataViewModel.class);
-    demogDataViewModel.setTestDatabase(db);
-    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
   }
 
   /**

@@ -24,7 +24,7 @@ import org.junit.runner.RunWith;
 public class CoreNavigationHandlerTest {
 
   @Rule
-  public ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
+  public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
       HomeActivity.class);
 
   /**
@@ -58,7 +58,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -82,7 +82,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -96,7 +96,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -110,7 +110,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -130,7 +130,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -143,7 +143,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -156,7 +156,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -170,7 +170,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -181,11 +181,10 @@ public class CoreNavigationHandlerTest {
     // Click to the Plan activity.
     onView(withId(R.id.core_navigation_plan)).perform(click());
 
-
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -199,7 +198,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -212,7 +211,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
@@ -226,7 +225,7 @@ public class CoreNavigationHandlerTest {
     // Allow the slower devices/emulators to update.
     try {
       Thread.sleep(1000);
-    } catch (InterruptedException ex) {
+    } catch (final InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 

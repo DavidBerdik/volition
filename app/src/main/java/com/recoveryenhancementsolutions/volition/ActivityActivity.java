@@ -19,6 +19,26 @@ import com.recoveryenhancementsolutions.volition.R.id;
 public class ActivityActivity extends AppCompatActivity {
 
   /**
+   * Recreates the observer but using a testing database. Should only be used for testing.
+   *
+   * @param db A VolitionDatabase test object.
+   */
+  public void onCreateTest(final VolitionDatabase db) {
+    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
+    viewModel.setTestDatabase(db);
+    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
+  }
+
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+  }
+
+  /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
    *
    * @param savedInstanceState Saved instance state of the phone
@@ -103,17 +123,6 @@ public class ActivityActivity extends AppCompatActivity {
 
   }
 
-  /**
-   * Recreates the observer but using a testing database. Should only be used for testing.
-   *
-   * @param db A VolitionDatabase test object.
-   */
-  public void onCreateTest(final VolitionDatabase db) {
-    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
-    viewModel.setTestDatabase(db);
-    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
-  }
-
 
   /**
    * Observes the treatment plan table in the database. Replaces the local treatment plan with an
@@ -121,8 +130,7 @@ public class ActivityActivity extends AppCompatActivity {
    * plan vs the number of times the user has completed the activity. Update UI with markers
    * accordingly.
    */
-
-  private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
+  private final Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
     @Override
     public void onChanged(final TreatmentPlanEntity newTreatmentPlanEntity) {
       /*
@@ -131,17 +139,18 @@ public class ActivityActivity extends AppCompatActivity {
       try {
         //Once/if EDU has a corresponding database element, we must add it here and add if logic
 
-        int numberOfTeasFromPlan = newTreatmentPlanEntity.getNumTreatmentEffectivenessAssessment();
-        int numberOfLessonsFromPlan = newTreatmentPlanEntity.getNumLessons();
-        int numberOfReportUseFromPlan = newTreatmentPlanEntity.getNumTimeTracking();
-        int numberOfJournalsFromPlan = newTreatmentPlanEntity.getNumReadingResponse();
-        int numberOfDailyWellnessFromPlan = newTreatmentPlanEntity.getNumOutcomeMeasures();
+        final int numberOfTeasFromPlan = newTreatmentPlanEntity
+            .getNumTreatmentEffectivenessAssessment();
+        final int numberOfLessonsFromPlan = newTreatmentPlanEntity.getNumLessons();
+        final int numberOfReportUseFromPlan = newTreatmentPlanEntity.getNumTimeTracking();
+        final int numberOfJournalsFromPlan = newTreatmentPlanEntity.getNumReadingResponse();
+        final int numberOfDailyWellnessFromPlan = newTreatmentPlanEntity.getNumOutcomeMeasures();
         // TODO: 4/16/2019 This is the incorret way to get these values, they must be retrieved from the database in the future when the activity classes are completed
-        int numberOfUserTeasCompleted = TreatmentExperienceAssessmentActivity.numberCompleted;
-        int numberOfUserLessonsCompleted = LessonActivity.numberCompleted;
-        int numberOfUserReportUseCompleted = ReportUseActivity.numberCompleted;
-        int numberOfUserJournalsCompleted = JournalActivity.numberCompleted;
-        int numberOfUserDailyWellnessCompleted = DailyWellnessActivity.numberCompleted;
+        final int numberOfUserTeasCompleted = TreatmentExperienceAssessmentActivity.numberCompleted;
+        final int numberOfUserLessonsCompleted = LessonActivity.numberCompleted;
+        final int numberOfUserReportUseCompleted = ReportUseActivity.numberCompleted;
+        final int numberOfUserJournalsCompleted = JournalActivity.numberCompleted;
+        final int numberOfUserDailyWellnessCompleted = DailyWellnessActivity.numberCompleted;
         if (numberOfUserTeasCompleted >= numberOfTeasFromPlan) {
           if (isPortrait) {
             findViewById(R.id.teaCompletedPortrait).setVisibility(View.VISIBLE);
@@ -207,22 +216,13 @@ public class ActivityActivity extends AppCompatActivity {
             findViewById(id.dailyWellnessIncompleteLandscape).setVisibility(View.VISIBLE);
           }
         }
-      } catch (NullPointerException e) {
+      } catch (final NullPointerException e) {
         Log.d("Activity Activity", "onChanged: " + Log.getStackTraceString(e));
       }
 
 
     }
   };
-
-  /**
-   * Restores the CoreNavigationHandler to it's default state for this page.
-   */
-  @Override
-  public void onResume() {
-    super.onResume();
-    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
-  }
 
   private TreatmentPlanViewModel viewModel;
   private boolean isPortrait = false;
