@@ -13,6 +13,10 @@ import android.view.MenuItem;
  */
 class CoreNavigationHandler {
 
+  @SuppressWarnings("WeakerAccess")
+  public static int profileActivityLoadSrc = 0; /* For keeping track of the loading source for
+                                                    ProfileActivity. */
+
   /**
    * Assigns a BottomNavigationView object to the NavigationItemSelectedListener, provided a given
    * context to build new intents with.
@@ -70,6 +74,4 @@ class CoreNavigationHandler {
 
   private static final String EDIT_MODE = "editMode";
   private static final String BACK_DEST = "backDest";
-  private static int profileActivityLoadSrc = 0; /* For keeping track of the loading source for
-                                                    ProfileActivity. */
 }
