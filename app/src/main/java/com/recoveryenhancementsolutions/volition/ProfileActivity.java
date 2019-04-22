@@ -6,6 +6,8 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +17,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -251,6 +255,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     super.onCreate(savedInstanceState);
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     setContentView(R.layout.activity_create_profile);
+    bottomNavigationView = findViewById(R.id.core_navigation);
 
     /*
     If an edit mode intent was passed to this activity with a value of "true", set edit mode
@@ -386,6 +391,28 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   }
 
   /**
+   * If the activity is not in edit mode, remove the core navigation menu from being displayed, and
+   * if the core navigation menu is in edit mode, set it to the appropriate state for this activity.
+   */
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if(editMode) {
+      // Set the correct core navigation button on the menu.
+      bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
+    }
+    else {
+      // Make the core navigation menu invisible and adjust the master layout's margins.
+      bottomNavigationView.setVisibility(View.INVISIBLE);
+      ConstraintLayout constraintLayout = findViewById(R.id.master_layout);
+      FrameLayout.LayoutParams params = (LayoutParams) constraintLayout.getLayoutParams();
+      //params.setMargins(0, 0, 0, 0);
+      params.bottomMargin = 0;
+      constraintLayout.setLayoutParams(params);
+    }
+  }
+
+  /**
    * Sets the database component of the activity to use a test database and modifies the observer to
    * use the in-memory database instead.
    *
@@ -501,5 +528,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private boolean editMode;
   private final Calendar dobCalendar = Calendar.getInstance();
   private final Calendar cleanDateCalendar = Calendar.getInstance();
+  private BottomNavigationView bottomNavigationView;
   private final String EDIT_MODE = "editMode";
 }
