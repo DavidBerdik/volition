@@ -400,7 +400,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     if(editMode) {
       // Set the correct core navigation button on the menu and make it functional.
       bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
-      CoreNavigationHandler.link(bottomNavigationView, this);
+      CoreNavigationHandler.link(bottomNavigationView, this, 4);
     }
     else {
       // Make the core navigation menu invisible and adjust the master layout's margins.
@@ -411,6 +411,34 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
       params.bottomMargin = 0;
       constraintLayout.setLayoutParams(params);
     }
+  }
+
+  /**
+   * Depending on the source of the activity's launch request, determine where to send the user
+   * when the back button is pressed.
+   */
+  @Override
+  public void onBackPressed() {
+    /*
+    Set "dest" equal to the ID passed via the intent. If nothing was passed, set it to 0 and use
+    the standard behavior.
+     */
+    final int dest = getIntent().getIntExtra(BACK_DEST, 0);
+    final Intent destination = new Intent();
+    switch (dest) {
+      case 0:
+        super.onBackPressed();
+        return; // Since this case uses the default behavior, terminate this method early.
+      case 1:
+        destination.setClass(this, HomeActivity.class);
+        break;
+      case 2:
+        destination.setClass(this, ActivityActivity.class);
+        break;
+      case 3:
+        destination.setClass(this, PlanActivity.class);
+    }
+    this.startActivity(destination);
   }
 
   /**
@@ -531,4 +559,5 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private final Calendar cleanDateCalendar = Calendar.getInstance();
   private BottomNavigationView bottomNavigationView;
   private final String EDIT_MODE = "editMode";
+  private static final String BACK_DEST = "backDest";
 }

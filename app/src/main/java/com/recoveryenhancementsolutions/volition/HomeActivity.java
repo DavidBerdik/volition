@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
-    CoreNavigationHandler.link(bottomNavigationView, this);
+    CoreNavigationHandler.link(bottomNavigationView, this, 1);
   }
 
   private Observer<Date> dateObserver = new Observer<Date>() {

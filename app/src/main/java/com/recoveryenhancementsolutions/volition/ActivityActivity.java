@@ -99,7 +99,7 @@ public class ActivityActivity extends AppCompatActivity {
 
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
-    CoreNavigationHandler.link(bottomNavigationView, this);
+    CoreNavigationHandler.link(bottomNavigationView, this, 2);
 
   }
 

@@ -37,7 +37,7 @@ public class PlanActivity extends AppCompatActivity {
     // Init navbar.
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
-    CoreNavigationHandler.link(bottomNavigationView, this);
+    CoreNavigationHandler.link(bottomNavigationView, this, 3);
 
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
