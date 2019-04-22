@@ -11,10 +11,7 @@ import android.view.MenuItem;
  * The CoreNavigationHandler is a general purpose class intended to be used by multiple activites
  * provided they all feature the core_navigation menu at the bottom of the device screen.
  */
-public class CoreNavigationHandler {
-
-  public static int profileActivityLoadSrc = 0; /* For keeping track of the loading source for
-                                                    ProfileActivity. */
+class CoreNavigationHandler {
 
   /**
    * Assigns a BottomNavigationView object to the NavigationItemSelectedListener, provided a given
@@ -24,7 +21,7 @@ public class CoreNavigationHandler {
    * @param context The context of the parent activity that will be used to create new intents.
    * @param menuSrc An integer representing the activity from which the menu request was sourced.
    */
-  public static void link(final BottomNavigationView view, final Context context,
+  static void link(final BottomNavigationView view, final Context context,
       final int menuSrc) {
     // Create an internal OnNavigationItemSelectedListener.
     // NOTE: Having it outside this method generated a local-use warning from Android Studio.
@@ -73,4 +70,6 @@ public class CoreNavigationHandler {
 
   private static final String EDIT_MODE = "editMode";
   private static final String BACK_DEST = "backDest";
+  private static int profileActivityLoadSrc = 0; /* For keeping track of the loading source for
+                                                    ProfileActivity. */
 }
