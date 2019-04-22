@@ -145,7 +145,7 @@ public class ActivityActivity extends AppCompatActivity {
         final int numberOfReportUseFromPlan = newTreatmentPlanEntity.getNumTimeTracking();
         final int numberOfJournalsFromPlan = newTreatmentPlanEntity.getNumReadingResponse();
         final int numberOfDailyWellnessFromPlan = newTreatmentPlanEntity.getNumOutcomeMeasures();
-        // TODO: 4/16/2019 This is the incorret way to get these values, they must be retrieved from the database in the future when the activity classes are completed
+        // TODO: 4/16/2019 This is the incorrect way to get these values, they must be retrieved from the database in the future when the activity classes are completed
         final int numberOfUserTeasCompleted = TreatmentExperienceAssessmentActivity.numberCompleted;
         final int numberOfUserLessonsCompleted = LessonActivity.numberCompleted;
         final int numberOfUserReportUseCompleted = ReportUseActivity.numberCompleted;
