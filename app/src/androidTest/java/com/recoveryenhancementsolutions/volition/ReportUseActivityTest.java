@@ -61,24 +61,19 @@ public class ReportUseActivityTest {
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
         .allowMainThreadQueries().build();
 
+    //Configures the viewModel to work with the test database
     activityTestRule.getActivity().setTestEnvironment(true);
     activityTestRule.getActivity().setTestDatabase(db);
     viewModel = activityTestRule.getActivity().getViewModel();
-    //viewModel.setTestDatabase(db);
 
     demographicDataEntity = new DemographicDataEntity();
     demographicDataEntity.setPatientName("Example Client");
     //Assume that on Jan 1, the client hit "Yes"
     demographicDataEntity.setLastClean(initialLogDay, initialLogDay);
     db.demographicDataDao().insertDemographicInfo(demographicDataEntity);
-    viewModel.getLastCleanDate().observe(activityTestRule.getActivity(), dateObserver);
+    viewModel.getLastCleanDate().observe(activityTestRule.getActivity(), cleanObserver);
+    viewModel.getLastReportDate().observe(activityTestRule.getActivity(), reportObserver);
   }
-
-  private Observer<Date> dateObserver = new Observer<Date>() {
-    @Override
-    public void onChanged(final Date date) {
-    }
-  };
 
   /**
    * Tests if pressing the yes and no buttons correctly updates the database
@@ -88,10 +83,8 @@ public class ReportUseActivityTest {
     try {
       Calendar cal = Calendar.getInstance();
       //Initial state: both the last clean and last report should be the initial day
-      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastCleanDate()),
-          initialLogDay);
-      assertEquals(LiveDataTestUtility.getNestedLiveDataObj(viewModel.getLastReportDate()),
-          initialLogDay);
+      assertEquals(prevUseDay, initialLogDay);
+      assertEquals(prevReportDay, initialLogDay);
 
       //click No: Last clean should be the same, last report should be updated
       onView(withId(R.id.report_use_no)).perform(click());
@@ -155,8 +148,39 @@ public class ReportUseActivityTest {
     };
   }
 
+  /**
+   * Observer for retrieving the "Last clean" Date
+   */
+  private Observer<Date> cleanObserver = new Observer<Date>() {
+    @Override
+    public void onChanged(final Date date) {
+      try {
+        prevUseDay = date;
+      }
+      catch(NullPointerException e) {
+        e.printStackTrace();
+      }
+    }
+  };
+
+  /**
+   * Observer for retrieving the "Last report" Date
+   */
+  private Observer<Date> reportObserver = new Observer<Date>() {
+    @Override
+    public void onChanged(final Date date) {
+      try{
+        prevReportDay = date;
+      }
+      catch(NullPointerException e){
+        e.printStackTrace();
+      }
+    }
+  };
+
   private final Calendar today = Calendar.getInstance();
   private final Date initialLogDay = new Date(1546318800000L); //January 1st, 2019
+  private Date prevUseDay, prevReportDay;
   private DemographicDataViewModel viewModel;
   private final String TAG = "RepUseActivityTest";
 }

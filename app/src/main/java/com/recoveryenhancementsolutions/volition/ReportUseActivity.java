@@ -48,6 +48,7 @@ public class ReportUseActivity extends AppCompatActivity {
 
     //Initializing ViewModel
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
+
     today = Calendar.getInstance();
     lastClickedItem = 0;
     inTest = false;
@@ -183,20 +184,6 @@ public class ReportUseActivity extends AppCompatActivity {
   };
 
   /**
-   * Observer for retrieving the "last clean" Date
-   */
-  private Observer<Date> dateObserver = new Observer<Date>() {
-    @Override
-    public void onChanged(final Date date) {
-      try {
-        prevUseDate = date;
-      } catch (NullPointerException e) {
-        e.printStackTrace();
-      }
-    }
-  };
-
-  /**
    * Redirects to another screen
    */
   private void redirect() {
@@ -223,6 +210,20 @@ public class ReportUseActivity extends AppCompatActivity {
           return true;
       }
       return false;
+    }
+  };
+
+  /**
+   * Observer for retrieving the "last clean" Date
+   */
+  private Observer<Date> dateObserver = new Observer<Date>() {
+    @Override
+    public void onChanged(final Date date) {
+      try {
+        prevUseDate = date;
+      } catch (NullPointerException e) {
+        e.printStackTrace();
+      }
     }
   };
 
