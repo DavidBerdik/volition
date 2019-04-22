@@ -17,9 +17,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.DateFormat;
@@ -261,6 +260,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     If an edit mode intent was passed to this activity with a value of "true", set edit mode
     to true. Otherwise, set it to false.
      */
+    final String EDIT_MODE = "editMode";
     editMode = getIntent().getBooleanExtra(EDIT_MODE, false);
 
      /*
@@ -405,11 +405,10 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     else {
       // Make the core navigation menu invisible and adjust the master layout's margins.
       bottomNavigationView.setVisibility(View.INVISIBLE);
-      ConstraintLayout constraintLayout = findViewById(R.id.master_layout);
-      FrameLayout.LayoutParams params = (LayoutParams) constraintLayout.getLayoutParams();
-      //params.setMargins(0, 0, 0, 0);
+      ScrollView scrollView = findViewById(R.id.scrollview_layout);
+      ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
       params.bottomMargin = 0;
-      constraintLayout.setLayoutParams(params);
+      scrollView.setLayoutParams(params);
     }
   }
 
@@ -558,6 +557,5 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private final Calendar dobCalendar = Calendar.getInstance();
   private final Calendar cleanDateCalendar = Calendar.getInstance();
   private BottomNavigationView bottomNavigationView;
-  private final String EDIT_MODE = "editMode";
   private static final String BACK_DEST = "backDest";
 }
