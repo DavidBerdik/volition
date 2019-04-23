@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/container"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".HomeActivity">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
 
-  <TextView
-    android:id="@+id/welcome"
-    android:textStyle="bold"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="48dp"
-    android:text="@string/home_welcome"
-    android:textAlignment="center"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-    android:textColor="@android:color/black"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/home_welcome"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-  <android.support.design.widget.BottomNavigationView
-    android:id="@+id/menubar"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:background="@color/res_green"
-    app:elevation="0dp"
-    app:itemBackground="@color/res_green"
-    app:itemHorizontalTranslationEnabled="false"
-    app:itemIconTint="@android:color/black"
-    app:itemTextColor="@android:color/black"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/core_navigation"/>
-  <TextView
-    android:id="@+id/clean"
-    android:textStyle="bold"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="84dp"
-    android:text="@string/home_clean"
-    android:textAlignment="center"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-    android:textColor="@android:color/black"
-    app:layout_constraintBottom_toBottomOf="@+id/menubar"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"/>
-  <TextView
-    android:id="@+id/buttonTestItem"
-    android:layout_width="369dp"
-    android:layout_height="31dp"
-    android:layout_marginTop="136dp"
-    android:text="@string/app_name"
-    android:textAlignment="center"
-    android:textColor="@android:color/transparent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/clean"/>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/menubar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/res_green"
+        app:elevation="0dp"
+        app:itemBackground="@color/res_green"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/core_navigation" />
 
+    <TextView
+        android:id="@+id/clean"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:text="@string/home_clean"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/buttonTestItem"
+        android:layout_width="369dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="136dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clean" />
 </android.support.constraint.ConstraintLayout>
