@@ -27,6 +27,11 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   public TextView lifestyle;
   public TextView community;
 
+
+  public String getTeaResultsText() {
+    return tea_results.getText().toString();
+  }
+
   /**
    * The method onCreate will initialize the Activity with the view of the treatment_experience_assessment_activity
    * xml. The Text View for every question is created with the opacity for each question and is
