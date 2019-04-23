@@ -108,8 +108,6 @@ public class ProfileActivitySaveButtonTest {
     onView(withId(R.id.core_navigation_profile)).perform(click());
     ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
 
-    try {Thread.sleep(1000);}catch(Exception e){}
-
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
 
