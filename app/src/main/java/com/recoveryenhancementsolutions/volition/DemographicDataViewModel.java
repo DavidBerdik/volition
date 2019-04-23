@@ -73,6 +73,10 @@ public class DemographicDataViewModel extends AndroidViewModel {
     new UpdateDaysCleanAsync(db.demographicDataDao()).execute(reportDay);
   }
 
+  public LiveData<String> returnName() {
+    return db.demographicDataDao().queryPatientName();
+  }
+
   /**
    * Retrieves the last clean date from the database
    *
