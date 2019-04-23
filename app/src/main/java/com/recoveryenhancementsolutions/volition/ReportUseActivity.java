@@ -189,5 +189,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private Toast toast;
   private Intent intent;
   private int lastClickedItem;
+  public static int numberCompleted;
   private boolean inTest;
 }

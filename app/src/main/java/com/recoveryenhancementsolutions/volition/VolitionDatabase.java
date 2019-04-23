@@ -40,14 +40,22 @@ import android.support.annotation.NonNull;
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 
+
+
+
 @Database(entities = {
     UserActivityEntity.class,
     TreatmentPlanEntity.class,
     QuestionnaireEntity.class,
     MedicationChoiceEntity.class,
     DemographicDataEntity.class,
+
+    TreatmentExperienceAssessmentEntity.class,
+
     QuestionnaireActivityEntity.class
+
 },
+
     version = 1)
 
 @TypeConverters(DateConverter.class)
@@ -62,11 +70,14 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
   public abstract MedicationChoiceDAO medicationChoiceDAO();
 
+  public abstract TreatmentExperienceAssessmentDao treatmentExperienceAssessmentDao();
+
   public abstract TreatmentPlanDao treatmentPlanDao();
 
   public abstract QuestionnaireDao questionnaireDao();
 
   private static volatile VolitionDatabase INSTANCE;
+
 
   /**
    * Factory method implementing Singleton design pattern for VolitionDatabase class.
