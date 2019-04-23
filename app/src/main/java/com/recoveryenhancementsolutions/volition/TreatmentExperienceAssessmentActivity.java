@@ -1,6 +1,5 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +17,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   public static ArrayList<Integer> teaAnswers = new ArrayList<>();
   public static ArrayList<TextView> questionsForTea = new ArrayList<>();
   public static ArrayList<TextView> headersForTea = new ArrayList<>();
+  public static int numberCompleted;
   public TextView qOne;
   public TextView qTwo;
   public TextView qThree;
@@ -27,7 +27,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   public TextView lifestyle;
   public TextView community;
 
-
   /**
    * The method onCreate will initialize the Activity with the view of the treatment_experience_assessment_activity
    * xml. The Text View for every question is created with the opacity for each question and is
@@ -36,6 +35,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
    *
    * @param savedInstanceState stores the saved state in order to recreate the activity.
    */
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -175,5 +175,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   private String[] outputs = {"None or not much", "Better", "Much Better"};
   private int rating;
   private static int lastKnownValue = -1;
+
+
 
 }
