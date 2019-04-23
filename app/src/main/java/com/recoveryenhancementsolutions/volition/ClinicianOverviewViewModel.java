@@ -10,6 +10,9 @@ import android.os.AsyncTask;
  */
  public class ClinicianOverviewViewModel extends AndroidViewModel {
    /**
+    *
+    * DONE
+    *
     * Constructor for the Clinician Overview View Model.
     *
     * @param application Application object for the View Model.
@@ -20,24 +23,33 @@ import android.os.AsyncTask;
     }
 
     /**
-     * Retrieves the name from the Proper table.
      *
-     * @return Returns LiveData of type ProperEntity.
+     * DONE
+     *
+     * Retrieves the name from the database.
+     *
+     * @return Returns LiveData of type DemographicDataEntity.
      */
-     public LiveData<ProperEntity> getName() {
-       return db.properDAO().getName();
+     public LiveData<DemographicDataEntity> getPatientName() {
+       return db.queryPatientName().getPatientName();
      }
 
-     /**
-      * Retrieves the date of last use from the Proper table.
-      *
-      * @return Returns LiveData of type ProperEntity.
-      */
-      public LiveData<ProperEntity> getLastUse() {
-        return db.properDAO().getLastUse();
-      }
+    /**
+     *
+     * DONE
+     *
+     * Retrieves the last clean date from the database
+     *
+     * @return A LiveData object containing the user's 'last clean' Date
+     */
+     public LiveData<Date> getLastCleanDate() {
+       return db.demographicDataDao().queryLastCleanDate();
+     }
 
       /**
+       *
+       * Not sure if needed yet
+       *
        * Retrieves the number of clean days from the Proper table.
        *
        * @return Returns LiveData of type ProperEntity.
@@ -49,26 +61,29 @@ import android.os.AsyncTask;
        /**
        * Class for running update asynchronously
        */
-      private static class updateLastUseAsync extends AsyncTask<ProperEntity, Void, Void> {
+      private static class updateLastUseAsync extends AsyncTask<DemographicDataDAO, Void, Void> {
 
-        private ProperDAO asyncTaskDao;
+        private DemographicDataDAO asyncTaskDao;
 
-        updateDosageAsync(final ProperDAO dao) {
+        updateDosageAsync(final DemographicDataDAO dao) {
           asyncTaskDao = dao;
         }
 
         /**
+         *
+         * Needs work
+         *
          * Makes the update run on a separate thread
          *
          * @param params Parameters for this method
          * @return returns null
          */
         @Override
-        protected Void doInBackground(final ProperDAO... params) {
+        protected Void doInBackground(final DemographicDataDAO... params) {
           params[0] = new ProperEntity();
-          final int var = params[0].var;
-          final String var = params[0].var;
-          asyncTaskDao.updateProper(dose, med);
+          final int cleanDate = params[0].cleanDate;
+          final String patientName = params[0].patientName;
+          asyncTaskDao.updateProper(dose, patientName);
           return null;
 
         }
