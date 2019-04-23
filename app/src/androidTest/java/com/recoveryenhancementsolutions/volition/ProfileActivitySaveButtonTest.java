@@ -11,6 +11,7 @@ import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
+import android.app.Activity;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
@@ -74,8 +75,10 @@ public class ProfileActivitySaveButtonTest {
     final Intent i = new Intent();
     activityTestRuleHome.launchActivity(i);
 
-    // Switch to ProfileActivity.
+    // Switch to ProfileActivity, set the test database, and fill out the profile.
     onView(withId(R.id.core_navigation_profile)).perform(click());
+    ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
+    fillProfile();
 
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
@@ -87,8 +90,9 @@ public class ProfileActivitySaveButtonTest {
     // Switch to activity activity.
     onView(withId(R.id.core_navigation_activity)).perform(click());
 
-    // Switch to ProfileActivity.
+    // Switch to ProfileActivity and set the test database.
     onView(withId(R.id.core_navigation_profile)).perform(click());
+    ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
 
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
@@ -100,8 +104,11 @@ public class ProfileActivitySaveButtonTest {
     // Switch to PlanActivity.
     onView(withId(R.id.core_navigation_plan)).perform(click());
 
-    // Switch to ProfileActivity.
+    // Switch to ProfileActivity and set the test database.
     onView(withId(R.id.core_navigation_profile)).perform(click());
+    ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
+
+    try {Thread.sleep(1000);}catch(Exception e){}
 
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
