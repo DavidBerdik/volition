@@ -118,10 +118,11 @@ public class CreateProfileActivityDatabaseTest {
   }
 
   /**
-   * Test that if the user enters other drug, the text box appears and the user can input information into the database
+   * Test that if the user enters other drug, the text box appears and the user can input
+   * information into the database
    */
   @Test
-  public void testOtherDrugUse(){
+  public void testOtherDrugUse() {
     onView(withId(R.id.radioOther)).perform(scrollTo(), click());
     onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText("other drug"));
     onView(withId(R.id.record_button)).perform(scrollTo(), click());

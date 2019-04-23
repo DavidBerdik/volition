@@ -4,17 +4,17 @@ import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.View.OnFocusChangeListener;
 import android.view.WindowManager;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
-import android.widget.CompoundButton;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,8 +22,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
-import android.content.Intent;
-import android.view.View.OnFocusChangeListener;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
@@ -64,8 +62,9 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
    * Lets user know to select a gender
    */
   public void onNothingSelected(final AdapterView<?> parent) {
-    final Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
-        Toast.LENGTH_SHORT);
+    final Toast toast = Toast
+        .makeText(getApplicationContext(), "Please select a gender and a Use Type",
+            Toast.LENGTH_SHORT);
     toast.show();
   }
 
@@ -481,8 +480,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         // If the "Other" drug of choice option was chosen, set the "Other Drug" EditText field.
         if (demographicDataEntity.getUseOther() != null && !demographicDataEntity.getUseOther()
             .equals("")) {
-            final EditText otherDrug = findViewById(R.id.enter_other);
-            otherDrug.setText(demographicDataEntity.getUseOther());
+          final EditText otherDrug = findViewById(R.id.enter_other);
+          otherDrug.setText(demographicDataEntity.getUseOther());
         }
 
         // Set the substance use disorder type.

@@ -59,7 +59,7 @@ public class EditProfileActivityTest {
     data.setPersonInRecovery(true);
     data.setDisorderAlcohol(true);
     data.setLastClean(2038, 1, 19);
-    data.setLastUseReport(2019,4,1);
+    data.setLastUseReport(2019, 4, 1);
     data.setUseOther("other drug");
     db.demographicDataDao().insertDemographicInfo(data);
 
@@ -160,7 +160,6 @@ public class EditProfileActivityTest {
     // Check that the drug of choice is "Marijuana."
     assertTrue(db.demographicDataDao().queryIsUsingMarijuana());
 
-
     // Check that the substance use disorder is ""Opioid Use Disorder."
     assertTrue(db.demographicDataDao().queryIsHavingOpioidDisorder());
 
@@ -178,10 +177,11 @@ public class EditProfileActivityTest {
   }
 
   /**
-   * Test that if the user enters other drug, the text box appears and the user can input information into the database
+   * Test that if the user enters other drug, the text box appears and the user can input
+   * information into the database
    */
   @Test
-  public void testOtherDrugUse(){
+  public void testOtherDrugUse() {
     onView(withId(R.id.radioOther)).perform(scrollTo(), click());
     onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText("other drug"));
     assertEquals("other drug", db.demographicDataDao().queryOtherUsedDrugs());
