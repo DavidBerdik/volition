@@ -12,11 +12,16 @@ import java.util.ArrayList;
 
 public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
 
-    public static int answerCounter = 0;
-    public static ArrayList<Integer> teaAnswers = new ArrayList<>();
-    public static  ArrayList<TextView> questionsForTea = new ArrayList<>();
- public static ArrayList<TextView> headersForTea = new ArrayList<>();
+  public static int answerCounter = 0;
+
+  public static ArrayList<Integer> teaAnswers = new ArrayList<>();
+  public static ArrayList<TextView> questionsForTea = new ArrayList<>();
+  public static ArrayList<TextView> headersForTea = new ArrayList<>();
   public static int numberCompleted;
+  public TextView qOne;
+  public TextView qTwo;
+  public TextView qThree;
+  public TextView qFour;
   public TextView substance;
   public TextView health;
   public TextView lifestyle;
@@ -175,10 +180,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   private String[] outputs = {"None or not much", "Better", "Much Better"};
   private int rating;
   private static int lastKnownValue = -1;
-    private TextView qOne;
-    private TextView qTwo;
-    private TextView qThree;
-    private TextView qFour;
+
 
 
 }
