@@ -57,10 +57,10 @@ public class EditProfileActivityTest {
     data.setDateOfBirth(1970, 1, 1);
     data.setGender("Male");
     data.setPersonInRecovery(true);
-    data.setUseOther("Caffeine/Java");
     data.setDisorderAlcohol(true);
     data.setLastClean(2038, 1, 19);
     data.setLastUseReport(2019,4,1);
+    data.setUseOther("other drug");
     db.demographicDataDao().insertDemographicInfo(data);
 
     // Launch the activity and then set it to test mode.
@@ -97,21 +97,6 @@ public class EditProfileActivityTest {
     onView(withId(R.id.radioSupport)).check(matches(isNotChecked()));
     onView(withId(R.id.radioClient)).check(matches(isChecked()));
 
-    // Check that the drug of choice is "other" and that the EditText for displaying the custom
-    // drug type is "Caffeine/Java."
-    onView(withId(R.id.radioHeroin)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioOpiates)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioAlcohol)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioCocaine)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioMarijuana)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioMeth)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioBen)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioTranquilizers)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioSedatives)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioInhalants)).check(matches(isNotChecked()));
-    onView(withId(R.id.radioOther)).check(matches(isChecked()));
-    onView(withId(R.id.enter_other)).check(matches(withText("Caffeine/Java")));
-
     // Check that the disorder type is "Alcohol Use Disorder."
     onView(withId(R.id.use_type_spinner)).check(matches(withSpinnerText("Alcohol Use Disorder")));
 
@@ -142,7 +127,6 @@ public class EditProfileActivityTest {
 
     // Set the Drug of Choice to "Marijuana."
     onView(withId(R.id.radioMarijuana)).perform(scrollTo(), click());
-    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText(""));
 
     // Set the use disorder to "Opioid Use Disorder."
     onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
@@ -175,7 +159,7 @@ public class EditProfileActivityTest {
 
     // Check that the drug of choice is "Marijuana."
     assertTrue(db.demographicDataDao().queryIsUsingMarijuana());
-    assertEquals("", db.demographicDataDao().queryOtherUsedDrugs());
+
 
     // Check that the substance use disorder is ""Opioid Use Disorder."
     assertTrue(db.demographicDataDao().queryIsHavingOpioidDisorder());
@@ -191,6 +175,17 @@ public class EditProfileActivityTest {
     assertEquals(2019, lastUse.get(Calendar.YEAR));
     assertEquals(1, lastUse.get(Calendar.MONTH));
     assertEquals(2, lastUse.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Test that if the user enters other drug, the text box appears and the user can input information into the database
+   */
+  @Test
+  public void testOtherDrugUse(){
+    onView(withId(R.id.radioOther)).perform(scrollTo(), click());
+    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText("other drug"));
+    assertEquals("other drug", db.demographicDataDao().queryOtherUsedDrugs());
+    onView(withId(R.id.enter_other)).check(matches(withText("other drug")));
   }
 
   private static final String TAG = "EditProfileActivityTest";

@@ -68,7 +68,6 @@ public class CreateProfileActivityDatabaseTest {
 
     // Set the Drug of Choice to "Marijuana."
     onView(withId(R.id.radioMarijuana)).perform(scrollTo(), click());
-    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText(""));
 
     // Set the use disorder to "Opioid Use Disorder."
     onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
@@ -101,7 +100,6 @@ public class CreateProfileActivityDatabaseTest {
 
     // Check that the drug of choice is "Marijuana."
     assertTrue(db.demographicDataDao().queryIsUsingMarijuana());
-    assertEquals("", db.demographicDataDao().queryOtherUsedDrugs());
 
     // Check that the substance use disorder is ""Opioid Use Disorder."
     assertTrue(db.demographicDataDao().queryIsHavingOpioidDisorder());
@@ -117,6 +115,17 @@ public class CreateProfileActivityDatabaseTest {
     assertEquals(2019, lastUse.get(Calendar.YEAR));
     assertEquals(1, lastUse.get(Calendar.MONTH));
     assertEquals(2, lastUse.get(Calendar.DAY_OF_MONTH));
+  }
+
+  /**
+   * Test that if the user enters other drug, the text box appears and the user can input information into the database
+   */
+  @Test
+  public void testOtherDrugUse(){
+    onView(withId(R.id.radioOther)).perform(scrollTo(), click());
+    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText("other drug"));
+    onView(withId(R.id.record_button)).perform(scrollTo(), click());
+    assertEquals("other drug", db.demographicDataDao().queryOtherUsedDrugs());
   }
 
   private static final String TAG = "CreateProfileActivityDatabaseTest";
