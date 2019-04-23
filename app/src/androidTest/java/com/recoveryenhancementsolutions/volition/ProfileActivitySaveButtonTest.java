@@ -123,7 +123,7 @@ public class ProfileActivitySaveButtonTest {
     onView(withId(R.id.date_of_birth)).perform(scrollTo(), replaceText("Sep 9, 1989"));
     onView(withId(R.id.gender_spinner)).perform(scrollTo(), click());
 
-    DataInteraction appCompatTextView = onData(anything())
+    final DataInteraction appCompatTextView = onData(anything())
         .inAdapterView(childAtPosition(
             withClassName(is("android.widget.PopupWindow$PopupBackgroundView"))))
         .atPosition(3);
@@ -133,7 +133,7 @@ public class ProfileActivitySaveButtonTest {
     onView(withId(R.id.radioOpiates)).perform(scrollTo(), click());
     onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
 
-    DataInteraction appCompatTextView3 = onData(anything())
+    final DataInteraction appCompatTextView3 = onData(anything())
         .inAdapterView(childAtPosition(
             withClassName(is("android.widget.PopupWindow$PopupBackgroundView"))))
         .atPosition(2);
