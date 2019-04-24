@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.Date;
+import java.util.List;
 
 public class ClinicalScreenActivity extends AppCompatActivity{
     @Override
@@ -78,14 +79,27 @@ public class ClinicalScreenActivity extends AppCompatActivity{
     };
 
     private void displayMonth(String month){
+        
 
     }
 
     private void displayYear() {
-
+        listOfActivities = findViewById(R.id.listOfActivities);
+        UserActivityViewModel userActivityViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
+        userActivityViewModel.getAllActivities().observe(this, yearObserver);
     }
 
 
+    private Observer<List<UserActivityEntity>> yearObserver = new Observer<List<UserActivityEntity>>() {
+        @Override
+        public void onChanged(@Nullable List<UserActivityEntity> s) {
+            listOfActivities.setText("Activities to date: \n");
+           for(int i = 0; i < s.size(); i++) {
+               listOfActivities.append(s.get(i).toString());
+               listOfActivities.append("\n");
+           }
+        }
+    };
 
     private Observer<String> nameObserver = new Observer<String>() {
         @Override
@@ -116,5 +130,6 @@ public class ClinicalScreenActivity extends AppCompatActivity{
     private TextView nameBox;
     private TextView dateBox;
     private TextView daysCleanBox;
+    private TextView listOfActivities;
 }
 
