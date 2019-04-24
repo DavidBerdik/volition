@@ -11,6 +11,7 @@ import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,14 @@ public class MedicationChoiceActivityTest {
   @Rule
   public ActivityTestRule<MedicationChoiceActivity> mActivityTestRule = new ActivityTestRule<>(
       MedicationChoiceActivity.class);
+
+  /**
+   * Sets severity level in the treatment plan to prevent errors.
+   */
+  @Before
+  public void setSeverityLevel(){
+    TreatmentPlanViewModel.setSeverityLevel("MODERATE");
+  }
 
   /**
    * Creates the Medication Choice Activity Test

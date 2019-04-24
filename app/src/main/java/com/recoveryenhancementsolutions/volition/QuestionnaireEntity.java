@@ -20,6 +20,27 @@ public class QuestionnaireEntity {
   }
 
   /**
+   * Sets severity level to severe
+   */
+  public void setSevere(){
+    severityLevel = "SEVERE";
+  }
+
+  /**
+   * Sets severity level to moderate
+   */
+  public void setModerate(){
+    severityLevel = "MODERATE";
+  }
+
+  /**
+   * Sets severity level to mild
+   */
+  public void setMild(){
+    this.severityLevel = "MILD";
+  }
+
+  /**
    * Retrieves the current severityLevel
    */
   public String getSeverityLevel() {
