@@ -4,15 +4,19 @@ import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.View.OnFocusChangeListener;
 import android.view.WindowManager;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -20,8 +24,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
-import android.content.Intent;
-import android.view.View.OnFocusChangeListener;
+import java.util.Date;
 
 /**
  * Class for running activity_create_profile.xml Which includes two pop-up calendars
@@ -62,8 +65,9 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
    * Lets user know to select a gender
    */
   public void onNothingSelected(final AdapterView<?> parent) {
-    final Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
-        Toast.LENGTH_SHORT);
+    final Toast toast = Toast
+        .makeText(getApplicationContext(), "Please select a gender and a Use Type",
+            Toast.LENGTH_SHORT);
     toast.show();
   }
 
@@ -274,7 +278,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     addAllListeners();
 
     final Calendar dobCalendar = Calendar.getInstance();
-
     final DatePickerDialog.OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
       /**
        * Event handler for when a date of birth is chosen by the user.
@@ -322,6 +325,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             dateOfBirthListener, dobCalendar.get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
             dobCalendar.get(Calendar.DAY_OF_MONTH));
+        pickDate.getDatePicker().setMaxDate(new Date().getTime());
         pickDate.show();
       }
 
@@ -338,6 +342,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             cleanDateListener, cleanDateCalendar.get(Calendar.YEAR),
             cleanDateCalendar.get(Calendar.MONTH), cleanDateCalendar.get(Calendar.DAY_OF_MONTH));
+        pickDate.getDatePicker().setMaxDate(new Date().getTime());
         pickDate.show();
       }
 
@@ -369,9 +374,23 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         demogDataViewModel.insertDemographicData(data);
 
         //Intent goes to the next activity in the Work Flow.
+        Log.d("prof", "onClick: dob is " + dobCalendar.getTime().toString());
         Intent intent = new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class);
-
-        startActivity(intent);
+        if (TextUtils.isEmpty(((EditText) findViewById(R.id.name)).getText())) {
+          ((EditText) findViewById(R.id.name)).setError("Name is required! ");
+          Toast.makeText(getApplicationContext(), "Name is empty", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(((EditText) findViewById(R.id.date_of_birth)).getText())){
+          ((EditText) findViewById(R.id.date_of_birth)).setError("Date of birth is required! ");
+          Toast.makeText(getApplicationContext(), "Date of birth is required", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(((EditText) findViewById(R.id.clean_date)).getText())){
+          ((EditText) findViewById(R.id.clean_date)).setError("Clean date is required! ");
+          Toast.makeText(getApplicationContext(), "Clean date is required", Toast.LENGTH_SHORT).show();
+        }
+        else {
+          startActivity(intent);
+        }
       }
     });
 
