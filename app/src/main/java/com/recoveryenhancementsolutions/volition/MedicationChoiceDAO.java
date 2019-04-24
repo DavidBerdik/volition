@@ -52,8 +52,8 @@ public interface MedicationChoiceDAO {
    * @param dose a MedicationDosageEntity object containing the int to be inserted
    */
 
-  @Query("UPDATE MedicationChoiceEntity SET dosage = :dose WHERE medication = :medication")
-  void updateDosage(final int dose, final String medication);
+  @Query("UPDATE MedicationChoiceEntity SET dosage = :dose, milligramsBuprenorphine =:milligramsBuprenorphine, milligramsNaloxone =:milligramsNaloxone, type =:type WHERE medication = :medication")
+  void updateDosage(final String type, final double milligramsNaloxone, final double milligramsBuprenorphine , final int dose, final String medication);
 
   /**
    * Returns the dosage associated with a specific medication.
