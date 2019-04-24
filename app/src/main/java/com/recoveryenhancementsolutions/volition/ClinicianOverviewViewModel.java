@@ -23,6 +23,15 @@ import android.os.AsyncTask;
     }
 
     /**
+     * Set the test database for this View Model.
+     *
+     * @param db the Volition Database to use for testing.
+     */
+    public void setTestDatabase(final VolitionDatabase db) {
+        this.db = db;
+    }
+
+    /**
      *
      * DONE
      *
