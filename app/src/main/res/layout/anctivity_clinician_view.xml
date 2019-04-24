@@ -1,95 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
-        android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="30"
         android:alpha=".4"
+
         android:contentDescription="@string/severity_desc"
         android:padding="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pic"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="0dp" />
+    <TextView
+        android:id="@+id/nameBox"
+        android:layout_width="239dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Name of the client "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
 
-    <EditText
-        android:id="@+id/patient_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="600dp"
-        android:hint="Name of the client"
-        android:inputType="none"
-        tools:ignore="autoFill"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="4dp" />
+    <TextView
+        android:id="@+id/dateBox"
+        android:layout_width="253dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Date of last use"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
 
-    <EditText
-        android:id="@+id/last_use"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="600dp"
-        android:hint="Date of Last Use"
-        android:inputType="none"
-        tools:ignore="autoFill"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="116dp" />
+    <TextView
+        android:id="@+id/cleanDaysBox"
+        android:layout_width="283dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Number of clean days"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
 
-    <EditText
-        android:id="@+id/clean_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="600dp"
-        android:hint="Number of Clean Days"
-        android:inputType="none"
-        tools:ignore="autoFill"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="58dp" />
-
-    <EditText
-        android:id="@+id/date_of_birth"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/clinicalSpinner"
+        android:layout_width="346dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:focusableInTouchMode="false"
-        android:hint="Pick a month for compliance"
-        android:inputType="date"
-        android:textColor="@color/text_regular"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="99"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_use"
-        tools:ignore="Autofill" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.296" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="351dp"
+        android:layout_height="328dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/res_green"
-        android:text="View another client"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.666" />
+
 
     <Button
         android:id="@+id/button2"
@@ -103,9 +111,9 @@
         android:text="Modify"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.928" />
 
 </android.support.constraint.ConstraintLayout>
