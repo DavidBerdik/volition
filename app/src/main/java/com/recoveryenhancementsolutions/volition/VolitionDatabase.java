@@ -37,7 +37,6 @@ import android.support.annotation.NonNull;
  * of the database.  It is also possible to modify the provided code so that the app begins with
  * test data pre-populated in the database.
  */
-// TODO: If the following @Database code is commented out, uncomment.  Then place entity class references here, one class per line (to facilitate merges).
 
 // TODO: Place entity class references here, one class per line (to facilitate merges).
 
@@ -67,8 +66,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
   public abstract QuestionnaireDao questionnaireDao();
 
-
-  // marking the instance as volatile to ensure atomic access to the variable
   private static volatile VolitionDatabase INSTANCE;
 
   /**
@@ -139,7 +136,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
 
     // If you want to clear and initialize the database, add variables to hold DAOs here as shown in the following comment
     // private final WordDao mDao;
-    private final DemographicDataDAO demographicDataDao;
     private final UserActivitiesDao userActivitiesDao;
     private final TreatmentPlanDao treatmentPlanDao;
     private final QuestionnaireDao questionnaireDao;
@@ -148,7 +144,6 @@ public abstract class VolitionDatabase extends RoomDatabase {
     PopulateDbAsync(final VolitionDatabase db) {
       // If you want to clear and initialize the database, call the DAO instantiation methods here as shown in the following comment
       // mDao = db.wordDao();
-      demographicDataDao = db.demographicDataDao();
       userActivitiesDao = db.userActivitiesDao();
       treatmentPlanDao = db.treatmentPlanDao();
       questionnaireDao = db.questionnaireDao();

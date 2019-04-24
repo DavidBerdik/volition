@@ -46,7 +46,7 @@
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="@android:color/black"
     android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="@+id/menubar"
+    app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent" />

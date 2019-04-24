@@ -70,7 +70,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
   }
 
   /**
-   * Handles the item selection Functionality will be added by Brad or Rahul
+   * Handles the item selection. Functionality will be added by Brad or Rahul
    *
    * @param item The item selected
    * @return Should be changed to true once menu items are handled
@@ -83,7 +83,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
   }
 
   /**
-   * Send the user to the correct activity depending on which option is selected Functionality will
+   * Send the user to the correct activity depending on which option is selected. Functionality will
    * be added by Brad or Rahul
    *
    * @param item The item selected

@@ -6,11 +6,11 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+
 import java.util.Date;
 
 
 @Dao
-@SuppressWarnings("unused")
 /*
 Currently many methods are unused, it is expected more and more will
 come into use as more components are finished and added
@@ -36,6 +36,13 @@ public interface DemographicDataDAO {
    */
   @Update
   void updateDemographicInfo(final DemographicDataEntity demographicDataEntity);
+    /**
+     * Inserts a patient into the database
+     *
+     * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
+     * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
+     * @Insert Inserts a patient into the database, on conflict, replaces
+     */
 
     /*
     Other components of the volition application may need to access the data of the patient.
