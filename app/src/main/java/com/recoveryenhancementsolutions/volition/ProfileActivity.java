@@ -204,7 +204,9 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
       }
     });
   }
-
+  /*
+   *Sets the Other textfield to visible after the radio button has been clicked
+   */
   public void addOtherListener() {
     radioOther = findViewById(R.id.radioOther);
     radioOther.setOnClickListener(new View.OnClickListener() {
