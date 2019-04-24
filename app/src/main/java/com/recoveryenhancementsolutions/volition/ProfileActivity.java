@@ -208,6 +208,18 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     });
   }
 
+  public void addOtherListener() {
+    radioOther = findViewById(R.id.radioOther);
+    radioOther.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        if (((RadioButton) v).isChecked()) {
+          findViewById(R.id.enter_other).setVisibility(View.VISIBLE);
+          findViewById(R.id.enter_other).requestFocus();
+        }
+      }
+    });
+  }
+
   /*
    *Adds the listeners to the corresponding RadioButtons and Spinners
    * Sets the buttons and Spinners to the corresponding ID's
@@ -226,6 +238,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioAlcohol = findViewById(R.id.radioAlcohol);
     radioCocaine = findViewById(R.id.radioCocaine);
     radioOpiates = findViewById(R.id.radioOpiates);
+    radioOther = findViewById(R.id.radioOther);
     addSupportListener();
     addClientListener();
     addAlocholListener();
@@ -238,6 +251,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     addOpiatesListener();
     addSedativesListener();
     addTranqListener();
+    addOtherListener();
 
     final Spinner genderSpinner = findViewById(R.id.gender_spinner);
     final Spinner useTypeSpinner = findViewById(R.id.use_type_spinner);
@@ -255,6 +269,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     super.onCreate(savedInstanceState);
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     setContentView(R.layout.activity_create_profile);
+    findViewById(R.id.enter_other).setVisibility(View.GONE);
 
     /*
     If an edit mode intent was passed to this activity with a value of "true", set edit mode
@@ -476,6 +491,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
           drugOfChoice = findViewById(R.id.radioInhalants);
         } else {
           drugOfChoice = findViewById(R.id.radioOther);
+
         }
         drugOfChoice.toggle();
 
@@ -516,9 +532,11 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private RadioButton radioTranquilizers;
   private RadioButton radioSedatives;
   private RadioButton radioInhalants;
+  private RadioButton radioOther;
   private int spinnerCount = 0;
   private boolean editMode;
   private final Calendar dobCalendar = Calendar.getInstance();
   private final Calendar cleanDateCalendar = Calendar.getInstance();
   private final String EDIT_MODE = "editMode";
+
 }

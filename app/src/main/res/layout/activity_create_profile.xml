@@ -267,12 +267,13 @@
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/substance_use"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drug_selection"
-        tools:text="@string/create_profile_other"
-        tools:ignore="Autofill"/>
+        tools:ignore="Autofill"
+        tools:text="@string/create_profile_other"/>
       <TextView
         android:id="@+id/substance_use"
         android:layout_width="match_parent"
