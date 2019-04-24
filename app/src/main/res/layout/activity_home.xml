@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/container"
@@ -10,7 +9,6 @@
 
   <TextView
     android:id="@+id/welcome"
-    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="48dp"
@@ -18,12 +16,13 @@
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
     android:textColor="@android:color/black"
+    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent" />
 
   <android.support.design.widget.BottomNavigationView
-    android:id="@+id/menubar"
+    android:id="@+id/core_navigation"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:background="@color/res_green"
@@ -35,10 +34,10 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/core_navigation"/>
+    app:menu="@menu/core_navigation" />
+
   <TextView
     android:id="@+id/clean"
-    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="84dp"
@@ -46,10 +45,12 @@
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="@android:color/black"
+    android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="@+id/menubar"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"/>
+    app:layout_constraintStart_toStartOf="parent" />
+
   <TextView
     android:id="@+id/buttonTestItem"
     android:layout_width="369dp"
@@ -60,6 +61,5 @@
     android:textColor="@android:color/transparent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/clean"/>
-
+    app:layout_constraintTop_toBottomOf="@+id/clean" />
 </android.support.constraint.ConstraintLayout>

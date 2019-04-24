@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.view.MenuItem;
 import android.widget.TextView;
+
 import java.util.Date;
 
 /**
@@ -15,7 +16,9 @@ import java.util.Date;
  * document. Displays a generic welcoming message to the client as well as the number of days that
  * they have been clean. Includes a navigation menu at the bottom.
  */
+
 public class HomeActivity extends DrawerMenuActivity {
+
 
   /**
    * Retrieves the text stored in daysCleanMessage. Only needed for testing.
@@ -38,6 +41,7 @@ public class HomeActivity extends DrawerMenuActivity {
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
   }
 
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -50,10 +54,20 @@ public class HomeActivity extends DrawerMenuActivity {
         .get(DemographicDataViewModel.class);
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
 
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.setSelectedItemId(R.id.core_navigation_home);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+    CoreNavigationHandler.link(bottomNavigationView, this);
   }
+
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+  }
+
 
   private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
@@ -90,4 +104,5 @@ public class HomeActivity extends DrawerMenuActivity {
 
   private TextView buttonTestItem;
   private TextView daysCleanMessage;
+  private BottomNavigationView bottomNavigationView;
 }
