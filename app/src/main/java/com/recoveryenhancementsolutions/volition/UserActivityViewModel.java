@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.YearMonth;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -127,22 +129,45 @@ public class UserActivityViewModel extends AndroidViewModel {
     return db.userActivitiesDao().getActivitiesByDate(date);
   }
 
-  /**
+   /**
    * Used to update data into the database asynchronously
    */
   private static class updateAsyncTask extends AsyncTask<UserActivityEntity, Void, Void> {
+     private static UserActivitiesDao asyncTaskDao;
 
-    updateAsyncTask(final UserActivitiesDao dao) {
-      asyncTaskDao = dao;
-    }
+     updateAsyncTask(final UserActivitiesDao dao) {
+       asyncTaskDao = dao;
+     }
 
-    @Override
-    protected Void doInBackground(final UserActivityEntity... params) {
-      asyncTaskDao.insertActivity(params[0]);
-      return null;
-    }
+     @Override
+     protected Void doInBackground(final UserActivityEntity... params) {
+       asyncTaskDao.insertActivity(params[0]);
+       return null;
+     }
+   }
 
-    private final UserActivitiesDao asyncTaskDao;
+   /**
+   * Retrieves all user activities from the database that took place on a given month this year.
+   *
+   * @param month An integer representing the desired month. (January = 1, December = 12)
+   * @return A LiveData object containing a list of user activities that took place on the month
+   * defined by the value of "month."
+   */
+  public LiveData<List<UserActivityEntity>> getActivitiesByMonth(final int month) {
+    // Create a calendar to generate two dates with.
+    final Calendar cal = Calendar.getInstance();
+
+    // Create a lower bound date. (The first second of first day of the month.)
+    cal.set(Calendar.YEAR, month - 1, 1, 0, 0, 0);
+    final Date lowerDate = cal.getTime();
+
+    // Create an upper bound date. (The last second of the last day of the month.)
+    cal.set(Calendar.YEAR, month - 1, cal.getActualMaximum(Calendar.DAY_OF_MONTH),
+        23, 59, 59);
+    final Date upperDate = cal.getTime();
+
+    // Return the LiveData object containing the list of qualifying activities.
+    return db.userActivitiesDao().getActivitiesByMonth(lowerDate, upperDate);
   }
 
   private VolitionDatabase db;
