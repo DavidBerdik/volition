@@ -26,13 +26,13 @@ public class MedicationChoiceEntity {
   @SuppressWarnings("NullableProblems")
   @ColumnInfo(name = "milligramsNaloxone")
   @Nullable
-  public double milligramsNaloxone ;
+  public double milligramsNaloxone;
 
   @SuppressWarnings("NullableProblems")
   @ColumnInfo(name = "milligramsBuprenorphine")
   @Nullable
   public double milligramsBuprenorphine;
-  
+
   @ColumnInfo(name = "type")
   @Nullable
   public String type;

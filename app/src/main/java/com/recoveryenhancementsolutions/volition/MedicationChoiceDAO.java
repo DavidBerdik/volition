@@ -43,6 +43,11 @@ public interface MedicationChoiceDAO {
   @Update(onConflict = REPLACE)
   void updateMedication(final MedicationChoiceEntity medication);
 
+  /**
+   * Query's the dosage information
+   *
+   * @return a live data of MedicationChoiceEntity
+   */
   @Query("SELECT * FROM MedicationChoiceEntity")
   LiveData<MedicationChoiceEntity> getDosage();
 
@@ -53,14 +58,16 @@ public interface MedicationChoiceDAO {
    */
 
   @Query("UPDATE MedicationChoiceEntity SET dosage = :dose, milligramsBuprenorphine =:milligramsBuprenorphine, milligramsNaloxone =:milligramsNaloxone, type =:type WHERE medication = :medication")
-  void updateDosage(final String type, final double milligramsNaloxone, final double milligramsBuprenorphine , final int dose, final String medication);
+  void updateDosage(final String type, final double milligramsNaloxone,
+      final double milligramsBuprenorphine, final int dose, final String medication);
 
   /**
    * Returns the dosage associated with a specific medication.
    *
    * @param medication The medication to search for.
-   * @return A LiveData object containing an Integer.
+   * @return A LiveData object containing a MedicationChoiceEntity with the corresponding medication
+   * entry.
    */
-  @Query("SELECT dosage FROM MedicationChoiceEntity WHERE medication = :medication")
-  LiveData<Integer> getDosage(final String medication);
+  @Query("SELECT * FROM MedicationChoiceEntity WHERE medication = :medication")
+  LiveData<MedicationChoiceEntity> getDosage(final String medication);
 }

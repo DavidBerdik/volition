@@ -157,7 +157,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
       final String med = params[0].medication;
       final double milligramsNaloxone = params[0].milligramsNaloxone;
       final double milligramsBuprenorphine = params[0].milligramsBuprenorphine;
-      final String type = params [0].type;
+      final String type = params[0].type;
 
       asyncTaskDao.updateDosage(type, milligramsNaloxone, milligramsBuprenorphine, dose, med);
       return null;
