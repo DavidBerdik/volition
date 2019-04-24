@@ -50,23 +50,6 @@
     android:textSize="16sp"
     app:layout_constraintStart_toEndOf="@+id/space"
     app:layout_constraintTop_toBottomOf="@+id/report_use_question"/>
-  <ImageView
-    android:id="@+id/imageView2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="150dp"
-    android:layout_marginBottom="160dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:alpha=".33"
-    android:contentDescription="@string/dosage_choice_res_logo"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.4"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.569"
-    app:srcCompat="@drawable/pic"/>
   <TextView
     android:id="@+id/report_use_question"
     android:textStyle="bold"
@@ -83,7 +66,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
   <android.support.design.widget.BottomNavigationView
-    android:id="@+id/menubar"
+    android:id="@+id/activity_back_navigation"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:background="@color/res_green"
@@ -95,7 +78,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/core_navigation"/>
+    app:menu="@menu/activity_back_navigation"/>
   <Space
     android:id="@+id/space"
     android:layout_width="48dp"
