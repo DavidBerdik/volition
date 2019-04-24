@@ -212,4 +212,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
       <item>December</item>
       <item>Year to Date</item>
     </string-array>
+  <string name = "dateOfLastUse">Date of last use: </string>
+  <string name= "name">Name: </string>
 </resources>

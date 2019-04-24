@@ -27,7 +27,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
         DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
         demographicDataViewModel.returnName().observe(this,nameObserver);
         demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
-        Spinner spinner = (Spinner) findViewById(R.id.clinicalSpinner);
+        Spinner spinner = findViewById(R.id.clinicalSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.months_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -43,29 +43,29 @@ public class ClinicalScreenActivity extends AppCompatActivity{
                                    int pos, long id) {
             String option = parent.getItemAtPosition(pos).toString();
             switch (option) {
-                case "January": displayMonth("01");
+                case "January": displayMonth(1);
                     break;
-                case "February": displayMonth("02");
+                case "February": displayMonth(2);
                     break;
-                case "March": displayMonth("03");
+                case "March": displayMonth(3);
                     break;
-                case "April": displayMonth("04");
+                case "April": displayMonth(4);
                     break;
-                case "May": displayMonth("05");
+                case "May": displayMonth(5);
                     break;
-                case "June": displayMonth("06");
+                case "June": displayMonth(6);
                     break;
-                case "July": displayMonth("07");
+                case "July": displayMonth(7);
                     break;
-                case "August": displayMonth("08");
+                case "August": displayMonth(8);
                     break;
-                case "September": displayMonth("09");
+                case "September": displayMonth(9);
                     break;
-                case "October": displayMonth("10");
+                case "October": displayMonth(10);
                     break;
-                case "November": displayMonth("11");
+                case "November": displayMonth(11);
                     break;
-                case "December": displayMonth("12");
+                case "December": displayMonth(12);
                     break;
                 case "Year to date": displayYear();
                 default:
@@ -78,7 +78,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
         }
     };
 
-    private void displayMonth(String month){
+    private void displayMonth(int month){
         
 
     }
@@ -104,7 +104,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
     private Observer<String> nameObserver = new Observer<String>() {
         @Override
         public void onChanged(@Nullable String s) {
-            nameBox.setText("Name: ");
+            nameBox.setText(R.string.name);
             nameBox.append(s);
         }
     };
@@ -116,7 +116,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
             // We should only have a NullPointerException if nothing is entered into the DB yet.
             // If this is the case, have an empty days clean String.
             try {
-                dateBox.setText("Date of last use: ");
+                dateBox.setText(R.string.dateOfLastUse);
                 dateBox.append(date.toString());
                 final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
                 daysCleanBox.setText(R.string.home_clean);
