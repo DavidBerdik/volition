@@ -197,4 +197,19 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="menubar_home">Home</string>
   <string name="menubar_activity">Activity</string>
   <string name="menubar_plan">Plan</string>
+    <string-array name="months_array">
+      <item>January</item>
+      <item>February</item>
+      <item>March</item>
+      <item>April</item>
+      <item>May</item>
+      <item>June</item>
+      <item>July</item>
+      <item>August</item>
+      <item>September</item>
+      <item>October</item>
+      <item>November</item>
+      <item>December</item>
+      <item>Year to Date</item>
+    </string-array>
 </resources>
