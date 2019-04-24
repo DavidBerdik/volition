@@ -7,11 +7,15 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.List;
@@ -20,9 +24,9 @@ public class ClinicalScreenActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        nameBox = findViewById(R.id.nameBox);
-        dateBox = findViewById(R.id.dateBox);
-        daysCleanBox = findViewById(R.id.cleanDaysBox);
+
+
+
         setContentView(R.layout.activity_clinical_screen);
         DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
         demographicDataViewModel.returnName().observe(this,nameObserver);
@@ -67,7 +71,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
                     break;
                 case "December": displayMonth(12);
                     break;
-                case "Year to date": displayYear();
+                case "Year to Date": displayYear();
                 default:
                     break;
             }
@@ -84,7 +88,6 @@ public class ClinicalScreenActivity extends AppCompatActivity{
     }
 
     private void displayYear() {
-        listOfActivities = findViewById(R.id.listOfActivities);
         UserActivityViewModel userActivityViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
         userActivityViewModel.getAllActivities().observe(this, yearObserver);
     }
@@ -92,20 +95,30 @@ public class ClinicalScreenActivity extends AppCompatActivity{
 
     private Observer<List<UserActivityEntity>> yearObserver = new Observer<List<UserActivityEntity>>() {
         @Override
-        public void onChanged(@Nullable List<UserActivityEntity> s) {
-            listOfActivities.setText("Activities to date: \n");
-           for(int i = 0; i < s.size(); i++) {
-               listOfActivities.append(s.get(i).toString());
-               listOfActivities.append("\n");
-           }
+        public void onChanged(final List<UserActivityEntity> s) {
+            enterActivities = findViewById(R.id.listOfActivities);
+            enterActivities.setText("Activities to date: \n");
+            if(!s.isEmpty()) {
+                for (int i = 0; i < s.size(); i++) {
+                    enterActivities.append(s.get(i).toString());
+                    enterActivities.append("\n");
+                    Log.e("s: ", s.get(i).toString());
+                }
+            }
+               else{enterActivities.setText(R.string.noActivities);
+                   Log.e("s: ", s.toString()); }
+
         }
     };
 
     private Observer<String> nameObserver = new Observer<String>() {
         @Override
-        public void onChanged(@Nullable String s) {
-            nameBox.setText(R.string.name);
-            nameBox.append(s);
+        public void onChanged(final String s) {
+            enterName = findViewById(R.id.nameBox);
+            enterName.setText(R.string.name);
+            enterName.append(s);
+           // nameBox.setText("tester");
+            Log.e("name ", s);
         }
     };
 
@@ -113,23 +126,23 @@ public class ClinicalScreenActivity extends AppCompatActivity{
     private Observer<Date> dateObserver = new Observer<Date>() {
         @Override
         public void onChanged(final Date date) {
-            // We should only have a NullPointerException if nothing is entered into the DB yet.
-            // If this is the case, have an empty days clean String.
-            try {
-                dateBox.setText(R.string.dateOfLastUse);
-                dateBox.append(date.toString());
+            enterDate = findViewById(R.id.dateBox);
+            enterDaysClean = findViewById(R.id.cleanDaysBox);
+            enterDate.setText(R.string.dateOfLastUse);
+            enterDate.append(date.toString());
+                Log.e("date: ", date.toString());
                 final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
-                daysCleanBox.setText(R.string.home_clean);
-                daysCleanBox.append(" " + days);
-            } catch (NullPointerException e) {
-                daysCleanBox.setText(R.string.home_clean);
-            }
+                final String newDays = Integer.toString(days);
+                Log.e("days ", newDays);
+            enterDaysClean.setText(R.string.home_clean);
+            enterDaysClean.append(" " + newDays);
+
         }
     };
 
-    private TextView nameBox;
-    private TextView dateBox;
-    private TextView daysCleanBox;
-    private TextView listOfActivities;
+    public TextView enterName;
+    public TextView enterDate;
+    public TextView enterDaysClean;
+    public TextView enterActivities;
 }
 
