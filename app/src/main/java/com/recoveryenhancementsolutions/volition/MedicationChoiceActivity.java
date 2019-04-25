@@ -57,7 +57,7 @@ public class MedicationChoiceActivity extends AppCompatActivity {
   }
 
   /**
-   * The id for the extra to be passed
+   * ID used to retrieve severity level from ViewSeverityLevelActivity.
    */
-  private String extraId = "COM.RECOVERYENHANCEMENTSOLUTIONS.VOLITION.SEVERITY_EXTRA";
+  private final String extraId = "COM.RECOVERYENHANCEMENTSOLUTIONS.VOLITION.SEVERITY_EXTRA";
 }

@@ -5,7 +5,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 /**
- * Temporary skeleton file.  Should be written over by VOL-50-View-Severity-Level
+ * Stores the user's severity level based on their answers to the questionnaire.
  */
 @Entity
 public class QuestionnaireEntity {
@@ -50,7 +50,7 @@ public class QuestionnaireEntity {
   /**
    * The severity level for this patient. Should be "MILD", "MODERATE", or "SEVERE"
    */
-  @PrimaryKey
   @NonNull
+  @PrimaryKey
   private String severityLevel;
 }

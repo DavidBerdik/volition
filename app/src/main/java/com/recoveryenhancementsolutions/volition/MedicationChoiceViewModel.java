@@ -217,6 +217,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   /**
    * The user's severity level. Statically passed to this class from QuestionnaireActivityViewModel.
    */
-  public String severityLevel;
+  private String severityLevel;
 
 }
