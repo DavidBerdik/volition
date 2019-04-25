@@ -17,6 +17,8 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
+import android.arch.persistence.room.Room;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.contrib.PickerActions;
@@ -32,6 +34,8 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,8 +45,25 @@ import org.junit.runner.RunWith;
 public class CreateProfileActivityTest {
 
   @Rule
-  public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
+  public ActivityTestRule<ProfileActivity> activityTestRule = new ActivityTestRule<>(
       ProfileActivity.class);
+
+  /**
+   * Creates a temporary, in-memory database to use for testing the edit profile activity.
+   */
+  @Before
+  public void createTestEnvironment() {
+    // Set the activity to test mode.
+    activityTestRule.getActivity().setTestMode(db);
+  }
+
+  /**
+   * Closes the temporary test database.
+   */
+  @After
+  public void closeDb() {
+    db.close();
+  }
 
   /**
    * Performs tests that are related to the user interface in the "Create Profile" activity.
@@ -82,7 +103,8 @@ public class CreateProfileActivityTest {
     onView(allOf(withId(R.id.radioOther), withText("Other"))).perform(scrollTo(), click());
 
     // Test setting the name in the custom other drug EditText to "Other drug".
-    onView(withId(R.id.enter_other)).perform(scrollTo(), replaceText("Other drug"), closeSoftKeyboard());
+    onView(withId(R.id.enter_other))
+        .perform(scrollTo(), replaceText("Other drug"), closeSoftKeyboard());
 
     // Test opening the Substance Use Disorder dropdown menu.
     onView(withId(R.id.use_type_spinner)).perform(scrollTo(), click());
@@ -108,7 +130,8 @@ public class CreateProfileActivityTest {
 
     // Test setting a date in the "Date of Last Use" EditText. Note that this test enters
     // a date directly in the field and does not make use of the date picker.
-    onView(withId(R.id.clean_date)).perform(scrollTo(), replaceText("Jan 1, 2019"), closeSoftKeyboard());
+    onView(withId(R.id.clean_date))
+        .perform(scrollTo(), replaceText("Jan 1, 2019"), closeSoftKeyboard());
 
     // Test tapping on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
@@ -209,7 +232,8 @@ public class CreateProfileActivityTest {
     onView(withId(R.id.clean_date)).check(matches(withText("Mar 14, 2015")));
 
     //Testing if the button calls QuestionnaireActivity
-    onView(allOf(withId(R.id.record_button), withText("Record Answers"))).perform(scrollTo(), click());
+    onView(allOf(withId(R.id.record_button), withText("Record Answers")))
+        .perform(scrollTo(), click());
   }
 
   private static Matcher<View> childAtPosition(
@@ -230,4 +254,9 @@ public class CreateProfileActivityTest {
       }
     };
   }
+
+  final private VolitionDatabase db = Room
+      .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
+      .allowMainThreadQueries().build();
+
 }

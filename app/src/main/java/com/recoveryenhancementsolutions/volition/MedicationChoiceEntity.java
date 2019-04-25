@@ -23,4 +23,19 @@ public class MedicationChoiceEntity {
   @Nullable
   public int dosage;
 
+  @SuppressWarnings("NullableProblems")
+  @ColumnInfo(name = "milligramsNaloxone")
+  @Nullable
+  public double milligramsNaloxone;
+
+  @SuppressWarnings("NullableProblems")
+  @ColumnInfo(name = "milligramsBuprenorphine")
+  @Nullable
+  public double milligramsBuprenorphine;
+
+  @ColumnInfo(name = "type")
+  @Nullable
+  public String type;
+
+
 }

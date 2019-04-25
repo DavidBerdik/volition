@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
-    CoreNavigationHandler.link(bottomNavigationView, this);
+    CoreNavigationHandler.link(bottomNavigationView, this, 1);
   }
 
   private Observer<Date> dateObserver = new Observer<Date>() {
@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
         daysCleanMessage.setText(R.string.home_clean);
         daysCleanMessage.append(" " + days);
-      } catch (NullPointerException e) {
+      } catch (final NullPointerException e) {
         daysCleanMessage.setText(R.string.home_clean);
       }
     }

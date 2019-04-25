@@ -11,7 +11,11 @@ import android.view.MenuItem;
  * The CoreNavigationHandler is a general purpose class intended to be used by multiple activites
  * provided they all feature the core_navigation menu at the bottom of the device screen.
  */
-public class CoreNavigationHandler {
+class CoreNavigationHandler {
+
+  @SuppressWarnings("WeakerAccess")
+  public static int profileActivityLoadSrc = 0; /* For keeping track of the loading source for
+                                                    ProfileActivity. */
 
   /**
    * Assigns a BottomNavigationView object to the NavigationItemSelectedListener, provided a given
@@ -19,8 +23,10 @@ public class CoreNavigationHandler {
    *
    * @param view A BottomNavigationView that should be represented by the core_navigation menu.
    * @param context The context of the parent activity that will be used to create new intents.
+   * @param menuSrc An integer representing the activity from which the menu request was sourced.
    */
-  public static void link(final BottomNavigationView view, final Context context) {
+  static void link(final BottomNavigationView view, final Context context,
+      final int menuSrc) {
     // Create an internal OnNavigationItemSelectedListener.
     // NOTE: Having it outside this method generated a local-use warning from Android Studio.
     view.setOnNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
@@ -46,6 +52,17 @@ public class CoreNavigationHandler {
           case R.id.core_navigation_plan:
             destination.setClass(context, PlanActivity.class);
             break;
+          case R.id.core_navigation_profile:
+            destination.setClass(context, ProfileActivity.class);
+            destination.putExtra(EDIT_MODE, true);
+            /*
+            If "profileActivityLoadSrc" is equal to 0, set the menu source as the load source for
+            ProfileActivity.
+             */
+            if (profileActivityLoadSrc == 0) {
+              profileActivityLoadSrc = menuSrc;
+            }
+            destination.putExtra(BACK_DEST, profileActivityLoadSrc);
         }
 
         destination.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -54,4 +71,7 @@ public class CoreNavigationHandler {
       }
     });
   }
+
+  private static final String EDIT_MODE = "editMode";
+  private static final String BACK_DEST = "backDest";
 }

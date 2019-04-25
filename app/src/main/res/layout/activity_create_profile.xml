@@ -265,6 +265,7 @@
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/substance_use"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
