@@ -18,6 +18,7 @@ import java.util.Date;
  */
 
 public class HomeActivity extends DrawerMenuActivity {
+
   /**
    * Retrieves the text stored in daysCleanMessage. Only needed for testing.
    *
@@ -54,7 +55,7 @@ public class HomeActivity extends DrawerMenuActivity {
 
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
-    CoreNavigationHandler.link(bottomNavigationView, this);
+    CoreNavigationHandler.link(bottomNavigationView, this, 1);
   }
 
   /**
@@ -67,41 +68,41 @@ public class HomeActivity extends DrawerMenuActivity {
   }
 
 
-    private Observer<Date> dateObserver = new Observer<Date>() {
-        @Override
-        public void onChanged(final Date date) {
-            // We should only have a NullPointerException if nothing is entered into the DB yet.
-            // If this is the case, have an empty days clean String.
-            try {
-                final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
-                daysCleanMessage.setText(R.string.home_clean);
-                daysCleanMessage.append(" " + days);
-            } catch (NullPointerException e) {
-                daysCleanMessage.setText(R.string.home_clean);
-            }
-        }
-    };
+  private Observer<Date> dateObserver = new Observer<Date>() {
+    @Override
+    public void onChanged(final Date date) {
+      // We should only have a NullPointerException if nothing is entered into the DB yet.
+      // If this is the case, have an empty days clean String.
+      try {
+        final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
+        daysCleanMessage.setText(R.string.home_clean);
+        daysCleanMessage.append(" " + days);
+      } catch (NullPointerException e) {
+        daysCleanMessage.setText(R.string.home_clean);
+      }
+    }
+  };
 
 
-    private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.core_navigation_home:
-                    buttonTestItem.setText(R.string.core_navigation_home);
-                    return true;
-                case R.id.core_navigation_activity:
-                    buttonTestItem.setText(R.string.core_navigation_activity);
-                    return true;
-                case R.id.core_navigation_plan:
-                    buttonTestItem.setText(R.string.core_navigation_plan);
-                    return true;
-            }
-            return false;
-        }
-    };
+  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
+      switch (item.getItemId()) {
+        case R.id.core_navigation_home:
+          buttonTestItem.setText(R.string.core_navigation_home);
+          return true;
+        case R.id.core_navigation_activity:
+          buttonTestItem.setText(R.string.core_navigation_activity);
+          return true;
+        case R.id.core_navigation_plan:
+          buttonTestItem.setText(R.string.core_navigation_plan);
+          return true;
+      }
+      return false;
+    }
+  };
 
-    private TextView buttonTestItem;
-    private TextView daysCleanMessage;
-    private BottomNavigationView bottomNavigationView;
+  private TextView buttonTestItem;
+  private TextView daysCleanMessage;
+  private BottomNavigationView bottomNavigationView;
 }
