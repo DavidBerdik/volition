@@ -40,7 +40,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
     drawer.addDrawerListener(toggle);
     toggle.syncState();
 
-    final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    final NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
   }
 
@@ -49,7 +49,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
    */
   @Override
   public void onBackPressed() {
-    final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    final DrawerLayout drawer = findViewById(R.id.drawer_layout);
     if (drawer.isDrawerOpen(GravityCompat.START)) {
       drawer.closeDrawer(GravityCompat.START);
     } else {
@@ -106,7 +106,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
 
     }
 
-    final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    final DrawerLayout drawer = findViewById(R.id.drawer_layout);
     drawer.closeDrawer(GravityCompat.START);
     return true;
   }
