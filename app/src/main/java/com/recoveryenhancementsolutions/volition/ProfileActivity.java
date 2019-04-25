@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.Observer;
@@ -32,7 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Class for running activity_profileich includes two pop-up calendars
+ * Class for running activity_profile which includes two pop-up calendars
  */
 
 public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
@@ -485,19 +486,19 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
           } else if (drug_selection_radio_group.getCheckedRadioButtonId() == -1) {
             TextView errorTextPrev = findViewById(R.id.are_you);
             errorTextPrev.setError(null);
-            TextView userType = (TextView) findViewById(R.id.drug_of_choice);
+            TextView userType = findViewById(R.id.drug_of_choice);
             userType.setError("Drug of choice required!");
             Toast.makeText(getApplicationContext(), "Drug of choice required!", Toast.LENGTH_SHORT)
                 .show();
-          }
-          else if(radio_other.isChecked() && TextUtils.isEmpty(((EditText) findViewById(R.id.enter_other)).getText())){
+          } else if (radio_other.isChecked() && TextUtils
+              .isEmpty(((EditText) findViewById(R.id.enter_other)).getText())) {
             ((EditText) findViewById(R.id.enter_other)).setError("Other drug is required! ");
-            Toast.makeText(getApplicationContext(), "Other drug is required", Toast.LENGTH_SHORT).show();
-          }
-          else {
+            Toast.makeText(getApplicationContext(), "Other drug is required", Toast.LENGTH_SHORT)
+                .show();
+          } else {
             TextView errorTextPrev = findViewById(R.id.drug_of_choice);
             errorTextPrev.setError(null);
-            TextView errorTextPrev2 = findViewById(R.id.enter_other);
+            @SuppressLint("CutPasteId") TextView errorTextPrev2 = findViewById(R.id.enter_other);
             errorTextPrev2.setError(null);
             startActivity(new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class));
           }
