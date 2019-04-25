@@ -38,7 +38,7 @@ import static org.hamcrest.Matchers.is;
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class PlanActivityPortraitTest {
+public class PlanActivityTest {
 
     @Rule
     public ActivityTestRule<PlanActivity> mActivityTestRule = new ActivityTestRule<>(PlanActivity.class);
