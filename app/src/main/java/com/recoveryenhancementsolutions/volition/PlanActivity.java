@@ -1,5 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
@@ -10,13 +12,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.text.DateFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Loads the activities for each day and displays them to the user.
@@ -47,21 +55,6 @@ public class PlanActivity extends AppCompatActivity {
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
     CoreNavigationHandler.link(bottomNavigationView, this, 3);
-
-    /*
-    ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        cycle(true);
-      }
-    });
-    ((ImageButton) findViewById(R.id.button_previous)).setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        cycle(false);
-      }
-    });
-    */
 
     // Store today's date with a time of 0 for relative date calculation.
     final Calendar today = Calendar.getInstance();
@@ -124,8 +117,22 @@ public class PlanActivity extends AppCompatActivity {
     return dateViews.size();
   }
 
-  protected String getActivityBuffer(final int at) {
+  /**
+   * Gets the content string for the calendar day at the given position.
+   * @param at Offset from today.  1 would be yesterday.
+   * @return String containing list of activities for that day.
+   */
+  protected String getCalendarBuffer(final int at) {
     return dateViews.get(at).content.getText().toString();
+  }
+
+  /**
+   * Gets the notes string for all activities on the calendar day at the given position.
+   * @param at Offset from today.  1 would be yesterday.
+   * @return String containing list of all notes for that day.
+   */
+  protected String getNotesBuffer(final int at) {
+    return dateViews.get(at).notes;
   }
 
   protected boolean didActivitiesLoad(final int at) {
@@ -206,22 +213,6 @@ public class PlanActivity extends AppCompatActivity {
    */
   private class DateView implements Observer<List<UserActivityEntity>> {
 
-    @Override
-    public void onChanged(final List<UserActivityEntity> activities) {
-      final StringBuilder activityBuffer = new StringBuilder();
-
-      //Compiles a list of activity descriptions for a specific date
-      for (int i = 0; i < activities.size(); ++i) {
-        activityBuffer.append(activities.get(i).getDesc());
-        if (i < activities.size() - 1) {
-          activityBuffer.append('\n');
-        }
-      }
-
-      content.setText(activityBuffer);
-      loaded = true;
-    }
-
     public Calendar getDay() {
       return day;
     }
@@ -234,15 +225,27 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     /**
-     * Change the day associated with these labels. Updates the title label to reflect the day.
+     * Change the day associated with these labels.  Updates the title label to reflect the day.
      *
      * @param day The new day to associate with.
      */
     private void setDay(final Calendar day) {
-      this.day = (Calendar) day.clone();
+      final Calendar dayClone = (Calendar) day.clone();
+
+      this.day = dayClone;
+
+      content.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          final String dayString = DateFormat.getDateInstance(DateFormat.FULL,
+              Locale.getDefault()).format(dayClone.getTime());
+          PlanNoteView.create(dayString, notes).show(getSupportFragmentManager());
+        }
+      });
+
       if (title != null) {
         String str = day.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT,
-            getResources().getConfiguration().locale).charAt(0) + "";
+            Locale.getDefault()).charAt(0) + "";
         title.setText(str);
       }
     }
@@ -254,6 +257,7 @@ public class PlanActivity extends AppCompatActivity {
     private void observe(final LifecycleOwner owner) {
       data = actViewModel.getActivitiesByDate(day.getTime());
       data.observe(owner, this);
+      notes = null;
       loaded = false;
     }
 
@@ -261,13 +265,41 @@ public class PlanActivity extends AppCompatActivity {
       if (data != null) {
         data.removeObservers(owner);
         data = null;
+        notes = null;
       }
+    }
+
+    @Override
+    public void onChanged(@NonNull final List<UserActivityEntity> activities) {
+      final StringBuilder calBuffer = new StringBuilder();   // Only stores activity name.
+      final StringBuilder notesBuffer = new StringBuilder(); // Stores name & notes.
+
+      // Compiles a list of activity descriptions for a specific date.
+      // The notes string is also updated with these activities.
+
+      for (int i = 0; i < activities.size(); ++i) {
+        calBuffer.append(activities.get(i).getDesc());
+
+        notesBuffer.append(activities.get(i).getDesc());
+        notesBuffer.append(":\n");
+        notesBuffer.append(activities.get(i).getNotes());
+
+        if (i < activities.size() - 1) {
+          calBuffer.append('\n');
+          notesBuffer.append("\n\n");
+        }
+      }
+
+      content.setText(calBuffer);
+      notes = notesBuffer.toString();
+      loaded = true;
     }
 
     private final TextView title;
     private final TextView content;
     private Calendar day;
     private LiveData<List<UserActivityEntity>> data;
+    private String notes;
     private boolean loaded;
   }
 
