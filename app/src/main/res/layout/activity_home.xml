@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/container"
@@ -7,16 +8,33 @@
   android:layout_height="match_parent"
   tools:context=".HomeActivity">
 
+  <ImageView
+    android:id="@+id/resBackground"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.562"
+    app:srcCompat="@drawable/pic"/>
   <TextView
     android:id="@+id/welcome"
+    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="48dp"
     android:text="@string/home_welcome"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+    android:textSize="45sp"
     android:textColor="@android:color/black"
-    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
@@ -38,14 +56,15 @@
 
   <TextView
     android:id="@+id/clean"
+    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="84dp"
     android:text="@string/home_clean"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+    android:textSize="35sp"
     android:textColor="@android:color/black"
-    android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
