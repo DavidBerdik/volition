@@ -23,8 +23,17 @@ import java.util.List;
  */
 public class PlanActivity extends AppCompatActivity {
 
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
+  }
+
+  @Override
+  protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     final int orientation = getResources().getConfiguration().orientation;
@@ -37,7 +46,7 @@ public class PlanActivity extends AppCompatActivity {
     // Init navbar.
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
-    CoreNavigationHandler.link(bottomNavigationView, this);
+    CoreNavigationHandler.link(bottomNavigationView, this, 3);
 
     /*
     ((ImageButton) findViewById(R.id.button_next)).setOnClickListener(new OnClickListener() {
@@ -104,15 +113,6 @@ public class PlanActivity extends AppCompatActivity {
     scrollRight();
   }
 
-  /**
-   * Restores the CoreNavigationHandler to it's default state for this page.
-   */
-  @Override
-  public void onResume() {
-    super.onResume();
-    bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
-  }
-
   protected UserActivityViewModel getViewModel() {
     return actViewModel;
   }
@@ -128,7 +128,7 @@ public class PlanActivity extends AppCompatActivity {
     return dateViews.get(at).content.getText().toString();
   }
 
-  protected boolean didActivitiesLoad(int at) {
+  protected boolean didActivitiesLoad(final int at) {
     return dateViews.get(at).isLoaded();
   }
 
@@ -138,14 +138,14 @@ public class PlanActivity extends AppCompatActivity {
    * @param by How many days to add to the rightmost day.  For example, 7 would load the next week.
    */
   protected void cycle(final int by) {
-    for (DateView dv : dateViews) {
+    for (final DateView dv : dateViews) {
       dv.unobserve(this);
     }
 
     final Calendar rightmost = dateViews.get(0).day;
     rightmost.add(Calendar.DAY_OF_MONTH, by);
 
-    for (DateView dv : dateViews) {
+    for (final DateView dv : dateViews) {
       dv.setDay(rightmost);
       rightmost.add(Calendar.DAY_OF_MONTH, -1);
     }
@@ -168,14 +168,14 @@ public class PlanActivity extends AppCompatActivity {
    * Sets observers for all dates currently being displayed.
    */
   private void subscribeUIActivities() {
-    for (DateView dv : dateViews) {
+    for (final DateView dv : dateViews) {
       dv.observe(this);
     }
   }
 
   private void scrollRight() {
     // Scroll calendar to the right to show today.
-    final HorizontalScrollView calScroller = (HorizontalScrollView) findViewById(R.id.hscroller);
+    final HorizontalScrollView calScroller = findViewById(R.id.hscroller);
     calScroller.post(new Runnable() {
       @Override
       public void run() {
@@ -184,9 +184,9 @@ public class PlanActivity extends AppCompatActivity {
     });
   }
 
-  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
+  private final OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
       switch (item.getItemId()) {
         case R.id.core_navigation_home:
           Intent i = new Intent(getApplicationContext(), HomeActivity.class);
@@ -205,6 +205,22 @@ public class PlanActivity extends AppCompatActivity {
    * Structure for storing a date's corresponding TextViews for the title and descriptions.
    */
   private class DateView implements Observer<List<UserActivityEntity>> {
+
+    @Override
+    public void onChanged(final List<UserActivityEntity> activities) {
+      final StringBuilder activityBuffer = new StringBuilder();
+
+      //Compiles a list of activity descriptions for a specific date
+      for (int i = 0; i < activities.size(); ++i) {
+        activityBuffer.append(activities.get(i).getDesc());
+        if (i < activities.size() - 1) {
+          activityBuffer.append('\n');
+        }
+      }
+
+      content.setText(activityBuffer);
+      loaded = true;
+    }
 
     public Calendar getDay() {
       return day;
@@ -231,6 +247,10 @@ public class PlanActivity extends AppCompatActivity {
       }
     }
 
+    private boolean isLoaded() {
+      return loaded;
+    }
+
     private void observe(final LifecycleOwner owner) {
       data = actViewModel.getActivitiesByDate(day.getTime());
       data.observe(owner, this);
@@ -242,26 +262,6 @@ public class PlanActivity extends AppCompatActivity {
         data.removeObservers(owner);
         data = null;
       }
-    }
-
-    @Override
-    public void onChanged(@NonNull final List<UserActivityEntity> activities) {
-      final StringBuilder activityBuffer = new StringBuilder();
-
-      //Compiles a list of activity descriptions for a specific date
-      for (int i = 0; i < activities.size(); ++i) {
-        activityBuffer.append(activities.get(i).getDesc());
-        if (i < activities.size() - 1) {
-          activityBuffer.append('\n');
-        }
-      }
-
-      content.setText(activityBuffer);
-      loaded = true;
-    }
-
-    public boolean isLoaded() {
-      return loaded;
     }
 
     private final TextView title;
