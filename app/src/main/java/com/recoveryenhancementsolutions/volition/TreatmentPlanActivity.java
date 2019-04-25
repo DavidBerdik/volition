@@ -255,7 +255,7 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
           toast.show();
         } else {
           treatmentPlanEntity.setLastUpdate(Calendar.getInstance().getTime());
-          TreatmentPlanViewModel.updateTreatmentPlan(treatmentPlanEntity);
+          viewModel.updateTreatmentPlan(treatmentPlanEntity);
         }
       }
     } catch (NullPointerException e) {

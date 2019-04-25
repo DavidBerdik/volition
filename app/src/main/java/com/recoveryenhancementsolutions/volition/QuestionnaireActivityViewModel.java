@@ -158,9 +158,6 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
     } else {
       severityString = "SEVERE";
     }
-
-    //Passes the severity level to the medication choice view model.
-    MedicationChoiceViewModel.setSeverityLevel(severityString);
   }
 
   /**

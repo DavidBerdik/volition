@@ -26,6 +26,9 @@ public class MedicationChoiceActivity extends AppCompatActivity {
     final Button medicationButton = findViewById(R.id.medication);
     final MedicationChoiceViewModel mViewModel = new MedicationChoiceViewModel(getApplication());
     final MedicationChoiceEntity medication = new MedicationChoiceEntity();
+    final Intent intent = getIntent();
+    final String severityLevel = intent.getStringExtra(extraId);
+    mViewModel.setSeverityLevel(severityLevel);
 
     // Button that allows the user to choose to abstain from medication.
     // When clicked, this will send the string "Abstain" to the Medication Choice table.
@@ -48,5 +51,13 @@ public class MedicationChoiceActivity extends AppCompatActivity {
         startActivity(new Intent(MedicationChoiceActivity.this, MedicationDosageActivity.class));
       }
     });
+
+
+
   }
+
+  /**
+   * The id for the extra to be passed
+   */
+  private String extraId = "COM.RECOVERYENHANCEMENTSOLUTIONS.VOLITION.SEVERITY_EXTRA";
 }

@@ -43,7 +43,7 @@ public class MedicationDosageActivityTest {
    */
   @Before
   public void setSeverityLevel(){
-    TreatmentPlanViewModel.setSeverityLevel("MODERATE");
+    MedicationChoiceViewModel.setSeverityLevel("MODERATE");
   }
 
   /**

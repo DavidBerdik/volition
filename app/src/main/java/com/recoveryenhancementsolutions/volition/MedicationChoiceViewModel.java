@@ -52,10 +52,11 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    * @param medication Medication object for the View Model.
    */
   public void insertMedication(final MedicationChoiceEntity medication) {
-    TreatmentPlanViewModel.insertTreatmentPlan(
-        TreatmentPlanViewModel.generateTreatmentPlan(medication, severityLevel), db);
+    insertTreatmentPlan(
+        TreatmentPlanViewModel.generateTreatmentPlan(medication, severityLevel));
     new insertAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
+
 
   /**
    * Sets the severity level. Statically called from QuestionnaireActivityViewModel.
@@ -63,7 +64,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    * @param newSeverityLevel A String representing the user's severity level. Passed from the
    * Questionnaire.
    */
-  public static void setSeverityLevel(String newSeverityLevel) {
+  public void setSeverityLevel(String newSeverityLevel) {
     severityLevel = newSeverityLevel;
   }
 
@@ -149,6 +150,34 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   }
 
   /**
+   * Inserts a new treatmentPlanEntity into the database. Static method for insertion of the
+   * treatmentPlan from another class.
+   *
+   * @param treatmentPlanEntity The new treatment plan to be inserted.
+   */
+  public  void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+    new insertTreatmentPlanAsync(db.treatmentPlanDao()).execute(treatmentPlanEntity);
+  }
+
+  /**
+   * Used to insert treatmentPlan data into the database asynchronously.
+   */
+  private static class insertTreatmentPlanAsync extends AsyncTask<TreatmentPlanEntity, Void, Void> {
+
+    insertTreatmentPlanAsync(final TreatmentPlanDao dao) {
+      asyncTreatmentPlanDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final TreatmentPlanEntity... params) {
+      asyncTreatmentPlanDao.insertTreatmentPlanEntity(params[0]);
+      return null;
+    }
+
+    private final TreatmentPlanDao asyncTreatmentPlanDao;
+  }
+
+  /**
    * Class for running update asynchronously
    */
   private static class updateDosageAsync extends AsyncTask<MedicationChoiceEntity, Void, Void> {
@@ -184,6 +213,6 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   /**
    * The user's severity level. Statically passed to this class from QuestionnaireActivityViewModel.
    */
-  public static String severityLevel;
+  public String severityLevel;
 
 }

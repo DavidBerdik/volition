@@ -90,7 +90,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         newTreatmentPlan.setMedManagementMonthly();
         newTreatmentPlan.setOutcomeMeasureWeekly();
         //handles differences in treatment plans
-        if (medicationChoice.toUpperCase().equals("ABSTAIN")) {
+        if (medicationChoice.equals("ABSTAIN")) {
           newTreatmentPlan.setNumMedManagement(0);
         } else {
           newTreatmentPlan.setNumMedManagement(2);
@@ -108,7 +108,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         newTreatmentPlan.setOutcomeMeasureDaily();
 
         //handles differences in treatment plans
-        if (medicationChoice.toUpperCase().equals("ABSTAIN")) {
+        if (medicationChoice.equals("ABSTAIN")) {
           newTreatmentPlan.setNumMedManagement(0);
         } else {
           newTreatmentPlan.setNumMedManagement(2);
@@ -126,7 +126,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         newTreatmentPlan.setOutcomeMeasureDaily();
 
         //handles differences in treatment plans
-        if (medicationChoice.toUpperCase().equals("ABSTAIN")) {
+        if (medicationChoice.equals("ABSTAIN")) {
           newTreatmentPlan.setNumMedManagement(0);
         } else {
           newTreatmentPlan.setNumMedManagement(1);
@@ -144,7 +144,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
         newTreatmentPlan.setOutcomeMeasureDaily();
 
         //handles differences in treatment plans
-        if (medicationChoice.toUpperCase().equals("ABSTAIN")) {
+        if (medicationChoice.equals("ABSTAIN")) {
           newTreatmentPlan.setNumMedManagement(0);
         } else {
           newTreatmentPlan.setNumMedManagement(1);
@@ -215,7 +215,4 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    */
   private TreatmentPlanDao treatmentPlanDao;
 
-  /**
-   * MAKE STATIC TREATMENTPLANENTITY???
-   */
 }

@@ -72,7 +72,7 @@ public class TreatmentPlanActivityTest {
     newTreatmentPlan.setCoolDownTime(2);
     newTreatmentPlan.setLastUpdate(date);
 
-    TreatmentPlanViewModel.insertTreatmentPlan(newTreatmentPlan, db);
+    db.treatmentPlanDao().insertTreatmentPlanEntity(newTreatmentPlan);
 
     // Allow the app time to update.
     try {
