@@ -145,6 +145,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
   <string name="treatment_assessment_title"> TEA Page</string>
+  <string name="clean_tracker_title">Clean Tracker</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
