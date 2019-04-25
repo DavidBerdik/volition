@@ -387,9 +387,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         data.setLastClean(cleanDateCalendar.getTime());
 
         demogDataViewModel.insertDemographicData(data);
-
+        //************************************************************************************************** still need to do both radio groups, gender, disorder, and other drug if user selects it
         //Intent goes to the next activity in the Work Flow.
-        Log.d("prof", "onClick: dob is " + dobCalendar.getTime().toString());
         Intent intent = new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class);
         if (TextUtils.isEmpty(((EditText) findViewById(R.id.name)).getText())) {
           ((EditText) findViewById(R.id.name)).setError("Name is required! ");
