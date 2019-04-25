@@ -43,19 +43,17 @@ public class DemographicDataViewModel extends AndroidViewModel {
   }
 
   /**
-   * Retrieves the last date clean as stored in the database.
+   * Updates the date of last use and the date of the last usage report
    *
    * @param cleanDay A Calendar object representing the date of last use
    * @param reportDay A Calendar object representing the date of the report
-   * @return A LiveData object containing a Date representing the last listed date of being clean.
-   * Updates the date of last use and the date of the last usage report
    */
   public void updateLastCleanDate(final Calendar cleanDay, final Calendar reportDay) {
     new UpdateDaysCleanAsync(db.demographicDataDao()).execute(cleanDay, reportDay);
   }
 
   /**
-   * Updates the date of the last usage report Retrieves all of the patient's demographic data
+   * Retrieves all of the patient's demographic data
    *
    * @return A LiveData object containing a DemographicDataEntity containing all of the patient's
    * demographic data

@@ -6,11 +6,11 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
-
 import java.util.Date;
 
 
 @Dao
+@SuppressWarnings("unused")
 /*
 Currently many methods are unused, it is expected more and more will
 come into use as more components are finished and added
@@ -22,7 +22,7 @@ come into use as more components are finished and added
 public interface DemographicDataDAO {
 
   /**
-   * Inserts a patient into the database
+   * Inserts a patient into the database, on conflict, replaces the patient information.
    *
    * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
    */
@@ -36,13 +36,7 @@ public interface DemographicDataDAO {
    */
   @Update
   void updateDemographicInfo(final DemographicDataEntity demographicDataEntity);
-    /**
-     * Inserts a patient into the database
-     *
-     * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
-     * @param demographicDataEntity an instance of the DateDemographicEntity class to be inserted
-     * @Insert Inserts a patient into the database, on conflict, replaces
-     */
+
 
     /*
     Other components of the volition application may need to access the data of the patient.
@@ -213,14 +207,14 @@ public interface DemographicDataDAO {
   boolean queryIsHavingOpioidDisorder();
 
   /**
-   * Retrieves the patient last clean date
+   * Retrieves the patient's last clean date
    *
    * @return Date of their last clean
    */
   @Query("SELECT lastClean " + genericQuery)
   LiveData<Date> queryLastCleanDate();
 
-  @Query("SELECT lastUseReport " + genericQuery)
+  @Query("SELECT lastUseReport " +genericQuery)
   LiveData<Date> queryLastReportDate();
 
   /**
