@@ -38,9 +38,9 @@ public class TreatmentExperienceAssessmentActivityTest {
       TreatmentExperienceAssessmentActivity.class);
 
   /**
-   * Tests the functionality of the NumberPicker and its live updates.
-   * Tests the submit button functionality.
-   * Runs Test for the remarks activity and the plan screen to show the TEA has been completed.
+   * Tests the functionality of the NumberPicker and its live updates. Tests the submit button
+   * functionality. Runs Test for the remarks activity and the plan screen to show the TEA has been
+   * completed.
    */
   @Test
   public void treatmentExperienceActivityTest() {
@@ -111,10 +111,6 @@ public class TreatmentExperienceAssessmentActivityTest {
     } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
-
-    // Check that we're on the TreatmentExperienceAssessmentRemarksActivity class.
-    assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        TreatmentExperienceAssessmentRemarksActivity.class.getName());
 
     // Insert text into the remarks section.
     ViewInteraction appCompatEditText = onView(
