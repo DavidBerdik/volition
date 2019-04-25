@@ -175,4 +175,3 @@ public class ReportUseActivityTest {
   private DemographicDataViewModel viewModel;
   private final String TAG = "RepUseActivityTest";
 }
-

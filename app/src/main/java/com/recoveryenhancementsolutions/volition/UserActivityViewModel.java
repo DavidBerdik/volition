@@ -43,10 +43,12 @@ public class UserActivityViewModel extends AndroidViewModel {
    * @param day Activity's day
    * @param desc Description of the activity.
    */
-  public void insertActivity(final int year, final int month, final int day, final String desc) {
+  public void insertActivity(final int year, final int month, final int day,
+      final String desc, final String notes) {
     final UserActivityEntity entity = new UserActivityEntity();
     entity.setDate(year, month, day);
     entity.setDesc(desc);
+    entity.setNotes(notes);
     insertActivity(entity);
   }
 
@@ -56,10 +58,11 @@ public class UserActivityViewModel extends AndroidViewModel {
    * @param date Date object containing the date on which the activity took place.
    * @param desc Description of the activity.
    */
-  public void insertActivity(final Date date, final String desc) {
+  public void insertActivity(final Date date, final String desc, final String notes) {
     final UserActivityEntity entity = new UserActivityEntity();
     entity.setDate(date);
     entity.setDesc(desc);
+    entity.setNotes(notes);
     insertActivity(entity);
   }
 
