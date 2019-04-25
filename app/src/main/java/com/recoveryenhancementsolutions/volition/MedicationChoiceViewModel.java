@@ -15,7 +15,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param application Application object for the View Model.
    */
-  MedicationChoiceViewModel(final Application application) {
+  public MedicationChoiceViewModel(final Application application) {
     super(application);
     db = VolitionDatabase.getDatabase(this.getApplication());
   }
@@ -41,7 +41,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   /**
    * @return Returns LiveData of type MedicationChoiceEntity
    */
-  LiveData<MedicationChoiceEntity> getDosage() {
+  public LiveData<MedicationChoiceEntity> getDosage() {
     return db.medicationChoiceDAO().getDosage();
   }
 
@@ -50,7 +50,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param medication Medication object for the View Model.
    */
-  void insertMedication(final MedicationChoiceEntity medication) {
+  public void insertMedication(final MedicationChoiceEntity medication) {
     new insertAsyncTask(db.medicationChoiceDAO()).execute(medication);
   }
 
@@ -59,7 +59,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param dosage Medication object for the View Model.
    */
-  void updateDosage(final MedicationChoiceEntity dosage) {
+  public void updateDosage(final MedicationChoiceEntity dosage) {
     new updateDosageAsync(db.medicationChoiceDAO()).execute(dosage);
   }
 
