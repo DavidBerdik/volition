@@ -25,19 +25,19 @@ public class TreatmentExperienceAssessmentRemarksActivity extends AppCompatActiv
 
     teaAnswers = getIntent().getExtras().getIntegerArrayList("ANSWERS");
 
+
     final Button submitButton = findViewById(R.id.submitButton);
     remarks = findViewById(R.id.remarksText);
     remarks.requestFocus();
     submitButton.setOnClickListener(submitRemarksClickListener);
 
-    db = VolitionDatabase.getDatabase(this);
     teaViewModel = ViewModelProviders.of(this).get(TreatmentExperienceAssessmentViewModel.class);
 
     context = this;
   }
 
   /**
-   * When the button is clicked it passes the string. 
+   * When the button is clicked it passes the string and stores all answers into the database.
    */
 
   private final View.OnClickListener submitRemarksClickListener = new View.OnClickListener() {
@@ -45,15 +45,15 @@ public class TreatmentExperienceAssessmentRemarksActivity extends AppCompatActiv
     @Override
     public void onClick(final View v) {
       final String remarksTxt = remarks.getText().toString();
-      teaViewModel.addTreatmentExperienceAssessment(teaAnswers, remarksTxt);
+      teaViewModel.setRemarks(remarksTxt);
+      teaViewModel.insTEA();
       startActivity(new Intent(context, HomeActivity.class));
     }
   };
 
+  private ArrayList<Integer> teaAnswers;
   private TreatmentExperienceAssessmentViewModel teaViewModel;
-  private VolitionDatabase db;
   private Context context;
   private EditText remarks;
-  private ArrayList<Integer> teaAnswers;
 
 }
