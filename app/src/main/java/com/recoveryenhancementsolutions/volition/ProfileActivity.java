@@ -260,20 +260,13 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     final int dest = getIntent().getIntExtra(BACK_DEST, 1);
     final Intent destination = new Intent();
     if (!editMode) {
-      // If the activity is not in edit mode, use the default back button behavior.
       super.onBackPressed();
       return; // Since this scenario uses the default behavior, terminate this method early.
     } else if (dest == 1) {
-      // If "dest" is 1, send the user to HomeActivity.
       destination.setClass(this, HomeActivity.class);
     } else if (dest == 2) {
-      // If "dest" is 2, send the user to ActivityActivity.
       destination.setClass(this, ActivityActivity.class);
     } else {
-      /*
-      If none of the other scenarios are true, "dest" should equal 3, so send the user to
-      PlanActivity.
-       */
       destination.setClass(this, PlanActivity.class);
     }
     /*
