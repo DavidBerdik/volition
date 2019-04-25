@@ -4,7 +4,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/ScrollView01"
   android:layout_width="fill_parent"
-  android:layout_height="700dp">
+  android:layout_height="fill_parent"
+  android:background="@drawable/ic_page_border">
 
   <LinearLayout
     android:id="@+id/LinearLayout01"
