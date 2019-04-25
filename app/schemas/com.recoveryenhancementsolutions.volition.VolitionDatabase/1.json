@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "055319f992673e876431afde5a9451e1",
+    "identityHash": "1d8289ce8184f448fb63bd7348107cee",
     "entities": [
       {
         "tableName": "UserActivityEntity",
@@ -150,7 +150,7 @@
       },
       {
         "tableName": "MedicationChoiceEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, `dosage` INTEGER NOT NULL, PRIMARY KEY(`medication`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`medication` TEXT NOT NULL, `dosage` INTEGER NOT NULL, `milligramsNaloxone` REAL NOT NULL, `milligramsBuprenorphine` REAL NOT NULL, `type` TEXT, PRIMARY KEY(`medication`))",
         "fields": [
           {
             "fieldPath": "medication",
@@ -163,6 +163,24 @@
             "columnName": "dosage",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "milligramsNaloxone",
+            "columnName": "milligramsNaloxone",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "milligramsBuprenorphine",
+            "columnName": "milligramsBuprenorphine",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -415,7 +433,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"055319f992673e876431afde5a9451e1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"1d8289ce8184f448fb63bd7348107cee\")"
     ]
   }
 }

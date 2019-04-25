@@ -16,4 +16,9 @@
     android:textStyle="bold"
     android:icon="@drawable/ic_dashboard_black_24dp"
     android:title="@string/core_navigation_plan"/>
+  <item
+    android:id="@+id/core_navigation_profile"
+    android:textStyle="bold"
+    android:icon="@drawable/ic_person_black_24dp"
+    android:title="@string/core_navigation_profile"/>
 </menu>

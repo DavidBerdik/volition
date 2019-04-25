@@ -155,7 +155,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
    *
    * @param treatmentPlanEntity The new treatment plan to be inserted.
    */
-  public  void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+  public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
     new insertTreatmentPlanAsync(db.treatmentPlanDao()).execute(treatmentPlanEntity);
   }
 
@@ -199,7 +199,11 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
       params[0] = new MedicationChoiceEntity();
       final int dose = params[0].dosage;
       final String med = params[0].medication;
-      asyncTaskDao.updateDosage(dose, med);
+      final double milligramsNaloxone = params[0].milligramsNaloxone;
+      final double milligramsBuprenorphine = params[0].milligramsBuprenorphine;
+      final String type = params[0].type;
+
+      asyncTaskDao.updateDosage(type, milligramsNaloxone, milligramsBuprenorphine, dose, med);
       return null;
 
     }

@@ -83,7 +83,10 @@ public class MedicationChoiceDAOTest {
       Log.v(TAG, e.toString());
     }
     dc.dosage = 3;
-    db.medicationChoiceDAO().updateDosage(dc.dosage, dc.medication);
+    dc.milligramsBuprenorphine = 2.6;
+    dc.milligramsNaloxone = 0.8;
+    dc.type = "sublingual";
+    db.medicationChoiceDAO().updateDosage(dc.type, dc.milligramsNaloxone, dc.milligramsBuprenorphine, dc.dosage, dc.medication);
 
     //check that db is not empty
     assertNotNull(db);
@@ -93,6 +96,15 @@ public class MedicationChoiceDAOTest {
       assertEquals(3,
           LiveDataTestUtility
               .getNestedLiveDataObj(db.medicationChoiceDAO().getDosage()).dosage);
+      assertEquals("sublingual",
+          LiveDataTestUtility
+              .getNestedLiveDataObj(db.medicationChoiceDAO().getDosage()).type);
+      assertEquals(0.8,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(db.medicationChoiceDAO().getDosage()).milligramsNaloxone, 0.001);
+      assertEquals(2.6,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(db.medicationChoiceDAO().getDosage()).milligramsBuprenorphine, 0.001);
     } catch (InterruptedException e) {
       Log.v(TAG, e.toString());
     }

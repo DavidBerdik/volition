@@ -32,14 +32,6 @@ public class MedicationChoiceActivityTest {
       MedicationChoiceActivity.class);
 
   /**
-   * Sets severity level in the treatment plan to prevent errors.
-   */
-  @Before
-  public void setSeverityLevel(){
-    MedicationChoiceViewModel.setSeverityLevel("MODERATE");
-  }
-
-  /**
    * Creates the Medication Choice Activity Test
    */
   @Test

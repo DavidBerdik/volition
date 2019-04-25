@@ -1,7 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -22,5 +22,20 @@ public class MedicationChoiceEntity {
   @ColumnInfo(name = "dosage")
   @Nullable
   public int dosage;
+
+  @SuppressWarnings("NullableProblems")
+  @ColumnInfo(name = "milligramsNaloxone")
+  @Nullable
+  public double milligramsNaloxone;
+
+  @SuppressWarnings("NullableProblems")
+  @ColumnInfo(name = "milligramsBuprenorphine")
+  @Nullable
+  public double milligramsBuprenorphine;
+
+  @ColumnInfo(name = "type")
+  @Nullable
+  public String type;
+
 
 }

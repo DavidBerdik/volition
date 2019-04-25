@@ -9,6 +9,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -19,21 +23,49 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
+/**
+ * This class will run test on the QuestionnaireActivity to test that the buttons have proper
+ * functionality.
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-/**
- *  This class will run test on the QuestionnaireActivity to test that the buttons have proper
- *  functionality.
- */
 public class QuestionnaireActivityTest {
 
   @Rule
-  public ActivityTestRule<QuestionnaireActivity> mActivityTestRule = new ActivityTestRule<>(
+  public ActivityTestRule<QuestionnaireActivity> activityTestRule = new ActivityTestRule<>(
       QuestionnaireActivity.class);
+
+  /**
+   * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
+   */
+  @Before
+  public void loadViewModel() {
+    // Load the ViewModel
+    final QuestionnaireActivityViewModel viewModel = ViewModelProviders
+        .of(activityTestRule.getActivity())
+        .get(QuestionnaireActivityViewModel.class);
+
+    // Set the ViewModel to use a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
+    viewModel.setTestDatabase(db);
+  }
+
+  /**
+   * Closes the temporary test database.
+   */
+  @After
+  public void closeDb() {
+    db.close();
+  }
 
   /**
    * This espresso test will run through the QuestionnaireActivity. The Yes and No buttons are
@@ -183,4 +215,6 @@ public class QuestionnaireActivityTest {
       }
     };
   }
+
+  private VolitionDatabase db;
 }

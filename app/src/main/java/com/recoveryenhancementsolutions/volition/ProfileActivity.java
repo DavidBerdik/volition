@@ -6,6 +6,8 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.DateFormat;
@@ -24,7 +27,7 @@ import android.content.Intent;
 import android.view.View.OnFocusChangeListener;
 
 /**
- * Class for running activity_create_profile.xml Which includes two pop-up calendars
+ * Class for running activity_profileich includes two pop-up calendars
  */
 
 public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
@@ -62,8 +65,9 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
    * Lets user know to select a gender
    */
   public void onNothingSelected(final AdapterView<?> parent) {
-    final Toast toast = Toast.makeText(getApplicationContext(), "Please select a gender and a Use Type",
-        Toast.LENGTH_SHORT);
+    final Toast toast = Toast
+        .makeText(getApplicationContext(), "Please select a gender and a Use Type",
+            Toast.LENGTH_SHORT);
     toast.show();
   }
 
@@ -246,16 +250,58 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     name.setOnFocusChangeListener(ofcListener);
   }
 
+  /**
+   * Depending on the source of the activity's launch request, determine where to send the user when
+   * the back button is pressed.
+   */
+  @Override
+  public void onBackPressed() {
+    // Set "dest" equal to the ID passed via the intent. If nothing was passed, set it to 1.
+    final int dest = getIntent().getIntExtra(BACK_DEST, 1);
+    final Intent destination = new Intent();
+    if (!editMode) {
+      super.onBackPressed();
+      return; // Since this scenario uses the default behavior, terminate this method early.
+    } else if (dest == 1) {
+      destination.setClass(this, HomeActivity.class);
+    } else if (dest == 2) {
+      destination.setClass(this, ActivityActivity.class);
+    } else {
+      destination.setClass(this, PlanActivity.class);
+    }
+    /*
+    Set the core navigation's variable for tracking ProfileActivity's load source to 0 to indicate
+    that it should be updated the next time that ProfileActivity is chosen from the navigation.
+     */
+    CoreNavigationHandler.profileActivityLoadSrc = 0;
+    this.startActivity(destination);
+  }
+
+  /**
+   * Sets the database component of the activity to use a test database and modifies the observer to
+   * use the in-memory database instead.
+   *
+   * @param db Database to use for testing.
+   */
+  public void setTestMode(final VolitionDatabase db) {
+    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demogDataViewModel.setTestDatabase(db);
+    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+  }
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-    setContentView(R.layout.activity_create_profile);
+    setContentView(R.layout.activity_profile);
+    bottomNavigationView = findViewById(R.id.core_navigation);
 
     /*
     If an edit mode intent was passed to this activity with a value of "true", set edit mode
     to true. Otherwise, set it to false.
      */
+    final String EDIT_MODE = "editMode";
     editMode = getIntent().getBooleanExtra(EDIT_MODE, false);
 
      /*
@@ -368,10 +414,15 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
 
         demogDataViewModel.insertDemographicData(data);
 
-        //Intent goes to the next activity in the Work Flow.
-        Intent intent = new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class);
-
-        startActivity(intent);
+        /*
+        If the activity is in edit mode, send the user back to the previous activity and if the
+        activity is not in edit mode, send the user to the questionnaire.
+         */
+        if (editMode) {
+          onBackPressed();
+        } else {
+          startActivity(new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class));
+        }
       }
     });
 
@@ -386,16 +437,26 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   }
 
   /**
-   * Sets the database component of the activity to use a test database and modifies the observer to
-   * use the in-memory database instead.
-   *
-   * @param db Database to use for testing.
+   * If the activity is not in edit mode, remove the core navigation menu from being displayed, and
+   * if the core navigation menu is in edit mode, set it to the appropriate state for this
+   * activity.
    */
-  public void setTestMode(final VolitionDatabase db) {
-    final DemographicDataViewModel demogDataViewModel = ViewModelProviders.of(this)
-        .get(DemographicDataViewModel.class);
-    demogDataViewModel.setTestDatabase(db);
-    demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if (editMode) {
+      // Set the correct core navigation button on the menu and make it functional.
+      bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
+      CoreNavigationHandler.link(bottomNavigationView, this, 4);
+    } else {
+      // Make the core navigation menu invisible and adjust the master layout's margins.
+      bottomNavigationView.setVisibility(View.INVISIBLE);
+      ScrollView scrollView = findViewById(R.id.scrollview_layout);
+      ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) scrollView
+          .getLayoutParams();
+      params.bottomMargin = 0;
+      scrollView.setLayoutParams(params);
+    }
   }
 
   /**
@@ -501,5 +562,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private boolean editMode;
   private final Calendar dobCalendar = Calendar.getInstance();
   private final Calendar cleanDateCalendar = Calendar.getInstance();
-  private final String EDIT_MODE = "editMode";
+  private BottomNavigationView bottomNavigationView;
+  private static final String BACK_DEST = "backDest";
 }

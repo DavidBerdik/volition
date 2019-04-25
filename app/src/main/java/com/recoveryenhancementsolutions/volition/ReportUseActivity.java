@@ -29,13 +29,14 @@ import java.util.Calendar;
 public class ReportUseActivity extends AppCompatActivity {
 
   /**
-   * Returns a private integer value related to the most recently clicked item. Used for testing.
-   *
-   * @return Integer value representing the most recently clicked item. 0 means Nothing, 1 means
-   * Yes, and 2 means No.
+   * Prepares the ActivityNavigationHandler object.
    */
-  public int getLastClickedItem() {
-    return lastClickedItem;
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
   }
 
   @Override
@@ -47,17 +48,12 @@ public class ReportUseActivity extends AppCompatActivity {
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
     today = Calendar.getInstance();
 
-    lastClickedItem = 0;
     inTest = false;
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
     final Button noButton = findViewById(R.id.report_use_no);
     noButton.setOnClickListener(noButtonListener);
-
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.getMenu().getItem(1).setChecked(false);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
 
     //Pulls up a Date Picker for the user to select their date of last use
     useDate = Calendar.getInstance();
@@ -123,7 +119,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      lastClickedItem = 1;
       final DatePickerDialog pickDate = new DatePickerDialog(ReportUseActivity.this,
           useDateListener, useDate.get(Calendar.YEAR), useDate.get(Calendar.MONTH),
           useDate.get(Calendar.DAY_OF_MONTH));
@@ -137,7 +132,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private OnClickListener noButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
       toast = Toast
           .makeText(getApplicationContext(), "Recorded 'No' for the day", Toast.LENGTH_LONG);
@@ -156,38 +150,14 @@ public class ReportUseActivity extends AppCompatActivity {
    * Redirects to another screen TODO: Move the user to the Activity screen
    */
   private void redirect() {
-    intent = new Intent(getApplicationContext(), HomeActivity.class);
-    startActivity(intent);
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
   }
-
-  //TODO: Uncomment as more Activities are added to the dev branch
-  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.core_navigation_home:
-          intent = new Intent(getApplicationContext(), HomeActivity.class);
-          startActivity(intent);
-          return true;
-        case R.id.core_navigation_activity:
-          //intent = new Intent(getApplicationContext(), ActivityActivity.class);
-          //startActivity(intent);
-          return true;
-        case R.id.core_navigation_plan:
-          //intent = new Intent(getApplicationContext(), PlanActivity.class);
-          //startActivity(intent);
-          return true;
-      }
-      return false;
-    }
-  };
 
   private DatePickerDialog.OnDateSetListener useDateListener;
   private DemographicDataViewModel ddViewModel;
   private Calendar today;
   private Calendar useDate;
   private Toast toast;
-  private Intent intent;
-  private int lastClickedItem;
+  public static int numberCompleted;
   private boolean inTest;
 }

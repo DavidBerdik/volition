@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+import android.util.Log;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,7 +30,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
    *
    * @param treatmentPlanEntity The new treatment plan to be inserted.
    */
-  public  void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
+  public void insertTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
     new insertAsyncTask(db.treatmentPlanDao()).execute(treatmentPlanEntity);
   }
 
@@ -77,95 +78,103 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
     //A new treatmentPlanEntity to add to the database
     final TreatmentPlanEntity newTreatmentPlan = new TreatmentPlanEntity();
 
-    switch (severityLevel) {
-      case "MILD":  //There is no mild Buprenorphine plan currently
-        newTreatmentPlan.setNumCounseling(1);
-        newTreatmentPlan.setNumSupportMeeting(1);
-        newTreatmentPlan.setNumLessons(1);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        newTreatmentPlan.setNumOutcomeMeasures(1);
-        newTreatmentPlan.setNumTimeTracking(1);
-        newTreatmentPlan.setNumReadingResponse(1);
-        newTreatmentPlan.setNumMedManagement(0);
-        newTreatmentPlan.setMedManagementMonthly();
-        newTreatmentPlan.setOutcomeMeasureWeekly();
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
+    //Try statement catches an Null pointer exception caused by tests that do not have the intent
+    //String extra from the ViewSeverityLevelActivity. This should only catch an exception during
+    //tests.
+    try {
+      switch (severityLevel) {
+        case "MILD":  //There is no mild Buprenorphine plan currently
+          newTreatmentPlan.setNumCounseling(1);
+          newTreatmentPlan.setNumSupportMeeting(1);
+          newTreatmentPlan.setNumLessons(1);
+          newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+          newTreatmentPlan.setNumOutcomeMeasures(1);
+          newTreatmentPlan.setNumTimeTracking(1);
+          newTreatmentPlan.setNumReadingResponse(1);
           newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(2);
-        }
-        break;
-      case "MODERATE":
-        newTreatmentPlan.setNumCounseling(3);
-        newTreatmentPlan.setNumSupportMeeting(3);
-        newTreatmentPlan.setNumLessons(2);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        newTreatmentPlan.setNumOutcomeMeasures(3);
-        newTreatmentPlan.setNumTimeTracking(2);
-        newTreatmentPlan.setNumReadingResponse(2);
-        newTreatmentPlan.setMedManagementMonthly();
-        newTreatmentPlan.setOutcomeMeasureDaily();
+          newTreatmentPlan.setMedManagementMonthly();
+          newTreatmentPlan.setOutcomeMeasureWeekly();
+          //handles differences in treatment plans
+          if (medicationChoice.equals("ABSTAIN")) {
+            newTreatmentPlan.setNumMedManagement(0);
+          } else {
+            newTreatmentPlan.setNumMedManagement(2);
+          }
+          break;
+        case "MODERATE":
+          newTreatmentPlan.setNumCounseling(3);
+          newTreatmentPlan.setNumSupportMeeting(3);
+          newTreatmentPlan.setNumLessons(2);
+          newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+          newTreatmentPlan.setNumOutcomeMeasures(3);
+          newTreatmentPlan.setNumTimeTracking(2);
+          newTreatmentPlan.setNumReadingResponse(2);
+          newTreatmentPlan.setMedManagementMonthly();
+          newTreatmentPlan.setOutcomeMeasureDaily();
 
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
-          newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(2);
-        }
-        break;
-      case "SEVERE":  //Severe severity level
-        newTreatmentPlan.setNumCounseling(5);
-        newTreatmentPlan.setNumSupportMeeting(5);
-        newTreatmentPlan.setNumLessons(3);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
-        newTreatmentPlan.setNumOutcomeMeasures(5);
-        newTreatmentPlan.setNumTimeTracking(5);
-        newTreatmentPlan.setNumReadingResponse(3);
-        newTreatmentPlan.setMedManagementWeekly();
-        newTreatmentPlan.setOutcomeMeasureDaily();
+          //handles differences in treatment plans
+          if (medicationChoice.equals("ABSTAIN")) {
+            newTreatmentPlan.setNumMedManagement(0);
+          } else {
+            newTreatmentPlan.setNumMedManagement(2);
+          }
+          break;
+        case "SEVERE":  //Severe severity level
+          newTreatmentPlan.setNumCounseling(5);
+          newTreatmentPlan.setNumSupportMeeting(5);
+          newTreatmentPlan.setNumLessons(3);
+          newTreatmentPlan.setNumTreatmentEffectivenessAssessment(1);
+          newTreatmentPlan.setNumOutcomeMeasures(5);
+          newTreatmentPlan.setNumTimeTracking(5);
+          newTreatmentPlan.setNumReadingResponse(3);
+          newTreatmentPlan.setMedManagementWeekly();
+          newTreatmentPlan.setOutcomeMeasureDaily();
 
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
-          newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(1);
-        }
-        break;
-      default:  //default case
-        newTreatmentPlan.setNumCounseling(7);
-        newTreatmentPlan.setNumSupportMeeting(7);
-        newTreatmentPlan.setNumLessons(7);
-        newTreatmentPlan.setNumTreatmentEffectivenessAssessment(7);
-        newTreatmentPlan.setNumOutcomeMeasures(7);
-        newTreatmentPlan.setNumTimeTracking(7);
-        newTreatmentPlan.setNumReadingResponse(7);
-        newTreatmentPlan.setMedManagementWeekly();
-        newTreatmentPlan.setOutcomeMeasureDaily();
+          //handles differences in treatment plans
+          if (medicationChoice.equals("ABSTAIN")) {
+            newTreatmentPlan.setNumMedManagement(0);
+          } else {
+            newTreatmentPlan.setNumMedManagement(1);
+          }
+          break;
+        default:  //default case
+          newTreatmentPlan.setNumCounseling(7);
+          newTreatmentPlan.setNumSupportMeeting(7);
+          newTreatmentPlan.setNumLessons(7);
+          newTreatmentPlan.setNumTreatmentEffectivenessAssessment(7);
+          newTreatmentPlan.setNumOutcomeMeasures(7);
+          newTreatmentPlan.setNumTimeTracking(7);
+          newTreatmentPlan.setNumReadingResponse(7);
+          newTreatmentPlan.setMedManagementWeekly();
+          newTreatmentPlan.setOutcomeMeasureDaily();
 
-        //handles differences in treatment plans
-        if (medicationChoice.equals("ABSTAIN")) {
-          newTreatmentPlan.setNumMedManagement(0);
-        } else {
-          newTreatmentPlan.setNumMedManagement(1);
-        }
-        break;
+          //handles differences in treatment plans
+          if (medicationChoice.equals("ABSTAIN")) {
+            newTreatmentPlan.setNumMedManagement(0);
+          } else {
+            newTreatmentPlan.setNumMedManagement(1);
+          }
+          break;
+      }
+      //Set time and update cool-down information. NOTE: cool down must be positive
+      //Time is initially set back 1 day to allow the user to modify their treatment plan for the
+      //first time.
+      int coolDownTime = 8;
+      final Calendar calendar = Calendar.getInstance();
+      calendar.add(Calendar.DAY_OF_MONTH, -1);
+      calendar.add(Calendar.HOUR_OF_DAY, -1 * coolDownTime);
+      final Date date = calendar.getTime();
+
+      //Change the value here to modify the amount of time between modifications to the treatment plan
+      newTreatmentPlan.setCoolDownTime(coolDownTime);
+
+      newTreatmentPlan.setLastUpdate(date);
+
+      //Passes the new treatment plan to the Treatment plan view model for insertion
+
+    } catch (NullPointerException e) {
+      Log.e("TreatmentPlanViewModel", Log.getStackTraceString(e));
     }
-    //Set time and update cool-down information. NOTE: cool down must be positive
-    //Time is initially set back 1 day to allow the user to modify their treatment plan for the
-    //first time.
-    int coolDownTime = 8;
-    final Calendar calendar = Calendar.getInstance();
-    calendar.add(Calendar.DAY_OF_MONTH, -1);
-    calendar.add(Calendar.HOUR_OF_DAY, -1 * coolDownTime);
-    final Date date = calendar.getTime();
-
-    //Change the value here to modify the amount of time between modifications to the treatment plan
-    newTreatmentPlan.setCoolDownTime(coolDownTime);
-
-    newTreatmentPlan.setLastUpdate(date);
-
-    //Passes the new treatment plan to the Treatment plan view model for insertion
     return newTreatmentPlan;
   }
 

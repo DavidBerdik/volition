@@ -1,14 +1,9 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.TextView;
@@ -27,6 +22,17 @@ public class DailyWellnessActivity extends AppCompatActivity {
    */
   public String getDailyWellnessResultsText() {
     return dailyWellnessResultsView.getText().toString();
+  }
+
+  /**
+   * Prepares the ActivityNavigationHandler object.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
   }
 
   @Override
@@ -53,27 +59,12 @@ public class DailyWellnessActivity extends AppCompatActivity {
     outputs = getResources().getStringArray(R.array.daily_wellness_result_strings);
     dailyWellnessResultsView = findViewById(R.id.daily_wellness_results);
     dailyWellnessResultsView.setText(getWellnessString(np.getValue()));
-
-    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
-    bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
-
-    // Required for the OnNavigationItemSelectedListener.
-    // TODO: Replace with an "ActivityNavigationHandler" if approved by Jackson and/or Brady.
-    context = this;
   }
 
   private String getWellnessString(final int rating) {
     lastKnownValue = rating;
     return getResources().getString(R.string.daily_wellness_rating) + " " + outputs[rating - 1];
   }
-
-  private OnNavigationItemSelectedListener onNavigationItemSelectedListener = new OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
-      startActivity(new Intent(context, ActivityActivity.class));
-      return true;
-    }
-  };
 
   private OnValueChangeListener onValueChangeListener = new OnValueChangeListener() {
 
@@ -83,8 +74,8 @@ public class DailyWellnessActivity extends AppCompatActivity {
     }
   };
 
-  private Context context;
   private TextView dailyWellnessResultsView;
   private String[] outputs;
   private static int lastKnownValue = -1;
+  public static int numberCompleted;
 }

@@ -36,6 +36,7 @@ public class MedicationChoiceViewModelTest {
     // Load the ViewModel
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(MedicationChoiceViewModel.class);
+    viewModel.setSeverityLevel("MODERATE");
 
     final Context context = InstrumentationRegistry.getTargetContext();
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
@@ -45,6 +46,10 @@ public class MedicationChoiceViewModelTest {
     final MedicationChoiceEntity medication = new MedicationChoiceEntity();
     medication.medication = "Abstain";
     medication.dosage = 3;
+    medication.milligramsBuprenorphine = 2.6;
+    medication.milligramsNaloxone = 0.8;
+    medication.type = "sublingual";
+    viewModel.setSeverityLevel("MODERATE");
     viewModel.insertMedication(medication);
     viewModel.updateDosage(medication);
   }
@@ -64,11 +69,20 @@ public class MedicationChoiceViewModelTest {
     }
 
     try {
-      Thread.sleep(1000);
       assertEquals(3,
-          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getDosage()).dosage);
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).dosage);
+      assertEquals("sublingual",
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).type);
+      assertEquals(0.8,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).milligramsNaloxone, 0.001);
+      assertEquals(2.6,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).milligramsBuprenorphine, 0.001);
     } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
+      Log.v(TAG, e.toString());
     }
   }
 
