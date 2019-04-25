@@ -2,16 +2,11 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.AsyncTask;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 /**
  * This class abstracts the database away from the TEA activities to make sure no data is lost under
@@ -118,7 +113,7 @@ public class TreatmentExperienceAssessmentViewModel extends AndroidViewModel {
    * @param teaAnswers tea list array answers
    * @param remarksString string entered.
    */
-  public static void addTreatmentExperienceAssessment(VolitionDatabase db,
+  private static void addTreatmentExperienceAssessment(VolitionDatabase db,
       final ArrayList<Integer> teaAnswers, final String remarksString) {
 
     final TreatmentExperienceAssessmentEntity teaActivityEntity =
@@ -144,7 +139,7 @@ public class TreatmentExperienceAssessmentViewModel extends AndroidViewModel {
    */
   private static class InsertActivityAsync extends AsyncTask<Void, Void, Void> {
 
-    public InsertActivityAsync(VolitionDatabase db, ArrayList<Integer> teaAnswers, String remarks) {
+    private InsertActivityAsync(VolitionDatabase db, ArrayList<Integer> teaAnswers, String remarks) {
       this.db = db;
       this.remarks = remarks;
       this.teaAnswers = teaAnswers;
