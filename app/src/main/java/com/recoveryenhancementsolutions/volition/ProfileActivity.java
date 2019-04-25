@@ -5,6 +5,7 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -21,8 +22,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -310,9 +313,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-    setContentView(R.layout.activity_create_profile);
-    findViewById(R.id.enter_other).setVisibility(View.GONE);
     setContentView(R.layout.activity_profile);
+    findViewById(R.id.enter_other).setVisibility(View.GONE);
     bottomNavigationView = findViewById(R.id.core_navigation);
 
     /*
@@ -432,7 +434,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         data.setLastClean(cleanDateCalendar.getTime());
 
         demogDataViewModel.insertDemographicData(data);
-        //************************************************************************************************** still need to do both radio groups, gender, disorder, and other drug if user selects it
         //Intent goes to the next activity in the Work Flow.
         /*
         If the activity is in edit mode, send the user back to the previous activity and if the
@@ -441,19 +442,63 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         if (editMode) {
           onBackPressed();
         } else {
+          final Spinner genderSpinner = findViewById(R.id.gender_spinner);
+          final Spinner useDisorderSpinner = findViewById(R.id.use_type_spinner);
+          final RadioGroup user_type_radio_group = findViewById(R.id.user_type);
+          final RadioGroup drug_selection_radio_group = findViewById(R.id.drug_selection);
+          final RadioButton radio_other = findViewById(R.id.radioOther);
           if (TextUtils.isEmpty(((EditText) findViewById(R.id.name)).getText())) {
             ((EditText) findViewById(R.id.name)).setError("Name is required! ");
             Toast.makeText(getApplicationContext(), "Name is empty", Toast.LENGTH_SHORT).show();
           } else if (TextUtils.isEmpty(((EditText) findViewById(R.id.date_of_birth)).getText())) {
+            ((EditText) findViewById(R.id.name)).setError(null);
             ((EditText) findViewById(R.id.date_of_birth)).setError("Date of birth is required! ");
             Toast.makeText(getApplicationContext(), "Date of birth is required", Toast.LENGTH_SHORT)
                 .show();
           } else if (TextUtils.isEmpty(((EditText) findViewById(R.id.clean_date)).getText())) {
+            ((EditText) findViewById(R.id.date_of_birth)).setError(null);
             ((EditText) findViewById(R.id.clean_date)).setError("Clean date is required! ");
             Toast.makeText(getApplicationContext(), "Clean date is required", Toast.LENGTH_SHORT)
                 .show();
+          } else if (genderSpinner.getSelectedItem().toString().equals("Select Gender")) {
+            ((EditText) findViewById(R.id.clean_date)).setError(null);
+            TextView errorText = (TextView) genderSpinner.getSelectedView();
+            errorText.setError("Gender required!");
+            errorText.setTextColor(Color.RED);
+            Toast.makeText(getApplicationContext(), "Gender required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (useDisorderSpinner.getSelectedItem().toString().equals("Select Type")) {
+            TextView errorTextPrev = (TextView) genderSpinner.getSelectedView();
+            errorTextPrev.setError(null);
+            TextView errorText = (TextView) useDisorderSpinner.getSelectedView();
+            errorText.setError("Use type required!");
+            errorText.setTextColor(Color.RED);
+            Toast.makeText(getApplicationContext(), "Use type required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (user_type_radio_group.getCheckedRadioButtonId() == -1) {
+            TextView errorTextPrev = (TextView) useDisorderSpinner.getSelectedView();
+            errorTextPrev.setError(null);
+            TextView userType = findViewById(R.id.are_you);
+            userType.setError("User type required!");
+            Toast.makeText(getApplicationContext(), "User type required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (drug_selection_radio_group.getCheckedRadioButtonId() == -1) {
+            TextView errorTextPrev = findViewById(R.id.are_you);
+            errorTextPrev.setError(null);
+            TextView userType = (TextView) findViewById(R.id.drug_of_choice);
+            userType.setError("Drug of choice required!");
+            Toast.makeText(getApplicationContext(), "Drug of choice required!", Toast.LENGTH_SHORT)
+                .show();
+          }
+          else if(radio_other.isChecked() && TextUtils.isEmpty(((EditText) findViewById(R.id.enter_other)).getText())){
+            ((EditText) findViewById(R.id.enter_other)).setError("Other drug is required! ");
+            Toast.makeText(getApplicationContext(), "Other drug is required", Toast.LENGTH_SHORT).show();
           }
           else {
+            TextView errorTextPrev = findViewById(R.id.drug_of_choice);
+            errorTextPrev.setError(null);
+            TextView errorTextPrev2 = findViewById(R.id.enter_other);
+            errorTextPrev2.setError(null);
             startActivity(new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class));
           }
         }
