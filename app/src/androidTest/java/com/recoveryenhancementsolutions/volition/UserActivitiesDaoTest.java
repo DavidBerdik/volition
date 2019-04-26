@@ -54,7 +54,8 @@ public class UserActivitiesDaoTest {
     final UserActivityEntity[] userActivityEntity = new UserActivityEntity[5];
 
     // Create 5 User Activity Dates
-    final int[] userActivityYear = {Calendar.YEAR, 2017, 2001, 1970, 2038};
+    final int[] userActivityYear = {Calendar.getInstance().get(Calendar.YEAR), 2017, 2001, 1970,
+        2038};
     final int[] userActivityMonth = {3, 8, 10, 1, 1};
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
@@ -101,11 +102,12 @@ public class UserActivitiesDaoTest {
     final Calendar cal = Calendar.getInstance();
 
     // Create a lower bound date. (The first second of first day of the month.)
-    cal.set(Calendar.YEAR, 2, 1, 0, 0, 0);
+    cal.set(Calendar.getInstance().get(Calendar.YEAR), 2, 1, 0, 0, 0);
     final Date lowerDate = cal.getTime();
 
     // Create an upper bound date. (The last second of the last day of the month.)
-    cal.set(Calendar.YEAR, 2, cal.getActualMaximum(Calendar.DAY_OF_MONTH),
+    cal.set(Calendar.getInstance().get(Calendar.YEAR), 2,
+        cal.getActualMaximum(Calendar.DAY_OF_MONTH),
         23, 59, 59);
     final Date upperDate = cal.getTime();
 
