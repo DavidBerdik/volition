@@ -116,7 +116,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
         public void onChanged(final String s) {
             enterName = findViewById(R.id.nameBox);
             enterName.setText(R.string.name);
-            enterName.append(s);
+            enterName.append(" " + s);
            // nameBox.setText("tester");
             Log.e("name ", s);
         }
@@ -129,7 +129,7 @@ public class ClinicalScreenActivity extends AppCompatActivity{
             enterDate = findViewById(R.id.dateBox);
             enterDaysClean = findViewById(R.id.cleanDaysBox);
             enterDate.setText(R.string.dateOfLastUse);
-            enterDate.append(date.toString());
+            enterDate.append(" " + date.toString());
                 Log.e("date: ", date.toString());
                 final int days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
                 final String newDays = Integer.toString(days);

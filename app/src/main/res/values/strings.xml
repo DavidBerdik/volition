@@ -215,4 +215,5 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name = "dateOfLastUse">Date of last use: </string>
   <string name= "name">Name: </string>
     <string name = "noActivities"> No activities to date.</string>
+  <string name = "clinical_overview"> Clinical Overview </string>
 </resources>
