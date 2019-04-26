@@ -1,6 +1,10 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.internal.runner.junit4.statement.UiThreadStatement;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
@@ -14,9 +18,12 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.Calendar;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -36,6 +43,16 @@ public class TreatmentExperienceAssessmentActivityTest {
   @Rule
   public ActivityTestRule<TreatmentExperienceAssessmentActivity> activityTestRule = new ActivityTestRule<>(
       TreatmentExperienceAssessmentActivity.class);
+
+
+ @Before
+  public void initDB() {
+    // Set the ViewModel to use a test database instead of the app's real database.
+    final Context context = InstrumentationRegistry.getTargetContext();
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+            .allowMainThreadQueries().build();
+    activityTestRule.getActivity().getViewModel().setTestDatabase(db);
+  }
 
   /**
    * Tests the functionality of the NumberPicker and its live updates. Tests the submit button
@@ -153,6 +170,7 @@ public class TreatmentExperienceAssessmentActivityTest {
                 1),
             isDisplayed()));
     textView.check(matches(withText("TEA completed")));
+    //while(true) {}
   }
 
   private static Matcher<View> childAtPosition(
@@ -175,5 +193,5 @@ public class TreatmentExperienceAssessmentActivityTest {
 
 
   }
-
+private VolitionDatabase db;
 }
