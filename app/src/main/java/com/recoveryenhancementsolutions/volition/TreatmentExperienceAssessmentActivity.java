@@ -1,9 +1,9 @@
 package com.recoveryenhancementsolutions.volition;
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -91,9 +91,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         } else if (teaView.getDisplayState() == 4) {
             onRemarksCall();
         }
-
-        final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
-
     }
 
     /**
@@ -238,16 +235,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
         }
     }
 
-  /**
-   * Prepares the ActivityNavigationHandler object.
-   */
-  @Override
-  public void onResume() {
-    super.onResume();
-
-    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
-    ActivityNavigationHandler.link(bottomNavigationView, this);
-  }
 
     private TreatmentExperienceAssessmentViewModel teaView;
     private TextView tea_results;
