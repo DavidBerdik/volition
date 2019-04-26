@@ -154,20 +154,17 @@ public class UserActivityViewModel extends AndroidViewModel {
    * defined by the value of "month."
    */
   public LiveData<List<UserActivityEntity>> getActivitiesByMonth(final int month) {
-    // Create a calendar to generate two dates with.
-    final Calendar cal = Calendar.getInstance();
+    // Create a lower bound calendar. (The first second of the first day of the month.)
+    final Calendar startCal = Calendar.getInstance();
+    startCal.set(Calendar.getInstance().get(Calendar.YEAR), month - 1, 1, 0, 0, 0);
 
-    // Create a lower bound date. (The first second of first day of the month.)
-    cal.set(Calendar.YEAR, month - 1, 1, 0, 0, 0);
-    final Date lowerDate = cal.getTime();
-
-    // Create an upper bound date. (The last second of the last day of the month.)
-    cal.set(Calendar.YEAR, month - 1, cal.getActualMaximum(Calendar.DAY_OF_MONTH),
-        23, 59, 59);
-    final Date upperDate = cal.getTime();
+    // Create an upper bound calendar. (The last second of the last day of the month.)
+    final Calendar endCal = Calendar.getInstance();
+    endCal.set(Calendar.getInstance().get(Calendar.YEAR), month - 1,
+        endCal.getActualMaximum(Calendar.DAY_OF_MONTH), 23, 59, 59);
 
     // Return the LiveData object containing the list of qualifying activities.
-    return db.userActivitiesDao().getActivitiesByMonth(lowerDate, upperDate);
+    return db.userActivitiesDao().getActivitiesByMonth(startCal.getTime(), endCal.getTime());
   }
 
   private VolitionDatabase db;
