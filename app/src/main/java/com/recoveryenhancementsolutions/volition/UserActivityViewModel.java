@@ -156,12 +156,12 @@ public class UserActivityViewModel extends AndroidViewModel {
   public LiveData<List<UserActivityEntity>> getActivitiesByMonth(final int month) {
     // Create a lower bound calendar. (The first second of the first day of the month.)
     final Calendar startCal = Calendar.getInstance();
-    startCal.set(Calendar.getInstance().get(Calendar.YEAR), month - 1, 1, 0, 0, 0);
+    startCal.set(startCal.get(Calendar.YEAR), month - 1, 1, 0, 0, 0);
 
     // Create an upper bound calendar. (The last second of the last day of the month.)
     final Calendar endCal = Calendar.getInstance();
-    endCal.set(Calendar.getInstance().get(Calendar.YEAR), month - 1,
-        endCal.getActualMaximum(Calendar.DAY_OF_MONTH), 23, 59, 59);
+    endCal.set(endCal.get(Calendar.YEAR), month - 1, endCal.getActualMaximum(Calendar.DAY_OF_MONTH),
+        23, 59, 59);
 
     // Return the LiveData object containing the list of qualifying activities.
     return db.userActivitiesDao().getActivitiesByMonth(startCal.getTime(), endCal.getTime());
