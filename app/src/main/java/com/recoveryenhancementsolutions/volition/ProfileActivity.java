@@ -1,9 +1,11 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.app.AlertDialog.Builder;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +31,26 @@ import android.view.View.OnFocusChangeListener;
 
 public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
 
+  /**
+   * Asks the user if they'd like to leave the Profile Creation context before finishing this page
+   * and sending them back.
+   */
+  @Override
+  public void onBackPressed() {
+    // Create an alert for people to confirm with the user their intent to back out.
+    final Builder alert = new Builder(this)
+        .setTitle(R.string.create_profile_back_out_title)
+        .setMessage(R.string.create_profile_back_out_content)
+        .setIcon(android.R.drawable.ic_dialog_alert);
+    alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(final DialogInterface dialog, final int whichButton) {
+        finish();
+      }
+    });
+    alert.setNegativeButton(android.R.string.no, null);
+    alert.show();
+  }
 
   /**
    * Checking the selected gender and UseDisorder, if selected, adds to the database
