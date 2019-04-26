@@ -8,24 +8,21 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity">
 
-
-
-
   <ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="30"
-    android:layout_marginTop="-200dp"
-    android:padding="30dp"
-
-    android:alpha=".4"
-    android:contentDescription="@string/severity_desc"
+    android:id="@+id/imageView"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    app:srcCompat="@drawable/pic"
-    />
-
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/pic"/>
 
   <TableLayout
     android:id="@+id/tableLayout2"
