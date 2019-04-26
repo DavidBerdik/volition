@@ -2,6 +2,7 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,11 +22,9 @@ public class TreatmentExperienceAssessmentRemarksActivity extends AppCompatActiv
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_treatment_experience_assessment_remarks);
+      setContentView(R.layout.activity_treatment_experience_assessment_remarks_port);;
 
     teaAnswers = getIntent().getExtras().getIntegerArrayList("ANSWERS");
-
-
     final Button submitButton = findViewById(R.id.submitButton);
     remarks = findViewById(R.id.remarksText);
     remarks.requestFocus();

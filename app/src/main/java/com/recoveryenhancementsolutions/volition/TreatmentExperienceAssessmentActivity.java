@@ -3,7 +3,9 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +45,16 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     }
 
     /**
+     * Prepares the ActivityNavigationHandler object.
+     */
+    public void onResume() {
+        super.onResume();
+
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+        ActivityNavigationHandler.link(bottomNavigationView, this);
+    }
+
+    /**
      * The method onCreate will initialize the Activity with the view of the
      * treatment_experience_assessment_activity xml. The Text View for every question is created with
      * the opacity for each question and is initially set to 0. Question one's opacity says at the
@@ -54,7 +66,14 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_treatment_experience_assessment);
+
+        final int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.activity_treatment_experience_assessment_land);
+        } else {
+            setContentView(R.layout.activity_treatment_experience_assessment_port);;
+        }
+
 
         final Button submit = findViewById(R.id.submit_button_tea);
         teaView = ViewModelProviders.of(this).get(TreatmentExperienceAssessmentViewModel.class);
@@ -143,7 +162,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
      * remarks xml.
      */
     private void remarksBack() {
-        setContentView(R.layout.activity_treatment_experience_assessment);
+        setContentView(R.layout.activity_treatment_experience_assessment_port);
 
         final Button submit = findViewById(R.id.submit_button_tea);
         submit.setOnClickListener(submitClickListener);
@@ -210,7 +229,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
      * Method called to set content view to remarks screen whenever necessary
      */
     private void onRemarksCall() {
-        setContentView(R.layout.activity_treatment_experience_assessment_remarks);
+        setContentView(R.layout.activity_treatment_experience_assessment_remarks_port);
         final Button submitButton = findViewById(R.id.submitButton);
         remarks = findViewById(R.id.remarksText);
         remarks.requestFocus();
