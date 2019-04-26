@@ -37,7 +37,7 @@ public class QuestionnaireEntity {
    * Sets severity level to mild
    */
   public void setMild(){
-    this.severityLevel = "MILD";
+    severityLevel = "MILD";
   }
 
   /**
