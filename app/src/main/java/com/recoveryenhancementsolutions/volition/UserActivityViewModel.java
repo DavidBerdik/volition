@@ -154,17 +154,49 @@ public class UserActivityViewModel extends AndroidViewModel {
    * defined by the value of "month."
    */
   public LiveData<List<UserActivityEntity>> getActivitiesByMonth(final int month) {
-    // Create a lower bound calendar. (The first second of the first day of the month.)
-    final Calendar startCal = Calendar.getInstance();
-    startCal.set(startCal.get(Calendar.YEAR), month - 1, 1, 0, 0, 0);
+    // Calculate the lower bound month. It should be the month before the one passed in.
+    int lowerBoundMonth = month - 2;
+    int lowerBoundYear = Calendar.getInstance().get(Calendar.YEAR);
+    if (lowerBoundMonth == -1) {
+      // Wrap around to December of the previous year.
+      lowerBoundMonth = 11;
+      lowerBoundYear--;
+    }
 
-    // Create an upper bound calendar. (The last second of the last day of the month.)
+    // Create a lower bound calendar. (The last second of the last day of the previous month.)
+    final Calendar startCal = Calendar.getInstance();
+    startCal
+        .set(lowerBoundYear, lowerBoundMonth, getNumberOfDays(lowerBoundYear, lowerBoundMonth), 23,
+            59, 59);
+
+    // Calculate the upper bound month. It should be the month after the one passed in.
+    int upperBoundMonth = month;
+    int upperBoundYear = Calendar.getInstance().get(Calendar.YEAR);
+    if (upperBoundMonth == 12) {
+      // Wrap around to January of the next year.
+      upperBoundMonth = 0;
+      upperBoundYear++;
+    }
+
+    // Create an upper bound calendar. (The first second of the first day of the next month.)
     final Calendar endCal = Calendar.getInstance();
-    endCal.set(endCal.get(Calendar.YEAR), month - 1, endCal.getActualMaximum(Calendar.DAY_OF_MONTH),
-        23, 59, 59);
+    endCal.set(upperBoundYear, upperBoundMonth, 1, 0, 0, 0);
 
     // Return the LiveData object containing the list of qualifying activities.
     return db.userActivitiesDao().getActivitiesByMonth(startCal.getTime(), endCal.getTime());
+  }
+
+  /**
+   * Determine the number of days in a month.
+   *
+   * @param year The desired year.
+   * @param month The desired month to find the number of days for. (1 = January)
+   * @return The number of days in the given month.
+   */
+  private int getNumberOfDays(final int year, final int month) {
+    Calendar cal = Calendar.getInstance();
+    cal.set(year, month - 1, 1);
+    return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
   }
 
   private VolitionDatabase db;
