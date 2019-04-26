@@ -57,7 +57,8 @@ public class UserActivityViewModelTest {
   @Test
   public void testUserActivityHistoryViewModel() {
     // Create 5 User Activity Dates
-    final int[] userActivityYear = {2019, 2017, 2001, Calendar.YEAR, 2038};
+    final int[] userActivityYear = {2019, 2017, 2001, Calendar.getInstance().get(Calendar.YEAR),
+        2038};
     final int[] userActivityMonth = {3, 8, 10, 9, 1};
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
@@ -103,7 +104,9 @@ public class UserActivityViewModelTest {
     // Query the database for activities that take place in September and check that it has the
     // correct ID.
     try {
-      assertEquals(4, LiveDataTestUtility.getNestedLiveDataObj(viewModel.getActivitiesByMonth(9)).get(0).getId());
+      assertEquals(4,
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getActivitiesByMonth(9)).get(0)
+              .getId());
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }
