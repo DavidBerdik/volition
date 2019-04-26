@@ -75,6 +75,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
     setContentView(R.layout.activity_questionnaire);
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
+    final TextView txt = findViewById(R.id.questionEleven);
+
+    txt.setTooltipText("Test");
 
     questionnaireActivityViewModel = ViewModelProviders.of(this)
         .get(QuestionnaireActivityViewModel.class);
