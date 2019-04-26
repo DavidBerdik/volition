@@ -1,9 +1,11 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.app.AlertDialog.Builder;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,7 +33,6 @@ import java.util.Calendar;
  */
 
 public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
-
 
   /**
    * Checking the selected gender and UseDisorder, if selected, adds to the database
@@ -273,9 +274,22 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     // Set "dest" equal to the ID passed via the intent. If nothing was passed, set it to 1.
     final int dest = getIntent().getIntExtra(BACK_DEST, 1);
     final Intent destination = new Intent();
+
     if (!editMode) {
-      super.onBackPressed();
-      return; // Since this scenario uses the default behavior, terminate this method early.
+      // Create an alert for people to confirm with the user their intent to back out.
+      final Builder alert = new Builder(this)
+          .setTitle(R.string.create_profile_back_out_title)
+          .setMessage(R.string.create_profile_back_out_content)
+          .setIcon(android.R.drawable.ic_dialog_alert);
+      alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(final DialogInterface dialog, final int whichButton) {
+          finish();
+        }
+      });
+      alert.setNegativeButton(android.R.string.no, null);
+      alert.show();
+      return;
     } else if (dest == 1) {
       destination.setClass(this, HomeActivity.class);
     } else if (dest == 2) {
@@ -580,7 +594,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private boolean editMode;
   private final Calendar dobCalendar = Calendar.getInstance();
   private final Calendar cleanDateCalendar = Calendar.getInstance();
-  private final String EDIT_MODE = "editMode";
   private BottomNavigationView bottomNavigationView;
   private static final String BACK_DEST = "backDest";
 }
