@@ -44,16 +44,13 @@ public class TreatmentExperienceAssessmentActivityTest {
   public ActivityTestRule<TreatmentExperienceAssessmentActivity> activityTestRule = new ActivityTestRule<>(
       TreatmentExperienceAssessmentActivity.class);
 
-
- @Before
+  @Before
   public void initDB() {
-    // Set the ViewModel to use a test database instead of the app's real database.
+    //Set the ViewModel to use a test database instead of the app's real database
     final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
-            .allowMainThreadQueries().build();
-    activityTestRule.getActivity().getViewModel().setTestDatabase(db);
+    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries().build();
+    activityTestRule.getActivity().getViewModel().setTestDatabase(db); 
   }
-
   /**
    * Tests the functionality of the NumberPicker and its live updates. Tests the submit button
    * functionality. Runs Test for the remarks activity and the plan screen to show the TEA has been

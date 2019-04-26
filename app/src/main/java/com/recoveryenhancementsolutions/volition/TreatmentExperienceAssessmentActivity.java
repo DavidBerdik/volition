@@ -1,10 +1,10 @@
 package com.recoveryenhancementsolutions.volition;
-
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -237,6 +237,17 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
             onRemarksCall();
         }
     }
+
+  /**
+   * Prepares the ActivityNavigationHandler object.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
+  }
 
     private TreatmentExperienceAssessmentViewModel teaView;
     private TextView tea_results;
