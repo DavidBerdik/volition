@@ -9,7 +9,7 @@
 
   <ImageView
     android:id="@+id/resBackground"
-    android:layout_width="390dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="150dp"
     android:layout_marginBottom="160dp"
