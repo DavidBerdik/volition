@@ -289,6 +289,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
       });
       alert.setNegativeButton(android.R.string.no, null);
       alert.show();
+      return;
     } else if (dest == 1) {
       destination.setClass(this, HomeActivity.class);
     } else if (dest == 2) {
