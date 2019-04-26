@@ -10,8 +10,12 @@
 
   <ImageView
     android:id="@+id/resBackground"
-    android:layout_width="381dp"
-    android:layout_height="359dp"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     android:alpha=".33"
     android:contentDescription="@string/dosage_choice_res_logo"
     app:layout_constraintBottom_toBottomOf="parent"
