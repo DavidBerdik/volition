@@ -56,7 +56,7 @@ public interface UserActivitiesDao {
    * @return A LiveData object containing a list of all user activities that took place on the month
    * defined within the range between lowerDate and upperDate.
    */
-  @Query("SELECT * FROM UserActivityEntity WHERE date >= :lowerDate AND date <= :upperDate")
+  @Query("SELECT * FROM UserActivityEntity WHERE date BETWEEN :lowerDate AND :upperDate")
   LiveData<List<UserActivityEntity>> getActivitiesByMonth(final Date lowerDate,
       final Date upperDate);
 }
