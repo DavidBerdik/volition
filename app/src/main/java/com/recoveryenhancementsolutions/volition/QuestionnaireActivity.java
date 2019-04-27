@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class QuestionnaireActivity extends AppCompatActivity {
+public class QuestionnaireActivity extends AppCompatActivity{
 
   public static boolean prevAnswer = false;
 
@@ -77,7 +77,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
     final Button noButton = findViewById(R.id.NObtn);
     final TextView txt = findViewById(R.id.questionEleven);
 
-    txt.setTooltipText("Test");
+    txt.setTooltipText("•Dysphoic mood "
+              + "•Nausea or vomiting "
+              + "•Muscle aches "
+              + "•Lacrimation or rhinorrhea "
+              + "•Pupillary dilation, piloerection, or swearing \n"
+              + "•Diarrhea "
+              + "•Yawning "
+              + "•Fever "
+              + "•Insomnia.");
 
     questionnaireActivityViewModel = ViewModelProviders.of(this)
         .get(QuestionnaireActivityViewModel.class);
@@ -195,7 +203,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
   /**
    * Method to activate back button after question one or deactivate it if it is on question one.
    */
-
 
   private QuestionnaireActivityViewModel questionnaireActivityViewModel;
   private TextView[] qs = new TextView[11];
