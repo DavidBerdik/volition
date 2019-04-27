@@ -96,6 +96,18 @@ public abstract class VolitionDatabase extends RoomDatabase {
   }
 
   /**
+   * Recreates the VolitionDatabase to use an INSTANCE built in-memory. Good for testing database
+   * usage across multiple activities while maintaining their data. Should not be used outside of
+   * testing.
+   *
+   * @param context Object providing access to application context.
+   */
+  static void setTestDatabase(final Context context) {
+    INSTANCE = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
+        .allowMainThreadQueries().build();
+  }
+
+  /**
    * Object providing methods that are called if an existing database is opened or a new database is
    * created.
    */
