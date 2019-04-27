@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.os.AsyncTask;
 import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -72,7 +73,7 @@ public class UserActivityViewModel extends AndroidViewModel {
    * @param userActivityEntity A UserActivityEntity object containing the activity to be inserted.
    */
   public void insertActivity(final UserActivityEntity userActivityEntity) {
-    db.userActivitiesDao().insertActivity(userActivityEntity);
+    new updateAsyncTask(db.userActivitiesDao()).doInBackground(userActivityEntity);
   }
 
   /**
@@ -124,6 +125,24 @@ public class UserActivityViewModel extends AndroidViewModel {
    */
   public LiveData<List<UserActivityEntity>> getActivitiesByDate(final Date date) {
     return db.userActivitiesDao().getActivitiesByDate(date);
+  }
+
+  /**
+   * Used to update data into the database asynchronously
+   */
+  private static class updateAsyncTask extends AsyncTask<UserActivityEntity, Void, Void> {
+
+    updateAsyncTask(final UserActivitiesDao dao) {
+      asyncTaskDao = dao;
+    }
+
+    @Override
+    protected Void doInBackground(final UserActivityEntity... params) {
+      asyncTaskDao.insertActivity(params[0]);
+      return null;
+    }
+
+    private final UserActivitiesDao asyncTaskDao;
   }
 
   private VolitionDatabase db;
