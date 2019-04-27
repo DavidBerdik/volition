@@ -38,6 +38,10 @@ public class ActivityActivity extends AppCompatActivity {
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
   }
 
+
+
+
+
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
    *
