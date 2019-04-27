@@ -106,7 +106,7 @@ public class DailyWellnessActivity extends AppCompatActivity {
       toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
       toast.show();
 
-      // No need to add a new activity to the stack. Simulate a backButtonPress.
+      // No need to add a new activity to the stack. Simulate a back button press.
       redirect();
     }
   };
