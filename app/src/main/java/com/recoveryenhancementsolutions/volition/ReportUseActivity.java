@@ -1,14 +1,13 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * The ReportUseActivity that contains functionality and interactions relevant to the
@@ -29,13 +29,14 @@ import java.util.Calendar;
 public class ReportUseActivity extends AppCompatActivity {
 
   /**
-   * Returns a private integer value related to the most recently clicked item. Used for testing.
-   *
-   * @return Integer value representing the most recently clicked item. 0 means Nothing, 1 means
-   * Yes, and 2 means No.
+   * Prepares the ActivityNavigationHandler object.
    */
-  public int getLastClickedItem() {
-    return lastClickedItem;
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
   }
 
   @Override
@@ -45,25 +46,25 @@ public class ReportUseActivity extends AppCompatActivity {
 
     //Initializing ViewModel
     ddViewModel = ViewModelProviders.of(this).get(DemographicDataViewModel.class);
-    today = Calendar.getInstance();
 
-    lastClickedItem = 0;
+    today = Calendar.getInstance();
     inTest = false;
+
     final Button yesButton = findViewById(R.id.report_use_yes);
     yesButton.setOnClickListener(yesButtonListener);
 
     final Button noButton = findViewById(R.id.report_use_no);
     noButton.setOnClickListener(noButtonListener);
 
-    final BottomNavigationView navigation = findViewById(R.id.menubar);
-    navigation.getMenu().getItem(1).setChecked(false);
-    navigation.setOnNavigationItemSelectedListener(navigationListener);
 
-    //Pulls up a Date Picker for the user to select their date of last use
+    //Observer that will retrieve the previously stored date of last use
+    ddViewModel.getLastCleanDate().observe(this, dateObserver);
+
+    //Date Picker for the user to select their date of last use
     useDate = Calendar.getInstance();
     useDateListener = new OnDateSetListener() {
       /**
-       * Event handler for when a date of birth is chosen by the user.
+       * Event handler for when the user must select their date of last use
        * @param view DatePicker object
        * @param year Year chosen by user
        * @param month Month chosen by user
@@ -74,15 +75,41 @@ public class ReportUseActivity extends AppCompatActivity {
         useDate.set(Calendar.YEAR, year);
         useDate.set(Calendar.MONTH, month);
         useDate.set(Calendar.DAY_OF_MONTH, day);
+        ready = false;
+        int days = DateConverter.daysBetween(useDate.getTime(), today.getTime());
+        Log.e("RepUseActivity", "Attempted use date: " +useDate.getTime().toString());
+        //Checks if the date selected is after the current date
+        if (days < 0){
+          toast = Toast.makeText(getApplicationContext(),
+              "ERROR: Invalid date selected",
+              Toast.LENGTH_LONG);
+          toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+          toast.show();
+        }
+        else {
+          Log.e("RepUseActivity", "Date: " +prevUseDate);
+          days = DateConverter.daysBetween(prevUseDate.getTime(), useDate.getTime().getTime());
+          //Check to see if the date selected is the same as or before the date already stored
+          if (days < 0) {
+            toast = Toast.makeText(getApplicationContext(),
+                "ERROR: Date selected comes before the previous date entered",
+                Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
+            toast.show();
+          }
+          //The date selected is valid
+          else {
+            ready = true;
+            ddViewModel.updateLastCleanDate(useDate, today);
+          }
+        }
 
-        final String str = DateFormat.getDateInstance().format(useDate.getTime());
-        ddViewModel.updateLastCleanDate(useDate, today);
-        toast = Toast.makeText(getApplicationContext(), "Recorded " + str + " as day of last use",
-            Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
-
-        //Only redirects if we are not in a testing environment
-        if (!inTest) {
+        //Only redirects if we are not in a testing environment & the date chosen was valid
+        if (!inTest && ready) {
+          final String str = DateFormat.getDateInstance().format(useDate.getTime());
+          toast = Toast.makeText(getApplicationContext(), "Recorded " + str + " as day of last use",
+              Toast.LENGTH_LONG);
+          toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
           redirect();
           toast.show();
         }
@@ -115,6 +142,7 @@ public class ReportUseActivity extends AppCompatActivity {
    */
   protected void setTestDatabase(final VolitionDatabase db) {
     ddViewModel.setTestDatabase(db);
+    ddViewModel.getLastCleanDate().observe(this, dateObserver);
   }
 
   /**
@@ -123,7 +151,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private OnClickListener yesButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      lastClickedItem = 1;
       final DatePickerDialog pickDate = new DatePickerDialog(ReportUseActivity.this,
           useDateListener, useDate.get(Calendar.YEAR), useDate.get(Calendar.MONTH),
           useDate.get(Calendar.DAY_OF_MONTH));
@@ -137,7 +164,6 @@ public class ReportUseActivity extends AppCompatActivity {
   private OnClickListener noButtonListener = new OnClickListener() {
     @Override
     public void onClick(View v) {
-      lastClickedItem = 2;
       ddViewModel.updateLastReportDate(today);
       toast = Toast
           .makeText(getApplicationContext(), "Recorded 'No' for the day", Toast.LENGTH_LONG);
@@ -151,44 +177,36 @@ public class ReportUseActivity extends AppCompatActivity {
     }
   };
 
-
   /**
-   * Redirects to another screen TODO: Move the user to the Activity screen
+   * Redirects to another screen
    */
   private void redirect() {
-    intent = new Intent(getApplicationContext(), HomeActivity.class);
-    startActivity(intent);
+    startActivity(new Intent(getApplicationContext(), ActivityActivity.class));
   }
 
-  //TODO: Uncomment as more Activities are added to the dev branch
-  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
+
+  /**
+   * Observer for retrieving the "last clean" Date
+   */
+  private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.core_navigation_home:
-          intent = new Intent(getApplicationContext(), HomeActivity.class);
-          startActivity(intent);
-          return true;
-        case R.id.core_navigation_activity:
-          //intent = new Intent(getApplicationContext(), ActivityActivity.class);
-          //startActivity(intent);
-          return true;
-        case R.id.core_navigation_plan:
-          //intent = new Intent(getApplicationContext(), PlanActivity.class);
-          //startActivity(intent);
-          return true;
+    public void onChanged(final Date date) {
+      try {
+        prevUseDate = date;
+      } catch (NullPointerException e) {
+        e.printStackTrace();
       }
-      return false;
     }
   };
+
+  protected Date prevUseDate;
 
   private DatePickerDialog.OnDateSetListener useDateListener;
   private DemographicDataViewModel ddViewModel;
   private Calendar today;
   private Calendar useDate;
   private Toast toast;
-  private Intent intent;
-  private int lastClickedItem;
   public static int numberCompleted;
   private boolean inTest;
+  private boolean ready;
 }

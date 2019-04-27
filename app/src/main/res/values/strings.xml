@@ -6,6 +6,7 @@
   <string name="core_navigation_home">Home</string>
   <string name="core_navigation_activity">Activity</string>
   <string name="core_navigation_plan">Plan</string>
+  <string name="core_navigation_profile">Profile</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -138,7 +139,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
   <string name="take_questionnaire"> Take questionnaire</string>
   <string name="teaQuestionOne"> How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc.</string>
-  <string name="teaQuestionTwo"> Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself ect.
+  <string name="teaQuestionTwo"> Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself etc.
 </string>
   <string name="teaQuestionThree"> How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments
 </string>
@@ -153,6 +154,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
   <string name="treatment_assessment_title"> TEA Page</string>
+  <string name="clean_tracker_title">Clean Tracker</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -210,6 +212,10 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
   <string name="daily_wellness_title">Report your Daily Wellness</string>
   <string name="daily_wellness_rating">Your Rating:</string>
+  <string name="daily_wellness_submit_button">Submit Rating</string>
+  <string name="daily_wellness_toast">Recorded your daily wellness! Thank you!</string>
+  <string name="daily_wellness_activity_desc">Daily Wellness</string>
+  <string name="daily_wellness_activity_note">Recorded a %d/10.</string>
   <string-array name="daily_wellness_result_strings">
     <item>1 (Poor)</item>
     <item>2 (Poor)</item>
@@ -233,6 +239,8 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="menubar_plan">Plan</string>
   <string name= "experience"> We would like to know about your experience </string>
   <string name= "directions_tea"> Express the extent of changes in four areas:  Substance use, Health, Lifestyle, and Community. \n\n For each area, think about how things have become.  Choose from the scale below, the more you have improved, the higher the number. \n\n At the end, write down the one or two changes most important to you in the remarks section.</string>
-<string name = "proceed_to_assessment"> Proceed to Assessment </string>
+  <string name = "proceed_to_assessment"> Proceed to Assessment </string>
   <string name = "treatment_experience_assessment">Treatment Experience Assessment</string>
+  <string name="plan_note_view_done">Done</string>
+  <string name="plan_note_view_no_notes">Nothing.</string>
 </resources>

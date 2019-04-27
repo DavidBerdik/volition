@@ -98,8 +98,17 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     tea_results = findViewById(R.id.tea_results);
     tea_results.setText(getTeaString(np.getValue()));
 
-    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+  }
 
+  /**
+   * Prepares the ActivityNavigationHandler object.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
   }
 
   /**
@@ -118,7 +127,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   /**
    * This method displays what the user chooses on the scroll bar with rating attached
    * @param rating passes what the user chooses on the scroll bar
-   * @return
+   * @return A string containing the choice in a format suitable for displaying.
    */
 
   private String getTeaString(final int rating) {
@@ -151,7 +160,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
 
   /**
    * Displays the new question. Passes a bundle of the tea answers arraylist to the remarks screen.
-   * @param rating
+   * @param rating The desired rating.
    */
   private void setAnswerForTea(int rating) {
     if (answerCounter < 3) {
@@ -175,7 +184,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     }
   }
 
-  private VolitionDatabase db;
   private TextView tea_results;
   private String[] outputs = {"None or not much", "Better", "Much Better"};
   private int rating;
