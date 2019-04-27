@@ -151,6 +151,14 @@ public class TreatmentExperienceAssessmentActivityTest {
                 4),
             isDisplayed()));
     appCompatButton5.perform(click());
+    /*
+    The following code is commented out because it will not succeed in most cases but it is important
+    that this part of the code is tested so i will now explain how to test it manually.
+    To test this you can run the actual TEA activity then navigate to the plan screen and it should
+    show TEA Completed in the current day.  The reason this does not work is because this test stores
+    to a test database but the plan activity when it runs will run from the actual database therefore
+    it will not read TEA Completed.
+     */
    /* // Navigate to plan screen.
     ViewInteraction bottomNavigationItemView = onView(
         allOf(withId(R.id.core_navigation_plan), withContentDescription("Plan"),
