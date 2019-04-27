@@ -157,6 +157,16 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
   private void remarksBack() {
     setContentView(R.layout.activity_treatment_experience_assessment_port);
 
+    final int orientation = getResources().getConfiguration().orientation;
+    if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      setContentView(R.layout.activity_treatment_experience_assessment_land);
+    } else {
+      setContentView(R.layout.activity_treatment_experience_assessment_port);
+    }
+
+    final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
+    ActivityNavigationHandler.link(bottomNavigationView, this);
+
     final Button submit = findViewById(R.id.submit_button_tea);
     submit.setOnClickListener(submitClickListener);
     qs[0] = findViewById(R.id.questionOne);
