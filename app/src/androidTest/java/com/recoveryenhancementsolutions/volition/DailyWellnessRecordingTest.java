@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.assertEquals;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -20,8 +21,8 @@ import org.junit.runner.RunWith;
 public class DailyWellnessRecordingTest {
 
   @Rule
-  public ActivityTestRule<ActivityActivity> activityTestRule = new ActivityTestRule<>(
-      ActivityActivity.class);
+  public ActivityTestRule<PlanActivity> activityTestRule = new ActivityTestRule<>(
+      PlanActivity.class);
 
   /**
    * Prepares the testing environment with a testing database.
@@ -36,6 +37,16 @@ public class DailyWellnessRecordingTest {
    */
   @Test
   public void dailyWellnessActivityTest() {
+
+    // Navigate to the proper activity.
+    onView(withId(R.id.core_navigation_activity)).perform(click());
+
+    // Allow the slower devices/emulators to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
 
     onView(withId(R.id.DailyWellness)).perform(click());
 
@@ -52,7 +63,7 @@ public class DailyWellnessRecordingTest {
 
     // Allow the slower devices/emulators to update.
     try {
-      Thread.sleep(2000);
+      Thread.sleep(1000);
     } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
@@ -62,11 +73,11 @@ public class DailyWellnessRecordingTest {
 
     // Allow the slower devices/emulators to update.
     try {
-      Thread.sleep(2000);
+      Thread.sleep(1000);
     } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
 
-    while(true) {}
+    assertEquals(activityTestRule.getActivity().getNotesBuffer(0), "Daily Wellness:\nRecorded a 7/10.");
   }
 }
