@@ -73,6 +73,10 @@ public class DailyWellnessActivity extends AppCompatActivity {
     button.setOnClickListener(submitButtonListener);
   }
 
+  private void redirect() {
+    super.onBackPressed();
+  }
+
   private String getWellnessString(final int rating) {
     lastKnownValue = rating;
     return getResources().getString(R.string.daily_wellness_rating) + " " + outputs[rating - 1];
@@ -85,7 +89,6 @@ public class DailyWellnessActivity extends AppCompatActivity {
       dailyWellnessResultsView.setText(getWellnessString(np.getValue()));
     }
   };
-
 
   private OnClickListener submitButtonListener = new OnClickListener() {
     @Override
@@ -102,6 +105,9 @@ public class DailyWellnessActivity extends AppCompatActivity {
           .makeText(getApplicationContext(), R.string.daily_wellness_toast, Toast.LENGTH_LONG);
       toast.setGravity(Gravity.CENTER_VERTICAL, 0, 600);
       toast.show();
+
+      // No need to add a new activity to the stack. Simulate a backButtonPress.
+      redirect();
     }
   };
 
