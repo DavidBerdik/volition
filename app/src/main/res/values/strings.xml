@@ -202,4 +202,11 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
+  <string name="title_activity_admin_menu">AdminMenu</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="nav_header_title">Android Studio</string>
+  <string name="nav_header_subtitle">android.studio@android.com</string>
+  <string name="nav_header_desc">Navigation header</string>
+  <string name="action_settings">Settings</string>
 </resources>

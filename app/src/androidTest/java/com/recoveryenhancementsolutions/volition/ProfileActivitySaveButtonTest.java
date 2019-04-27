@@ -17,7 +17,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -75,35 +74,13 @@ public class ProfileActivitySaveButtonTest {
     final Intent i = new Intent();
     activityTestRuleHome.launchActivity(i);
 
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
     // Switch to ProfileActivity, set the test database, and fill out the profile.
     onView(withId(R.id.core_navigation_profile)).perform(click());
     ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
-
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
     fillProfile();
 
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
-
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
 
     // Check that the user is on the home activity.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
@@ -112,33 +89,12 @@ public class ProfileActivitySaveButtonTest {
     // Switch to activity activity.
     onView(withId(R.id.core_navigation_activity)).perform(click());
 
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
     // Switch to ProfileActivity and set the test database.
     onView(withId(R.id.core_navigation_profile)).perform(click());
     ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
 
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
-
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
 
     // Check that the user is on the activity activity.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
@@ -147,33 +103,12 @@ public class ProfileActivitySaveButtonTest {
     // Switch to PlanActivity.
     onView(withId(R.id.core_navigation_plan)).perform(click());
 
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
     // Switch to ProfileActivity and set the test database.
     onView(withId(R.id.core_navigation_profile)).perform(click());
     ((ProfileActivity) EspressoTestUtility.getCurrentActivity()).setTestMode(db);
 
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
-
     // Click on the "Record Answers" button.
     onView(withId(R.id.record_button)).perform(scrollTo(), click());
-
-    // Delay thread for one second to allow slower devices to catch up.
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      Log.e(TAG, Log.getStackTraceString(e));
-    }
 
     // CHeck that the user is on PlanActivity.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
@@ -229,5 +164,4 @@ public class ProfileActivitySaveButtonTest {
   final private VolitionDatabase db = Room
       .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
       .allowMainThreadQueries().build();
-  private static final String TAG = "ProfileActivitySaveButtonTest";
 }
