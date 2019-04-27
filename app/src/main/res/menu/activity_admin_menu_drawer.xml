@@ -6,19 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/edit_profile"
-            android:title="Edit Profile" />
+            android:title="@string/edit_profile_path" />
         <item
             android:id="@+id/edit_treatment"
-            android:title="Edit Treatment Plan" />
+            android:title="@string/edit_treatment_path" />
         <item
             android:id="@+id/ques_class"
-            android:title="Questionnaire Classification" />
+            android:title="@string/question_class_path" />
         <item
             android:id="@+id/retake_ques"
-            android:title="Retake Questionnaire" />
+            android:title="@string/retake_question_path" />
         <item
             android:id="@+id/clinical_overview"
-            android:title="Clinical Overview" />
+            android:title="@string/clinic_overview" />
     </group>
 
 
