@@ -97,7 +97,8 @@ public class DailyWellnessActivity extends AppCompatActivity {
 
       final UserActivityEntity entity = new UserActivityEntity();
       entity.setDate(new Date());
-      entity.setDesc(String.format(getString(R.string.daily_wellness_activity_desc), rating));
+      entity.setDesc(getString(R.string.daily_wellness_activity_desc));
+      entity.setNotes(String.format(getString(R.string.daily_wellness_activity_note), rating));
 
       userActivityViewModel.insertActivity(entity);
 
