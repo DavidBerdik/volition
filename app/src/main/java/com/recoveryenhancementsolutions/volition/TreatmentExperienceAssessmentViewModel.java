@@ -7,11 +7,8 @@ import android.os.AsyncTask;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+@SuppressWarnings("WeakerAccess")
 
-/**
- * This class abstracts the database away from the TEA activities to make sure no data is lost under
- * non perfect circumstances
- */
 public class TreatmentExperienceAssessmentViewModel extends AndroidViewModel {
 
   /**
@@ -22,16 +19,6 @@ public class TreatmentExperienceAssessmentViewModel extends AndroidViewModel {
     for (int i = 0; i < 4; i++) {
       teaAnswers.add(0);
     }
-  }
-
-  /**
-   * allows the activity access to the private variable remarks stored in view model to protect from
-   * activity reconstruction. currently not used but could be necessary in the future
-   *
-   * @return String representing how many questions of the questionnaire have been answered
-   */
-  public String getRemarks() {
-    return remarks;
   }
 
   /**

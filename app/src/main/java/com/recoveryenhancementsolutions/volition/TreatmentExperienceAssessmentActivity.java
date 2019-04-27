@@ -62,7 +62,6 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
       setContentView(R.layout.activity_treatment_experience_assessment_land);
     } else {
       setContentView(R.layout.activity_treatment_experience_assessment_port);
-      ;
     }
 
     final BottomNavigationView bottomNavigationView = findViewById(R.id.activity_back_navigation);
