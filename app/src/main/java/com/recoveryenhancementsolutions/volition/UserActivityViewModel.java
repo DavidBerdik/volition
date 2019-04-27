@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.YearMonth;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -127,22 +129,74 @@ public class UserActivityViewModel extends AndroidViewModel {
     return db.userActivitiesDao().getActivitiesByDate(date);
   }
 
-  /**
+   /**
    * Used to update data into the database asynchronously
    */
   private static class updateAsyncTask extends AsyncTask<UserActivityEntity, Void, Void> {
+     private static UserActivitiesDao asyncTaskDao;
 
-    updateAsyncTask(final UserActivitiesDao dao) {
-      asyncTaskDao = dao;
+     updateAsyncTask(final UserActivitiesDao dao) {
+       asyncTaskDao = dao;
+     }
+
+     @Override
+     protected Void doInBackground(final UserActivityEntity... params) {
+       asyncTaskDao.insertActivity(params[0]);
+       return null;
+     }
+   }
+
+   /**
+   * Retrieves all user activities from the database that took place on a given month this year.
+   *
+   * @param month An integer representing the desired month. (January = 1, December = 12)
+   * @return A LiveData object containing a list of user activities that took place on the month
+   * defined by the value of "month."
+   */
+  public LiveData<List<UserActivityEntity>> getActivitiesByMonth(final int month) {
+    // Calculate the lower bound month. It should be the month before the one passed in.
+    int lowerBoundMonth = month - 2;
+    int lowerBoundYear = Calendar.getInstance().get(Calendar.YEAR);
+    if (lowerBoundMonth == -1) {
+      // Wrap around to December of the previous year.
+      lowerBoundMonth = 11;
+      lowerBoundYear--;
     }
 
-    @Override
-    protected Void doInBackground(final UserActivityEntity... params) {
-      asyncTaskDao.insertActivity(params[0]);
-      return null;
+    // Create a lower bound calendar. (The last second of the last day of the previous month.)
+    final Calendar startCal = Calendar.getInstance();
+    startCal
+        .set(lowerBoundYear, lowerBoundMonth, getNumberOfDays(lowerBoundYear, lowerBoundMonth), 23,
+            59, 59);
+
+    // Calculate the upper bound month. It should be the month after the one passed in.
+    int upperBoundMonth = month;
+    int upperBoundYear = Calendar.getInstance().get(Calendar.YEAR);
+    if (upperBoundMonth == 12) {
+      // Wrap around to January of the next year.
+      upperBoundMonth = 0;
+      upperBoundYear++;
     }
 
-    private final UserActivitiesDao asyncTaskDao;
+    // Create an upper bound calendar. (The first second of the first day of the next month.)
+    final Calendar endCal = Calendar.getInstance();
+    endCal.set(upperBoundYear, upperBoundMonth, 1, 0, 0, 0);
+
+    // Return the LiveData object containing the list of qualifying activities.
+    return db.userActivitiesDao().getActivitiesByMonth(startCal.getTime(), endCal.getTime());
+  }
+
+  /**
+   * Determine the number of days in a month.
+   *
+   * @param year The desired year.
+   * @param month The desired month to find the number of days for. (1 = January)
+   * @return The number of days in the given month.
+   */
+  private int getNumberOfDays(final int year, final int month) {
+    Calendar cal = Calendar.getInstance();
+    cal.set(year, month - 1, 1);
+    return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
   }
 
   private VolitionDatabase db;
