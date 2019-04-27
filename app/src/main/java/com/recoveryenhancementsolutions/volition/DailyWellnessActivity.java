@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.res.Configuration;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,8 @@ public class DailyWellnessActivity extends AppCompatActivity {
       setContentView(R.layout.activity_daily_wellness_port);
     }
 
+    userActivityViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
+
     final NumberPicker np = findViewById(R.id.daily_wellness_number_picker);
     np.setMinValue(1);
     np.setMaxValue(10);
@@ -91,7 +94,9 @@ public class DailyWellnessActivity extends AppCompatActivity {
 
       final UserActivityEntity entity = new UserActivityEntity();
       entity.setDate(new Date());
+      entity.setDesc(String.format(getString(R.string.daily_wellness_activity_desc), rating));
 
+      userActivityViewModel.insertActivity(entity);
 
       final Toast toast = Toast
           .makeText(getApplicationContext(), R.string.daily_wellness_toast, Toast.LENGTH_LONG);
@@ -100,6 +105,7 @@ public class DailyWellnessActivity extends AppCompatActivity {
     }
   };
 
+  private UserActivityViewModel userActivityViewModel;
   private TextView dailyWellnessResultsView;
   private String[] outputs;
   private static int lastKnownValue = -1;
