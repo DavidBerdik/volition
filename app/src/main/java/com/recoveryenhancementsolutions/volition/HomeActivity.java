@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
   }
 
-  /*
+  /**
   *Makes AdminMenu
    */
   @Override
@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
     return true;
   }
 
-  /*
+  /**
   *Adds Functionality to AdminMenu
    */
   @Override

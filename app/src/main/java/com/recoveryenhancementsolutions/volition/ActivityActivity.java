@@ -28,7 +28,6 @@ public class ActivityActivity extends AppCompatActivity {
     viewModel.setTestDatabase(db);
     viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
   }
-
   /**
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
@@ -37,11 +36,6 @@ public class ActivityActivity extends AppCompatActivity {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
   }
-
-
-
-
-
   /**
    * OnCreate method that initializes objects and the screen to be used in the onClick methods.
    *
@@ -50,7 +44,6 @@ public class ActivityActivity extends AppCompatActivity {
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     final int orientation = getResources().getConfiguration().orientation;
     if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
       setContentView(R.layout.activity_activity_land);
@@ -60,14 +53,12 @@ public class ActivityActivity extends AppCompatActivity {
       setContentView(R.layout.activity_activity_port);
       isPortrait = true;
     }
-
     final Button teaButton = findViewById(R.id.TEA);
     final Button lessonButton = findViewById(R.id.Lesson);
     final Button journalButton = findViewById(R.id.Journal);
     final Button eduButton = findViewById(R.id.Edu);
     final Button wellnessButton = findViewById(R.id.DailyWellness);
     final Button cleanButton = findViewById(R.id.CleanTracker);
-
     //When clicked, this button will take the user to the TEA Activity
     teaButton.setOnClickListener(new OnClickListener() {
       @Override
@@ -118,16 +109,12 @@ public class ActivityActivity extends AppCompatActivity {
     });
 
     viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
-
     viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
 
     bottomNavigationView = findViewById(R.id.core_navigation);
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
     CoreNavigationHandler.link(bottomNavigationView, this, 2);
-
   }
-
-
   /**
    * Observes the treatment plan table in the database. Replaces the local treatment plan with an
    * updated copy. Compare number of times an activity needs to be completed as per the treatment
@@ -223,11 +210,8 @@ public class ActivityActivity extends AppCompatActivity {
       } catch (final NullPointerException e) {
         Log.d("Activity Activity", "onChanged: " + Log.getStackTraceString(e));
       }
-
-
     }
   };
-
   private TreatmentPlanViewModel viewModel;
   private boolean isPortrait = false;
   private BottomNavigationView bottomNavigationView;
