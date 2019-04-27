@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "7c80315f6ec641385536098cb24e6857",
+    "identityHash": "a8cb06d0b49cf57a4b3d76badbc048dd",
     "entities": [
       {
         "tableName": "UserActivityEntity",
@@ -128,26 +128,6 @@
         "primaryKey": {
           "columnNames": [
             "Id"
-          ],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "QuestionnaireEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
-        "fields": [
-          {
-            "fieldPath": "severityLevel",
-            "columnName": "severityLevel",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "severityLevel"
           ],
           "autoGenerate": false
         },
@@ -439,7 +419,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7c80315f6ec641385536098cb24e6857\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a8cb06d0b49cf57a4b3d76badbc048dd\")"
     ]
   }
 }
