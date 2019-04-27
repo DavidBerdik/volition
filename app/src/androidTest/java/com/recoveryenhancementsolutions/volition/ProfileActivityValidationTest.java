@@ -14,17 +14,23 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +45,20 @@ public class ProfileActivityValidationTest {
   @Rule
   public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(
       ProfileActivity.class);
+
+  /**
+   * Creates a testing environment to be used to the HomeActivity class with a test database.
+   */
+  @Before
+  public void loadTestEnvironment() {
+    // Create a test database instead of the app's real database.
+    mActivityTestRule.getActivity().setTestMode(db);
+    try {
+      Thread.sleep(1000);
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+  }
 
   @Test
   public void profileActivityValidationTest() {
@@ -273,4 +293,8 @@ public class ProfileActivityValidationTest {
       }
     };
   }
+  private static final String TAG = "ProfileActivityValidationTest";
+  final private VolitionDatabase db = Room
+      .inMemoryDatabaseBuilder(InstrumentationRegistry.getTargetContext(), VolitionDatabase.class)
+      .allowMainThreadQueries().build();
 }
