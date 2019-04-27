@@ -130,7 +130,7 @@ public class TreatmentExperienceAssessmentViewModel extends AndroidViewModel {
     final UserActivityEntity entity = new UserActivityEntity();
     entity.setDate(date);
     entity.setDesc("TEA completed");
-    entity.setNotes("");
+    entity.setNotes(remarksString);
     db.userActivitiesDao().insertActivity(entity);
   }
 
