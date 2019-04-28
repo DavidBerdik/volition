@@ -93,8 +93,8 @@ public class QuestionnaireActivity extends AppCompatActivity{
         layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window,null);
 
-        popupWindow = new PopupWindow(container, 300, 300, true);
-        popupWindow.showAtLocation(constraintLayout, Gravity.NO_GRAVITY, 500, 500);
+        popupWindow = new PopupWindow(container, 775, 840, true);
+        popupWindow.showAtLocation(constraintLayout, Gravity.CENTER, 0, -300);
 
         container.setOnTouchListener(new OnTouchListener() {
           @Override

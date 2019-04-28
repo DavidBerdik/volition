@@ -202,7 +202,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-    android:gravity="left"
+    android:gravity="center"
     android:text="@string/questionnaire_question_11"
     android:textColor="#555555"
     android:textSize="24sp"

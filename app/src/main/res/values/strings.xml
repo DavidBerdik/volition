@@ -201,4 +201,7 @@ same amount of opioid?</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
   <string name="questionnaire_read_more"> Read More</string>
+  <string name="popup_window"> Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: \n •Dysphoic mood. \n
+•Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n
+•Yawning. \n •Fever. \n •Insomnia</string>
 </resources>
