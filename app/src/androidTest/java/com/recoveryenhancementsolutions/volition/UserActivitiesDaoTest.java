@@ -7,6 +7,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
@@ -53,7 +54,8 @@ public class UserActivitiesDaoTest {
     final UserActivityEntity[] userActivityEntity = new UserActivityEntity[5];
 
     // Create 5 User Activity Dates
-    final int[] userActivityYear = {2019, 2017, 2001, 1970, 2038};
+    final int[] userActivityYear = {Calendar.getInstance().get(Calendar.YEAR), 2017, 2001, 1970,
+        2038};
     final int[] userActivityMonth = {3, 8, 10, 1, 1};
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
@@ -94,6 +96,25 @@ public class UserActivitiesDaoTest {
     assertEquals(userActivityEntity[1].getDate(),
         LiveDataTestUtility.getNestedLiveDataObj(userActivitiesDao.getActivitiesByDate(aug13))
             .get(0).getDate());
+
+    // Prepare to query the database for activities that take place in March.
+    // Create a calendar to generate two dates with.
+    final Calendar cal = Calendar.getInstance();
+
+    // Create a lower bound date. (The first second of first day of the month.)
+    cal.set(Calendar.getInstance().get(Calendar.YEAR), 2, 1, 0, 0, 0);
+    final Date lowerDate = cal.getTime();
+
+    // Create an upper bound date. (The last second of the last day of the month.)
+    cal.set(Calendar.getInstance().get(Calendar.YEAR), 2,
+        cal.getActualMaximum(Calendar.DAY_OF_MONTH),
+        23, 59, 59);
+    final Date upperDate = cal.getTime();
+
+    // Finally, query the database for activities that take place in March and verify the result.
+    assertEquals(1, LiveDataTestUtility
+        .getNestedLiveDataObj(userActivitiesDao.getActivitiesByMonth(lowerDate, upperDate)).get(0)
+        .getId());
   }
 
   private UserActivitiesDao userActivitiesDao;
