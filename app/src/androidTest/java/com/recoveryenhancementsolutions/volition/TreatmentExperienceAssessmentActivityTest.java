@@ -45,6 +45,7 @@ public class TreatmentExperienceAssessmentActivityTest {
     final Context context = InstrumentationRegistry.getTargetContext();
     db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class).allowMainThreadQueries()
         .build();
+    //VolitionDatabase.setTestDatabase(InstrumentationRegistry.getTargetContext());
     activityTestRule.getActivity().getViewModel().setTestDatabase(db);
   }
 
