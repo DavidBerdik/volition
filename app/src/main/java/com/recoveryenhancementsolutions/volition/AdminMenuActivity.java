@@ -103,7 +103,7 @@ public class AdminMenuActivity extends AppCompatActivity
     }
 
     private void toViewQuestionnaire() {
-        Intent intent = new Intent(AdminMenuActivity.this, QuestionnaireConfirmActivity.class);
+        Intent intent = new Intent(AdminMenuActivity.this, ViewSeverityLevelActivity.class);
         startActivity(intent);
     }
 
