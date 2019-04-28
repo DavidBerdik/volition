@@ -90,7 +90,8 @@ public class ReportUseActivity extends AppCompatActivity {
           Log.e("RepUseActivity", "Date: " +prevUseDate);
           days = DateConverter.daysBetween(prevUseDate.getTime(), useDate.getTime().getTime());
           //Check to see if the date selected is the same as or before the date already stored
-          if (days < 0) {
+          Log.e("ReportUseActivity", "'days' value: " +days);
+          if (days <= 0) {
             toast = Toast.makeText(getApplicationContext(),
                 "ERROR: Date selected comes before the previous date entered",
                 Toast.LENGTH_LONG);

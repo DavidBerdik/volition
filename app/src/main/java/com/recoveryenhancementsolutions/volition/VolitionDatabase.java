@@ -30,6 +30,7 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 /**
  * Class in which database entities and DAO instantiation methods are specified (see the TO-DO
