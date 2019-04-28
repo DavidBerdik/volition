@@ -1,135 +1,322 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.arch.persistence.room.Room;
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.Espresso;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.assertion.ViewAssertions;
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.internal.runner.junit4.statement.UiThreadStatement;
+
+import android.content.pm.ActivityInfo;
+import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.ViewInteraction;
+import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
-import java.util.Calendar;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Before;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.is;
+
 /**
- * Unit test for the "User Activity History" ViewModel.
+ * Unit test for all the UI elements in the Plan Activity screen in portrait mode
  */
+@LargeTest
 @RunWith(AndroidJUnit4.class)
 public class PlanActivityTest {
 
-  @Rule
-  public ActivityTestRule<PlanActivity> activityTestRule = new ActivityTestRule<>(
-      PlanActivity.class);
+    @Rule
+    public ActivityTestRule<PlanActivity> mActivityTestRule = new ActivityTestRule<>(PlanActivity.class);
+        //tests elements in the UI such as the textviews, scrollviews, and drop down menu
+    @Test
+    public void planActivityPortraitTest() {
+        //make sure test starts with portrait layout
+        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-  @Before
-  public void initDB() {
-    // Set the ViewModel to use a test database instead of the app's real database.
-    final Context context = InstrumentationRegistry.getTargetContext();
-    db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
-        .allowMainThreadQueries().build();
-    activityTestRule.getActivity().getViewModel().setTestDatabase(db);
+        //tests by tapping textview that is on the far right of the horizontal scrollview
+        ViewInteraction appCompatTextView = onView(
+                allOf(withId(R.id.textview_day_1), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_7),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                6)),
+                                1)));
+        appCompatTextView.perform(scrollTo(), click());
+        //tests by tapping textview to the left of the previous textview
+        ViewInteraction appCompatTextView2 = onView(
+                allOf(withId(R.id.textview_day_2), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_6),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                5)),
+                                1)));
+        appCompatTextView2.perform(scrollTo(), click());
+        //tests by tapping textview to the left of the previous textview
+        ViewInteraction appCompatTextView3 = onView(
+                allOf(withId(R.id.textview_day_3), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_5),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                4)),
+                                1)));
+        appCompatTextView3.perform(scrollTo(), click());
+        //tests by tapping textview to the left of the previous textview
+        ViewInteraction appCompatTextView4 = onView(
+                allOf(withId(R.id.textview_day_4), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_4),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                3)),
+                                1)));
+        appCompatTextView4.perform(scrollTo(), click());
+        //tests by tapping textview to the left of the previous textview
+        ViewInteraction appCompatTextView5 = onView(
+                allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_3),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                2)),
+                                1)));
+        appCompatTextView5.perform(scrollTo(), click());
+        //tests by tapping textview to the left of the previous textview
+        ViewInteraction appCompatTextView6 = onView(
+                allOf(withId(R.id.textview_day_6), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_2),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                1)),
+                                1)));
+        appCompatTextView6.perform(scrollTo(), click());
+        //tests by tapping textview to the left of the previous textview
+        ViewInteraction appCompatTextView7 = onView(
+                allOf(withId(R.id.textview_day_7), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_1),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                0)),
+                                1)));
+        appCompatTextView7.perform(scrollTo(), click());
+        //opens spinner and select an option
+        ViewInteraction appCompatSpinner = onView(
+                allOf(withId(R.id.spinner),
+                        childAtPosition(
+                                allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                3),
+                        isDisplayed()));
+        appCompatSpinner.perform(click());
 
-    final Calendar today = Calendar.getInstance();
-    today.set(Calendar.HOUR_OF_DAY, 0);
-    today.set(Calendar.MINUTE, 0);
-    today.set(Calendar.SECOND, 0);
-    today.set(Calendar.MILLISECOND, 0);
+        DataInteraction appCompatCheckedTextView = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(1);
+        appCompatCheckedTextView.perform(click());
+        //open spinner and select another option from the spinner
+        ViewInteraction appCompatSpinner2 = onView(
+                allOf(withId(R.id.spinner),
+                        childAtPosition(
+                                allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                3),
+                        isDisplayed()));
+        appCompatSpinner2.perform(click());
 
-    for (int i = 0; i < userActivityDesc.length; ++i) {
-      activityTestRule.getActivity().getViewModel()
-          .insertActivity(today.getTime(), userActivityDesc[i], userActivityNotes[i]);
-      today.add(Calendar.DAY_OF_MONTH, -1);
+        DataInteraction appCompatCheckedTextView2 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(2);
+        appCompatCheckedTextView2.perform(click());
+        //opens keyboard by tapping on edittext box and add some text
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.notes_edittext),
+                        childAtPosition(
+                                allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                2),
+                        isDisplayed()));
+        appCompatEditText.perform(click());
+        appCompatEditText.perform(replaceText("abcd"), closeSoftKeyboard());
+        //press the button "TRACK"
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.track_button), withText("TRACK"),
+                        childAtPosition(
+                                allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+        //change orientation of the app to landscape to test landscape layout
+        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        //taps rightmost textview
+        ViewInteraction appCompatTextView8 = onView(
+                allOf(withId(R.id.textview_day_1), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_7),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                6)),
+                                1)));
+        appCompatTextView8.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView9 = onView(
+                allOf(withId(R.id.textview_day_2), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_6),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                5)),
+                                1)));
+        appCompatTextView9.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView10 = onView(
+                allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_3),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                2)),
+                                1)));
+        appCompatTextView10.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView11 = onView(
+                allOf(withId(R.id.textview_day_3), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_5),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                4)),
+                                1)));
+        appCompatTextView11.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView12 = onView(
+                allOf(withId(R.id.textview_day_4), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_4),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                3)),
+                                1)));
+        appCompatTextView12.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView13 = onView(
+                allOf(withId(R.id.textview_day_7), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_1),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                0)),
+                                1)));
+        appCompatTextView13.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView14 = onView(
+                allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_3),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                2)),
+                                1)));
+        appCompatTextView14.perform(scrollTo(), click());
+        //taps textview to the left of the previous textview
+        ViewInteraction appCompatTextView15 = onView(
+                allOf(withId(R.id.textview_day_6), withText("Visit 1 Visit 1"),
+                        childAtPosition(
+                                allOf(withId(R.id.vertical_layout_2),
+                                        childAtPosition(
+                                                withClassName(is("android.support.constraint.ConstraintLayout")),
+                                                1)),
+                                1)));
+        appCompatTextView15.perform(scrollTo(), click());
+
+        ViewInteraction appCompatButton2 = onView(allOf(withId(R.id.track_button), withText("TRACK")));
+        appCompatButton2.perform(scrollTo(), click());
+        //open spinner
+        ViewInteraction appCompatSpinner3 = onView(withId(R.id.spinner));
+        appCompatSpinner3.perform(scrollTo(), click());
+        //select first option from spinner
+        DataInteraction appCompatCheckedTextView3 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(0);
+        appCompatCheckedTextView3.perform(scrollTo(), click());
+
+        //open spinner
+        ViewInteraction appCompatSpinner4 = onView(withId(R.id.spinner));
+        appCompatSpinner4.perform(scrollTo(), click());
+        //select second option from spinner
+        DataInteraction appCompatCheckedTextView4 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(1);
+        appCompatCheckedTextView4.perform(scrollTo(), click());
+
+        //open spinner
+        ViewInteraction appCompatSpinner5 = onView(withId(R.id.spinner));
+        appCompatSpinner5.perform(scrollTo(), click());
+        //select third option from spinner
+        DataInteraction appCompatCheckedTextView5 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(2);
+        appCompatCheckedTextView5.perform(scrollTo(), click());
+        //type into edittext some text
+        ViewInteraction appCompatEditText2 = onView(allOf(withId(R.id.notes_edittext), isDisplayed()));
+        appCompatEditText2.perform(replaceText("dcba"), closeSoftKeyboard());
+
     }
 
-    try {
-      UiThreadStatement.runOnUiThread(new Runnable() {
-        @Override
-        public void run() {
-          activityTestRule.getActivity().cycle(0);
-        }
-      });
-    } catch (Throwable t) {
-      throw new AssertionError("Could not prepare test: " + t.getMessage());
+    private static Matcher<View> childAtPosition(
+            final Matcher<View> parentMatcher, final int position) {
+
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("Child at position " + position + " in parent ");
+                parentMatcher.describeTo(description);
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                        && view.equals(((ViewGroup) parent).getChildAt(position));
+            }
+        };
     }
-  }
-
-  /**
-   * Verifies that each calendar day is displaying the correct activity.
-   */
-  @Test
-  public void testCalendar() {
-    for (int i = 0; i < activityTestRule.getActivity().getDayCount(); i++) {
-      while (!activityTestRule.getActivity().didActivitiesLoad(i)) {
-      }
-
-      String value = activityTestRule.getActivity().getCalendarBuffer(i);
-
-      Log.i(logTag, "Label " + i + "; expect:\"" + userActivityDesc[i]
-          + "\" got:\"" + value + '"');
-
-      Assert.assertEquals(userActivityDesc[i], value);
-    }
-  }
-
-  /**
-   * Verifies that opening a calendar day opens the notes for the correct day.
-   */
-  @Test
-  public void testNoteView() {
-    final int ids[] = {
-        R.id.textview_day_1,
-        R.id.textview_day_2,
-        R.id.textview_day_3,
-        R.id.textview_day_4,
-        R.id.textview_day_5,
-        R.id.textview_day_6,
-        R.id.textview_day_7
-    };
-
-    for (int i = 0; i < ids.length; ++i) {
-      Espresso.onView(ViewMatchers.withId(ids[i]))
-          .perform(ViewActions.scrollTo(), ViewActions.click());
-      Espresso.onView(ViewMatchers.withText(activityTestRule.getActivity().getNotesBuffer(i)))
-          .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-      Espresso.pressBack();
-    }
-  }
-
-  private final String logTag = "PlanActivityTest";
-  private final String[] userActivityDesc = {
-      "Test 1",
-      "Test 2",
-      "Test 3",
-      "Test 4",
-      "Test 5",
-      "Test 6",
-      "Test 7"
-  };
-  private final String[] userActivityNotes = {
-      "Note 1",
-      "Note 2",
-      "Note 3",
-      "Note 4",
-      "Note 5",
-      "Note 6",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices tellus at vehicula"
-          + "imperdiet. Pellentesque eu libero in ipsum ultrices pharetra at vitae lacus. Proin"
-          + "pellentesque, velit in luctus dapibus, sapien odio blandit massa, at egestas risus"
-          + "velit vel ex. Vivamus quis commodo purus. Vestibulum ante ipsum primis in faucibus"
-          + "orci luctus et ultrices posuere cubilia Curae; Pellentesque vehicula eget ante eget"
-          + "maximus. Pellentesque id magna sem. Nunc a nisi consequat, lacinia erat at, dignissim"
-          + "mi. Curabitur elementum quis lacus et facilisis. Nunc dictum tristique turpis. Mauris"
-          + "ac eleifend risus, id ullamcorper ante. Vivamus ac erat mauris. Pellentesque habitant"
-          + "morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ac"
-          + "arcu eu felis interdum feugiat."
-  };
-  private VolitionDatabase db;
 }

@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog.Builder;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -7,11 +8,14 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
@@ -22,14 +26,17 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
- * Class for running activity_profileich includes two pop-up calendars
+ * Class for running activity_profile which includes two pop-up calendars
  */
 
 public class ProfileActivity extends AppCompatActivity implements OnItemSelectedListener {
@@ -104,6 +111,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioHeroin.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseHeroin(true);
         }
       }
@@ -115,6 +123,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioOpiates.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseOpiateOrSynth(true);
         }
       }
@@ -126,6 +135,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioAlcohol.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseAlcohol(true);
         }
       }
@@ -137,6 +147,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioCocaine.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseCrackOrCocaine(true);
         }
       }
@@ -148,6 +159,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioMarijuana.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseMarijuana(true);
         }
       }
@@ -159,6 +171,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioMeth.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseMethamphetamine(true);
         }
       }
@@ -170,6 +183,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioBen.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseBenzo(true);
         }
       }
@@ -181,6 +195,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioTranquilizers.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseNonBeznoTrang(true);
         }
       }
@@ -192,6 +207,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioSedatives.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseBarbituresOrHypno(true);
         }
       }
@@ -203,6 +219,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioInhalants.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           data.setUseInhalants(true);
         }
       }
@@ -214,6 +231,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     radioOther.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
         if (((RadioButton) v).isChecked()) {
+          setAllDrugListenersFalse();
           findViewById(R.id.enter_other).setVisibility(View.VISIBLE);
           findViewById(R.id.enter_other).requestFocus();
         }
@@ -322,9 +340,8 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-    setContentView(R.layout.activity_create_profile);
-    findViewById(R.id.enter_other).setVisibility(View.GONE);
     setContentView(R.layout.activity_profile);
+    findViewById(R.id.enter_other).setVisibility(View.GONE);
     bottomNavigationView = findViewById(R.id.core_navigation);
 
     /*
@@ -350,7 +367,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     addAllListeners();
 
     final Calendar dobCalendar = Calendar.getInstance();
-
     final DatePickerDialog.OnDateSetListener dateOfBirthListener = new OnDateSetListener() {
       /**
        * Event handler for when a date of birth is chosen by the user.
@@ -365,6 +381,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         dobCalendar.set(Calendar.MONTH, month);
         dobCalendar.set(Calendar.DAY_OF_MONTH, day);
         final EditText dob = findViewById(R.id.date_of_birth);
+        view.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
         dob.setText(DateFormat.getDateInstance().format(dobCalendar.getTime()));
       }
     };
@@ -383,6 +400,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         cleanDateCalendar.set(Calendar.MONTH, month);
         cleanDateCalendar.set(Calendar.DAY_OF_MONTH, day);
         final EditText cleanDate = findViewById(R.id.clean_date);
+        view.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
         cleanDate.setText(DateFormat.getDateInstance().format(cleanDateCalendar.getTime()));
       }
     };
@@ -398,6 +416,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             dateOfBirthListener, dobCalendar.get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
             dobCalendar.get(Calendar.DAY_OF_MONTH));
+        pickDate.getDatePicker().setMaxDate(new Date().getTime());
         pickDate.show();
       }
 
@@ -414,6 +433,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         final DatePickerDialog pickDate = new DatePickerDialog(ProfileActivity.this,
             cleanDateListener, cleanDateCalendar.get(Calendar.YEAR),
             cleanDateCalendar.get(Calendar.MONTH), cleanDateCalendar.get(Calendar.DAY_OF_MONTH));
+        pickDate.getDatePicker().setMaxDate(new Date().getTime());
         pickDate.show();
       }
 
@@ -444,6 +464,16 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
 
         demogDataViewModel.insertDemographicData(data);
 
+        findViewById(R.id.name).clearFocus();
+        findViewById(R.id.date_of_birth).clearFocus();
+        findViewById(R.id.clean_date).clearFocus();
+        findViewById(R.id.gender_spinner).clearFocus();
+        findViewById(R.id.use_type_spinner).clearFocus();
+        findViewById(R.id.user_type).clearFocus();
+        findViewById(R.id.drug_selection).clearFocus();
+        findViewById(R.id.enter_other).clearFocus();
+
+        //Intent goes to the next activity in the Work Flow.
         /*
         If the activity is in edit mode, send the user back to the previous activity and if the
         activity is not in edit mode, send the user to the questionnaire.
@@ -451,7 +481,81 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         if (editMode) {
           onBackPressed();
         } else {
-          startActivity(new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class));
+          final Spinner genderSpinner = findViewById(R.id.gender_spinner);
+          final Spinner useDisorderSpinner = findViewById(R.id.use_type_spinner);
+          final RadioGroup user_type_radio_group = findViewById(R.id.user_type);
+          final RadioGroup drug_selection_radio_group = findViewById(R.id.drug_selection);
+          final RadioButton radio_other = findViewById(R.id.radioOther);
+          if (TextUtils.isEmpty(((EditText) findViewById(R.id.name)).getText())) {
+            ((EditText) findViewById(R.id.name)).setError("Name is required! ");
+            findViewById(R.id.name).setFocusable(true);
+            findViewById(R.id.name).requestFocus();
+            Toast.makeText(getApplicationContext(), "Name is empty", Toast.LENGTH_SHORT).show();
+          } else if (TextUtils.isEmpty(((EditText) findViewById(R.id.date_of_birth)).getText())) {
+            ((EditText) findViewById(R.id.name)).setError(null);
+            findViewById(R.id.date_of_birth).setFocusableInTouchMode(true);
+            findViewById(R.id.date_of_birth).requestFocus();
+            ((EditText) findViewById(R.id.date_of_birth)).setError("Date of birth is required! ");
+            Toast.makeText(getApplicationContext(), "Date of birth is required", Toast.LENGTH_SHORT)
+                .show();
+          } else if (TextUtils.isEmpty(((EditText) findViewById(R.id.clean_date)).getText())) {
+            ((EditText) findViewById(R.id.date_of_birth)).setError(null);
+            findViewById(R.id.clean_date).setFocusable(true);
+            findViewById(R.id.clean_date).requestFocus();
+            ((EditText) findViewById(R.id.clean_date)).setError("Clean date is required! ");
+            Toast.makeText(getApplicationContext(), "Clean date is required", Toast.LENGTH_SHORT)
+                .show();
+          } else if (genderSpinner.getSelectedItem().toString().equals("Select Gender")) {
+            ((EditText) findViewById(R.id.clean_date)).setError(null);
+            findViewById(R.id.gender_spinner).setFocusableInTouchMode(true);
+            findViewById(R.id.gender_spinner).requestFocus();
+            TextView errorText = (TextView) genderSpinner.getSelectedView();
+            errorText.setError("Gender required!");
+            errorText.setTextColor(Color.RED);
+            Toast.makeText(getApplicationContext(), "Gender required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (useDisorderSpinner.getSelectedItem().toString().equals("Select Type")) {
+            TextView errorTextPrev = (TextView) genderSpinner.getSelectedView();
+            errorTextPrev.setError(null);
+            findViewById(R.id.use_type_spinner).setFocusableInTouchMode(true);
+            findViewById(R.id.use_type_spinner).requestFocus();
+            TextView errorText = (TextView) useDisorderSpinner.getSelectedView();
+            errorText.setError("Use type required!");
+            errorText.setTextColor(Color.RED);
+            Toast.makeText(getApplicationContext(), "Use type required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (user_type_radio_group.getCheckedRadioButtonId() == -1) {
+            TextView errorTextPrev = (TextView) useDisorderSpinner.getSelectedView();
+            errorTextPrev.setError(null);
+            findViewById(R.id.user_type).setFocusableInTouchMode(true);
+            findViewById(R.id.user_type).requestFocus();
+            TextView userType = findViewById(R.id.are_you);
+            userType.setError("User type required!");
+            Toast.makeText(getApplicationContext(), "User type required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (drug_selection_radio_group.getCheckedRadioButtonId() == -1) {
+            TextView errorTextPrev = findViewById(R.id.are_you);
+            errorTextPrev.setError(null);
+            findViewById(R.id.drug_selection).setFocusableInTouchMode(true);
+            findViewById(R.id.drug_selection).requestFocus();
+            TextView userType = findViewById(R.id.drug_of_choice);
+            userType.setError("Drug of choice required!");
+            Toast.makeText(getApplicationContext(), "Drug of choice required!", Toast.LENGTH_SHORT)
+                .show();
+          } else if (radio_other.isChecked() && TextUtils
+              .isEmpty(((EditText) findViewById(R.id.enter_other)).getText())) {
+            ((EditText) findViewById(R.id.enter_other)).setError("Other drug is required! ");
+            findViewById(R.id.enter_other).setFocusableInTouchMode(true);
+            findViewById(R.id.enter_other).requestFocus();
+            Toast.makeText(getApplicationContext(), "Other drug is required", Toast.LENGTH_SHORT)
+                .show();
+          } else {
+            TextView errorTextPrev = findViewById(R.id.drug_of_choice);
+            errorTextPrev.setError(null);
+            @SuppressLint("CutPasteId") TextView errorTextPrev2 = findViewById(R.id.enter_other);
+            errorTextPrev2.setError(null);
+            startActivity(new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class));
+          }
         }
       }
     });
@@ -462,6 +566,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
      */
     if (editMode) {
       demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
+      findViewById(R.id.enter_other).setVisibility(View.VISIBLE);
     }
 
   }
@@ -476,7 +581,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     super.onResume();
     if (editMode) {
       // Set the correct core navigation button on the menu and make it functional.
-      bottomNavigationView.setSelectedItemId(R.id.core_navigation);
+      bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
       CoreNavigationHandler.link(bottomNavigationView, this, 4);
     } else {
       // Make the core navigation menu invisible and adjust the master layout's margins.
@@ -575,6 +680,34 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
       }
     }
   };
+
+  /**
+   * Sets all listeners to false so that drug choice stays consistent
+   */
+  private void setAllDrugListenersFalse(){
+    radioHeroin = findViewById(R.id.radioHeroin);
+    radioInhalants = findViewById(R.id.radioInhalants);
+    radioSedatives = findViewById(R.id.radioSedatives);
+    radioTranquilizers = findViewById(R.id.radioTranquilizers);
+    radioBen = findViewById(R.id.radioBen);
+    radioMeth = findViewById(R.id.radioMeth);
+    radioMarijuana = findViewById(R.id.radioMarijuana);
+    radioAlcohol = findViewById(R.id.radioAlcohol);
+    radioCocaine = findViewById(R.id.radioCocaine);
+    radioOpiates = findViewById(R.id.radioOpiates);
+    radioOther = findViewById(R.id.radioOther);
+
+    data.setUseHeroin(false);
+    data.setUseInhalants(false);
+    data.setUseBarbituresOrHypno(false);
+    data.setUseNonBeznoTrang(false);
+    data.setUseBenzo(false);
+    data.setUseMethamphetamine(false);
+    data.setUseMarijuana(false);
+    data.setUseAlcohol(false);
+    data.setUseCrackOrCocaine(false);
+    data.setUseOpiateOrSynth(false);
+  }
 
   private final DemographicDataEntity data = new DemographicDataEntity();
   private RadioButton radioSupport;

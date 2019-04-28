@@ -1,16 +1,24 @@
 <resources>
   <string name="app_name">Volition</string>
-  <string name="button_yes">Yes</string>
-  <string name="button_no">No</string>
   <string name="title_home">Home</string>
-  <string name="core_navigation_home">Home</string>
-  <string name="core_navigation_activity">Activity</string>
-  <string name="core_navigation_plan">Plan</string>
   <string name="core_navigation_treatmentPlan">Treatment Plan</string>
   <string name="core_navigation_profile">Profile</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="nav_header_desc">Navigation header</string>
+  <string name="drawer_menu_edit_profile">Edit Profile</string>
+  <string name="drawer_menu_edit_treatment_plan">Edit Treatment Plan</string>
+  <string name="drawer_menu_view_classification">View Classification</string>
+  <string name="drawer_menu_retake_questionnaire">Retake Questionnaire</string>
+  <string name="drawer_menu_clinical_overview">View Clinical Overview</string>
+  <string name="button_yes">Yes</string>
+  <string name="button_no">No</string>
   <string name="create_profile_date_of_birth">Enter Date of Birth</string>
   <string-array name="create_profile_gender_array">
     <item>Select Gender</item>
@@ -110,7 +118,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="severity_severe_symptoms">Presence of 6 or more symptoms.</string>
   <string name="severity_severe">Severe</string>
   <string name="severity_plan"> View Medication Details </string>
-  <string name="severity_desc"> Company logo </string>
   <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
   <string name="medication_choice_abstain_button"> Abstain</string>
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
@@ -146,7 +153,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
   <string name="treatment_assessment_title"> TEA Page</string>
-  <string name="clean_tracker_title">Clean Tracker</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -162,7 +168,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="add"> + </string>
   <string name="sub"> - </string>
   <string name="update"> update</string>
-  <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
   <string name="counseling">Counseling</string>
   <string name="medManagement">Medication Management</string>
   <string name="cleanTimeTracking">Clean Time Tracking</string>
@@ -171,14 +176,15 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="lessonPlanner">Lesson Planner</string>
   <string name="treatmentEffectivenessAssessment">Treatment Plan Effectiveness Assessment</string>
   <string name="readResponseJournal">Read and Response Journal</string>
-  <string name="buprenorphine_button"> Buprenorphine</string>
-  <string name="abstain_button"> Abstain</string>
-  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
   <string name="treatmentPlan_name">Recommended Treatment Plan</string>
   <string name="finish_button">Finish</string>
   <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
   <string name="daily_wellness_title">Report your Daily Wellness</string>
   <string name="daily_wellness_rating">Your Rating:</string>
+  <string name="daily_wellness_submit_button">Submit Rating</string>
+  <string name="daily_wellness_toast">Recorded your daily wellness! Thank you!</string>
+  <string name="daily_wellness_activity_desc">Daily Wellness</string>
+  <string name="daily_wellness_activity_note">Recorded a %d/10.</string>
   <string-array name="daily_wellness_result_strings">
     <item>1 (Poor)</item>
     <item>2 (Poor)</item>
@@ -192,11 +198,17 @@ Withdrawal defined as three or more of the following symptoms develop within min
     <item>10 (Great)</item>
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
-  <string name="activity_bottom_border"> Bottom Border</string>
   <string name="activity_startup_landing">Welcome To Your Recovery</string>
   <string name="activity_startup_create">Create Profile</string>
-  <string name="volition">Volition</string>
-  <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
+  <string name="plan_month_progress_textview">Month Progress</string>
+  <string name="plan_center_day_textview"> </string>
+  <string name="plan_track_button">TRACK</string>
+  <string name="plan_notes_edittext">Notes here</string>
+  <string-array name="plan_spinner_array">
+    <item>Therapy Visit</item>
+    <item>Group Visit</item>
+    <item>Med Compliance</item>
+  </string-array>
 </resources>
