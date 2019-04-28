@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/resBackground"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.562"
+    app:srcCompat="@drawable/pic"/>
+  <TextView
+    android:id="@+id/lessonTitle"
+    android:layout_width="265dp"
+    android:layout_height="163dp"
+    android:layout_marginTop="300dp"
+    android:layout_marginBottom="508dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:gravity="center"
+    android:text="@string/lesson_title"
+    android:textColor="#000000"
+    android:textSize="55sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.762"/>
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/activity_back_navigation"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:background="@color/res_green"
+    app:elevation="0dp"
+    app:itemBackground="@color/res_green"
+    app:itemHorizontalTranslationEnabled="false"
+    app:itemIconTint="@android:color/black"
+    app:itemTextColor="@android:color/black"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/activity_back_navigation"/>
+</android.support.constraint.ConstraintLayout>
