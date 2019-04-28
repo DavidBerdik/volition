@@ -9,6 +9,22 @@
   tools:context=".QuestionnaireActivity">
 
 
+  <ImageView
+    android:id="@+id/resBackground"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="160dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.562"
+    app:srcCompat="@drawable/pic"/>
   <TextView
     android:id="@+id/questionOne"
     android:layout_width="348dp"
@@ -26,20 +42,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.113"/>
-  <ImageView
-    android:id="@+id/imageView"
-    android:layout_width="0dp"
-    android:layout_height="314dp"
-    android:layout_weight="1"
-    android:layout_marginTop="8dp"
-    android:padding="40dp"
-    android:alpha=".5"
-    android:contentDescription="@string/severity_desc"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/questionEight"
-    app:srcCompat="@drawable/pic"/>
   <TextView
     android:id="@+id/questionTwo"
     android:layout_width="356dp"
@@ -230,6 +232,7 @@
     android:layout_below="@id/questionOne"
     android:background="@color/res_green"
     android:text="@string/button_yes"
+    android:textSize="16sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.78"
@@ -246,6 +249,7 @@
     android:layout_below="@id/questionOne"
     android:background="@color/res_green"
     android:text="@string/button_no"
+    android:textSize="16sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.216"

@@ -15,13 +15,13 @@
     android:layout_marginBottom="160dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:contentDescription="@string/activity_res_logo"
     android:alpha=".33"
+    android:contentDescription="@string/activity_res_logo"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.451"
+    app:layout_constraintVertical_bias="0.564"
     app:srcCompat="@drawable/pic"/>
   <Button
     android:id="@+id/report_use_yes"
