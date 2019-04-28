@@ -12,7 +12,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import java.util.Calendar;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -93,6 +92,13 @@ public class PlanActivityTest {
         R.id.textview_day_6,
         R.id.textview_day_7
     };
+
+    // Delay thread for one second to allow slower devices to catch up.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      Log.e(logTag, Log.getStackTraceString(e));
+    }
 
     for (int i = 0; i < ids.length; ++i) {
       Espresso.onView(ViewMatchers.withId(ids[i]))
