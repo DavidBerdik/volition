@@ -95,9 +95,7 @@ need for increased amounts of opioids to
 achieve intoxication or desired effect or a
 diminished effect with continued use of the
 same amount of opioid?</string>
-  <string name="questionnaire_question_11"> (11/11) Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms? \n
-Withdrawal defined as three or more of the following symptoms develop within minutes to several days following last use: •Dysphoic mood. \n
-•Nausea or vomiting \n •Muscle aches. \n •Lacrimation or rhinorrhea. \n •Pupillary dilation, piloerection, or swearing. \n •Diarrhea. \n •Yawning. \n •Fever. \n •Insomnia.</string>
+  <string name="questionnaire_question_11">(11/11) Do you experience withdrawal from opioids or need to take opioids to relieve or avoid withdrawal symptoms?</string>
   <string name="severity_total"> Total Score: </string>
   <string name="severity_specifier"> Specifier: </string>
   <string name="severity_current"> Current Severity: </string>
@@ -202,4 +200,5 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
+  <string name="questionnaire_read_more"> Read More</string>
 </resources>

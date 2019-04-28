@@ -2,10 +2,19 @@ package com.recoveryenhancementsolutions.volition;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class QuestionnaireActivity extends AppCompatActivity{
@@ -75,17 +84,30 @@ public class QuestionnaireActivity extends AppCompatActivity{
     setContentView(R.layout.activity_questionnaire);
     final Button yesButton = findViewById(R.id.YESbtn);
     final Button noButton = findViewById(R.id.NObtn);
-    final TextView txt = findViewById(R.id.questionEleven);
+    readButton = findViewById(R.id.readMoreBtn);
+    constraintLayout = findViewById(R.id.constraint);
 
-    txt.setTooltipText("•Dysphoic mood "
-              + "•Nausea or vomiting "
-              + "•Muscle aches "
-              + "•Lacrimation or rhinorrhea "
-              + "•Pupillary dilation, piloerection, or swearing \n"
-              + "•Diarrhea "
-              + "•Yawning "
-              + "•Fever "
-              + "•Insomnia.");
+    readButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window,null);
+
+        popupWindow = new PopupWindow(container, 300, 300, true);
+        popupWindow.showAtLocation(constraintLayout, Gravity.NO_GRAVITY, 500, 500);
+
+        container.setOnTouchListener(new OnTouchListener() {
+          @Override
+          public boolean onTouch(View v, MotionEvent event) {
+            popupWindow.dismiss();
+            return true;
+          }
+        });
+
+
+      }
+    });
+
 
     questionnaireActivityViewModel = ViewModelProviders.of(this)
         .get(QuestionnaireActivityViewModel.class);
@@ -203,7 +225,10 @@ public class QuestionnaireActivity extends AppCompatActivity{
   /**
    * Method to activate back button after question one or deactivate it if it is on question one.
    */
-
+  private ConstraintLayout constraintLayout;
+  private Button readButton;
+  private PopupWindow popupWindow;
+  private LayoutInflater layoutInflater;
   private QuestionnaireActivityViewModel questionnaireActivityViewModel;
   private TextView[] qs = new TextView[11];
 }
