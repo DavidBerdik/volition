@@ -490,4 +490,4 @@ public class PlanActivity extends AppCompatActivity {
   private BottomNavigationView bottomNavigationView;
   private UserActivityViewModel actViewModel;
   private int dayNo;
-  }
+}

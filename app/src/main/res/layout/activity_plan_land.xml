@@ -79,11 +79,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay7"/>
+            android:onClick="clickDay7"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -111,11 +111,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay6"/>
+            android:onClick="clickDay6"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
 
 
@@ -144,11 +144,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay5"/>
+            android:onClick="clickDay5"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -176,11 +176,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay4"/>
+            android:onClick="clickDay4"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -208,11 +208,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay3"/>
+            android:onClick="clickDay3"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -240,11 +240,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay2"/>
+            android:onClick="clickDay2"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -272,11 +272,11 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:textAlignment="center"
-            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay1"/>
+            android:onClick="clickDay1"
+            android:textAlignment="center"
+            android:textSize="15sp"/>
         </LinearLayout>
       </android.support.constraint.ConstraintLayout>
     </LinearLayout>
