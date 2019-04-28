@@ -14,6 +14,7 @@ import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -59,7 +60,7 @@ public class CoreNavigationHandlerTest {
     try {
       Thread.sleep(700);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(), PlanActivity.class.getName());
@@ -72,7 +73,7 @@ public class CoreNavigationHandlerTest {
     try {
       Thread.sleep(700);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(), HomeActivity.class.getName());
@@ -93,7 +94,7 @@ public class CoreNavigationHandlerTest {
     try {
       Thread.sleep(700);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(), ProfileActivity.class.getName());
@@ -106,7 +107,7 @@ public class CoreNavigationHandlerTest {
     try {
       Thread.sleep(700);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(), HomeActivity.class.getName());
@@ -127,7 +128,7 @@ public class CoreNavigationHandlerTest {
     try {
       Thread.sleep(700);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(), ActivityActivity.class.getName());
@@ -140,7 +141,7 @@ public class CoreNavigationHandlerTest {
     try {
       Thread.sleep(700);
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Log.e(TAG, Log.getStackTraceString(e));
     }
 
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(), HomeActivity.class.getName());
@@ -164,4 +165,6 @@ public class CoreNavigationHandlerTest {
       }
     };
   }
+
+  private static final String TAG = "CoreNavigationHandlerTest";
 }
