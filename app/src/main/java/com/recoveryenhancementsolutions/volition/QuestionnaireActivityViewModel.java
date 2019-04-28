@@ -152,11 +152,11 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
    */
   public void setSeverityString() {
     if (yesAnswers <= 3) {
-      severityString = "MILD";
+      severityString = mild;
     } else if (yesAnswers <= 5) {
-      severityString = "MODERATE";
+      severityString = moderate;
     } else {
-      severityString = "SEVERE";
+      severityString = severe;
     }
   }
 
@@ -189,5 +189,25 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
   private VolitionDatabase db;
   private int displayState = 0;
   private int yesAnswers = 0;
+
+  /**
+   * String representing the user's severity level.
+   */
   private String severityString;
+
+  /**
+   * String representing mild severity.
+   */
+  private final String mild = "MILD";
+
+  /**
+   * String representing moderate severity.
+   */
+  private final String moderate = "MODERATE";
+
+  /**
+   * String representing severe severity.
+   */
+  private final String severe = "SEVERE";
+
 }

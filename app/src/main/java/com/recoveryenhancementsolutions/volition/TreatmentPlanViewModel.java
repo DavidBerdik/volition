@@ -25,8 +25,7 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
-   * Inserts a new treatmentPlanEntity into the database. Static method for insertion of the
-   * treatmentPlan from another class.
+   * Inserts a new treatmentPlanEntity into the database.
    *
    * @param treatmentPlanEntity The new treatment plan to be inserted.
    */
@@ -35,7 +34,9 @@ public class TreatmentPlanViewModel extends AndroidViewModel {
   }
 
   /**
-   * Inserts a new treatment plan into the database.
+   * Updates an existing treatment plan in the database.
+   *
+   * @param treatmentPlanEntity The existing treatment plan to be updated.
    */
   public void updateTreatmentPlan(TreatmentPlanEntity treatmentPlanEntity) {
     new updateAsyncTask(treatmentPlanDao).execute(treatmentPlanEntity);

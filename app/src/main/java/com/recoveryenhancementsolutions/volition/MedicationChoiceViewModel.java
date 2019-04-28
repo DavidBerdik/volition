@@ -46,8 +46,8 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   }
 
   /**
-   * Inserts a medication into the MedicationChoice table. Calls treatmentPlanEntity to generate and
-   * insert a new Treatment plan.
+   * Inserts a medication into the MedicationChoice table. Calls a method on the Treatment plan DAO
+   * to generate a new Treatment Plan insert a new Treatment plan.
    *
    * @param medication Medication object for the View Model.
    */
@@ -59,7 +59,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
 
 
   /**
-   * Sets the severity level. Statically called from QuestionnaireActivityViewModel.
+   * Sets the user's severity level.
    *
    * @param newSeverityLevel A String representing the user's severity level. Passed from the
    * Questionnaire.
@@ -150,8 +150,7 @@ public class MedicationChoiceViewModel extends AndroidViewModel {
   }
 
   /**
-   * Inserts a new treatmentPlanEntity into the database. Static method for insertion of the
-   * treatmentPlan from another class.
+   * Inserts a new treatmentPlanEntity into the database asynchronously.
    *
    * @param treatmentPlanEntity The new treatment plan to be inserted.
    */
