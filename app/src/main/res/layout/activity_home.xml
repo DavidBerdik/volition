@@ -64,7 +64,7 @@
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textSize="35sp"
-    android:textColor="@android:color/black"
+    android:textColor="@color/text_regular"
     app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
