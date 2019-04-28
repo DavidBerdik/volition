@@ -45,7 +45,7 @@ public class DateConverter {
    * @return Integer representing the number of days between start and end.
    */
   public static int daysBetween(Date start, Date end) {
-    return Math.max(0, (int) ((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
+    return (int) ((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
   }
 
   /**
@@ -56,6 +56,6 @@ public class DateConverter {
    * @return Integer representing the number of days between start and end.
    */
   public static int daysBetween(Long start, Long end) {
-    return Math.max(0, (int) ((end - start) / (1000 * 60 * 60 * 24)));
+    return (int) ((end - start) / (1000 * 60 * 60 * 24));
   }
 }

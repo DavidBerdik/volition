@@ -39,7 +39,7 @@ public class DateConverterTest {
       assertEquals(364, DateConverter.daysBetween(janFirst2019, decThirtyFirst2019));
       assertEquals(365, DateConverter.daysBetween(janFirst2020, decThirtyFirst2020));
       assertEquals(356, DateConverter.daysBetween(janTenth2019, janFirst2020));
-      assertEquals(0, DateConverter.daysBetween(janTenth2019, janFirst2019));
+      assertEquals(-9, DateConverter.daysBetween(janTenth2019, janFirst2019));
     } catch (ParseException e) {
       fail("Improper formatting used on DateConverterTest.parseDateFromString method.");
     }
@@ -66,7 +66,7 @@ public class DateConverterTest {
           DateConverter.daysBetween(janFirst2020.getTime(), decThirtyFirst2020.getTime()));
       assertEquals(356,
           DateConverter.daysBetween(janTenth2019.getTime(), janFirst2020.getTime()));
-      assertEquals(0,
+      assertEquals(-9,
           DateConverter.daysBetween(janTenth2019.getTime(), janFirst2019.getTime()));
     } catch (ParseException e) {
       fail("Improper formatting used on DateConverterTest.parseDateFromString method.");

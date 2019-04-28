@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ScrollView01"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <LinearLayout
+    android:id="@+id/instructions_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbars="vertical">
+    <TextView
+      android:id="@+id/plan_note_view_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="16dp"/>
+    <Button
+      android:id="@+id/plan_note_view_done"
+      style="@style/Widget.AppCompat.Button.Colored"
+      android:layout_width="88dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_gravity="right"
+      android:background="@color/res_green"
+      android:text="@string/plan_note_view_done"
+      android:textColor="@android:color/black"/>
+  </LinearLayout>
+</ScrollView>

@@ -3,9 +3,12 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
+import android.view.MenuItem;
 import android.widget.TextView;
+
 import java.util.Date;
 
 /**
@@ -13,7 +16,8 @@ import java.util.Date;
  * document. Displays a generic welcoming message to the client as well as the number of days that
  * they have been clean. Includes a navigation menu at the bottom.
  */
-public class HomeActivity extends AppCompatActivity {
+
+public class HomeActivity extends DrawerMenuActivity {
 
   /**
    * Retrieves the text stored in daysCleanMessage. Only needed for testing.
@@ -36,6 +40,24 @@ public class HomeActivity extends AppCompatActivity {
     demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
   }
 
+
+  @Override
+  protected void onCreate(final Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_drawer_menu);
+
+    buttonTestItem = findViewById(R.id.buttonTestItem);
+    daysCleanMessage = findViewById(R.id.clean);
+
+    final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
+        .get(DemographicDataViewModel.class);
+    demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
+
+    bottomNavigationView = findViewById(R.id.core_navigation);
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
+    CoreNavigationHandler.link(bottomNavigationView, this, 1);
+  }
+
   /**
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
@@ -45,20 +67,6 @@ public class HomeActivity extends AppCompatActivity {
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
   }
 
-  @Override
-  protected void onCreate(final Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_home);
-    daysCleanMessage = findViewById(R.id.clean);
-
-    final DemographicDataViewModel demographicDataViewModel = ViewModelProviders.of(this)
-        .get(DemographicDataViewModel.class);
-    demographicDataViewModel.getLastCleanDate().observe(this, dateObserver);
-
-    bottomNavigationView = findViewById(R.id.core_navigation);
-    bottomNavigationView.setSelectedItemId(R.id.core_navigation_home);
-    CoreNavigationHandler.link(bottomNavigationView, this);
-  }
 
   private Observer<Date> dateObserver = new Observer<Date>() {
     @Override
@@ -75,6 +83,26 @@ public class HomeActivity extends AppCompatActivity {
     }
   };
 
+
+  private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
+      switch (item.getItemId()) {
+        case R.id.core_navigation_home:
+          buttonTestItem.setText(R.string.core_navigation_home);
+          return true;
+        case R.id.core_navigation_activity:
+          buttonTestItem.setText(R.string.core_navigation_activity);
+          return true;
+        case R.id.core_navigation_plan:
+          buttonTestItem.setText(R.string.core_navigation_plan);
+          return true;
+      }
+      return false;
+    }
+  };
+
+  private TextView buttonTestItem;
   private TextView daysCleanMessage;
   private BottomNavigationView bottomNavigationView;
 }
