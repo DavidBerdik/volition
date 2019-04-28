@@ -10,6 +10,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import com.recoveryenhancementsolutions.volition.utilities.LiveDataTestUtility;
+import java.util.Calendar;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -56,8 +57,9 @@ public class UserActivityViewModelTest {
   @Test
   public void testUserActivityHistoryViewModel() {
     // Create 5 User Activity Dates
-    final int[] userActivityYear = {2019, 2017, 2001, 1970, 2038};
-    final int[] userActivityMonth = {3, 8, 10, 1, 1};
+    final int[] userActivityYear = {2019, 2017, 2001, Calendar.getInstance().get(Calendar.YEAR),
+        2038};
+    final int[] userActivityMonth = {3, 8, 10, 9, 1};
     final int[] userActivityDay = {15, 13, 9, 1, 19};
 
     // Create 5 User Activity Descriptions
@@ -95,6 +97,16 @@ public class UserActivityViewModelTest {
       assertEquals(2,
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getActivitiesByDate(2017, 8, 13))
               .get(0).getId());
+    } catch (final InterruptedException e) {
+      Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    // Query the database for activities that take place in September and check that it has the
+    // correct ID.
+    try {
+      assertEquals(4,
+          LiveDataTestUtility.getNestedLiveDataObj(viewModel.getActivitiesByMonth(9)).get(0)
+              .getId());
     } catch (final InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
     }

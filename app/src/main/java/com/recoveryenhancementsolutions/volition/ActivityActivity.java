@@ -20,33 +20,13 @@ import com.recoveryenhancementsolutions.volition.R.id;
  */
 public class ActivityActivity extends AppCompatActivity {
 
-  /**
-   * Recreates the observer but using a testing database. Should only be used for testing.
-   *
-   * @param db A VolitionDatabase test object.
-   */
-  public void onCreateTest(final VolitionDatabase db) {
-    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
-    viewModel.setTestDatabase(db);
-    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
-  }
-
-  /**
-   * Restores the CoreNavigationHandler to it's default state for this page.
-   */
-  @Override
-  public void onResume() {
-    super.onResume();
-    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
-  }
-
   /*
    *Makes AdminMenu
    */
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.activity_admin_menu_drawer, menu);
+    getMenuInflater().inflate(R.menu.activity_drawer_menu_options, menu);
     return true;
   }
 
@@ -67,18 +47,37 @@ public class ActivityActivity extends AppCompatActivity {
       Intent classification = new Intent(this, ClassificationScreenActivity.class);
       startActivity(classification);
     }
-    if(item.getItemId() == R.id.retake_ques){
+    if(item.getItemId() == R.id.retake_questionnaire){
       Intent questionarre = new Intent(this, QuestionnaireActivity.class);
       startActivity(questionarre);
     }
-    if(item.getItemId() == R.id.clinical_overview){
+   /* if(item.getItemId() == R.id.clinical_overview){
       Intent clinical = new Intent(this, ClinicalOverviewActivity.class);
       startActivity(clinical);
-    }
+    }*/
     return true;
   }
 
 
+  /**
+   * Recreates the observer but using a testing database. Should only be used for testing.
+   *
+   * @param db A VolitionDatabase test object.
+   */
+  public void onCreateTest(final VolitionDatabase db) {
+    viewModel = ViewModelProviders.of(this).get(TreatmentPlanViewModel.class);
+    viewModel.setTestDatabase(db);
+    viewModel.getTreatmentPlan().observe(this, treatmentPlanObserver);
+  }
+
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_activity);
+  }
 
 
   /**
