@@ -6,6 +6,7 @@
   <string name="core_navigation_home">Home</string>
   <string name="core_navigation_activity">Activity</string>
   <string name="core_navigation_plan">Plan</string>
+  <string name="core_navigation_profile">Profile</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
@@ -144,6 +145,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
   <string name="treatment_assessment_title"> TEA Page</string>
+  <string name="clean_tracker_title">Clean Tracker</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -176,6 +178,10 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
   <string name="daily_wellness_title">Report your Daily Wellness</string>
   <string name="daily_wellness_rating">Your Rating:</string>
+  <string name="daily_wellness_submit_button">Submit Rating</string>
+  <string name="daily_wellness_toast">Recorded your daily wellness! Thank you!</string>
+  <string name="daily_wellness_activity_desc">Daily Wellness</string>
+  <string name="daily_wellness_activity_note">Recorded a %d/10.</string>
   <string-array name="daily_wellness_result_strings">
     <item>1 (Poor)</item>
     <item>2 (Poor)</item>
@@ -206,4 +212,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
     <item>Group Visit</item>
     <item>Med Compliance</item>
   </string-array>
+  <string name="plan_note_view_done">Done</string>
+  <string name="plan_note_view_no_notes">Nothing.</string>
 </resources>
