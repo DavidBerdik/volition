@@ -554,7 +554,6 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
             errorTextPrev.setError(null);
             @SuppressLint("CutPasteId") TextView errorTextPrev2 = findViewById(R.id.enter_other);
             errorTextPrev2.setError(null);
-            Log.d("drug test", "onClick: other drug " + drug_selection_radio_group.getCheckedRadioButtonId());
             startActivity(new Intent(ProfileActivity.this, QuestionnaireConfirmActivity.class));
           }
         }
