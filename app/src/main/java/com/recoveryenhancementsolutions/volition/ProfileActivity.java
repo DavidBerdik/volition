@@ -476,7 +476,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     super.onResume();
     if (editMode) {
       // Set the correct core navigation button on the menu and make it functional.
-      bottomNavigationView.setSelectedItemId(R.id.core_navigation);
+      bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
       CoreNavigationHandler.link(bottomNavigationView, this, 4);
     } else {
       // Make the core navigation menu invisible and adjust the master layout's margins.
