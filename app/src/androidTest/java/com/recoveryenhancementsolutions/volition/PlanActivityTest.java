@@ -119,64 +119,64 @@ public class PlanActivityTest {
                                 1)));
         appCompatTextView7.perform(scrollTo(), click());
         //opens spinner and select an option
-        ViewInteraction appCompatSpinner = onView(
-                allOf(withId(R.id.spinner),
-                        childAtPosition(
-                                allOf(withId(R.id.linearLayout),
-                                        childAtPosition(
-                                                withId(android.R.id.content),
-                                                0)),
-                                3),
-                        isDisplayed()));
-        appCompatSpinner.perform(click());
-
-        DataInteraction appCompatCheckedTextView = onData(anything())
-                .inAdapterView(childAtPosition(
-                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
-                        0))
-                .atPosition(1);
-        appCompatCheckedTextView.perform(click());
+//        ViewInteraction appCompatSpinner = onView(
+//                allOf(withId(R.id.spinner),
+//                        childAtPosition(
+//                                allOf(withId(R.id.linearLayout),
+//                                        childAtPosition(
+//                                                withId(android.R.id.content),
+//                                                0)),
+//                                3),
+//                        isDisplayed()));
+//        appCompatSpinner.perform(click());
+//
+//        DataInteraction appCompatCheckedTextView = onData(anything())
+//                .inAdapterView(childAtPosition(
+//                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+//                        0))
+//                .atPosition(1);
+//        appCompatCheckedTextView.perform(click());
         //open spinner and select another option from the spinner
-        ViewInteraction appCompatSpinner2 = onView(
-                allOf(withId(R.id.spinner),
-                        childAtPosition(
-                                allOf(withId(R.id.linearLayout),
-                                        childAtPosition(
-                                                withId(android.R.id.content),
-                                                0)),
-                                3),
-                        isDisplayed()));
-        appCompatSpinner2.perform(click());
-
-        DataInteraction appCompatCheckedTextView2 = onData(anything())
-                .inAdapterView(childAtPosition(
-                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
-                        0))
-                .atPosition(2);
-        appCompatCheckedTextView2.perform(click());
-        //opens keyboard by tapping on edittext box and add some text
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.notes_edittext),
-                        childAtPosition(
-                                allOf(withId(R.id.linearLayout),
-                                        childAtPosition(
-                                                withId(android.R.id.content),
-                                                0)),
-                                2),
-                        isDisplayed()));
-        appCompatEditText.perform(click());
-        appCompatEditText.perform(replaceText("abcd"), closeSoftKeyboard());
-        //press the button "TRACK"
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.track_button), withText("TRACK"),
-                        childAtPosition(
-                                allOf(withId(R.id.linearLayout),
-                                        childAtPosition(
-                                                withId(android.R.id.content),
-                                                0)),
-                                0),
-                        isDisplayed()));
-        appCompatButton.perform(click());
+//        ViewInteraction appCompatSpinner2 = onView(
+//                allOf(withId(R.id.spinner),
+//                        childAtPosition(
+//                                allOf(withId(R.id.linearLayout),
+//                                        childAtPosition(
+//                                                withId(android.R.id.content),
+//                                                0)),
+//                                3),
+//                        isDisplayed()));
+//        appCompatSpinner2.perform(click());
+//
+//        DataInteraction appCompatCheckedTextView2 = onData(anything())
+//                .inAdapterView(childAtPosition(
+//                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+//                        0))
+//                .atPosition(2);
+//        appCompatCheckedTextView2.perform(click());
+//        //opens keyboard by tapping on edittext box and add some text
+//        ViewInteraction appCompatEditText = onView(
+//                allOf(withId(R.id.notes_edittext),
+//                        childAtPosition(
+//                                allOf(withId(R.id.linearLayout),
+//                                        childAtPosition(
+//                                                withId(android.R.id.content),
+//                                                0)),
+//                                2),
+//                        isDisplayed()));
+//        appCompatEditText.perform(click());
+//        appCompatEditText.perform(replaceText("abcd"), closeSoftKeyboard());
+//        //press the button "TRACK"
+//        ViewInteraction appCompatButton = onView(
+//                allOf(withId(R.id.track_button), withText("TRACK"),
+//                        childAtPosition(
+//                                allOf(withId(R.id.linearLayout),
+//                                        childAtPosition(
+//                                                withId(android.R.id.content),
+//                                                0)),
+//                                0),
+//                        isDisplayed()));
+//        appCompatButton.perform(click());
         //change orientation of the app to landscape to test landscape layout
         mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
