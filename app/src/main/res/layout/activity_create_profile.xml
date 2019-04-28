@@ -5,7 +5,7 @@
   android:id="@+id/ScrollView01"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  >
+  android:background="@drawable/ic_page_border">
 
   <LinearLayout
     android:id="@+id/LinearLayout01"
@@ -25,6 +25,21 @@
       android:layout_height="fill_parent"
       >
 
+      <ImageView
+        android:id="@+id/resBackground"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:alpha=".33"
+        android:contentDescription="@string/activity_res_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/enter_other"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pic"/>
       <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
@@ -36,12 +51,14 @@
         android:ems="10"
         android:hint="@string/create_profile_name"
         android:inputType="textPersonName"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/date_of_birth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/create_profile_name"
-        tools:ignore="Autofill"/>
+        tools:ignore="Autofill"
+        tools:text="@string/create_profile_name"/>
 
       <EditText
         android:id="@+id/date_of_birth"
@@ -51,16 +68,18 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:focusableInTouchMode="false"
         android:ems="10"
+        android:focusableInTouchMode="false"
         android:hint="@string/create_profile_date_of_birth"
         android:inputType="date"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/gender_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="@string/create_profile_date_of_birth"
-        tools:ignore="Autofill"/>
+        tools:ignore="Autofill"
+        tools:text="@string/create_profile_date_of_birth"/>
       <Spinner
         android:id="@+id/gender_spinner"
         android:layout_width="fill_parent"
@@ -72,6 +91,8 @@
         android:dropDownWidth="match_parent"
         android:entries="@array/create_profile_gender_array"
         android:spinnerMode="dropdown"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/are_you"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +106,8 @@
         android:layout_marginEnd="16dp"
         android:text="@string/create_profile_are_you"
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textColor="@color/text_regular"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/user_type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +149,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/create_profile_drugs"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/drug_selection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -243,13 +265,14 @@
         android:hint="@string/create_profile_if_other"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/substance_use"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drug_selection"
-        tools:text="@string/create_profile_other"
-        tools:ignore="Autofill"/>
+        tools:ignore="Autofill"
+        tools:text="@string/create_profile_other"/>
       <TextView
         android:id="@+id/substance_use"
         android:layout_width="match_parent"
@@ -258,7 +281,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/create_profile_substance_use"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/use_type_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -286,17 +309,17 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:focusableInTouchMode="false"
         android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
         android:hint="@string/create_profile_clean_date"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/record_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/use_type_spinner"
-        tools:text="@string/create_profile_clean_date"
         tools:ignore="Autofill"
-        android:focusable="true"/>
+        tools:text="@string/create_profile_clean_date"/>
       <Button
         android:id="@+id/record_button"
         android:layout_width="wrap_content"
@@ -307,6 +330,8 @@
         android:layout_marginEnd="144dp"
         android:background="@color/res_green"
         android:text="@string/create_profile_record_answers"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

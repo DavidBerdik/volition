@@ -22,9 +22,10 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class MedicationChoiceViewModelTest {
 
+  //Will be replaced with the correct activity when it is created
   @Rule
-  public final ActivityTestRule<HomeActivity> activityTestRule = new ActivityTestRule<>(
-      HomeActivity.class);
+  public final ActivityTestRule<MedicationChoiceActivity> activityTestRule = new ActivityTestRule<>(
+      MedicationChoiceActivity.class);
 
   /**
    * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
@@ -42,8 +43,13 @@ public class MedicationChoiceViewModelTest {
     viewModel.setTestDatabase(db);
 
     final MedicationChoiceEntity medication = new MedicationChoiceEntity();
-    medication.insertMed("Abstain");
+    medication.medication = "Abstain";
+    medication.dosage = 3;
+    medication.milligramsBuprenorphine = 2.6;
+    medication.milligramsNaloxone = 0.8;
+    medication.type = "sublingual";
     viewModel.insertMedication(medication);
+    viewModel.updateDosage(medication);
   }
 
   /**
@@ -58,6 +64,23 @@ public class MedicationChoiceViewModelTest {
           LiveDataTestUtility.getNestedLiveDataObj(viewModel.getMedication()).medication);
     } catch (InterruptedException e) {
       Log.e(TAG, Log.getStackTraceString(e));
+    }
+
+    try {
+      assertEquals(3,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).dosage);
+      assertEquals("sublingual",
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).type);
+      assertEquals(0.8,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).milligramsNaloxone, 0.001);
+      assertEquals(2.6,
+          LiveDataTestUtility
+              .getNestedLiveDataObj(viewModel.getDosage()).milligramsBuprenorphine, 0.001);
+    } catch (InterruptedException e) {
+      Log.v(TAG, e.toString());
     }
   }
 
