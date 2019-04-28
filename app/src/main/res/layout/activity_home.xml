@@ -33,11 +33,12 @@
     android:text="@string/home_welcome"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-    android:textColor="#000000"
     android:textSize="45sp"
+    android:textColor="@android:color/black"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent" />
+
   <android.support.design.widget.BottomNavigationView
     android:id="@+id/core_navigation"
     android:layout_width="0dp"
@@ -51,7 +52,8 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/core_navigation"/>
+    app:menu="@menu/core_navigation" />
+
   <TextView
     android:id="@+id/clean"
     android:textStyle="bold"
@@ -61,12 +63,13 @@
     android:text="@string/home_clean"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-    android:textColor="@color/text_regular"
     android:textSize="35sp"
+    android:textColor="@color/text_regular"
     app:layout_constraintBottom_toBottomOf="@+id/core_navigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"/>
+    app:layout_constraintStart_toStartOf="parent" />
+
   <TextView
     android:id="@+id/buttonTestItem"
     android:layout_width="369dp"
@@ -77,6 +80,5 @@
     android:textColor="@android:color/transparent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/clean"/>
-
+    app:layout_constraintTop_toBottomOf="@+id/clean" />
 </android.support.constraint.ConstraintLayout>

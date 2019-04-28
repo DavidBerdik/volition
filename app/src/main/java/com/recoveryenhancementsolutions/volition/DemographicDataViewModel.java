@@ -5,7 +5,6 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -54,7 +53,6 @@ public class DemographicDataViewModel extends AndroidViewModel {
   }
 
   /**
-   * Updates the date of the last usage report
    * Retrieves all of the patient's demographic data
    *
    * @return A LiveData object containing a DemographicDataEntity containing all of the patient's

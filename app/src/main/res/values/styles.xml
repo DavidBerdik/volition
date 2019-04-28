@@ -1,11 +1,11 @@
 <resources>
-  <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/res_green</item>
-    <item name="colorPrimaryDark">@color/res_green</item>
-    <item name="colorAccent">@color/res_gold</item>
-  </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/res_green</item>
+        <item name="colorPrimaryDark">@color/res_green</item>
+        <item name="colorAccent">@color/res_gold</item>
+    </style>
 
   <style name="AppTheme.NoActionBar">
     <item name="windowActionBar">false</item>
@@ -15,5 +15,4 @@
   <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
 </resources>
