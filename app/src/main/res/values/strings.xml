@@ -117,7 +117,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="severity_severe_symptoms">Presence of 6 or more symptoms.</string>
   <string name="severity_severe">Severe</string>
   <string name="severity_plan"> View Medication Details </string>
-  <string name="severity_desc"> Company logo </string>
   <string name="medication_choice_buprenorphine_button"> Buprenorphine</string>
   <string name="medication_choice_abstain_button"> Abstain</string>
   <string name="medication_choice_question"> Would you like to take Buprenorphine or abstain?</string>
@@ -146,23 +145,12 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="classification_screen_button"> Retake classification</string>
   <string name="questionnaire_confirmation"> You are now being directed to the questionnaire. </string>
   <string name="take_questionnaire"> Take questionnaire</string>
-  <string name="teaQuestionOne"> How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc.</string>
-  <string name="teaQuestionTwo"> Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself etc.
-</string>
-  <string name="teaQuestionThree"> How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments
-</string>
-  <string name="teaQuestionFour"> Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people
-</string>
-  <string name="tea_confirmation"> You are now being directed to the TEA. </string>
-  <string name="take_tea"> Take Treatment Experience Assessment. </string>
   <string name="plan_previous_week">P</string>
   <string name="plan_next_week">N</string>
   <string name="activity_res_logo"> Logo</string>
   <string name="lesson_title"> Lesson Page</string>
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
-  <string name="treatment_assessment_title"> TEA Page</string>
-  <string name="clean_tracker_title">Clean Tracker</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -178,7 +166,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="add"> + </string>
   <string name="sub"> - </string>
   <string name="update"> update</string>
-  <string name="recommendedTreatmentPlan">Recommended Treatment Plan</string>
   <string name="counseling">Counseling</string>
   <string name="medManagement">Medication Management</string>
   <string name="cleanTimeTracking">Clean Time Tracking</string>
@@ -187,9 +174,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="lessonPlanner">Lesson Planner</string>
   <string name="treatmentEffectivenessAssessment">Treatment Plan Effectiveness Assessment</string>
   <string name="readResponseJournal">Read and Response Journal</string>
-  <string name="buprenorphine_button"> Buprenorphine</string>
-  <string name="abstain_button"> Abstain</string>
-  <string name="medication_question_text_view"> Would you like to take Buprenorphine or abstain?</string>
   <string name="lifestyle"> Lifestyle</string>
   <string name="health">Health</string>
   <string name="community">Community</string>
@@ -198,19 +182,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="tea_question_two">Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself?</string>
   <string name="tea_question_three">How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments?</string>
   <string name="tea_question_four">Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people?</string>
-  <string name="one">1</string>
-  <string name="two">2</string>
-  <string name="three">3</string>
-  <string name="four">4</string>
-  <string name="five">5</string>
-  <string name="six">6</string>
-  <string name="seven">7</string>
-  <string name="eight">8</string>
-  <string name="nine">9</string>
-  <string name="ten">10</string>
-  <string name="none">None or not much</string>
-  <string name="better">Better</string>
-  <string name="much_better">Much better</string>
   <string name="logo">This is the logo for Recovery Enhancement Solutions</string>
   <string name="remarks">Remarks</string>
   <string name="directions">Write down one or two changes most important to you or click submit. </string>
@@ -237,14 +208,8 @@ Withdrawal defined as three or more of the following symptoms develop within min
     <item>10 (Great)</item>
   </string-array>
   <string name="activity_back_navigation_button">Return to Activity Page</string>
-  <string name="activity_bottom_border"> Bottom Border</string>
   <string name="activity_startup_landing">Welcome To Your Recovery</string>
   <string name="activity_startup_create">Create Profile</string>
-  <string name="volition">Volition</string>
-  <string name="readJournalResponse">Reading Response / Journal</string>
-  <string name="menubar_home">Home</string>
-  <string name="menubar_activity">Activity</string>
-  <string name="menubar_plan">Plan</string>
   <string name= "experience"> We would like to know about your experience </string>
   <string name= "directions_tea"> Express the extent of changes in four areas:  Substance use, Health, Lifestyle, and Community. \n\n For each area, think about how things have become.  Choose from the scale below, the more you have improved, the higher the number. \n\n At the end, write down the one or two changes most important to you in the remarks section.</string>
   <string name = "proceed_to_assessment"> Proceed to Assessment </string>
