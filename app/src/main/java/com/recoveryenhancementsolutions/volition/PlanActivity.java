@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.view.View;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -102,6 +107,13 @@ public class PlanActivity extends AppCompatActivity {
     actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
     subscribeUIActivities();
     scrollRight();
+
+    //fills spinner
+    Spinner spinner = (Spinner) findViewById(R.id.spinner);
+    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        R.array.plan_spinner_array, android.R.layout.simple_spinner_item);
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    spinner.setAdapter(adapter);
   }
 
   /**
@@ -111,6 +123,207 @@ public class PlanActivity extends AppCompatActivity {
   public void onResume() {
     super.onResume();
     bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
+  }
+
+  @SuppressLint("SetTextI18n")
+  public void fillViews() {
+    String sampletext = "Visit 1 Visit 1";
+
+    final HorizontalScrollView hscroller = findViewById(R.id.hscroller);
+    hscroller.post(new Runnable() {
+      public void run() {
+        hscroller.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+      }
+    });
+    TextView textView = (TextView) findViewById(R.id.textview_day_1);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.textview_day_2);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.textview_day_3);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.textview_day_4);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.textview_day_5);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.textview_day_6);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.textview_day_7);
+    textView.setText(sampletext);
+    textView = findViewById(R.id.day_of_week_1);
+    textView.setText("S");
+    textView = findViewById(R.id.day_of_week_2);
+    textView.setText("S");
+    textView = findViewById(R.id.day_of_week_3);
+    textView.setText("F");
+    textView = findViewById(R.id.day_of_week_4);
+    textView.setText("T");
+    textView = findViewById(R.id.day_of_week_5);
+    textView.setText("W");
+    textView = findViewById(R.id.day_of_week_6);
+    textView.setText("T");
+    textView = findViewById(R.id.day_of_week_7);
+    textView.setText("M");
+
+
+  }
+
+  /**
+   * Darkens selected day's textview and changes center_day_textview to corresponding day
+   *
+   * @param textview_day_1 The View to be modified by clickDay1.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay1(View textview_day_1) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Sunday");
+    dayNo = 1;
+    textView = findViewById(R.id.textview_day_1);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Darkens selected day's textview and changes center_day_textview to corresponding day
+   *
+   * @param textview_day_2 The View to be modified by clickDay2.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay2(View textview_day_2) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Saturday");
+    dayNo = 2;
+    textView = findViewById(R.id.textview_day_2);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Darkens selected day's textview and changes center_day_textview to corresponding day
+   *
+   * @param textview_day_3 The View to be modified by clickDay3.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay3(View textview_day_3) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Friday");
+    dayNo = 3;
+    textView = findViewById(R.id.textview_day_3);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Function called when Thursday's textview is clicked.
+   *
+   * @param textview_day_4 The View to be modified by clickDay4.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay4(View textview_day_4) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Thursday");
+    dayNo = 4;
+    textView = findViewById(R.id.textview_day_4);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Darkens selected day's textview and changes center_day_textview to corresponding day
+   *
+   * @param textview_day_5 The View to be modified by clickDay5.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay5(View textview_day_5) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Wednesday");
+    dayNo = 5;
+    textView = findViewById(R.id.textview_day_5);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Darkens selected day's textview and changes center_day_textview to corresponding day
+   *
+   * @param textview_day_6 The View to be modified by clickDay6.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay6(View textview_day_6) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Tuesday");
+    dayNo = 6;
+    textView = findViewById(R.id.textview_day_6);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Darkens selected day's textview and changes center_day_textview to corresponding day
+   *
+   * @param textview_day_7 The View to be modified by clickDay7.
+   */
+  @SuppressLint("SetTextI18n")
+  public void clickDay7(View textview_day_7) {
+    TextView textView = findViewById(R.id.center_day_textview);
+    textView.setText("Monday");
+    dayNo = 7;
+    textView = findViewById(R.id.textview_day_7);
+    resetColors();
+    textView.setBackgroundResource(R.color.res_green);
+  }
+
+  /**
+   * Places the user's entered notes in the textview of the selected day
+   *
+   * @param track_button The View to be modified.
+   */
+  public void trackClick(View track_button) {
+    //change different different textview dependng on what center-day
+    EditText notes_edittext = (EditText) findViewById(R.id.notes_edittext);
+    if (dayNo == 1) {
+      TextView textView = findViewById(R.id.textview_day_1);
+      textView.setText(notes_edittext.getText().toString());
+    } else if (dayNo == 2) {
+      TextView textView = findViewById(R.id.textview_day_2);
+      textView.setText(notes_edittext.getText().toString());
+    } else if (dayNo == 3) {
+      TextView textView = findViewById(R.id.textview_day_3);
+      textView.setText(notes_edittext.getText().toString());
+    } else if (dayNo == 4) {
+      TextView textView = findViewById(R.id.textview_day_4);
+      textView.setText(notes_edittext.getText().toString());
+    } else if (dayNo == 5) {
+      TextView textView = findViewById(R.id.textview_day_5);
+      textView.setText(notes_edittext.getText().toString());
+    } else if (dayNo == 6) {
+      TextView textView = findViewById(R.id.textview_day_6);
+      textView.setText(notes_edittext.getText().toString());
+    } else if (dayNo == 7) {
+      TextView textView = findViewById(R.id.textview_day_7);
+      textView.setText(notes_edittext.getText().toString());
+    }
+
+  }
+
+  /**
+   * Resets all day's textviews to light green. Called before darkening selected textview so only
+   * one textview is dark at once.
+   */
+  public void resetColors() {
+    TextView textView = findViewById(R.id.textview_day_1);
+    textView.setBackgroundResource(R.color.res_green_transparent);
+    textView = findViewById(R.id.textview_day_2);
+    textView.setBackgroundResource(R.color.res_green_transparent);
+    textView = findViewById(R.id.textview_day_3);
+    textView.setBackgroundResource(R.color.res_green_transparent);
+    textView = findViewById(R.id.textview_day_4);
+    textView.setBackgroundResource(R.color.res_green_transparent);
+    textView = findViewById(R.id.textview_day_5);
+    textView.setBackgroundResource(R.color.res_green_transparent);
+    textView = findViewById(R.id.textview_day_6);
+    textView.setBackgroundResource(R.color.res_green_transparent);
+    textView = findViewById(R.id.textview_day_7);
+    textView.setBackgroundResource(R.color.res_green_transparent);
   }
 
   protected UserActivityViewModel getViewModel() {
@@ -185,6 +398,7 @@ public class PlanActivity extends AppCompatActivity {
   }
 
   private OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
@@ -264,6 +478,7 @@ public class PlanActivity extends AppCompatActivity {
       return loaded;
     }
 
+
     private final TextView title;
     private final TextView content;
     private Calendar day;
@@ -274,4 +489,5 @@ public class PlanActivity extends AppCompatActivity {
   private final ArrayList<DateView> dateViews = new ArrayList<>();
   private BottomNavigationView bottomNavigationView;
   private UserActivityViewModel actViewModel;
-}
+  private int dayNo;
+  }
