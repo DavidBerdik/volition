@@ -119,7 +119,7 @@ public class ActivityActivityTest {
 
     // Check that we're on the TreatmentExperienceAssessmentActivity class.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        TreatmentExperienceAssessmentActivity.class.getName());
+        TreatmentExperienceAssessmentConfirmActivity.class.getName());
 
     // Click the back button to test the other buttons
     Espresso.pressBack();
