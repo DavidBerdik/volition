@@ -11,7 +11,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
-
 import android.support.test.espresso.DataInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -42,6 +41,8 @@ public class MedicationDosageActivityTest {
    */
   @Test
   public void medicationDosageActivityTest() {
+
+
     onView(withId(R.id.textViewMed)).check(matches(isDisplayed()));
     onView(withId(R.id.textViewMed))
         .check(matches(withText("Would you like to take Buprenorphine or abstain?")));
@@ -51,6 +52,7 @@ public class MedicationDosageActivityTest {
     onView(withId(R.id.abstain)).check(matches(isDisplayed()));
 
     onView(withId(R.id.medication)).perform(click());
+
 
     // Added a sleep statement to match the app's execution delay.
     // The recommended way to handle such scenarios is to use Espresso idling resources:
