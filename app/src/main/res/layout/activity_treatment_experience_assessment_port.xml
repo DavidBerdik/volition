@@ -56,6 +56,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.078"/>
+
   <TextView
     android:id="@+id/lifestyleText"
     android:textStyle="bold"
@@ -149,7 +150,6 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.24"/>
   <TextView
     android:id="@+id/questionFour"

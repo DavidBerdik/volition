@@ -50,7 +50,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     TPButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent intent = new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class);
+        final Intent intent = new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class);
         intent.putExtra(extraId, severityLevel);
         startActivity(intent);
       }

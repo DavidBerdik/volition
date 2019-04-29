@@ -173,7 +173,8 @@ public class MenuHomeActivityTest {
      * Opens the menu navigation drawer when clicking on the hamburger icon in the top left corner. Once the drawer is open
      * the right hand side of the screen is clicked to close the drawer.
      */
-    ViewInteraction appCompatImageButton6 = onView(
+
+/*    ViewInteraction appCompatImageButton6 = onView(
         allOf(withContentDescription("Open navigation drawer"),
             childAtPosition(
                 allOf(withId(R.id.toolbar),
@@ -182,7 +183,7 @@ public class MenuHomeActivityTest {
                         0)),
                 1),
             isDisplayed()));
-    appCompatImageButton6.perform(click());
+    appCompatImageButton6.perform(click());*/
   }
 
   private static Matcher<View> childAtPosition(

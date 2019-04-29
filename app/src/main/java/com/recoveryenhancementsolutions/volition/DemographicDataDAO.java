@@ -68,7 +68,7 @@ public interface DemographicDataDAO {
    * @return a string with the patient name
    */
   @Query("SELECT patientName " + genericQuery)
-  String queryPatientName();
+  LiveData<String> queryPatientName();
 
   /**
    * Retrieves the patient age
