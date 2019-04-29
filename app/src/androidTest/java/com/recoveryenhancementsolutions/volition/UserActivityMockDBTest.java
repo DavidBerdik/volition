@@ -38,6 +38,13 @@ public class UserActivityMockDBTest {
     //populate with test data
     testDb.populateDbWithTestData();
 
+    // Allow the app time to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     // Query the database for all entries and check that the returned list contains 5 entries.
     try {
       assertEquals(5, LiveDataTestUtility.getNestedLiveDataObj(viewModel.getAllActivities()).size());

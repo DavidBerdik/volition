@@ -75,7 +75,7 @@ public class UserActivityViewModel extends AndroidViewModel {
    * @param userActivityEntity A UserActivityEntity object containing the activity to be inserted.
    */
   public void insertActivity(final UserActivityEntity userActivityEntity) {
-    new updateAsyncTask(db.userActivitiesDao()).doInBackground(userActivityEntity);
+    new updateAsyncTask(db.userActivitiesDao()).execute(userActivityEntity);
   }
 
   /**
