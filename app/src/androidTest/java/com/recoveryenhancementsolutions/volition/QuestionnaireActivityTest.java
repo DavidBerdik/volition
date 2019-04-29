@@ -31,8 +31,16 @@ import org.junit.runner.RunWith;
 
 
 /**
+<<<<<<< HEAD
+ * This class will run Espresso Test on the Questionnaire Activity
+ * It tests the questionnaire activity. It goes to the questionnaire activity and tests the
+ * yes and no buttons to answer each question.
+ *  This class will run test on the QuestionnaireActivity to test that the buttons have proper
+ *  functionality.
+=======
  * This class will run test on the QuestionnaireActivity to test that the buttons have proper
  * functionality.
+>>>>>>> ad84d8445f8e6353b29fb9c57415431e9a786277
  */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -43,6 +51,9 @@ public class QuestionnaireActivityTest {
       QuestionnaireActivity.class);
 
   /**
+<<<<<<< HEAD
+   * Performs test to check that the Questionnaire Activity run to go through each question the Yes and No buttons
+=======
    * Loads the ViewModel and sets it to use a temporary, in-memory database for testing.
    */
   @Before
@@ -68,6 +79,7 @@ public class QuestionnaireActivityTest {
   }
 
   /**
+>>>>>>> ad84d8445f8e6353b29fb9c57415431e9a786277
    * This espresso test will run through the QuestionnaireActivity. The Yes and No buttons are
    * tested to check the functionality for each question. At the last question the
    * QuestionnaireActivity will go to the ViewSeverityLevelActivity.
