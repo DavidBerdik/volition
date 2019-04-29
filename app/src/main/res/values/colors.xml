@@ -5,4 +5,9 @@
   <color name="res_gold">#F7941D</color>
   <color name="res_gray">#555555</color>
   <color name="text_regular">#555555</color>
+  <color name="res_white">#FFFFFF</color>
+  <color name="res_black">#000000</color>
+  <color name="res_white_transparent">#AFFFFFFF</color>
+  <color name="res_light_gray">#DDDDDD</color>
+
 </resources>
