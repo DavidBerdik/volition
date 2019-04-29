@@ -1,28 +1,25 @@
 package com.recoveryenhancementsolutions.volition;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,15 +27,6 @@ import java.util.Locale;
  * Loads the activities for each day and displays them to the user.
  */
 public class PlanActivity extends AppCompatActivity {
-
-  /**
-   * Restores the CoreNavigationHandler to it's default state for this page.
-   */
-  @Override
-  public void onResume() {
-    super.onResume();
-    bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
-  }
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -104,26 +92,25 @@ public class PlanActivity extends AppCompatActivity {
     actViewModel = ViewModelProviders.of(this).get(UserActivityViewModel.class);
     subscribeUIActivities();
     scrollRight();
-  }
 
-  protected UserActivityViewModel getViewModel() {
-    return actViewModel;
-  }
+    //fills spinner
+    Spinner spinner = findViewById(R.id.spinner);
+    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        R.array.plan_spinner_array, android.R.layout.simple_spinner_item);
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    spinner.setAdapter(adapter);
 
-  /**
-   * @return The amount of days currently being displayed.
-   */
-  protected int getDayCount() {
-    return dateViews.size();
-  }
 
-  /**
-   * Gets the content string for the calendar day at the given position.
-   * @param at Offset from today.  1 would be yesterday.
-   * @return String containing list of activities for that day.
-   */
-  protected String getCalendarBuffer(final int at) {
-    return dateViews.get(at).content.getText().toString();
+    findViewById(R.id.track_button).setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Spinner actSpinner = findViewById(R.id.spinner);
+        String activity = actSpinner.getSelectedItem().toString();
+        EditText notesEditText = findViewById(R.id.notes_edittext);
+        String notes = notesEditText.getText().toString();
+        actViewModel.insertActivity(new Date(), activity, notes);
+      }
+    });
   }
 
   /**
@@ -135,40 +122,17 @@ public class PlanActivity extends AppCompatActivity {
     return dateViews.get(at).notes;
   }
 
-  protected boolean didActivitiesLoad(final int at) {
-    return dateViews.get(at).isLoaded();
+  /**
+   * Restores the CoreNavigationHandler to it's default state for this page.
+   */
+  @Override
+  public void onResume() {
+    super.onResume();
+    bottomNavigationView.setSelectedItemId(R.id.core_navigation_plan);
   }
 
-  /**
-   * Change what set of days are being displayed.
-   *
-   * @param by How many days to add to the rightmost day.  For example, 7 would load the next week.
-   */
-  protected void cycle(final int by) {
-    for (final DateView dv : dateViews) {
-      dv.unobserve(this);
-    }
-
-    final Calendar rightmost = dateViews.get(0).day;
-    rightmost.add(Calendar.DAY_OF_MONTH, by);
-
-    for (final DateView dv : dateViews) {
-      dv.setDay(rightmost);
-      rightmost.add(Calendar.DAY_OF_MONTH, -1);
-    }
-
-    subscribeUIActivities();
-
-    scrollRight();
-  }
-
-  /**
-   * Change what set of days are being displayed.
-   *
-   * @param forward If set, displays the next days on the calendar.  Otherwise, the previous days.
-   */
-  protected void cycle(final boolean forward) {
-    cycle(forward ? dateViews.size() : -dateViews.size());
+  protected UserActivityViewModel getViewModel() {
+    return actViewModel;
   }
 
   /**
@@ -191,22 +155,6 @@ public class PlanActivity extends AppCompatActivity {
     });
   }
 
-  private final OnNavigationItemSelectedListener navigationListener = new OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.core_navigation_home:
-          Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-          startActivity(i);
-          return true;
-        case R.id.core_navigation_activity:
-          return true;
-        case R.id.core_navigation_plan:
-          return true;
-      }
-      return false;
-    }
-  };
 
   /**
    * Structure for storing a date's corresponding TextViews for the title and descriptions.
@@ -250,27 +198,14 @@ public class PlanActivity extends AppCompatActivity {
       }
     }
 
-    private boolean isLoaded() {
-      return loaded;
-    }
-
     private void observe(final LifecycleOwner owner) {
       data = actViewModel.getActivitiesByDate(day.getTime());
       data.observe(owner, this);
       notes = null;
-      loaded = false;
-    }
-
-    private void unobserve(final LifecycleOwner owner) {
-      if (data != null) {
-        data.removeObservers(owner);
-        data = null;
-        notes = null;
-      }
     }
 
     @Override
-    public void onChanged(@NonNull final List<UserActivityEntity> activities) {
+    public void onChanged(final List<UserActivityEntity> activities) {
       final StringBuilder calBuffer = new StringBuilder();   // Only stores activity name.
       final StringBuilder notesBuffer = new StringBuilder(); // Stores name & notes.
 
@@ -292,7 +227,6 @@ public class PlanActivity extends AppCompatActivity {
 
       content.setText(calBuffer);
       notes = notesBuffer.toString();
-      loaded = true;
     }
 
     private final TextView title;
@@ -300,7 +234,6 @@ public class PlanActivity extends AppCompatActivity {
     private Calendar day;
     private LiveData<List<UserActivityEntity>> data;
     private String notes;
-    private boolean loaded;
   }
 
   private final ArrayList<DateView> dateViews = new ArrayList<>();
