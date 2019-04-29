@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,11 +21,6 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
    */
   @Override
   public void onBackPressed() {
-
-    qViewModel.setYesAnswers(0);
-
-    qViewModel.setDisplayState(0);
-
     super.onBackPressed();
   }
 
@@ -96,9 +90,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   private void showSeverityLevelInUi(final @Nullable String severity) {
     specifier.setText(severity);
   }
-
   private ViewSeverityLevelViewModel viewSeverityViewModel;
-  private QuestionnaireActivityViewModel qViewModel;
   private TextView specifier;
   private TextView totalYesTv;
 }
