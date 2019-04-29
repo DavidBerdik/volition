@@ -59,18 +59,6 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
   }
 
   /**
-   * Displays the corresponding menu.
-   *
-   * @param menu The menu object to be displayed
-   * @return true since the menu has been created
-   */
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.activity_drawer_menu_options, menu);
-    return true;
-  }
-
-  /**
    * Handles the item selection. Functionality will be added by Brad or Rahul
    *
    * @param item The item selected
