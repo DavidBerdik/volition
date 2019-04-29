@@ -69,7 +69,7 @@ public class ActivityActivity extends AppCompatActivity {
       @Override
       public void onClick(final View view) {
         startActivity(
-            new Intent(ActivityActivity.this, TreatmentExperienceAssessmentActivity.class));
+            new Intent(ActivityActivity.this, TreatmentExperienceAssessmentConfirmActivity.class));
       }
     });
 
