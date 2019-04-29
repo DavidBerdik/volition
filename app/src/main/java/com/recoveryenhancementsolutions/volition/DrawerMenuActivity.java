@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 /**
@@ -78,13 +77,12 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
    * @param item The item selected
    * @return true since the drawer has been closed
    */
-  @SuppressWarnings("StatementWithEmptyBody")
   @Override
   public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     final int id = item.getItemId();
 
     if (id == R.id.edit_profile) {
-      Boolean EDIT_MODE2 = true;
+      final Boolean EDIT_MODE2 = true;
       final Intent intent = new Intent(DrawerMenuActivity.this, ProfileActivity.class);
       intent.putExtra("editMode2", EDIT_MODE2);
       startActivity(intent);
