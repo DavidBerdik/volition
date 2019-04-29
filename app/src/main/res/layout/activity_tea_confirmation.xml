@@ -37,7 +37,7 @@
 
         android:layout_marginBottom="296dp"
 
-        android:text="@string/experience"
+      android:text="@string/experience"
 
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
