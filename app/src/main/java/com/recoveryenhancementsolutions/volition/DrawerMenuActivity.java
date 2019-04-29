@@ -1,5 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
@@ -103,7 +104,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
     } else if (id == R.id.retake_questionnaire) {
 
     } else if (id == R.id.clinical_overview) {
-
+      startActivity(new Intent(this, ClinicalScreenActivity.class));
     }
 
     final DrawerLayout drawer = findViewById(R.id.drawer_layout);
