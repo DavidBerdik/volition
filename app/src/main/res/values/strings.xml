@@ -221,4 +221,9 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="plan_center_day_textview"> </string>
   <string name="plan_track_button">TRACK</string>
   <string name="plan_notes_edittext">Notes here</string>
+  <string-array name="plan_spinner_array">
+    <item>Therapy Visit</item>
+    <item>Group Visit</item>
+    <item>Med Compliance</item>
+  </string-array>
 </resources>
