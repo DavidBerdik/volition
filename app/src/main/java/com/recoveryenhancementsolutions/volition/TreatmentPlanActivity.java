@@ -196,6 +196,11 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
   private Observer<TreatmentPlanEntity> treatmentPlanObserver = new Observer<TreatmentPlanEntity>() {
     @Override
     public void onChanged(final TreatmentPlanEntity treatmentPlanEntity) {
+      // If treatmentPlanEntity is null, then exit the Observer without doing anything.
+      if (treatmentPlanEntity == null) {
+        return;
+      }
+
       Context context = getApplicationContext();
       CharSequence msg = "Your Treatment Plan was Saved!";
       int dur = Toast.LENGTH_SHORT;
