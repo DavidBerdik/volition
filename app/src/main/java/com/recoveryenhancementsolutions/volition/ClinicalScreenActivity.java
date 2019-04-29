@@ -212,8 +212,11 @@ public class ClinicalScreenActivity extends AppCompatActivity {
   private void showDateInUI(final @Nullable Date date) {
     final int days;
     final String newDays;
+
     if (date != null) {
-      enterDate.append("Date of last use: " + date.toString());
+      enterDate.append(
+          "Date of last use: " + getMonth(date.getMonth()) + " " + date.getDay() + " " + (
+              date.getYear() + 1900));
       days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
       newDays = Integer.toString(days);
     } else {
@@ -221,6 +224,56 @@ public class ClinicalScreenActivity extends AppCompatActivity {
       newDays = null;
     }
     enterDaysClean.append("Days clean: " + newDays);
+  }
+
+  /**
+   * This method receives a month from the database and converts it into a string to be sent back
+   * and printed in UI
+   *
+   * @param month int from 0-11 representing a month of the year
+   * @return string containing th desired month
+   */
+  private String getMonth(int month) {
+    String retMonth = "Month";
+    switch (month + 1) {
+      case 1:
+        retMonth = "January";
+        break;
+      case 2:
+        retMonth = "February";
+        break;
+      case 3:
+        retMonth = "March";
+        break;
+      case 4:
+        retMonth = "April";
+        break;
+      case 5:
+        retMonth = "May";
+        break;
+      case 6:
+        retMonth = "June";
+        break;
+      case 7:
+        retMonth = "July";
+        break;
+      case 8:
+        retMonth = "August";
+        break;
+      case 9:
+        retMonth = "September";
+        break;
+      case 10:
+        retMonth = "October";
+        break;
+      case 11:
+        retMonth = "November";
+        break;
+      case 12:
+        retMonth = "December";
+        break;
+    }
+    return retMonth;
   }
 
   private UserActivityViewModel userActivityViewModel;
