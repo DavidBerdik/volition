@@ -3,7 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ClinicalOverviewActivity extends AppCompatActivity {
+public class ClinicalScreenActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

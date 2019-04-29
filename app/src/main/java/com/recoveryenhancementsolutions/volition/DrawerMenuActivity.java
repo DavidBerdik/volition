@@ -102,7 +102,7 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
       startActivity(intent);
       item.setChecked(false);
     } else if (id == R.id.clinical_overview) {
-      Intent intent = new Intent(DrawerMenuActivity.this, ClinicalOverviewActivity.class);
+      Intent intent = new Intent(DrawerMenuActivity.this, ClinicalScreenActivity.class);
       startActivity(intent);
       item.setChecked(false);
     }
