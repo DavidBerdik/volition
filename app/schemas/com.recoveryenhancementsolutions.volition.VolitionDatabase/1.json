@@ -44,7 +44,7 @@
       },
       {
         "tableName": "TreatmentPlanEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`Id` INTEGER NOT NULL, `numCounseling` INTEGER NOT NULL, `numMedManagement` INTEGER NOT NULL, `numSupportMeeting` INTEGER NOT NULL, `numLessons` INTEGER NOT NULL, `numTreatmentEffectivenessAssessment` INTEGER NOT NULL, `numOutcomeMeasures` INTEGER NOT NULL, `numTimeTracking` INTEGER NOT NULL, `numReadingResponse` INTEGER NOT NULL, `medManagementFrequency` TEXT, `outcomeMeasureFrequency` TEXT, PRIMARY KEY(`Id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`Id` INTEGER NOT NULL, `numCounseling` INTEGER NOT NULL, `numMedManagement` INTEGER NOT NULL, `numSupportMeeting` INTEGER NOT NULL, `numLessons` INTEGER NOT NULL, `numTreatmentEffectivenessAssessment` INTEGER NOT NULL, `numOutcomeMeasures` INTEGER NOT NULL, `numTimeTracking` INTEGER NOT NULL, `numReadingResponse` INTEGER NOT NULL, `coolDownTime` INTEGER NOT NULL, `lastUpdate` INTEGER, `medManagementFrequency` TEXT, `outcomeMeasureFrequency` TEXT, PRIMARY KEY(`Id`))",
         "fields": [
           {
             "fieldPath": "Id",
@@ -101,6 +101,18 @@
             "notNull": true
           },
           {
+            "fieldPath": "coolDownTime",
+            "columnName": "coolDownTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdate",
+            "columnName": "lastUpdate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
             "fieldPath": "medManagementFrequency",
             "columnName": "medManagementFrequency",
             "affinity": "TEXT",
@@ -116,26 +128,6 @@
         "primaryKey": {
           "columnNames": [
             "Id"
-          ],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "QuestionnaireEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`severityLevel` TEXT NOT NULL, PRIMARY KEY(`severityLevel`))",
-        "fields": [
-          {
-            "fieldPath": "severityLevel",
-            "columnName": "severityLevel",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "severityLevel"
           ],
           "autoGenerate": false
         },

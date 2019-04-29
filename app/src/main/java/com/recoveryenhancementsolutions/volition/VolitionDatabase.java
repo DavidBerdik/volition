@@ -46,7 +46,6 @@ import android.support.annotation.NonNull;
 @Database(entities = {
     UserActivityEntity.class,
     TreatmentPlanEntity.class,
-    QuestionnaireEntity.class,
     MedicationChoiceEntity.class,
     DemographicDataEntity.class,
 
