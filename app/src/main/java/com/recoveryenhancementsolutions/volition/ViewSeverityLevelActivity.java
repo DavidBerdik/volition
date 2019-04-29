@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,19 +16,6 @@ import android.widget.TextView;
  * severity level and total yes answers
  */
 public class ViewSeverityLevelActivity extends AppCompatActivity {
-
-  /**
-   * Forcing a restart of the questionnaire
-   */
-  @Override
-  public void onBackPressed() {
-
-    qViewModel.setYesAnswers(0);
-
-    qViewModel.setDisplayState(0);
-
-    super.onBackPressed();
-  }
 
   /**
    * The onCreate method sets the view to the proper xml and accesses the view model for this
