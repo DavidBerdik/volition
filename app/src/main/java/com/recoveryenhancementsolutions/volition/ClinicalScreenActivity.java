@@ -137,7 +137,7 @@ public class ClinicalScreenActivity extends AppCompatActivity {
       enterActivities.setText("Activities to date: \n");
       if (!s.isEmpty()) {
         for (int i = 0; i < s.size(); i++) {
-          enterActivities.append(s.get(i).toString());
+          enterActivities.append(s.get(i).getDesc());
           enterActivities.append("\n");
           Log.e("s: ", s.get(i).toString());
         }
@@ -159,7 +159,7 @@ public class ClinicalScreenActivity extends AppCompatActivity {
       enterActivities.setText("Activities to date: \n");
       if (!s.isEmpty()) {
         for (int i = 0; i < s.size(); i++) {
-          enterActivities.append(s.get(i).toString());
+          enterActivities.append(s.get(i).getDesc());
           enterActivities.append("\n");
           Log.e("s: ", s.get(i).toString());
         }
