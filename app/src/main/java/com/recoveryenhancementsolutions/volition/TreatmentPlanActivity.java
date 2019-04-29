@@ -76,7 +76,6 @@ public class TreatmentPlanActivity extends AppCompatActivity implements View.OnC
     addReadResponseJournalButton.setOnClickListener(this);
     updateButton.setOnClickListener(this);
     finishButton.setOnClickListener(this);
-
     //Sets initial treatmentPlanEntity values (for update use)
     treatmentPlanEntity = new TreatmentPlanEntity();
 

@@ -216,4 +216,5 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="plan_center_day_textview"> </string>
   <string name="plan_track_button">TRACK</string>
   <string name="plan_notes_edittext">Notes here</string>
+  <string name="clinical_overview">Notes here</string>
 </resources>

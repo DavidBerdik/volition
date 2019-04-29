@@ -1,6 +1,6 @@
 package com.recoveryenhancementsolutions.volition;
 
-
+import android.content.Intent;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -63,6 +63,8 @@ public class MenuHomeActivityTest {
             1),
             isDisplayed()));
     navigationMenuItemView.perform(click());
+    final Intent i = new Intent();
+    mActivityTestRule.launchActivity(i);
     /*
      * Opens the menu navigation drawer when clicking on the hamburger icon in the top left corner. Once the drawer is open
      * the Edit Treatment Plan option is selected. This action closes the drawer because no functionality is added to the
@@ -88,6 +90,7 @@ public class MenuHomeActivityTest {
             2),
             isDisplayed()));
     navigationMenuItemView2.perform(click());
+    mActivityTestRule.launchActivity(i);
     /*
      * Opens the menu navigation drawer when clicking on the hamburger icon in the top left corner. Once the drawer is open
      * the View Classification option is selected. This action closes the drawer because no functionality is added to the
@@ -113,6 +116,7 @@ public class MenuHomeActivityTest {
             3),
             isDisplayed()));
     navigationMenuItemView3.perform(click());
+    mActivityTestRule.launchActivity(i);
     /*
      * Opens the menu navigation drawer when clicking on the hamburger icon in the top left corner. Once the drawer is open
      * the Retake Questionnaire option is selected. This action closes the drawer because no functionality is added to the
@@ -138,6 +142,7 @@ public class MenuHomeActivityTest {
             4),
             isDisplayed()));
     navigationMenuItemView4.perform(click());
+    mActivityTestRule.launchActivity(i);
     /*
      * Opens the menu navigation drawer when clicking on the hamburger icon in the top left corner. Once the drawer is open
      * the View Clinical Overview option is selected. This action closes the drawer because no functionality is added to the
@@ -163,6 +168,7 @@ public class MenuHomeActivityTest {
             5),
             isDisplayed()));
     navigationMenuItemView5.perform(click());
+    mActivityTestRule.launchActivity(i);
     /*
      * Opens the menu navigation drawer when clicking on the hamburger icon in the top left corner. Once the drawer is open
      * the right hand side of the screen is clicked to close the drawer.
