@@ -293,7 +293,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     final int dest = getIntent().getIntExtra(BACK_DEST, 1);
     final Intent destination = new Intent();
 
-    if (!editMode) {
+    if (!editMode || !editMode2) {
       // Create an alert for people to confirm with the user their intent to back out.
       final Builder alert = new Builder(this)
           .setTitle(R.string.create_profile_back_out_title)
@@ -350,7 +350,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
      */
     final String EDIT_MODE = "editMode";
     editMode = getIntent().getBooleanExtra(EDIT_MODE, false);
-    final String EDIT_MODE2 = "editMode";
+   // final String EDIT_MODE2 = "editMode";
     editMode2 = getIntent().getBooleanExtra("editMode2", false);
      /*
     If the activity is in edit mode, change the title on the activity to "Edit Profile" and set the
