@@ -103,11 +103,11 @@ public class QuestionnaireActivity extends AppCompatActivity{
             return true;
           }
         });
-
-
       }
     });
-
+    if (questionnaireActivityViewModel.getDisplayState() < 9){
+      readButton.setVisibility(View.INVISIBLE);
+    }
 
     questionnaireActivityViewModel = ViewModelProviders.of(this)
         .get(QuestionnaireActivityViewModel.class);
