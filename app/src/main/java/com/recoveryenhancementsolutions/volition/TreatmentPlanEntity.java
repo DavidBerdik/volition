@@ -3,6 +3,7 @@ package com.recoveryenhancementsolutions.volition;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import java.util.Date;
 
 /**
  * Database entity for storing the User Treatment Plan.
@@ -109,6 +110,22 @@ public class TreatmentPlanEntity {
   public String getOutcomeMeasureFrequency() {
     return outcomeMeasureFrequency;
   }
+
+  /**
+   * Returns the last time the treatment plan was updated.
+   *
+   * @return A date object storing the time of the last update to the treatment plan.
+   */
+  public Date getLastUpdate(){
+    return this.lastUpdate;
+  }
+
+  /**
+   * Returns the current cool-down time in hours for updates to the treatment plan.
+   *
+   * @return An int representing the current cool down time in hours.
+   */
+  public int getCoolDownTime(){return this.coolDownTime;}
 
   /**
    * Sets the number of times the user should attend counseling meetings per week.
@@ -246,6 +263,29 @@ public class TreatmentPlanEntity {
   }
 
   /**
+   * The interval of time that must pass between updates to the treatment plan.
+   *
+   * @param coolDownTime An integer representing the number of hours that must pass between updates
+   * to the user's treatment plan.
+   */
+  public void setCoolDownTime(int coolDownTime) {
+    if (coolDownTime >= 0) {
+      this.coolDownTime = coolDownTime;
+    }else{
+      this.coolDownTime = 0;
+    }
+  }
+
+  /**
+   * The last time the treatment plan was updated.
+   *
+   * @param lastUpdate A Date object storing the time the treatment plan was last updated.
+   */
+  public void setLastUpdate(Date lastUpdate){
+    this.lastUpdate = lastUpdate;
+  }
+
+  /**
    * The treatment plan's id. Only used to prevent multiple plans, should ALWAYS be 1.
    */
   @PrimaryKey
@@ -299,6 +339,16 @@ public class TreatmentPlanEntity {
    */
   @NonNull
   private int numReadingResponse;
+
+  /**
+   * Stores the cool-down interval
+   */
+  private int coolDownTime;
+
+  /**
+   * Stores the last time the treatment plan was update.
+   */
+  private Date lastUpdate;
 
   /**
    * The frequency in which Medication Management should be done.

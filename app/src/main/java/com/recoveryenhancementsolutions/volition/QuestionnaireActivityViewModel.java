@@ -3,7 +3,6 @@ package com.recoveryenhancementsolutions.volition;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.os.AsyncTask;
-
 import java.util.ArrayList;
 
 /**
@@ -152,11 +151,11 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
    */
   public void setSeverityString() {
     if (yesAnswers <= 3) {
-      severityString = "Mild";
+      severityString = mild;
     } else if (yesAnswers <= 5) {
-      severityString = "Moderate";
+      severityString = moderate;
     } else {
-      severityString = "Severe";
+      severityString = severe;
     }
   }
 
@@ -189,5 +188,25 @@ public class QuestionnaireActivityViewModel extends AndroidViewModel {
   private VolitionDatabase db;
   private int displayState = 0;
   private int yesAnswers = 0;
+
+  /**
+   * String representing the user's severity level.
+   */
   private String severityString;
+
+  /**
+   * String representing mild severity.
+   */
+  private final String mild = "MILD";
+
+  /**
+   * String representing moderate severity.
+   */
+  private final String moderate = "MODERATE";
+
+  /**
+   * String representing severe severity.
+   */
+  private final String severe = "SEVERE";
+
 }
