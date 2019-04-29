@@ -233,5 +233,4 @@ Withdrawal defined as three or more of the following symptoms develop within min
   </string-array>
   <string name = "noActivities"> No activities to date.</string>
   <string name="clinical_overview"> Clinical Overview </string>
-  <string name="severity_desc"> Company logo </string>
 </resources>
