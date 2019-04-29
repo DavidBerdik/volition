@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -112,7 +113,7 @@ public class ClinicalScreenActivity extends AppCompatActivity {
   }
 
   private void displayMonth(int month) {
-
+    userActivityViewModel.getActivitiesByMonth(month).observe(this, monthObserver);
   }
 
   /**
@@ -135,7 +136,26 @@ public class ClinicalScreenActivity extends AppCompatActivity {
           Log.e("s: ", s.get(i).toString());
         }
       } else {
-        enterActivities.setText(R.string.noActivities);
+        enterActivities.setText("No Activities");
+        Log.e("s: ", s.toString());
+      }
+
+    }
+  };
+
+  private Observer<List<UserActivityEntity>> monthObserver = new Observer<List<UserActivityEntity>>() {
+    @Override
+    public void onChanged(final List<UserActivityEntity> s) {
+      enterActivities = findViewById(R.id.listOfActivities);
+      enterActivities.setText("Activities to date: \n");
+      if (!s.isEmpty()) {
+        for (int i = 0; i < s.size(); i++) {
+          enterActivities.append(s.get(i).toString());
+          enterActivities.append("\n");
+          Log.e("s: ", s.get(i).toString());
+        }
+      } else {
+        enterActivities.setText("No Activities");
         Log.e("s: ", s.toString());
       }
 
