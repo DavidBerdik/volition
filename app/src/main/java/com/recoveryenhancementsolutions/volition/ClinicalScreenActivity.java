@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -214,8 +215,12 @@ public class ClinicalScreenActivity extends AppCompatActivity {
     final String newDays;
 
     if (date != null) {
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(date);
+      int day = cal.get(Calendar.DAY_OF_MONTH);
+      cal.setTime(date);
       enterDate.append(
-          "Date of last use: " + getMonth(date.getMonth()) + " " + date.getDay() + " " + (
+          "Date of last use: " + getMonth(date.getMonth()) + " " + day + " " + (
               date.getYear() + 1900));
       days = DateConverter.daysBetween(date.getTime(), new Date().getTime());
       newDays = Integer.toString(days);
