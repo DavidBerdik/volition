@@ -26,7 +26,6 @@ Currently set and get can be called by any class provided they have access to
 the object.  I am unaware of how other components may need this so I will hold
 off on setting these methods package-private
 */
-
 public class DemographicDataEntity {
 
   /**
@@ -338,15 +337,18 @@ public class DemographicDataEntity {
    * @param lastClean Date last clean
    * @param lastUseReport Date of the report
    */
-  public void setLastClean(final @NonNull Date lastClean, final @NonNull Date lastUseReport) {
+  public void setLastClean(final @NonNull Date lastClean,
+      final @NonNull Date lastUseReport) {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
     final Calendar useRCal = Calendar.getInstance();
     cal.setTime(lastClean);
     useRCal.setTime(lastUseReport);
-    setLastClean(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+    setLastClean(cal.get(Calendar.YEAR),
+        cal.get(Calendar.MONTH) + 1,
         cal.get(Calendar.DAY_OF_MONTH));
-    setLastUseReport(useRCal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+    setLastUseReport(useRCal.get(Calendar.YEAR),
+        cal.get(Calendar.MONTH) + 1,
         cal.get(Calendar.DAY_OF_MONTH));
   }
 
@@ -357,11 +359,14 @@ public class DemographicDataEntity {
    * @param month last clean month
    * @param day last clean day
    */
-  public void setLastClean(final int year, final int month, final int day) {
+  public void setLastClean(final int year, final int month,
+      final int day) {
     try {
-      this.lastClean = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+      this.lastClean = new SimpleDateFormat("yyyy-MM-dd",
+          Locale.US).parse(year + "-"
           + month + "-" + day);
     } catch (final ParseException e) {
+      Log.e("DemographicDataEntity", Log.getStackTraceString(e));
       Log.e("DemographicDataEntity", "Last clean set");
     }
   }
@@ -380,7 +385,8 @@ public class DemographicDataEntity {
     //Strips time and passes Calendar Date
     final Calendar cal = Calendar.getInstance();
     cal.setTime(lastUseReport);
-    setLastUseReport(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+    setLastUseReport(cal.get(Calendar.YEAR),
+        cal.get(Calendar.MONTH) + 1,
         cal.get(Calendar.DAY_OF_MONTH));
   }
 
@@ -391,9 +397,11 @@ public class DemographicDataEntity {
    * @param month The month of the report
    * @param day The day of the report
    */
-  public void setLastUseReport(final int year, final int month, final int day) {
+  public void setLastUseReport(final int year, final int month,
+      final int day) {
     try {
-      this.lastUseReport = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(year + "-"
+      this.lastUseReport = new SimpleDateFormat("yyyy-MM-dd",
+          Locale.US).parse(year + "-"
           + month + "-" + day);
     } catch (final ParseException e) {
       Log.e("DemographicDataEntity", "lastUseReport set");
@@ -444,5 +452,4 @@ public class DemographicDataEntity {
   private boolean disorderOpioid;
   private boolean disorderAlcohol;
   private final int fetchID = 1;
-
 }

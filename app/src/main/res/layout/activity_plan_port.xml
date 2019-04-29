@@ -15,7 +15,6 @@
     android:background="@color/res_green"
     android:clickable="true"
     android:focusable="true"
-    android:onClick="trackClick"
     android:text="@string/plan_track_button"
     android:textColor="@color/res_white"
     android:textSize="20sp"
@@ -162,7 +161,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay7"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -194,7 +192,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay6"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -226,7 +223,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay5"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -258,7 +254,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay4"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -290,7 +285,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay3"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -322,7 +316,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay2"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -355,7 +348,6 @@
             android:background="@color/res_green_transparent"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="clickDay1"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
