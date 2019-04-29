@@ -88,22 +88,27 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
       final Intent intent = new Intent(DrawerMenuActivity.this, ProfileActivity.class);
       intent.putExtra("editMode2", EDIT_MODE2);
       startActivity(intent);
+      item.setChecked(false);
     } else if (id == R.id.edit_treatment) {
       final Intent intent = new Intent(DrawerMenuActivity.this, TreatmentPlanActivity.class);
       startActivity(intent);
+      item.setChecked(false);
     } else if (id == R.id.view_classification) {
       final Intent intent = new Intent(DrawerMenuActivity.this, ViewSeverityLevelActivity.class);
       startActivity(intent);
+      item.setChecked(false);
     } else if (id == R.id.retake_questionnaire) {
       Intent intent = new Intent(DrawerMenuActivity.this, QuestionnaireActivity.class);
       startActivity(intent);
+      item.setChecked(false);
     } else if (id == R.id.clinical_overview) {
       Intent intent = new Intent(DrawerMenuActivity.this, ClinicalOverviewActivity.class);
       startActivity(intent);
+      item.setChecked(false);
     }
 
     final DrawerLayout drawer = findViewById(R.id.drawer_layout);
     drawer.closeDrawer(GravityCompat.START);
-    return true;
+    return false;
   }
 }
