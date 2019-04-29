@@ -10,6 +10,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import android.widget.Spinner;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -97,6 +99,18 @@ public class PlanActivity extends AppCompatActivity {
         R.array.plan_spinner_array, android.R.layout.simple_spinner_item);
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     spinner.setAdapter(adapter);
+
+
+    findViewById(R.id.track_button).setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Spinner actSpinner = findViewById(R.id.spinner);
+        String activity = actSpinner.getSelectedItem().toString();
+        EditText notesEditText = findViewById(R.id.notes_edittext);
+        String notes = notesEditText.getText().toString();
+        actViewModel.insertActivity(new Date(), activity, notes);
+      }
+    });
   }
 
   /**
