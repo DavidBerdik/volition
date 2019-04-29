@@ -50,7 +50,7 @@ public class PlanActivityTest {
 
         //tests by tapping textview that is on the far right of the horizontal scrollview
         ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.textview_day_1), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_1),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_7),
                                         childAtPosition(
@@ -60,7 +60,7 @@ public class PlanActivityTest {
         appCompatTextView.perform(scrollTo(), click());
         //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView2 = onView(
-                allOf(withId(R.id.textview_day_2), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_2),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_6),
                                         childAtPosition(
@@ -70,7 +70,7 @@ public class PlanActivityTest {
         appCompatTextView2.perform(scrollTo(), click());
         //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView3 = onView(
-                allOf(withId(R.id.textview_day_3), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_3),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_5),
                                         childAtPosition(
@@ -80,7 +80,7 @@ public class PlanActivityTest {
         appCompatTextView3.perform(scrollTo(), click());
         //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView4 = onView(
-                allOf(withId(R.id.textview_day_4), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_4),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_4),
                                         childAtPosition(
@@ -90,7 +90,7 @@ public class PlanActivityTest {
         appCompatTextView4.perform(scrollTo(), click());
         //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView5 = onView(
-                allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_5),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_3),
                                         childAtPosition(
@@ -100,7 +100,7 @@ public class PlanActivityTest {
         appCompatTextView5.perform(scrollTo(), click());
         //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView6 = onView(
-                allOf(withId(R.id.textview_day_6), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_6),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_2),
                                         childAtPosition(
@@ -110,7 +110,7 @@ public class PlanActivityTest {
         appCompatTextView6.perform(scrollTo(), click());
         //tests by tapping textview to the left of the previous textview
         ViewInteraction appCompatTextView7 = onView(
-                allOf(withId(R.id.textview_day_7), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_7),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_1),
                                         childAtPosition(
@@ -182,7 +182,7 @@ public class PlanActivityTest {
 
         //taps rightmost textview
         ViewInteraction appCompatTextView8 = onView(
-                allOf(withId(R.id.textview_day_1), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_1),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_7),
                                         childAtPosition(
@@ -192,7 +192,7 @@ public class PlanActivityTest {
         appCompatTextView8.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView9 = onView(
-                allOf(withId(R.id.textview_day_2), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_2),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_6),
                                         childAtPosition(
@@ -202,7 +202,7 @@ public class PlanActivityTest {
         appCompatTextView9.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView10 = onView(
-                allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_5),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_3),
                                         childAtPosition(
@@ -212,7 +212,7 @@ public class PlanActivityTest {
         appCompatTextView10.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView11 = onView(
-                allOf(withId(R.id.textview_day_3), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_3),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_5),
                                         childAtPosition(
@@ -222,7 +222,7 @@ public class PlanActivityTest {
         appCompatTextView11.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView12 = onView(
-                allOf(withId(R.id.textview_day_4), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_4),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_4),
                                         childAtPosition(
@@ -232,7 +232,7 @@ public class PlanActivityTest {
         appCompatTextView12.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView13 = onView(
-                allOf(withId(R.id.textview_day_7), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_7),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_1),
                                         childAtPosition(
@@ -242,7 +242,7 @@ public class PlanActivityTest {
         appCompatTextView13.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView14 = onView(
-                allOf(withId(R.id.textview_day_5), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_5),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_3),
                                         childAtPosition(
@@ -252,7 +252,7 @@ public class PlanActivityTest {
         appCompatTextView14.perform(scrollTo(), click());
         //taps textview to the left of the previous textview
         ViewInteraction appCompatTextView15 = onView(
-                allOf(withId(R.id.textview_day_6), withText("Visit 1 Visit 1"),
+                allOf(withId(R.id.textview_day_6),
                         childAtPosition(
                                 allOf(withId(R.id.vertical_layout_2),
                                         childAtPosition(
