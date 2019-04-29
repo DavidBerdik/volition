@@ -136,7 +136,7 @@ public class ClinicalScreenActivity extends AppCompatActivity {
           Log.e("s: ", s.get(i).toString());
         }
       } else {
-        enterActivities.setText("No Activities");
+        enterActivities.setText(R.string.noActivities);
         Log.e("s: ", s.toString());
       }
 
@@ -155,7 +155,7 @@ public class ClinicalScreenActivity extends AppCompatActivity {
           Log.e("s: ", s.get(i).toString());
         }
       } else {
-        enterActivities.setText("No Activities");
+        enterActivities.setText(R.string.noActivities);
         Log.e("s: ", s.toString());
       }
 

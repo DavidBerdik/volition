@@ -205,11 +205,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="plan_center_day_textview"> </string>
   <string name="plan_track_button">TRACK</string>
   <string name="plan_notes_edittext">Notes here</string>
-  <string-array name="plan_spinner_array">
-    <item>Therapy Visit</item>
-    <item>Group Visit</item>
-    <item>Med Compliance</item>
-  </string-array>
   <string-array name="months_array">
     <item>January</item>
     <item>February</item>
@@ -225,8 +220,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
     <item>December</item>
     <item>Year to Date</item>
   </string-array>
-  <string name = "dateOfLastUse">Date of last use: </string>
-  <string name= "name">Name: </string>
   <string name = "noActivities"> No activities to date.</string>
   <string name="clinical_overview"> Clinical Overview </string>
   <string name="severity_desc"> Company logo </string>
