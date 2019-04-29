@@ -350,12 +350,13 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
      */
     final String EDIT_MODE = "editMode";
     editMode = getIntent().getBooleanExtra(EDIT_MODE, false);
-
+    final String EDIT_MODE2 = "editMode";
+    editMode2 = getIntent().getBooleanExtra("editMode2", false);
      /*
     If the activity is in edit mode, change the title on the activity to "Edit Profile" and set the
     text on the record button to "Update Profile."
      */
-    if (editMode) {
+    if (editMode || editMode2) {
       this.setTitle("Edit Profile");
       final Button updateProfile = findViewById(R.id.record_button);
       updateProfile.setText(R.string.profile_update_profile);
@@ -478,7 +479,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
         If the activity is in edit mode, send the user back to the previous activity and if the
         activity is not in edit mode, send the user to the questionnaire.
          */
-        if (editMode) {
+        if (editMode || editMode2) {
           onBackPressed();
         } else {
           final Spinner genderSpinner = findViewById(R.id.gender_spinner);
@@ -564,7 +565,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
     If the activity is in edit mode, then set the observer to wait for the existing demographic
     information to be retrieved from the database.
      */
-    if (editMode) {
+    if (editMode || editMode2) {
       demogDataViewModel.getAllDemographicData().observe(this, demographicDataEntityObserver);
       findViewById(R.id.enter_other).setVisibility(View.VISIBLE);
     }
@@ -579,7 +580,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   @Override
   protected void onResume() {
     super.onResume();
-    if (editMode) {
+    if (editMode || editMode2) {
       // Set the correct core navigation button on the menu and make it functional.
       bottomNavigationView.setSelectedItemId(R.id.core_navigation_profile);
       CoreNavigationHandler.link(bottomNavigationView, this, 4);
@@ -725,6 +726,7 @@ public class ProfileActivity extends AppCompatActivity implements OnItemSelected
   private RadioButton radioOther;
   private int spinnerCount = 0;
   private boolean editMode;
+  private boolean editMode2;
   private final Calendar dobCalendar = Calendar.getInstance();
   private final Calendar cleanDateCalendar = Calendar.getInstance();
   private BottomNavigationView bottomNavigationView;

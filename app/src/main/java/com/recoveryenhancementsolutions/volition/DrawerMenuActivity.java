@@ -96,7 +96,9 @@ public abstract class DrawerMenuActivity extends AppCompatActivity
     final int id = item.getItemId();
 
     if (id == R.id.edit_profile) {
+      Boolean EDIT_MODE2 = true;
       final Intent intent = new Intent(DrawerMenuActivity.this, ProfileActivity.class);
+      intent.putExtra("editMode2", EDIT_MODE2);
       startActivity(intent);
     } else if (id == R.id.edit_treatment) {
       final Intent intent = new Intent(DrawerMenuActivity.this, TreatmentPlanActivity.class);
