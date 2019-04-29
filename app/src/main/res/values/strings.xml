@@ -236,7 +236,7 @@ Withdrawal defined as three or more of the following symptoms develop within min
     <item>December</item>
     <item>Year to Date</item>
   </string-array>
-  <string name = "noActivities"> No activities to date.</string>
+  <string name = "noActivities">Completed 0% of activities.</string>
   <string name="clinical_overview"> Clinical Overview </string>
   <string-array name="plan_spinner_array">
     <item>Therapy Visit</item>

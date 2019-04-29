@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
  * for easier access
  */
 public class ClinicalScreenActivity extends AppCompatActivity {
+  private static DecimalFormat df = new DecimalFormat("0.00");
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -136,12 +138,18 @@ public class ClinicalScreenActivity extends AppCompatActivity {
     public void onChanged(final List<UserActivityEntity> s) {
       enterActivities = findViewById(R.id.listOfActivities);
       enterActivities.setText("Activities to date: \n");
+      String num = String.valueOf(df.format((s.size()/6.0)*100));
       if (!s.isEmpty()) {
         for (int i = 0; i < s.size(); i++) {
           enterActivities.append(s.get(i).getDesc());
           enterActivities.append("\n");
           Log.e("s: ", s.get(i).toString());
         }
+        enterActivities.append("\n");
+        enterActivities.append("Completed ");
+        enterActivities.append(num);
+        enterActivities.append("% of activities.");
+
       } else {
         enterActivities.setText(R.string.noActivities);
         Log.e("s: ", s.toString());
@@ -158,12 +166,17 @@ public class ClinicalScreenActivity extends AppCompatActivity {
     public void onChanged(final List<UserActivityEntity> s) {
       enterActivities = findViewById(R.id.listOfActivities);
       enterActivities.setText("Activities to date: \n");
+      String num = String.valueOf(df.format((s.size()/6.0)*100));
       if (!s.isEmpty()) {
         for (int i = 0; i < s.size(); i++) {
           enterActivities.append(s.get(i).getDesc());
           enterActivities.append("\n");
           Log.e("s: ", s.get(i).toString());
         }
+        enterActivities.append("\n");
+        enterActivities.append("Completed ");
+        enterActivities.append(num);
+        enterActivities.append("% of activities.");
       } else {
         enterActivities.setText(R.string.noActivities);
         Log.e("s: ", s.toString());
