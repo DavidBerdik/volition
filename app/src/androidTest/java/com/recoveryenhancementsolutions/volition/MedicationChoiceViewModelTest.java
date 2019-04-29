@@ -36,6 +36,7 @@ public class MedicationChoiceViewModelTest {
     // Load the ViewModel
     viewModel = ViewModelProviders.of(activityTestRule.getActivity())
         .get(MedicationChoiceViewModel.class);
+    viewModel.setSeverityLevel("MODERATE");
 
     final Context context = InstrumentationRegistry.getTargetContext();
     final VolitionDatabase db = Room.inMemoryDatabaseBuilder(context, VolitionDatabase.class)
@@ -48,6 +49,7 @@ public class MedicationChoiceViewModelTest {
     medication.milligramsBuprenorphine = 2.6;
     medication.milligramsNaloxone = 0.8;
     medication.type = "sublingual";
+    viewModel.setSeverityLevel("MODERATE");
     viewModel.insertMedication(medication);
     viewModel.updateDosage(medication);
   }
