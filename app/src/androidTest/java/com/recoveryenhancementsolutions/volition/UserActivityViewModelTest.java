@@ -75,6 +75,13 @@ public class UserActivityViewModelTest {
           userActivityDesc[x], userActivityNotes[x]);
     }
 
+    // Allow the app time to update.
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+    }
+
     // Query the database for all entries and check that the returned list contains 5 entries.
     try {
       assertEquals(5,
