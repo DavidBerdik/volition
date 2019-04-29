@@ -114,6 +114,15 @@ public class PlanActivity extends AppCompatActivity {
   }
 
   /**
+   * Gets the notes string for all activities on the calendar day at the given position.
+   * @param at Offset from today.  1 would be yesterday.
+   * @return String containing list of all notes for that day.
+   */
+  protected String getNotesBuffer(final int at) {
+    return dateViews.get(at).notes;
+  }
+
+  /**
    * Restores the CoreNavigationHandler to it's default state for this page.
    */
   @Override
@@ -145,6 +154,7 @@ public class PlanActivity extends AppCompatActivity {
       }
     });
   }
+
 
   /**
    * Structure for storing a date's corresponding TextViews for the title and descriptions.
