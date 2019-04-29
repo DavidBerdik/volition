@@ -50,9 +50,12 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     TPButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class));
+        Intent intent = new Intent(ViewSeverityLevelActivity.this, MedicationChoiceActivity.class);
+        intent.putExtra(extraId, severityLevel);
+        startActivity(intent);
       }
     });
+    qViewModel = ViewModelProviders.of(this).get(QuestionnaireActivityViewModel.class);
   }
 
   /**
@@ -83,6 +86,7 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
     viewSeverityViewModel.getSeverity().observe(this, new Observer<String>() {
       @Override
       public void onChanged(@Nullable String severity) {
+        severityLevel = severity;
         showSeverityLevelInUi(severity);
       }
     });
@@ -99,4 +103,14 @@ public class ViewSeverityLevelActivity extends AppCompatActivity {
   public QuestionnaireActivityViewModel qViewModel;
   private TextView specifier;
   private TextView totalYesTv;
+
+  /**
+   * The user's severity Level
+   */
+  private String severityLevel;
+
+  /**
+   * ID used to pass severity level to medicationChoiceActivity as a String extra.
+   */
+  private final String extraId = "COM.RECOVERYENHANCEMENTSOLUTIONS.VOLITION.SEVERITY_EXTRA";
 }

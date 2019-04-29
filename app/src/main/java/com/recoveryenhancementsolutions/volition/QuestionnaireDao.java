@@ -1,8 +1,4 @@
 package com.recoveryenhancementsolutions.volition;
-/**
- * TODO: Overwrite with VOL-50-View-Severity-Level
- * Currently only supports minimum functionality to create a treatment plan
- */
 
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
@@ -10,7 +6,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-import java.util.List;
 
 /**
  * DAO for the questionnaire for interacting with the questionnaire entity
@@ -32,21 +27,6 @@ public interface QuestionnaireDao {
    */
   @Query("DELETE FROM QuestionnaireActivityEntity")
   void deleteAll();
-
-  /**
-   * Get the questionnaire entity.
-   * @return A LiveData object containing a QuestionnaireEntity
-   */
-  @Query("SELECT * FROM QuestionnaireActivityEntity")
-  LiveData<QuestionnaireEntity> getQuestionnaire();
-
-  /**
-   * query to find all values in database
-   *
-   * @return returns a list of all the valuse in the database
-   */
-  @Query("SELECT * FROM QuestionnaireActivityEntity")
-  LiveData<List<QuestionnaireActivityEntity>> findQuestionnaire();
 
   /**
    * query to return severity level
