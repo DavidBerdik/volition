@@ -1,394 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
-
-
   <TextView
-
     android:id="@+id/substanceText"
-
     android:textStyle="bold"
-
     android:layout_width="288dp"
-
     android:layout_height="57dp"
-
     android:layout_marginTop="8dp"
-
     android:layout_marginBottom="296dp"
-
     android:layout_marginStart="8dp"
-
     android:layout_marginEnd="8dp"
-
     android:text="@string/substance"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.498"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.078"/>
-
+  <android.support.design.widget.BottomNavigationView
+      android:id="@+id/activity_back_navigation"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:background="@color/res_green"
+      app:elevation="0dp"
+      app:itemBackground="@color/res_green"
+      app:itemHorizontalTranslationEnabled="false"
+      app:itemIconTint="@android:color/black"
+      app:itemTextColor="@android:color/black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:menu="@menu/activity_back_navigation"/>
   <TextView
-
     android:id="@+id/healthText"
-
     android:textStyle="bold"
-
     android:layout_width="288dp"
-
     android:layout_height="57dp"
-
     android:layout_marginTop="8dp"
-
     android:layout_marginBottom="296dp"
-
     android:layout_marginStart="8dp"
-
     android:layout_marginEnd="8dp"
-
     android:text="@string/health"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
-    app:layout_constraintHorizontal_bias="0.495"
-
+    app:layout_constraintHorizontal_bias="0.498"
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.078"/>
 
   <TextView
-
     android:id="@+id/lifestyleText"
-
     android:textStyle="bold"
-
     android:layout_width="288dp"
-
     android:layout_height="57dp"
-
     android:layout_marginTop="8dp"
-
     android:layout_marginBottom="296dp"
-
     android:layout_marginStart="8dp"
-
     android:layout_marginEnd="8dp"
-
     android:text="@string/lifestyle"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.498"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.078"/>
-
-
   <TextView
-
     android:id="@+id/communityText"
-
     android:textStyle="bold"
-
     android:layout_width="288dp"
-
     android:layout_height="57dp"
-
     android:layout_marginTop="8dp"
-
     android:layout_marginBottom="296dp"
-
     android:layout_marginStart="8dp"
-
     android:layout_marginEnd="8dp"
-
     android:text="@string/community"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="#FFA500"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.498"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.078"/>
-
   <TextView
-
     android:id="@+id/questionOne"
-
     android:textStyle="bold"
-
     android:layout_width="361dp"
-
     android:layout_height="wrap_content"
-
     android:layout_marginLeft="20dp"
-
     android:layout_marginRight="20dp"
-
     android:gravity="center"
     android:text="@string/tea_question_one"
     android:textColor="@android:color/black"
-
     android:textSize="24sp"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.48"
-
     app:layout_constraintLeft_toLeftOf="parent"
-
     app:layout_constraintRight_toRightOf="parent"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.21"/>
-
-
   <TextView
-
     android:id="@+id/questionTwo"
-
     android:textStyle="bold"
-
     android:layout_width="361dp"
-
     android:layout_height="wrap_content"
-
     android:layout_marginLeft="20dp"
-
     android:layout_marginRight="20dp"
-
     android:gravity="center"
     android:text="@string/tea_question_two"
     android:textColor="@android:color/black"
-
     android:textSize="24sp"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.54"
-
     app:layout_constraintLeft_toLeftOf="parent"
-
     app:layout_constraintRight_toRightOf="parent"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.199"/>
-
   <TextView
-
     android:id="@+id/questionThree"
-
     android:textStyle="bold"
-
     android:layout_width="361dp"
-
     android:layout_height="wrap_content"
-
     android:layout_marginLeft="20dp"
-
     android:layout_marginRight="20dp"
-
     android:gravity="center"
     android:text="@string/tea_question_three"
     android:textColor="@android:color/black"
-
     android:textSize="24sp"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintLeft_toLeftOf="parent"
-
     app:layout_constraintRight_toRightOf="parent"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.24"/>
-
   <TextView
-
     android:id="@+id/questionFour"
-
     android:textStyle="bold"
-
     android:layout_width="361dp"
-
-
     android:layout_height="wrap_content"
-
     android:layout_marginLeft="20dp"
-
     android:layout_marginRight="20dp"
-
     android:gravity="center"
     android:text="@string/tea_question_four"
-
     android:textColor="@android:color/black"
-
     android:textSize="24sp"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.54"
-
     app:layout_constraintLeft_toLeftOf="parent"
-
     app:layout_constraintRight_toRightOf="parent"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.214"/>
-
-
   <NumberPicker
     android:id="@+id/tea_number_picker"
-
     android:layout_width="143dp"
-
     android:layout_height="135dp"
-
     android:layout_marginTop="44dp"
-
     android:layout_marginStart="8dp"
-
     app:layout_constraintBottom_toBottomOf="parent"
-
     app:layout_constraintEnd_toEndOf="parent"
-
     app:layout_constraintHorizontal_bias="0.484"
-
     app:layout_constraintLeft_toLeftOf="parent"
-
     app:layout_constraintRight_toRightOf="parent"
-
     app:layout_constraintStart_toStartOf="parent"
-
     app:layout_constraintTop_toTopOf="parent"
-
     app:layout_constraintVertical_bias="0.628"/>
 
-
   <ImageView
-
-    android:id="@+id/imageView4"
-
-    android:layout_width="415dp"
-
-    android:layout_height="match_parent"
-
-    android:layout_weight="30"
-
-
-    android:padding="30dp"
-
-    android:alpha=".2"
-
-    android:contentDescription="@string/logo"
-
-    app:layout_constraintEnd_toEndOf="parent"
-
-    app:layout_constraintStart_toStartOf="parent"
-
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/pic"/>
+      android:id="@+id/imageView4"
+      android:layout_width="415dp"
+      android:layout_height="match_parent"
+      android:layout_weight="30"
+      android:alpha=".2"
+      android:contentDescription="@string/logo"
+      android:padding="30dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/pic" />
 
   <TextView
-    android:id="@+id/tea_results"
-    android:textStyle="bold"
-    android:layout_width="359dp"
-    android:layout_height="98dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:textAlignment="center"
-    android:textColor="@android:color/black"
-    android:textSize="23sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.777"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.929"/>
+      android:id="@+id/tea_results"
+      android:layout_width="353dp"
+      android:layout_height="81dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:textAlignment="center"
+      android:textColor="@android:color/black"
+      android:textSize="23sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.619"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.844" />
 
   <Button
-    android:id="@+id/submit_button_tea"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:background="@color/res_green"
-    android:text="@string/submit"
-    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-    app:layout_constraintEnd_toEndOf="@+id/imageView4"
-    app:layout_constraintHorizontal_bias="0.482"
-    app:layout_constraintStart_toStartOf="@+id/imageView4"
-    app:layout_constraintTop_toTopOf="@+id/imageView4"
-    app:layout_constraintVertical_bias="0.663"/>
-  <android.support.design.widget.BottomNavigationView
-    android:id="@+id/activity_back_navigation"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:background="@color/res_green"
-    app:elevation="0dp"
-    app:itemBackground="@color/res_green"
-    app:itemHorizontalTranslationEnabled="false"
-    app:itemIconTint="@android:color/black"
-    app:itemTextColor="@android:color/black"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/activity_back_navigation"/>
+      android:id="@+id/submit_button_tea"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginBottom="8dp"
+      android:background="@color/res_green"
+      android:text="@string/submit"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+      app:layout_constraintEnd_toEndOf="@+id/imageView4"
+      app:layout_constraintHorizontal_bias="0.479"
+      app:layout_constraintStart_toStartOf="@+id/imageView4"
+      app:layout_constraintTop_toTopOf="@+id/imageView4"
+      app:layout_constraintVertical_bias="0.891" />
+
 </android.support.constraint.ConstraintLayout>
