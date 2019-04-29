@@ -1,15 +1,20 @@
 <resources>
   <string name="app_name">Volition</string>
-  <string name="button_yes">Yes</string>
-  <string name="button_no">No</string>
   <string name="title_home">Home</string>
-  <string name="core_navigation_home">Home</string>
-  <string name="core_navigation_activity">Activity</string>
-  <string name="core_navigation_plan">Plan</string>
   <string name="core_navigation_profile">Profile</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
   <string name="create_profile_name">Enter Name</string>
+  <string name="core_navigation_home">Home</string>
+  <string name="core_navigation_activity">Activity</string>
+  <string name="core_navigation_plan">Plan</string>
+  <string name="drawer_menu_edit_profile">Edit Profile</string>
+  <string name="drawer_menu_edit_treatment_plan">Edit Treatment Plan</string>
+  <string name="drawer_menu_view_classification">View Classification</string>
+  <string name="drawer_menu_retake_questionnaire">Retake Questionnaire</string>
+  <string name="drawer_menu_clinical_overview">View Clinical Overview</string>
+  <string name="button_yes">Yes</string>
+  <string name="button_no">No</string>
   <string name="create_profile_date_of_birth">Enter Date of Birth</string>
   <string-array name="create_profile_gender_array">
     <item>Select Gender</item>
@@ -202,6 +207,15 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
+  <string name="plan_month_progress_textview">Month Progress</string>
+  <string name="plan_center_day_textview"> </string>
+  <string name="plan_track_button">TRACK</string>
+  <string name="plan_notes_edittext">Notes here</string>
+  <string-array name="plan_spinner_array">
+    <item>Therapy Visit</item>
+    <item>Group Visit</item>
+    <item>Med Compliance</item>
+  </string-array>
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
   <string name="nav_header_desc">Navigation header</string>

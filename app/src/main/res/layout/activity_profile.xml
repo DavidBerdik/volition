@@ -273,6 +273,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginEnd="16dp"
           android:ems="10"
+          android:visibility="invisible"
           android:hint="@string/create_profile_if_other"
           android:inputType="textPersonName"
           android:textAlignment="viewStart"
