@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/res_green</item>
         <item name="colorPrimaryDark">@color/res_green</item>
         <item name="colorAccent">@color/res_gold</item>
+      <item name="windowActionBar">false</item>
+      <item name="windowNoTitle">true</item>
     </style>
 
   <style name="AppTheme.NoActionBar">
