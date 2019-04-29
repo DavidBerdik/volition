@@ -12,10 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * This activity will gather the appropriate data wanted by the clinician and display it on one page
+ * for easier access
+ */
 public class ClinicalScreenActivity extends AppCompatActivity {
 
   @Override
@@ -123,7 +126,10 @@ public class ClinicalScreenActivity extends AppCompatActivity {
     userActivityViewModel.getAllActivities().observe(this, yearObserver);
   }
 
-
+  /**
+   * Observer that will query the database for all activities ever completed and display them in the
+   * appropriate text box
+   */
   private Observer<List<UserActivityEntity>> yearObserver = new Observer<List<UserActivityEntity>>() {
     @Override
     public void onChanged(final List<UserActivityEntity> s) {
@@ -139,10 +145,13 @@ public class ClinicalScreenActivity extends AppCompatActivity {
         enterActivities.setText(R.string.noActivities);
         Log.e("s: ", s.toString());
       }
-
     }
   };
 
+  /**
+   * Observer that will query the database for all activities completed in the month selected and
+   * display them in the appropriate text box
+   */
   private Observer<List<UserActivityEntity>> monthObserver = new Observer<List<UserActivityEntity>>() {
     @Override
     public void onChanged(final List<UserActivityEntity> s) {
@@ -158,7 +167,6 @@ public class ClinicalScreenActivity extends AppCompatActivity {
         enterActivities.setText(R.string.noActivities);
         Log.e("s: ", s.toString());
       }
-
     }
   };
 
@@ -181,10 +189,6 @@ public class ClinicalScreenActivity extends AppCompatActivity {
    */
   private void showNameInUI(final @Nullable String name) {
     enterName.setText(name);
-/*    enterName.setText(R.string.name);
-    enterName.append(" " + name);
-     enterName.setText("tester");
-    Log.e("name ", name);*/
   }
 
   /**
