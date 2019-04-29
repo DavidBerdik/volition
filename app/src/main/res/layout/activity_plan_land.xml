@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
@@ -38,240 +37,201 @@
 
   <HorizontalScrollView
     android:id="@+id/hscroller"
-    android:layout_width="match_parent"
-    android:layout_height="140dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toRightOf="parent"
+    app:layout_constraintRight_toLeftOf="parent"
     app:layout_constraintTop_toTopOf="parent">
-
     <LinearLayout
-      android:id="@+id/detailsLayout"
       android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:layout_gravity="center_horizontal"
-      android:orientation="horizontal">
-
-      <android.support.constraint.ConstraintLayout
+      android:layout_height="wrap_content">
+      <LinearLayout
+        android:id="@+id/vertical_layout_1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="130dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/vertical_layout_1"
+        <TextView
+          android:id="@+id/day_of_week_7"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_7"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
+        <TextView
+          android:id="@+id/textview_day_7"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
 
-          <TextView
-            android:id="@+id/textview_day_7"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
+      <LinearLayout
+        android:id="@+id/vertical_layout_2"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginStart="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/vertical_layout_2"
+        <TextView
+          android:id="@+id/day_of_week_6"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_marginStart="25dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toEndOf="@id/vertical_layout_1"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_6"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
+        <TextView
+          android:id="@+id/textview_day_6"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
 
-          <TextView
-            android:id="@+id/textview_day_6"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
+      <LinearLayout
+        android:id="@+id/vertical_layout_3"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginStart="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-
-        <LinearLayout
-          android:id="@+id/vertical_layout_3"
+        <TextView
+          android:id="@+id/day_of_week_5"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_marginStart="25dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toEndOf="@id/vertical_layout_2"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_5"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
+        <TextView
+          android:id="@+id/textview_day_5"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
 
-          <TextView
-            android:id="@+id/textview_day_5"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
+      <LinearLayout
+        android:id="@+id/vertical_layout_4"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginStart="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/vertical_layout_4"
+        <TextView
+          android:id="@+id/day_of_week_4"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_marginStart="25dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toEndOf="@id/vertical_layout_3"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_4"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
+        <TextView
+          android:id="@+id/textview_day_4"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
 
-          <TextView
-            android:id="@+id/textview_day_4"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
+      <LinearLayout
+        android:id="@+id/vertical_layout_5"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginStart="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/vertical_layout_5"
+        <TextView
+          android:id="@+id/day_of_week_3"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_marginStart="25dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toEndOf="@id/vertical_layout_4"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_3"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
+        <TextView
+          android:id="@+id/textview_day_3"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
 
-          <TextView
-            android:id="@+id/textview_day_3"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
+      <LinearLayout
+        android:id="@+id/vertical_layout_6"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginStart="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/vertical_layout_6"
+        <TextView
+          android:id="@+id/day_of_week_2"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_marginStart="25dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toEndOf="@id/vertical_layout_5"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_2"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
+        <TextView
+          android:id="@+id/textview_day_2"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
 
-          <TextView
-            android:id="@+id/textview_day_2"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
+      <LinearLayout
+        android:id="@+id/vertical_layout_7"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginStart="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/vertical_layout_7"
+        <TextView
+          android:id="@+id/day_of_week_1"
           android:layout_width="wrap_content"
-          android:layout_height="130dp"
-          android:layout_marginStart="25dp"
-          android:layout_gravity="center_horizontal"
-          android:gravity="bottom|center_horizontal"
-          android:orientation="vertical"
-          app:layout_constraintStart_toEndOf="@id/vertical_layout_6"
-          app:layout_constraintTop_toTopOf="parent">
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:textColor="@color/common_google_signin_btn_text_dark_focused"
+          android:textSize="23sp"/>
 
-          <TextView
-            android:id="@+id/day_of_week_1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="23sp"/>
-
-          <TextView
-            android:id="@+id/textview_day_1"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:textSize="15sp"/>
-        </LinearLayout>
-      </android.support.constraint.ConstraintLayout>
+        <TextView
+          android:id="@+id/textview_day_1"
+          android:layout_width="70dp"
+          android:layout_height="100dp"
+          android:background="@color/res_green_transparent"
+          android:textAlignment="center"
+          android:textSize="15sp"/>
+      </LinearLayout>
     </LinearLayout>
   </HorizontalScrollView>
 
@@ -295,118 +255,4 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:srcCompat="?attr/homeAsUpIndicator"/>
-
-
-  <TextView
-    android:id="@+id/month_progress_textview"
-    android:layout_width="match_parent"
-    android:layout_height="35dp"
-    android:background="@color/res_white_transparent"
-    android:gravity="center"
-    android:text="@string/plan_month_progress_textview"
-    android:textSize="26sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/hscroller"/>
-
-  <ScrollView
-    android:id="@+id/vscroller"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="0dp"
-    android:layout_marginEnd="0dp"
-    android:fadingEdge="none"
-    android:fillViewport="true"
-    app:layout_constraintBottom_toTopOf="@+id/core_navigation"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/month_progress_textview">
-
-    <LinearLayout
-      android:id="@+id/contentsLayout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      android:orientation="horizontal">
-
-      <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-          android:id="@+id/track_button"
-          android:layout_width="0dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="8dp"
-          android:layout_marginStart="8dp"
-          android:layout_marginEnd="8dp"
-          android:background="@color/res_green"
-          android:clickable="true"
-          android:focusable="true"
-          android:text="@string/plan_track_button"
-          android:textColor="@color/res_white"
-          android:textSize="20sp"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toEndOf="@+id/notes_edittext"
-          app:layout_constraintTop_toBottomOf="@+id/center_day_textview"/>
-
-        <TextView
-          android:id="@+id/center_day_textview"
-          android:layout_width="match_parent"
-          android:layout_height="35dp"
-          android:layout_marginTop="1dp"
-          android:gravity="center"
-          android:text="@string/plan_center_day_textview"
-          android:textColor="@color/res_black"
-          android:textSize="30sp"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="1.0"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"/>
-
-        <EditText
-          android:id="@+id/notes_edittext"
-          android:layout_width="0dp"
-          android:layout_height="150dp"
-          android:layout_marginTop="0dp"
-          android:layout_marginStart="8dp"
-          android:layout_marginEnd="8dp"
-          android:padding="15dp"
-          android:autofillHints="@string/plan_notes_edittext"
-          android:background="@color/res_white_transparent"
-          android:ems="10"
-          android:hint="@string/plan_notes_edittext"
-          android:inputType="textCapSentences|textMultiLine"
-          android:maxLength="2000"
-          android:maxLines="15"
-          android:scrollHorizontally="false"
-          android:textColor="@color/res_black"
-          app:layout_constraintEnd_toStartOf="@+id/spinner"
-          app:layout_constraintHorizontal_bias="0.0"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/center_day_textview"
-          tools:ignore="UnusedAttribute"/>
-
-        <Spinner
-          android:id="@+id/spinner"
-          android:layout_width="0dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="8dp"
-          android:layout_marginBottom="8dp"
-          android:layout_marginStart="0dp"
-          android:layout_marginEnd="8dp"
-          android:background="@color/res_green_transparent"
-          android:textColor="@color/res_gray"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.0"
-          app:layout_constraintStart_toEndOf="@id/notes_edittext"
-          app:layout_constraintTop_toBottomOf="@+id/track_button"/>
-
-
-      </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
-  </ScrollView>
-
 </android.support.constraint.ConstraintLayout>

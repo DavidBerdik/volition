@@ -1,62 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
-
-  <Button
-    android:id="@+id/track_button"
-    android:layout_width="180dp"
-    android:layout_height="54dp"
-    android:layout_marginBottom="64dp"
-    android:background="@color/res_green"
-    android:clickable="true"
-    android:focusable="true"
-    android:text="@string/plan_track_button"
-    android:textColor="@color/res_white"
-    android:textSize="20sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/notes_edittext"/>
-
-  <TextView
-    android:id="@+id/center_day_textview"
-    android:layout_width="match_parent"
-    android:layout_height="84dp"
-    android:gravity="center"
-    android:text="@string/plan_center_day_textview"
-    android:textColor="@color/res_black"
-    android:textSize="40sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/month_progress_textview"
-    />
-
-  <Spinner
-    android:id="@+id/spinner"
-    android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:background="@color/res_green"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/center_day_textview"
-    app:layout_constraintVertical_chainStyle="spread"/>
-
-  <TextView
-    android:id="@+id/month_progress_textview"
-    android:layout_width="match_parent"
-    android:layout_height="35dp"
-    android:background="@color/res_white"
-    android:gravity="center"
-    android:text="@string/plan_month_progress_textview"
-    android:textSize="26sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/hscroller"/>
 
   <ImageView
     android:id="@+id/resBackground"
@@ -73,31 +20,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/hscroller"
     app:srcCompat="@drawable/pic"/>
-
-  <EditText
-    android:id="@+id/notes_edittext"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:padding="15dp"
-    android:autofillHints="@string/plan_notes_edittext"
-    android:background="@color/res_white_transparent"
-    android:ems="10"
-    android:hint="@string/plan_notes_edittext"
-    android:inputType="textCapSentences|textMultiLine"
-    android:maxLength="2000"
-    android:maxLines="15"
-    android:scrollHorizontally="false"
-    android:textColor="@color/res_black"
-    app:layout_constraintBottom_toTopOf="@+id/track_button"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/spinner"
-    tools:ignore="UnusedAttribute"/>
-
   <android.support.design.widget.BottomNavigationView
     android:id="@+id/core_navigation"
     android:layout_width="0dp"
@@ -116,20 +38,16 @@
   <HorizontalScrollView
     android:id="@+id/hscroller"
     android:layout_width="match_parent"
-    android:layout_height="135dp"
-    android:background="@color/res_white"
+    android:layout_height="140dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
-
 
     <LinearLayout
       android:id="@+id/detailsLayout"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:orientation="horizontal"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+      android:orientation="horizontal">
 
       <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
@@ -159,8 +77,6 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -190,8 +106,6 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -221,8 +135,6 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -252,8 +164,6 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -283,8 +193,6 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -314,8 +222,6 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
@@ -340,21 +246,16 @@
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="23sp"/>
 
-
           <TextView
             android:id="@+id/textview_day_1"
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:background="@color/res_green_transparent"
-            android:clickable="true"
-            android:focusable="true"
             android:textAlignment="center"
             android:textSize="15sp"/>
         </LinearLayout>
       </android.support.constraint.ConstraintLayout>
-
     </LinearLayout>
-
   </HorizontalScrollView>
 
   <ImageButton
@@ -378,6 +279,3 @@
     app:layout_constraintTop_toTopOf="parent"
     app:srcCompat="?attr/homeAsUpIndicator"/>
 </android.support.constraint.ConstraintLayout>
-
-
-
