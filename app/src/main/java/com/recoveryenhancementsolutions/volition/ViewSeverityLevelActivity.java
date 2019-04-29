@@ -18,6 +18,13 @@ import android.widget.TextView;
 public class ViewSeverityLevelActivity extends AppCompatActivity {
 
   /**
+   * Forcing a restart of the questionnaire
+   */
+  @Override
+  public void onBackPressed() {
+  }
+
+  /**
    * The onCreate method sets the view to the proper xml and accesses the view model for this
    * activity
    */
