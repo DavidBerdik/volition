@@ -31,7 +31,7 @@ public class QuestionnaireConfirmActivity extends AppCompatActivity {
 
     @Override
     public void onClick(final View v) {
-      startActivity(new Intent(QuestionnaireConfirmActivity.this, ClinicalScreenActivity.class));
+      startActivity(new Intent(QuestionnaireConfirmActivity.this, QuestionnaireActivity.class));
     }
   };
 }
