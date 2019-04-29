@@ -210,6 +210,11 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_startup_landing">Welcome To Your Recovery</string>
   <string name="activity_startup_create">Create Profile</string>
+  <string name="volition">Volition</string>
+  <string name="readJournalResponse">Reading Response / Journal</string>
+  <string name="menubar_home">Home</string>
+  <string name="menubar_activity">Activity</string>
+  <string name="menubar_plan">Plan</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
   <string name="plan_month_progress_textview">Month Progress</string>
@@ -233,4 +238,9 @@ Withdrawal defined as three or more of the following symptoms develop within min
   </string-array>
   <string name = "noActivities"> No activities to date.</string>
   <string name="clinical_overview"> Clinical Overview </string>
+  <string-array name="plan_spinner_array">
+    <item>Therapy Visit</item>
+    <item>Group Visit</item>
+    <item>Med Compliance</item>
+  </string-array>
 </resources>
