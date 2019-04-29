@@ -152,7 +152,6 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="lesson_title"> Lesson Page</string>
   <string name="journal_title"> Journal Page</string>
   <string name="edu_title"> EDU Page</string>
-  <string name="treatment_assessment_title"> TEA Page</string>
   <string-array name="dosage_choice_title">
     <item>1</item>
     <item>2</item>
@@ -176,6 +175,18 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="lessonPlanner">Lesson Planner</string>
   <string name="treatmentEffectivenessAssessment">Treatment Plan Effectiveness Assessment</string>
   <string name="readResponseJournal">Read and Response Journal</string>
+  <string name="lifestyle"> Lifestyle</string>
+  <string name="health">Health</string>
+  <string name="community">Community</string>
+  <string name="substance">Substance Use</string>
+  <string name="tea_question_one"> How much better are you with drug and alcohol use?  Consider the frequency and amount of use, money spent on drugs, amount of drug cravings, time spent being “loaded”, being sick, in trouble and in other drug-use activities etc?</string>
+  <string name="tea_question_two">Has your health improved?  In what way and how much?  Think about your physical and mental health.  Are you eating and sleeping properly, exercising, taking care of health problems, feeling better about yourself?</string>
+  <string name="tea_question_three">How much better are you in taking care of personal responsibilities?  Think about your living conditions, family situations, employment, relationships:  Are you paying your bills?  Following through with your personal or professional commitments?</string>
+  <string name="tea_question_four">Are you a better member of the community think about things like obeying laws and meeting your responsibilities to society.  Do your actions have a positive or negative impact on other people?</string>
+  <string name="logo">This is the logo for Recovery Enhancement Solutions</string>
+  <string name="remarks">Remarks</string>
+  <string name="directions">Write down one or two changes most important to you or click submit. </string>
+  <string name="submit">Submit</string>
   <string name="treatmentPlan_name">Recommended Treatment Plan</string>
   <string name="finish_button">Finish</string>
   <string name="daily_wellness_question">Considering your current condition, how would you rate your overall wellness right now?</string>
@@ -200,6 +211,11 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_startup_landing">Welcome To Your Recovery</string>
   <string name="activity_startup_create">Create Profile</string>
+  <string name="volition">Volition</string>
+  <string name="readJournalResponse">Reading Response / Journal</string>
+  <string name="menubar_home">Home</string>
+  <string name="menubar_activity">Activity</string>
+  <string name="menubar_plan">Plan</string>
   <string name="plan_note_view_done">Done</string>
   <string name="plan_note_view_no_notes">Nothing.</string>
   <string name="plan_month_progress_textview">Month Progress</string>

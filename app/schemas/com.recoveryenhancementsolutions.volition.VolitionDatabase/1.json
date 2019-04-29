@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a8cb06d0b49cf57a4b3d76badbc048dd",
+    "identityHash": "bfb2a0800fd6f8d29a0430486b7210e8",
     "entities": [
       {
         "tableName": "UserActivityEntity",
@@ -319,6 +319,56 @@
         "foreignKeys": []
       },
       {
+        "tableName": "TreatmentExperienceAssessmentEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientId` INTEGER NOT NULL, `substanceInt` INTEGER NOT NULL, `healthInt` INTEGER NOT NULL, `lifestyleInt` INTEGER NOT NULL, `communityInt` INTEGER NOT NULL, `remarksString` TEXT, PRIMARY KEY(`patientId`))",
+        "fields": [
+          {
+            "fieldPath": "patientId",
+            "columnName": "patientId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "substanceInt",
+            "columnName": "substanceInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "healthInt",
+            "columnName": "healthInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lifestyleInt",
+            "columnName": "lifestyleInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "communityInt",
+            "columnName": "communityInt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "remarksString",
+            "columnName": "remarksString",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "patientId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
         "tableName": "QuestionnaireActivityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`totalYes` TEXT, `severityLevel` TEXT, `q1` INTEGER NOT NULL, `q2` INTEGER NOT NULL, `q3` INTEGER NOT NULL, `q4` INTEGER NOT NULL, `q5` INTEGER NOT NULL, `q6` INTEGER NOT NULL, `q7` INTEGER NOT NULL, `q8` INTEGER NOT NULL, `q9` INTEGER NOT NULL, `q10` INTEGER NOT NULL, `q11` INTEGER NOT NULL, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
@@ -419,7 +469,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a8cb06d0b49cf57a4b3d76badbc048dd\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"bfb2a0800fd6f8d29a0430486b7210e8\")"
     ]
   }
 }
