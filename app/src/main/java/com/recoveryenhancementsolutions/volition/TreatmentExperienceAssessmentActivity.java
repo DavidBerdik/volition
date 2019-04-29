@@ -13,6 +13,10 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+/**
+ * Runs the Treatment Experience assessment which is a series of tailored questions that try to get
+ * an understanding of the benefit that the treatment is having on the user
+ */
 public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
 
   public static int numberCompleted;
@@ -36,10 +40,20 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * Called in testing for assertions
+   *
+   * @return returns the tea results
+   */
   public String getTeaResultsText() {
     return tea_results.getText().toString();
   }
 
+  /**
+   * Called in testing to gain access to the view model methods
+   *
+   * @return returns the copy of the view model for this activity
+   */
   protected TreatmentExperienceAssessmentViewModel getViewModel() {
     return teaView;
   }
@@ -53,6 +67,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
    *
    * @param savedInstanceState stores the saved state in order to recreate the activity.
    */
+
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -134,6 +149,7 @@ public class TreatmentExperienceAssessmentActivity extends AppCompatActivity {
    * This method displays what the user chooses on the scroll bar with rating attached
    *
    * @param rating passes what the user chooses on the scroll bar
+   * @return A string containing the choice in a format suitable for displaying.
    */
   private String getTeaString(final int rating) {
     lastKnownValue = rating;

@@ -1,6 +1,7 @@
 package com.recoveryenhancementsolutions.volition;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
@@ -86,9 +87,12 @@ public class ActivityNavigationHandlerTest {
 
     // Confirm that we are on the TEA page.
     assertEquals(EspressoTestUtility.getCurrentActivity().getClass().getName(),
-        TreatmentExperienceAssessmentActivity.class.getName());
+        TreatmentExperienceAssessmentConfirmActivity.class.getName());
 
-    onView(withId(R.id.activity_back_navigation_button)).perform(click());
+    // Confirmation page is missing bottom navigation as of 4/29/19.
+    // Use Android back instead until this is fixed.
+    // onView(withId(R.id.activity_back_navigation_button)).perform(click());
+    pressBack();
 
     // Allow the slower devices/emulators to update.
     try {

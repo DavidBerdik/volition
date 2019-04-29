@@ -211,6 +211,10 @@ Withdrawal defined as three or more of the following symptoms develop within min
   <string name="activity_back_navigation_button">Return to Activity Page</string>
   <string name="activity_startup_landing">Welcome To Your Recovery</string>
   <string name="activity_startup_create">Create Profile</string>
+  <string name= "experience"> We would like to know about your experience </string>
+  <string name= "directions_tea"> Express the extent of changes in four areas:  Substance use, Health, Lifestyle, and Community. \n\n For each area, think about how things have become.  Choose from the scale below, the more you have improved, the higher the number. \n\n At the end, write down the one or two changes most important to you in the remarks section.</string>
+  <string name = "proceed_to_assessment"> Proceed to Assessment </string>
+  <string name = "treatment_experience_assessment">Treatment Experience Assessment</string>
   <string name="volition">Volition</string>
   <string name="readJournalResponse">Reading Response / Journal</string>
   <string name="menubar_home">Home</string>
@@ -245,3 +249,4 @@ Withdrawal defined as three or more of the following symptoms develop within min
     <item>Med Compliance</item>
   </string-array>
 </resources>
+
